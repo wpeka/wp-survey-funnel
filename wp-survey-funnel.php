@@ -73,9 +73,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wp-survey-funnel.php';
  * @since    1.0.0
  */
 function run_wp_survey_funnel() {
-
 	$plugin = new Wp_Survey_Funnel();
 	$plugin->run();
-
 }
 run_wp_survey_funnel();

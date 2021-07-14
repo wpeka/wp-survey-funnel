@@ -26,6 +26,7 @@
 class Wp_Survey_Funnel_I18n {
 
 
+
 	/**
 	 * Load the plugin text domain for translation.
 	 *
@@ -38,9 +39,5 @@ class Wp_Survey_Funnel_I18n {
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
-
 	}
-
-
-
 }
