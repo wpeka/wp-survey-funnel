@@ -151,9 +151,13 @@ class Wp_Survey_Funnel {
 
 		$plugin_admin = new Wp_Survey_Funnel_Admin( $this->get_plugin_name(), $this->get_version() );
 
+		// enqueue styles and scripts.
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+		// admin functionalities.
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wpsf_admin_menu' );
+		$this->loader->add_action( 'init', $plugin_admin, 'wpsf_init', 0 );
 	}
 
 	/**
