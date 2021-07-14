@@ -21,6 +21,7 @@
  */
 class Wp_Survey_Funnel_Deactivator {
 
+
 	/**
 	 * Short Description. (use period)
 	 *
@@ -29,7 +30,5 @@ class Wp_Survey_Funnel_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-
 	}
-
 }
