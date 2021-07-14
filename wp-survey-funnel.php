@@ -36,6 +36,10 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'WP_SURVEY_FUNNEL_VERSION', '1.0.0' );
 
+if ( ! defined( 'WP_SURVEY_FUNNEL_PLUGIN_URL' ) ) {
+	define( 'WP_SURVEY_FUNNEL_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+}
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-wp-survey-funnel-activator.php

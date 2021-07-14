@@ -64,7 +64,7 @@ class Wp_Survey_Funnel_Admin {
 			$this->plugin_name,
 			plugin_dir_url( __FILE__ ) . 'css/wp-survey-funnel-admin.css',
 			array(),
-			$this->version,
+			time(),
 			'all'
 		);
 
@@ -97,7 +97,9 @@ class Wp_Survey_Funnel_Admin {
 			__( 'Survey Funnel', 'wp-survey-funnel' ),
 			__( 'Survey Funnel', 'wp-survey-funnel' ),
 			'manage_options',
-			'wpsf-dashboard'
+			'wpsf-dashboard',
+			'',
+			WP_SURVEY_FUNNEL_PLUGIN_URL . 'images/SF-logo.png'
 		);
 
 		// Dashboard.
@@ -155,7 +157,7 @@ class Wp_Survey_Funnel_Admin {
 	 * @since    1.0.0
 	 */
 	public function wpsf_dashboard() {
-		echo '';
+		include_once plugin_dir_path( __FILE__ ) . 'views/admin-display-dashboard-page.php';
 	}
 
 	/**

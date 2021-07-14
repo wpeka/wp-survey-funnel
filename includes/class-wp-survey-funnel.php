@@ -214,4 +214,11 @@ class Wp_Survey_Funnel {
 	public function get_version() {
 		return $this->version;
 	}
+
+	/**
+	 * Check if pro version is activated.
+	 */
+	public static function check_pro_activated() {
+		return get_option( 'wp_survey_funnel_activated', false );
+	}
 }
