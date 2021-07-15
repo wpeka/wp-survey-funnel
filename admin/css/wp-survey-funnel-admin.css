@@ -2,11 +2,31 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+ @font-face {
+    font-family: ApercuPro;
+	font-weight: normal;
+    src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: ApercuPro;
+    font-weight: bold;
+    src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: ApercuPro;
+    font-weight: 500;
+    src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Medium.otf") format("opentype");
+}
+
 :root {
 	--primary: #0F4C81;
 }
 
 .wpsf-container-fluid {
+	font-family: ApercuPro;
 	width: 100%;
 }
 
@@ -39,6 +59,8 @@
 .wpsf-logo {
 	color: var( --primary );
 	font-size: 26px;
+	letter-spacing: -0.52;
+	font-weight: 500;
 }
 
 .wpsf-dashboard-container {
@@ -48,31 +70,42 @@
 .wpsf-dashboard-container .wpsf-left {
 	font-size: 22px;
 	color: #495560;
+	font-weight: bold;
 }
 
 .wpsf-search {
 	margin-right: 24px;
 }
 
-.wpsf-right input,select {
+.wpsf-right input,.wpsf-filter > select {
+	border: 0.75px solid #0F4C81;
 	padding: 13px 10px;
+	box-shadow: 0px 4px 1px rgba(33,30,30, 0.04) !important;
+}
+
+.wpsf-card-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-gap: 32px;
 }
 
 .wpsf-content {
-	width: 278px;
-	height: 250px;
+	width: 272px;
+	background: #fff;
+	border-radius: 9px;
+	box-shadow: 0px 4px 1px rgba(33,30,30, 0.04);
+	transition: box-shadow 250ms;
+	color: #495560;
+}
+
+.wpsf-content:hover {
+	box-shadow: 0px 9px 16px rgba(33,30,30, 0.04);
 }
 
 .wpsf-card-container > div:first-child {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-.wpsf-content {
-	background: #fff;
-	border-radius: 9px;
-	margin: 0px 32px 32px 0px;
 }
 
 .wpsf-create-button {
@@ -82,6 +115,7 @@
 }
 
 .wpsf-create-button > button{
+	all: unset;
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
@@ -89,6 +123,9 @@
 	color: #fff;
 	background: var( --primary );
 	font-size: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .wpsf-content {
@@ -96,11 +133,12 @@
 }
 
 .wpsf-image {
+
 	background: #E1E8F0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 100%;
+	width: 272px;
 	height: 164px;
 	border-radius: 9px;
 }
@@ -117,7 +155,123 @@
 
 .wpsf-badge {
 	padding: 4.5px 8.5px;
-	background: green;
 	color: white;
-	border-radius: 7px;
+	border-radius: 9px;
+	font-weight: bold;
+}
+
+.wpsf-badge-sm {
+	padding: 1.5px 8px;
+	font-weight: normal;
+}
+
+.wpsf-post-status-inside {
+	padding: 6px;
+}
+
+.wpsf-badge-unpublished {
+	background: #2196F3;
+}
+
+.wpsf-badge-published {
+	background: #4CAF50;
+}
+
+.wpsf-badge-outcome {
+	background: #687AE2;
+}
+
+.wpsf-badge-scoring {
+	background: #3EB595;
+}
+
+.wpsf-title-box {
+	font-size: 13px;
+	padding: 11.5px;
+	border-bottom: 1px #E0E0E0 solid;
+}
+
+.--wpsf-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.wpsf-stat-box {
+	padding: 11.5px;
+}
+
+.wpsf-stat-box:not(:last-child) {
+	border-right: 1px #E0E0E0 solid;
+}
+
+.wpsf-stat > span {
+	display: block;
+}
+
+.wpsf-post-icons > .icon {
+	margin-left: 9.7px; 
+}
+
+.wpsf-create-content > h3 {
+	font-weight: bold;
+	color: #495560;
+}
+
+.wpsf-stat > span {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.wpsf-stat > small {
+	font-weight: 500;
+	font-size: 10.5px;
+	color: #9DA9B4;
+}
+
+.wpsf-image-box .icon {
+	visibility: hidden;
+}
+
+.wpsf-image-box:hover .icon{
+	visibility: visible;
+}
+
+.icon {
+	cursor: pointer;
+}
+
+.icon > svg > path {
+	fill: #0F4C81;
+}
+
+.d-none {
+	display: none;
+}
+
+@media screen and (max-width: 1660px) {
+	.wpsf-card-container {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media screen and (max-width: 1260px) {
+	.wpsf-card-container {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+
+@media screen and (max-width: 900px) {
+	.wpsf-card-container {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 460px) {
+	.wpsf-card-container {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
 }
