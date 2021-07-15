@@ -64,7 +64,7 @@ class Wp_Survey_Funnel_Admin {
 			$this->plugin_name,
 			plugin_dir_url( __FILE__ ) . 'css/wp-survey-funnel-admin.css',
 			array(),
-			$this->version,
+			time(),
 			'all'
 		);
 
@@ -97,7 +97,9 @@ class Wp_Survey_Funnel_Admin {
 			__( 'Survey Funnel', 'wp-survey-funnel' ),
 			__( 'Survey Funnel', 'wp-survey-funnel' ),
 			'manage_options',
-			'wpsf-dashboard'
+			'wpsf-dashboard',
+			'',
+			WP_SURVEY_FUNNEL_PLUGIN_URL . 'images/SF-logo.png'
 		);
 
 		// Dashboard.
@@ -155,6 +157,38 @@ class Wp_Survey_Funnel_Admin {
 	 * @since    1.0.0
 	 */
 	public function wpsf_dashboard() {
-		echo '';
+		include_once plugin_dir_path( __FILE__ ) . 'views/admin-display-dashboard-page.php';
+	}
+
+	/**
+	 * Initialize wpsf functionalities.
+	 *
+	 * @since    1.0.0
+	 */
+	public function wpsf_init() {
+		// no labels required.
+		$labels = array();
+
+		// register hidden post type 'wpsf-survey'.
+		$args = array(
+			'label'               => __( 'wpsf-survey', 'wp-survey-funnel' ),
+			'description'         => __( 'wpsf-survey custom post type to generate surveys', 'wp-survey-funnel' ),
+			'labels'              => $labels,
+			'supports'            => array( 'title' ),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => false,
+			'show_in_menu'        => false,
+			'menu_position'       => 5,
+			'show_in_admin_bar'   => false,
+			'show_in_nav_menus'   => false,
+			'can_export'          => true,
+			'has_archive'         => false,
+			'exclude_from_search' => true,
+			'publicly_queryable'  => false,
+			'capability_type'     => 'page',
+			'show_in_rest'        => false,
+		);
+		register_post_type( 'wpsf-survey', $args );
 	}
 }
