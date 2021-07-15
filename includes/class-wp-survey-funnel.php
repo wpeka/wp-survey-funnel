@@ -158,6 +158,9 @@ class Wp_Survey_Funnel {
 		// admin functionalities.
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wpsf_admin_menu' );
 		$this->loader->add_action( 'init', $plugin_admin, 'wpsf_init', 0 );
+
+		// ajax calls.
+		$this->loader->add_action( 'wp_ajax_wpsf_new_survey', $plugin_admin, 'wpsf_new_survey' );
 	}
 
 	/**

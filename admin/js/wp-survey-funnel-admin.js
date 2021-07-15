@@ -35,5 +35,25 @@
 			  if (callNow) func.apply(context, args);
 			};
 		};
+
+		$('#wpsf-modal-submit').on('click', function() {
+			let contentTitle = $('#content-title').val();
+			let contentType = $("input:radio[name ='content-type']:checked").val();
+			// check for validations.
+			console.log(ajax);
+			// send ajax request.
+			$.ajax({
+				type: 'POST',
+				url: ajax.ajaxURL,
+				data: {
+					action: 'wpsf_new_survey',
+					security: ajax.ajaxSecurity,
+					title: contentTitle,
+					type: contentType,
+				}
+			}).done(data => {
+				console.log(data);
+			});
+		});
 	});
 })( jQuery );

@@ -2,6 +2,7 @@
 
 $args = array(
 	'post_type'   => 'wpsf-survey',
+	'post_status' => array( 'draft', 'publish' ),
 	'numberposts' => -1,
 );
 
@@ -11,6 +12,13 @@ $disabled = Wp_Survey_Funnel::check_pro_activated() ? '' : 'disabled="disabled"'
 
 ?>
 <div class="wpsf-container-fluid">
+	<div class="wpsf-modal">
+		<input type="text" id="content-title" placeholder="Enter Title">
+		<input type="radio" name="content-type" value="basic">
+		<input type="radio" name="content-type" value="outcome">
+		<input type="radio" name="content-type" value="scoring">
+		<button type="submit" id="wpsf-modal-submit">submit</button>
+	</div>
 	<div class="wpsf-navbar">
 		<div class="wpsf-container wpsf-top-navbar --wpsf-flex">
 			<div class="wpsf-logo">SurveyFunnel</div>

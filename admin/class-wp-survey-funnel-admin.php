@@ -85,6 +85,15 @@ class Wp_Survey_Funnel_Admin {
 			false
 		);
 
+		wp_localize_script(
+			$this->plugin_name,
+			'ajax',
+			array(
+				'ajaxURL'      => admin_url( 'admin-ajax.php' ),
+				'ajaxSecurity' => wp_create_nonce( 'surveySecurity' ),
+			)
+		);
+
 	}
 
 	/**
@@ -190,5 +199,42 @@ class Wp_Survey_Funnel_Admin {
 			'show_in_rest'        => false,
 		);
 		register_post_type( 'wpsf-survey', $args );
+	}
+
+	/**
+	 * Ajax: new survey.
+	 */
+	public function wpsf_new_survey() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'surveySecurity', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+			return;
+		}
+		// check for validations.
+
+		// create wpsf survey post.
+		$post_id = wp_insert_post(
+			array(
+				'post_type'  => 'wpsf-survey',
+				'post_title' => sanitize_text_field( wp_unslash( $_POST['title'] ) ),
+			),
+			true
+		);
+
+		if ( is_wp_error( $post_id ) ) {
+			wp_send_json_error();
+		}
+		else {
+			// send success if validated.
+			wp_send_json_success(
+				array(
+					'status'  => 'success',
+					'post_id' => $post_id,
+				)
+			);
+		}
+		wp_die();
 	}
 }

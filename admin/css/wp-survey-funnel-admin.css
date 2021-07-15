@@ -211,6 +211,10 @@
 	margin-left: 9.7px; 
 }
 
+.wpsf-content {
+	min-height: 272px;
+}
+
 .wpsf-create-content > h3 {
 	font-weight: bold;
 	color: #495560;
