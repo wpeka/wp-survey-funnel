@@ -263,6 +263,15 @@ class Wp_Survey_Funnel_Admin {
 	 * Html,CSS and JS of wpsf-survey page.
 	 */
 	public function wpsf_survey_page_html() {
+
+		wp_register_script(
+			$this->plugin_name . '-main',
+			WP_SURVEY_FUNNEL_PLUGIN_URL . 'dist/index.bundle.js',
+			array( 'wp-i18n' ),
+			time(),
+			true
+		);
+
 		?>
 			<!DOCTYPE html>
 			<html <?php language_attributes(); ?>>
@@ -273,6 +282,7 @@ class Wp_Survey_Funnel_Admin {
 			</head>
 			<body class="wpsf-body">
 				<div id="root"></div>
+				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
 			</body>
 			</html>
 		<?php
