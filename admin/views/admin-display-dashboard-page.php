@@ -13,13 +13,56 @@ $disabled = Wp_Survey_Funnel::check_pro_activated() ? '' : 'disabled="disabled"'
 $url_to_redirect = Wp_Survey_Funnel_Admin::wpsf_get_setup_page_url();
 
 ?>
-<div class="wpsf-container-fluid">
+<div class="wpsf-container-fluid" id="wpsf-dashboard">
 	<div class="wpsf-modal">
-		<input type="text" id="content-title" placeholder="Enter Title">
-		<input type="radio" name="content-type" value="basic">
-		<input type="radio" name="content-type" value="outcome">
-		<input type="radio" name="content-type" value="scoring">
-		<button type="submit" id="wpsf-modal-submit">submit</button>
+		<div class="wpsf-modal-dialog">
+			<span class="wpsf-dismiss">x</span>
+			<div class="wpsf-modal-inner">
+				<span class="content-info-title">Select Content type</span>
+				<div class="select-content-type">
+					<div class="wpsf-modal-content-card">
+						<div class="card-image">
+
+						</div>
+						<div class="card-title">
+							Basic Survey
+						</div>
+						<div class="card-text">
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
+						</div>
+					</div>
+					<div class="wpsf-modal-content-card">
+						<div class="card-image">
+							
+						</div>
+						<div class="card-title">
+							Basic Survey
+						</div>
+						<div class="card-text">
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
+						</div>
+					</div>
+					<div class="wpsf-modal-content-card">
+						<div class="card-image">
+						</div>
+						<div class="card-title">
+							Basic Survey
+						</div>
+						<div class="card-text">
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
+						</div>
+					</div>
+					<input type="radio" name="content-type" value="basic">
+					<input type="radio" name="content-type" value="outcome">
+					<input type="radio" name="content-type" value="scoring">
+				</div>
+				<div class="set-content-name">
+					<span class="content-info-title">Select Content name</span>
+					<input type="text" id="content-title" placeholder="Enter Title">
+					<button type="submit" id="wpsf-modal-submit">submit</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="wpsf-navbar">
 		<div class="wpsf-container wpsf-top-navbar --wpsf-flex">

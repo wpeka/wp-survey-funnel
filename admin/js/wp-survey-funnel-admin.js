@@ -60,5 +60,13 @@
 				}
 			});
 		});
+
+		$( '.wpsf-content:first-child' ).on( 'click', function() {
+			$('.wpsf-modal').css('display', 'flex');
+		} );
+
+		$( '.wpsf-dismiss' ).on('click', function() {
+			$('.wpsf-modal').css('display', 'none');
+		})
 	});
 })( jQuery );
