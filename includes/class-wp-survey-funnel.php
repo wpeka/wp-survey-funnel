@@ -161,6 +161,9 @@ class Wp_Survey_Funnel {
 
 		// ajax calls.
 		$this->loader->add_action( 'wp_ajax_wpsf_new_survey', $plugin_admin, 'wpsf_new_survey' );
+
+		// setup wpsf-survey (builder) page.
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'wpsf_survey_setup_page' );
 	}
 
 	/**
@@ -201,6 +204,11 @@ class Wp_Survey_Funnel {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
+					status'  => 'success',
+					status'  => 'success',
+					status'  => 'success',
+					status'  => 'success',
+					status'  => 'success',
 	 * @since     1.0.0
 	 * @return    Wp_Survey_Funnel_Loader    Orchestrates the hooks of the plugin.
 	 */

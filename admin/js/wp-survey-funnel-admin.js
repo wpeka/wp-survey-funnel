@@ -40,7 +40,7 @@
 			let contentTitle = $('#content-title').val();
 			let contentType = $("input:radio[name ='content-type']:checked").val();
 			// check for validations.
-			console.log(ajax);
+
 			// send ajax request.
 			$.ajax({
 				type: 'POST',
@@ -52,7 +52,12 @@
 					type: contentType,
 				}
 			}).done(data => {
-				console.log(data);
+				if ( data?.success && data.success ) {
+					window.location = data.data.url_to_redirect;
+				}
+				else {
+					// show error alert.
+				}
 			});
 		});
 	});

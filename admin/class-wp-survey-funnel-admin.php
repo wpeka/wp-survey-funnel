@@ -102,6 +102,10 @@ class Wp_Survey_Funnel_Admin {
 	 * @since    1.0.0
 	 */
 	public function wpsf_admin_menu() {
+
+		// dashboard page is nothing but react one page app to build surveys.
+		add_dashboard_page( '', '', 'manage_options', 'wpsf-survey', '' );
+
 		add_menu_page(
 			__( 'Survey Funnel', 'wp-survey-funnel' ),
 			__( 'Survey Funnel', 'wp-survey-funnel' ),
@@ -225,16 +229,60 @@ class Wp_Survey_Funnel_Admin {
 
 		if ( is_wp_error( $post_id ) ) {
 			wp_send_json_error();
-		}
-		else {
+		} else {
 			// send success if validated.
 			wp_send_json_success(
 				array(
-					'status'  => 'success',
-					'post_id' => $post_id,
+					'url_to_redirect' => self::wpsf_get_setup_page_url() . $post_id . '#build',
 				)
 			);
 		}
 		wp_die();
+	}
+
+	/**
+	 * Setup page for wpsf-survey
+	 */
+	public function wpsf_survey_setup_page() {
+		if ( empty( $_GET['page'] ) || 'wpsf-survey' !== $_GET['page'] ) { // phpcs:ignore CSRF ok, input var ok.
+			return;
+		}
+
+		// Don't load the interface if doing an ajax call.
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			return;
+		}
+
+		set_current_screen();
+		// Remove an action in the Gutenberg plugin ( not core Gutenberg ) which throws an error.
+		remove_action( 'admin_print_styles', 'gutenberg_block_editor_admin_print_styles' );
+		$this->wpsf_survey_page_html();
+	}
+
+	/**
+	 * Html,CSS and JS of wpsf-survey page.
+	 */
+	public function wpsf_survey_page_html() {
+		?>
+			<!DOCTYPE html>
+			<html <?php language_attributes(); ?>>
+			<head>
+				<meta name="viewport" content="width=device-width"/>
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+				<title>WP Survey Funnel</title>
+			</head>
+			<body class="wpsf-body">
+				<div id="root"></div>
+			</body>
+			</html>
+		<?php
+		exit;
+	}
+
+	/**
+	 * Returns the setup page url.
+	 */
+	public static function wpsf_get_setup_page_url() {
+		return get_admin_url() . 'index.php?page=wpsf-survey&post_id=';
 	}
 }
