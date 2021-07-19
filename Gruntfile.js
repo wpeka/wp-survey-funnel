@@ -101,7 +101,8 @@ module.exports = function (grunt) {
 					'!*.yml',
 					'!*.xml',
 					'!*.config.*',
-					'!phpunit.xml.dist'
+					'!phpunit.xml.dist',
+					'!src/**'
 					],
 					dest: 'release/<%= pkg.version %>/'
 				}
@@ -155,6 +156,10 @@ module.exports = function (grunt) {
 					}
 				}
 			},
+
+			shell: {
+				build: [ 'npm run build' ].join( ' && ' )
+			},
 		}
 	);
 
@@ -165,10 +170,12 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-compress' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+	grunt.loadNpmTasks('grunt-shell');
 	grunt.registerTask( 'default', ['i18n'] );
 	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
+	grunt.registerTask( 'compile', ['shell:build'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
-	grunt.registerTask( 'build', ['clean:build', 'copy:build', 'uglify:admin', 'uglify:frontend', 'cssmin:admin', 'cssmin:frontend', 'compress:build'] );
+	grunt.registerTask( 'build', ['shell:build', 'clean:build', 'copy:build', 'uglify:admin', 'uglify:frontend', 'cssmin:admin', 'cssmin:frontend', 'compress:build'] );
 
 	grunt.util.linefeed = '\n';
 
