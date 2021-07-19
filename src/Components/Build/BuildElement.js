@@ -9,9 +9,9 @@ export default function BuildElement({ ele }) {
         item: ele,
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
-            if (item && dropResult) {
-                setShowModal(true);
+            if (item && dropResult) {          
                 setCurrentElement(ele);
+                setShowModal(true);
             }
         },
         collect: (monitor) => ({

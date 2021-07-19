@@ -1,34 +1,34 @@
 export const ItemTypes = {
 	CARD: 'card',
-	START_ELEMENTS: 'start-elements',
-	CONTENT_ELEMENTS: 'content-elements',
-	RESULT_ELEMENTS: 'result-elements'
+	START_ELEMENTS: 'START_ELEMENTS',
+	CONTENT_ELEMENTS: 'CONTENT_ELEMENTS',
+	RESULT_ELEMENTS: 'RESULT_ELEMENTS'
 }  
 
 export const buildElements = {
 	startScreen: [
 		{
 			name: 'Cover Page',
-			id: 'cover-page',
+			id: 'CoverPage',
 			itemType: ItemTypes.START_ELEMENTS
 		}
 	],
 	contentElements: [
 		{
 			name: 'Short Questions',
-			id: 'short-questions',
+			id: 'ShortQuestions',
 			itemType: ItemTypes.CONTENT_ELEMENTS
 		},
 		{
 			name: 'Long Questions',
-			id: 'long-questions',
+			id: 'LongQuestions',
 			itemType: ItemTypes.CONTENT_ELEMENTS
 		}
 	],
 	resultScreen: [
 		{
 			name: 'Result Screen',
-			id: 'result-screen',
+			id: 'ResultScreen',
 			itemType: ItemTypes.RESULT_ELEMENTS
 		}
 	]
@@ -37,17 +37,17 @@ export const buildElements = {
 export const dropBoard = [
 	{
 		name: 'Start Screen',
-		type: 'start-screen',
+		type: 'StartScreen',
 		itemType: ItemTypes.START_ELEMENTS
 	},
 	{
 		name: 'Content Elements',
-		type: 'content-elements',
+		type: 'ContentElements',
 		itemType: ItemTypes.CONTENT_ELEMENTS
 	},
 	{
 		name: 'Results',
-		type: 'results-screen',
+		type: 'ResultsScreen',
 		itemType: ItemTypes.RESULT_ELEMENTS
 	}
 ];

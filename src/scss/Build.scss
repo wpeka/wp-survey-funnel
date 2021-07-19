@@ -29,6 +29,7 @@
 .modalContent {
     position: absolute;
     margin: auto;
+	z-index: 999;
     top: 0;
     bottom: 0;
     left: 0;
@@ -47,3 +48,20 @@
         background: #E3EDFA;
     }
 }
+
+.cardBox {
+    width: 100%;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    margin-bottom: 1rem;
+}
+
+.card-flex {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gird-gap: 20px;
+} 
