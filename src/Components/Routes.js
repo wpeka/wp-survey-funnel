@@ -6,7 +6,7 @@ import {
 	Link
   } from "react-router-dom";
 import { BuildContextProvider } from './Context/BuildContext';
-import { useContext } from 'react';
+import Build from './Build';
 
 export default function Routes() {
 	return (
@@ -23,7 +23,7 @@ export default function Routes() {
 			<BuildContextProvider>
 				<Switch>
 					<Route path="/build">
-						<div className="build">build</div>
+						<Build></Build>
 					</Route>
 					<Route path="/design">
 						<div className="design">design</div>
