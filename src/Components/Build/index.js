@@ -5,9 +5,24 @@ import { buildElements, dropBoard } from '../../Data';
 import DropBoard from './DropBoard';
 import ModalBox from './ModalBox';
 import { useState } from 'react';
-import { ModalContextProvider } from '../Context/ModalContext';
+import { ModalContextProvider, ModalContext } from '../Context/ModalContext';
+
+class ModalContainer extends React.Component {
+	static contextType = ModalContext;
+
+	render() {
+		const { getShowModal } = this.context;
+		return(
+			<div>
+				{getShowModal() && <ModalBox />}
+			</div>
+		)
+	}
+}
 
 export default function Build() {
+
+	const { getShowModal } = ModalContext;
 
 	return (
 		<ModalContextProvider>
@@ -43,7 +58,7 @@ export default function Build() {
 					return <DropBoard ele={ele} key={i}></DropBoard>
 				})}
 			</div>
-			<ModalBox />
+			<ModalContainer />
 		</div>
 		</ModalContextProvider>
 	)

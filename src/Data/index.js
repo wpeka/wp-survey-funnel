@@ -9,26 +9,36 @@ export const buildElements = {
 	startScreen: [
 		{
 			name: 'Cover Page',
-			id: 'CoverPage',
-			itemType: ItemTypes.START_ELEMENTS
+			componentName: 'CoverPage',
+			itemType: ItemTypes.START_ELEMENTS,
+			inputs: [
+				{
+					inputName: 'button',
+				}
+			]
 		}
 	],
 	contentElements: [
 		{
-			name: 'Short Questions',
-			id: 'ShortQuestions',
+			name: 'Single Choice',
+			componentName: 'SingleChoice',
 			itemType: ItemTypes.CONTENT_ELEMENTS
 		},
 		{
-			name: 'Long Questions',
-			id: 'LongQuestions',
+			name: 'Multi Choice',
+			componentName: 'MultiChoice',
+			itemType: ItemTypes.CONTENT_ELEMENTS
+		},
+		{
+			name: 'Form Elements',
+			componentName: 'FormElements',
 			itemType: ItemTypes.CONTENT_ELEMENTS
 		}
 	],
 	resultScreen: [
 		{
 			name: 'Result Screen',
-			id: 'ResultScreen',
+			componentName: 'ResultScreen',
 			itemType: ItemTypes.RESULT_ELEMENTS
 		}
 	]

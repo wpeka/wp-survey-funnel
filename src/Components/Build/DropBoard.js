@@ -30,18 +30,7 @@ const DropBoard = ({ ele }) => {
     } else if (canDrop) {
         backgroundColor = "#E3EDFA";
     }
-    let item = "";
-    switch (ele.itemType) {
-        case "START_ELEMENTS":
-            item = "startScreen";
-            break;
-        case "CONTENT_ELEMENTS":
-            item = "contentElements";
-            break;
-        case "RESULT_ELEMENTS":
-            item = "resultScreen";
-            break;
-    }
+    
     return (
         <div
             ref={drop}
@@ -50,7 +39,7 @@ const DropBoard = ({ ele }) => {
         >
             {isActive ? "Release to drop" : "Drag a box here"}
             <p>{ele.name}</p>
-            <ShowBoard itemType={item}></ShowBoard>
+            <ShowBoard itemType={ele.itemType}></ShowBoard>
         </div>
     );
 };

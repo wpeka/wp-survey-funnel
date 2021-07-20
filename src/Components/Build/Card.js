@@ -69,8 +69,8 @@ export default function (props) {
     const { setShowModal, setCurrentElement } = useContext(ModalContext);
 
     const editCard = function() {
-        setShowModal(true);
         setCurrentElement(item);
+        setShowModal(true);
     }
 
     const deleteCard = function() {

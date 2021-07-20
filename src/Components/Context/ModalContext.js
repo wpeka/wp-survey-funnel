@@ -4,9 +4,12 @@ import { useState } from "react";
 export function ModalContextProvider( props ) {
 
 	const [ showModal, setShowModal ] = useState(false);	
-	const [ currentElement, setCurrentElement ] = useState( false );
+	const [ currentElement, setCurrentElement ] = useState( {} );
+	const getShowModal = () => {
+		return showModal;
+	}
 	const value = {
-		showModal, setShowModal, currentElement, setCurrentElement
+		showModal, setShowModal, currentElement, setCurrentElement, getShowModal
 	}
 	return(
 		<ModalContext.Provider

@@ -1,12 +1,13 @@
 import React from 'react';
 import update from 'immutability-helper';
+import { ItemTypes } from '../../Data';
 
 export class BuildContextProvider extends React.Component {
     state = {
         List: {
-			startScreen: [],
-			contentElements: [],
-			resultScreen: [],
+			[ItemTypes.START_ELEMENTS]: [],
+			[ItemTypes.CONTENT_ELEMENTS]: [],
+            [ItemTypes.RESULT_ELEMENTS]: [],
 		},
     };
 
