@@ -2,6 +2,17 @@ import React from 'react';
 import update from 'immutability-helper';
 import { ItemTypes } from '../../Data';
 
+const fetchData = async (url, data) => {
+    const formData = new FormData();
+    Object.keys(data).forEach(key => formData.append(key, data[key]));
+    // Default options are marked with *
+    const response = await fetch(url, {
+        method: 'POST',
+        body: formData
+    });
+    return response.json();
+}
+
 export class BuildContextProvider extends React.Component {
     state = {
         List: {
@@ -10,6 +21,22 @@ export class BuildContextProvider extends React.Component {
             [ItemTypes.RESULT_ELEMENTS]: [],
 		},
     };
+
+    componentDidMount() {
+        const ajaxSecurity = document.getElementById('ajaxSecurity').value;
+        const post_id = new URLSearchParams(window.location.search).get('post_id');
+        const data = {
+            security: ajaxSecurity,
+            action: 'wpsf_get_build_data',
+            post_id
+        };
+        const ajaxURL = document.getElementById('ajaxURL').value;
+        fetchData( ajaxURL, data )
+        .then(data => {
+            let state = JSON.parse(data.data);
+            this.setState( state );
+        })
+    }
 
     addToList = (data) => {
 		let newState = JSON.parse(JSON.stringify({...this.state}));
@@ -69,12 +96,29 @@ export class BuildContextProvider extends React.Component {
         return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);        
     }
 
+    saveData = () => {
+        const ajaxSecurity = document.getElementById('ajaxSecurity').value;
+        const post_id = new URLSearchParams(window.location.search).get('post_id');
+        const data = {
+            state: JSON.stringify( { ...this.state } ),
+            security: ajaxSecurity,
+            action: 'wpsf_save_build_data',
+            post_id
+        };
+        const ajaxURL = document.getElementById('ajaxURL').value;
+        fetchData(ajaxURL, data)
+        .then(data => {
+            console.log(data);
+        });
+    }
+
     render() {
         return (
             <BuildContext.Provider
-                value={{ ...this.state, addToList: this.addToList, getCount: this.getCount, editList: this.editList, deleteItemInList: this.deleteItemInList, moveCard: this.moveCard, generateId: this.generateId }}
+                value={{ ...this.state, addToList: this.addToList, getCount: this.getCount, editList: this.editList, deleteItemInList: this.deleteItemInList, moveCard: this.moveCard, generateId: this.generateId, saveData: this.saveData }}
             >
                 {this.props.children}
+                
             </BuildContext.Provider>
         );
     }

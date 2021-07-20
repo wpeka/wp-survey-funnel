@@ -4,7 +4,7 @@ import BuildElement from './BuildElement';
 import { buildElements, dropBoard } from '../../Data';
 import DropBoard from './DropBoard';
 import ModalBox from './ModalBox';
-import { useState } from 'react';
+import { useContext } from 'react';
 import { ModalContextProvider, ModalContext } from '../Context/ModalContext';
 
 class ModalContainer extends React.Component {
@@ -22,7 +22,7 @@ class ModalContainer extends React.Component {
 
 export default function Build() {
 
-	const { getShowModal } = ModalContext;
+	const { saveData } = useContext(BuildContext);
 
 	return (
 		<ModalContextProvider>
@@ -60,6 +60,7 @@ export default function Build() {
 			</div>
 			<ModalContainer />
 		</div>
+		<button onClick={saveData}>saveData</button>
 		</ModalContextProvider>
 	)
 }

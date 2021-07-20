@@ -282,6 +282,8 @@ class Wp_Survey_Funnel_Admin {
 			</head>
 			<body class="wpsf-body">
 				<div id="root"></div>
+				<input type="hidden" id="ajaxURL" value="<?php echo admin_url( 'admin-ajax.php' );//phpcs:ignore ?>">
+				<input type="hidden" id="ajaxSecurity" value="<?php echo wp_create_nonce('wpsf-security');//phpcs:ignore ?>">
 				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
 			</body>
 			</html>
@@ -294,5 +296,58 @@ class Wp_Survey_Funnel_Admin {
 	 */
 	public static function wpsf_get_setup_page_url() {
 		return get_admin_url() . 'index.php?page=wpsf-survey&post_id=';
+	}
+
+	/**
+	 * Ajax: save build question and answers.
+	 */
+	public function wpsf_save_build_data() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+
+		$defaults      = $this->wpsf_get_default_save_array();
+		$post_meta     = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$data          = wp_parse_args( (array) $post_meta, $defaults );
+		$data['build'] = $_POST['state'];//phpcs:ignore.
+
+		update_post_meta( $post_id, 'wpsf-survey-data', $data );
+		wp_send_json_success();
+		wp_die();
+	}
+
+	/**
+	 * Get default array save data in post_content.
+	 */
+	public function wpsf_get_default_save_array() {
+		return array(
+			'build'     => '',
+			'design'    => '',
+			'configure' => '',
+			'share'     => '',
+			'reports'   => '',
+		);
+	}
+
+	/**
+	 * Get Build data for the post id
+	 */
+	public function wpsf_get_build_data() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		$post_id   = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$post_meta = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		wp_send_json_success( $post_meta['build'] );
+		wp_die();
 	}
 }
