@@ -11,11 +11,6 @@ export const buildElements = {
 			name: 'Cover Page',
 			componentName: 'CoverPage',
 			itemType: ItemTypes.START_ELEMENTS,
-			inputs: [
-				{
-					inputName: 'button',
-				}
-			]
 		}
 	],
 	contentElements: [

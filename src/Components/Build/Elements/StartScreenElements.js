@@ -1,8 +1,6 @@
-import React, { Fragment, useContext, useState, useEffect } from "react";
-import { BuildContext } from "../../Context/BuildContext";
-import { ModalContext } from "../../Context/ModalContext";
+import React, { Fragment } from "react";
 
-export class CoverPage extends React.Component {
+export const CoverPage = React.memo(class extends React.Component {
     
     state = {
         button: '',
@@ -15,7 +13,7 @@ export class CoverPage extends React.Component {
     }
 
     componentDidMount() {
-        const { currentElement } = this.props;
+        const { currentElement, choiceType } = this.props;
         if ( currentElement?.button && currentElement.button !== '' ) {
             this.setState({
                 button: currentElement.button
@@ -32,4 +30,4 @@ export class CoverPage extends React.Component {
         )
     }
     
-}
+});

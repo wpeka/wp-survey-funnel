@@ -11,7 +11,7 @@ export default function (props) {
     const { id, text, index, item } = props;
 
     const [{ handlerId }, drop] = useDrop({
-        accept: 'card',
+        accept: 'card' + item.type,
         collect(monitor) {
             return {
                 handlerId: monitor.getHandlerId(),
@@ -51,7 +51,7 @@ export default function (props) {
     });
 
     const [{ isDragging }, drag] = useDrag({
-        type: 'card',
+        type: 'card' + item.type,
         item: () => {
             return { id, index };
         },

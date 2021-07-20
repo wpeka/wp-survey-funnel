@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { BuildContext } from "../Context/BuildContext";
 import { ModalContext } from "../Context/ModalContext";
+import { Choices } from "./Elements/ContentElements";
 import { CoverPage } from "./Elements/StartScreenElements";
 
 export default function ModalBox() {
@@ -21,6 +22,9 @@ export default function ModalBox() {
         switch (currentElement.componentName) {
             case "CoverPage":
                 return <CoverPage currentElement={currentElement} ref={childRef} />;
+            case "SingleChoice":
+            case "MultiChoice":
+                return <Choices currentElement={currentElement} ref={childRef} />
             default:
                 return "";
         }
@@ -44,23 +48,25 @@ export default function ModalBox() {
     const { setCurrentElement, setShowModal } = useContext(ModalContext);
 
     const saveToList = () => {
+        let childState = {};
+        if ( childRef.current !== null ) {
+            childState = childRef.current.state;
+        }
         if (currentElement?.currentlySaved && currentElement.currentlySaved) {
-            
             const data = {
                 ...currentElement,
                 ...inputValues,
-                ...childRef.current.state,
+                ...childState,
             };
             editList(data);
         } else {
             const data = {
                 ...inputValues,
-                ...childRef.current.state,
+                ...childState,
                 id: generateId(),
                 componentName: currentElement.componentName,
                 type: currentElement.itemType,
                 currentlySaved: true,
-                inputs: [...currentElement.inputs],
             };
             addToList(data);
         }
