@@ -35,5 +35,38 @@
 			  if (callNow) func.apply(context, args);
 			};
 		};
+
+		$('#wpsf-modal-submit').on('click', function() {
+			let contentTitle = $('#content-title').val();
+			let contentType = $("input:radio[name ='content-type']:checked").val();
+			// check for validations.
+
+			// send ajax request.
+			$.ajax({
+				type: 'POST',
+				url: ajax.ajaxURL,
+				data: {
+					action: 'wpsf_new_survey',
+					security: ajax.ajaxSecurity,
+					title: contentTitle,
+					type: contentType,
+				}
+			}).done(data => {
+				if ( data?.success && data.success ) {
+					window.location = data.data.url_to_redirect;
+				}
+				else {
+					// show error alert.
+				}
+			});
+		});
+
+		$( '.wpsf-content:first-child' ).on( 'click', function() {
+			$('.wpsf-modal').css('display', 'flex');
+		} );
+
+		$( '.wpsf-dismiss' ).on('click', function() {
+			$('.wpsf-modal').css('display', 'none');
+		})
 	});
 })( jQuery );

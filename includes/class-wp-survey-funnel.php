@@ -158,6 +158,14 @@ class Wp_Survey_Funnel {
 		// admin functionalities.
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wpsf_admin_menu' );
 		$this->loader->add_action( 'init', $plugin_admin, 'wpsf_init', 0 );
+
+		// ajax calls.
+		$this->loader->add_action( 'wp_ajax_wpsf_new_survey', $plugin_admin, 'wpsf_new_survey' );
+		$this->loader->add_action( 'wp_ajax_wpsf_save_build_data', $plugin_admin, 'wpsf_save_build_data' );
+		$this->loader->add_action( 'wp_ajax_wpsf_get_build_data', $plugin_admin, 'wpsf_get_build_data' );
+
+		// setup wpsf-survey (builder) page.
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'wpsf_survey_setup_page' );
 	}
 
 	/**
@@ -171,8 +179,12 @@ class Wp_Survey_Funnel {
 
 		$plugin_public = new Wp_Survey_Funnel_Public( $this->get_plugin_name(), $this->get_version() );
 
+		// enqueue necessary scripts and styles.
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+
+		// init functionality - add_shortcode.
+		$this->loader->add_action( 'init', $plugin_public, 'wpsf_public_init' );
 	}
 
 	/**
@@ -198,7 +210,6 @@ class Wp_Survey_Funnel {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    Wp_Survey_Funnel_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {

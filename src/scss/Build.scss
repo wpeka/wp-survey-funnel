@@ -1,0 +1,67 @@
+.build-container {
+	display: grid;
+	grid-template-columns: 1fr 2.5fr;
+}
+
+.build-eles {
+	border-right: 1px solid black;
+
+	> .build-elements {
+
+		> .build-elements_start, .build-elements_content {
+			border-bottom: 1px solid black;
+			margin-bottom: 10px;
+		}
+	}
+
+	.build-elements_box {
+		border: 1px dashed gray;
+		background-color: white;
+		padding: 2rem;
+		margin-bottom: 2rem;
+		cursor: move;
+		float: left;
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.modalContent {
+    position: absolute;
+    margin: auto;
+	z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    height: 800px;
+    width: 1200px;
+    display: grid;
+    grid-template-columns: 1.5fr 3fr;
+
+    .modalContent-right {
+        background: white;
+    }
+    
+    .modalContent-left {
+        background: #E3EDFA;
+    }
+}
+
+.cardBox {
+    width: 100%;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    margin-bottom: 1rem;
+}
+
+.card-flex {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gird-gap: 20px;
+} 
