@@ -211,6 +211,10 @@
 	margin-left: 9.7px; 
 }
 
+.wpsf-content {
+	min-height: 272px;
+}
+
 .wpsf-create-content > h3 {
 	font-weight: bold;
 	color: #495560;
@@ -245,6 +249,108 @@
 
 .d-none {
 	display: none;
+}
+
+.wpsf-modal {
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    outline: 0;
+	background:rgba(0,0,0,.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	display: none;
+}
+
+.wpsf-modal-dialog {
+	position: fixed;
+	top: 15vh;
+	background: #F0F2F5;
+	width: 55%;
+}
+
+.wpsf-modal-inner {
+	margin-left: 70px;
+	margin-right: 70px;
+	margin-top: 45px;
+	margin-bottom: 45px;
+}
+
+#wpsf-dashboard {
+	position: relative;
+	min-height: 100vh;
+}
+
+.select-content-type {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 42px;
+	text-align: center;
+}
+
+.wpsf-modal-content-card {
+	padding: 4px;
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0px 4px 1px rgba(33,30,30, 0.04);
+	transition: box-shadow 250ms;
+	cursor: pointer;
+}
+
+.wpsf-modal-content-card:hover {
+	box-shadow: 0px 9px 16px rgba(33,30,30, 0.04);
+}
+
+.card-title {
+	font-size: 18px;
+	color: #495560;
+	font-weight: bold;
+	margin-top: 14px;
+}
+
+.card-text {
+	padding: 15px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #9DA9B4;
+}
+
+.card-image {
+	background: #E1E8F0;
+	min-width: 200px;
+	min-height: 198px;
+	border-radius: 12px;
+}
+
+.content-info-title {
+	display: block;
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom: 20px;
+}
+
+#content-title, #wpsf-modal-submit {
+	padding-top: 12.5px;
+	padding-bottom: 12.5px;
+}
+
+#content-title {
+	width: 315px !important;
+	padding-left: 15px;
+	border-radius: 12px;
+}
+
+.wpsf-dismiss {
+	float: right;
+	margin-right: 7px;
+	margin-top: 5px;
+	font-size: 30px;
+	color: #9DA9B4;
+	cursor: pointer;
 }
 
 @media screen and (max-width: 1660px) {
