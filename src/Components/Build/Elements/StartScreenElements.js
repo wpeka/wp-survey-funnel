@@ -63,7 +63,12 @@ export const CoverPage = React.memo(
                                 </div>
                                 <button onClick={this.props.saveToList}>save</button>
                             </div>
-                            <div className="modalContent-right"></div>
+                            <div className="modalContent-right">
+                            
+                                <h3>{this.state.title}</h3>
+                                <p>{this.state.description}</p>
+                                <button>{this.state.button}</button>
+                            </div>
                         </div>
                     </div>
                 </>

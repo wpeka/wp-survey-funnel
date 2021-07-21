@@ -49,6 +49,7 @@ export const Choices = React.memo(
         };
 
         render() {
+            const { currentElement } = this.props;
             return (
                 <>
                     <div className="modalOverlay">
@@ -108,7 +109,26 @@ export const Choices = React.memo(
                                     save
                                 </button>
                             </div>
-                            <div className="modalContent-right"></div>
+                            <div className="modalContent-right">
+                                <h3>{this.state.title}</h3>
+                                <p>{this.state.description}</p>
+                                {this.state.answers.map(function(answer, idx) {
+                                    switch( currentElement.componentName ) {
+                                        case 'SingleChoice':
+                                            return <div key={idx}>
+                                                <label>{answer.name}</label>
+                                                <input type="radio" name="radiogroup" id="radio" value={answer.name} />
+                                            </div>
+                                        
+                                        case 'MultiChoice':
+                                            return <div key={idx}>
+                                                <label>{answer.name}</label>
+                                                <input type="checkbox" name="checkboxGroup" id="cb" value={answer.name} />
+                                            </div>
+                                    }
+                                    
+                                })}
+                            </div>
                         </div>
                     </div>
                 </>
