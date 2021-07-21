@@ -183,7 +183,7 @@ class Wp_Survey_Funnel {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
-		// init functionality - add_shortcode
+		// init functionality - add_shortcode.
 		$this->loader->add_action( 'init', $plugin_public, 'wpsf_public_init' );
 	}
 
@@ -210,12 +210,6 @@ class Wp_Survey_Funnel {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-					status'  => 'success',
-					status'  => 'success',
-					status'  => 'success',
-					status'  => 'success',
-					status'  => 'success',
-	 * @since     1.0.0
 	 * @return    Wp_Survey_Funnel_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
