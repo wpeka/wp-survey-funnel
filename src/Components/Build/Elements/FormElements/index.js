@@ -1,12 +1,15 @@
 import React from "react";
-import { formElements } from "../../../Data";
-import Tabs from '../../../HelperComponents/Tabs';
-import BuildElement from "../BuildElement";
+import { formElements, formElementsDropBoard } from "../../../../Data";
+import Tabs from '../../../../HelperComponents/Tabs';
+import BuildFormElement from "./BuildFormElement";
+import DropFormBoard from "./DropFormBoard";
 export const FormElements = React.memo(
     class extends React.Component {
         state = {
             title: "",
             description: "",
+            setCurrentFormElement: null,
+            List: [],
         };
 
         handleChange = (event) => {
@@ -54,7 +57,7 @@ export const FormElements = React.memo(
                                 </div>
 
                                 {formElements.map(function(ele, i) {
-                                    return <BuildElement ele={ele} key={i}></BuildElement>
+                                    return <BuildFormElement setCurrentFormElement={setCurrentFormElement} ele={ele} key={i}></BuildFormElement>
                                 })}
                                 
                                 <button onClick={this.props.saveToList}>
@@ -64,7 +67,9 @@ export const FormElements = React.memo(
                             <div className="modalContent-right">
                                 <Tabs>
                                     <div label="Form Elements">
-
+                                    {formElementsDropBoard.map(function(ele, i) {
+                                        return <DropFormBoard ele={ele} key={i}></DropFormBoard>
+                                    })}
                                     </div>
                                     <div label="Preview">
                                         <h3>{this.state.title}</h3>
