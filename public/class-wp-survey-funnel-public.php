@@ -61,9 +61,9 @@ class Wp_Survey_Funnel_Public {
 	public function enqueue_styles() {
 
 		wp_enqueue_style(
-			$this->plugin_name,
+			$this->plugin_name . '-public',
 			plugin_dir_url( __FILE__ ) . 'css/wp-survey-funnel-public.css',
-			array(),
+			array( 'jquery' ),
 			$this->version,
 			'all'
 		);
@@ -83,5 +83,48 @@ class Wp_Survey_Funnel_Public {
 			$this->version,
 			false
 		);
+
+		wp_register_script(
+			$this->plugin_name . '-display',
+			plugin_dir_url( __FILE__ ) . 'js/wp-survey-funnel-display.js',
+			array(),
+			time(),
+			false
+		);
+	}
+
+	/**
+	 * Public init of wpsf.
+	 */
+	public function wpsf_public_init() {
+		add_shortcode( 'wpsf_survey', array( $this, 'wpsf_survey_shortcode_render' ) );
+	}
+
+	/**
+	 * Display survey at the frontend.
+	 */
+	public function wpsf_survey_shortcode_render( $atts ) {
+		$atts = shortcode_atts(
+			array(
+				'id' => 0,
+			),
+			$atts
+		);
+
+		return $this->wpsf_display_survey( $atts );
+	}
+
+	/**
+	 * Display function of survey.
+	 */
+	public function wpsf_display_survey( $atts ) {
+		if ( intval( $atts['id'] ) === 0 ) {
+			return '';
+		}
+
+		$data = get_post_meta( $atts['id'], 'wpsf-survey-data', true );
+		wp_enqueue_script( $this->plugin_name . '-display' );
+		wp_localize_script( $this->plugin_name . '-display', 'data', $data );
+		return '<div id="wpsf-survey-frontend" style="width: 100%"></div>';
 	}
 }

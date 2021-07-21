@@ -230,6 +230,8 @@ class Wp_Survey_Funnel_Admin {
 		if ( is_wp_error( $post_id ) ) {
 			wp_send_json_error();
 		} else {
+			$defaults = $this->wpsf_get_default_save_array();
+			update_post_meta( $post_id, 'wpsf-survey-data', $defaults );
 			// send success if validated.
 			wp_send_json_success(
 				array(
