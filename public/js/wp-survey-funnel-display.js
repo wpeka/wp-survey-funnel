@@ -93,7 +93,6 @@
         innerhtml += "<hr />";
         html += innerhtml;
         html += "</div></body>";
-        console.log(build.List);
         let iframe = document.createElement("iframe");
         iframe.src = "data:text/html;charset=utf-8," + encodeURI(html);
         iframe.id = "wpsf-survey-iframe";
