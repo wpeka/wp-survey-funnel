@@ -8,6 +8,7 @@ import React, {
 import { BuildContext } from "../Context/BuildContext";
 import { ModalContext } from "../Context/ModalContext";
 import { Choices } from "./Elements/ContentElements";
+import { FormElements } from "./Elements/FormElements";
 import { ResultScreen } from "./Elements/ResultScreenElements";
 import { CoverPage } from "./Elements/StartScreenElements";
 
@@ -16,14 +17,21 @@ export default function ModalBox() {
     const childRef = React.createRef();
 
     const getComponentRender = function () {
+        let componentProps = {
+            currentElement,
+            ref: childRef,
+            saveToList,
+        }
         switch (currentElement.componentName) {
             case "CoverPage":
-                return <CoverPage currentElement={currentElement} ref={childRef} saveToList={saveToList} />;
+                return <CoverPage {...componentProps} />;
             case "SingleChoice":
             case "MultiChoice":
-                return <Choices currentElement={currentElement} ref={childRef} saveToList={saveToList} />
+                return <Choices {...componentProps} />
             case "ResultScreen":
-                return <ResultScreen currentElement={currentElement} ref={childRef} saveToList={saveToList} />
+                return <ResultScreen {...componentProps} />
+            case "FormElements":
+                return <FormElements {...componentProps} />
             default:
                 return "";
         }

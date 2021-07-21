@@ -56,3 +56,21 @@ export const dropBoard = [
 		itemType: ItemTypes.RESULT_ELEMENTS
 	}
 ];
+
+export const formElements = [
+	{
+		name: 'First Name',
+		componentName: 'InputText',
+		itemType: 'FORM_ELEMENTS'
+	},
+	{
+		name: 'Last Name',
+		componentName: 'InputText',
+		itemType: 'FORM_ELEMENTS'
+	},
+	{
+		name: 'Email',
+		componentName: 'InputTextEmail',
+		itemType: 'FORM_ELEMENTS'
+	},
+]
