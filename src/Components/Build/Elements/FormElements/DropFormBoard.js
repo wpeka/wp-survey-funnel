@@ -1,5 +1,6 @@
 import { useDrop } from "react-dnd";
 import React, { useContext } from "react";
+import ShowFormBoard from './ShowFormBoard';
 
 const style = {
     padding: "1rem",
@@ -10,7 +11,7 @@ const style = {
     width: "100%",
 };
 
-const DropFromBoard = ({ ele }) => {
+const DropFromBoard = ({ ele, List }) => {
     const [{ canDrop, isOver }, drop] = useDrop(() => ({
         accept: ele.itemType,
         drop: () => ({ name: "DropBoard" }),
@@ -35,6 +36,7 @@ const DropFromBoard = ({ ele }) => {
         >
             {isActive ? "Release to drop" : "Drag a box here"}
             <p>{ele.name}</p>
+            <ShowFormBoard List={List}></ShowFormBoard>
         </div>
     );
 };

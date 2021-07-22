@@ -1,14 +1,15 @@
 import { useDrag } from "react-dnd";
 import { useContext, useState } from "react";
 
-export default function BuildFormElement({ ele }) {
+export default function BuildFormElement({ ele, setCurrentFormElement, addToList }) {
     const [{ isDragging }, drag] = useDrag(() => ({
         type: ele.itemType,
         item: ele,
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult();
             if (item && dropResult) {          
-                alert('item dropped');
+                setCurrentFormElement(item);
+                addToList(item);
             }
         },
         collect: (monitor) => ({

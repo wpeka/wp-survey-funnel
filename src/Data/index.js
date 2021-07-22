@@ -68,17 +68,23 @@ export const formElementsDropBoard = [
 export const formElements = [
 	{
 		name: 'First Name',
-		componentName: 'InputText',
-		itemType: 'FORMFIELDS_ELEMENTS'
+		componentName: 'FirstName',
+		itemType: 'FORMFIELDS_ELEMENTS',
+		required: false,
+		placeholder: '',
 	},
 	{
 		name: 'Last Name',
-		componentName: 'InputText',
-		itemType: 'FORMFIELDS_ELEMENTS'
+		componentName: 'LastName',
+		itemType: 'FORMFIELDS_ELEMENTS',
+		required: false,
+		placeholder: '',
 	},
 	{
 		name: 'Email',
-		componentName: 'InputTextEmail',
-		itemType: 'FORMFIELDS_ELEMENTS'
+		componentName: 'Email',
+		itemType: 'FORMFIELDS_ELEMENTS',
+		required: false,
+		placeholder: '',
 	},
 ]
