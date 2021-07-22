@@ -102,10 +102,31 @@ export const FormElements = React.memo(
                                     this.handleInputChange(e);
                                 }}
                             />
+
+                            <input
+                                type="checkbox"
+                                name="required"
+                                data-attr={index}
+                                onChange={(e) => {
+                                    this.handleCheckboxChange(e);
+                                }}
+                                checked={List[index].required}
+                            />
                         </div>
                     );
             }
         };
+
+        handleCheckboxChange = (e) => {
+            let newList = JSON.parse(JSON.stringify(this.state.List));
+            let key = e.target.name;
+            let value = e.target.checked;
+            let index = e.target.getAttribute("data-attr");
+            newList[index][key] = value;
+            this.setState({
+                List: newList,
+            });
+        }
 
         getCurrentFormElementRightRender = (ele, index) => {
             const { List } = this.state;

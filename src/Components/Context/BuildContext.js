@@ -33,6 +33,9 @@ export class BuildContextProvider extends React.Component {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData( ajaxURL, data )
         .then(data => {
+            if ( data.data === '' ) {
+                return;
+            }
             let state = JSON.parse(data.data);
             this.setState( state );
         })
