@@ -11,7 +11,7 @@ const style = {
     width: "100%",
 };
 
-const DropFromBoard = ({ ele, List }) => {
+const DropFromBoard = ({ ele, List, editList, deleteFromList, moveCard }) => {
     const [{ canDrop, isOver }, drop] = useDrop(() => ({
         accept: ele.itemType,
         drop: () => ({ name: "DropBoard" }),
@@ -36,7 +36,7 @@ const DropFromBoard = ({ ele, List }) => {
         >
             {isActive ? "Release to drop" : "Drag a box here"}
             <p>{ele.name}</p>
-            <ShowFormBoard List={List}></ShowFormBoard>
+            <ShowFormBoard moveCard={moveCard} editList={editList} deleteFromList={deleteFromList} List={List}></ShowFormBoard>
         </div>
     );
 };

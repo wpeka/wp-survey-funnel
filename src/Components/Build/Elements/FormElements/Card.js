@@ -5,7 +5,7 @@ import { useDrag, useDrop } from 'react-dnd';
 export default function (props) {
 
     const ref = useRef(null);
-    const { id, text, index, item } = props;
+    const { id, text, index, item, moveCard } = props;
 
     const [{ handlerId }, drop] = useDrop({
         accept: 'card' + item.itemType,
@@ -41,14 +41,14 @@ export default function (props) {
                 return;
             }
             // Time to actually perform the action
-            //moveCard(dragIndex, hoverIndex, item);
+            moveCard(dragIndex, hoverIndex, item);
 
             data.index = hoverIndex;
         },
     });
 
     const [{ isDragging }, drag] = useDrag({
-        type: 'card' + item.type,
+        type: 'card' + item.itemType,
         item: () => {
             return { id, index };
         },
@@ -65,11 +65,13 @@ export default function (props) {
 
 
     const editCard = function() {
-        console.log('hello world');
+        const { editList, item } = props;
+        editList(item);
     }
 
     const deleteCard = function() {
-        console.log('hello delete world');
+        const { index, deleteFromList } = props;
+        deleteFromList(index);
     }
     
     return (
