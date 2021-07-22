@@ -1,9 +1,8 @@
 import React, { createElement, Fragment } from "react";
 
-export const CoverPage = React.memo(
+export const ResultScreen = React.memo(
     class extends React.Component {
         state = {
-            button: "",
             title: "",
             description: "",
         };
@@ -18,7 +17,6 @@ export const CoverPage = React.memo(
             const { currentElement } = this.props;
             if ( 'currentlySaved' in currentElement ) {
                 let state = {
-                    button: currentElement.button,
                     title: currentElement.title,
                     description: currentElement.description,
                 }
@@ -52,22 +50,11 @@ export const CoverPage = React.memo(
                                         onChange={this.handleChange}
                                     />
                                 </div>
-                                <div className="modalComponentButton">
-                                    <label>button</label>
-                                    <input
-                                        type="text"
-                                        name="button"
-                                        value={this.state.button || ''}
-                                        onChange={this.handleChange}
-                                    />
-                                </div>
                                 <button onClick={this.props.saveToList}>save</button>
                             </div>
                             <div className="modalContent-right">
-                            
                                 <h3>{this.state.title}</h3>
                                 <p>{this.state.description}</p>
-                                <button>{this.state.button}</button>
                             </div>
                         </div>
                     </div>
