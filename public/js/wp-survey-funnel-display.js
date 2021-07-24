@@ -15,30 +15,30 @@
             RESULT_ELEMENTS: end,
         } = build.List;
         let innerhtml = "";
+        let count = 0;
         for (let i = 0; i < start.length; i++) {
-            innerhtml += '<div class="tab">';
             switch (start[i].componentName) {
                 case "CoverPage":
                     innerhtml +=
-                        '<div class="cover-page"><h4>' +
+                        '<div class="tab" tab-name="coverpage" tab-count="'+count+'"><h4>' +
                         start[i].title +
                         "</h4><p>" +
                         start[i].description +
                         "</p><button onclick='nextPrev(1)'>" +
                         start[i].button +
                         "</button></div>";
+                        count++;
                     break;
 
                 default:
                     innerhtml += "";
                     break;
             }
-            innerhtml += '</div>';
         }
         for (let i = 0; i < content.length; i++) {
             switch (content[i].componentName) {
                 case "SingleChoice":
-                    innerhtml += '<div class="tab">';
+                    innerhtml += '<div class="tab" tab-name="singlechoice" tab-count="'+count+'">';
                     innerhtml +=
                         "<h4>" +
                         content[i].title +
@@ -53,10 +53,11 @@
 						innerhtml +=
 							'<label>'+ content[i].answers[j].name +'</label>'
                     }
+                    count++;
                     innerhtml += '</div>'
                     break;
                 case "MultiChoice":
-                    innerhtml += '<div class="tab">';
+                    innerhtml += '<div class="tab" tab-name="multichoice" tab-count="'+count+'">';
                     innerhtml +=
                         "<h4>" +
                         content[i].title +
@@ -72,10 +73,11 @@
 							'<label>'+ content[i].answers[j].name +'</label>'
                     }
                     innerhtml += '</div>';
+                    count++;
                     break;
                 case 'FormElements':
                     const { List } = content[i];
-                    innerhtml += '<div class="tab">';
+                    innerhtml += '<div class="tab" tab-name="formelements" tab-count="'+count+'">';
                     for( let j = 0; j < List.length ; j++ ) {
                         let required = List[j].required ? 'required' : '';
                         switch( List[j].componentName ) {
@@ -91,6 +93,7 @@
                                 break;
                         }
                     }
+                    count++;
                     innerhtml += '</div>';
                     break;
                 default:
@@ -102,13 +105,14 @@
         for (let i = 0; i < end.length; i++) {
             switch (end[i].componentName) {
                 case "ResultScreen":
-                    innerhtml += '<div class="tab">';
+                    innerhtml += '<div class="tab" tab-name="resultscreen" tab-count="'+count+'">';
                     innerhtml +=
                         '<div class="result-page"><h4>' +
                         end[i].title +
                         "</h4><p>" +
                         end[i].description +
                         "</p></div></div>";
+                        count++;
                     break;
 
                 default:
@@ -124,13 +128,12 @@
                 display: none;
             }
         </style>`;
-        html += `<script>var currentTab = 0; // Current tab is set to be the first tab (0)
+        html += `<script>var currentTab = 0;
+        var totalTab = ${count};
         showTab(currentTab); // Display the current tab
         function showTab(n) {
-          // This function will display the specified tab of the form...
           var x = document.getElementsByClassName("tab");
           x[n].style.display = "block";
-          //... and fix the Previous/Next buttons:
           if (n == 0) {
             document.getElementById("prevBtn").style.display = "none";
             document.getElementById("nextBtn").style.display = "none";
@@ -149,7 +152,6 @@
         }
         
         function nextPrev(n) {
-            console.log('hello world');
           // This function will figure out which tab to display
           var x = document.getElementsByClassName("tab");
           // Exit the function if any field in the current tab is invalid:

@@ -127,4 +127,18 @@ class Wp_Survey_Funnel_Public {
 		wp_localize_script( $this->plugin_name . '-display', 'data', $data );
 		return '<div id="wpsf-survey-frontend" style="width: 100%"></div>';
 	}
+
+	/**
+	 * Ajax when new survey lead is generated in front end
+	 */
+	public function wpsf_new_survey_lead() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+		
+		error_log( print_r( json_decode( $_POST['List'] ), true) );
+	}
 }

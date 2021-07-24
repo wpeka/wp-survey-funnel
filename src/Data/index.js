@@ -72,6 +72,7 @@ export const formElements = [
 		itemType: 'FORMFIELDS_ELEMENTS',
 		required: false,
 		placeholder: '',
+		value: '',
 	},
 	{
 		name: 'Last Name',
@@ -79,6 +80,7 @@ export const formElements = [
 		itemType: 'FORMFIELDS_ELEMENTS',
 		required: false,
 		placeholder: '',
+		value: '',
 	},
 	{
 		name: 'Email',
@@ -86,5 +88,6 @@ export const formElements = [
 		itemType: 'FORMFIELDS_ELEMENTS',
 		required: false,
 		placeholder: '',
+		value: ''
 	},
 ]
