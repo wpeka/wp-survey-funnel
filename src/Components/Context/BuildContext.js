@@ -111,7 +111,6 @@ export class BuildContextProvider extends React.Component {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData(ajaxURL, data)
         .then(data => {
-            console.log(data);
         });
     }
 

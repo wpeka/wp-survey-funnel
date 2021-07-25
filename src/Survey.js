@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import { BuildContext } from "../Context/BuildContext";
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import 'regenerator-runtime/runtime'
+import Frame from 'react-frame-component';
 
 function validateEmail(email) {
 	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	return re.test(String(email).toLowerCase());
 }
 
-const currentlyPreviewing = false;
 const fetchData = async (url, data) => {
     const formData = new FormData();
     Object.keys(data).forEach(key => formData.append(key, data[key]));
@@ -18,16 +19,21 @@ const fetchData = async (url, data) => {
     return response.json();
 }
 
+const currentlyPreviewing = false;
+
 let initialState = [];
 
-export default function DesignPreview() {
-    const { List } = useContext(BuildContext);
+function Survey() {
+    
+    let build = JSON.parse(data.build);
+    const { List } = build;
     const [currentTab, setCurrentTab] = useState(0);
     const [tabCount, setTabCount] = useState(0);
     const [componentList, setComponentList] = useState([]);
 	const [error, setError] = useState([]);
 
     useEffect(() => {
+        console.log('hello world');
         setComponentList([
             ...List.START_ELEMENTS,
             ...List.CONTENT_ELEMENTS,
@@ -43,14 +49,14 @@ export default function DesignPreview() {
             ...List.CONTENT_ELEMENTS,
             ...List.RESULT_ELEMENTS,
         ];
-    }, [List]);
+    }, []);
 
     const changeCurrentTab = function (num) {
 		// check for validations
 		if ( ! checkValidations( num ) ) {
 			return;
 		}
-        if ( ! currentlyPreviewing && currentTab === tabCount - 2 ) {
+        if ( ! currentlyPreviewing && currentTab === tabCount - 2 && num !== -1 ) {
             let newList = {
                 START_ELEMENTS: [],
                 CONTENT_ELEMENTS: [],
@@ -67,14 +73,14 @@ export default function DesignPreview() {
                     newList.RESULT_ELEMENTS.push(componentList[i]);
                 }
             }
-            let data = {
+            let formData = {
                 List: JSON.stringify(newList),
                 time: new Date(),
-                security: document.getElementById('ajaxSecurity').value,
-                post_id: new URLSearchParams(window.location.search).get('post_id'),
+                security: data.ajaxSecurity,
+                post_id: data.post_id,
                 action: 'wpsf_new_survey_lead'
             }
-            fetchData(document.getElementById('ajaxURL').value, data)
+            fetchData(data.ajaxURL, formData)
             .then((data) => {
             });
         }
@@ -332,6 +338,7 @@ export default function DesignPreview() {
     }
 
     return (
+        <Frame width="100%" height="100%">
         <form className="wpsf-survey-form">
             {tabCount === 0 ? (
                 <div className="no-preview-available">
@@ -376,5 +383,8 @@ export default function DesignPreview() {
                 </div>
             )}
         </form>
+        </Frame>
     );
 }
+
+ReactDOM.render(<Survey /> , document.getElementById( 'root' ));
