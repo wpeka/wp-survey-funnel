@@ -10,7 +10,6 @@ export default class PostTitle extends React.Component {
 	};
 
 	componentDidMount() {
-		console.log(this.props);
 		this.setState({
 			title: this.props.currentElement.title,
 		});

@@ -91,3 +91,86 @@ export const formElements = [
 		value: ''
 	},
 ]
+export const designColors = [
+	{
+		name: 'Font Color',
+		itemName: 'fontColor'
+	},
+	{
+		name: 'Background Color',
+		itemName: 'backgroundColor'
+	},
+	{
+		name: 'Button Color',
+		itemName: 'buttonColor'
+	},
+	{
+		name: 'Button Text Color',
+		itemName: 'buttonTextColor'
+	},
+	{
+		name: 'Answers Highlight Box Color',
+		itemName: 'answersHighlightBoxColor'
+	},
+	{
+		name: 'Answer Border Color',
+		itemName: 'answerBorderColor'
+	},
+	{
+		name: 'Background Container Color',
+		itemName: 'backgroundContainerColor'
+	},
+]
+
+export const initColorState = {
+	opacity: 1,
+	
+	backgroundColor: {
+		r: '255',
+		g: '255',
+		b: '255',
+		a: '1'
+	},
+
+	buttonColor: {
+		r: '1',
+		g: '111',
+		b: '222',
+		a: '1'
+	},
+
+	buttonTextColor: {
+		r: '255',
+		g: '255',
+		b: '255',
+		a: '1'
+	},
+
+	answersHighlightBoxColor: {
+		r: '232',
+		g: '238',
+		b: '244',
+		a: '1'
+	},
+
+	answerBorderColor: {
+		r: '180',
+		g: '220',
+		b: '255',
+		a: '1'
+	},
+
+	backgroundContainerColor: {
+		r: '255',
+		g: '255',
+		b: '255',
+		a: '1'
+	},
+
+	fontColor: {
+		r: '0',
+		g: '0',
+		b: '0',
+		a: '1'
+	},
+}
