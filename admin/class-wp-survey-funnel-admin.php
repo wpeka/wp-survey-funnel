@@ -311,8 +311,8 @@ class Wp_Survey_Funnel_Admin {
 			wp_die();
 		}
 
-		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$post_title = isset( $_POST['post_title'] ) ? sanitize_text_field( wp_unslash( $_POST['post_title'] ) ) : '';
+		$post_id       = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$post_title    = isset( $_POST['post_title'] ) ? sanitize_text_field( wp_unslash( $_POST['post_title'] ) ) : '';
 		$defaults      = $this->wpsf_get_default_save_array();
 		$post_meta     = get_post_meta( $post_id, 'wpsf-survey-data', true );
 		$data          = wp_parse_args( (array) $post_meta, $defaults );
@@ -355,7 +355,77 @@ class Wp_Survey_Funnel_Admin {
 		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$post_meta  = get_post_meta( $post_id, 'wpsf-survey-data', true );
 		$post_title = get_the_title( $post_id );
-		$data       = array( 'build' => $post_meta['build'], 'post_title' => $post_title );
+		$data       = array(
+			'build'      => $post_meta['build'],
+			'post_title' => $post_title,
+		);
+		wp_send_json_success( $data );
+		wp_die();
+	}
+
+	/**
+	 * Ajax: Save design data for the post id
+	 */
+	public function wpsf_save_design_data() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		$post_id        = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$defaults       = $this->wpsf_get_default_save_array();
+		$post_meta      = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$data           = wp_parse_args( (array) $post_meta, $defaults );
+		$data['design'] = $_POST['state'];//phpcs:ignore.
+		update_post_meta( $post_id, 'wpsf-survey-data', $data );
+
+		if ( isset( $_FILES['designImage'] ) ) {
+			$image_type = isset( $_FILES['designImage']['type'] ) ? sanitize_text_field( wp_unslash( $_FILES['designImage']['type'] ) ) : '';
+			if ( 'image/jpeg' === $image_type || 'image/jpg' === $image_type || 'image/png' === $image_type ) {
+				require_once ABSPATH . 'wp-admin/includes/file.php';
+				$img           = wp_handle_upload( $_FILES['designImage'], array( 'test_form' => false ) ); // phpcs:ignore input var ok, CSRF ok, sanitization ok.
+				$file_name     = $img['file'];
+				$wp_filetype   = wp_check_filetype( basename( $file_name ), null );
+				$attachment    = array(
+					'post_mime_type' => $wp_filetype['type'],
+					'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $file_name ) ),
+					'post_content'   => '',
+					'post_status'    => 'inherit',
+				);
+				$attachment_id = wp_insert_attachment( $attachment, $file_name );
+				if ( $attachment_id ) {
+					require_once ABSPATH . 'wp-admin/includes/image.php';
+					$attachment_data = wp_generate_attachment_metadata( $attachment_id, $file_name );
+					wp_update_attachment_metadata( $attachment_id, $attachment_data );
+					update_post_meta( $post_id, 'wpsf-survey-design-background', $attachment_id );
+				}
+			}
+		}
+
+		wp_send_json_success();
+		wp_die();
+	}
+
+	/**
+	 * Ajax: get design data.
+	 */
+	public function wpsf_get_design_data() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		$post_id               = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$post_meta             = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$background_image_meta = get_post_meta( $post_id, 'wpsf-survey-design-background', true );
+		$data                  = array(
+			'design'          => $post_meta['design'],
+			'backgroundImage' => wp_get_attachment_url( $background_image_meta ),
+		);
 		wp_send_json_success( $data );
 		wp_die();
 	}

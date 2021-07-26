@@ -1,17 +1,7 @@
 import React from 'react';
 import update from 'immutability-helper';
 import { ItemTypes } from '../../Data';
-
-const fetchData = async (url, data) => {
-    const formData = new FormData();
-    Object.keys(data).forEach(key => formData.append(key, data[key]));
-    // Default options are marked with *
-    const response = await fetch(url, {
-        method: 'POST',
-        body: formData
-    });
-    return response.json();
-}
+import fetchData from '../../HelperComponents/fetchData';
 
 export class BuildContextProvider extends React.Component {
     state = {
@@ -34,10 +24,9 @@ export class BuildContextProvider extends React.Component {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData( ajaxURL, data )
         .then(data => {
-            if ( data.data === '' ) {
+            if ( data.data.build === '' ) {
                 return;
             }
-            console.log(data);
             let build = JSON.parse(data.data.build);
             let title = data.data.post_title;
             this.setState( {

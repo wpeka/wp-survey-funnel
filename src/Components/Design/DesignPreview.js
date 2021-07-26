@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BuildContext } from "../Context/BuildContext";
+import fetchData from "../../HelperComponents/fetchData";
 
 function validateEmail(email) {
 	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -7,16 +8,6 @@ function validateEmail(email) {
 }
 
 const currentlyPreviewing = true;
-const fetchData = async (url, data) => {
-    const formData = new FormData();
-    Object.keys(data).forEach(key => formData.append(key, data[key]));
-    // Default options are marked with *
-    const response = await fetch(url, {
-        method: 'POST',
-        body: formData
-    });
-    return response.json();
-}
 
 let initialState = [];
 
