@@ -6,7 +6,7 @@ function validateEmail(email) {
 	return re.test(String(email).toLowerCase());
 }
 
-const currentlyPreviewing = false;
+const currentlyPreviewing = true;
 const fetchData = async (url, data) => {
     const formData = new FormData();
     Object.keys(data).forEach(key => formData.append(key, data[key]));
@@ -256,7 +256,9 @@ export default function DesignPreview() {
                         <div className="tab" tab-componentname={item.componentName}>
                             <h3 className="surveyTitle">{item.title}</h3>
                             <p className="surveyDescription">{item.description}</p>
-                            <button type="button" className="surveyButton" onClick={() => {}}>
+                            <button type="button" className="surveyButton" onClick={() => {
+                                changeCurrentTab(1);
+                            }}>
                                 {item.button}
                             </button>
                         </div>
@@ -330,7 +332,6 @@ export default function DesignPreview() {
         newList[listidx].value = e.target.value;
         setComponentList(newList);
     }
-
     return (
         <form className="wpsf-survey-form">
             {tabCount === 0 ? (
@@ -355,7 +356,7 @@ export default function DesignPreview() {
 						})}	
 					</div>}
                     <div className="tab-controls">
-						{currentTab !== tabCount - 1 &&
+						{(currentTab !== tabCount - 1 && componentList[currentTab].componentName !== 'CoverPage') &&
 						<button
                             type="button"
                             onClick={() => {
@@ -364,7 +365,7 @@ export default function DesignPreview() {
                         >
                             Next
                         </button>}
-                        {currentTab !== 0 && <button
+                        {(currentTab !== 0 && componentList[currentTab].type !== 'RESULT_ELEMENTS') && <button
                             type="button"
                             onClick={() => {
                                 changeCurrentTab(-1);

@@ -33,7 +33,6 @@ function Survey() {
 	const [error, setError] = useState([]);
 
     useEffect(() => {
-        console.log('hello world');
         setComponentList([
             ...List.START_ELEMENTS,
             ...List.CONTENT_ELEMENTS,
@@ -57,24 +56,9 @@ function Survey() {
 			return;
 		}
         if ( ! currentlyPreviewing && currentTab === tabCount - 2 && num !== -1 ) {
-            let newList = {
-                START_ELEMENTS: [],
-                CONTENT_ELEMENTS: [],
-                RESULT_ELEMENTS: [],
-            };
-            for ( let i = 0; i < componentList.length ; i++ ) {
-                if ( componentList[i].type === 'START_ELEMENTS' ) {
-                    newList.START_ELEMENTS.push(componentList[i]);
-                }
-                else if ( componentList[i].type === 'CONTENT_ELEMENTS' ) {
-                    newList.CONTENT_ELEMENTS.push(componentList[i]);
-                }
-                else if ( componentList[i].type === 'RESULT_ELEMENTS' ) {
-                    newList.RESULT_ELEMENTS.push(componentList[i]);
-                }
-            }
+            
             let formData = {
-                List: JSON.stringify(newList),
+                List: JSON.stringify(componentList),
                 time: new Date(),
                 security: data.ajaxSecurity,
                 post_id: data.post_id,
@@ -82,6 +66,7 @@ function Survey() {
             }
             fetchData(data.ajaxURL, formData)
             .then((data) => {
+                
             });
         }
 		if ( currentTab === tabCount - 1 ) {
@@ -386,5 +371,5 @@ function Survey() {
         </Frame>
     );
 }
-
-ReactDOM.render(<Survey /> , document.getElementById( 'root' ));
+let id = 'wpsf-survey-' + data.time;
+ReactDOM.render(<Survey /> , document.getElementById( id ));

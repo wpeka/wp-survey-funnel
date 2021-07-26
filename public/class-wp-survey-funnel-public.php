@@ -122,16 +122,18 @@ class Wp_Survey_Funnel_Public {
 			return '';
 		}
 		$meta_data = get_post_meta( $atts['id'], 'wpsf-survey-data', true );
+		$time      = time();
 		$data      = array(
 			'build'        => $meta_data['build'],
 			'ajaxURL'      => admin_url( 'admin-ajax.php' ),
 			'ajaxSecurity' => wp_create_nonce( 'wpsf-security' ),
 			'post_id'      => $atts['id'],
+			'time'         => $time,
 		);
 
 		wp_enqueue_script( $this->plugin_name . '-survey' );
 		wp_localize_script( $this->plugin_name . '-survey', 'data', $data );
-		return '<div id="root" style="width: 100%"></div>';
+		return '<div id="wpsf-survey-' . $time . '" style="width: 100%"></div>';
 	}
 
 	/**
