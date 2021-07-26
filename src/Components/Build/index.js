@@ -22,10 +22,19 @@ class ModalContainer extends React.Component {
 
 export default function Build() {
 
-	const { saveData } = useContext(BuildContext);
+	const { saveData, title } = useContext(BuildContext);
+	const { setCurrentElement, setShowModal } = useContext( ModalContext );
+	
+	const changeTitle = () => {
+		setCurrentElement({
+			title: title,
+			componentName: 'postTitle',
+		});
+		setShowModal(true);
+	}
 
 	return (
-		<ModalContextProvider>
+		<>
 		<div className="build-container">
 			<div className="build-eles">
 				<div className="build-text">
@@ -54,6 +63,10 @@ export default function Build() {
 				</div>
 			</div>
 			<div className="build-content">
+				<div>
+					<p>{title}</p>
+					<button type="button" onClick={changeTitle}>edit</button>
+				</div>
 				{dropBoard.map(function( ele, i ) {
 					return <DropBoard ele={ele} key={i}></DropBoard>
 				})}
@@ -61,6 +74,6 @@ export default function Build() {
 			<ModalContainer />
 		</div>
 		<button onClick={saveData}>saveData</button>
-		</ModalContextProvider>
+		</>
 	)
 }

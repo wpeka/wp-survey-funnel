@@ -11,6 +11,7 @@ import { Choices } from "./Elements/ContentElements";
 import { FormElements } from "./Elements/FormElements";
 import { ResultScreen } from "./Elements/ResultScreenElements";
 import { CoverPage } from "./Elements/StartScreenElements";
+import PostTitle from "./Elements/PostTitle";
 
 export default function ModalBox() {
     const { showModal, currentElement } = useContext(ModalContext);
@@ -32,6 +33,8 @@ export default function ModalBox() {
                 return <ResultScreen {...componentProps} />
             case "FormElements":
                 return <FormElements {...componentProps} />
+            case 'postTitle':
+                return <PostTitle {...componentProps} />
             default:
                 return "";
         }

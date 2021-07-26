@@ -185,6 +185,9 @@ class Wp_Survey_Funnel {
 
 		// init functionality - add_shortcode.
 		$this->loader->add_action( 'init', $plugin_public, 'wpsf_public_init' );
+
+		// ajax calls
+		$this->loader->add_action( 'wp_ajax_wpsf_new_survey_lead', $plugin_public, 'wpsf_new_survey_lead' );
 	}
 
 	/**

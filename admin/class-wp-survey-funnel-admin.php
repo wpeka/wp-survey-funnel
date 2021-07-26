@@ -311,14 +311,19 @@ class Wp_Survey_Funnel_Admin {
 			wp_die();
 		}
 
-		$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-
+		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$post_title = isset( $_POST['post_title'] ) ? sanitize_text_field( wp_unslash( $_POST['post_title'] ) ) : '';
 		$defaults      = $this->wpsf_get_default_save_array();
 		$post_meta     = get_post_meta( $post_id, 'wpsf-survey-data', true );
 		$data          = wp_parse_args( (array) $post_meta, $defaults );
 		$data['build'] = $_POST['state'];//phpcs:ignore.
 
 		update_post_meta( $post_id, 'wpsf-survey-data', $data );
+		$post_update = array(
+			'ID'         => $post_id,
+			'post_title' => $post_title,
+		);
+		wp_update_post( $post_update );
 		wp_send_json_success();
 		wp_die();
 	}
@@ -347,9 +352,11 @@ class Wp_Survey_Funnel_Admin {
 			wp_die();
 		}
 
-		$post_id   = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$post_meta = get_post_meta( $post_id, 'wpsf-survey-data', true );
-		wp_send_json_success( $post_meta['build'] );
+		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$post_meta  = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$post_title = get_the_title( $post_id );
+		$data       = array( 'build' => $post_meta['build'], 'post_title' => $post_title );
+		wp_send_json_success( $data );
 		wp_die();
 	}
 }

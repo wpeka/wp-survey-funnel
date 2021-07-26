@@ -85,8 +85,8 @@ class Wp_Survey_Funnel_Public {
 		);
 
 		wp_register_script(
-			$this->plugin_name . '-display',
-			plugin_dir_url( __FILE__ ) . 'js/wp-survey-funnel-display.js',
+			$this->plugin_name . '-survey',
+			WP_SURVEY_FUNNEL_PLUGIN_URL . 'dist/survey.bundle.js',
 			array(),
 			time(),
 			false
@@ -121,10 +121,32 @@ class Wp_Survey_Funnel_Public {
 		if ( intval( $atts['id'] ) === 0 ) {
 			return '';
 		}
+		$meta_data = get_post_meta( $atts['id'], 'wpsf-survey-data', true );
+		$time      = time();
+		$data      = array(
+			'build'        => $meta_data['build'],
+			'ajaxURL'      => admin_url( 'admin-ajax.php' ),
+			'ajaxSecurity' => wp_create_nonce( 'wpsf-security' ),
+			'post_id'      => $atts['id'],
+			'time'         => $time,
+		);
 
-		$data = get_post_meta( $atts['id'], 'wpsf-survey-data', true );
-		wp_enqueue_script( $this->plugin_name . '-display' );
-		wp_localize_script( $this->plugin_name . '-display', 'data', $data );
-		return '<div id="wpsf-survey-frontend" style="width: 100%"></div>';
+		wp_enqueue_script( $this->plugin_name . '-survey' );
+		wp_localize_script( $this->plugin_name . '-survey', 'data', $data );
+		return '<div id="wpsf-survey-' . $time . '" style="width: 100%"></div>';
+	}
+
+	/**
+	 * Ajax when new survey lead is generated in front end
+	 */
+	public function wpsf_new_survey_lead() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		error_log( print_r( $_POST, true ) );
 	}
 }
