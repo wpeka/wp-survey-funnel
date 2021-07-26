@@ -10,6 +10,10 @@ export default function DesignSettings() {
 		designCon.handleColorChange(itemName, color);
 	}
 
+	const handleRangeChange = (e) => {
+		designCon.handleRangeChange(e.target.value);
+	}
+
 	return (
 		<div>
 			<div className="color-pickers">
@@ -20,6 +24,13 @@ export default function DesignSettings() {
 						<PopoverPicker color={designCon[item.itemName]} onChange={(color) => {handleChange(color, item.itemName)}} />
 					</div>
 				})}
+			</div>
+			<div className="file-picker">
+				<h3>image</h3>
+				<input type="file" name="file" onChange={designCon.changeHandler} />
+			</div>
+			<div className="opacity-picker">
+				<input type="range" value={designCon.opacity} min='0' max='1' step="0.10" onChange={handleRangeChange} />
 			</div>
 		</div>
 	)
