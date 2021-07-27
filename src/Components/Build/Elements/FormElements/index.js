@@ -14,6 +14,7 @@ export const FormElements = React.memo(
             title: "",
             description: "",
             currentFormElement: null,
+            buttonLabel: '',
             List: [],
         };
 
@@ -55,6 +56,7 @@ export const FormElements = React.memo(
                 let state = {
                     title: currentElement.title,
                     description: currentElement.description,
+                    buttonLabel: currentElement.buttonLabel,
                     List: currentElement.List,
                 };
                 this.setState(state);
@@ -244,6 +246,17 @@ export const FormElements = React.memo(
                                             );
                                         }, this)}
 
+                                        <div className="modalComponentButtonLabel">
+                                            <label>Button label</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Set Button Label"
+                                                name="buttonLabel"
+                                                value={this.state.buttonLabel}
+                                                onChange={this.handleChange}
+                                            />
+                                        </div>
+
                                         <button onClick={this.props.saveToList}>
                                             save
                                         </button>
@@ -300,6 +313,7 @@ export const FormElements = React.memo(
                                                 i
                                             );
                                         }, this)}
+                                        <button type="button">{this.state.buttonLabel}</button>
                                     </div>
                                 </Tabs>
                             </div>
