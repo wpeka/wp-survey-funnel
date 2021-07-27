@@ -79,6 +79,8 @@ export const FormElements = React.memo(
                 case "FirstName":
                 case "LastName":
                 case "Email":
+                case "ShortTextAnswer":
+                case "LongTextAnswer":
                     return (
                         <div>
                             <label>Label Name</label>
@@ -134,10 +136,22 @@ export const FormElements = React.memo(
                 case "FirstName":
                 case "LastName":
                 case "Email":
+                case "ShortTextAnswer":
                     return (
                         <div key={ele.id}>
                             <label>{List[index].name}</label>
                             <input
+                                type="text"
+                                name="name"
+                                placeholder={List[index].placeholder}
+                            />
+                        </div>
+                    );
+                case "LongTextAnswer":
+                    return (
+                        <div key={ele.id}>
+                            <label>{List[index].name}</label>
+                            <textarea
                                 type="text"
                                 name="name"
                                 placeholder={List[index].placeholder}

@@ -90,6 +90,22 @@ export const formElements = [
 		placeholder: '',
 		value: ''
 	},
+	{
+		name: 'Short Text Answer',
+		componentName: 'ShortTextAnswer',
+		itemType: 'FORMFIELDS_ELEMENTS',
+		required: false,
+		placeholder: '',
+		value: ''
+	},
+	{
+		name: 'Long Text Answer',
+		componentName: 'LongTextAnswer',
+		itemType: 'FORMFIELDS_ELEMENTS',
+		required: false,
+		placeholder: '',
+		value: ''
+	},
 ]
 export const designColors = [
 	{
