@@ -1,17 +1,7 @@
 import React from 'react';
 import update from 'immutability-helper';
 import { ItemTypes } from '../../Data';
-
-const fetchData = async (url, data) => {
-    const formData = new FormData();
-    Object.keys(data).forEach(key => formData.append(key, data[key]));
-    // Default options are marked with *
-    const response = await fetch(url, {
-        method: 'POST',
-        body: formData
-    });
-    return response.json();
-}
+import fetchData from '../../HelperComponents/fetchData';
 
 export class BuildContextProvider extends React.Component {
     state = {
@@ -20,6 +10,7 @@ export class BuildContextProvider extends React.Component {
 			[ItemTypes.CONTENT_ELEMENTS]: [],
             [ItemTypes.RESULT_ELEMENTS]: [],
 		},
+        title: ''
     };
 
     componentDidMount() {
@@ -33,11 +24,15 @@ export class BuildContextProvider extends React.Component {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData( ajaxURL, data )
         .then(data => {
-            if ( data.data === '' ) {
+            if ( data.data.build === '' ) {
                 return;
             }
-            let state = JSON.parse(data.data);
-            this.setState( state );
+            let build = JSON.parse(data.data.build);
+            let title = data.data.post_title;
+            this.setState( {
+                ...build,
+               title
+            } );
         })
     }
 
@@ -106,19 +101,25 @@ export class BuildContextProvider extends React.Component {
             state: JSON.stringify( { ...this.state } ),
             security: ajaxSecurity,
             action: 'wpsf_save_build_data',
-            post_id
+            post_id,
+            post_title: this.state.title
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData(ajaxURL, data)
         .then(data => {
-            console.log(data);
+        });
+    }
+
+    handleChangeTitle = ( title ) => {
+        this.setState({
+            title
         });
     }
 
     render() {
         return (
             <BuildContext.Provider
-                value={{ ...this.state, addToList: this.addToList, getCount: this.getCount, editList: this.editList, deleteItemInList: this.deleteItemInList, moveCard: this.moveCard, generateId: this.generateId, saveData: this.saveData }}
+                value={{ ...this.state, addToList: this.addToList, getCount: this.getCount, editList: this.editList, deleteItemInList: this.deleteItemInList, moveCard: this.moveCard, generateId: this.generateId, saveData: this.saveData, handleChangeTitle: this.handleChangeTitle }}
             >
                 {this.props.children}
                 

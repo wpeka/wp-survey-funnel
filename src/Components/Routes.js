@@ -1,7 +1,10 @@
 import React, { Suspense, lazy } from "react";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BuildContextProvider } from "./Context/BuildContext";
+import { DesignContextProvider } from "./Context/DesignContext";
+import { ModalContextProvider } from "./Context/ModalContext";
 const Build = lazy(() => import("./Build"));
+const Design = lazy(() => import("./Design"));
 
 export default function Routes() {
     return (
@@ -26,13 +29,16 @@ export default function Routes() {
                 </ul>
             </div>
             <BuildContextProvider>
+                <DesignContextProvider>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
                         <Route path="/build">
+                            <ModalContextProvider>
                             <Build></Build>
+                            </ModalContextProvider>
                         </Route>
                         <Route path="/design">
-                            <div className="design">design</div>
+                            <Design></Design>
                         </Route>
                         <Route path="/configure">
                             <div className="configure">configure</div>
@@ -45,6 +51,7 @@ export default function Routes() {
                         </Route>
                     </Switch>
                 </Suspense>
+                </DesignContextProvider>
             </BuildContextProvider>
         </Router>
     );

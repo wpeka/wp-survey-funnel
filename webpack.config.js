@@ -3,10 +3,14 @@ const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
+    entry: {
+        index: './src/index.js',
+        survey: './src/Survey.js',
+    },
     // Where files should be sent once they are bundled
     output: {
         path: path.join(__dirname, "/dist"),
-        filename: "index.bundle.js",
+        filename: "[name].bundle.js",
     },
     // Rules of how webpack will take our files, complie & bundle them for the browser
     module: {

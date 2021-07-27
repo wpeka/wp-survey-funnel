@@ -5,7 +5,8 @@ export const Choices = React.memo(
         state = {
             title: "",
             description: "",
-            answers: [{ name: "" }],
+            answers: [{ name: "", checked: false }],
+            value: '',
         };
 
         componentDidMount() {
@@ -23,7 +24,7 @@ export const Choices = React.memo(
 
         handleAddAnswer = () => {
             this.setState({
-                answers: this.state.answers.concat([{ name: "" }]),
+                answers: this.state.answers.concat([{ name: "", checked: false }]),
             });
         };
 
