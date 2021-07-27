@@ -99,6 +99,8 @@ export default function DesignPreview() {
 					switch( item.componentName ) {
 						case 'FirstName':
 						case 'LastName':
+                        case 'ShortTextAnswer':
+                        case 'LongTextAnswer':
 							if( item.required ) {
                                 // do validation.
                                 if ( item.value === '' ) {
@@ -282,6 +284,7 @@ export default function DesignPreview() {
                                 switch( ele.componentName ) {
                                     case 'FirstName':
                                     case 'LastName':
+                                    case 'ShortTextAnswer':
                                         return <div key={ele.id + '_' + i + 'key'}>
                                             <label>{ele.name}</label>
                                             <input type="text" id={ele.id + '_' + i} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx} />
@@ -290,6 +293,11 @@ export default function DesignPreview() {
                                         return <div key={ele.id + '_' + i + 'key'}>
                                             <label>{ele.name}</label>
                                             <input type="email" id={ele.id + '_' + i} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}/>
+                                        </div>
+                                    case 'LongTextAnswer':
+                                        return <div key={ele.id + '_' + i + 'key'}>
+                                            <label>{ele.name}</label>
+                                            <textarea id={ele.id + '_' + i} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}></textarea>
                                         </div>
                                 }
                             })}
