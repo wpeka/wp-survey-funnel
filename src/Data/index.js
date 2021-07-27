@@ -140,6 +140,9 @@ export const designColors = [
 
 export const initColorState = {
 	opacity: 1,
+
+	fontFamily: null,
+	fontFamilyValue: '',
 	
 	backgroundColor: {
 		r: '255',
@@ -190,3 +193,18 @@ export const initColorState = {
 		a: '1'
 	},
 }
+
+export const fontFamily = [
+	{
+		name: 'Browser Default',
+		value: 'default',
+	},
+	{
+		name: 'Droid Sans',
+		value: 'Droid+Sans',
+	},
+	{
+		name: 'Open Sans',
+		value: 'Open+Sans',
+	}
+]
