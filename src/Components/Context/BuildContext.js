@@ -24,15 +24,21 @@ export class BuildContextProvider extends React.Component {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData( ajaxURL, data )
         .then(data => {
-            if ( data.data.build === '' ) {
-                return;
+            console.log(data);
+            if ( data.data.build !== '' ) {
+                let build = JSON.parse(data.data.build);
+                let title = data.data.post_title;
+                this.setState( {
+                    ...build,
+                   title
+                } );
             }
-            let build = JSON.parse(data.data.build);
-            let title = data.data.post_title;
-            this.setState( {
-                ...build,
-               title
-            } );
+            else {
+                let title = data.data.post_title;
+                this.setState( {
+                   title
+                } );
+            }
         })
     }
 

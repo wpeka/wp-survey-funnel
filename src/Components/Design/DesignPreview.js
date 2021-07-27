@@ -1,10 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BuildContext } from "../Context/BuildContext";
 import fetchData from "../../HelperComponents/fetchData";
+import { DesignContext } from "../Context/DesignContext";
 
 function validateEmail(email) {
 	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	return re.test(String(email).toLowerCase());
+}
+
+function convertToRgbaCSS( color ) {
+    let colorString = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
+    return colorString;
 }
 
 const currentlyPreviewing = true;
@@ -13,6 +19,7 @@ let initialState = [];
 
 export default function DesignPreview() {
     const { List } = useContext(BuildContext);
+    const designCon = useContext(DesignContext);
     const [currentTab, setCurrentTab] = useState(0);
     const [tabCount, setTabCount] = useState(0);
     const [componentList, setComponentList] = useState([]);
@@ -171,7 +178,7 @@ export default function DesignPreview() {
                             <div className="radio-group">
                                 {item.answers.map(function (ele, i) {
                                     return (
-                                        <div key={item.id + "_radio" + "_" + i}>
+                                        <div key={item.id + "_radio" + "_" + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}>
                                             <input
                                                 type="radio"
                                                 name={item.id + "_radio"}
@@ -214,7 +221,7 @@ export default function DesignPreview() {
                             <div className="checkbox-group">
                                 {item.answers.map(function (ele, i) {
                                     return (
-                                        <div key={item.id + "_checkbox" + "_" + i}>
+                                        <div key={item.id + "_checkbox" + "_" + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}>
                                             <input
                                                 type="checkbox"
                                                 name={item.id + "_checkbox"}
@@ -249,7 +256,7 @@ export default function DesignPreview() {
                         <div className="tab" tab-componentname={item.componentName}>
                             <h3 className="surveyTitle">{item.title}</h3>
                             <p className="surveyDescription">{item.description}</p>
-                            <button type="button" className="surveyButton" onClick={() => {
+                            <button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
                                 changeCurrentTab(1);
                             }}>
                                 {item.button}
@@ -287,20 +294,21 @@ export default function DesignPreview() {
                                     case 'ShortTextAnswer':
                                         return <div key={ele.id + '_' + i + 'key'}>
                                             <label>{ele.name}</label>
-                                            <input type="text" id={ele.id + '_' + i} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx} />
+                                            <input type="text" id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx} />
                                         </div>
                                     case 'Email':
                                         return <div key={ele.id + '_' + i + 'key'}>
                                             <label>{ele.name}</label>
-                                            <input type="email" id={ele.id + '_' + i} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}/>
+                                            <input type="email" id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}/>
                                         </div>
                                     case 'LongTextAnswer':
                                         return <div key={ele.id + '_' + i + 'key'}>
                                             <label>{ele.name}</label>
-                                            <textarea id={ele.id + '_' + i} required={ele.required} placeholder={ele.placeholder} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}></textarea>
+                                            <textarea id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} required={ele.required} placeholder={ele.placeholder} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}></textarea>
                                         </div>
                                 }
                             })}
+                            <button type="button" onClick={() => {changeCurrentTab(1)}}>{item.buttonLabel}</button>
                         </div>
                     </div>
                 )
@@ -331,8 +339,28 @@ export default function DesignPreview() {
         newList[listidx].value = e.target.value;
         setComponentList(newList);
     }
+
+    let backgroundStyle = {
+        padding: `20px`,
+    }
+
+    if (designCon.selectedImageUrl !== null) {
+        backgroundStyle.background = `linear-gradient(rgba(255,255,255,${designCon.opacity}), rgba(255,255,255,${designCon.opacity})), url('${designCon.selectedImageUrl}')`;
+    } else {
+        backgroundStyle.background = convertToRgbaCSS(designCon.backgroundColor);
+    }
+
+    const checkButtonDisability = ( buttonType ) => {
+        switch( buttonType ) {
+            case 'Previous':
+                return false;
+
+            case 'Next':
+                return componentList[currentTab].componentName === 'FormElements';
+        }
+    }
     return (
-        <form className="wpsf-survey-form">
+        <div className="wpsf-survey-form" style={{fontFamily: designCon.fontFamily}}>
             {tabCount === 0 ? (
                 <div className="no-preview-available">
                     {currentlyPreviewing
@@ -340,8 +368,8 @@ export default function DesignPreview() {
                         : "No Questions were added in this survey"}
                 </div>
             ) : (
-                <div className="preview">
-                    <div className="tab-list">
+                <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), ...backgroundStyle }}>
+                    <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
                         {componentList.map(function (item, i) {
                             if (currentTab === i) {
                                 return renderContentElements(item, "block", i);
@@ -361,6 +389,7 @@ export default function DesignPreview() {
                             onClick={() => {
                                 changeCurrentTab(1);
                             }}
+                            disabled={checkButtonDisability('Next')}
                         >
                             Next
                         </button>}
@@ -369,12 +398,13 @@ export default function DesignPreview() {
                             onClick={() => {
                                 changeCurrentTab(-1);
                             }}
+                            disabled={checkButtonDisability('Previous')}
                         >
                             {currentTab === tabCount - 1 ? 'Enter New Submission?' : 'Previous'}
                         </button>}
                     </div>
                 </div>
             )}
-        </form>
+        </div>
     );
 }

@@ -125,15 +125,38 @@ class Wp_Survey_Funnel_Public {
 		$time      = time();
 		$data      = array(
 			'build'        => $meta_data['build'],
+			'design'       => $meta_data['design'],
 			'ajaxURL'      => admin_url( 'admin-ajax.php' ),
 			'ajaxSecurity' => wp_create_nonce( 'wpsf-security' ),
 			'post_id'      => $atts['id'],
 			'time'         => $time,
 		);
 
+		$design_image_id = get_post_meta( $atts['id'], 'wpsf-survey-design-background', true );
+		if ( $design_image_id ) {
+			$data['designImageUrl'] = wp_get_attachment_url( $design_image_id );
+		} else {
+			$data['designImageUrl'] = null;
+		}
+
 		wp_enqueue_script( $this->plugin_name . '-survey' );
 		wp_localize_script( $this->plugin_name . '-survey', 'data', $data );
 		return '<div id="wpsf-survey-' . $time . '" style="width: 100%"></div>';
+	}
+
+	/**
+	 * Get default json settings.
+	 *
+	 * @param string $type settings type.
+	 */
+	public function wpsf_get_default_json_settings( $type ) {
+		switch ( $type ) {
+			case 'design':
+				return '';
+
+			default:
+				return '';
+		}
 	}
 
 	/**
@@ -149,4 +172,5 @@ class Wp_Survey_Funnel_Public {
 
 		error_log( print_r( $_POST, true ) );
 	}
+
 }
