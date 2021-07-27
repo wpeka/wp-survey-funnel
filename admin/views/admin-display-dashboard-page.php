@@ -22,7 +22,17 @@ $url_to_redirect = Wp_Survey_Funnel_Admin::wpsf_get_setup_page_url();
 				<div class="select-content-type">
 					<div class="wpsf-modal-content-card">
 						<div class="card-image">
-
+						<div class="wpsf-content-type-radios">
+							<input id="wpsf-basic-radio" type="radio" name="content-type" value="basic" checked>
+							<label for="wpsf-basic-radio">
+								<span>
+									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
+								</span>
+							</label>
+						</div>
+						<div class="wpsf-content-type-icon" >
+							<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/basic-survey.png' ); ?>">
+						</div>
 						</div>
 						<div class="card-title">
 							Basic Survey
@@ -31,35 +41,53 @@ $url_to_redirect = Wp_Survey_Funnel_Admin::wpsf_get_setup_page_url();
 							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
 						</div>
 					</div>
-					<div class="wpsf-modal-content-card">
+					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
 						<div class="card-image">
-							
+						<div class="wpsf-content-type-radios">
+    						<input <?php echo $disabled; //phpcs:ignore ?> id="wpsf-outcome-radio" type="radio" name="content-type" value="outcome">
+							<label for="wpsf-outcome-radio">
+								<span>
+									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
+								</span>
+							</label>
+						</div>
+						<div class="wpsf-content-type-icon" >
+							<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/outcome-logic.png' ); ?>">
+						</div>
 						</div>
 						<div class="card-title">
-							Basic Survey
+							Outcome Logic
 						</div>
 						<div class="card-text">
 							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
 						</div>
 					</div>
-					<div class="wpsf-modal-content-card">
+					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
 						<div class="card-image">
+						<div class="wpsf-content-type-radios">
+    						<input <?php echo $disabled; //phpcs:ignore ?> id="wpsf-scoring-radio" type="radio" name="content-type" value="scoring">
+							<label for="wpsf-scoring-radio">
+								<span>
+									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
+								</span>
+							</label>
+						</div>
+						<div class="wpsf-content-type-icon" >
+							<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/scoring-logic.png' ); ?>">
+						</div>
 						</div>
 						<div class="card-title">
-							Basic Survey
+							Scoring Logic
 						</div>
 						<div class="card-text">
 							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
 						</div>
 					</div>
-					<input type="radio" name="content-type" value="basic">
-					<input type="radio" name="content-type" value="outcome">
-					<input type="radio" name="content-type" value="scoring">
 				</div>
 				<div class="set-content-name">
 					<span class="content-info-title">Select Content name</span>
 					<input type="text" id="content-title" placeholder="Enter Title">
-					<button type="submit" id="wpsf-modal-submit">submit</button>
+					<button type="submit" id="wpsf-modal-submit">Continue</button>
 				</div>
 			</div>
 		</div>
@@ -77,11 +105,12 @@ $url_to_redirect = Wp_Survey_Funnel_Admin::wpsf_get_setup_page_url();
 				</div>
 				<div class="wpsf-right --wpsf-flex">
 					<div class="wpsf-search">
-						<input type="text" data-search placeholder="<?php esc_html_e( 'Search By Content Name', 'wp-survey-funnel' ); ?>">
+						<input class="wpsf-dashboard-search" type="text" data-search placeholder="<?php esc_html_e( 'Search By Content Name', 'wp-survey-funnel' ); ?>">
 					</div>
 					<div class="wpsf-filter">
 						<label for="wpsf-filter"><?php esc_html_e( 'Filter By:' ); ?></label>
 						<select <?php echo $disabled; //phpcs:ignore ?> id="wpsf-filter">
+
 							<option value="all-types"><?php esc_html_e( 'All Types' ); ?></option>
 							<option value="all-types"><?php esc_html_e( 'Scoring Logic' ); ?></option>
 							<option value="all-types"><?php esc_html_e( 'Outcome Logic' ); ?></option>
@@ -89,7 +118,6 @@ $url_to_redirect = Wp_Survey_Funnel_Admin::wpsf_get_setup_page_url();
 					</div>
 				</div>
 			</div>
-
 			<div class="wpsf-card-container">
 				<div class="wpsf-content" style="cursor: pointer;">
 					<div class="wpsf-create-content">
