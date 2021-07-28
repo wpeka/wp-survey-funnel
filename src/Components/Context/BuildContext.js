@@ -24,7 +24,6 @@ export class BuildContextProvider extends React.Component {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData( ajaxURL, data )
         .then(data => {
-            console.log(data);
             if ( data.data.build !== '' ) {
                 let build = JSON.parse(data.data.build);
                 let title = data.data.post_title;

@@ -58,6 +58,14 @@ function Survey() {
         ];
     }, []);
 
+    const addFontFamilyLink = () => {
+		if ( designCon.fontFamilyValue === '' ) {
+			return '';
+		}
+        let href = 'https://fonts.googleapis.com/css2?family=' + designCon.fontFamilyValue;
+        return <link href={href} rel="stylesheet"></link>
+	};
+
     const changeCurrentTab = function (num) {
 		// check for validations
 		if ( ! checkValidations( num ) ) {
@@ -362,6 +370,7 @@ function Survey() {
     }
     return (
         <Frame>
+            {addFontFamilyLink()}
         <div className="wpsf-survey-form" style={{fontFamily: designCon.fontFamily}}>
             {tabCount === 0 ? (
                 <div className="no-preview-available">

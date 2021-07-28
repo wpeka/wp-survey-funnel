@@ -157,12 +157,39 @@ module.exports = function (grunt) {
 				}
 			},
 
+			
+
 			shell: {
-				build: [ 'npm run build' ].join( ' && ' )
+
+				build: [ 'grunt updatefonts', 'npm run build' ].join( ' && ' )
 			},
 		}
 	);
 
+	grunt.registerTask('google-fonts', function () {
+		var done = this.async();
+		var request = require('request');
+		var fs = require('fs');
+		request('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDu1nDK2o4FpxhrIlNXyPNckVW5YP9HRu8&sort=popularity', function (error, response, body) {
+			if (response && response.statusCode == 200) {
+				var fonts = JSON.parse(body).items.map(function (font) {
+					return {
+						name: font.family,
+						value: font.family.replace(/ /g, '+')
+					};
+				});
+				
+				fs.writeFile('./src/Data/google-fonts.json', JSON.stringify(fonts, undefined, 4), function (err) {
+					if (! err ) {
+						console.log("Google Fonts Updated!");
+					}
+				});
+			}
+		});
+	});
+
+	// Default task(s).
+	grunt.registerTask( 'updatefonts', [ 'google-fonts' ] );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
