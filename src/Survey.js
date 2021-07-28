@@ -420,5 +420,6 @@ function Survey() {
         </Frame>
     );
 }
+
 let id = 'wpsf-survey-' + data.time;
 ReactDOM.render(<Survey /> , document.getElementById( id ));

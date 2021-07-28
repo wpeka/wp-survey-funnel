@@ -12,9 +12,11 @@ import { FormElements } from "./Elements/FormElements";
 import { ResultScreen } from "./Elements/ResultScreenElements";
 import { CoverPage } from "./Elements/StartScreenElements";
 import PostTitle from "./Elements/PostTitle";
+import { DesignContext } from "../Context/DesignContext";
 
 export default function ModalBox() {
     const { showModal, currentElement } = useContext(ModalContext);
+    const designCon = useContext( DesignContext );
     const childRef = React.createRef();
 
     const getComponentRender = function () {
@@ -22,6 +24,7 @@ export default function ModalBox() {
             currentElement,
             ref: childRef,
             saveToList,
+            designCon
         }
         switch (currentElement.componentName) {
             case "CoverPage":
