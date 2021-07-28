@@ -400,7 +400,11 @@ class Wp_Survey_Funnel_Admin {
 					$attachment_data = wp_generate_attachment_metadata( $attachment_id, $file_name );
 					wp_update_attachment_metadata( $attachment_id, $attachment_data );
 					update_post_meta( $post_id, 'wpsf-survey-design-background', $attachment_id );
+				} else {
+					update_post_meta( $post_id, 'wpsf-survey-design-background', false );
 				}
+			} else {
+				update_post_meta( $post_id, 'wpsf-survey-design-background', false );
 			}
 		}
 

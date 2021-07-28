@@ -140,6 +140,9 @@ export const designColors = [
 
 export const initColorState = {
 	opacity: 1,
+
+	fontFamily: null,
+	fontFamilyValue: '',
 	
 	backgroundColor: {
 		r: '255',
