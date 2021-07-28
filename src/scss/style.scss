@@ -26,17 +26,6 @@ body {
     border-width: 1px 1px 0 1px;
 }
 
-.build-elements_box {
-    border: 1px dashed gray;
-    background-color: white;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    cursor: move;
-    float: left;
-    width: 100%;
-    text-align: center;
-}
-
 .design-container {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
