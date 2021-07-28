@@ -1,7 +1,10 @@
 import React, { createElement, Fragment } from "react";
+import { convertToRgbaCSS } from "../../../HelperComponents/HelperFunctions";
+import ModalContentRight from '../../../HelperComponents/ModalContentRight';
 
 export const CoverPage = React.memo(
     class extends React.Component {
+        
         state = {
             button: "",
             title: "",
@@ -27,6 +30,7 @@ export const CoverPage = React.memo(
         }
 
         render() {
+            const { designCon } = this.props;
             return (
                 <>
                     <div className="modalOverlay">
@@ -64,10 +68,11 @@ export const CoverPage = React.memo(
                                 <button onClick={this.props.saveToList}>save</button>
                             </div>
                             <div className="modalContent-right">
-                            
-                                <h3>{this.state.title}</h3>
-                                <p>{this.state.description}</p>
-                                <button>{this.state.button}</button>
+                                <ModalContentRight designCon={designCon}>
+                                    <h3>{this.state.title}</h3>
+                                    <p>{this.state.description}</p>
+                                    <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}}>{this.state.button}</button>
+                                </ModalContentRight>
                             </div>
                         </div>
                     </div>

@@ -283,7 +283,7 @@ class Wp_Survey_Funnel_Admin {
 				<title>WP Survey Funnel</title>
 			</head>
 			<body class="wpsf-body">
-				<div id="root"></div>
+				<div id="root" class="wpsf-root"></div>
 				<input type="hidden" id="ajaxURL" value="<?php echo admin_url( 'admin-ajax.php' );//phpcs:ignore ?>">
 				<input type="hidden" id="ajaxSecurity" value="<?php echo wp_create_nonce('wpsf-security');//phpcs:ignore ?>">
 				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
@@ -400,7 +400,11 @@ class Wp_Survey_Funnel_Admin {
 					$attachment_data = wp_generate_attachment_metadata( $attachment_id, $file_name );
 					wp_update_attachment_metadata( $attachment_id, $attachment_data );
 					update_post_meta( $post_id, 'wpsf-survey-design-background', $attachment_id );
+				} else {
+					update_post_meta( $post_id, 'wpsf-survey-design-background', false );
 				}
+			} else {
+				update_post_meta( $post_id, 'wpsf-survey-design-background', false );
 			}
 		}
 

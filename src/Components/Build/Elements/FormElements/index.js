@@ -4,6 +4,8 @@ import Tabs from "../../../../HelperComponents/Tabs";
 import BuildFormElement from "./BuildFormElement";
 import DropFormBoard from "./DropFormBoard";
 import update from "immutability-helper";
+import ModalContentRight from "../../../../HelperComponents/ModalContentRight";
+import { convertToRgbaCSS } from "../../../../HelperComponents/HelperFunctions";
 
 export const FormElements = React.memo(
     class extends React.Component {
@@ -14,6 +16,7 @@ export const FormElements = React.memo(
             title: "",
             description: "",
             currentFormElement: null,
+            buttonLabel: '',
             List: [],
         };
 
@@ -25,7 +28,7 @@ export const FormElements = React.memo(
 
         setCurrentFormElement = (element) => {
             document
-                .querySelectorAll(".build-container .tab-list-item")[1]
+                .querySelectorAll(".wpsf-build-container .tab-list-item")[1]
                 .click();
             this.setState({
                 currentFormElement: element,
@@ -55,6 +58,7 @@ export const FormElements = React.memo(
                 let state = {
                     title: currentElement.title,
                     description: currentElement.description,
+                    buttonLabel: currentElement.buttonLabel,
                     List: currentElement.List,
                 };
                 this.setState(state);
@@ -79,6 +83,8 @@ export const FormElements = React.memo(
                 case "FirstName":
                 case "LastName":
                 case "Email":
+                case "ShortTextAnswer":
+                case "LongTextAnswer":
                     return (
                         <div>
                             <label>Label Name</label>
@@ -130,10 +136,12 @@ export const FormElements = React.memo(
 
         getCurrentFormElementRightRender = (ele, index) => {
             const { List } = this.state;
+            const { designCon } = this.props;
             switch (ele.componentName) {
                 case "FirstName":
                 case "LastName":
                 case "Email":
+                case "ShortTextAnswer":
                     return (
                         <div key={ele.id}>
                             <label>{List[index].name}</label>
@@ -141,6 +149,19 @@ export const FormElements = React.memo(
                                 type="text"
                                 name="name"
                                 placeholder={List[index].placeholder}
+                                style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}
+                            />
+                        </div>
+                    );
+                case "LongTextAnswer":
+                    return (
+                        <div key={ele.id}>
+                            <label>{List[index].name}</label>
+                            <textarea
+                                type="text"
+                                name="name"
+                                placeholder={List[index].placeholder}
+                                style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}
                             />
                         </div>
                     );
@@ -188,6 +209,7 @@ export const FormElements = React.memo(
         };
 
         render() {
+            const { designCon } = this.props;
             return (
                 <>
                     <div className="modalOverlay">
@@ -230,6 +252,17 @@ export const FormElements = React.memo(
                                             );
                                         }, this)}
 
+                                        <div className="modalComponentButtonLabel">
+                                            <label>Button label</label>
+                                            <input
+                                                type="text"
+                                                placeholder="Set Button Label"
+                                                name="buttonLabel"
+                                                value={this.state.buttonLabel}
+                                                onChange={this.handleChange}
+                                            />
+                                        </div>
+
                                         <button onClick={this.props.saveToList}>
                                             save
                                         </button>
@@ -243,7 +276,7 @@ export const FormElements = React.memo(
                                                     null
                                                 );
                                                 document
-                                                .querySelector(".build-container .tab-list-item")
+                                                .querySelector(".wpsf-build-container .tab-list-item")
                                                 .click();
                                             }}
                                         >
@@ -256,7 +289,6 @@ export const FormElements = React.memo(
                                 <Tabs>
                                     <div
                                         label="Form Elements"
-                                        className="form-elements"
                                     >
                                         {formElementsDropBoard.map(function (
                                             ele,
@@ -277,15 +309,18 @@ export const FormElements = React.memo(
                                         },
                                         this)}
                                     </div>
-                                    <div label="Preview" className="preview">
-                                        <h3>{this.state.title}</h3>
-                                        <p>{this.state.description}</p>
-                                        {this.state.List.map(function (ele, i) {
-                                            return this.getCurrentFormElementRightRender(
-                                                ele,
-                                                i
-                                            );
-                                        }, this)}
+                                    <div label="Preview">
+                                        <ModalContentRight designCon={designCon}>
+                                            <h3>{this.state.title}</h3>
+                                            <p>{this.state.description}</p>
+                                            {this.state.List.map(function (ele, i) {
+                                                return this.getCurrentFormElementRightRender(
+                                                    ele,
+                                                    i
+                                                );
+                                            }, this)}
+                                            <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}} type="button">{this.state.buttonLabel}</button>
+                                        </ModalContentRight>
                                     </div>
                                 </Tabs>
                             </div>

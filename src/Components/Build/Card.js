@@ -79,10 +79,14 @@ export default function (props) {
     
     return (
         <div ref={ref} className="cardBox" style={style}>
-            <div>{item.title}</div>
+            <div className="wpsf-cardbox-title" >
+                <img src={require(`./BuildImages/${item.componentName}.png`)}></img>
+                <h3>{item.title}</h3>
+            </div>
+
             <div className="card-flex">
-                <button onClick={editCard}>edit</button>
-                <button onClick={deleteCard}>delete</button>
+                <button className="wpsf-cardBox-btn" onClick={editCard}><img src={require('./BuildImages/pencil.png')}></img></button>
+                <button className="wpsf-cardBox-btn" onClick={deleteCard}><img src={require('./BuildImages/delete-icon.jpg')}></img></button>
             </div>
         </div>
     );

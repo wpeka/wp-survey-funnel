@@ -8,6 +8,14 @@ export function DesignContextProvider(props) {
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [selectedImageUrl, setSelectedImageUrl] = useState(null);
 
+	const setSelectedFamily = ( family, value ) => {
+		setinitialState({
+			...initialState,
+			fontFamily: family,
+			fontFamilyValue: value,
+		});
+	}
+
 	const handleColorChange = (itemName, color) => {
 		setinitialState({
 			...initialState,
@@ -39,16 +47,25 @@ export function DesignContextProvider(props) {
 			}
 			const design = JSON.parse( data.data.design );
 			setinitialState(design);
-			setSelectedImageUrl(data.data.backgroundImage);
+			if ( data.data.backgroundImage !== false ) {
+				setSelectedImageUrl(data.data.backgroundImage);
+			}
         });
 	}, []);
 
 	const changeHandler = (event) => {
-		setSelectedImage(event.target.files[0]);
+		if ( event.target.files[0] !== undefined ) {
+			setSelectedImage(event.target.files[0]);
+			setSelectedImageUrl(URL.createObjectURL(event.target.files[0]));
+		}
+		else {
+			setSelectedImageUrl(null);
+			setSelectedImage(null);
+		}
 	};
 
 	useEffect(() => {
-		if ( selectedImage === null ) {
+		if ( selectedImage === null || selectedImage === undefined ) {
 			return;
 		}
 		let allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
@@ -75,7 +92,7 @@ export function DesignContextProvider(props) {
 
 	return (
 		<DesignContext.Provider
-			value={{...initialState, handleColorChange, changeHandler, handleRangeChange, saveContext}}
+			value={{...initialState, handleColorChange, changeHandler, handleRangeChange, saveContext, selectedImageUrl, setSelectedFamily}}
 		>
 			{props.children}
 		</DesignContext.Provider>

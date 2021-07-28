@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BuildContextProvider } from "./Context/BuildContext";
-import { DesignContextProvider } from "./Context/DesignContext";
+import { DesignContext, DesignContextProvider } from "./Context/DesignContext";
 import { ModalContextProvider } from "./Context/ModalContext";
 const Build = lazy(() => import("./Build"));
 const Design = lazy(() => import("./Design"));
@@ -9,27 +9,27 @@ const Design = lazy(() => import("./Design"));
 export default function Routes() {
     return (
         <Router>
-            <div>
+            <div className="wpsf-cb-nav-container">
                 <ul>
                     <li>
                         <Link to="/build">Build</Link>
                     </li>
                     <li>
-                        <Link to="/design">design</Link>
+                        <Link to="/design">Design</Link>
                     </li>
                     <li>
-                        <Link to="/configure">configure</Link>
+                        <Link to="/configure">Configure</Link>
                     </li>
                     <li>
-                        <Link to="/share">share</Link>
+                        <Link to="/share">Share</Link>
                     </li>
                     <li>
-                        <Link to="/reports">reports</Link>
+                        <Link to="/reports">Reports</Link>
                     </li>
                 </ul>
             </div>
-            <BuildContextProvider>
-                <DesignContextProvider>
+            <DesignContextProvider>
+                <BuildContextProvider>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
                         <Route path="/build">
@@ -51,8 +51,8 @@ export default function Routes() {
                         </Route>
                     </Switch>
                 </Suspense>
-                </DesignContextProvider>
-            </BuildContextProvider>
+                </BuildContextProvider>
+            </DesignContextProvider>
         </Router>
     );
 }

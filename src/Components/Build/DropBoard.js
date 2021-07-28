@@ -4,14 +4,17 @@ import { BuildContext } from "../Context/BuildContext";
 import ShowBoard from "./ShowBoard";
 import Card from "./Card";
 
-const style = {
-    padding: "1rem",
-    textAlign: "center",
-    fontSize: "1rem",
-    lineHeight: "normal",
-    float: "left",
-    width: "100%",
-};
+const backgroundColor = (elementType)=>{
+    if(elementType === 'StartScreen'){
+        return {backgroundColor:"#FFE7F5"};
+    }
+    else if(elementType === 'ContentElements' ){
+        return {backgroundColor:"#E2EDFF"};
+    }
+    else{
+        return {backgroundColor:"#F4F4D5"};
+    }
+}
 
 const DropBoard = ({ ele }) => {
     const { List } = useContext(BuildContext);
@@ -24,21 +27,16 @@ const DropBoard = ({ ele }) => {
         }),
     }));
     const isActive = canDrop && isOver;
-    let backgroundColor = "#F4EAFC";
-    if (isActive) {
-        backgroundColor = "#E4F3F4";
-    } else if (canDrop) {
-        backgroundColor = "#E3EDFA";
-    }
     
     return (
         <div
             ref={drop}
             role={"DropBoard"}
-            style={{ ...style, backgroundColor }}
+            style={backgroundColor(ele.type)}
+            className="wpsf-dropboard"
         >
             {isActive ? "Release to drop" : "Drag a box here"}
-            <p>{ele.name}</p>
+            <h2>{ele.name}</h2>
             <ShowBoard itemType={ele.itemType}></ShowBoard>
         </div>
     );

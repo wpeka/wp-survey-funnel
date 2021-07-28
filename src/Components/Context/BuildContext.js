@@ -24,15 +24,20 @@ export class BuildContextProvider extends React.Component {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData( ajaxURL, data )
         .then(data => {
-            if ( data.data.build === '' ) {
-                return;
+            if ( data.data.build !== '' ) {
+                let build = JSON.parse(data.data.build);
+                let title = data.data.post_title;
+                this.setState( {
+                    ...build,
+                   title
+                } );
             }
-            let build = JSON.parse(data.data.build);
-            let title = data.data.post_title;
-            this.setState( {
-                ...build,
-               title
-            } );
+            else {
+                let title = data.data.post_title;
+                this.setState( {
+                   title
+                } );
+            }
         })
     }
 
@@ -95,6 +100,7 @@ export class BuildContextProvider extends React.Component {
     }
 
     saveData = () => {
+        document.querySelector('.wpsf-build-elements-save-button').classList.add('wpsf-button-loading');
         const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
@@ -107,6 +113,7 @@ export class BuildContextProvider extends React.Component {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData(ajaxURL, data)
         .then(data => {
+            document.querySelector('.wpsf-build-elements-save-button').classList.remove('wpsf-button-loading');
         });
     }
 
