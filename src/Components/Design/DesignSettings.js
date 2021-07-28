@@ -1,7 +1,9 @@
-import React, { useContext } from 'react';
-import { designColors, fontFamily } from '../../Data';
+import React, { useContext, useEffect } from 'react';
+import { designColors } from '../../Data';
 import { DesignContext } from '../Context/DesignContext';
 import { PopoverPicker } from '../../HelperComponents/ColorPicker';
+
+const fontFamily = require('../../Data/google-fonts.json');
 
 export default function DesignSettings() {
 	const designCon = useContext( DesignContext );
@@ -14,24 +16,27 @@ export default function DesignSettings() {
 		designCon.handleRangeChange(e.target.value);
 	}
 
+	useEffect(() => {
+		if ( designCon.fontFamilyValue === '' ) {
+			return;
+		}
+		let fontID = designCon.fontFamilyValue;
+		if (!document.getElementById(fontID)) {
+			var head = document.getElementsByTagName('head')[0];
+			var link = document.createElement('link');
+			link.id = fontID;
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = 'http://fonts.googleapis.com/css?family='+fontID;
+			link.media = 'all';
+			head.appendChild(link);
+		}
+
+	}, [designCon.fontFamilyValue])
+
 	const handleSelection = (e) => {
 		var select = e.target;
-    	if (select.selectedIndex > 0) { // web font
-			var fontID = select.options[select.selectedIndex].value;
-			if (!document.getElementById(fontID)) {
-				var head = document.getElementsByTagName('head')[0];
-				var link = document.createElement('link');
-				link.id = fontID;
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'http://fonts.googleapis.com/css?family='+fontID;
-				link.media = 'all';
-				head.appendChild(link);
-			}
-			designCon.setSelectedFamily(select.options[select.selectedIndex].innerHTML, select.options[select.selectedIndex].value);
-		} else { // default browser font
-			designCon.setSelectedFamily(null, '');
-		}
+		designCon.setSelectedFamily(select.options[select.selectedIndex].innerHTML, select.options[select.selectedIndex].value);
 	}
 
 	return (

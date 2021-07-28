@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ModalContentRight from '../../../HelperComponents/ModalContentRight';
+import { convertToRgbaCSS } from "../../../HelperComponents/HelperFunctions";
 
 export const Choices = React.memo(
     class extends Component {
@@ -51,6 +53,7 @@ export const Choices = React.memo(
 
         render() {
             const { currentElement } = this.props;
+            const { designCon } = this.props;
             return (
                 <>
                     <div className="modalOverlay">
@@ -111,24 +114,26 @@ export const Choices = React.memo(
                                 </button>
                             </div>
                             <div className="modalContent-right">
-                                <h3>{this.state.title}</h3>
-                                <p>{this.state.description}</p>
-                                {this.state.answers.map(function(answer, idx) {
-                                    switch( currentElement.componentName ) {
-                                        case 'SingleChoice':
-                                            return <div key={idx}>
-                                                <label>{answer.name}</label>
-                                                <input type="radio" name="radiogroup" id="radio" value={answer.name} />
-                                            </div>
+                                <ModalContentRight designCon={designCon}>
+                                    <h3>{this.state.title}</h3>
+                                    <p>{this.state.description}</p>
+                                    {this.state.answers.map(function(answer, idx) {
+                                        switch( currentElement.componentName ) {
+                                            case 'SingleChoice':
+                                                return <div key={idx} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}>
+                                                    <label>{answer.name}</label>
+                                                    <input type="radio" name="radiogroup" id="radio" value={answer.name} />
+                                                </div>
+                                            
+                                            case 'MultiChoice':
+                                                return <div key={idx}  style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}>
+                                                    <label>{answer.name}</label>
+                                                    <input type="checkbox" name="checkboxGroup" id="cb" value={answer.name} />
+                                                </div>
+                                        }
                                         
-                                        case 'MultiChoice':
-                                            return <div key={idx}>
-                                                <label>{answer.name}</label>
-                                                <input type="checkbox" name="checkboxGroup" id="cb" value={answer.name} />
-                                            </div>
-                                    }
-                                    
-                                })}
+                                    })}
+                                </ModalContentRight>
                             </div>
                         </div>
                     </div>

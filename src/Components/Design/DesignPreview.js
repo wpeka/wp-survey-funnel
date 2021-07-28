@@ -2,15 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { BuildContext } from "../Context/BuildContext";
 import fetchData from "../../HelperComponents/fetchData";
 import { DesignContext } from "../Context/DesignContext";
+import { convertToRgbaCSS, designBackground } from "../../HelperComponents/HelperFunctions";
 
 function validateEmail(email) {
 	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	return re.test(String(email).toLowerCase());
-}
-
-function convertToRgbaCSS( color ) {
-    let colorString = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
-    return colorString;
 }
 
 const currentlyPreviewing = true;
@@ -340,15 +336,7 @@ export default function DesignPreview() {
         setComponentList(newList);
     }
 
-    let backgroundStyle = {
-        padding: `20px`,
-    }
-
-    if (designCon.selectedImageUrl !== null) {
-        backgroundStyle.background = `linear-gradient(rgba(255,255,255,${designCon.opacity}), rgba(255,255,255,${designCon.opacity})), url('${designCon.selectedImageUrl}')`;
-    } else {
-        backgroundStyle.background = convertToRgbaCSS(designCon.backgroundColor);
-    }
+    designBackground( designCon );
 
     const checkButtonDisability = ( buttonType ) => {
         switch( buttonType ) {
@@ -368,7 +356,7 @@ export default function DesignPreview() {
                         : "No Questions were added in this survey"}
                 </div>
             ) : (
-                <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), ...backgroundStyle }}>
+                <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), ...designCon.backgroundStyle }}>
                     <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
                         {componentList.map(function (item, i) {
                             if (currentTab === i) {

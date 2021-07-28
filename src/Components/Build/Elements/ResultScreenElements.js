@@ -1,4 +1,5 @@
 import React, { createElement, Fragment } from "react";
+import ModalContentRight from '../../../HelperComponents/ModalContentRight';
 
 export const ResultScreen = React.memo(
     class extends React.Component {
@@ -25,6 +26,7 @@ export const ResultScreen = React.memo(
         }
 
         render() {
+            const { designCon } = this.props;
             return (
                 <>
                     <div className="modalOverlay">
@@ -53,8 +55,10 @@ export const ResultScreen = React.memo(
                                 <button onClick={this.props.saveToList}>save</button>
                             </div>
                             <div className="modalContent-right">
-                                <h3>{this.state.title}</h3>
-                                <p>{this.state.description}</p>
+                                <ModalContentRight designCon={designCon}>
+                                    <h3>{this.state.title}</h3>
+                                    <p>{this.state.description}</p>
+                                </ModalContentRight>
                             </div>
                         </div>
                     </div>

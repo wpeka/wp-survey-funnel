@@ -193,18 +193,3 @@ export const initColorState = {
 		a: '1'
 	},
 }
-
-export const fontFamily = [
-	{
-		name: 'Browser Default',
-		value: 'default',
-	},
-	{
-		name: 'Droid Sans',
-		value: 'Droid+Sans',
-	},
-	{
-		name: 'Open Sans',
-		value: 'Open+Sans',
-	}
-]
