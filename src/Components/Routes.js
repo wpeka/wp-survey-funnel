@@ -2,9 +2,11 @@ import React, { Suspense, lazy } from "react";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { BuildContextProvider } from "./Context/BuildContext";
 import { DesignContext, DesignContextProvider } from "./Context/DesignContext";
+import { ResponseContextProvider } from './Context/ResponseContext'
 import { ModalContextProvider } from "./Context/ModalContext";
 const Build = lazy(() => import("./Build"));
 const Design = lazy(() => import("./Design"));
+const Reports = lazy(() => import('./Reports'));
 
 export default function Routes() {
     return (
@@ -47,7 +49,9 @@ export default function Routes() {
                             <div className="share">share</div>
                         </Route>
                         <Route path="/reports">
-                            <div className="reports">reports</div>
+                            <ResponseContextProvider>
+                                <Reports></Reports>
+                            </ResponseContextProvider>
                         </Route>
                     </Switch>
                 </Suspense>

@@ -433,4 +433,33 @@ class Wp_Survey_Funnel_Admin {
 		wp_send_json_success( $data );
 		wp_die();
 	}
+
+	/**
+	 * Ajax: Get reports data.
+	 */
+	public function wpsf_get_reports_data() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'srf_entries';
+		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+
+		$rows = $wpdb->get_results(
+			$wpdb->prepare(
+				'
+					SELECT * 
+					FROM ' . $table_name . '
+					WHERE survey_id = %d
+				',
+				$post_id
+			)
+		);
+
+		wp_send_json_success( $rows );
+		wp_die();
+	}
 }

@@ -185,12 +185,8 @@ class Wp_Survey_Funnel_Public {
 
 		if ( is_array( $rows ) && count( $rows ) ) {
 			$data      = json_decode( $rows[0]->fields );
-			error_log( 'before' );
-			error_log( print_r( $data, true ) );
 			$id        = $fields->_id;
 			$data->$id = $fields;
-			error_log( 'after' );
-			error_log( print_r( $data, true ) );
 			$fields    = wp_json_encode( $data );
 			$flag      = true;
 		}
