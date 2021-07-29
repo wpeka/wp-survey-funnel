@@ -190,6 +190,7 @@ class Wp_Survey_Funnel {
 
 		// ajax calls
 		$this->loader->add_action( 'wp_ajax_wpsf_new_survey_lead', $plugin_public, 'wpsf_new_survey_lead' );
+		$this->loader->add_action( 'wp_ajax_nopriv_wpsf_new_survey_lead', $plugin_public, 'wpsf_new_survey_lead' );
 	}
 
 	/**
