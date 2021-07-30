@@ -28,7 +28,7 @@ export const FormElements = React.memo(
 
         setCurrentFormElement = (element) => {
             document
-                .querySelectorAll(".build-container .tab-list-item")[1]
+                .querySelectorAll(".wpsf-build-container .tab-list-item")[1]
                 .click();
             this.setState({
                 currentFormElement: element,
@@ -276,7 +276,7 @@ export const FormElements = React.memo(
                                                     null
                                                 );
                                                 document
-                                                .querySelector(".build-container .tab-list-item")
+                                                .querySelector(".wpsf-build-container .tab-list-item")
                                                 .click();
                                             }}
                                         >
