@@ -1,10 +1,11 @@
-# WP Survey Funnel #
 <p align="center">
 <a href="https://wordpress.org/plugins/wp-survey-funnel/"><img src="https://img.shields.io/wordpress/plugin/v/wpadcenter" alt="Latest Stable Version"></a>
 <img src="https://img.shields.io/wordpress/plugin/dt/wp-survey-funnel" alt="WordPress.org downloads">
 <a href="https://github.com/wpeka/wp-survey-funnel/actions/workflows/pr-code-coverage.yml"><img src="https://github.com/wpeka/wp-survey-funnel/actions/workflows/pr-code-coverage.yml/badge.svg" alt="Github Actions"></a>
 <a href="https://codecov.io/gh/wpeka/wp-survey-funnel"><img src="https://codecov.io/gh/wpeka/wp-survey-funnel/branch/trunk/graph/badge.svg?token=0CWSQHMJ40" alt="codecov"></a>
 </p>
+
+# WP Survey Funnel #
 **Contributors:** [WPEka Club](https://profiles.wordpress.org/WPEka Club)  
 **Donate link:** https://club.wpeka.com  
 **Tags:** comments, spam  
