@@ -37,9 +37,10 @@ export default function BuildElement({ ele }) {
                 role="BuildElement"
                 style={{ opacity }}
                 data-testid={`buildelement-${name}`}
-				className="build-elements_box"
+				className="wpsf-build-elements_box"
             >
-                {ele.name}
+                <img src={require(`./BuildImages/${ele.componentName}.png`)} className={`wpsf-build-${ele.itemType}-img`}></img>
+                <p>{ele.name}</p>
         </div>
     );
 };

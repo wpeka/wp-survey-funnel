@@ -283,7 +283,7 @@ class Wp_Survey_Funnel_Admin {
 				<title>WP Survey Funnel</title>
 			</head>
 			<body class="wpsf-body">
-				<div id="root"></div>
+				<div id="root" class="wpsf-root"></div>
 				<input type="hidden" id="ajaxURL" value="<?php echo admin_url( 'admin-ajax.php' );//phpcs:ignore ?>">
 				<input type="hidden" id="ajaxSecurity" value="<?php echo wp_create_nonce('wpsf-security');//phpcs:ignore ?>">
 				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
@@ -431,6 +431,54 @@ class Wp_Survey_Funnel_Admin {
 			'backgroundImage' => wp_get_attachment_url( $background_image_meta ),
 		);
 		wp_send_json_success( $data );
+		wp_die();
+	}
+
+	/**
+	 * Ajax: Get reports data.
+	 */
+	public function wpsf_get_reports_data() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'srf_entries';
+		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+
+		$rows       = $wpdb->get_results(
+			$wpdb->prepare(
+				'
+					SELECT * 
+					FROM ' . $table_name . '
+					WHERE survey_id = %d
+				',
+				$post_id
+			)
+		);
+		$return_arr = array();
+		if ( is_array( $rows ) && count( $rows ) ) {
+			foreach ( $rows as $row ) {
+				$temp_arr = array(
+					'lead'         => 'Unknown',
+					'fields'       => $row->fields,
+					'userLocaleID' => $row->user_locale_id,
+					'time_created' => $row->time_created,
+					'userMeta'     => $row->user_meta,
+				);
+
+				preg_match( '/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/', $row->fields, $matches );
+
+				if ( count( $matches ) ) {
+					$temp_arr['lead'] = $matches[0];
+				}
+				array_push( $return_arr, $temp_arr );
+			}
+		}
+
+		wp_send_json_success( $return_arr );
 		wp_die();
 	}
 }

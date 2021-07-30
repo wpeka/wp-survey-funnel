@@ -68,11 +68,11 @@ export const CoverPage = React.memo(
                                 <button onClick={this.props.saveToList}>save</button>
                             </div>
                             <div className="modalContent-right">
-                                <ModalContentRight designCon={designCon}>
+                                {this.state.title === '' && this.state.description === '' && this.state.button === '' ? (<div>No preview availabel</div>) : (<ModalContentRight designCon={designCon}>
                                     <h3>{this.state.title}</h3>
                                     <p>{this.state.description}</p>
                                     <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}}>{this.state.button}</button>
-                                </ModalContentRight>
+                                </ModalContentRight>)}
                             </div>
                         </div>
                     </div>

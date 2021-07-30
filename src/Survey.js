@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import 'regenerator-runtime/runtime'
 import Frame from 'react-frame-component';
 import fetchData from "./HelperComponents/fetchData";
-import { initColorState } from "./Data";
+import { initColorState, ItemTypes } from "./Data";
 
 function validateEmail(email) {
 	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -71,29 +71,106 @@ function Survey() {
 		if ( ! checkValidations( num ) ) {
 			return;
 		}
-        if ( ! currentlyPreviewing && currentTab === tabCount - 2 && num !== -1 ) {
-            
+        if ( ! currentlyPreviewing && num !== -1 ) {
             let formData = {
-                List: JSON.stringify(componentList),
-                time: new Date(),
                 security: data.ajaxSecurity,
                 post_id: data.post_id,
-                action: 'wpsf_new_survey_lead'
+                action: 'wpsf_new_survey_lead',
+                userLocalID: data.userLocalID,
+                time: data.time,
             }
-            fetchData(data.ajaxURL, formData)
-            .then((data) => {
-                
-            });
-        }
-		if ( currentTab === tabCount - 1 ) {
 
-            setComponentList(initialState);
-			setCurrentTab(0);
-		}
-		else {
-			setCurrentTab(currentTab + num);
-		}   
+            let resultData = getResultOfCurrentTab();
+            if ( (typeof resultData === "object" || typeof resultData === 'function') && (resultData !== false) ) {
+                formData.data = JSON.stringify(resultData);
+                fetchData(data.ajaxURL, formData)
+                .then((data) => {
+                    setCurrentTab(currentTab + num);
+                });
+            }
+            else {
+                setCurrentTab(currentTab + num);
+            }
+            return;
+        }
+
+        setCurrentTab(currentTab + num);  
     };
+
+    const getResultOfCurrentTab = () => {
+        let resultData = {
+            question: '',
+            answer: '',
+            _id: '',
+            status: 'answered',
+            tabNumber: currentTab,
+            componentName: componentList[currentTab].componentName,
+        }
+        if ( componentList[currentTab].type !== ItemTypes.CONTENT_ELEMENTS ) {
+            return false;
+        }
+
+        resultData._id = componentList[currentTab].id;
+        switch(componentList[currentTab].componentName) {
+            case "SingleChoice":
+                resultData.question = componentList[currentTab].title;
+                resultData.answer = componentList[currentTab].value;
+                break;
+            case "MultiChoice":
+                resultData.question = componentList[currentTab].title;
+                resultData.answer = componentList[currentTab].answers.filter(function(item) {
+                    return item.checked ? item.name : false;
+                });
+                break;
+            case 'FormElements':
+                resultData.question = componentList[currentTab].title;
+                resultData.answer = [];
+                const { List } = componentList[currentTab];
+                for(let i = 0; i < List.length ; i++) {
+                    resultData.answer.push( {
+                        name: List[i].name,
+                        value: List[i].value,
+                    } );
+                }
+                break;
+        }
+        return resultData;
+    }
+
+    const sendAjaxCurrentTabViewed = () => {
+        if ( componentList[currentTab] === undefined || componentList[currentTab].viewed ) {
+            return;
+        }
+        if ( ! currentlyPreviewing && componentList[currentTab].type === ItemTypes.CONTENT_ELEMENTS ) {
+            let formData = {
+                security: data.ajaxSecurity,
+                post_id: data.post_id,
+                action: 'wpsf_new_survey_lead',
+                userLocalID: data.userLocalID,
+                time: data.time,
+                data: JSON.stringify({
+                    status: 'viewed',
+                    _id: componentList[currentTab].id,
+                    tabNumber: currentTab,
+                    question: componentList[currentTab].title,
+                    componentName: componentList[currentTab].componentName,
+                }),
+            }
+
+            fetchData( data.ajaxURL, formData )
+            .then(data => {
+            });
+            setCurrentComponentViewed();
+        }
+        
+    }
+
+    const setCurrentComponentViewed = () => {
+        let newList = JSON.parse(JSON.stringify(componentList));
+        newList[currentTab].viewed = true;
+        setComponentList(newList);
+    }
+    sendAjaxCurrentTabViewed();
 
 	const checkValidations = ( num ) => {
 		if ( currentlyPreviewing ) {
@@ -101,6 +178,7 @@ function Survey() {
 		}
 
         if ( num === -1 ) {
+            setError([]);
             return true;
         }
         
@@ -368,6 +446,7 @@ function Survey() {
                 return componentList[currentTab].componentName === 'FormElements';
         }
     }
+
     return (
         <Frame>
             {addFontFamilyLink()}
@@ -421,5 +500,5 @@ function Survey() {
     );
 }
 
-let id = 'wpsf-survey-' + data.time;
+let id = 'wpsf-survey-' + data.userLocalID;
 ReactDOM.render(<Survey /> , document.getElementById( id ));

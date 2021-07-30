@@ -24,7 +24,7 @@ export default function BuildFormElement({ ele, setCurrentFormElement, addToList
                 role="BuildElement"
                 style={{ opacity }}
                 data-testid={`buildelement-${name}`}
-				className="build-elements_box"
+				className="wpsf-build-elements_box"
             >
                 {ele.name}
         </div>
