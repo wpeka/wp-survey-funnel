@@ -85,7 +85,6 @@ function Survey() {
                 formData.data = JSON.stringify(resultData);
                 fetchData(data.ajaxURL, formData)
                 .then((data) => {
-                    console.log(data);
                     setCurrentTab(currentTab + num);
                 });
             }
@@ -104,6 +103,8 @@ function Survey() {
             answer: '',
             _id: '',
             status: 'answered',
+            tabNumber: currentTab,
+            componentName: componentList[currentTab].componentName,
         }
         if ( componentList[currentTab].type !== ItemTypes.CONTENT_ELEMENTS ) {
             return false;
@@ -149,13 +150,15 @@ function Survey() {
                 time: data.time,
                 data: JSON.stringify({
                     status: 'viewed',
-                    _id: componentList[currentTab].id
+                    _id: componentList[currentTab].id,
+                    tabNumber: currentTab,
+                    question: componentList[currentTab].title,
+                    componentName: componentList[currentTab].componentName,
                 }),
             }
 
             fetchData( data.ajaxURL, formData )
             .then(data => {
-                console.log(data);
             });
             setCurrentComponentViewed();
         }
@@ -163,7 +166,6 @@ function Survey() {
     }
 
     const setCurrentComponentViewed = () => {
-        console.log('in current viewed');
         let newList = JSON.parse(JSON.stringify(componentList));
         newList[currentTab].viewed = true;
         setComponentList(newList);

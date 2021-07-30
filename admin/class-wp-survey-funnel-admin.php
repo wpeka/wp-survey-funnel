@@ -448,7 +448,7 @@ class Wp_Survey_Funnel_Admin {
 		$table_name = $wpdb->prefix . 'srf_entries';
 		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 
-		$rows = $wpdb->get_results(
+		$rows       = $wpdb->get_results(
 			$wpdb->prepare(
 				'
 					SELECT * 
@@ -458,8 +458,27 @@ class Wp_Survey_Funnel_Admin {
 				$post_id
 			)
 		);
+		$return_arr = array();
+		if ( is_array( $rows ) && count( $rows ) ) {
+			foreach ( $rows as $row ) {
+				$temp_arr = array(
+					'lead'         => 'Unknown',
+					'fields'       => $row->fields,
+					'userLocaleID' => $row->user_locale_id,
+					'time_created' => $row->time_created,
+					'userMeta'     => $row->user_meta,
+				);
 
-		wp_send_json_success( $rows );
+				preg_match( '/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/', $row->fields, $matches );
+
+				if ( count( $matches ) ) {
+					$temp_arr['lead'] = $matches[0];
+				}
+				array_push( $return_arr, $temp_arr );
+			}
+		}
+
+		wp_send_json_success( $return_arr );
 		wp_die();
 	}
 }

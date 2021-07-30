@@ -30,7 +30,6 @@ export default function Reports() {
 					onChange={item => setDates([item.selection])}
 					moveRangeOnFirstSelection={false}
 					ranges={dates}
-					onShownDateChange={() => {console.log(dates)}}
 				/>
 			</div>
 			
