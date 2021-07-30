@@ -481,4 +481,60 @@ class Wp_Survey_Funnel_Admin {
 		wp_send_json_success( $return_arr );
 		wp_die();
 	}
+
+	/**
+	 * Get insights data.
+	 *
+	 * @param int $post_id post id.
+	 */
+	public static function wpsf_get_insights_data( $post_id ) {
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'srf_entries';
+		$rows       = $wpdb->get_results(
+			$wpdb->prepare(
+				'
+				SELECT * 
+				FROM ' . $table_name . '
+				WHERE survey_id = %d
+			',
+				$post_id
+			)
+		);
+
+		$view_count      = 0;
+		$completed_count = 0;
+		$contacts_count  = 0;
+		$total_count     = count( $rows );
+		$completion_rate = 0;
+		$contacts_count  = 0;
+		$completed_count = 0;
+
+		if ( count( $rows ) ) {
+			$data             = get_post_meta( $post_id, 'wpsf-survey-data', true );
+			$build            = json_decode( $data['build'] );
+			$content_elements = $build->List->CONTENT_ELEMENTS;//phpcs:ignore
+			foreach ( $content_elements as $content ) {
+				$id      = $content->id;
+				$pattern = '/' . $id . '/';
+				foreach ( $rows as $row ) {
+					if ( preg_match( $pattern, $row->fields ) ) {
+						$view_count++;
+					}
+				}
+			}
+			foreach ( $rows as $row ) {
+				if ( preg_match( '/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/', $row->fields ) ) {
+					$contacts_count++;
+				}
+				$completed_count += intval( $row->user_meta );
+			}
+			$completion_rate = $completed_count / $total_count * 100;
+			$completion_rate = number_format( (float) $completion_rate, 2, '.', '' );
+		}
+		return array(
+			'views'          => $view_count,
+			'contacts'       => $contacts_count,
+			'completionRate' => $completion_rate,
+		);
+	}
 }

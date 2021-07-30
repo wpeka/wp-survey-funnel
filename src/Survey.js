@@ -78,6 +78,7 @@ function Survey() {
                 action: 'wpsf_new_survey_lead',
                 userLocalID: data.userLocalID,
                 time: data.time,
+                completed: List.CONTENT_ELEMENTS.length,
             }
 
             let resultData = getResultOfCurrentTab();

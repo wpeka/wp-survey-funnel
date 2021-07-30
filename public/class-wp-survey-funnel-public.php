@@ -159,10 +159,11 @@ class Wp_Survey_Funnel_Public {
 			wp_send_json_error();
 			wp_die();
 		}
-		
+
 		$survey_id      = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$user_locale_id = isset( $_POST['userLocalID'] ) ? sanitize_text_field( wp_unslash( $_POST['userLocalID'] ) ) : 0;
 		$time           = isset( $_POST['time'] ) ? intval( $_POST['time'] ) : 0;
+		$tab_count      = isset( $_POST['completed'] ) ? intval( $_POST['completed'] ) : 0;
 		$user_id        = get_current_user_id();
 
 		$fields = $this->wpsf_sanitize_survey_lead( $_POST['data'] );//phpcs:ignore
@@ -184,20 +185,29 @@ class Wp_Survey_Funnel_Public {
 		$flag = false;
 
 		if ( is_array( $rows ) && count( $rows ) ) {
-			$data      = json_decode( $rows[0]->fields );
-			$id        = $fields->_id;
-			$data->$id = $fields;
-			$fields    = wp_json_encode( $data );
-			$flag      = true;
+			$data          = json_decode( $rows[0]->fields );
+			$id            = $fields->_id;
+			$data->$id     = $fields;
+			$current_count = count( (array) $data );
+
+			if ( $current_count !== $tab_count ) {
+				$completed = 0;
+			} else {
+				$completed = 1;
+			}
+
+			$fields = wp_json_encode( $data );
+			$flag   = true;
 		}
 		if ( $flag ) {
 			$rows = $wpdb->query(
 				$wpdb->prepare(
 					'
-					UPDATE ' . $table_name . ' SET `fields` = %s
+					UPDATE ' . $table_name . ' SET `fields` = %s, `user_meta` = %s
 					WHERE user_locale_id = %s AND time_created = %d
 				',
 					$fields,
+					$completed,
 					$user_locale_id,
 					$time
 				)

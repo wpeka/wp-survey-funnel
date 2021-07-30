@@ -2,23 +2,27 @@ import React, { useContext, useEffect } from 'react'
 import { ReportContext } from '../Context/ReportContext'
 
 export default function Responses() {
-	const { reports, currentReportSelected } = useContext( ReportContext );
+	const { reports, currentReportSelected, setCurrentReportSelected } = useContext( ReportContext );
 
 	const getCurrentReportSelectedPreview = () => {
+		if ( currentReportSelected === null ) {
+			return;
+		}
 		let { fields } = currentReportSelected;
 		fields = JSON.parse(fields);
 		const arrayOfObj = Object.values(fields);
 		return (<div>
 			{arrayOfObj.map(function(item, i) {
-				console.log(item);
-				return (<div key={item._id}>
-					<div className="currentReportQuestion">
-						<h2>{item.tabNumber}. {item.question}</h2>
-					</div>
-					<div className="currentReportAnswer">
-						{getCurrentReportAnswer(item)}
-					</div>
-				</div>);
+				if ( item.status === 'answered' ) {
+					return (<div key={item._id}>
+						<div className="currentReportQuestion">
+							<h2>{item.tabNumber}. {item.question}</h2>
+						</div>
+						<div className="currentReportAnswer">
+							{getCurrentReportAnswer(item)}
+						</div>
+					</div>);
+				}
 			})}
 		</div>);
 	}
@@ -50,6 +54,10 @@ export default function Responses() {
 		}
 	}
 
+	const handleReportChange = ( idx ) => {
+		setCurrentReportSelected(reports[idx]);
+	}
+
 	return (
 		<div className="responseDataViewer">
 			<div className="responseSelector">
@@ -58,8 +66,10 @@ export default function Responses() {
 					{reports.map(function(item, i) {
 						return <div className="selectionElement" key={item.userLocaleID}>
 							<input type="checkbox" />
-							<h3>{item.lead}</h3>
-							<small>{item.time_created}</small>
+							<div className="selectElement" onClick={() => {handleReportChange(i)}} click-idx={i}>
+								<h3>{item.lead}</h3>
+								<small>{item.time_created}</small>
+							</div>
 						</div>
 					})}
 				</div>
