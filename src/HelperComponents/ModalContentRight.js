@@ -3,7 +3,7 @@ import { convertToRgbaCSS, designBackground } from "./HelperFunctions";
 import { useEffect } from "react";
 
 export default function ModalContentRight( props ) {
-	const { designCon } = props;
+	const { designCon, currentElement } = props;
 	designBackground(designCon);
 
     useEffect(() => {
@@ -23,7 +23,6 @@ export default function ModalContentRight( props ) {
 		}
 
 	}, [designCon.fontFamilyValue])
-
 	return (
         <div
             className="preview"
@@ -34,7 +33,7 @@ export default function ModalContentRight( props ) {
             }}
         >
             <div
-                className="tab-list"
+                className={`tab-list wpsf-tab-${currentElement}`}
                 style={{
                     background: convertToRgbaCSS(
                         designCon.backgroundContainerColor
@@ -42,7 +41,7 @@ export default function ModalContentRight( props ) {
                 }}
             >
                 <div className="tab-container">
-                    <div className="tab">
+                    <div className="tab" >
                         {props.children}
                     </div>
                 </div>

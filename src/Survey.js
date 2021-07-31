@@ -177,7 +177,7 @@ function Survey() {
                         style={{ ...style }}
                     >
                         <div
-                            className="tab"
+                            className="tab wpsf-tab-questions"
                             key={item.id}
                             tab-componentname={item.componentName}
                         >
@@ -220,7 +220,7 @@ function Survey() {
                         style={{ ...style }}
                     >
                         <div
-                            className="tab"
+                            className="tab wpsf-tab-questions"
                             key={item.id}
                             tab-componentname={item.componentName}
                         >
@@ -262,7 +262,7 @@ function Survey() {
                         key={item.id}
                         style={{ ...style }}
                     >
-                        <div className="tab" tab-componentname={item.componentName}>
+                        <div className="tab wpsf-tab-cover-page" tab-componentname={item.componentName}>
                             <h3 className="surveyTitle">{item.title}</h3>
                             <p className="surveyDescription">{item.description}</p>
                             <button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
@@ -280,7 +280,7 @@ function Survey() {
                         key={item.id}
                         style={{ ...style }}
                     >
-                        <div className="tab" tab-componentname={item.componentName}>
+                        <div className="tab wpsf-tab-result-screen" tab-componentname={item.componentName}>
                             <h3 className="surveyTitle">{item.title}</h3>
                             <p className="surveyDescription">{item.description}</p>
                         </div>
@@ -293,7 +293,7 @@ function Survey() {
                         key={item.id}
                         style={{ ...style }}
                     >
-                        <div className="tab" tab-componentname={item.componentName}>
+                        <div className="tab wpsf-tab-form-elements" tab-componentname={item.componentName}>
                             <h3 className="surveyTitle">{item.title}</h3>
                             <p className="surveyDescription">{item.description}</p>
                             {item.List.map(function(ele, i) {

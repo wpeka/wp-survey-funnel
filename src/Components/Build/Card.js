@@ -86,7 +86,7 @@ export default function (props) {
 
             <div className="card-flex">
                 <button className="wpsf-cardBox-btn" onClick={editCard}><img src={require('./BuildImages/pencil.png')}></img></button>
-                <button className="wpsf-cardBox-btn" onClick={deleteCard}><img src={require('./BuildImages/delete-icon.jpg')}></img></button>
+                <button className="wpsf-cardBox-btn" onClick={deleteCard}><img src={require('./BuildImages/delete-icon.png')}></img></button>
             </div>
         </div>
     );
