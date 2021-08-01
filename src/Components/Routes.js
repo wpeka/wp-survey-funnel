@@ -10,6 +10,9 @@ export default function Routes() {
     return (
         <Router>
             <div className="wpsf-cb-nav-container">
+                <div>
+                    Back to dashboard
+                </div>
                 <ul>
                     <li>
                         <Link to="/build">Build</Link>
@@ -27,6 +30,9 @@ export default function Routes() {
                         <Link to="/reports">Reports</Link>
                     </li>
                 </ul>
+                <div>
+                    <button>Publish</button>
+                </div>
             </div>
             <DesignContextProvider>
                 <BuildContextProvider>

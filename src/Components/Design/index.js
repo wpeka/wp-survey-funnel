@@ -7,15 +7,17 @@ export default function Design() {
 	const { saveContext } = useContext( DesignContext );
 	return (
 		<div id="design">
-			<div className="design-container">
-				<div className="design-elements">
+			<div className="wpsf-design-container">
+				<div className="design-elements wpsf-design-setting-container">
 					<DesignSettings></DesignSettings>
+					<div className="wpsf-design-settings-save">
+						<button onClick={saveContext}>Save</button>
+					</div>
 				</div>
-				<div className="design-preview">
+				<div className="design-preview wpsf-design-preview-container">
 					<DesignPreview></DesignPreview>
 				</div>
 			</div>
-			<button onClick={saveContext}>saveData</button>
 		</div>
 	)
 }

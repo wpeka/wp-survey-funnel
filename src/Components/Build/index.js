@@ -1,5 +1,6 @@
 import { BuildContext } from '../Context/BuildContext';
 import '../../scss/Build.scss';
+import '../../scss/survey.scss';
 import BuildElement from './BuildElement';
 import { buildElements, dropBoard } from '../../Data';
 import DropBoard from './DropBoard';

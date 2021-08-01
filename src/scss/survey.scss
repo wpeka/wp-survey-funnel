@@ -1,0 +1,123 @@
+@font-face {
+    font-family: 'ApercuPro';
+    font-weight: normal;
+    src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Regular.otf") format("opentype");
+}
+@font-face {
+    font-family: ApercuPro;
+    font-weight: bold;
+    src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: ApercuPro;
+    font-weight: 500;
+    src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Medium.otf") format("opentype");
+}
+.tab-list{
+    .tab-container{
+        .tab{
+            h3{
+                margin: 0;
+            }
+            p{
+                margin: 27px 0;
+            }
+            input{
+                word-wrap: break-word
+            }
+            button{
+                background-color: #0F4C81;
+                border: none;
+                color: white;
+                padding: 12px 28px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 9px;
+            }
+            .wpsf-tab-CoverPage, .wpsf-tab-ResultScreen{
+                text-align: center;
+            }
+        }
+    }
+}
+.wpsf-tab-CoverPage, .wpsf-tab-ResultScreen, .wpsf-tab-SingleChoice, .wpsf-tab-MultiChoice, .wpsf-tab-FormElements{
+    border-radius: 12px;
+    width: 100%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.wpsf-tab-CoverPage, .wpsf-tab-ResultScreen{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 450px;
+
+}
+.wpsf-tab-SingleChoice, .wpsf-tab-MultiChoice{
+    padding: 40px;
+    max-width: 80%;
+    .wpsf-tab-answer-container{
+        border: 1px solid #0F4C81;
+        border-radius: 9px;
+        margin-bottom: 5px;
+
+        label{
+            display: flex;
+            align-items: center;
+            display: flex;
+            align-items: center;
+            height: 76px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 9px;
+        }
+        div{
+            height: 54px;
+            margin: 5px;
+            width: 54px;
+            background-color: #F0F2F5;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        input{
+            display: none;
+        }
+        input:checked + label{
+            background-color: #E2EDFF;
+         }
+    }
+}
+.wpsf-tab-FormElements{
+    padding: 40px;
+    max-width: 80%;
+    label{
+        display: block;
+    }
+    textarea{
+        
+    border: 1px solid rgba(181, 220, 255, 0.58);
+    width: 80%;
+    height: 80px;
+    border-radius: 9px;
+    margin: 10px 0;
+
+    }
+    input{
+        border: 1px solid rgba(181, 220, 255, 0.58);
+        width: 80%;
+        height: 40px;
+        border-radius: 9px;
+        margin: 10px 0;
+    }
+    .wpsf-form-submit-button{
+        display: flex;
+        justify-content: center;
+    }
+}
