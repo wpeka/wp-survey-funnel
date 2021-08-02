@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ModalContentRight from '../../../HelperComponents/ModalContentRight';
 import { convertToRgbaCSS } from "../../../HelperComponents/HelperFunctions";
+import { CloseModal } from '../../../HelperComponents/CloseModalPopUp';
 
 export const Choices = React.memo(
     class extends Component {
@@ -59,7 +60,7 @@ export const Choices = React.memo(
                     <div className="modalOverlay">
                         <div className="modalContent-navbar">
                             <h2>{currentElement.name}</h2>
-                            <button>✕</button>
+                            <CloseModal/>
                         </div>
                         <div className="modalContent">
                             <div className="modalContent-left">

@@ -12,8 +12,8 @@ export default function Routes() {
     return (
         <Router>
             <div className="wpsf-cb-nav-container">
-                <div>
-                    <a href={dashboardLink}>Back to dashboard</a>
+                <div>                    
+                    <a href={dashboardLink}><img src={require('./Build/BuildImages/arrow.png')}></img> Back to dashboard</a>
                 </div>
                 <ul>
                     <li>
