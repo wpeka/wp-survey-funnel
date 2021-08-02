@@ -57,83 +57,114 @@ export const Choices = React.memo(
             return (
                 <>
                     <div className="modalOverlay">
+                        <div className="modalContent-navbar">
+                            <h2>{currentElement.name}</h2>
+                            <button>✕</button>
+                        </div>
                         <div className="modalContent">
                             <div className="modalContent-left">
-                                <div className="modalComponentTitle">
-                                    <label>Title</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Set Title"
-                                        name="title"
-                                        value={this.state.title}
-                                        onChange={this.handleChange}
-                                    />
-                                </div>
-                                <div className="modalComponentDescription">
-                                    <label>Description</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Set Description"
-                                        name="description"
-                                        value={this.state.description}
-                                        onChange={this.handleChange}
-                                    />
-                                </div>
-                                {this.state.answers.map((answer, idx) => (
-                                    <div className="answers" key={idx}>
+                                <div className="modalContent-left-fields">
+
+                                    <div className="modalComponentTitle">
+                                        <h3>Title</h3>
                                         <input
                                             type="text"
-                                            placeholder={`Answer #${
-                                                idx + 1
-                                            } name`}
-                                            value={answer.name}
-                                            onChange={this.handleAnswerNameChange(
-                                                idx
-                                            )}
+                                            placeholder="Set Title"
+                                            name="title"
+                                            value={this.state.title}
+                                            onChange={this.handleChange}
                                         />
-                                        <button
-                                            type="button"
-                                            onClick={this.handleRemoveAnswer(
-                                                idx
-                                            )}
-                                            className="small"
-                                        >
-                                            -
-                                        </button>
                                     </div>
-                                ))}
-                                <button
-                                    type="button"
-                                    onClick={this.handleAddAnswer}
-                                    className="small"
-                                >
-                                    Add Answer
-                                </button>
-                                <button onClick={this.props.saveToList}>
-                                    save
-                                </button>
+                                    <div className="modalComponentDescription">
+                                        <h3>Description</h3>
+                                        <input
+                                            type="text"
+                                            placeholder="Set Description"
+                                            name="description"
+                                            value={this.state.description}
+                                            onChange={this.handleChange}
+                                            style={{height:"150px"}}
+                                        />
+                                    </div>
+                                    <div className="modalComponentAnswers">
+                                    <h3>Answers</h3>
+                                    {this.state.answers.map((answer, idx) => (
+                                        <div className="answers" key={idx}>
+                                            <input
+                                                type="text"
+                                                placeholder={`Answer #${
+                                                    idx + 1
+                                                }`}
+                                                value={answer.name}
+                                                onChange={this.handleAnswerNameChange(
+                                                    idx
+                                                )}
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={this.handleRemoveAnswer(
+                                                    idx
+                                                )}
+                                                className="small"
+                                            >
+                                            <img src={require('../BuildImages/delete-icon.png')}></img>
+                                            </button>
+                                        </div>
+                                    ))}
+                                    <button
+                                        type="button"
+                                        onClick={this.handleAddAnswer}
+                                        className="modalAnswersAdd"
+                                    >
+                                        <img src={require('../BuildImages/add-icon.png')}></img>
+                                        Add New Answer
+                                    </button>
+                                    </div>
+                                </div>
+                                <div className="modalComponentSaveButton">
+                                    <button onClick={this.props.saveToList}>save</button>
+                                </div>
                             </div>
                             <div className="modalContent-right">
-                                <ModalContentRight designCon={designCon}>
+                            <div className="modalContentMode">
+                                    <h4>Content Preview</h4>
+                                </div>
+                                <div className="modalContentPreview">
+                                <ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
                                     <h3>{this.state.title}</h3>
                                     <p>{this.state.description}</p>
                                     {this.state.answers.map(function(answer, idx) {
                                         switch( currentElement.componentName ) {
                                             case 'SingleChoice':
-                                                return <div key={idx} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}>
-                                                    <label>{answer.name}</label>
-                                                    <input type="radio" name="radiogroup" id="radio" value={answer.name} />
-                                                </div>
+                                                return  <div key={idx} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="wpsf-tab-answer-container">
+                                                            <input id={`${idx}_${answer.name}_single`} type="radio" name="radiogroup" value={answer.name} />
+                                                            <label htmlFor={`${idx}_${answer.name}_single`}>
+                                                                <div>
+                                                                    { parseInt(idx)+1}
+                                                                </div>
+                                                                <p>
+                                                                    {answer.name}
+                                                                </p>
+                                                            </label>
+                                                        </div>
                                             
                                             case 'MultiChoice':
-                                                return <div key={idx}  style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}>
-                                                    <label>{answer.name}</label>
-                                                    <input type="checkbox" name="checkboxGroup" id="cb" value={answer.name} />
-                                                </div>
+                                                return  <div key={idx}  style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="wpsf-tab-answer-container">
+                                                            <input id={`${idx}_${answer.name}_multiple`} type="checkbox" name="checkboxGroup" value={answer.name} />
+                                                            <label htmlFor={`${idx}_${answer.name}_multiple`} >
+                                                                <div>
+                                                                    { parseInt(idx)+1}
+                                                                </div>
+                                                                <p>
+                                                                    {answer.name}
+                                                                </p>
+                                                            </label>
+                                                        </div>
                                         }
                                         
                                     })}
                                 </ModalContentRight>
+                                </div>
                             </div>
                         </div>
                     </div>

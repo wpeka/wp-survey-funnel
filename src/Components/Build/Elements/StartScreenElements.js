@@ -30,49 +30,71 @@ export const CoverPage = React.memo(
         }
 
         render() {
-            const { designCon } = this.props;
+            const { designCon, currentElement } = this.props;
             return (
                 <>
                     <div className="modalOverlay">
+                        <div className="modalContent-navbar">
+                            <h2>Cover Page</h2>
+                            <button>✕</button>
+                        </div>
                         <div className="modalContent">
                             <div className="modalContent-left">
-                                <div className="modalComponentTitle">
-                                    <label>Title</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Set Title"
-                                        name="title"
-                                        value={this.state.title}
-                                        onChange={this.handleChange}
-                                    />
+                                <div className="modalContent-left-fields">
+                                    <div className="modalComponentTitle">
+                                        <h3>Title</h3>
+                                        <input
+                                            type="text"
+                                            placeholder="Set Title"
+                                            name="title"
+                                            value={this.state.title}
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
+                                    <div className="modalComponentDescription">
+                                        <h3>Description</h3>
+                                        <input
+                                            type="text"
+                                            placeholder="Set Description"
+                                            name="description"
+                                            value={this.state.description}
+                                            onChange={this.handleChange}
+                                            style={{height:"150px"}}
+                                        />
+                                    </div>
+                                    <div className="modalComponentButton">
+                                        <h3>Button</h3>
+                                        <input
+                                            type="text"
+                                            name="button"
+                                            value={this.state.button || ''}
+                                            onChange={this.handleChange}
+                                            placeholder="Button Label"
+
+                                        />
+                                    </div>                                
                                 </div>
-                                <div className="modalComponentDescription">
-                                    <label>Description</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Set Description"
-                                        name="description"
-                                        value={this.state.description}
-                                        onChange={this.handleChange}
-                                    />
+                                <div className="modalComponentSaveButton">
+                                    <button onClick={this.props.saveToList}>save</button>
                                 </div>
-                                <div className="modalComponentButton">
-                                    <label>button</label>
-                                    <input
-                                        type="text"
-                                        name="button"
-                                        value={this.state.button || ''}
-                                        onChange={this.handleChange}
-                                    />
-                                </div>
-                                <button onClick={this.props.saveToList}>save</button>
                             </div>
                             <div className="modalContent-right">
-                                {this.state.title === '' && this.state.description === '' && this.state.button === '' ? (<div>No preview availabel</div>) : (<ModalContentRight designCon={designCon}>
-                                    <h3>{this.state.title}</h3>
-                                    <p>{this.state.description}</p>
-                                    <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}}>{this.state.button}</button>
+                                <div className="modalContentMode">
+                                    <h4>Content Preview</h4>
+                                </div>
+                                <div className="modalContentPreview">
+                                {this.state.title === '' && this.state.description === '' && this.state.button === '' ? 
+                                (<div>
+                                    No preview available
+                                </div>)
+                                 : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
+                                        <h3>{this.state.title}</h3>
+                                        <p>{this.state.description}</p>
+                                        <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}}>{this.state.button}</button>
                                 </ModalContentRight>)}
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
