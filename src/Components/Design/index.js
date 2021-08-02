@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { DesignContext } from '../Context/DesignContext'
 import DesignPreview from './DesignPreview'
 import DesignSettings from './DesignSettings'
+import '../../scss/survey.scss';
+
 
 export default function Design() {
 	const { saveContext } = useContext( DesignContext );
