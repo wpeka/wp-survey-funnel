@@ -171,7 +171,8 @@ export function ReportContextProvider(props) {
 		insights,
 		setDates,
 		changeDate,
-		dateValidations
+		dateValidations,
+		setReports
 	}
 
 	return (

@@ -287,6 +287,7 @@ class Wp_Survey_Funnel_Admin {
 				<input type="hidden" id="ajaxURL" value="<?php echo admin_url( 'admin-ajax.php' );//phpcs:ignore ?>">
 				<input type="hidden" id="ajaxSecurity" value="<?php echo wp_create_nonce('wpsf-security');//phpcs:ignore ?>">
 				<input type="hidden" id="dashboardLink" value="<?php echo admin_url() . 'admin.php?page=wpsf-dashboard';//phpcs:ignore ?>">
+				<input type="hidden" id="exportCSVAction" value="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>?action=export_csv">
 				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
 			</body>
 			</html>
@@ -450,7 +451,6 @@ class Wp_Survey_Funnel_Admin {
 		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$start_date = isset( $_POST['startDate'] ) ? sanitize_text_field( wp_unslash( $_POST['startDate'] ) ) : '';
 		$end_date   = isset( $_POST['endDate'] ) ? sanitize_text_field( wp_unslash( $_POST['endDate'] ) ) : '';
-		error_log( $start_date . '  ' . $end_date );
 		$rows       = $wpdb->get_results(
 			$wpdb->prepare(
 				'
@@ -465,7 +465,6 @@ class Wp_Survey_Funnel_Admin {
 			)
 		);
 		$return_arr = array();
-		error_log( print_r( $rows, true ) );
 		if ( is_array( $rows ) && count( $rows ) ) {
 			foreach ( $rows as $row ) {
 				$temp_arr = array(
@@ -474,6 +473,7 @@ class Wp_Survey_Funnel_Admin {
 					'userLocaleID' => $row->user_locale_id,
 					'time_created' => $row->time_created,
 					'userMeta'     => $row->user_meta,
+					'checked'      => false,
 				);
 
 				preg_match( '/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/', $row->fields, $matches );
@@ -543,5 +543,22 @@ class Wp_Survey_Funnel_Admin {
 			'contacts'       => $contacts_count,
 			'completionRate' => $completion_rate,
 		);
+	}
+
+	/**
+	 * Export CSV string.
+	 */
+	public function wpsf_export_csv() {
+		error_log( print_r( $_POST, true ) );
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'exportSecurity', 'security' );
+		}
+		$filename       = $this->plugin_name . '-stats';
+		$generated_date = gmdate( 'd-m-Y His' );
+		$csv_string     = isset( $_POST['csv_data'] ) ? sanitize_textarea_field( wp_unslash( $_POST['csv_data'] ) ) : '';
+		header( 'Content-Type: text/csv; charset=utf-8' );
+		header( 'Content-Disposition: attachment; filename="' . $filename . ' ' . $generated_date . '.csv";' );
+		echo wp_kses_data( $csv_string );
+		die();
 	}
 }
