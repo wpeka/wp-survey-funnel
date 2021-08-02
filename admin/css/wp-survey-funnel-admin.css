@@ -160,6 +160,14 @@
 	top: 0;
 }
 
+.wpsf-image {
+	overflow: hidden;
+}
+
+.wpsf-image > img {
+	max-width: 100%;
+}
+
 .wpsf-badge {
 	padding: 4.5px 8.5px;
 	color: white;
@@ -190,6 +198,10 @@
 
 .wpsf-badge-scoring {
 	background: #3EB595;
+}
+
+.wpsf-badge-basic {
+	background: #E1E8F0;
 }
 
 .wpsf-title-box {

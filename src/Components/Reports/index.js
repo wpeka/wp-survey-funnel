@@ -18,6 +18,7 @@ export default function Reports() {
                         changeDate(date, "startDate");
                     }}
                     timeFormat={false}
+                    closeOnSelect={true}
                 ></DateTime>
                 <strong> - </strong>
                 <DateTime
@@ -27,6 +28,7 @@ export default function Reports() {
                         changeDate(date, "endDate");
                     }}
                     timeFormat={false}
+                    closeOnSelect={true}
                 ></DateTime>
             </div>
 
