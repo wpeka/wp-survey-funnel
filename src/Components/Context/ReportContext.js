@@ -1,11 +1,16 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import fetchData from '../../HelperComponents/fetchData';
 import { BuildContext } from './BuildContext';
+import moment from 'moment';
 
 export function ReportContextProvider(props) {
 	
 	const [reports, setReports] = useState([]);
 	const [currentReportSelected, setCurrentReportSelected] = useState(null);
+	const [dates, setDates] = useState({
+        startDate: null,
+        endDate: null,
+    });
 
 	const [insights, setInsights] = useState({
 		List: {
@@ -19,20 +24,51 @@ export function ReportContextProvider(props) {
 	let { List } = useContext( BuildContext );
 	List = JSON.parse(JSON.stringify( List ));
 
+    const changeDate = (date, label) => {
+        setDates({
+            ...dates,
+            [label]: date,
+        });
+    };
+
+    const dateValidations = () => {
+        if ( dates.startDate === null || dates.endDate === null ) {
+            return {
+                errorMessage: 'Please Select Start date and end date to generate reports.',
+                error: true,
+            }
+        }
+        else if ( moment(dates.startDate).isAfter(dates.endDate) ) {
+            return {
+                errorMessage: 'Start Date cannot be less than end date.',
+                error: true,
+            }
+        }
+
+        return {
+            error: false,
+        }
+    }
+
 	useEffect(() => {
-		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
-        const post_id = new URLSearchParams(window.location.search).get('post_id');
-        const data = {
-            security: ajaxSecurity,
-            action: 'wpsf_get_reports_data',
-            post_id
-        };
-        const ajaxURL = document.getElementById('ajaxURL').value;
-        fetchData( ajaxURL, data )
-		.then((data) => {
-			setReports(data.data);
-		});
-	}, [])
+		if ( ! dateValidations().error ) {
+			const ajaxSecurity = document.getElementById('ajaxSecurity').value;
+			const post_id = new URLSearchParams(window.location.search).get('post_id');
+			const data = {
+				security: ajaxSecurity,
+				action: 'wpsf_get_reports_data',
+				post_id,
+				startDate: moment(dates.startDate).format('YYYY-MM-DD'),
+				endDate: moment(dates.endDate).format('YYYY-MM-DD')
+			};
+			const ajaxURL = document.getElementById('ajaxURL').value;
+			fetchData( ajaxURL, data )
+			.then((data) => {
+				console.log(data);
+				setReports(data.data);
+			});
+		}
+	}, [dates.startDate, dates.endDate])
 
 	useEffect(() => {
 		if ( reports.length > 0 ) {
@@ -41,7 +77,7 @@ export function ReportContextProvider(props) {
 			let totalCompletionRate = 0;
 			let totalReports = reports.length;
 			let totalCompleted = 0;
-			console.log( List );
+
 			for( let i = 0; i < List.CONTENT_ELEMENTS.length ; i++ ) {
 				List.CONTENT_ELEMENTS[i].totalAnswered = 0;
 				List.CONTENT_ELEMENTS[i].totalViewed = 0;
@@ -114,13 +150,28 @@ export function ReportContextProvider(props) {
 			});
 			setCurrentReportSelected( reports[0] );
 		}
+		else {
+			setInsights({
+				List: {
+					CONTENT_ELEMENTS: [],
+				},
+				totalContacts: 0,
+				totalViews: 0,
+				totalCompletionRate: 0,
+			});
+			setCurrentReportSelected(null);
+		}
 	}, [reports])
 
 	const state = {
+		dates,
 		reports,
 		currentReportSelected,
 		setCurrentReportSelected,
 		insights,
+		setDates,
+		changeDate,
+		dateValidations
 	}
 
 	return (

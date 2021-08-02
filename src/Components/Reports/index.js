@@ -1,46 +1,43 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Tabs from "../../HelperComponents/Tabs";
-import { DateRange } from "react-date-range";
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css'; 
+import DateTime from "react-datetime";
+import "react-datetime/css/react-datetime.css";
 import Responses from "./Responses";
 import Insights from "./Insights";
-
-const options = {  year: 'numeric', month: 'long', day: 'numeric' };
-const toDateString = ( date ) => {
-	return '';
-}
+import { ReportContext } from "../Context/ReportContext";
 
 export default function Reports() {
-    const [dates, setDates] = useState([
-        {
-            startDate: new Date(),
-            endDate: new Date(),
-            key: "selection",
-        },
-    ]);
-	
+    const { dates, changeDate, dateValidations } = useContext( ReportContext );
     return (
         <div>
-			<div className="datePicker">
-				<div className="datePickerInput">
-					<p>{toDateString(dates.startDate)} - {toDateString(dates.endDate)}</p>
-				</div>
-				<DateRange
-					editableDateInputs={true}
-					onChange={item => setDates([item.selection])}
-					moveRangeOnFirstSelection={false}
-					ranges={dates}
-				/>
-			</div>
-			
+            <div className="datePicker">
+                <DateTime
+                    dateFormat="MMMM Do YYYY"
+                    value={dates.startDate}
+                    onChange={(date) => {
+                        changeDate(date, "startDate");
+                    }}
+                    timeFormat={false}
+                ></DateTime>
+                <strong> - </strong>
+                <DateTime
+                    dateFormat="MMMM Do YYYY"
+                    value={dates.endDate}
+                    onChange={(date) => {
+                        changeDate(date, "endDate");
+                    }}
+                    timeFormat={false}
+                ></DateTime>
+            </div>
+
             <Tabs>
                 <div label="Insights">
-                    <Insights></Insights>
+                    {dateValidations().error ? (<div>{dateValidations().errorMessage}</div>) : (<Insights></Insights>)}
+                    
                 </div>
                 <div label="Responses">
-					<Responses></Responses>
-				</div>
+                    {dateValidations().error ? (<div>{dateValidations().errorMessage}</div>) : (<Responses></Responses>)}
+                </div>
             </Tabs>
         </div>
     );

@@ -65,7 +65,6 @@ export default function Responses() {
 				<div className="selectionElements">
 					{reports.map(function(item, i) {
 						return <div className="selectionElement" key={item.userLocaleID}>
-							<input type="checkbox" />
 							<div className="selectElement" onClick={() => {handleReportChange(i)}} click-idx={i}>
 								<h3>{item.lead}</h3>
 								<small>{item.time_created}</small>
