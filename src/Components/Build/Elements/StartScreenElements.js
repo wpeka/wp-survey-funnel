@@ -1,6 +1,8 @@
 import React, { createElement, Fragment } from "react";
 import { convertToRgbaCSS } from "../../../HelperComponents/HelperFunctions";
 import ModalContentRight from '../../../HelperComponents/ModalContentRight';
+import { CloseModal } from '../../../HelperComponents/CloseModalPopUp';
+
 
 export const CoverPage = React.memo(
     class extends React.Component {
@@ -36,7 +38,7 @@ export const CoverPage = React.memo(
                     <div className="modalOverlay">
                         <div className="modalContent-navbar">
                             <h2>Cover Page</h2>
-                            <button>✕</button>
+                            <CloseModal/>
                         </div>
                         <div className="modalContent">
                             <div className="modalContent-left">
