@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { BuildContext } from '../Context/BuildContext';
 import { ReportContext } from '../Context/ReportContext'
+import moment from 'moment';
 
 export default function Responses() {
 	const { reports, currentReportSelected, setCurrentReportSelected, setReports } = useContext( ReportContext );
@@ -32,6 +33,9 @@ export default function Responses() {
 		let csvString = [
 			[...getCSVFirstRow()],
 		];
+		if ( ! reports.length > 0 ) {
+			return;
+		}
 		let array = [];
 		for ( let i = 0 ; i < reports.length; i++ ) {
 			if ( ! reports[i].checked ) {
@@ -39,7 +43,7 @@ export default function Responses() {
 			}
 			let data = [
 				title,
-				reports[i].time_created,
+				moment.unix(reports[i].time_created).format( 'YYYY-MM-DD HH:mm A' ),
 				reports[i].user_meta === 0 ? 'No' : 'Yes'
 			]
 			let fields = JSON.parse(reports[i].fields);
@@ -160,7 +164,7 @@ export default function Responses() {
 							<div className="selectElement" onClick={() => {handleReportChange(i)}} click-idx={i}>
 								<input type="checkbox" value={item.checked} onChange={() => {handleCheckboxChange(i)}} />
 								<h3>{item.lead}</h3>
-								<small>{item.time_created}</small>
+								<small>{moment.unix(item.time_created).format( 'YYYY-MM-DD HH:mm A' )}</small>
 							</div>
 						</div>
 					})}
@@ -168,7 +172,7 @@ export default function Responses() {
 				<button onClick={exportCSV}>Export CSV</button>
 			</div>
 			<div className="responsePreview">
-				Response Preview For: {reports.length > 0 && currentReportSelected !== null ? (<p>Response preview for: {currentReportSelected.lead} {currentReportSelected.time_created}</p>) : (<p>No response recorded</p>)}
+				Response Preview For: {reports.length > 0 && currentReportSelected !== null ? (<p>Response preview for: {currentReportSelected.lead} {moment.unix(currentReportSelected.time_created).format( 'YYYY-MM-DD HH:mm A' )}</p>) : (<p>No response recorded</p>)}
 				{getCurrentReportSelectedPreview()}
 			</div>
 			<form method="post" id="post_csv" action={document.getElementById('exportCSVAction').value}>
