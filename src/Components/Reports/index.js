@@ -4,6 +4,7 @@ import { DateRange } from "react-date-range";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css'; 
 import Responses from "./Responses";
+import Insights from "./Insights";
 
 const options = {  year: 'numeric', month: 'long', day: 'numeric' };
 const toDateString = ( date ) => {
@@ -34,7 +35,9 @@ export default function Reports() {
 			</div>
 			
             <Tabs>
-                <div label="Insights"></div>
+                <div label="Insights">
+                    <Insights></Insights>
+                </div>
                 <div label="Responses">
 					<Responses></Responses>
 				</div>

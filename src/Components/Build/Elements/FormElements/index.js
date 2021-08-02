@@ -86,8 +86,8 @@ export const FormElements = React.memo(
                 case "ShortTextAnswer":
                 case "LongTextAnswer":
                     return (
-                        <div>
-                            <label>Label Name</label>
+                        <div className="modalComponentFormFields">
+                            <h3>Label Name</h3>
                             <input
                                 type="text"
                                 name="name"
@@ -98,7 +98,7 @@ export const FormElements = React.memo(
                                 }}
                             />
 
-                            <label>Placeholder</label>
+                            <h3>Placeholder</h3>
                             <input
                                 type="text"
                                 name="placeholder"
@@ -108,16 +108,20 @@ export const FormElements = React.memo(
                                     this.handleInputChange(e);
                                 }}
                             />
+                            <div className="wpsf-required-field-container">
+                                <h3>Mark field Required</h3>
+                                <input
+                                    type="checkbox"
+                                    name="required"
+                                    data-attr={index}
+                                    onChange={(e) => {
+                                        this.handleCheckboxChange(e);
+                                    }}
+                                    checked={List[index].required}
+                                />
 
-                            <input
-                                type="checkbox"
-                                name="required"
-                                data-attr={index}
-                                onChange={(e) => {
-                                    this.handleCheckboxChange(e);
-                                }}
-                                checked={List[index].required}
-                            />
+                            </div>
+
                         </div>
                     );
             }
@@ -209,81 +213,106 @@ export const FormElements = React.memo(
         };
 
         render() {
-            const { designCon } = this.props;
+            const { designCon, currentElement } = this.props;
             return (
                 <>
                     <div className="modalOverlay">
+                        <div className="modalContent-navbar">
+                            <h2>Form Builder</h2>
+                            <button>✕</button>
+                        </div>
                         <div className="modalContent">
                             <div className="modalContent-left">
-                                {this.state.currentFormElement === null ? (
-                                    <>
-                                        <div className="modalComponentTitle">
-                                            <label>Title</label>
-                                            <input
-                                                type="text"
-                                                placeholder="Set Title"
-                                                name="title"
-                                                value={this.state.title}
-                                                onChange={this.handleChange}
-                                            />
-                                        </div>
-                                        <div className="modalComponentDescription">
-                                            <label>Description</label>
-                                            <input
-                                                type="text"
-                                                placeholder="Set Description"
-                                                name="description"
-                                                value={this.state.description}
-                                                onChange={this.handleChange}
-                                            />
-                                        </div>
 
-                                        {formElements.map(function (ele, i) {
-                                            return (
-                                                <BuildFormElement
-                                                    addToList={this.addToList}
-                                                    setCurrentFormElement={
-                                                        this
-                                                            .setCurrentFormElement
-                                                    }
-                                                    ele={ele}
-                                                    key={i}
-                                                ></BuildFormElement>
-                                            );
-                                        }, this)}
+                                    {this.state.currentFormElement === null ? (
+                                        <>
+                                        <div className="modalContent-left-fields">
 
-                                        <div className="modalComponentButtonLabel">
-                                            <label>Button label</label>
-                                            <input
-                                                type="text"
-                                                placeholder="Set Button Label"
-                                                name="buttonLabel"
-                                                value={this.state.buttonLabel}
-                                                onChange={this.handleChange}
-                                            />
-                                        </div>
+                                            <div className="modalComponentTitle">
+                                                <h3>Title</h3>
+                                                <input
+                                                    type="text"
+                                                    placeholder="Set Title"
+                                                    name="title"
+                                                    value={this.state.title}
+                                                    onChange={this.handleChange}
+                                                />
+                                            </div>
+                                            <div className="modalComponentDescription">
+                                                <h3>Description</h3>
+                                                <input
+                                                    type="text"
+                                                    placeholder="Set Description"
+                                                    name="description"
+                                                    value={this.state.description}
+                                                    onChange={this.handleChange}
+                                                    style={{height:"150px"}}
+                                                />
+                                            </div>
+                                            <div className="wpsf-form-elements_content">
+                                                <h3 style={{display:"inline-block"}}>Form Fields</h3><span> (Simply drag & drop to use)</span>
+                                                <div className="wpsf-form-elements_container">
 
-                                        <button onClick={this.props.saveToList}>
-                                            save
-                                        </button>
-                                    </>
-                                ) : (
-                                    <div>
-                                        {this.getCurrentFormElementLeftRender()}
-                                        <button
-                                            onClick={() => {
-                                                this.setCurrentFormElement(
-                                                    null
+                                            {formElements.map(function (ele, i) {
+                                                return (
+                                                        <BuildFormElement
+                                                            addToList={this.addToList}
+                                                            setCurrentFormElement={
+                                                                this
+                                                                    .setCurrentFormElement
+                                                            }
+                                                            ele={ele}
+                                                            key={i}
+                                                        ></BuildFormElement>
+
                                                 );
-                                                document
-                                                .querySelector(".wpsf-build-container .tab-list-item")
-                                                .click();
-                                            }}
-                                        >
-                                            go back
-                                        </button>
-                                    </div>
-                                )}
+                                            }, this)}
+                                                </div>
+                                            </div>
+
+                                            <div className="modalComponentButtonLabel">
+                                                <h3>Button label</h3>
+                                                <input
+                                                    type="text"
+                                                    placeholder="Set Button Label"
+                                                    name="buttonLabel"
+                                                    value={this.state.buttonLabel}
+                                                    onChange={this.handleChange}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="modalComponentSaveButton">
+                                                <button onClick={this.props.saveToList}>
+                                                    save
+                                                </button>
+                                        </div>
+                                        </>
+                                    ) : (
+                                        <div>
+                                            <div className="modalContent-left-fields">
+                                                <div>
+                                                    {this.getCurrentFormElementLeftRender()}
+
+                                                </div>
+                                                </div>
+                                                <div className="modalComponentSaveButton">
+                                                    <button
+                                                            onClick={() => {
+                                                                this.setCurrentFormElement(
+                                                                    null
+                                                                );
+                                                                document
+                                                                .querySelector(".wpsf-build-container .tab-list-item")
+                                                                .click();
+                                                            }}
+                                                        >
+                                                            Go Back
+                                                        </button>
+                                                </div>
+                                            </div>
+                                        
+                                    )}
+                                
                             </div>
                             <div className="modalContent-right">
                                 <Tabs>
@@ -309,18 +338,20 @@ export const FormElements = React.memo(
                                         },
                                         this)}
                                     </div>
-                                    <div label="Preview">
-                                        <ModalContentRight designCon={designCon}>
-                                            <h3>{this.state.title}</h3>
-                                            <p>{this.state.description}</p>
-                                            {this.state.List.map(function (ele, i) {
-                                                return this.getCurrentFormElementRightRender(
-                                                    ele,
-                                                    i
-                                                );
-                                            }, this)}
-                                            <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}} type="button">{this.state.buttonLabel}</button>
-                                        </ModalContentRight>
+                                        <div label="Preview">
+                                            <ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
+                                                <h3>{this.state.title}</h3>
+                                                <p>{this.state.description}</p>
+                                                {this.state.List.map(function (ele, i) {
+                                                    return this.getCurrentFormElementRightRender(
+                                                        ele,
+                                                        i
+                                                    );
+                                                }, this)}
+                                                <div className="wpsf-form-submit-button">
+                                                    <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}} type="button">{this.state.buttonLabel}</button>
+                                                </div>
+                                            </ModalContentRight>
                                     </div>
                                 </Tabs>
                             </div>
