@@ -7,13 +7,13 @@ import { ModalContextProvider } from "./Context/ModalContext";
 const Build = lazy(() => import("./Build"));
 const Design = lazy(() => import("./Design"));
 const Reports = lazy(() => import('./Reports'));
-
+const dashboardLink = document.getElementById('dashboardLink').value;
 export default function Routes() {
     return (
         <Router>
             <div className="wpsf-cb-nav-container">
                 <div>
-                    Back to dashboard
+                    <a href={dashboardLink}>Back to dashboard</a>
                 </div>
                 <ul>
                     <li>

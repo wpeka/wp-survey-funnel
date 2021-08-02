@@ -59,6 +59,7 @@ class Wp_Survey_Funnel_Activator {
 			fields JSON,
 			user_locale_id varchar(255),
 			time_created int(11) DEFAULT 0,
+			date_created DATE,
 			user_meta TEXT
 		) $charset_collate;";
 		dbDelta( $sql );

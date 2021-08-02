@@ -286,6 +286,7 @@ class Wp_Survey_Funnel_Admin {
 				<div id="root" class="wpsf-root"></div>
 				<input type="hidden" id="ajaxURL" value="<?php echo admin_url( 'admin-ajax.php' );//phpcs:ignore ?>">
 				<input type="hidden" id="ajaxSecurity" value="<?php echo wp_create_nonce('wpsf-security');//phpcs:ignore ?>">
+				<input type="hidden" id="dashboardLink" value="<?php echo admin_url() . 'admin.php?page=wpsf-dashboard';//phpcs:ignore ?>">
 				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
 			</body>
 			</html>
@@ -447,18 +448,24 @@ class Wp_Survey_Funnel_Admin {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
 		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-
+		$start_date = isset( $_POST['startDate'] ) ? sanitize_text_field( wp_unslash( $_POST['startDate'] ) ) : '';
+		$end_date   = isset( $_POST['endDate'] ) ? sanitize_text_field( wp_unslash( $_POST['endDate'] ) ) : '';
+		error_log( $start_date . '  ' . $end_date );
 		$rows       = $wpdb->get_results(
 			$wpdb->prepare(
 				'
 					SELECT * 
 					FROM ' . $table_name . '
-					WHERE survey_id = %d
+					WHERE date_created BETWEEN %s and %s AND
+					survey_id = %d
 				',
+				$start_date,
+				$end_date,
 				$post_id
 			)
 		);
 		$return_arr = array();
+		error_log( print_r( $rows, true ) );
 		if ( is_array( $rows ) && count( $rows ) ) {
 			foreach ( $rows as $row ) {
 				$temp_arr = array(

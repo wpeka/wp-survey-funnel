@@ -219,17 +219,19 @@ class Wp_Survey_Funnel_Public {
 			}
 		} else {
 			$fields = wp_json_encode( array( $fields->_id => $fields ) );
+			$date   = gmdate( 'Y-m-d' );
 			$rows   = $wpdb->query(
 				$wpdb->prepare(
 					'
-					INSERT INTO ' . $table_name . ' ( `survey_id`, `user_id`, `fields`, `user_locale_id`, `time_created`, `user_meta` )
-					VALUES (%d, %d, %s, %s, %d, 0)
+					INSERT INTO ' . $table_name . ' ( `survey_id`, `user_id`, `fields`, `user_locale_id`, `time_created`, `date_created`, `user_meta` )
+					VALUES (%d, %d, %s, %s, %d, %s, 0)
 				',
 					$survey_id,
 					$user_id,
 					$fields,
 					$user_locale_id,
-					$time
+					$time,
+					$date
 				)
 			);
 
