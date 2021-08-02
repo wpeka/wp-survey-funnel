@@ -43,7 +43,7 @@ export default function DesignSettings() {
 		<div className="wpsf-design-setting-fields">
 			<div className="fontFamily-picker wpsf-design-elements">
 				<h2>Text</h2>
-				<div class="wpsf-font-family-container">
+				<div className="wpsf-font-family-container">
 					<h4>Font Family</h4>
 					<select onChange={handleSelection} value={designCon.fontFamilyValue}>
 						{fontFamily.map(function(item) {
@@ -66,7 +66,7 @@ export default function DesignSettings() {
 			<div className="file-picker wpsf-design-elements">
 				<div className="wpsf-img-upload-container">
 					<span>Background Image (Recommended image size 1920x1080px)</span>
-					<label for="wpsf_bg_img" class="wpsf-custom-file-upload">
+					<label htmlFor="wpsf_bg_img" className="wpsf-custom-file-upload">
 						<input id="wpsf_bg_img" type="file" name="file" onChange={designCon.changeHandler} />
 						Upload Image
 					</label>

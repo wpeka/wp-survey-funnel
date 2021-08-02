@@ -122,6 +122,10 @@ class Wp_Survey_Funnel_Public {
 			return '';
 		}
 		$meta_data = get_post_meta( $atts['id'], 'wpsf-survey-data', true );
+		$ip        = $_SERVER['REMOTE_ADDR'];//phpcs:ignore
+		$m_time    = time() * 1000000;
+
+		$unique_id = md5( $ip . $m_time . wp_rand( 0, time() ) );
 		$time      = time();
 		$data      = array(
 			'build'        => $meta_data['build'],
@@ -130,6 +134,7 @@ class Wp_Survey_Funnel_Public {
 			'ajaxSecurity' => wp_create_nonce( 'wpsf-security' ),
 			'post_id'      => $atts['id'],
 			'time'         => $time,
+			'userLocalID'  => $unique_id,
 		);
 
 		$design_image_id = get_post_meta( $atts['id'], 'wpsf-survey-design-background', true );
@@ -141,22 +146,7 @@ class Wp_Survey_Funnel_Public {
 
 		wp_enqueue_script( $this->plugin_name . '-survey' );
 		wp_localize_script( $this->plugin_name . '-survey', 'data', $data );
-		return '<div id="wpsf-survey-' . $time . '" style="width: 100%"></div>';
-	}
-
-	/**
-	 * Get default json settings.
-	 *
-	 * @param string $type settings type.
-	 */
-	public function wpsf_get_default_json_settings( $type ) {
-		switch ( $type ) {
-			case 'design':
-				return '';
-
-			default:
-				return '';
-		}
+		return '<div id="wpsf-survey-' . $unique_id . '" style="width: 100%"></div>';
 	}
 
 	/**
@@ -170,7 +160,117 @@ class Wp_Survey_Funnel_Public {
 			wp_die();
 		}
 
-		error_log( print_r( $_POST, true ) );
+		$survey_id      = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$user_locale_id = isset( $_POST['userLocalID'] ) ? sanitize_text_field( wp_unslash( $_POST['userLocalID'] ) ) : 0;
+		$time           = isset( $_POST['time'] ) ? intval( $_POST['time'] ) : 0;
+		$tab_count      = isset( $_POST['completed'] ) ? intval( $_POST['completed'] ) : 0;
+		$user_id        = get_current_user_id();
+
+		$fields = $this->wpsf_sanitize_survey_lead( $_POST['data'] );//phpcs:ignore
+		// $fields = wp_json_encode( array( $fields->_id => $fields ) );
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'srf_entries';
+		// get field value from database if exist.
+		$rows = $wpdb->get_results(
+			$wpdb->prepare(
+				'
+				SELECT * 
+				FROM ' . $table_name . '
+				WHERE user_locale_id = %s AND time_created = %d
+			',
+				$user_locale_id,
+				$time
+			)
+		);
+		$flag = false;
+
+		if ( is_array( $rows ) && count( $rows ) ) {
+			$data          = json_decode( $rows[0]->fields );
+			$id            = $fields->_id;
+			$data->$id     = $fields;
+			$current_count = count( (array) $data );
+
+			if ( $current_count !== $tab_count ) {
+				$completed = 0;
+			} else {
+				$completed = 1;
+			}
+
+			$fields = wp_json_encode( $data );
+			$flag   = true;
+		}
+		if ( $flag ) {
+			$rows = $wpdb->query(
+				$wpdb->prepare(
+					'
+					UPDATE ' . $table_name . ' SET `fields` = %s, `user_meta` = %s
+					WHERE user_locale_id = %s AND time_created = %d
+				',
+					$fields,
+					$completed,
+					$user_locale_id,
+					$time
+				)
+			);
+
+			if ( ! $rows ) {
+				wp_send_json_error();
+				wp_die();
+			}
+		} else {
+			$fields = wp_json_encode( array( $fields->_id => $fields ) );
+			$date   = gmdate( 'Y-m-d' );
+			$rows   = $wpdb->query(
+				$wpdb->prepare(
+					'
+					INSERT INTO ' . $table_name . ' ( `survey_id`, `user_id`, `fields`, `user_locale_id`, `time_created`, `date_created`, `user_meta` )
+					VALUES (%d, %d, %s, %s, %d, %s, 0)
+				',
+					$survey_id,
+					$user_id,
+					$fields,
+					$user_locale_id,
+					$time,
+					$date
+				)
+			);
+
+			if ( ! $rows ) {
+				wp_send_json_error();
+				wp_die();
+			}
+		}
+
+		wp_send_json_success();
+		wp_die();
 	}
 
+	/**
+	 * Sanitize survey leads.
+	 *
+	 * @param string $data json data.
+	 */
+	public function wpsf_sanitize_survey_lead( $data ) {
+		$data = json_decode( stripslashes( $data ) );
+		foreach ( $data as $key => $value ) {
+			switch ( $key ) {
+				case '_id':
+				case 'status':
+				case 'question':
+					$value = sanitize_text_field( wp_unslash( $value ) );
+					break;
+				case 'answer':
+					if ( is_array( $value ) ) {
+						foreach ( $value as $row ) {
+							$row = sanitize_text_field( wp_unslash( $row->name ) );
+						}
+					} else {
+						$value = sanitize_text_field( wp_unslash( $value ) );
+					}
+				default:
+					break;
+			}
+		}
+		return $data;
+	}
 }

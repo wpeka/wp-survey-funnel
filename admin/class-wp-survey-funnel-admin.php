@@ -286,6 +286,7 @@ class Wp_Survey_Funnel_Admin {
 				<div id="root" class="wpsf-root"></div>
 				<input type="hidden" id="ajaxURL" value="<?php echo admin_url( 'admin-ajax.php' );//phpcs:ignore ?>">
 				<input type="hidden" id="ajaxSecurity" value="<?php echo wp_create_nonce('wpsf-security');//phpcs:ignore ?>">
+				<input type="hidden" id="dashboardLink" value="<?php echo admin_url() . 'admin.php?page=wpsf-dashboard';//phpcs:ignore ?>">
 				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
 			</body>
 			</html>
@@ -432,5 +433,115 @@ class Wp_Survey_Funnel_Admin {
 		);
 		wp_send_json_success( $data );
 		wp_die();
+	}
+
+	/**
+	 * Ajax: Get reports data.
+	 */
+	public function wpsf_get_reports_data() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'srf_entries';
+		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$start_date = isset( $_POST['startDate'] ) ? sanitize_text_field( wp_unslash( $_POST['startDate'] ) ) : '';
+		$end_date   = isset( $_POST['endDate'] ) ? sanitize_text_field( wp_unslash( $_POST['endDate'] ) ) : '';
+		error_log( $start_date . '  ' . $end_date );
+		$rows       = $wpdb->get_results(
+			$wpdb->prepare(
+				'
+					SELECT * 
+					FROM ' . $table_name . '
+					WHERE date_created BETWEEN %s and %s AND
+					survey_id = %d
+				',
+				$start_date,
+				$end_date,
+				$post_id
+			)
+		);
+		$return_arr = array();
+		error_log( print_r( $rows, true ) );
+		if ( is_array( $rows ) && count( $rows ) ) {
+			foreach ( $rows as $row ) {
+				$temp_arr = array(
+					'lead'         => 'Unknown',
+					'fields'       => $row->fields,
+					'userLocaleID' => $row->user_locale_id,
+					'time_created' => $row->time_created,
+					'userMeta'     => $row->user_meta,
+				);
+
+				preg_match( '/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/', $row->fields, $matches );
+
+				if ( count( $matches ) ) {
+					$temp_arr['lead'] = $matches[0];
+				}
+				array_push( $return_arr, $temp_arr );
+			}
+		}
+
+		wp_send_json_success( $return_arr );
+		wp_die();
+	}
+
+	/**
+	 * Get insights data.
+	 *
+	 * @param int $post_id post id.
+	 */
+	public static function wpsf_get_insights_data( $post_id ) {
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'srf_entries';
+		$rows       = $wpdb->get_results(
+			$wpdb->prepare(
+				'
+				SELECT * 
+				FROM ' . $table_name . '
+				WHERE survey_id = %d
+			',
+				$post_id
+			)
+		);
+
+		$view_count      = 0;
+		$completed_count = 0;
+		$contacts_count  = 0;
+		$total_count     = count( $rows );
+		$completion_rate = 0;
+		$contacts_count  = 0;
+		$completed_count = 0;
+
+		if ( count( $rows ) ) {
+			$data             = get_post_meta( $post_id, 'wpsf-survey-data', true );
+			$build            = json_decode( $data['build'] );
+			$content_elements = $build->List->CONTENT_ELEMENTS;//phpcs:ignore
+			foreach ( $content_elements as $content ) {
+				$id      = $content->id;
+				$pattern = '/' . $id . '/';
+				foreach ( $rows as $row ) {
+					if ( preg_match( $pattern, $row->fields ) ) {
+						$view_count++;
+					}
+				}
+			}
+			foreach ( $rows as $row ) {
+				if ( preg_match( '/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/', $row->fields ) ) {
+					$contacts_count++;
+				}
+				$completed_count += intval( $row->user_meta );
+			}
+			$completion_rate = $completed_count / $total_count * 100;
+			$completion_rate = number_format( (float) $completion_rate, 2, '.', '' );
+		}
+		return array(
+			'views'          => $view_count,
+			'contacts'       => $contacts_count,
+			'completionRate' => $completion_rate,
+		);
 	}
 }

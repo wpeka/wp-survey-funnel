@@ -91,7 +91,10 @@
         }
         input:checked + label{
             background-color: #E2EDFF;
-         }
+        }
+        input:hover + label{
+            background-color: #E2EDFF;
+        }
     }
 }
 .wpsf-tab-FormElements{

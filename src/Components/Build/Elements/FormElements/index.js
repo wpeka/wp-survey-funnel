@@ -6,6 +6,7 @@ import DropFormBoard from "./DropFormBoard";
 import update from "immutability-helper";
 import ModalContentRight from "../../../../HelperComponents/ModalContentRight";
 import { convertToRgbaCSS } from "../../../../HelperComponents/HelperFunctions";
+import { CloseModal } from '../../../../HelperComponents/CloseModalPopUp';
 
 export const FormElements = React.memo(
     class extends React.Component {
@@ -219,7 +220,7 @@ export const FormElements = React.memo(
                     <div className="modalOverlay">
                         <div className="modalContent-navbar">
                             <h2>Form Builder</h2>
-                            <button>✕</button>
+                            <CloseModal/>
                         </div>
                         <div className="modalContent">
                             <div className="modalContent-left">

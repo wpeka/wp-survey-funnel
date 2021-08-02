@@ -1,5 +1,6 @@
 import React, { createElement, Fragment } from "react";
 import ModalContentRight from '../../../HelperComponents/ModalContentRight';
+import { CloseModal } from '../../../HelperComponents/CloseModalPopUp';
 
 export const ResultScreen = React.memo(
     class extends React.Component {
@@ -32,7 +33,7 @@ export const ResultScreen = React.memo(
                     <div className="modalOverlay">
                         <div className="modalContent-navbar">
                             <h2>Result Screen</h2>
-                            <button>✕</button>
+                            <CloseModal/>
                         </div>
                         <div className="modalContent">
                             <div className="modalContent-left">

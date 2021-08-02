@@ -165,6 +165,7 @@ class Wp_Survey_Funnel {
 		$this->loader->add_action( 'wp_ajax_wpsf_get_build_data', $plugin_admin, 'wpsf_get_build_data' );
 		$this->loader->add_action( 'wp_ajax_wpsf_save_design_data', $plugin_admin, 'wpsf_save_design_data' );
 		$this->loader->add_action( 'wp_ajax_wpsf_get_design_data', $plugin_admin, 'wpsf_get_design_data' );
+		$this->loader->add_action( 'wp_ajax_wpsf_get_reports_data', $plugin_admin, 'wpsf_get_reports_data' );
 
 		// setup wpsf-survey (builder) page.
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'wpsf_survey_setup_page' );
@@ -190,6 +191,7 @@ class Wp_Survey_Funnel {
 
 		// ajax calls
 		$this->loader->add_action( 'wp_ajax_wpsf_new_survey_lead', $plugin_public, 'wpsf_new_survey_lead' );
+		$this->loader->add_action( 'wp_ajax_nopriv_wpsf_new_survey_lead', $plugin_public, 'wpsf_new_survey_lead' );
 	}
 
 	/**

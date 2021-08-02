@@ -129,6 +129,7 @@ $url_to_redirect = Wp_Survey_Funnel_Admin::wpsf_get_setup_page_url();
 				</div>
 				<?php if ( is_array( $surveys ) ) : ?>
 					<?php foreach ( $surveys as $survey ) : ?>
+						<?php $data = Wp_Survey_Funnel_Admin::wpsf_get_insights_data( $survey->ID ); ?>
 						<div class="wpsf-content" data-filter-item data-filter-name="<?php echo esc_html( $survey->post_title ); ?>">
 							<div class="wpsf-image-box">
 								<div class="wpsf-image">
@@ -185,19 +186,19 @@ $url_to_redirect = Wp_Survey_Funnel_Admin::wpsf_get_setup_page_url();
 							<div class="wpsf-content-stats --wpsf-grid">
 								<div class="wpsf-stat-box wpsf-views">
 									<div class="wpsf-stat">
-										<span>2</span>
+										<span><?php echo ( $data['views'] );//phpcs:ignore ?></span>
 										<small><?php esc_html_e( 'Views', 'wp-survey-funnel' ); ?></small>
 									</div>
 								</div>
 								<div class="wpsf-stat-box wpsf-contacts">
 									<div class="wpsf-stat">
-										<span>2</span>
+										<span><?php echo ( $data['contacts'] );//phpcs:ignore ?></span>
 										<small><?php esc_html_e( 'Contacts', 'wp-survey-funnel' ); ?></small>
 									</div>
 								</div>
 								<div class="wpsf-stat-box wpsf-completion-rate">
 									<div class="wpsf-stat">
-										<span>100%</span>
+										<span><?php echo ( $data['completionRate'] . '%' );//phpcs:ignore ?></span>
 										<small><?php esc_html_e( 'Compl. Rate', 'wp-survey-funnel' ); ?></small>
 									</div>
 								</div>
