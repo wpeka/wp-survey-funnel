@@ -266,6 +266,9 @@ body {
                 color: #626F7D;
 
             }
+            a:focus{
+                color: #0F4C81;
+            }
         }
     }
     button{
@@ -819,5 +822,57 @@ body {
     }
 }
 .wpsf-design-preview-container{
+    .wpsf-survey-form{
+        display: flex;
+        justify-content: center;
+        overflow: auto;
+        padding: 0 20px;
+        height: calc(100vh - 108px);
+        .wpsf-design-preview-container{
+            width: 100%;
+            .preview{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .tab-list{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                }
+            }
+        }
+        .tab-controls{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 20px;
+            button{
+                background-color: #F0F2F5;
+                border: 1px solid #d2dae2;
+                color: #60554F;
+                padding: 8px 15px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 9px;
+            }
+            button:disabled{
+                opacity: 0.7;
+                background-color: #FFFFFF;
+            }
+        }
+        .no-preview-available{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
 
 }

@@ -158,153 +158,181 @@ export default function DesignPreview() {
         switch (item.componentName) {
             case "SingleChoice":
                 return (
-                    <div
-                        className="tab-container"
-                        key={item.id}
+                    <div className="wpsf-tab-SingleChoice"
                         style={{ ...style }}
                     >
                         <div
-                            className="tab"
+                            className="tab-container"
                             key={item.id}
-                            tab-componentname={item.componentName}
+
                         >
-                            <h3 className="surveyTitle">{item.title}</h3>
-                            <p className="surveyDescription">{item.description}</p>
-    
-                            <div className="radio-group">
-                                {item.answers.map(function (ele, i) {
-                                    return (
-                                        <div key={item.id + "_radio" + "_" + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}>
-                                            <input
-                                                type="radio"
-                                                name={item.id + "_radio"}
-                                                id={item.id + "_radio" + "_" + i}
-                                                value={ele.name}
-                                                onChange={handleRadioChange}
-                                                listidx={idx}
-                                                inputidx={i}
-                                                checked={item.value === ele.name}
-                                            />
-                                            <label
-                                                htmlFor={
-                                                    item.id + "_radio" + "_" + i
-                                                }
-                                            >
-                                                {ele.name}
-                                            </label>
-                                        </div>
-                                    );
-                                })}
+                            <div
+                                className="tab"
+                                key={item.id}
+                                tab-componentname={item.componentName}
+                            >
+                                <h3 className="surveyTitle">{item.title}</h3>
+                                <p className="surveyDescription">{item.description}</p>
+        
+                                <div className="radio-group">
+                                    {item.answers.map(function (ele, i) {
+                                        return (
+                                            <div key={item.id + "_radio" + "_" + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="wpsf-tab-answer-container">
+                                                <input
+                                                    type="radio"
+                                                    name={item.id + "_radio"}
+                                                    id={item.id + "_radio" + "_" + i}
+                                                    value={ele.name}
+                                                    onChange={handleRadioChange}
+                                                    listidx={idx}
+                                                    inputidx={i}
+                                                    checked={item.value === ele.name}
+                                                />
+                                                <label
+                                                    htmlFor={
+                                                        item.id + "_radio" + "_" + i
+                                                    }
+                                                >
+                                                    <div>
+                                                        { parseInt(idx)+1}
+                                                    </div>
+                                                    <p>
+                                                        {ele.name}
+                                                     </p>
+
+                                                </label>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>
                 );
             case "MultiChoice":
                 return (
-                    <div
-                        className="tab-container"
-                        key={item.id}
-                        style={{ ...style }}
+                    <div className="wpsf-tab-MultiChoice"
+                    style={{ ...style }}
                     >
                         <div
-                            className="tab"
+                            className="tab-container"
                             key={item.id}
-                            tab-componentname={item.componentName}
                         >
-                            <h3 className="surveyTitle">{item.title}</h3>
-                            <p className="surveyDescription">{item.description}</p>
-    
-                            <div className="checkbox-group">
-                                {item.answers.map(function (ele, i) {
-                                    return (
-                                        <div key={item.id + "_checkbox" + "_" + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}>
-                                            <input
-                                                type="checkbox"
-                                                name={item.id + "_checkbox"}
-                                                id={item.id + "_checkbox" + "_" + i}
-                                                value={ele.name}
-                                                listidx={idx}
-                                                inputidx={i}
-                                                checked={ele.checked}
-                                                onChange={handleCheckboxChange}
-                                            />
-                                            <label
-                                                htmlFor={
-                                                    item.id + "_checkbox" + "_" + i
-                                                }
-                                            >
-                                                {ele.name}
-                                            </label>
-                                        </div>
-                                    );
-                                })}
+                            <div
+                                className="tab"
+                                key={item.id}
+                                tab-componentname={item.componentName}
+                            >
+                                <h3 className="surveyTitle">{item.title}</h3>
+                                <p className="surveyDescription">{item.description}</p>
+        
+                                <div className="checkbox-group">
+                                    {item.answers.map(function (ele, i) {
+                                        return (
+                                            <div key={item.id + "_checkbox" + "_" + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="wpsf-tab-answer-container">
+                                                <input
+                                                    type="checkbox"
+                                                    name={item.id + "_checkbox"}
+                                                    id={item.id + "_checkbox" + "_" + i}
+                                                    value={ele.name}
+                                                    listidx={idx}
+                                                    inputidx={i}
+                                                    checked={ele.checked}
+                                                    onChange={handleCheckboxChange}
+                                                />
+                                                <label
+                                                    htmlFor={
+                                                        item.id + "_checkbox" + "_" + i
+                                                    }
+                                                >
+                                                    <div>
+                                                        { parseInt(idx)+1}
+                                                    </div>
+                                                    <p>
+                                                        {ele.name}
+                                                     </p>
+                                                </label>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>
                 );
             case "CoverPage":
                 return (
-                    <div
-                        className="tab-container"
-                        key={item.id}
-                        style={{ ...style }}
+                    <div className="wpsf-tab-CoverPage"
+                    style={{ ...style }}
                     >
-                        <div className="tab" tab-componentname={item.componentName}>
-                            <h3 className="surveyTitle">{item.title}</h3>
-                            <p className="surveyDescription">{item.description}</p>
-                            <button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
-                                changeCurrentTab(1);
-                            }}>
-                                {item.button}
-                            </button>
+                        <div
+                            className="tab-container"
+                            key={item.id}
+
+                        >
+                            <div className="tab" tab-componentname={item.componentName}>
+                                <h3 className="surveyTitle">{item.title}</h3>
+                                <p className="surveyDescription">{item.description}</p>
+                                <button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
+                                    changeCurrentTab(1);
+                                }}>
+                                    {item.button}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 );
             case "ResultScreen":
                 return (
-                    <div
-                        className="tab-container"
-                        key={item.id}
-                        style={{ ...style }}
+                    <div className="wpsf-tab-ResultScreen"
+                    style={{ ...style }}
                     >
-                        <div className="tab" tab-componentname={item.componentName}>
-                            <h3 className="surveyTitle">{item.title}</h3>
-                            <p className="surveyDescription">{item.description}</p>
+                        <div
+                            className="tab-container"
+                            key={item.id}
+                        >
+                            <div className="tab" tab-componentname={item.componentName}>
+                                <h3 className="surveyTitle">{item.title}</h3>
+                                <p className="surveyDescription">{item.description}</p>
+                            </div>
                         </div>
                     </div>
                 );
             case 'FormElements':
                 return (
-                    <div
-                        className="tab-container"
-                        key={item.id}
-                        style={{ ...style }}
+                    <div className="wpsf-tab-FormElements"
+                    style={{ ...style }}
                     >
-                        <div className="tab" tab-componentname={item.componentName}>
-                            <h3 className="surveyTitle">{item.title}</h3>
-                            <p className="surveyDescription">{item.description}</p>
-                            {item.List.map(function(ele, i) {
-                                switch( ele.componentName ) {
-                                    case 'FirstName':
-                                    case 'LastName':
-                                    case 'ShortTextAnswer':
-                                        return <div key={ele.id + '_' + i + 'key'}>
-                                            <label>{ele.name}</label>
-                                            <input type="text" id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx} />
-                                        </div>
-                                    case 'Email':
-                                        return <div key={ele.id + '_' + i + 'key'}>
-                                            <label>{ele.name}</label>
-                                            <input type="email" id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}/>
-                                        </div>
-                                    case 'LongTextAnswer':
-                                        return <div key={ele.id + '_' + i + 'key'}>
-                                            <label>{ele.name}</label>
-                                            <textarea id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} required={ele.required} placeholder={ele.placeholder} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}></textarea>
-                                        </div>
-                                }
-                            })}
-                            <button type="button" onClick={() => {changeCurrentTab(1)}}>{item.buttonLabel}</button>
+                        <div
+                            className="tab-container"
+                            key={item.id}
+                        >
+                            <div className="tab" tab-componentname={item.componentName}>
+                                <h3 className="surveyTitle">{item.title}</h3>
+                                <p className="surveyDescription">{item.description}</p>
+                                {item.List.map(function(ele, i) {
+                                    switch( ele.componentName ) {
+                                        case 'FirstName':
+                                        case 'LastName':
+                                        case 'ShortTextAnswer':
+                                            return <div key={ele.id + '_' + i + 'key'}>
+                                                <label>{ele.name}</label>
+                                                <input type="text" id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx} />
+                                            </div>
+                                        case 'Email':
+                                            return <div key={ele.id + '_' + i + 'key'}>
+                                                <label>{ele.name}</label>
+                                                <input type="email" id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}/>
+                                            </div>
+                                        case 'LongTextAnswer':
+                                            return <div key={ele.id + '_' + i + 'key'}>
+                                                <label>{ele.name}</label>
+                                                <textarea id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} required={ele.required} placeholder={ele.placeholder} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}></textarea>
+                                            </div>
+                                    }
+                                })}
+                                <button type="button" onClick={() => {changeCurrentTab(1)}}>{item.buttonLabel}</button>
+                            </div>
                         </div>
                     </div>
                 )
@@ -356,40 +384,56 @@ export default function DesignPreview() {
                         : "No Questions were added in this survey"}
                 </div>
             ) : (
-                <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), ...designCon.backgroundStyle }}>
-                    <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
-                        {componentList.map(function (item, i) {
-                            if (currentTab === i) {
-                                return renderContentElements(item, "block", i);
-                            }
-                            return renderContentElements(item, 'none', i);
-                        })}
-                    </div>
-					{error.length > 0 && <div className="tab-validation-error">
-						{error.map(function(err) {
-							return err;
-						})}	
-					</div>}
-                    <div className="tab-controls">
-						{(currentTab !== tabCount - 1 && componentList[currentTab].componentName !== 'CoverPage') &&
-						<button
-                            type="button"
-                            onClick={() => {
-                                changeCurrentTab(1);
-                            }}
-                            disabled={checkButtonDisability('Next')}
-                        >
-                            Next
-                        </button>}
-                        {(currentTab !== 0 && componentList[currentTab].type !== 'RESULT_ELEMENTS') && <button
-                            type="button"
-                            onClick={() => {
-                                changeCurrentTab(-1);
-                            }}
-                            disabled={checkButtonDisability('Previous')}
-                        >
-                            {currentTab === tabCount - 1 ? 'Enter New Submission?' : 'Previous'}
-                        </button>}
+                <div className="wpsf-design-preview-container">
+                    <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), ...designCon.backgroundStyle }}>
+                        <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
+                            {componentList.map(function (item, i) {
+                                if (currentTab === i) {
+                                    switch(item.componentName){
+                                        case 'CoverPage':
+                                        case 'ResultScreen':
+                                            return renderContentElements(item, "flex", i);
+                                            break;
+                                        case 'SingleChoice':
+                                        case 'MultiChoice':
+                                        case 'FormElements':
+                                            return renderContentElements(item, "block", i);
+                                            break;
+
+                                    }
+                                }
+                                return renderContentElements(item, 'none', i);
+                            })}
+                        </div>
+                        {error.length > 0 && <div className="tab-validation-error">
+                            {error.map(function(err) {
+                                return err;
+                            })}	
+                        </div>}
+                    
+                        <div className="tab-controls">
+                            {(currentTab !== 0 && componentList[currentTab].type !== 'RESULT_ELEMENTS') && <button
+                                type="button"
+                                onClick={() => {
+                                    changeCurrentTab(-1);
+                                }}
+                                disabled={checkButtonDisability('Previous')}
+                            >
+                                {currentTab === tabCount - 1 ? 'Enter New Submission?' : '<'}
+                            </button>}
+                            {(currentTab !== tabCount - 1 && componentList[currentTab].componentName !== 'CoverPage') &&
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    changeCurrentTab(1);
+                                }}
+                                disabled={checkButtonDisability('Next')}
+                            >
+                                &gt;
+                            </button>}
+                            <button>Restart</button>
+
+                        </div>
                     </div>
                 </div>
             )}
