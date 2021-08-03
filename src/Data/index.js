@@ -193,3 +193,21 @@ export const initColorState = {
 		a: '1'
 	},
 }
+
+export const shortcodeTypes = [
+	{
+		name: 'Responsive',
+		id: 'responsive',
+		helpText: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, harum?"
+	},
+	{
+		name: 'Full Page',
+		id: 'fullpage',
+		helpText: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, harum? lorem"
+	},
+	{
+		name: 'Popup',
+		id: 'popup',
+		helpText: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, harum? popup"
+	}
+]
