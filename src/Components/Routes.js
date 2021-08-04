@@ -7,6 +7,8 @@ import { ModalContextProvider } from "./Context/ModalContext";
 const Build = lazy(() => import("./Build"));
 const Design = lazy(() => import("./Design"));
 const Reports = lazy(() => import('./Reports'));
+const Share = lazy(() => import('./Share'));
+const Configure = lazy(() => import('./Configure'));
 const dashboardLink = document.getElementById('dashboardLink').value;
 export default function Routes() {
     return (
@@ -49,10 +51,10 @@ export default function Routes() {
                             <Design></Design>
                         </Route>
                         <Route path="/configure">
-                            <div className="configure">configure</div>
+                            <Configure />
                         </Route>
                         <Route path="/share">
-                            <div className="share">share</div>
+                            <Share />
                         </Route>
                         <Route path="/reports">
                             <ReportContextProvider>

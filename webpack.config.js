@@ -1,6 +1,7 @@
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
@@ -27,6 +28,10 @@ module.exports = {
                 use: ["style-loader", "css-loader", "sass-loader"],
             },
             {
+                test: /(survey\.scss)$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader" ],
+            },
+            {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
               },
@@ -47,5 +52,9 @@ module.exports = {
         new webpack.ProvidePlugin({
             React: "react",
         }),
+        // Define the filename pattern for CSS.
+        new MiniCssExtractPlugin({
+            filename: 'survey.css',
+        })
     ],
 };
