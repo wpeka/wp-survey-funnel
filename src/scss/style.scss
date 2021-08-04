@@ -73,77 +73,85 @@ body {
 }
 .wpsf-build-container {
 	display: grid;
-	grid-template-columns:1.2fr 2fr;
+	grid-template-columns:572px 1fr;
     font-family: 'ApercuPro';
     color: #495560;
 }
 
-.wpsf-build-eles {
-	border-right: 1px solid #d2dae2;
+.wpsf-build-container-menu{
     background-color: #F6F8FA;
-    overflow: auto;
-    height: calc(100vh - 108px);
-    .wpsf-build-text{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        border-bottom: 1px solid #d2dae2;
-        padding-left: 20px;
-        height: 108px;
-        p{
-            margin: 0;
-            color: #626F7D;
-            font-size: 16px;
-        }
-        h2{
-            margin: 0;
-            font-size: 24px;
-        }
-    }
+    border-right: 1px solid #d2dae2;
+    .wpsf-build-eles {
+        overflow: auto;
+        // height: calc(100vh - 108px);
+        height: calc(100vh - 180px);
 
-	 .wpsf-build-elements {
-        padding-left: 20px;
-        border-bottom: 1px solid #d2dae2;
-        padding-bottom: 20px;
-		 .wpsf-build-elements_start, .wpsf-build-elements_content,  .wpsf-build-elements_results{
-			margin-top: 20px;
-            h3{
-                font-size: 20px;
+        .wpsf-build-text{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid #d2dae2;
+            padding-left: 20px;
+            height: 108px;
+            p{
                 margin: 0;
+                color: #626F7D;
+                font-size: 16px;
             }
-            .wpsf-build-elements_container{
-                display: flex;
-                flex-wrap: wrap;
-                .wpsf-build-elements_box{
-                    cursor: move;
-                    height: 66px;
-                    width: 256px;
-                    background-color: #FFFFFF;
-                    box-shadow: 0px 4px 1px rgb(33 30 30 / 4%);
-                    border-radius: 9px;
-                    margin: 5px;
+            h2{
+                margin: 0;
+                font-size: 24px;
+            }
+        }
+    
+         .wpsf-build-elements {
+            padding-left: 20px;
+            padding-bottom: 20px;
+             .wpsf-build-elements_start, .wpsf-build-elements_content,  .wpsf-build-elements_results{
+                margin-top: 20px;
+                h3{
+                    font-size: 20px;
+                    margin: 0;
+                }
+                .wpsf-build-elements_container{
                     display: flex;
-                    align-items:center;
-                    padding-left: 10px;
-                    img{
-                        padding: 5px;
-                        border-radius: 5px;
-                    }
-                    p{
-                        margin-left: 15px;
+                    flex-wrap: wrap;
+                    margin-top: 10px;
+                    .wpsf-build-elements_box{
+                        cursor: move;
+                        height: 66px;
+                        width: 256px;
+                        background-color: #FFFFFF;
+                        box-shadow: 0px 4px 1px rgb(33 30 30 / 4%);
+                        border-radius: 9px;
+                        margin: 0 10px 10px 0;
+                        display: flex;
+                        align-items:center;
+                        padding-left: 10px;
+                        img{
+                            padding: 5px;
+                            border-radius: 5px;
+                        }
+                        p{
+                            margin-left: 15px;
+                        }
                     }
                 }
+    
             }
+    
+        }
 
-		}
-
-	}
+    }
     .wpsf-build-elements-save{
+
+        border-top: 1px solid #d2dae2;
+        height: 64px;
         display: flex;
+        align-items: center;
         justify-content: flex-end;
-        margin-top: 10px;
-        margin-right: 20px;
-        .wpsf-build-elements-save-button{
+        padding-right: 40px;
+        button{
             background-color: #0F4C81;
             border: none;
             color: white;
@@ -156,8 +164,27 @@ body {
             cursor: pointer;
             border-radius: 9px;
         }
+        // display: flex;
+        // justify-content: flex-end;
+        // margin-top: 10px;
+        // margin-right: 20px;
+        // .wpsf-build-elements-save-button{
+        //     background-color: #0F4C81;
+        //     border: none;
+        //     color: white;
+        //     padding: 12px 28px;
+        //     text-align: center;
+        //     text-decoration: none;
+        //     display: inline-block;
+        //     font-size: 16px;
+        //     margin: 4px 2px;
+        //     cursor: pointer;
+        //     border-radius: 9px;
+        // }
     }
+
 }
+
 .wpsf-build-START_ELEMENTS-img{
     background-color: #FFE7F5;
 }
@@ -192,7 +219,7 @@ body {
         p{
             background-color: #687AE2;
             margin: 0;
-            padding: 2px 5px;
+            padding: 5px 10px;
             display: inline-block;
             border-radius:99px;
         }
@@ -255,6 +282,15 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    .wpsf-back{
+        img{
+            width: 6px;
+            margin-right: 5px;
+        }
+        a{
+            color: #0F4C81;
+        }
+    }
     ul{
         display:flex;
         list-style-type: none;
@@ -362,7 +398,7 @@ body {
                 h4{
                     margin: 0;
                     background-color: #E1E8F0;
-                    padding: 5px;
+                    padding: 7px;
                     border-radius: 9px;
                 }
             }
@@ -460,7 +496,7 @@ body {
                 }
                 .modalComponentAnswers{
                     input{
-                        width: 80%;
+                        width: calc(100% - 32px);
                     }
                     button{
                         border: none;
@@ -626,7 +662,7 @@ body {
 //design css
 .wpsf-design-container{
 	display: grid;
-	grid-template-columns:1.2fr 2fr;
+	grid-template-columns:550px 1fr;
     font-family: 'ApercuPro';
     color: #495560;
 }
@@ -640,15 +676,24 @@ body {
         .wpsf-design-elements{
             border-bottom: 1px solid #d2dae2;
             padding-bottom: 20px;
-            padding: 0 20px 20px 20px;
+            padding: 0 0 20px 20px;
+            h2{
+                margin: 20px 0 0 0;
+            }
             .wpsf-font-family-container{
                 select{
                     height: 66px;
-                    width: 80%;
+                    width: 275px;
                     border-radius: 9px;
-                    padding: 10px;
                     border: 0;
                     box-shadow: 0 6px 12px rgb(0 0 0 / 15%);
+                    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Ctitle%3Edown-arrow%3C%2Ftitle%3E%3Cg%20fill%3D%22%23000000%22%3E%3Cpath%20d%3D%22M10.293%2C3.293%2C6%2C7.586%2C1.707%2C3.293A1%2C1%2C0%2C0%2C0%2C.293%2C4.707l5%2C5a1%2C1%2C0%2C0%2C0%2C1.414%2C0l5-5a1%2C1%2C0%2C1%2C0-1.414-1.414Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+                    background-repeat: no-repeat;
+                    -webkit-appearance: none;
+                    appearance: none;
+                    background-position-x: 245px;
+                    background-position-y: 25px;
+                    padding-left: 20px;
                 }
                 select:focus{
                     outline: none;
@@ -676,11 +721,15 @@ body {
                             background-color: #FFFFFF;
                             border-radius: 5px;
                             text-align: center;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
                         }
                     }
                 }
             }
             .wpsf-opacity-section{
+                padding-right: 20px;
                 .wpsf-opacity-percentage{
                     display: flex;
                     justify-content: space-between;
@@ -780,6 +829,7 @@ body {
                 display: flex;
                 justify-content: space-between;
                 margin-top: 20px;
+                padding-right: 20px;
             }
             .wpsf-custom-file-upload{
                 background-color: #4CAF50;

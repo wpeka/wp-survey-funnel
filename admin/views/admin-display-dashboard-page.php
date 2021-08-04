@@ -29,9 +29,11 @@ function wpsf_get_background_image( $post_id ) {
 <div class="wpsf-container-fluid" id="wpsf-dashboard">
 	<div class="wpsf-modal">
 		<div class="wpsf-modal-dialog">
-			<span class="wpsf-dismiss">x</span>
+			<div class="wpsf-modal-dialog-navbar">
+				<span class="wpsf-dismiss">✕</span>
+			</div>
 			<div class="wpsf-modal-inner">
-				<span class="content-info-title">Select Content type</span>
+				<span class="content-info-title">Select Content Type</span>
 				<div class="select-content-type">
 					<div class="wpsf-modal-content-card">
 						<div class="card-image">
@@ -51,7 +53,7 @@ function wpsf_get_background_image( $post_id ) {
 							Basic Survey
 						</div>
 						<div class="card-text">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi.
 						</div>
 					</div>
 					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
@@ -72,7 +74,7 @@ function wpsf_get_background_image( $post_id ) {
 							Outcome Logic
 						</div>
 						<div class="card-text">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi.
 						</div>
 					</div>
 					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
@@ -93,12 +95,12 @@ function wpsf_get_background_image( $post_id ) {
 							Scoring Logic
 						</div>
 						<div class="card-text">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi.
 						</div>
 					</div>
 				</div>
 				<div class="set-content-name">
-					<span class="content-info-title">Select Content name</span>
+					<span class="content-info-title">Select Content Name</span>
 					<input type="text" id="content-title" placeholder="Enter Title">
 					<button type="submit" id="wpsf-modal-submit">Continue</button>
 				</div>
@@ -106,29 +108,27 @@ function wpsf_get_background_image( $post_id ) {
 		</div>
 	</div>
 	<div class="wpsf-navbar">
-		<div class="wpsf-container wpsf-top-navbar --wpsf-flex">
+		<div class="wpsf-container-navbar wpsf-top-navbar --wpsf-flex">
 			<div class="wpsf-logo">SurveyFunnel</div>
 		</div>
 	</div>
 	<div class="wpsf-body">
 		<div class="wpsf-container">
-			<div class="wpsf-dashboard-container --wpsf-flex">
+			<div class="wpsf-dashboard-container">
 				<div class="wpsf-left">
 					<span><?php esc_html_e( 'DASHBOARD', 'wp-survey-funnel' ); ?></span>
 				</div>
-				<div class="wpsf-right --wpsf-flex">
-					<div class="wpsf-search">
-						<input class="wpsf-dashboard-search" type="text" data-search placeholder="<?php esc_html_e( 'Search By Content Name', 'wp-survey-funnel' ); ?>">
-					</div>
-					<div class="wpsf-filter">
-						<label for="wpsf-filter"><?php esc_html_e( 'Filter By:' ); ?></label>
-						<select <?php echo $disabled; //phpcs:ignore ?> id="wpsf-filter">
+				<div class="wpsf-filter wpsf-right">
+					<label for="wpsf-filter"><?php esc_html_e( 'Filter By:' ); ?></label>
+					<select <?php echo $disabled; //phpcs:ignore ?> id="wpsf-filter">
 
-							<option value="all-types"><?php esc_html_e( 'All Types' ); ?></option>
-							<option value="all-types"><?php esc_html_e( 'Scoring Logic' ); ?></option>
-							<option value="all-types"><?php esc_html_e( 'Outcome Logic' ); ?></option>
-						</select>
-					</div>
+						<option value="all-types"><?php esc_html_e( 'All Types' ); ?></option>
+						<option value="all-types"><?php esc_html_e( 'Scoring Logic' ); ?></option>
+						<option value="all-types"><?php esc_html_e( 'Outcome Logic' ); ?></option>
+					</select>
+				</div>
+				<div class="wpsf-search wpsf-right">
+					<input class="wpsf-dashboard-search" type="text" data-search placeholder="<?php esc_html_e( 'Search By Content Name', 'wp-survey-funnel' ); ?>">
 				</div>
 			</div>
 			<div class="wpsf-card-container">

@@ -80,7 +80,7 @@
         }
         div{
             height: 54px;
-            margin: 5px;
+            margin: 10px;
             width: 54px;
             background-color: #F0F2F5;
             border-radius: 9px;
@@ -96,6 +96,9 @@
         }
         input:hover + label{
             background-color: #E2EDFF;
+        }
+        input:hover + label div{
+            background-color: white;
         }
     }
 }

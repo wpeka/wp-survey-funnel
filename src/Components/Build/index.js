@@ -37,39 +37,43 @@ export default function Build() {
 	return (
 		<>
 		<div className="wpsf-build-container">
-			<div className="wpsf-build-eles">
-				<div className="wpsf-build-text">
-					<h2>Content Builder</h2>
-					<p>Drag and drop contents to the right</p>
-				</div>
-				<div className="wpsf-build-elements">
-					<div className="wpsf-build-elements_start">
-						<h3>Start Screen:</h3>
-						<div className="wpsf-build-elements_container">
-							{buildElements.startScreen.map(function( ele, i ) {
-								return <BuildElement ele={ele} key={i}></BuildElement>
-							})}
+			<div className="wpsf-build-container-menu">
+				<div className="wpsf-build-eles">
+					<div className="wpsf-build-text">
+						<h2>Content Builder</h2>
+						<p>Drag and drop contents to the right</p>
+					</div>
+					<div className="wpsf-build-elements">
+						<div className="wpsf-build-elements_start">
+							<h3>Start Screen:</h3>
+							<div className="wpsf-build-elements_container">
+								{buildElements.startScreen.map(function( ele, i ) {
+									return <BuildElement ele={ele} key={i}></BuildElement>
+								})}
+							</div>
+						</div>
+						<div className="wpsf-build-elements_content">
+							<h3>Content Elements:</h3>
+							<div className="wpsf-build-elements_container">
+								{buildElements.contentElements.map(function( ele, i ) {
+									return <BuildElement ele={ele} key={i}></BuildElement>
+								})}
+							</div>
+						</div>
+						<div className="wpsf-build-elements_results">
+							<h3>Result Screen:</h3>
+							<div className="wpsf-build-elements_container">
+								{buildElements.resultScreen.map(function( ele, i ) {
+									return <BuildElement ele={ele} key={i}></BuildElement>
+								})}
+							</div>
 						</div>
 					</div>
-					<div className="wpsf-build-elements_content">
-						<h3>Content Elements:</h3>
-						<div className="wpsf-build-elements_container">
-							{buildElements.contentElements.map(function( ele, i ) {
-								return <BuildElement ele={ele} key={i}></BuildElement>
-							})}
-						</div>
-					</div>
-					<div className="wpsf-build-elements_results">
-						<h3>Result Screen:</h3>
-						<div className="wpsf-build-elements_container">
-							{buildElements.resultScreen.map(function( ele, i ) {
-								return <BuildElement ele={ele} key={i}></BuildElement>
-							})}
-						</div>
-					</div>
+				
+
 				</div>
 				<div className="wpsf-build-elements-save">
-						<button className="wpsf-build-elements-save-button" onClick={saveData}>Save</button>
+							<button className="wpsf-build-elements-save-button" onClick={saveData}>Save</button>
 				</div>
 			</div>
 			<div className="wpsf-build-content">

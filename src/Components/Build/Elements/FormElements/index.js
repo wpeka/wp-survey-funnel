@@ -284,7 +284,7 @@ export const FormElements = React.memo(
                                         </div>
                                         <div className="modalComponentSaveButton">
                                                 <button onClick={this.props.saveToList}>
-                                                    save
+                                                    Save
                                                 </button>
                                         </div>
                                         </>
