@@ -123,7 +123,7 @@ export const designColors = [
 ]
 
 export const initColorState = {
-	opacity: 1,
+	opacity: 0,
 
 	fontFamily: null,
 	fontFamilyValue: '',
