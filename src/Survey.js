@@ -44,6 +44,13 @@ function Survey() {
     
     const iframeRef = React.createRef()
     const [height, setHeight] = useState(500)
+    
+    let designCon = {}
+    if (data.design === '') {
+        designCon = { ...initColorState }
+    } else {
+        designCon = JSON.parse(data.design)
+    }
 
     const handleResize = useCallback(
         (iframe) => {
@@ -52,18 +59,17 @@ function Survey() {
             if (height !== 0) {
                 setHeight(height)
             }
+
+            iframe.current?.node.contentDocument?.body.style.setProperty(
+                "--answer-highlight-box-color",
+                convertToRgbaCSS(designCon.answersHighlightBoxColor),
+                'important'
+		    );
         },
         [iframeRef]
     )
 
     useEffect(() => handleResize(iframeRef), [handleResize, iframeRef])
-
-    let designCon = {}
-    if (data.design === '') {
-        designCon = { ...initColorState }
-    } else {
-        designCon = JSON.parse(data.design)
-    }
 
     designCon.selectedImageUrl = data.designImageUrl
     const { List } = build
@@ -102,8 +108,8 @@ function Survey() {
 
     const changeCurrentTab = function (num) {
         // check for validations
-        if (!checkValidations(num)) {
-            return
+        if ( ! checkValidations(num) || currentTab + num >= tabCount ) {
+            return;
         }
         if (!currentlyPreviewing && num !== -1) {
             let formData = {
