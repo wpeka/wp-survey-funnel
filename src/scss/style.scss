@@ -228,7 +228,18 @@ body {
         }
     }
 }
+.wpsf-card-area {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
 
+    .wpsf-cardbox-number {
+        padding: 22px 30px;
+        background: white;
+        border-radius: 9px;
+        margin-right: 10px;
+    }
+}
 .cardBox {
     width: 100%;
     color: black;
@@ -237,7 +248,6 @@ body {
     align-items: center;
     padding: 20px;
     background: white;
-    margin-bottom: 1rem;
 }
 
 .card-flex {

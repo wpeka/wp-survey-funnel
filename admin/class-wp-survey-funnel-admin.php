@@ -126,14 +126,14 @@ class Wp_Survey_Funnel_Admin {
 		);
 
 		// Settings.
-		add_submenu_page(
+		/* add_submenu_page(
 			'wpsf-dashboard',
 			__( 'Settings', 'wp-survey-funnel' ),
 			__( 'Settings', 'wp-survey-funnel' ),
 			'manage_options',
 			'wpsf-settings',
 			array( $this, 'wpsf_settings' )
-		);
+		); */
 
 		// Help.
 		add_submenu_page(
