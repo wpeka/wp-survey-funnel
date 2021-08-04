@@ -20,6 +20,22 @@ class Test_WP_Survey_Funnel_Public extends WP_UnitTestCase {
 	public static $wp_survey_funnel_public;
 
 	/**
+	 * Plugin name.
+	 *
+	 * @var string $plugin_name plugin name
+	 * @access public
+	 */
+	public static $plugin_name;
+
+	/**
+	 * Plugin version.
+	 *
+	 * @var string $plugin_version plugin version
+	 * @access public
+	 */
+	public static $plugin_version;
+
+	/**
 	 * Created dummy post id array
 	 *
 	 * @var int $post_ids post ids
@@ -41,6 +57,13 @@ class Test_WP_Survey_Funnel_Public extends WP_UnitTestCase {
 	public static $build;
 
 	/**
+	 * Dummy configure for survey
+	 *
+	 * @var string $configure configure string
+	 */
+	public static $configure;
+
+	/**
 	 * Setup function for all tests.
 	 *
 	 * @param WP_UnitTest_Factory $factory helper for unit test functionality.
@@ -49,23 +72,33 @@ class Test_WP_Survey_Funnel_Public extends WP_UnitTestCase {
 
 		$version = '';
 		if ( defined( 'WP_SURVEY_FUNNEL_VERSION' ) ) {
-			$version = WP_SURVEY_FUNNEL_VERSION;
+			self::$plugin_version = WP_SURVEY_FUNNEL_VERSION;
 		} else {
-			$version = '1.0.0';
+			self::$plugin_version = '1.0.0';
 		}
-		$plugin_name                   = 'wp-survey-funnel';
-		self::$wp_survey_funnel_public = new Wp_Survey_Funnel_Public( $plugin_name, $version );
+		self::$plugin_name             = 'wp-survey-funnel';
+		self::$wp_survey_funnel_public = new Wp_Survey_Funnel_Public( self::$plugin_name, self::$plugin_version );
 		self::$post_ids                = $factory->post->create_many( 2, array( 'post_type' => 'wpsf-survey' ) );
 		self::$design                  = '{\'opacity\':1,\'fontFamily\':null,\'fontFamilyValue\':\'\',\'backgroundColor\':{\'r\':255,\'g\':255,\'b\':255\'a\':1},\'buttonColor\':{r\':0,\'g\':222,\'b\':129,a\':1},\'buttonTextColor\':{\'r\':\'255\',\'g\':\'255\',\'b\':\'255\',\'a\':\'1\'},\'answersHighlightBoxColor\':{\'r\':\'232\',\'g\':\'238\',\'b\':\'244\',\'a\':\'1\'}}';
 		self::$build                   = '{"List":{"START_ELEMENTS":[{"button":"Start","title":"This is a cover page","description":"Cover page","id":"zh727zy9m7krvwz09k","componentName":"CoverPage","type":"START_ELEMENTS","currentlySaved":true}],"CONTENT_ELEMENTS":[{"title":"What is your age?","description":"Tell us about yourself","answers":[{"name":"20","checked":false},{"name":"10","checked":false},{"name":"40","checked":false},{"name":"60","checked":false}],"value":"","id":"0y566hzo1ewckrvwzvc8","componentName":"SingleChoice","type":"CONTENT_ELEMENTS","currentlySaved":true}],"RESULT_ELEMENTS":[{"title":"Thanks","description":"Thanks for participation","id":"cd98dnfel8krvx0db2","componentName":"ResultScreen","type":"RESULT_ELEMENTS","currentlySaved":true}]},"title":"Demo survey"}';
+		self::$configure               = '{\"metaInfo\":{\"title\":\"Title\",\"description\":\"Description\"},\"companyBranding\":false}';
 		update_post_meta(
 			self::$post_ids[0],
 			'wpsf-survey-data',
 			array(
-				'design' => self::$design,
-				'build'  => self::$build,
+				'design'    => self::$design,
+				'build'     => self::$build,
+				'configure' => self::$configure,
 			)
 		);
+	}
+
+	/**
+	 * Test for constructor function.
+	 */
+	public function test_construct() {
+		$obj = new Wp_Survey_Funnel_Public( self::$plugin_name, self::$plugin_version );
+		$this->assertTrue( $obj instanceof Wp_Survey_Funnel_Public );
 	}
 
 	/**
