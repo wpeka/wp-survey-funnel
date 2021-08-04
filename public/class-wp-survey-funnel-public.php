@@ -131,6 +131,7 @@ class Wp_Survey_Funnel_Public {
 		$data      = array(
 			'build'           => $meta_data['build'],
 			'design'          => $meta_data['design'],
+			'configure'       => $meta_data['configure'],
 			'ajaxURL'         => admin_url( 'admin-ajax.php' ),
 			'ajaxSecurity'    => wp_create_nonce( 'wpsf-security' ),
 			'post_id'         => $atts['id'],
