@@ -102,8 +102,8 @@ function Survey() {
 
     const changeCurrentTab = function (num) {
         // check for validations
-        if (!checkValidations(num)) {
-            return
+        if ( ! checkValidations(num) || currentTab + num >= tabCount ) {
+            return;
         }
         if (!currentlyPreviewing && num !== -1) {
             let formData = {
