@@ -44,45 +44,10 @@ export default function DesignPreview() {
 		if ( ! checkValidations( num ) ) {
 			return;
 		}
-        if ( ! currentlyPreviewing && currentTab === tabCount - 2 ) {
-            let newList = {
-                START_ELEMENTS: [],
-                CONTENT_ELEMENTS: [],
-                RESULT_ELEMENTS: [],
-            };
-            for ( let i = 0; i < componentList.length ; i++ ) {
-                if ( componentList[i].type === 'START_ELEMENTS' ) {
-                    newList.START_ELEMENTS.push(componentList[i]);
-                }
-                else if ( componentList[i].type === 'CONTENT_ELEMENTS' ) {
-                    newList.CONTENT_ELEMENTS.push(componentList[i]);
-                }
-                else if ( componentList[i].type === 'RESULT_ELEMENTS' ) {
-                    newList.RESULT_ELEMENTS.push(componentList[i]);
-                }
-            }
-            let data = {
-                List: JSON.stringify(newList),
-                time: new Date(),
-                security: document.getElementById('ajaxSecurity').value,
-                post_id: new URLSearchParams(window.location.search).get('post_id'),
-                action: 'wpsf_new_survey_lead'
-            }
-            fetchData(document.getElementById('ajaxURL').value, data)
-            .then((data) => {
-            });
-        }
-		if ( currentTab === tabCount - 1 ) {
-
-            setComponentList(initialState);
-			setCurrentTab(0);
-		}
-		else {
-			setCurrentTab(currentTab + num);
-		}   
+        setCurrentTab(currentTab + num);
     };
 
-	const checkValidations = ( num ) => {
+	const checkValidations = ( num, disablity = false ) => {
 		if ( currentlyPreviewing ) {
 			return true;
 		}
@@ -144,10 +109,14 @@ export default function DesignPreview() {
                 break;
 		}
 		if ( error.length > 0 ) {
-			setError(error);
+            if ( ! disablity ) {
+                setError(error);
+            }
 			return false;
 		}
-		setError([]);
+        if ( ! disablity ) {
+            setError([]);
+        }
 		return true;
 	}
 
@@ -194,7 +163,7 @@ export default function DesignPreview() {
                                                     }
                                                 >
                                                     <div>
-                                                        { parseInt(idx)+1}
+                                                        { parseInt(i)+1}
                                                     </div>
                                                     <p>
                                                         {ele.name}
@@ -246,7 +215,7 @@ export default function DesignPreview() {
                                                     }
                                                 >
                                                     <div>
-                                                        { parseInt(idx)+1}
+                                                        { parseInt(i)+1}
                                                     </div>
                                                     <p>
                                                         {ele.name}
@@ -369,12 +338,22 @@ export default function DesignPreview() {
     const checkButtonDisability = ( buttonType ) => {
         switch( buttonType ) {
             case 'Previous':
-                return false;
+                return currentTab === 0;
 
             case 'Next':
-                return componentList[currentTab].componentName === 'FormElements';
+                return componentList[currentTab].componentName === 'FormElements' || ! checkValidations( 1, true );
         }
     }
+
+    const checkButtonVisibility = ( buttonType ) => {
+        switch( buttonType ) {
+            case 'Previous':
+                return (currentTab !== 0 && (componentList[currentTab].type !== 'RESULT_ELEMENTS' || componentList[currentTab].type !== 'START_ELEMENTS'))
+            case 'Next':
+                return (currentTab !== tabCount - 1 && (componentList[currentTab].type !== 'RESULT_ELEMENTS' || componentList[currentTab].type !== 'START_ELEMENTS'));
+        }
+    }
+    
     return (
         <div className="wpsf-survey-form" style={{fontFamily: designCon.fontFamily}}>
             {tabCount === 0 ? (
@@ -393,12 +372,10 @@ export default function DesignPreview() {
                                         case 'CoverPage':
                                         case 'ResultScreen':
                                             return renderContentElements(item, "flex", i);
-                                            break;
                                         case 'SingleChoice':
                                         case 'MultiChoice':
                                         case 'FormElements':
                                             return renderContentElements(item, "block", i);
-                                            break;
 
                                     }
                                 }
@@ -411,8 +388,8 @@ export default function DesignPreview() {
                             })}	
                         </div>}
                     
-                        <div className="tab-controls">
-                            {(currentTab !== 0 && componentList[currentTab].type !== 'RESULT_ELEMENTS') && <button
+                        {componentList[currentTab].type !== 'START_ELEMENTS' && <div className="tab-controls">
+                            {checkButtonVisibility( 'Previous' ) && <button
                                 type="button"
                                 onClick={() => {
                                     changeCurrentTab(-1);
@@ -421,7 +398,7 @@ export default function DesignPreview() {
                             >
                                 {currentTab === tabCount - 1 ? 'Enter New Submission?' : '<'}
                             </button>}
-                            {(currentTab !== tabCount - 1 && componentList[currentTab].componentName !== 'CoverPage') &&
+                            { checkButtonVisibility( 'Next' ) &&
                             <button
                                 type="button"
                                 onClick={() => {
@@ -431,9 +408,11 @@ export default function DesignPreview() {
                             >
                                 &gt;
                             </button>}
-                            <button>Restart</button>
+                            <button onClick={() => {
+                                setCurrentTab(0);
+                            }}>Restart</button>
 
-                        </div>
+                        </div>}
                     </div>
                 </div>
             )}

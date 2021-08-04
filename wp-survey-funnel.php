@@ -41,39 +41,38 @@ if ( ! defined( 'WP_SURVEY_FUNNEL_PLUGIN_URL' ) ) {
 }
 
 if ( ! function_exists( 'srf_fs' ) ) {
-    error_log('in function exists');
-    /**
-     * Helper function to access SDK.
-     *
-     * @return Analytics
-     */
-    function srf_fs() {
-        global $srf_fs;
+	/**
+	 * Helper function to access SDK.
+	 *
+	 * @return Analytics
+	 */
+	function srf_fs() {
+		global $srf_fs;
 
-        if ( ! isset( $srf_fs ) ) {
-            // Include Analytics SDK.
-            require_once dirname( __FILE__ ) . '/analytics/start.php';
+		if ( ! isset( $srf_fs ) ) {
+			// Include Analytics SDK.
+			require_once dirname( __FILE__ ) . '/analytics/start.php';
 
-            $srf_fs = ras_dynamic_init(
-                array(
-                    'id'              => '30',
-                    'slug'            => 'wp-survey-funnel',
-                    'product_name'    => 'WP Survey Funnel',
-                    'module_type'     => 'plugin',
-                    'version'         => WP_SURVEY_FUNNEL_VERSION,
-                    'plugin_basename' => 'wp-survey-funnel/wp-survey-funnel.php',
-                    'plugin_url'      => WP_SURVEY_FUNNEL_PLUGIN_URL,
-                )
-            );
-        }
+			$srf_fs = ras_dynamic_init(
+				array(
+					'id'              => '30',
+					'slug'            => 'wp-survey-funnel',
+					'product_name'    => 'WP Survey Funnel',
+					'module_type'     => 'plugin',
+					'version'         => WP_SURVEY_FUNNEL_VERSION,
+					'plugin_basename' => 'wp-survey-funnel/wp-survey-funnel.php',
+					'plugin_url'      => WP_SURVEY_FUNNEL_PLUGIN_URL,
+				)
+			);
+		}
 
-        return $srf_fs;
-    }
+		return $srf_fs;
+	}
 
-    // Init Analytics.
-    srf_fs();
-    // SDK initiated.
-    do_action( 'srf_fs_loaded' );
+	// Init Analytics.
+	srf_fs();
+	// SDK initiated.
+	do_action( 'srf_fs_loaded' );
 }
 
 /**
