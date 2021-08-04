@@ -25,20 +25,6 @@ body {
     padding: 0;
 }
 
-.tab-list-item {
-    display: inline-block;
-    list-style: none;
-    margin-bottom: -1px;
-    padding: 0.5rem 0.75rem;
-    cursor: pointer;
-}
-
-.tab-list-active {
-    background-color: #0F4C81;
-    border-width: 1px 1px 0 1px;
-    color: white;
-    border-radius: 9px 9px 0 0;
-}
 
 .picker {
     position: relative;
@@ -164,23 +150,7 @@ body {
             cursor: pointer;
             border-radius: 9px;
         }
-        // display: flex;
-        // justify-content: flex-end;
-        // margin-top: 10px;
-        // margin-right: 20px;
-        // .wpsf-build-elements-save-button{
-        //     background-color: #0F4C81;
-        //     border: none;
-        //     color: white;
-        //     padding: 12px 28px;
-        //     text-align: center;
-        //     text-decoration: none;
-        //     display: inline-block;
-        //     font-size: 16px;
-        //     margin: 4px 2px;
-        //     cursor: pointer;
-        //     border-radius: 9px;
-        // }
+
     }
 
 }
@@ -418,6 +388,20 @@ body {
             .wpsf-header-tabs{
                 .wpsf-header-tab-list{
                     border-bottom: 1px solid #d2dae2;
+                    .tab-list-item {
+                        display: inline-block;
+                        list-style: none;
+                        margin-bottom: -1px;
+                        padding: 0.5rem 0.75rem;
+                        cursor: pointer;
+                    }
+                    
+                    .tab-list-active {
+                        background-color: #0F4C81;
+                        border-width: 1px 1px 0 1px;
+                        color: white;
+                        border-radius: 9px 9px 0 0;
+                    }
                 }
                 .wpsf-header-tab-content{
                     display: flex;
@@ -431,7 +415,6 @@ body {
                         justify-content: center;
                         align-items: center;
                         width: 100%;
-                        height: 100%;
                     }
                     .wpsf-dropboard{
                         margin-left: 20px;
