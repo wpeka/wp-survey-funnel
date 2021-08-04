@@ -465,7 +465,7 @@ body {
                     h3{
                         margin: 0;
                     }
-                    input{
+                    input, textarea{
                         width: 100%;
                         height: 70px;
                         border-radius: 9px;
@@ -474,6 +474,11 @@ body {
                         padding-left: 20px;
                     }
                     input:focus{
+                        outline: none;
+                    }
+                    textarea {
+                        font-family: 'ApercuPro';
+                        padding: 20px;
                         outline: none;
                     }
     

@@ -41,7 +41,7 @@ export default function DesignPreview() {
 
     const changeCurrentTab = function (num) {
 		// check for validations
-		if ( ! checkValidations( num ) ) {
+		if ( ! checkValidations( num ) || currentTab + num >= tabCount ) {
 			return;
 		}
         setCurrentTab(currentTab + num);
@@ -129,12 +129,9 @@ export default function DesignPreview() {
                 return (
                     <div className="wpsf-tab-SingleChoice"
                         style={{ ...style }}
+                        key={item.id}
                     >
-                        <div
-                            className="tab-container"
-                            key={item.id}
-
-                        >
+                        <div className="tab-container">
                             <div
                                 className="tab"
                                 key={item.id}
@@ -182,6 +179,7 @@ export default function DesignPreview() {
                 return (
                     <div className="wpsf-tab-MultiChoice"
                     style={{ ...style }}
+                    key={item.id}
                     >
                         <div
                             className="tab-container"
@@ -233,6 +231,7 @@ export default function DesignPreview() {
                 return (
                     <div className="wpsf-tab-CoverPage"
                     style={{ ...style }}
+                    key={item.id}
                     >
                         <div
                             className="tab-container"
@@ -255,6 +254,7 @@ export default function DesignPreview() {
                 return (
                     <div className="wpsf-tab-ResultScreen"
                     style={{ ...style }}
+                    key={item.id}
                     >
                         <div
                             className="tab-container"
@@ -271,6 +271,7 @@ export default function DesignPreview() {
                 return (
                     <div className="wpsf-tab-FormElements"
                     style={{ ...style }}
+                    key={item.id}
                     >
                         <div
                             className="tab-container"

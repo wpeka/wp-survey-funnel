@@ -213,6 +213,13 @@ export const FormElements = React.memo(
             });
         };
 
+        checkForEmpty( name ) {
+            if ( this.state[name] === '' ) {
+                return false;
+            }
+            return true;
+        }
+
         render() {
             const { designCon, currentElement } = this.props;
             return (
@@ -340,9 +347,9 @@ export const FormElements = React.memo(
                                         this)}
                                     </div>
                                         <div label="Preview">
-                                            <ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
-                                                <h3>{this.state.title}</h3>
-                                                <p>{this.state.description}</p>
+                                        {this.state.title === '' && this.state.description === '' && this.state.buttonLabel === '' && this.state.List.length === 0 ? ( <div>No Preview Available</div> ) : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
+                                                { this.checkForEmpty('title') && <h3>{this.state.title}</h3> }
+                                                { this.checkForEmpty('description') && <p>{this.state.description}</p> }
                                                 {this.state.List.map(function (ele, i) {
                                                     return this.getCurrentFormElementRightRender(
                                                         ele,
@@ -350,9 +357,9 @@ export const FormElements = React.memo(
                                                     );
                                                 }, this)}
                                                 <div className="wpsf-form-submit-button">
-                                                    <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}} type="button">{this.state.buttonLabel}</button>
+                                                    { this.checkForEmpty('buttonLabel') && <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}} type="button">{this.state.buttonLabel}</button> }
                                                 </div>
-                                            </ModalContentRight>
+                                            </ModalContentRight>)}
                                     </div>
                                 </Tabs>
                             </div>

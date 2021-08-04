@@ -40,7 +40,7 @@ export const ResultScreen = React.memo(
                                 <div className="modalContent-left-fields">
                                     <div className="modalComponentTitle">
                                         <h3>Title</h3>
-                                        <input
+                                        <textarea
                                             type="text"
                                             placeholder="Set Title"
                                             name="title"
