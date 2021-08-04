@@ -52,6 +52,13 @@ export const Choices = React.memo(
             });
         };
 
+        checkForEmpty( name ) {
+            if ( this.state[name] === '' ) {
+                return false;
+            }
+            return true;
+        }
+
         render() {
             const { currentElement } = this.props;
             const { designCon } = this.props;
@@ -78,7 +85,7 @@ export const Choices = React.memo(
                                     </div>
                                     <div className="modalComponentDescription">
                                         <h3>Description</h3>
-                                        <input
+                                        <textarea
                                             type="text"
                                             placeholder="Set Description"
                                             name="description"
@@ -131,9 +138,9 @@ export const Choices = React.memo(
                                     <h4>Content Preview</h4>
                                 </div>
                                 <div className="modalContentPreview">
-                                <ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
-                                    <h3>{this.state.title}</h3>
-                                    <p>{this.state.description}</p>
+                                {this.state.title === '' && this.state.description === '' && this.state.answers.length === 0 ? ( <div>No Preview Available</div> ) : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
+                                    { this.checkForEmpty('title') && <h3>{this.state.title}</h3> }
+                                    { this.checkForEmpty('description') && <p>{this.state.description}</p> }
                                     {this.state.answers.map(function(answer, idx) {
                                         switch( currentElement.componentName ) {
                                             case 'SingleChoice':
@@ -164,7 +171,7 @@ export const Choices = React.memo(
                                         }
                                         
                                     })}
-                                </ModalContentRight>
+                                </ModalContentRight>)}
                                 </div>
                             </div>
                         </div>

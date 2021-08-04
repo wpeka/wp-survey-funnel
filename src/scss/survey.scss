@@ -1,3 +1,8 @@
+
+body {
+    --answer-highlight-box-color: #E2EDFF;
+}
+
 @font-face {
     font-family: 'ApercuPro';
     font-weight: normal;
@@ -92,10 +97,10 @@
             display: none;
         }
         input:checked + label{
-            background-color: #E2EDFF;
+            background-color: var(--answer-highlight-box-color);
         }
         input:hover + label{
-            background-color: #E2EDFF;
+            background-color: var(--answer-highlight-box-color);
         }
     }
 }
