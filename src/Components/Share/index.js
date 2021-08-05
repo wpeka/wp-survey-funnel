@@ -9,6 +9,9 @@ export default function Share() {
 	const [shortcode, setShortcode] = useState('');
 	const [checked, setChecked] = useState('responsive');
 	const [helpText, setHelpText] = useState('');
+	const [ copyStatus, setCopyStatus ] = useState('Copy Shortcode');
+	let shortcodeInputRef = React.createRef();
+
 	useEffect(() => {
 		setShortcode('[wpsf_survey id="'+ new URLSearchParams(window.location.search).get('post_id') +'" type="'+ checked +'"]');
 		for(let i = 0 ; i < shortcodeTypes.length; i++) {
@@ -21,6 +24,18 @@ export default function Share() {
 	const handleRadioChange = (e) => {
 		setChecked(e.target.value);
 	}
+
+	const copyShortcode = () => {
+		shortcodeInputRef.current.removeAttribute('disabled');
+		shortcodeInputRef.current.select()
+		shortcodeInputRef.current.setSelectionRange(0, 99999)
+		document.execCommand("copy");
+		shortcodeInputRef.current.setAttribute('disabled', true);
+		setCopyStatus('Copied!');
+		setTimeout(() => {
+			setCopyStatus('Copy Shortcode');
+		}, 4000)
+	}
 	
 	return (
         <div className="Share">
@@ -28,9 +43,9 @@ export default function Share() {
             <div className="shareShortcodeSettings">
 				<div className="contentShortcodeLabel">
 					<label htmlFor="contentShortcode">Content ShortCode: </label>
-					<button>Copy Shortcode</button>
+					<button onClick={copyShortcode}>{copyStatus}</button>
 				</div>
-				<input type="text" id="contentShortcode" disabled value={shortcode} />
+				<input type="text" id="contentShortcode" disabled ref={shortcodeInputRef} onChange={() => {}} value={shortcode} />
 				<div className="contentTypes">
 					Select Content Shortcode Type:
 					{types.map(function(item, i) {
