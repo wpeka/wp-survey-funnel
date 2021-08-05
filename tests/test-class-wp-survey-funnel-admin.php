@@ -133,7 +133,7 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 		$this->assertTrue( in_array( 'Survey Funnel', $menu[0] ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 		$submenu_array = wp_list_pluck( $submenu['wpsf-dashboard'], 2 );
 		$this->assertTrue( in_array( 'wpsf-dashboard', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		$this->assertTrue( in_array( 'wpsf-settings', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		// $this->assertTrue( in_array( 'wpsf-settings', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 		$this->assertTrue( in_array( 'wpsf-help', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 	}
 
@@ -200,8 +200,12 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 	 * Test for wpsf_help function
 	 */
 	public function test_wpsf_help() {
+		ob_start();
 		self::$wp_survey_funnel_admin->wpsf_help();
-		$this->assertTrue( true );
+		$output = ob_get_clean();
+		$this->assertTrue( strpos( $output, '<div class="wpsf-container-main">' ) !== false );
+		$this->assertTrue( strpos( $output, 'Thank‌ ‌you‌ ‌for‌ ‌choosing‌ ‌SurveyFunnel‌ ‌plugin.' ) !== false );
+		$this->assertTrue( strpos( $output, 'Welcome‌ ‌to‌ ‌SurveyFunnel!‌' ) !== false );
 	}
 
 	/**
