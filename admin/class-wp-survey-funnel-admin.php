@@ -68,6 +68,14 @@ class Wp_Survey_Funnel_Admin {
 			'all'
 		);
 
+		wp_register_style(
+			$this->plugin_name . '-mascot',
+			plugin_dir_url( __FILE__ ) . 'css/wp-survey-funnel-mascot.css',
+			array(),
+			time(),
+			'all'
+		);
+
 	}
 
 	/**
@@ -94,6 +102,21 @@ class Wp_Survey_Funnel_Admin {
 			)
 		);
 
+		wp_register_script(
+			$this->plugin_name . '-vue',
+			plugin_dir_url( __FILE__ ) . 'js/vue/vue.min.js',
+			array(),
+			$this->version,
+			false
+		);
+
+		wp_register_script(
+			$this->plugin_name . '-mascot',
+			plugin_dir_url( __FILE__ ) . 'js/wp-survey-funnel-mascot.js',
+			array( $this->plugin_name . '-vue' ),
+			$this->version,
+			false
+		);
 	}
 
 	/**
@@ -161,7 +184,11 @@ class Wp_Survey_Funnel_Admin {
 	 * @since    1.0.0
 	 */
 	public function wpsf_help() {
-		echo '';
+		?>
+			<h3>Welcome‌ ‌to‌ ‌SurveyFunnel!‌ </h3>
+			<p>Thank‌ ‌you‌ ‌for‌ ‌choosing‌ ‌SurveyFunnel‌ ‌plugin.‌ ‌SurveyFunnel‌ ‌lets‌ ‌you‌ ‌create‌ ‌interesting‌ ‌surveys‌ ‌to‌ ‌keep‌ ‌your‌ ‌audience‌ ‌engaged,‌ ‌and‌ ‌collect‌ ‌qualified‌ ‌leads.‌ ‌With‌ ‌drag‌ ‌and‌ ‌drop‌ ‌features‌ ‌you‌ ‌can‌ ‌create‌ ‌a‌ ‌survey‌ ‌in‌ ‌minutes‌ ‌and‌ ‌get‌ ‌better‌ ‌insights‌ ‌about‌ ‌your‌ ‌audience.‌</p>
+			<a href="<?php echo admin_url() . 'admin.php?page=wpsf-dashboard';//phpcs:ignore ?>">Create Your First Survey</a>
+		<?php
 	}
 
 	/**
@@ -280,6 +307,7 @@ class Wp_Survey_Funnel_Admin {
 			<head>
 				<meta name="viewport" content="width=device-width"/>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+				<?php wp_print_styles( 'dashicons' ); ?>
 				<title>WP Survey Funnel</title>
 			</head>
 			<body class="wpsf-body">
@@ -601,5 +629,43 @@ class Wp_Survey_Funnel_Admin {
 		header( 'Content-Disposition: attachment; filename="' . $filename . ' ' . $generated_date . '.csv";' );
 		echo wp_kses_data( $csv_string );
 		die();
+	}
+
+	/**
+	 * Mascot on all pages.
+	 */
+	public function wpsf_mascot_on_pages() {
+		if ( empty( $_GET['page'] ) || ('wpsf-dashboard' !== $_GET['page'] && 'wpsf-help' !== $_GET['page']) ) {//phpcs:ignore
+			return;
+		}
+
+		$is_pro = get_option( 'wpadcenter_pro_active' );
+		if ( $is_pro ) {
+			$support_url = 'https://club.wpeka.com/my-account/orders/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=support';
+		} else {
+			$support_url = 'https://wordpress.org/support/plugin/wpadcenter/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=forums';
+		}
+
+		$return_array = array(
+			'menu_items'       => array(
+				'support_text'       => __( 'Support', 'wpadcenter' ),
+				'support_url'        => $support_url,
+				'documentation_text' => __( 'Documentation', 'wpadcenter' ),
+				'documentation_url'  => 'https://docs.wpeka.com/wp-adcenter/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=documentation',
+				'faq_text'           => __( 'FAQ', 'wpadcenter' ),
+				'faq_url'            => 'https://docs.wpeka.com/wp-adcenter/faq/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=faq',
+				'upgrade_text'       => __( 'Upgrade to Pro &raquo;', 'wpadcenter' ),
+				'upgrade_url'        => 'https://club.wpeka.com/product/wpadcenter/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=upgrade-to-pro',
+			),
+			'is_pro'           => $is_pro,
+			'quick_links_text' => __( 'See Quick Links', 'wpadcenter' ),
+		);
+		wp_enqueue_script( $this->plugin_name . '-mascot' );
+		wp_enqueue_style( $this->plugin_name . '-mascot' );
+		wp_localize_script( $this->plugin_name . '-mascot', 'mascot', $return_array );
+
+		?>
+			<div id="adc-mascot-app"></div>
+		<?php
 	}
 }
