@@ -144,7 +144,7 @@ function wpsf_get_background_image( $post_id ) {
 					<?php foreach ( $surveys as $survey ) : ?>
 						<?php $data = Wp_Survey_Funnel_Admin::wpsf_get_insights_data( $survey->ID ); ?>
 						<?php $url  = wpsf_get_background_image( $survey->ID ); ?>
-						<div class="wpsf-content" data-filter-item data-filter-name="<?php echo esc_html( $survey->post_title ); ?>">
+						<div class="wpsf-content" data-filter-item data-filter-name="<?php echo esc_html( strtolower( $survey->post_title ) ); ?>">
 							<div class="wpsf-image-box">
 								<div class="wpsf-image">
 									<?php if ( $url ) : ?>
