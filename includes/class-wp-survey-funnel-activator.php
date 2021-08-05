@@ -56,7 +56,7 @@ class Wp_Survey_Funnel_Activator {
 			ID int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 			survey_id int(11) DEFAULT 0,
 			user_id int(11) DEFAULT 0,
-			fields JSON,
+			fields TEXT,
 			user_locale_id varchar(255),
 			time_created int(11) DEFAULT 0,
 			date_created DATE,
