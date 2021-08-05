@@ -220,6 +220,7 @@
 }
 
 .wpsf-badge-basic {
+	color: black;
 	background: #E1E8F0;
 }
 
@@ -532,4 +533,66 @@
 		margin: 20px 0;
 	
 	}
+}
+
+.wpsf-container-main {
+	text-align: center;
+	position: relative;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: normal;
+    width: 750px;
+    margin: 50px auto;
+}
+
+.wpsf-inner-container {
+	background: #fff;
+	margin: 20px 0;
+}
+
+.wpsf-container-main .wpsf-section {
+	padding: 45px;
+    border: 1px solid #d6e2ed;
+    border-collapse: collapse;
+}
+
+.wpsf-container-main p {
+	color: inherit;
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+.wpsf-container-main .wpsf-section-title {
+	font-size: 26px;
+    font-weight: 600;
+}
+.wpsf-section-subtitle {
+	font-size: 14px;
+	color: #777;
+}
+.wpsf-section-heading {
+	margin-bottom: 25px;
+}
+
+.wpsf-container-main .wpsf-button {
+	border: 1px solid;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: #2862b1;
+    font-size: inherit;
+    line-height: inherit;
+    padding: 20px 45px;
+    text-transform: uppercase;
+}
+
+.wpsf-container-main .wpsf-header .wpsf-logo {
+    width: 100%;
+    position: relative;
 }

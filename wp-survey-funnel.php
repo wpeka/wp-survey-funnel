@@ -7,9 +7,9 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://club.wpeka.com
- * @since             1.0.0
- * @package           Wp_Survey_Funnel
+ * @link    https://club.wpeka.com
+ * @since   1.0.0
+ * @package Wp_Survey_Funnel
  *
  * @wordpress-plugin
  * Plugin Name:       WP Survey Funnel
@@ -109,7 +109,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wp-survey-funnel.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since 1.0.0
  */
 function run_wp_survey_funnel() {
 	$plugin = new Wp_Survey_Funnel();
