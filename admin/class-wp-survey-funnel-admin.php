@@ -2,8 +2,8 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       https://club.wpeka.com
- * @since      1.0.0
+ * @link  https://club.wpeka.com
+ * @since 1.0.0
  *
  * @package    Wp_Survey_Funnel
  * @subpackage Wp_Survey_Funnel/admin
@@ -24,27 +24,26 @@ class Wp_Survey_Funnel_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @since  1.0.0
+	 * @access private
+	 * @var    string    $plugin_name    The ID of this plugin.
 	 */
 	private $plugin_name;
 
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
+	 * @since  1.0.0
+	 * @access private
+	 * @var    string    $version    The current version of this plugin.
 	 */
 	private $version;
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
-	 * @param      string $plugin_name       The name of this plugin.
-	 * @param      string $version    The version of this plugin.
+	 * @param string $plugin_name       The name of this plugin.
+	 * @param string $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -56,7 +55,7 @@ class Wp_Survey_Funnel_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function enqueue_styles() {
 
@@ -81,7 +80,7 @@ class Wp_Survey_Funnel_Admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function enqueue_scripts() {
 
@@ -122,7 +121,7 @@ class Wp_Survey_Funnel_Admin {
 	/**
 	 * Register Survey Funnel Admin Menu.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function wpsf_admin_menu() {
 
@@ -173,7 +172,7 @@ class Wp_Survey_Funnel_Admin {
 	/**
 	 * Settings submenu page callback.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function wpsf_settings() {
 		echo '';
@@ -182,7 +181,7 @@ class Wp_Survey_Funnel_Admin {
 	/**
 	 * Help submenu page callback.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function wpsf_help() {
 		?>	
@@ -217,7 +216,7 @@ class Wp_Survey_Funnel_Admin {
 	/**
 	 * Dashboard submenu page callback.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function wpsf_dashboard() {
 		include_once plugin_dir_path( __FILE__ ) . 'views/admin-display-dashboard-page.php';
@@ -226,7 +225,7 @@ class Wp_Survey_Funnel_Admin {
 	/**
 	 * Initialize wpsf functionalities.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function wpsf_init() {
 		// no labels required.
@@ -745,17 +744,17 @@ class Wp_Survey_Funnel_Admin {
 
 		$return_array = array(
 			'menu_items'       => array(
-				'support_text'       => __( 'Support', 'wpadcenter' ),
+				'support_text'       => __( 'Support', 'wp-survey-funnel' ),
 				'support_url'        => $support_url,
-				'documentation_text' => __( 'Documentation', 'wpadcenter' ),
+				'documentation_text' => __( 'Documentation', 'wp-survey-funnel' ),
 				'documentation_url'  => 'https://docs.wpeka.com/wp-adcenter/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=documentation',
-				'faq_text'           => __( 'FAQ', 'wpadcenter' ),
+				'faq_text'           => __( 'FAQ', 'wp-survey-funnel' ),
 				'faq_url'            => 'https://docs.wpeka.com/wp-adcenter/faq/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=faq',
-				'upgrade_text'       => __( 'Upgrade to Pro &raquo;', 'wpadcenter' ),
+				'upgrade_text'       => __( 'Upgrade to Pro &raquo;', 'wp-survey-funnel' ),
 				'upgrade_url'        => 'https://club.wpeka.com/product/wpadcenter/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=upgrade-to-pro',
 			),
 			'is_pro'           => $is_pro,
-			'quick_links_text' => __( 'See Quick Links', 'wpadcenter' ),
+			'quick_links_text' => __( 'See Quick Links', 'wp-survey-funnel' ),
 		);
 		wp_enqueue_script( $this->plugin_name . '-mascot' );
 		wp_enqueue_style( $this->plugin_name . '-mascot' );

@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * Admin Dashboard page.
+ *
+ * @link  https://club.wpeka.com
+ * @since 1.0.0
+ *
+ * @package Wp_Survey_Funnel
+ */
 $args = array(
 	'post_type'   => 'wpsf-survey',
 	'post_status' => array( 'draft', 'publish' ),
@@ -121,12 +128,12 @@ function wpsf_get_background_image( $post_id ) {
 						<input class="wpsf-dashboard-search" type="text" data-search placeholder="<?php esc_html_e( 'Search By Content Name', 'wp-survey-funnel' ); ?>">
 					</div>
 					<div class="wpsf-filter">
-						<label for="wpsf-filter"><?php esc_html_e( 'Filter By:' ); ?></label>
+						<label for="wpsf-filter"><?php esc_html_e( 'Filter By:', 'wp-survey-funnel' ); ?></label>
 						<select <?php echo $disabled; //phpcs:ignore ?> id="wpsf-filter">
 
-							<option value="all-types"><?php esc_html_e( 'All Types' ); ?></option>
-							<option value="all-types"><?php esc_html_e( 'Scoring Logic' ); ?></option>
-							<option value="all-types"><?php esc_html_e( 'Outcome Logic' ); ?></option>
+							<option value="all-types"><?php esc_html_e( 'All Types', 'wp-survey-funnel' ); ?></option>
+							<option value="all-types"><?php esc_html_e( 'Scoring Logic', 'wp-survey-funnel' ); ?></option>
+							<option value="all-types"><?php esc_html_e( 'Outcome Logic', 'wp-survey-funnel' ); ?></option>
 						</select>
 					</div>
 				</div>
