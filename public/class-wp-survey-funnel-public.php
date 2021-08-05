@@ -122,6 +122,9 @@ class Wp_Survey_Funnel_Public {
 		if ( intval( $atts['id'] ) === 0 ) {
 			return '';
 		}
+		if ( get_post_status( $atts['id'] ) !== 'publish' ) {
+			return '';
+		}
 		$meta_data = get_post_meta( $atts['id'], 'wpsf-survey-data', true );
 		$ip        = $_SERVER['REMOTE_ADDR'];//phpcs:ignore
 		$m_time    = time() * 1000000;

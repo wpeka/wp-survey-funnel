@@ -189,7 +189,7 @@ function wpsf_get_background_image( $post_id ) {
 														<image id="share" width="12" height="12" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABHNCSVQICAgIfAhkiAAAANJJREFUKFNj/P//PwMewAaUWwrETkB8AIiTGQloCAEqWo1k4DR8GriACi8DsRKShunIGtiBEj+hkrVAuhSIdwDxNyAOgDopEaSBD8iZB8R2QLwTiCWBWAuIy4F4MdQAHiD9BcQGaZgGpDORrF0HZAfjCgiQhplAyTQkBWuBbJBnsQKQBgGgzHwgdgDi7VAnqQDpMiBeDtXFCaS/w5wEM4kbyPgK5TQC6UIg3goVA3n6IBDjjQdeoIJLQKyA5LappEYcSjxg8yQoblYAMSjIDwNxIgAOuESAZA8BnAAAAABJRU5ErkJggg=="/>
 													</svg>
 												</a>
-												<div class="icon">
+												<div class="icon deleteIcon" delete-id="<?php echo $survey->ID;//phpcs:ignore ?>">
 													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3" height="13" viewBox="0 0 3 13">
 														<image id="more-options" width="3" height="13" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAANCAYAAABsItTPAAAABHNCSVQICAgIfAhkiAAAAD5JREFUCFtj/P//fwsDA0MqEC9gBHL+AxlgAOKkAekkIF4M4sAkwDIoHJABiUC8hFwDEoCak4F4EYYBnTCjAWegMr8vTcqkAAAAAElFTkSuQmCC"/>
 													</svg>
@@ -201,8 +201,8 @@ function wpsf_get_background_image( $post_id ) {
 							</div>
 							<div class="wpsf-title-box --wpsf-flex">
 								<div class="wpsf-title"><?php echo $survey->post_title; //phpcs:ignore ?></div>
-								<div class="wpsf-badge wpsf-badge-sm wpsf-badge-outcome wpsf-badge-survey-type">
-									<small>outcome</small>
+								<div class="wpsf-badge wpsf-badge-sm wpsf-badge-<?php echo get_post_meta( $survey->ID, 'wpsf-survey-type', true );//phpcs:ignore ?> wpsf-badge-survey-type">
+									<small><?php echo get_post_meta( $survey->ID, 'wpsf-survey-type', true );//phpcs:ignore ?></small>
 								</div>
 							</div>
 							<div class="wpsf-content-stats --wpsf-grid">

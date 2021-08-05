@@ -68,5 +68,22 @@
 		$( '.wpsf-dismiss' ).on('click', function() {
 			$('.wpsf-modal').css('display', 'none');
 		})
+
+		$( '.deleteIcon' ).on('click', function() {
+			// send ajax request.
+			$.ajax({
+				type: 'POST',
+				url: ajax.ajaxURL,
+				data: {
+					action: 'wpsf_delete_survey',
+					security: ajax.ajaxSecurity,
+					id: $(this).attr('delete-id'),
+				}
+			}).done(data => {
+				if ( data?.success && data.success ) {
+					location.reload();
+				}
+			});
+		})
 	});
 })( jQuery );

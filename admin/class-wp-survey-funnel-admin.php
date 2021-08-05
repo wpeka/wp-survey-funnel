@@ -149,7 +149,8 @@ class Wp_Survey_Funnel_Admin {
 		);
 
 		// Settings.
-		/* add_submenu_page(
+		/*
+		 add_submenu_page(
 			'wpsf-dashboard',
 			__( 'Settings', 'wp-survey-funnel' ),
 			__( 'Settings', 'wp-survey-funnel' ),
@@ -184,10 +185,32 @@ class Wp_Survey_Funnel_Admin {
 	 * @since    1.0.0
 	 */
 	public function wpsf_help() {
-		?>
-			<h3>Welcome‌ ‌to‌ ‌SurveyFunnel!‌ </h3>
-			<p>Thank‌ ‌you‌ ‌for‌ ‌choosing‌ ‌SurveyFunnel‌ ‌plugin.‌ ‌SurveyFunnel‌ ‌lets‌ ‌you‌ ‌create‌ ‌interesting‌ ‌surveys‌ ‌to‌ ‌keep‌ ‌your‌ ‌audience‌ ‌engaged,‌ ‌and‌ ‌collect‌ ‌qualified‌ ‌leads.‌ ‌With‌ ‌drag‌ ‌and‌ ‌drop‌ ‌features‌ ‌you‌ ‌can‌ ‌create‌ ‌a‌ ‌survey‌ ‌in‌ ‌minutes‌ ‌and‌ ‌get‌ ‌better‌ ‌insights‌ ‌about‌ ‌your‌ ‌audience.‌</p>
-			<a href="<?php echo admin_url() . 'admin.php?page=wpsf-dashboard';//phpcs:ignore ?>">Create Your First Survey</a>
+		?>	
+			<div class="wpsf-container-main">
+				<div class="wpsf-header">
+					<div class="wpsf-logo">
+						<img width="350" src="<?php echo WP_SURVEY_FUNNEL_PLUGIN_URL . 'images/wpsf-main-logo.png';//phpcs:ignore ?>" alt="wpsf-main-logo">
+					</div>
+				</div>
+				<div class="wpsf-inner-container">
+				<div class="wpsf-section">
+					<div class="wpsf-section-heading">
+						<div class="wpsf-section-title">
+							<p>Welcome‌ ‌to‌ ‌SurveyFunnel!‌</p>
+						</div>
+						<div class="wpsf-section-subtitle">
+							<p>Complete Survey Management Plugin.</p>
+						</div>
+					</div>
+					<div class="wpsf-section-content">
+						<p>Thank‌ ‌you‌ ‌for‌ ‌choosing‌ ‌SurveyFunnel‌ ‌plugin.‌ ‌SurveyFunnel‌ ‌lets‌ ‌you‌ ‌create‌ ‌interesting‌ ‌surveys‌ ‌to‌ ‌keep‌ ‌your‌ ‌audience‌ ‌engaged,‌ ‌and‌ ‌collect‌ ‌qualified‌ ‌leads.‌ ‌With‌ ‌drag‌ ‌and‌ ‌drop‌ ‌features‌ ‌you‌ ‌can‌ ‌create‌ ‌a‌ ‌survey‌ ‌in‌ ‌minutes‌ ‌and‌ ‌get‌ ‌better‌ ‌insights‌ ‌about‌ ‌your‌ ‌audience.‌</p>
+					</div>
+				</div>
+				<div class="wpsf-section">
+					<a class="wpsf-button" href="<?php echo admin_url() . 'admin.php?page=wpsf-dashboard';//phpcs:ignore ?>">Create Your First Survey</a>
+				</div>
+				</div>
+			</div>
 		<?php
 	}
 
@@ -244,7 +267,7 @@ class Wp_Survey_Funnel_Admin {
 			return;
 		}
 		// check for validations.
-
+		$type = isset( $_POST['type'] ) ? sanitize_text_field( wp_unslash( $_POST['type'] ) ) : 'basic';
 		// create wpsf survey post.
 		$post_id = wp_insert_post(
 			array(
@@ -259,6 +282,7 @@ class Wp_Survey_Funnel_Admin {
 		} else {
 			$defaults = $this->wpsf_get_default_save_array();
 			update_post_meta( $post_id, 'wpsf-survey-data', $defaults );
+			update_post_meta( $post_id, 'wpsf-survey-type', $type );
 			// send success if validated.
 			wp_send_json_success(
 				array(
@@ -266,6 +290,30 @@ class Wp_Survey_Funnel_Admin {
 				)
 			);
 		}
+		wp_die();
+	}
+
+	/**
+	 * Ajax: delete survey.
+	 */
+	public function wpsf_delete_survey() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'surveySecurity', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+			return;
+		}
+
+		$post_id = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : 0;
+		$delete  = wp_delete_post( $post_id );
+		if ( ! $delete ) {
+			wp_send_json_error();
+			wp_die();
+			return;
+		}
+
+		wp_send_json_success();
 		wp_die();
 	}
 
@@ -328,6 +376,55 @@ class Wp_Survey_Funnel_Admin {
 	 */
 	public static function wpsf_get_setup_page_url() {
 		return get_admin_url() . 'index.php?page=wpsf-survey&post_id=';
+	}
+
+	/**
+	 * Ajax: get status.
+	 */
+	public function wpsf_get_status() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$post    = get_post( $post_id );
+
+		$status = $post->post_status;
+		wp_send_json_error( $status );
+		wp_die();
+	}
+
+	/**
+	 * Ajax: Change Status.
+	 */
+	public function wpsf_change_status() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$post    = get_post( $post_id );
+
+		$status      = $post->post_status === 'draft' ? 'publish' : 'draft';
+		$post_update = array(
+			'ID'          => $post_id,
+			'post_status' => $status,
+		);
+
+		$is_error = wp_update_post( $post_update );
+
+		if ( is_wp_error( $is_error ) ) {
+			wp_send_json_error();
+			wp_die();
+		}
+		wp_send_json_success( $status );
+		wp_die();
 	}
 
 	/**

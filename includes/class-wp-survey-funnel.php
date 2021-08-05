@@ -161,6 +161,9 @@ class Wp_Survey_Funnel {
 
 		// ajax calls.
 		$this->loader->add_action( 'wp_ajax_wpsf_new_survey', $plugin_admin, 'wpsf_new_survey' );
+		$this->loader->add_action( 'wp_ajax_wpsf_delete_survey', $plugin_admin, 'wpsf_delete_survey' );
+		$this->loader->add_action( 'wp_ajax_wpsf_get_status', $plugin_admin, 'wpsf_get_status' );
+		$this->loader->add_action( 'wp_ajax_wpsf_change_status', $plugin_admin, 'wpsf_change_status' );
 		$this->loader->add_action( 'wp_ajax_wpsf_save_build_data', $plugin_admin, 'wpsf_save_build_data' );
 		$this->loader->add_action( 'wp_ajax_wpsf_get_build_data', $plugin_admin, 'wpsf_get_build_data' );
 		$this->loader->add_action( 'wp_ajax_wpsf_save_design_data', $plugin_admin, 'wpsf_save_design_data' );
