@@ -180,7 +180,7 @@ export default function Responses() {
 
 			</div>
 			<div className="responsePreview">
-				{reports.length > 0 && currentReportSelected !== null ? (<p>Response preview for: {currentReportSelected.lead} {moment.unix(currentReportSelected.time_created).format( 'YYYY-MM-DD HH:mm A' )}</p>) : (<p>No response recorded</p>)}
+				{reports.length > 0 && currentReportSelected !== null ? (<p>Response preview for: {currentReportSelected.lead} <img src={require('../Build/BuildImages/calendar.png')}></img> {moment.unix(currentReportSelected.time_created).format( 'YYYY-MM-DD' )} <img src={require('../Build/BuildImages/clock.png')}></img> {moment.unix(currentReportSelected.time_created).format( ' HH:mm A' )}</p>) : (<p>No response recorded</p>)}
 				{getCurrentReportSelectedPreview()}
 			</div>
 			<form method="post" id="post_csv" action={document.getElementById('exportCSVAction').value}>

@@ -41,6 +41,7 @@ export default function Reports() {
                         timeFormat={false}
                         closeOnSelect={true}
                     ></DateTime>
+                    <img src={require('../Build/BuildImages/calendar.png')}></img>
                 </div>
 
 
