@@ -2,8 +2,8 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       https://club.wpeka.com
- * @since      1.0.0
+ * @link  https://club.wpeka.com
+ * @since 1.0.0
  *
  * @package    Wp_Survey_Funnel
  * @subpackage Wp_Survey_Funnel/includes
@@ -27,7 +27,7 @@ class Wp_Survey_Funnel_Deactivator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public static function deactivate() {
 	}

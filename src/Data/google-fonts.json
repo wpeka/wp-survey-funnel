@@ -20,20 +20,20 @@
         "value": "Montserrat"
     },
     {
-        "name": "Roboto Condensed",
-        "value": "Roboto+Condensed"
-    },
-    {
         "name": "Source Sans Pro",
         "value": "Source+Sans+Pro"
     },
     {
-        "name": "Oswald",
-        "value": "Oswald"
+        "name": "Roboto Condensed",
+        "value": "Roboto+Condensed"
     },
     {
         "name": "Poppins",
         "value": "Poppins"
+    },
+    {
+        "name": "Oswald",
+        "value": "Oswald"
     },
     {
         "name": "Noto Sans",
@@ -72,12 +72,8 @@
         "value": "Playfair+Display"
     },
     {
-        "name": "Hind Siliguri",
-        "value": "Hind+Siliguri"
-    },
-    {
-        "name": "Mukta",
-        "value": "Mukta"
+        "name": "Noto Sans KR",
+        "value": "Noto+Sans+KR"
     },
     {
         "name": "Open Sans Condensed",
@@ -88,24 +84,24 @@
         "value": "Rubik"
     },
     {
+        "name": "Hind Siliguri",
+        "value": "Hind+Siliguri"
+    },
+    {
         "name": "Lora",
         "value": "Lora"
     },
     {
-        "name": "Noto Sans KR",
-        "value": "Noto+Sans+KR"
-    },
-    {
-        "name": "Noto Sans TC",
-        "value": "Noto+Sans+TC"
-    },
-    {
-        "name": "Work Sans",
-        "value": "Work+Sans"
+        "name": "Mukta",
+        "value": "Mukta"
     },
     {
         "name": "Inter",
         "value": "Inter"
+    },
+    {
+        "name": "Work Sans",
+        "value": "Work+Sans"
     },
     {
         "name": "Nanum Gothic",
@@ -116,20 +112,24 @@
         "value": "Nunito+Sans"
     },
     {
-        "name": "PT Serif",
-        "value": "PT+Serif"
+        "name": "Noto Sans TC",
+        "value": "Noto+Sans+TC"
     },
     {
         "name": "Quicksand",
         "value": "Quicksand"
     },
     {
-        "name": "Titillium Web",
-        "value": "Titillium+Web"
+        "name": "PT Serif",
+        "value": "PT+Serif"
     },
     {
         "name": "Fira Sans",
         "value": "Fira+Sans"
+    },
+    {
+        "name": "Titillium Web",
+        "value": "Titillium+Web"
     },
     {
         "name": "Noto Serif",
@@ -140,40 +140,24 @@
         "value": "Karla"
     },
     {
-        "name": "Barlow",
-        "value": "Barlow"
-    },
-    {
         "name": "Heebo",
         "value": "Heebo"
     },
     {
-        "name": "Teko",
-        "value": "Teko"
+        "name": "Barlow",
+        "value": "Barlow"
     },
     {
-        "name": "Bebas Neue",
-        "value": "Bebas+Neue"
+        "name": "Inconsolata",
+        "value": "Inconsolata"
     },
     {
         "name": "Arimo",
         "value": "Arimo"
     },
     {
-        "name": "Yanone Kaffeesatz",
-        "value": "Yanone+Kaffeesatz"
-    },
-    {
-        "name": "Oxygen",
-        "value": "Oxygen"
-    },
-    {
         "name": "Dosis",
         "value": "Dosis"
-    },
-    {
-        "name": "PT Sans Narrow",
-        "value": "PT+Sans+Narrow"
     },
     {
         "name": "Libre Franklin",
@@ -184,88 +168,88 @@
         "value": "Josefin+Sans"
     },
     {
-        "name": "Anton",
-        "value": "Anton"
-    },
-    {
-        "name": "Mulish",
-        "value": "Mulish"
-    },
-    {
-        "name": "Libre Baskerville",
-        "value": "Libre+Baskerville"
-    },
-    {
-        "name": "Inconsolata",
-        "value": "Inconsolata"
-    },
-    {
-        "name": "Padauk",
-        "value": "Padauk"
-    },
-    {
-        "name": "Barlow Condensed",
-        "value": "Barlow+Condensed"
-    },
-    {
-        "name": "IBM Plex Sans",
-        "value": "IBM+Plex+Sans"
-    },
-    {
-        "name": "Prompt",
-        "value": "Prompt"
-    },
-    {
-        "name": "Bitter",
-        "value": "Bitter"
-    },
-    {
-        "name": "Varela Round",
-        "value": "Varela+Round"
-    },
-    {
-        "name": "Cabin",
-        "value": "Cabin"
-    },
-    {
-        "name": "Crimson Text",
-        "value": "Crimson+Text"
-    },
-    {
-        "name": "Barlow Semi Condensed",
-        "value": "Barlow+Semi+Condensed"
-    },
-    {
-        "name": "Dancing Script",
-        "value": "Dancing+Script"
-    },
-    {
-        "name": "Hind",
-        "value": "Hind"
-    },
-    {
-        "name": "Cairo",
-        "value": "Cairo"
-    },
-    {
-        "name": "Kanit",
-        "value": "Kanit"
+        "name": "Oxygen",
+        "value": "Oxygen"
     },
     {
         "name": "Source Code Pro",
         "value": "Source+Code+Pro"
     },
     {
+        "name": "PT Sans Narrow",
+        "value": "PT+Sans+Narrow"
+    },
+    {
+        "name": "Mulish",
+        "value": "Mulish"
+    },
+    {
+        "name": "Anton",
+        "value": "Anton"
+    },
+    {
+        "name": "Libre Baskerville",
+        "value": "Libre+Baskerville"
+    },
+    {
+        "name": "Barlow Condensed",
+        "value": "Barlow+Condensed"
+    },
+    {
+        "name": "Bitter",
+        "value": "Bitter"
+    },
+    {
         "name": "Noto Sans SC",
         "value": "Noto+Sans+SC"
     },
     {
-        "name": "Staatliches",
-        "value": "Staatliches"
+        "name": "Crimson Text",
+        "value": "Crimson+Text"
+    },
+    {
+        "name": "Cabin",
+        "value": "Cabin"
+    },
+    {
+        "name": "IBM Plex Sans",
+        "value": "IBM+Plex+Sans"
+    },
+    {
+        "name": "Varela Round",
+        "value": "Varela+Round"
+    },
+    {
+        "name": "Prompt",
+        "value": "Prompt"
+    },
+    {
+        "name": "Hind",
+        "value": "Hind"
+    },
+    {
+        "name": "Dancing Script",
+        "value": "Dancing+Script"
+    },
+    {
+        "name": "Bebas Neue",
+        "value": "Bebas+Neue"
     },
     {
         "name": "Lobster",
         "value": "Lobster"
+    },
+    {
+        "name": "Yanone Kaffeesatz",
+        "value": "Yanone+Kaffeesatz"
+    },
+    {
+        "name": "DM Sans",
+        "value": "DM+Sans"
+    },
+    {
+        "name": "Cairo",
+        "value": "Cairo"
     },
     {
         "name": "Abel",
@@ -280,20 +264,20 @@
         "value": "Fjalla+One"
     },
     {
-        "name": "DM Sans",
-        "value": "DM+Sans"
+        "name": "Kanit",
+        "value": "Kanit"
     },
     {
-        "name": "Comfortaa",
-        "value": "Comfortaa"
-    },
-    {
-        "name": "Manrope",
-        "value": "Manrope"
+        "name": "Teko",
+        "value": "Teko"
     },
     {
         "name": "Arvo",
         "value": "Arvo"
+    },
+    {
+        "name": "Comfortaa",
+        "value": "Comfortaa"
     },
     {
         "name": "EB Garamond",
@@ -304,60 +288,40 @@
         "value": "Zilla+Slab"
     },
     {
-        "name": "Pacifico",
-        "value": "Pacifico"
-    },
-    {
         "name": "Exo 2",
         "value": "Exo+2"
     },
     {
-        "name": "Merriweather Sans",
-        "value": "Merriweather+Sans"
+        "name": "Pacifico",
+        "value": "Pacifico"
     },
     {
         "name": "Indie Flower",
         "value": "Indie+Flower"
     },
     {
+        "name": "Noto Sans HK",
+        "value": "Noto+Sans+HK"
+    },
+    {
+        "name": "Merriweather Sans",
+        "value": "Merriweather+Sans"
+    },
+    {
         "name": "Maven Pro",
         "value": "Maven+Pro"
-    },
-    {
-        "name": "Asap",
-        "value": "Asap"
-    },
-    {
-        "name": "Assistant",
-        "value": "Assistant"
     },
     {
         "name": "Shadows Into Light",
         "value": "Shadows+Into+Light"
     },
     {
-        "name": "Rajdhani",
-        "value": "Rajdhani"
+        "name": "Assistant",
+        "value": "Assistant"
     },
     {
-        "name": "IBM Plex Serif",
-        "value": "IBM+Plex+Serif"
-    },
-    {
-        "name": "Hind Madurai",
-        "value": "Hind+Madurai"
-    },
-    {
-        "name": "Noto Serif JP",
-        "value": "Noto+Serif+JP"
-    },
-    {
-        "name": "Abril Fatface",
-        "value": "Abril+Fatface"
-    },
-    {
-        "name": "Slabo 27px",
-        "value": "Slabo+27px"
+        "name": "Asap",
+        "value": "Asap"
     },
     {
         "name": "Overpass",
@@ -368,48 +332,60 @@
         "value": "Questrial"
     },
     {
-        "name": "Archivo Narrow",
-        "value": "Archivo+Narrow"
+        "name": "Abril Fatface",
+        "value": "Abril+Fatface"
     },
     {
-        "name": "Tajawal",
-        "value": "Tajawal"
-    },
-    {
-        "name": "Noto Sans HK",
-        "value": "Noto+Sans+HK"
-    },
-    {
-        "name": "Exo",
-        "value": "Exo"
+        "name": "Rajdhani",
+        "value": "Rajdhani"
     },
     {
         "name": "Cormorant Garamond",
         "value": "Cormorant+Garamond"
     },
     {
-        "name": "Fira Sans Condensed",
-        "value": "Fira+Sans+Condensed"
+        "name": "IBM Plex Serif",
+        "value": "IBM+Plex+Serif"
     },
     {
-        "name": "Acme",
-        "value": "Acme"
+        "name": "Noto Serif JP",
+        "value": "Noto+Serif+JP"
+    },
+    {
+        "name": "Fira Sans Condensed",
+        "value": "Fira+Sans+Condensed"
     },
     {
         "name": "Catamaran",
         "value": "Catamaran"
     },
     {
+        "name": "Archivo Narrow",
+        "value": "Archivo+Narrow"
+    },
+    {
+        "name": "Slabo 27px",
+        "value": "Slabo+27px"
+    },
+    {
+        "name": "Hind Madurai",
+        "value": "Hind+Madurai"
+    },
+    {
+        "name": "Padauk",
+        "value": "Padauk"
+    },
+    {
+        "name": "Acme",
+        "value": "Acme"
+    },
+    {
+        "name": "Tajawal",
+        "value": "Tajawal"
+    },
+    {
         "name": "Signika Negative",
         "value": "Signika+Negative"
-    },
-    {
-        "name": "Martel",
-        "value": "Martel"
-    },
-    {
-        "name": "Domine",
-        "value": "Domine"
     },
     {
         "name": "Caveat",
@@ -420,68 +396,76 @@
         "value": "Amatic+SC"
     },
     {
-        "name": "Secular One",
-        "value": "Secular+One"
+        "name": "Manrope",
+        "value": "Manrope"
+    },
+    {
+        "name": "Domine",
+        "value": "Domine"
+    },
+    {
+        "name": "Martel",
+        "value": "Martel"
     },
     {
         "name": "Play",
         "value": "Play"
     },
     {
-        "name": "M PLUS Rounded 1c",
-        "value": "M+PLUS+Rounded+1c"
+        "name": "Secular One",
+        "value": "Secular+One"
     },
     {
-        "name": "Sarabun",
-        "value": "Sarabun"
-    },
-    {
-        "name": "Archivo",
-        "value": "Archivo"
-    },
-    {
-        "name": "Antic Slab",
-        "value": "Antic+Slab"
+        "name": "Exo",
+        "value": "Exo"
     },
     {
         "name": "Bree Serif",
         "value": "Bree+Serif"
     },
     {
-        "name": "Nanum Myeongjo",
-        "value": "Nanum+Myeongjo"
+        "name": "Antic Slab",
+        "value": "Antic+Slab"
     },
     {
-        "name": "Alfa Slab One",
-        "value": "Alfa+Slab+One"
+        "name": "Sarabun",
+        "value": "Sarabun"
     },
     {
-        "name": "Vollkorn",
-        "value": "Vollkorn"
+        "name": "M PLUS Rounded 1c",
+        "value": "M+PLUS+Rounded+1c"
     },
     {
         "name": "Signika",
         "value": "Signika"
     },
     {
+        "name": "Nanum Myeongjo",
+        "value": "Nanum+Myeongjo"
+    },
+    {
         "name": "Righteous",
         "value": "Righteous"
+    },
+    {
+        "name": "Archivo",
+        "value": "Archivo"
+    },
+    {
+        "name": "Barlow Semi Condensed",
+        "value": "Barlow+Semi+Condensed"
     },
     {
         "name": "Satisfy",
         "value": "Satisfy"
     },
     {
-        "name": "Amiri",
-        "value": "Amiri"
+        "name": "Vollkorn",
+        "value": "Vollkorn"
     },
     {
-        "name": "M PLUS 1p",
-        "value": "M+PLUS+1p"
-    },
-    {
-        "name": "Almarai",
-        "value": "Almarai"
+        "name": "Patrick Hand",
+        "value": "Patrick+Hand"
     },
     {
         "name": "Cinzel",
@@ -492,28 +476,28 @@
         "value": "Crete+Round"
     },
     {
-        "name": "Fredoka One",
-        "value": "Fredoka+One"
-    },
-    {
-        "name": "Spartan",
-        "value": "Spartan"
+        "name": "Alfa Slab One",
+        "value": "Alfa+Slab+One"
     },
     {
         "name": "Patua One",
         "value": "Patua+One"
     },
     {
-        "name": "Ubuntu Condensed",
-        "value": "Ubuntu+Condensed"
+        "name": "Fredoka One",
+        "value": "Fredoka+One"
+    },
+    {
+        "name": "Amiri",
+        "value": "Amiri"
+    },
+    {
+        "name": "Architects Daughter",
+        "value": "Architects+Daughter"
     },
     {
         "name": "Courgette",
         "value": "Courgette"
-    },
-    {
-        "name": "ABeeZee",
-        "value": "ABeeZee"
     },
     {
         "name": "Permanent Marker",
@@ -524,28 +508,28 @@
         "value": "Alegreya+Sans"
     },
     {
-        "name": "Gothic A1",
-        "value": "Gothic+A1"
+        "name": "ABeeZee",
+        "value": "ABeeZee"
+    },
+    {
+        "name": "M PLUS 1p",
+        "value": "M+PLUS+1p"
     },
     {
         "name": "Tinos",
         "value": "Tinos"
     },
     {
-        "name": "Hammersmith One",
-        "value": "Hammersmith+One"
+        "name": "Spartan",
+        "value": "Spartan"
     },
     {
-        "name": "Architects Daughter",
-        "value": "Architects+Daughter"
+        "name": "Public Sans",
+        "value": "Public+Sans"
     },
     {
-        "name": "Saira Condensed",
-        "value": "Saira+Condensed"
-    },
-    {
-        "name": "Lobster Two",
-        "value": "Lobster+Two"
+        "name": "Ubuntu Condensed",
+        "value": "Ubuntu+Condensed"
     },
     {
         "name": "Kaushan Script",
@@ -560,52 +544,64 @@
         "value": "Jost"
     },
     {
-        "name": "Chakra Petch",
-        "value": "Chakra+Petch"
+        "name": "Lobster Two",
+        "value": "Lobster+Two"
     },
     {
-        "name": "Public Sans",
-        "value": "Public+Sans"
-    },
-    {
-        "name": "Red Hat Display",
-        "value": "Red+Hat+Display"
-    },
-    {
-        "name": "Archivo Black",
-        "value": "Archivo+Black"
-    },
-    {
-        "name": "Merienda",
-        "value": "Merienda"
-    },
-    {
-        "name": "Patrick Hand",
-        "value": "Patrick+Hand"
-    },
-    {
-        "name": "Alegreya",
-        "value": "Alegreya"
+        "name": "Gothic A1",
+        "value": "Gothic+A1"
     },
     {
         "name": "Frank Ruhl Libre",
         "value": "Frank+Ruhl+Libre"
     },
     {
+        "name": "Red Hat Display",
+        "value": "Red+Hat+Display"
+    },
+    {
+        "name": "Alegreya",
+        "value": "Alegreya"
+    },
+    {
+        "name": "Almarai",
+        "value": "Almarai"
+    },
+    {
         "name": "Yantramanav",
         "value": "Yantramanav"
+    },
+    {
+        "name": "Archivo Black",
+        "value": "Archivo+Black"
+    },
+    {
+        "name": "Chakra Petch",
+        "value": "Chakra+Petch"
     },
     {
         "name": "Cardo",
         "value": "Cardo"
     },
     {
-        "name": "Cuprum",
-        "value": "Cuprum"
+        "name": "IBM Plex Mono",
+        "value": "IBM+Plex+Mono"
+    },
+    {
+        "name": "Spectral",
+        "value": "Spectral"
     },
     {
         "name": "Prata",
         "value": "Prata"
+    },
+    {
+        "name": "Merienda",
+        "value": "Merienda"
+    },
+    {
+        "name": "Didact Gothic",
+        "value": "Didact+Gothic"
     },
     {
         "name": "Russo One",
@@ -616,28 +612,8 @@
         "value": "Monda"
     },
     {
-        "name": "IBM Plex Mono",
-        "value": "IBM+Plex+Mono"
-    },
-    {
-        "name": "Quattrocento Sans",
-        "value": "Quattrocento+Sans"
-    },
-    {
-        "name": "Spectral",
-        "value": "Spectral"
-    },
-    {
         "name": "PT Sans Caption",
         "value": "PT+Sans+Caption"
-    },
-    {
-        "name": "Didact Gothic",
-        "value": "Didact+Gothic"
-    },
-    {
-        "name": "Concert One",
-        "value": "Concert+One"
     },
     {
         "name": "Baloo 2",
@@ -648,492 +624,484 @@
         "value": "Francois+One"
     },
     {
-        "name": "Noticia Text",
-        "value": "Noticia+Text"
-    },
-    {
-        "name": "Noto Serif TC",
-        "value": "Noto+Serif+TC"
-    },
-    {
         "name": "Kalam",
         "value": "Kalam"
     },
     {
-        "name": "Itim",
-        "value": "Itim"
-    },
-    {
-        "name": "Londrina Solid",
-        "value": "Londrina+Solid"
-    },
-    {
-        "name": "Old Standard TT",
-        "value": "Old+Standard+TT"
-    },
-    {
-        "name": "DM Serif Display",
-        "value": "DM+Serif+Display"
-    },
-    {
-        "name": "Sacramento",
-        "value": "Sacramento"
-    },
-    {
-        "name": "Special Elite",
-        "value": "Special+Elite"
-    },
-    {
-        "name": "Cantarell",
-        "value": "Cantarell"
-    },
-    {
-        "name": "Ropa Sans",
-        "value": "Ropa+Sans"
-    },
-    {
-        "name": "Changa",
-        "value": "Changa"
-    },
-    {
-        "name": "Pathway Gothic One",
-        "value": "Pathway+Gothic+One"
-    },
-    {
-        "name": "Rokkitt",
-        "value": "Rokkitt"
+        "name": "Cuprum",
+        "value": "Cuprum"
     },
     {
         "name": "Balsamiq Sans",
         "value": "Balsamiq+Sans"
     },
     {
-        "name": "Gloria Hallelujah",
-        "value": "Gloria+Hallelujah"
+        "name": "Parisienne",
+        "value": "Parisienne"
     },
     {
-        "name": "Passion One",
-        "value": "Passion+One"
-    },
-    {
-        "name": "Chivo",
-        "value": "Chivo"
+        "name": "DM Serif Display",
+        "value": "DM+Serif+Display"
     },
     {
         "name": "Encode Sans",
         "value": "Encode+Sans"
     },
     {
+        "name": "Quattrocento Sans",
+        "value": "Quattrocento+Sans"
+    },
+    {
+        "name": "Saira Condensed",
+        "value": "Saira+Condensed"
+    },
+    {
+        "name": "Noticia Text",
+        "value": "Noticia+Text"
+    },
+    {
+        "name": "Hammersmith One",
+        "value": "Hammersmith+One"
+    },
+    {
+        "name": "Sacramento",
+        "value": "Sacramento"
+    },
+    {
         "name": "Volkhov",
         "value": "Volkhov"
     },
     {
-        "name": "Orbitron",
-        "value": "Orbitron"
+        "name": "Chivo",
+        "value": "Chivo"
     },
     {
-        "name": "Josefin Slab",
-        "value": "Josefin+Slab"
+        "name": "Old Standard TT",
+        "value": "Old+Standard+TT"
     },
     {
-        "name": "Sawarabi Mincho",
-        "value": "Sawarabi+Mincho"
+        "name": "Concert One",
+        "value": "Concert+One"
     },
     {
-        "name": "Unna",
-        "value": "Unna"
+        "name": "Noto Serif TC",
+        "value": "Noto+Serif+TC"
     },
     {
-        "name": "Playfair Display SC",
-        "value": "Playfair+Display+SC"
+        "name": "Gloria Hallelujah",
+        "value": "Gloria+Hallelujah"
     },
     {
-        "name": "Crimson Pro",
-        "value": "Crimson+Pro"
+        "name": "Pathway Gothic One",
+        "value": "Pathway+Gothic+One"
     },
     {
-        "name": "Sigmar One",
-        "value": "Sigmar+One"
+        "name": "Londrina Solid",
+        "value": "Londrina+Solid"
     },
     {
-        "name": "Ruda",
-        "value": "Ruda"
-    },
-    {
-        "name": "Cormorant",
-        "value": "Cormorant"
-    },
-    {
-        "name": "Parisienne",
-        "value": "Parisienne"
+        "name": "Ropa Sans",
+        "value": "Ropa+Sans"
     },
     {
         "name": "News Cycle",
         "value": "News+Cycle"
     },
     {
-        "name": "Cookie",
-        "value": "Cookie"
+        "name": "Cantarell",
+        "value": "Cantarell"
     },
     {
-        "name": "Mitr",
-        "value": "Mitr"
+        "name": "Orbitron",
+        "value": "Orbitron"
+    },
+    {
+        "name": "Rokkitt",
+        "value": "Rokkitt"
+    },
+    {
+        "name": "Itim",
+        "value": "Itim"
+    },
+    {
+        "name": "Crimson Pro",
+        "value": "Crimson+Pro"
+    },
+    {
+        "name": "Special Elite",
+        "value": "Special+Elite"
+    },
+    {
+        "name": "Staatliches",
+        "value": "Staatliches"
+    },
+    {
+        "name": "Josefin Slab",
+        "value": "Josefin+Slab"
+    },
+    {
+        "name": "Sigmar One",
+        "value": "Sigmar+One"
+    },
+    {
+        "name": "Changa",
+        "value": "Changa"
+    },
+    {
+        "name": "Passion One",
+        "value": "Passion+One"
     },
     {
         "name": "Quattrocento",
         "value": "Quattrocento"
     },
     {
-        "name": "Asap Condensed",
-        "value": "Asap+Condensed"
-    },
-    {
-        "name": "Poiret One",
-        "value": "Poiret+One"
-    },
-    {
-        "name": "Mate SC",
-        "value": "Mate+SC"
-    },
-    {
-        "name": "Taviraj",
-        "value": "Taviraj"
-    },
-    {
-        "name": "Press Start 2P",
-        "value": "Press+Start+2P"
-    },
-    {
-        "name": "Vidaloka",
-        "value": "Vidaloka"
-    },
-    {
-        "name": "Advent Pro",
-        "value": "Advent+Pro"
-    },
-    {
-        "name": "Faustina",
-        "value": "Faustina"
+        "name": "Unna",
+        "value": "Unna"
     },
     {
         "name": "Yellowtail",
         "value": "Yellowtail"
     },
     {
-        "name": "Marcellus",
-        "value": "Marcellus"
+        "name": "Sawarabi Mincho",
+        "value": "Sawarabi+Mincho"
     },
     {
-        "name": "Montserrat Alternates",
-        "value": "Montserrat+Alternates"
+        "name": "Cookie",
+        "value": "Cookie"
     },
     {
-        "name": "Karma",
-        "value": "Karma"
+        "name": "Cormorant",
+        "value": "Cormorant"
     },
     {
-        "name": "Oleo Script",
-        "value": "Oleo+Script"
+        "name": "Poiret One",
+        "value": "Poiret+One"
     },
     {
-        "name": "Philosopher",
-        "value": "Philosopher"
+        "name": "Advent Pro",
+        "value": "Advent+Pro"
     },
     {
-        "name": "Ubuntu Mono",
-        "value": "Ubuntu+Mono"
+        "name": "Asap Condensed",
+        "value": "Asap+Condensed"
     },
     {
-        "name": "Sanchez",
-        "value": "Sanchez"
-    },
-    {
-        "name": "Neuton",
-        "value": "Neuton"
-    },
-    {
-        "name": "Recursive",
-        "value": "Recursive"
-    },
-    {
-        "name": "Bai Jamjuree",
-        "value": "Bai+Jamjuree"
-    },
-    {
-        "name": "Ultra",
-        "value": "Ultra"
-    },
-    {
-        "name": "Fira Sans Extra Condensed",
-        "value": "Fira+Sans+Extra+Condensed"
-    },
-    {
-        "name": "Luckiest Guy",
-        "value": "Luckiest+Guy"
-    },
-    {
-        "name": "Neucha",
-        "value": "Neucha"
-    },
-    {
-        "name": "Bangers",
-        "value": "Bangers"
-    },
-    {
-        "name": "Alice",
-        "value": "Alice"
-    },
-    {
-        "name": "Playball",
-        "value": "Playball"
-    },
-    {
-        "name": "Saira",
-        "value": "Saira"
-    },
-    {
-        "name": "Tangerine",
-        "value": "Tangerine"
-    },
-    {
-        "name": "Economica",
-        "value": "Economica"
-    },
-    {
-        "name": "Pragati Narrow",
-        "value": "Pragati+Narrow"
-    },
-    {
-        "name": "Sawarabi Gothic",
-        "value": "Sawarabi+Gothic"
-    },
-    {
-        "name": "Hind Vadodara",
-        "value": "Hind+Vadodara"
-    },
-    {
-        "name": "Space Mono",
-        "value": "Space+Mono"
+        "name": "Faustina",
+        "value": "Faustina"
     },
     {
         "name": "Khand",
         "value": "Khand"
     },
     {
-        "name": "Arapey",
-        "value": "Arapey"
+        "name": "Sanchez",
+        "value": "Sanchez"
+    },
+    {
+        "name": "Taviraj",
+        "value": "Taviraj"
+    },
+    {
+        "name": "Playfair Display SC",
+        "value": "Playfair+Display+SC"
+    },
+    {
+        "name": "Press Start 2P",
+        "value": "Press+Start+2P"
+    },
+    {
+        "name": "Recursive",
+        "value": "Recursive"
+    },
+    {
+        "name": "Vidaloka",
+        "value": "Vidaloka"
+    },
+    {
+        "name": "Neuton",
+        "value": "Neuton"
+    },
+    {
+        "name": "Mate SC",
+        "value": "Mate+SC"
+    },
+    {
+        "name": "Philosopher",
+        "value": "Philosopher"
+    },
+    {
+        "name": "Montserrat Alternates",
+        "value": "Montserrat+Alternates"
     },
     {
         "name": "Istok Web",
         "value": "Istok+Web"
     },
     {
-        "name": "Carter One",
-        "value": "Carter+One"
-    },
-    {
-        "name": "BenchNine",
-        "value": "BenchNine"
-    },
-    {
-        "name": "Handlee",
-        "value": "Handlee"
-    },
-    {
-        "name": "El Messiri",
-        "value": "El+Messiri"
-    },
-    {
-        "name": "Rock Salt",
-        "value": "Rock+Salt"
+        "name": "Marcellus",
+        "value": "Marcellus"
     },
     {
         "name": "Monoton",
         "value": "Monoton"
     },
     {
-        "name": "Alata",
-        "value": "Alata"
+        "name": "Economica",
+        "value": "Economica"
     },
     {
-        "name": "Do Hyeon",
-        "value": "Do+Hyeon"
+        "name": "Luckiest Guy",
+        "value": "Luckiest+Guy"
     },
     {
-        "name": "Alef",
-        "value": "Alef"
+        "name": "Playball",
+        "value": "Playball"
     },
     {
-        "name": "PT Mono",
-        "value": "PT+Mono"
+        "name": "Alice",
+        "value": "Alice"
+    },
+    {
+        "name": "Fira Sans Extra Condensed",
+        "value": "Fira+Sans+Extra+Condensed"
+    },
+    {
+        "name": "Space Mono",
+        "value": "Space+Mono"
+    },
+    {
+        "name": "Neucha",
+        "value": "Neucha"
+    },
+    {
+        "name": "Ultra",
+        "value": "Ultra"
+    },
+    {
+        "name": "Tangerine",
+        "value": "Tangerine"
+    },
+    {
+        "name": "Oleo Script",
+        "value": "Oleo+Script"
+    },
+    {
+        "name": "Saira",
+        "value": "Saira"
+    },
+    {
+        "name": "Bangers",
+        "value": "Bangers"
+    },
+    {
+        "name": "Handlee",
+        "value": "Handlee"
+    },
+    {
+        "name": "Ubuntu Mono",
+        "value": "Ubuntu+Mono"
+    },
+    {
+        "name": "Mitr",
+        "value": "Mitr"
+    },
+    {
+        "name": "Karma",
+        "value": "Karma"
+    },
+    {
+        "name": "Bai Jamjuree",
+        "value": "Bai+Jamjuree"
     },
     {
         "name": "Lusitana",
         "value": "Lusitana"
     },
     {
-        "name": "Cabin Condensed",
-        "value": "Cabin+Condensed"
-    },
-    {
-        "name": "Jura",
-        "value": "Jura"
-    },
-    {
-        "name": "Viga",
-        "value": "Viga"
-    },
-    {
-        "name": "Actor",
-        "value": "Actor"
-    },
-    {
-        "name": "DM Serif Text",
-        "value": "DM+Serif+Text"
+        "name": "Hind Vadodara",
+        "value": "Hind+Vadodara"
     },
     {
         "name": "Gudea",
         "value": "Gudea"
     },
     {
-        "name": "Aleo",
-        "value": "Aleo"
+        "name": "Arapey",
+        "value": "Arapey"
     },
     {
-        "name": "Unica One",
-        "value": "Unica+One"
+        "name": "Pragati Narrow",
+        "value": "Pragati+Narrow"
     },
     {
-        "name": "Fugaz One",
-        "value": "Fugaz+One"
+        "name": "Cabin Condensed",
+        "value": "Cabin+Condensed"
     },
     {
-        "name": "Antic",
-        "value": "Antic"
+        "name": "Carter One",
+        "value": "Carter+One"
     },
     {
-        "name": "Amaranth",
-        "value": "Amaranth"
+        "name": "Sawarabi Gothic",
+        "value": "Sawarabi+Gothic"
     },
     {
-        "name": "Mandali",
-        "value": "Mandali"
+        "name": "PT Mono",
+        "value": "PT+Mono"
+    },
+    {
+        "name": "Rock Salt",
+        "value": "Rock+Salt"
+    },
+    {
+        "name": "Actor",
+        "value": "Actor"
+    },
+    {
+        "name": "BenchNine",
+        "value": "BenchNine"
     },
     {
         "name": "Allura",
         "value": "Allura"
     },
     {
+        "name": "Viga",
+        "value": "Viga"
+    },
+    {
+        "name": "Unica One",
+        "value": "Unica+One"
+    },
+    {
+        "name": "Amaranth",
+        "value": "Amaranth"
+    },
+    {
+        "name": "Ruda",
+        "value": "Ruda"
+    },
+    {
+        "name": "Jura",
+        "value": "Jura"
+    },
+    {
+        "name": "El Messiri",
+        "value": "El+Messiri"
+    },
+    {
+        "name": "Alef",
+        "value": "Alef"
+    },
+    {
+        "name": "Homemade Apple",
+        "value": "Homemade+Apple"
+    },
+    {
         "name": "Gentium Basic",
         "value": "Gentium+Basic"
     },
     {
-        "name": "Stint Ultra Condensed",
-        "value": "Stint+Ultra+Condensed"
-    },
-    {
-        "name": "Julius Sans One",
-        "value": "Julius+Sans+One"
-    },
-    {
-        "name": "Ramabhadra",
-        "value": "Ramabhadra"
-    },
-    {
-        "name": "Paytone One",
-        "value": "Paytone+One"
-    },
-    {
-        "name": "Mali",
-        "value": "Mali"
-    },
-    {
-        "name": "Khula",
-        "value": "Khula"
-    },
-    {
-        "name": "Aclonica",
-        "value": "Aclonica"
-    },
-    {
-        "name": "Markazi Text",
-        "value": "Markazi+Text"
-    },
-    {
-        "name": "Adamina",
-        "value": "Adamina"
-    },
-    {
-        "name": "Bad Script",
-        "value": "Bad+Script"
-    },
-    {
-        "name": "Pridi",
-        "value": "Pridi"
-    },
-    {
-        "name": "Armata",
-        "value": "Armata"
-    },
-    {
-        "name": "Electrolize",
-        "value": "Electrolize"
-    },
-    {
-        "name": "Voltaire",
-        "value": "Voltaire"
-    },
-    {
-        "name": "Martel Sans",
-        "value": "Martel+Sans"
-    },
-    {
-        "name": "Gelasio",
-        "value": "Gelasio"
-    },
-    {
-        "name": "Noto Serif SC",
-        "value": "Noto+Serif+SC"
-    },
-    {
-        "name": "Yeseva One",
-        "value": "Yeseva+One"
-    },
-    {
-        "name": "Pangolin",
-        "value": "Pangolin"
-    },
-    {
-        "name": "Suez One",
-        "value": "Suez+One"
-    },
-    {
-        "name": "Nanum Gothic Coding",
-        "value": "Nanum+Gothic+Coding"
-    },
-    {
-        "name": "Quantico",
-        "value": "Quantico"
+        "name": "Alata",
+        "value": "Alata"
     },
     {
         "name": "Sarala",
         "value": "Sarala"
     },
     {
-        "name": "Gochi Hand",
-        "value": "Gochi+Hand"
+        "name": "Adamina",
+        "value": "Adamina"
+    },
+    {
+        "name": "Julius Sans One",
+        "value": "Julius+Sans+One"
+    },
+    {
+        "name": "Armata",
+        "value": "Armata"
+    },
+    {
+        "name": "Mandali",
+        "value": "Mandali"
+    },
+    {
+        "name": "Yeseva One",
+        "value": "Yeseva+One"
+    },
+    {
+        "name": "Gelasio",
+        "value": "Gelasio"
+    },
+    {
+        "name": "Mali",
+        "value": "Mali"
+    },
+    {
+        "name": "Squada One",
+        "value": "Squada+One"
+    },
+    {
+        "name": "Noto Serif SC",
+        "value": "Noto+Serif+SC"
+    },
+    {
+        "name": "Aleo",
+        "value": "Aleo"
+    },
+    {
+        "name": "Paytone One",
+        "value": "Paytone+One"
     },
     {
         "name": "Marck Script",
         "value": "Marck+Script"
     },
     {
-        "name": "Saira Semi Condensed",
-        "value": "Saira+Semi+Condensed"
+        "name": "Ramabhadra",
+        "value": "Ramabhadra"
+    },
+    {
+        "name": "Noto Serif KR",
+        "value": "Noto+Serif+KR"
+    },
+    {
+        "name": "Bad Script",
+        "value": "Bad+Script"
+    },
+    {
+        "name": "Jaldi",
+        "value": "Jaldi"
+    },
+    {
+        "name": "Nanum Gothic Coding",
+        "value": "Nanum+Gothic+Coding"
+    },
+    {
+        "name": "DM Serif Text",
+        "value": "DM+Serif+Text"
+    },
+    {
+        "name": "Aclonica",
+        "value": "Aclonica"
     },
     {
         "name": "Abhaya Libre",
         "value": "Abhaya+Libre"
+    },
+    {
+        "name": "Khula",
+        "value": "Khula"
+    },
+    {
+        "name": "Knewave",
+        "value": "Knewave"
+    },
+    {
+        "name": "Pontano Sans",
+        "value": "Pontano+Sans"
     },
     {
         "name": "Palanquin",
@@ -1144,724 +1112,684 @@
         "value": "Nothing+You+Could+Do"
     },
     {
-        "name": "Bungee",
-        "value": "Bungee"
+        "name": "Martel Sans",
+        "value": "Martel+Sans"
+    },
+    {
+        "name": "Gochi Hand",
+        "value": "Gochi+Hand"
     },
     {
         "name": "Gentium Book Basic",
         "value": "Gentium+Book+Basic"
     },
     {
-        "name": "Homemade Apple",
-        "value": "Homemade+Apple"
-    },
-    {
-        "name": "Tenor Sans",
-        "value": "Tenor+Sans"
-    },
-    {
-        "name": "Squada One",
-        "value": "Squada+One"
-    },
-    {
-        "name": "Lilita One",
-        "value": "Lilita+One"
-    },
-    {
-        "name": "Kosugi Maru",
-        "value": "Kosugi+Maru"
-    },
-    {
-        "name": "Gruppo",
-        "value": "Gruppo"
-    },
-    {
-        "name": "Black Ops One",
-        "value": "Black+Ops+One"
-    },
-    {
-        "name": "Sriracha",
-        "value": "Sriracha"
-    },
-    {
-        "name": "Pontano Sans",
-        "value": "Pontano+Sans"
-    },
-    {
-        "name": "Sorts Mill Goudy",
-        "value": "Sorts+Mill+Goudy"
-    },
-    {
-        "name": "Jaldi",
-        "value": "Jaldi"
-    },
-    {
-        "name": "Noto Serif KR",
-        "value": "Noto+Serif+KR"
+        "name": "Markazi Text",
+        "value": "Markazi+Text"
     },
     {
         "name": "Red Hat Text",
         "value": "Red+Hat+Text"
     },
     {
-        "name": "Rufina",
-        "value": "Rufina"
+        "name": "Electrolize",
+        "value": "Electrolize"
     },
     {
-        "name": "Sen",
-        "value": "Sen"
+        "name": "Fugaz One",
+        "value": "Fugaz+One"
+    },
+    {
+        "name": "Kosugi Maru",
+        "value": "Kosugi+Maru"
+    },
+    {
+        "name": "Saira Semi Condensed",
+        "value": "Saira+Semi+Condensed"
     },
     {
         "name": "Nanum Pen Script",
         "value": "Nanum+Pen+Script"
     },
     {
-        "name": "Mate",
-        "value": "Mate"
-    },
-    {
-        "name": "Shrikhand",
-        "value": "Shrikhand"
-    },
-    {
-        "name": "Shadows Into Light Two",
-        "value": "Shadows+Into+Light+Two"
-    },
-    {
-        "name": "Arima Madurai",
-        "value": "Arima+Madurai"
-    },
-    {
-        "name": "Damion",
-        "value": "Damion"
-    },
-    {
-        "name": "Six Caps",
-        "value": "Six+Caps"
+        "name": "Pridi",
+        "value": "Pridi"
     },
     {
         "name": "Alex Brush",
         "value": "Alex+Brush"
     },
     {
-        "name": "Lexend Deca",
-        "value": "Lexend+Deca"
-    },
-    {
         "name": "Basic",
         "value": "Basic"
     },
     {
-        "name": "Audiowide",
-        "value": "Audiowide"
+        "name": "Gruppo",
+        "value": "Gruppo"
     },
     {
-        "name": "Candal",
-        "value": "Candal"
+        "name": "Tenor Sans",
+        "value": "Tenor+Sans"
     },
     {
-        "name": "Average",
-        "value": "Average"
+        "name": "Quantico",
+        "value": "Quantico"
     },
     {
-        "name": "Cantata One",
-        "value": "Cantata+One"
+        "name": "Lilita One",
+        "value": "Lilita+One"
     },
     {
-        "name": "Forum",
-        "value": "Forum"
+        "name": "Rufina",
+        "value": "Rufina"
     },
     {
-        "name": "Encode Sans Condensed",
-        "value": "Encode+Sans+Condensed"
+        "name": "Sorts Mill Goudy",
+        "value": "Sorts+Mill+Goudy"
     },
     {
-        "name": "Allerta",
-        "value": "Allerta"
+        "name": "Arima Madurai",
+        "value": "Arima+Madurai"
     },
     {
-        "name": "Berkshire Swash",
-        "value": "Berkshire+Swash"
+        "name": "Lexend Deca",
+        "value": "Lexend+Deca"
     },
     {
-        "name": "Changa One",
-        "value": "Changa+One"
-    },
-    {
-        "name": "Syncopate",
-        "value": "Syncopate"
-    },
-    {
-        "name": "Fredericka the Great",
-        "value": "Fredericka+the+Great"
-    },
-    {
-        "name": "Sansita",
-        "value": "Sansita"
-    },
-    {
-        "name": "Varela",
-        "value": "Varela"
-    },
-    {
-        "name": "Glegoo",
-        "value": "Glegoo"
-    },
-    {
-        "name": "Laila",
-        "value": "Laila"
-    },
-    {
-        "name": "Michroma",
-        "value": "Michroma"
-    },
-    {
-        "name": "Share Tech Mono",
-        "value": "Share+Tech+Mono"
-    },
-    {
-        "name": "Alegreya Sans SC",
-        "value": "Alegreya+Sans+SC"
-    },
-    {
-        "name": "Hind Guntur",
-        "value": "Hind+Guntur"
-    },
-    {
-        "name": "Pinyon Script",
-        "value": "Pinyon+Script"
-    },
-    {
-        "name": "Courier Prime",
-        "value": "Courier+Prime"
-    },
-    {
-        "name": "Yrsa",
-        "value": "Yrsa"
-    },
-    {
-        "name": "Baloo Chettan 2",
-        "value": "Baloo+Chettan+2"
-    },
-    {
-        "name": "Arsenal",
-        "value": "Arsenal"
-    },
-    {
-        "name": "Literata",
-        "value": "Literata"
-    },
-    {
-        "name": "Spinnaker",
-        "value": "Spinnaker"
-    },
-    {
-        "name": "Reem Kufi",
-        "value": "Reem+Kufi"
+        "name": "Sen",
+        "value": "Sen"
     },
     {
         "name": "Mr Dafoe",
         "value": "Mr+Dafoe"
     },
     {
-        "name": "Knewave",
-        "value": "Knewave"
-    },
-    {
-        "name": "Niconne",
-        "value": "Niconne"
-    },
-    {
-        "name": "Baloo Tamma 2",
-        "value": "Baloo+Tamma+2"
-    },
-    {
-        "name": "Coda",
-        "value": "Coda"
-    },
-    {
-        "name": "Bowlby One SC",
-        "value": "Bowlby+One+SC"
+        "name": "Shadows Into Light Two",
+        "value": "Shadows+Into+Light+Two"
     },
     {
         "name": "Krub",
         "value": "Krub"
     },
     {
-        "name": "Lalezar",
-        "value": "Lalezar"
+        "name": "Bungee",
+        "value": "Bungee"
     },
     {
-        "name": "Mukta Malar",
-        "value": "Mukta+Malar"
+        "name": "Black Ops One",
+        "value": "Black+Ops+One"
     },
     {
-        "name": "Chewy",
-        "value": "Chewy"
+        "name": "Voltaire",
+        "value": "Voltaire"
+    },
+    {
+        "name": "Damion",
+        "value": "Damion"
     },
     {
         "name": "Cousine",
         "value": "Cousine"
     },
     {
-        "name": "Sintony",
-        "value": "Sintony"
+        "name": "Audiowide",
+        "value": "Audiowide"
     },
     {
-        "name": "Italianno",
-        "value": "Italianno"
+        "name": "Cantata One",
+        "value": "Cantata+One"
     },
     {
-        "name": "Aldrich",
-        "value": "Aldrich"
+        "name": "Pangolin",
+        "value": "Pangolin"
     },
     {
-        "name": "Rancho",
-        "value": "Rancho"
+        "name": "Suez One",
+        "value": "Suez+One"
     },
     {
-        "name": "Mada",
-        "value": "Mada"
+        "name": "Varela",
+        "value": "Varela"
     },
     {
-        "name": "Days One",
-        "value": "Days+One"
-    },
-    {
-        "name": "Marcellus SC",
-        "value": "Marcellus+SC"
-    },
-    {
-        "name": "Enriqueta",
-        "value": "Enriqueta"
-    },
-    {
-        "name": "Racing Sans One",
-        "value": "Racing+Sans+One"
-    },
-    {
-        "name": "Rye",
-        "value": "Rye"
-    },
-    {
-        "name": "Overlock",
-        "value": "Overlock"
-    },
-    {
-        "name": "Kreon",
-        "value": "Kreon"
-    },
-    {
-        "name": "Charm",
-        "value": "Charm"
-    },
-    {
-        "name": "Scheherazade",
-        "value": "Scheherazade"
-    },
-    {
-        "name": "Anonymous Pro",
-        "value": "Anonymous+Pro"
-    },
-    {
-        "name": "Reenie Beanie",
-        "value": "Reenie+Beanie"
-    },
-    {
-        "name": "Black Han Sans",
-        "value": "Black+Han+Sans"
-    },
-    {
-        "name": "Niramit",
-        "value": "Niramit"
-    },
-    {
-        "name": "Bevan",
-        "value": "Bevan"
-    },
-    {
-        "name": "Eczar",
-        "value": "Eczar"
-    },
-    {
-        "name": "Annie Use Your Telescope",
-        "value": "Annie+Use+Your+Telescope"
-    },
-    {
-        "name": "Lateef",
-        "value": "Lateef"
-    },
-    {
-        "name": "Castoro",
-        "value": "Castoro"
-    },
-    {
-        "name": "Lemonada",
-        "value": "Lemonada"
-    },
-    {
-        "name": "Covered By Your Grace",
-        "value": "Covered+By+Your+Grace"
-    },
-    {
-        "name": "Allan",
-        "value": "Allan"
-    },
-    {
-        "name": "Mukta Vaani",
-        "value": "Mukta+Vaani"
-    },
-    {
-        "name": "Fira Mono",
-        "value": "Fira+Mono"
-    },
-    {
-        "name": "Capriola",
-        "value": "Capriola"
-    },
-    {
-        "name": "Darker Grotesque",
-        "value": "Darker+Grotesque"
-    },
-    {
-        "name": "Yesteryear",
-        "value": "Yesteryear"
-    },
-    {
-        "name": "Trirong",
-        "value": "Trirong"
-    },
-    {
-        "name": "VT323",
-        "value": "VT323"
-    },
-    {
-        "name": "Kameron",
-        "value": "Kameron"
-    },
-    {
-        "name": "Holtwood One SC",
-        "value": "Holtwood+One+SC"
-    },
-    {
-        "name": "Corben",
-        "value": "Corben"
-    },
-    {
-        "name": "Pattaya",
-        "value": "Pattaya"
-    },
-    {
-        "name": "Caveat Brush",
-        "value": "Caveat+Brush"
-    },
-    {
-        "name": "Rambla",
-        "value": "Rambla"
-    },
-    {
-        "name": "Arizonia",
-        "value": "Arizonia"
-    },
-    {
-        "name": "PT Serif Caption",
-        "value": "PT+Serif+Caption"
-    },
-    {
-        "name": "Bubblegum Sans",
-        "value": "Bubblegum+Sans"
-    },
-    {
-        "name": "Cabin Sketch",
-        "value": "Cabin+Sketch"
-    },
-    {
-        "name": "Gilda Display",
-        "value": "Gilda+Display"
-    },
-    {
-        "name": "Judson",
-        "value": "Judson"
-    },
-    {
-        "name": "Cinzel Decorative",
-        "value": "Cinzel+Decorative"
-    },
-    {
-        "name": "Maitree",
-        "value": "Maitree"
-    },
-    {
-        "name": "Chonburi",
-        "value": "Chonburi"
-    },
-    {
-        "name": "Saira Extra Condensed",
-        "value": "Saira+Extra+Condensed"
-    },
-    {
-        "name": "Boogaloo",
-        "value": "Boogaloo"
-    },
-    {
-        "name": "Commissioner",
-        "value": "Commissioner"
-    },
-    {
-        "name": "Ovo",
-        "value": "Ovo"
-    },
-    {
-        "name": "Seaweed Script",
-        "value": "Seaweed+Script"
-    },
-    {
-        "name": "Molengo",
-        "value": "Molengo"
-    },
-    {
-        "name": "Nobile",
-        "value": "Nobile"
-    },
-    {
-        "name": "Arbutus Slab",
-        "value": "Arbutus+Slab"
+        "name": "Chewy",
+        "value": "Chewy"
     },
     {
         "name": "Just Another Hand",
         "value": "Just+Another+Hand"
     },
     {
-        "name": "Biryani",
-        "value": "Biryani"
+        "name": "Mate",
+        "value": "Mate"
     },
     {
-        "name": "Amita",
-        "value": "Amita"
+        "name": "Changa One",
+        "value": "Changa+One"
     },
     {
-        "name": "Leckerli One",
-        "value": "Leckerli+One"
+        "name": "Rancho",
+        "value": "Rancho"
     },
     {
-        "name": "Share",
-        "value": "Share"
+        "name": "Courier Prime",
+        "value": "Courier+Prime"
     },
     {
-        "name": "Bungee Inline",
-        "value": "Bungee+Inline"
+        "name": "Antic",
+        "value": "Antic"
     },
     {
-        "name": "KoHo",
-        "value": "KoHo"
+        "name": "Alegreya Sans SC",
+        "value": "Alegreya+Sans+SC"
     },
     {
-        "name": "Allerta Stencil",
-        "value": "Allerta+Stencil"
+        "name": "Berkshire Swash",
+        "value": "Berkshire+Swash"
     },
     {
-        "name": "Epilogue",
-        "value": "Epilogue"
+        "name": "Glegoo",
+        "value": "Glegoo"
     },
     {
-        "name": "Contrail One",
-        "value": "Contrail+One"
+        "name": "Fira Mono",
+        "value": "Fira+Mono"
     },
     {
-        "name": "Rubik Mono One",
-        "value": "Rubik+Mono+One"
+        "name": "Yrsa",
+        "value": "Yrsa"
     },
     {
-        "name": "Lustria",
-        "value": "Lustria"
+        "name": "Literata",
+        "value": "Literata"
     },
     {
-        "name": "Nixie One",
-        "value": "Nixie+One"
+        "name": "Syncopate",
+        "value": "Syncopate"
     },
     {
-        "name": "Norican",
-        "value": "Norican"
+        "name": "Six Caps",
+        "value": "Six+Caps"
     },
     {
-        "name": "Comic Neue",
-        "value": "Comic+Neue"
+        "name": "Average",
+        "value": "Average"
     },
     {
-        "name": "IBM Plex Sans Condensed",
-        "value": "IBM+Plex+Sans+Condensed"
+        "name": "Mada",
+        "value": "Mada"
     },
     {
-        "name": "Libre Caslon Text",
-        "value": "Libre+Caslon+Text"
+        "name": "Allerta",
+        "value": "Allerta"
     },
     {
-        "name": "Oranienbaum",
-        "value": "Oranienbaum"
+        "name": "Encode Sans Condensed",
+        "value": "Encode+Sans+Condensed"
     },
     {
-        "name": "Alegreya SC",
-        "value": "Alegreya+SC"
+        "name": "Michroma",
+        "value": "Michroma"
     },
     {
-        "name": "Rozha One",
-        "value": "Rozha+One"
+        "name": "Fredericka the Great",
+        "value": "Fredericka+the+Great"
     },
     {
-        "name": "Caudex",
-        "value": "Caudex"
+        "name": "Mukta Malar",
+        "value": "Mukta+Malar"
     },
     {
-        "name": "Herr Von Muellerhoff",
-        "value": "Herr+Von+Muellerhoff"
+        "name": "Sintony",
+        "value": "Sintony"
     },
     {
-        "name": "Belgrano",
-        "value": "Belgrano"
+        "name": "Bowlby One SC",
+        "value": "Bowlby+One+SC"
     },
     {
-        "name": "Telex",
-        "value": "Telex"
+        "name": "Candal",
+        "value": "Candal"
     },
     {
-        "name": "Bellefair",
-        "value": "Bellefair"
+        "name": "Hind Guntur",
+        "value": "Hind+Guntur"
     },
     {
-        "name": "Suranna",
-        "value": "Suranna"
+        "name": "Shrikhand",
+        "value": "Shrikhand"
     },
     {
-        "name": "Kristi",
-        "value": "Kristi"
+        "name": "Share Tech Mono",
+        "value": "Share+Tech+Mono"
     },
     {
-        "name": "Scada",
-        "value": "Scada"
+        "name": "Pinyon Script",
+        "value": "Pinyon+Script"
     },
     {
-        "name": "Rochester",
-        "value": "Rochester"
+        "name": "Niconne",
+        "value": "Niconne"
     },
     {
-        "name": "Manjari",
-        "value": "Manjari"
+        "name": "Lalezar",
+        "value": "Lalezar"
     },
     {
-        "name": "K2D",
-        "value": "K2D"
+        "name": "Spinnaker",
+        "value": "Spinnaker"
     },
     {
-        "name": "Gugi",
-        "value": "Gugi"
+        "name": "Arsenal",
+        "value": "Arsenal"
     },
     {
-        "name": "GFS Didot",
-        "value": "GFS+Didot"
+        "name": "Marcellus SC",
+        "value": "Marcellus+SC"
     },
     {
-        "name": "Delius",
-        "value": "Delius"
+        "name": "Sriracha",
+        "value": "Sriracha"
     },
     {
-        "name": "Athiti",
-        "value": "Athiti"
+        "name": "Reem Kufi",
+        "value": "Reem+Kufi"
     },
     {
-        "name": "Coustard",
-        "value": "Coustard"
+        "name": "Reenie Beanie",
+        "value": "Reenie+Beanie"
     },
     {
-        "name": "Belleza",
-        "value": "Belleza"
+        "name": "Overlock",
+        "value": "Overlock"
     },
     {
-        "name": "Jockey One",
-        "value": "Jockey+One"
+        "name": "Coda",
+        "value": "Coda"
     },
     {
-        "name": "Coming Soon",
-        "value": "Coming+Soon"
+        "name": "Days One",
+        "value": "Days+One"
     },
     {
-        "name": "Magra",
-        "value": "Magra"
+        "name": "Enriqueta",
+        "value": "Enriqueta"
     },
     {
-        "name": "Trocchi",
-        "value": "Trocchi"
+        "name": "Kreon",
+        "value": "Kreon"
     },
     {
-        "name": "Palanquin Dark",
-        "value": "Palanquin+Dark"
+        "name": "Italianno",
+        "value": "Italianno"
     },
     {
-        "name": "Jua",
-        "value": "Jua"
+        "name": "Laila",
+        "value": "Laila"
     },
     {
-        "name": "Graduate",
-        "value": "Graduate"
+        "name": "Forum",
+        "value": "Forum"
     },
     {
         "name": "Coda Caption",
         "value": "Coda+Caption"
     },
     {
-        "name": "Average Sans",
-        "value": "Average+Sans"
+        "name": "Aldrich",
+        "value": "Aldrich"
+    },
+    {
+        "name": "Anonymous Pro",
+        "value": "Anonymous+Pro"
+    },
+    {
+        "name": "Baloo Tamma 2",
+        "value": "Baloo+Tamma+2"
+    },
+    {
+        "name": "Capriola",
+        "value": "Capriola"
+    },
+    {
+        "name": "Scheherazade",
+        "value": "Scheherazade"
+    },
+    {
+        "name": "Caveat Brush",
+        "value": "Caveat+Brush"
+    },
+    {
+        "name": "Black Han Sans",
+        "value": "Black+Han+Sans"
+    },
+    {
+        "name": "Bevan",
+        "value": "Bevan"
+    },
+    {
+        "name": "Kameron",
+        "value": "Kameron"
+    },
+    {
+        "name": "Allan",
+        "value": "Allan"
+    },
+    {
+        "name": "Racing Sans One",
+        "value": "Racing+Sans+One"
+    },
+    {
+        "name": "Sansita",
+        "value": "Sansita"
+    },
+    {
+        "name": "PT Serif Caption",
+        "value": "PT+Serif+Caption"
+    },
+    {
+        "name": "Mukta Vaani",
+        "value": "Mukta+Vaani"
+    },
+    {
+        "name": "Covered By Your Grace",
+        "value": "Covered+By+Your+Grace"
+    },
+    {
+        "name": "Rambla",
+        "value": "Rambla"
+    },
+    {
+        "name": "Niramit",
+        "value": "Niramit"
+    },
+    {
+        "name": "Trirong",
+        "value": "Trirong"
+    },
+    {
+        "name": "Baloo Chettan 2",
+        "value": "Baloo+Chettan+2"
+    },
+    {
+        "name": "Eczar",
+        "value": "Eczar"
+    },
+    {
+        "name": "Cabin Sketch",
+        "value": "Cabin+Sketch"
+    },
+    {
+        "name": "Annie Use Your Telescope",
+        "value": "Annie+Use+Your+Telescope"
+    },
+    {
+        "name": "Bubblegum Sans",
+        "value": "Bubblegum+Sans"
+    },
+    {
+        "name": "Yesteryear",
+        "value": "Yesteryear"
+    },
+    {
+        "name": "Arizonia",
+        "value": "Arizonia"
+    },
+    {
+        "name": "Lemonada",
+        "value": "Lemonada"
+    },
+    {
+        "name": "Telex",
+        "value": "Telex"
+    },
+    {
+        "name": "Nobile",
+        "value": "Nobile"
+    },
+    {
+        "name": "Libre Caslon Text",
+        "value": "Libre+Caslon+Text"
+    },
+    {
+        "name": "Rubik Mono One",
+        "value": "Rubik+Mono+One"
+    },
+    {
+        "name": "Lateef",
+        "value": "Lateef"
+    },
+    {
+        "name": "Do Hyeon",
+        "value": "Do+Hyeon"
+    },
+    {
+        "name": "Arbutus Slab",
+        "value": "Arbutus+Slab"
+    },
+    {
+        "name": "Cinzel Decorative",
+        "value": "Cinzel+Decorative"
+    },
+    {
+        "name": "VT323",
+        "value": "VT323"
+    },
+    {
+        "name": "Rye",
+        "value": "Rye"
+    },
+    {
+        "name": "Castoro",
+        "value": "Castoro"
+    },
+    {
+        "name": "Corben",
+        "value": "Corben"
+    },
+    {
+        "name": "Herr Von Muellerhoff",
+        "value": "Herr+Von+Muellerhoff"
+    },
+    {
+        "name": "Commissioner",
+        "value": "Commissioner"
+    },
+    {
+        "name": "Saira Extra Condensed",
+        "value": "Saira+Extra+Condensed"
+    },
+    {
+        "name": "Judson",
+        "value": "Judson"
+    },
+    {
+        "name": "Norican",
+        "value": "Norican"
+    },
+    {
+        "name": "Gilda Display",
+        "value": "Gilda+Display"
+    },
+    {
+        "name": "Boogaloo",
+        "value": "Boogaloo"
+    },
+    {
+        "name": "Alegreya SC",
+        "value": "Alegreya+SC"
+    },
+    {
+        "name": "Holtwood One SC",
+        "value": "Holtwood+One+SC"
+    },
+    {
+        "name": "Caudex",
+        "value": "Caudex"
+    },
+    {
+        "name": "Pattaya",
+        "value": "Pattaya"
+    },
+    {
+        "name": "Magra",
+        "value": "Magra"
+    },
+    {
+        "name": "Molengo",
+        "value": "Molengo"
+    },
+    {
+        "name": "Mrs Saint Delafield",
+        "value": "Mrs+Saint+Delafield"
+    },
+    {
+        "name": "Charm",
+        "value": "Charm"
+    },
+    {
+        "name": "Darker Grotesque",
+        "value": "Darker+Grotesque"
+    },
+    {
+        "name": "Leckerli One",
+        "value": "Leckerli+One"
+    },
+    {
+        "name": "Maitree",
+        "value": "Maitree"
+    },
+    {
+        "name": "Ovo",
+        "value": "Ovo"
+    },
+    {
+        "name": "Belgrano",
+        "value": "Belgrano"
+    },
+    {
+        "name": "Kristi",
+        "value": "Kristi"
+    },
+    {
+        "name": "Amita",
+        "value": "Amita"
+    },
+    {
+        "name": "Baloo Tammudu 2",
+        "value": "Baloo+Tammudu+2"
+    },
+    {
+        "name": "Seaweed Script",
+        "value": "Seaweed+Script"
+    },
+    {
+        "name": "Biryani",
+        "value": "Biryani"
+    },
+    {
+        "name": "Lustria",
+        "value": "Lustria"
+    },
+    {
+        "name": "Allerta Stencil",
+        "value": "Allerta+Stencil"
+    },
+    {
+        "name": "Bungee Inline",
+        "value": "Bungee+Inline"
+    },
+    {
+        "name": "Share",
+        "value": "Share"
     },
     {
         "name": "Overpass Mono",
         "value": "Overpass+Mono"
     },
     {
-        "name": "Sunflower",
-        "value": "Sunflower"
-    },
-    {
-        "name": "IM Fell DW Pica",
-        "value": "IM+Fell+DW+Pica"
-    },
-    {
-        "name": "Averia Serif Libre",
-        "value": "Averia+Serif+Libre"
-    },
-    {
-        "name": "Cormorant Infant",
-        "value": "Cormorant+Infant"
-    },
-    {
-        "name": "Mr De Haviland",
-        "value": "Mr+De+Haviland"
-    },
-    {
-        "name": "Marmelad",
-        "value": "Marmelad"
-    },
-    {
-        "name": "Merienda One",
-        "value": "Merienda+One"
-    },
-    {
-        "name": "Fauna One",
-        "value": "Fauna+One"
-    },
-    {
-        "name": "Baskervville",
-        "value": "Baskervville"
-    },
-    {
-        "name": "Radley",
-        "value": "Radley"
-    },
-    {
         "name": "Miriam Libre",
         "value": "Miriam+Libre"
     },
     {
-        "name": "Kosugi",
-        "value": "Kosugi"
+        "name": "Nixie One",
+        "value": "Nixie+One"
+    },
+    {
+        "name": "Titan One",
+        "value": "Titan+One"
+    },
+    {
+        "name": "Athiti",
+        "value": "Athiti"
+    },
+    {
+        "name": "Rozha One",
+        "value": "Rozha+One"
+    },
+    {
+        "name": "KoHo",
+        "value": "KoHo"
+    },
+    {
+        "name": "Trocchi",
+        "value": "Trocchi"
+    },
+    {
+        "name": "Lexend",
+        "value": "Lexend"
+    },
+    {
+        "name": "IBM Plex Sans Condensed",
+        "value": "IBM+Plex+Sans+Condensed"
+    },
+    {
+        "name": "Scada",
+        "value": "Scada"
+    },
+    {
+        "name": "Coustard",
+        "value": "Coustard"
+    },
+    {
+        "name": "GFS Didot",
+        "value": "GFS+Didot"
+    },
+    {
+        "name": "Average Sans",
+        "value": "Average+Sans"
+    },
+    {
+        "name": "Delius",
+        "value": "Delius"
+    },
+    {
+        "name": "Oranienbaum",
+        "value": "Oranienbaum"
+    },
+    {
+        "name": "Epilogue",
+        "value": "Epilogue"
+    },
+    {
+        "name": "Coming Soon",
+        "value": "Coming+Soon"
+    },
+    {
+        "name": "Rochester",
+        "value": "Rochester"
+    },
+    {
+        "name": "Comic Neue",
+        "value": "Comic+Neue"
+    },
+    {
+        "name": "Chonburi",
+        "value": "Chonburi"
+    },
+    {
+        "name": "Belleza",
+        "value": "Belleza"
     },
     {
         "name": "Sora",
@@ -1872,156 +1800,272 @@
         "value": "Nanum+Brush+Script"
     },
     {
-        "name": "Alatsi",
-        "value": "Alatsi"
-    },
-    {
-        "name": "Slabo 13px",
-        "value": "Slabo+13px"
-    },
-    {
-        "name": "Krona One",
-        "value": "Krona+One"
-    },
-    {
-        "name": "Schoolbell",
-        "value": "Schoolbell"
-    },
-    {
-        "name": "Cambay",
-        "value": "Cambay"
-    },
-    {
-        "name": "Carrois Gothic",
-        "value": "Carrois+Gothic"
-    },
-    {
-        "name": "Amethysta",
-        "value": "Amethysta"
-    },
-    {
-        "name": "Love Ya Like A Sister",
-        "value": "Love+Ya+Like+A+Sister"
-    },
-    {
-        "name": "Amiko",
-        "value": "Amiko"
-    },
-    {
-        "name": "Averia Libre",
-        "value": "Averia+Libre"
-    },
-    {
-        "name": "Thasadith",
-        "value": "Thasadith"
-    },
-    {
-        "name": "Titan One",
-        "value": "Titan+One"
-    },
-    {
-        "name": "Grand Hotel",
-        "value": "Grand+Hotel"
-    },
-    {
-        "name": "Oxygen Mono",
-        "value": "Oxygen+Mono"
-    },
-    {
-        "name": "Cedarville Cursive",
-        "value": "Cedarville+Cursive"
-    },
-    {
-        "name": "Rosario",
-        "value": "Rosario"
-    },
-    {
-        "name": "David Libre",
-        "value": "David+Libre"
+        "name": "Contrail One",
+        "value": "Contrail+One"
     },
     {
         "name": "Carme",
         "value": "Carme"
     },
     {
-        "name": "Baloo Tammudu 2",
-        "value": "Baloo+Tammudu+2"
+        "name": "K2D",
+        "value": "K2D"
     },
     {
-        "name": "Podkova",
-        "value": "Podkova"
+        "name": "Mr De Haviland",
+        "value": "Mr+De+Haviland"
     },
     {
-        "name": "Petit Formal Script",
-        "value": "Petit+Formal+Script"
+        "name": "Graduate",
+        "value": "Graduate"
+    },
+    {
+        "name": "Palanquin Dark",
+        "value": "Palanquin+Dark"
+    },
+    {
+        "name": "Averia Serif Libre",
+        "value": "Averia+Serif+Libre"
+    },
+    {
+        "name": "Jockey One",
+        "value": "Jockey+One"
+    },
+    {
+        "name": "Krona One",
+        "value": "Krona+One"
+    },
+    {
+        "name": "Suranna",
+        "value": "Suranna"
+    },
+    {
+        "name": "Fauna One",
+        "value": "Fauna+One"
+    },
+    {
+        "name": "Cedarville Cursive",
+        "value": "Cedarville+Cursive"
+    },
+    {
+        "name": "Bellefair",
+        "value": "Bellefair"
+    },
+    {
+        "name": "Carrois Gothic",
+        "value": "Carrois+Gothic"
+    },
+    {
+        "name": "Jua",
+        "value": "Jua"
+    },
+    {
+        "name": "La Belle Aurore",
+        "value": "La+Belle+Aurore"
+    },
+    {
+        "name": "Marmelad",
+        "value": "Marmelad"
+    },
+    {
+        "name": "Schoolbell",
+        "value": "Schoolbell"
+    },
+    {
+        "name": "Amiko",
+        "value": "Amiko"
     },
     {
         "name": "Halant",
         "value": "Halant"
     },
     {
-        "name": "Cutive Mono",
-        "value": "Cutive+Mono"
+        "name": "Rosario",
+        "value": "Rosario"
     },
     {
-        "name": "Rammetto One",
-        "value": "Rammetto+One"
+        "name": "Stint Ultra Condensed",
+        "value": "Stint+Ultra+Condensed"
     },
     {
-        "name": "Mrs Saint Delafield",
-        "value": "Mrs+Saint+Delafield"
+        "name": "Merienda One",
+        "value": "Merienda+One"
     },
     {
-        "name": "Buenard",
-        "value": "Buenard"
+        "name": "Kosugi",
+        "value": "Kosugi"
     },
     {
-        "name": "Sniglet",
-        "value": "Sniglet"
+        "name": "Petit Formal Script",
+        "value": "Petit+Formal+Script"
     },
     {
         "name": "Big Shoulders Display",
         "value": "Big+Shoulders+Display"
     },
     {
-        "name": "Aladin",
-        "value": "Aladin"
+        "name": "Metrophobic",
+        "value": "Metrophobic"
     },
     {
-        "name": "Be Vietnam",
-        "value": "Be+Vietnam"
+        "name": "Slabo 13px",
+        "value": "Slabo+13px"
     },
     {
-        "name": "Grandstander",
-        "value": "Grandstander"
+        "name": "Love Ya Like A Sister",
+        "value": "Love+Ya+Like+A+Sister"
     },
     {
-        "name": "Copse",
-        "value": "Copse"
+        "name": "Thasadith",
+        "value": "Thasadith"
     },
     {
-        "name": "IM Fell Double Pica",
-        "value": "IM+Fell+Double+Pica"
+        "name": "Manjari",
+        "value": "Manjari"
+    },
+    {
+        "name": "Grand Hotel",
+        "value": "Grand+Hotel"
     },
     {
         "name": "Calligraffitti",
         "value": "Calligraffitti"
     },
     {
+        "name": "Cormorant Infant",
+        "value": "Cormorant+Infant"
+    },
+    {
+        "name": "Cambay",
+        "value": "Cambay"
+    },
+    {
+        "name": "Amethysta",
+        "value": "Amethysta"
+    },
+    {
+        "name": "Podkova",
+        "value": "Podkova"
+    },
+    {
+        "name": "Baskervville",
+        "value": "Baskervville"
+    },
+    {
+        "name": "Monsieur La Doulaise",
+        "value": "Monsieur+La+Doulaise"
+    },
+    {
+        "name": "Sunflower",
+        "value": "Sunflower"
+    },
+    {
+        "name": "Cutive Mono",
+        "value": "Cutive+Mono"
+    },
+    {
+        "name": "NTR",
+        "value": "NTR"
+    },
+    {
+        "name": "Be Vietnam",
+        "value": "Be+Vietnam"
+    },
+    {
+        "name": "Rammetto One",
+        "value": "Rammetto+One"
+    },
+    {
+        "name": "Copse",
+        "value": "Copse"
+    },
+    {
+        "name": "Aladin",
+        "value": "Aladin"
+    },
+    {
+        "name": "Space Grotesk",
+        "value": "Space+Grotesk"
+    },
+    {
+        "name": "Radley",
+        "value": "Radley"
+    },
+    {
         "name": "Wallpoet",
         "value": "Wallpoet"
     },
     {
-        "name": "Lexend",
-        "value": "Lexend"
+        "name": "Encode Sans Semi Condensed",
+        "value": "Encode+Sans+Semi+Condensed"
+    },
+    {
+        "name": "Poly",
+        "value": "Poly"
+    },
+    {
+        "name": "Averia Libre",
+        "value": "Averia+Libre"
+    },
+    {
+        "name": "Buenard",
+        "value": "Buenard"
+    },
+    {
+        "name": "Bowlby One",
+        "value": "Bowlby+One"
     },
     {
         "name": "Baloo Da 2",
         "value": "Baloo+Da+2"
     },
     {
-        "name": "Esteban",
-        "value": "Esteban"
+        "name": "Spectral SC",
+        "value": "Spectral+SC"
+    },
+    {
+        "name": "Kumbh Sans",
+        "value": "Kumbh+Sans"
+    },
+    {
+        "name": "Oxygen Mono",
+        "value": "Oxygen+Mono"
+    },
+    {
+        "name": "IM Fell English",
+        "value": "IM+Fell+English"
+    },
+    {
+        "name": "Alatsi",
+        "value": "Alatsi"
+    },
+    {
+        "name": "Sofia",
+        "value": "Sofia"
+    },
+    {
+        "name": "IM Fell DW Pica",
+        "value": "IM+Fell+DW+Pica"
+    },
+    {
+        "name": "Fira Code",
+        "value": "Fira+Code"
+    },
+    {
+        "name": "Kelly Slab",
+        "value": "Kelly+Slab"
+    },
+    {
+        "name": "Sniglet",
+        "value": "Sniglet"
+    },
+    {
+        "name": "Bungee Shade",
+        "value": "Bungee+Shade"
+    },
+    {
+        "name": "Duru Sans",
+        "value": "Duru+Sans"
     },
     {
         "name": "Marvel",
@@ -2032,216 +2076,180 @@
         "value": "Harmattan"
     },
     {
-        "name": "Spectral SC",
-        "value": "Spectral+SC"
-    },
-    {
-        "name": "Gabriela",
-        "value": "Gabriela"
-    },
-    {
-        "name": "IM Fell English",
-        "value": "IM+Fell+English"
-    },
-    {
-        "name": "Poly",
-        "value": "Poly"
-    },
-    {
-        "name": "Metrophobic",
-        "value": "Metrophobic"
-    },
-    {
-        "name": "Alike",
-        "value": "Alike"
-    },
-    {
-        "name": "Duru Sans",
-        "value": "Duru+Sans"
-    },
-    {
-        "name": "Space Grotesk",
-        "value": "Space+Grotesk"
-    },
-    {
-        "name": "Kelly Slab",
-        "value": "Kelly+Slab"
-    },
-    {
-        "name": "Monsieur La Doulaise",
-        "value": "Monsieur+La+Doulaise"
-    },
-    {
         "name": "Hanuman",
         "value": "Hanuman"
-    },
-    {
-        "name": "Sofia",
-        "value": "Sofia"
-    },
-    {
-        "name": "Hepta Slab",
-        "value": "Hepta+Slab"
-    },
-    {
-        "name": "La Belle Aurore",
-        "value": "La+Belle+Aurore"
-    },
-    {
-        "name": "Mirza",
-        "value": "Mirza"
-    },
-    {
-        "name": "Bungee Shade",
-        "value": "Bungee+Shade"
-    },
-    {
-        "name": "Kumbh Sans",
-        "value": "Kumbh+Sans"
-    },
-    {
-        "name": "Cormorant SC",
-        "value": "Cormorant+SC"
-    },
-    {
-        "name": "Alike Angular",
-        "value": "Alike+Angular"
-    },
-    {
-        "name": "Andada",
-        "value": "Andada"
-    },
-    {
-        "name": "ZCOOL XiaoWei",
-        "value": "ZCOOL+XiaoWei"
     },
     {
         "name": "Lekton",
         "value": "Lekton"
     },
     {
-        "name": "Bowlby One",
-        "value": "Bowlby+One"
+        "name": "Gugi",
+        "value": "Gugi"
+    },
+    {
+        "name": "Andada",
+        "value": "Andada"
     },
     {
         "name": "Hi Melody",
         "value": "Hi+Melody"
     },
     {
-        "name": "Balthazar",
-        "value": "Balthazar"
+        "name": "Esteban",
+        "value": "Esteban"
     },
     {
-        "name": "Frijole",
-        "value": "Frijole"
+        "name": "Gravitas One",
+        "value": "Gravitas+One"
     },
     {
-        "name": "Emilys Candy",
-        "value": "Emilys+Candy"
+        "name": "Grandstander",
+        "value": "Grandstander"
     },
     {
-        "name": "Oregano",
-        "value": "Oregano"
+        "name": "Blinker",
+        "value": "Blinker"
     },
     {
-        "name": "Fira Code",
-        "value": "Fira+Code"
-    },
-    {
-        "name": "Original Surfer",
-        "value": "Original+Surfer"
-    },
-    {
-        "name": "Chelsea Market",
-        "value": "Chelsea+Market"
-    },
-    {
-        "name": "Cutive",
-        "value": "Cutive"
-    },
-    {
-        "name": "NTR",
-        "value": "NTR"
-    },
-    {
-        "name": "Encode Sans Semi Condensed",
-        "value": "Encode+Sans+Semi+Condensed"
-    },
-    {
-        "name": "Convergence",
-        "value": "Convergence"
-    },
-    {
-        "name": "Sue Ellen Francisco",
-        "value": "Sue+Ellen+Francisco"
-    },
-    {
-        "name": "Bentham",
-        "value": "Bentham"
-    },
-    {
-        "name": "Turret Road",
-        "value": "Turret+Road"
-    },
-    {
-        "name": "Newsreader",
-        "value": "Newsreader"
-    },
-    {
-        "name": "Skranji",
-        "value": "Skranji"
-    },
-    {
-        "name": "Sarpanch",
-        "value": "Sarpanch"
-    },
-    {
-        "name": "Share Tech",
-        "value": "Share+Tech"
-    },
-    {
-        "name": "Aguafina Script",
-        "value": "Aguafina+Script"
+        "name": "Gabriela",
+        "value": "Gabriela"
     },
     {
         "name": "Stardos Stencil",
         "value": "Stardos+Stencil"
     },
     {
+        "name": "IM Fell Double Pica",
+        "value": "IM+Fell+Double+Pica"
+    },
+    {
+        "name": "Mirza",
+        "value": "Mirza"
+    },
+    {
+        "name": "Cormorant SC",
+        "value": "Cormorant+SC"
+    },
+    {
+        "name": "Dawning of a New Day",
+        "value": "Dawning+of+a+New+Day"
+    },
+    {
+        "name": "Alike",
+        "value": "Alike"
+    },
+    {
         "name": "Sedgwick Ave",
         "value": "Sedgwick+Ave"
     },
     {
-        "name": "Grenze Gotisch",
-        "value": "Grenze+Gotisch"
+        "name": "JetBrains Mono",
+        "value": "JetBrains+Mono"
     },
     {
-        "name": "Della Respira",
-        "value": "Della+Respira"
-    },
-    {
-        "name": "Raleway Dots",
-        "value": "Raleway+Dots"
-    },
-    {
-        "name": "Waiting for the Sunrise",
-        "value": "Waiting+for+the+Sunrise"
-    },
-    {
-        "name": "Rouge Script",
-        "value": "Rouge+Script"
+        "name": "Chelsea Market",
+        "value": "Chelsea+Market"
     },
     {
         "name": "Goudy Bookletter 1911",
         "value": "Goudy+Bookletter+1911"
     },
     {
+        "name": "David Libre",
+        "value": "David+Libre"
+    },
+    {
+        "name": "Balthazar",
+        "value": "Balthazar"
+    },
+    {
+        "name": "Oregano",
+        "value": "Oregano"
+    },
+    {
+        "name": "Megrim",
+        "value": "Megrim"
+    },
+    {
+        "name": "Bentham",
+        "value": "Bentham"
+    },
+    {
         "name": "Limelight",
         "value": "Limelight"
     },
     {
+        "name": "Convergence",
+        "value": "Convergence"
+    },
+    {
         "name": "Quando",
         "value": "Quando"
+    },
+    {
+        "name": "Creepster",
+        "value": "Creepster"
+    },
+    {
+        "name": "Cutive",
+        "value": "Cutive"
+    },
+    {
+        "name": "Qwigley",
+        "value": "Qwigley"
+    },
+    {
+        "name": "Skranji",
+        "value": "Skranji"
+    },
+    {
+        "name": "Libre Barcode 39",
+        "value": "Libre+Barcode+39"
+    },
+    {
+        "name": "Alike Angular",
+        "value": "Alike+Angular"
+    },
+    {
+        "name": "Sue Ellen Francisco",
+        "value": "Sue+Ellen+Francisco"
+    },
+    {
+        "name": "Sarpanch",
+        "value": "Sarpanch"
+    },
+    {
+        "name": "Fanwood Text",
+        "value": "Fanwood+Text"
+    },
+    {
+        "name": "Kadwa",
+        "value": "Kadwa"
+    },
+    {
+        "name": "Emilys Candy",
+        "value": "Emilys+Candy"
+    },
+    {
+        "name": "Turret Road",
+        "value": "Turret+Road"
+    },
+    {
+        "name": "Hepta Slab",
+        "value": "Hepta+Slab"
+    },
+    {
+        "name": "Waiting for the Sunrise",
+        "value": "Waiting+for+the+Sunrise"
+    },
+    {
+        "name": "ZCOOL XiaoWei",
+        "value": "ZCOOL+XiaoWei"
+    },
+    {
+        "name": "Original Surfer",
+        "value": "Original+Surfer"
     },
     {
         "name": "Doppio One",
@@ -2252,600 +2260,644 @@
         "value": "UnifrakturMaguntia"
     },
     {
-        "name": "Proza Libre",
-        "value": "Proza+Libre"
+        "name": "Rouge Script",
+        "value": "Rouge+Script"
     },
     {
-        "name": "Kadwa",
-        "value": "Kadwa"
-    },
-    {
-        "name": "Fanwood Text",
-        "value": "Fanwood+Text"
-    },
-    {
-        "name": "Gravitas One",
-        "value": "Gravitas+One"
-    },
-    {
-        "name": "Blinker",
-        "value": "Blinker"
-    },
-    {
-        "name": "Qwigley",
-        "value": "Qwigley"
-    },
-    {
-        "name": "Vast Shadow",
-        "value": "Vast+Shadow"
-    },
-    {
-        "name": "Rasa",
-        "value": "Rasa"
-    },
-    {
-        "name": "Libre Barcode 39",
-        "value": "Libre+Barcode+39"
-    },
-    {
-        "name": "Dawning of a New Day",
-        "value": "Dawning+of+a+New+Day"
-    },
-    {
-        "name": "Pompiere",
-        "value": "Pompiere"
-    },
-    {
-        "name": "Oleo Script Swash Caps",
-        "value": "Oleo+Script+Swash+Caps"
-    },
-    {
-        "name": "Averia Sans Libre",
-        "value": "Averia+Sans+Libre"
-    },
-    {
-        "name": "Caladea",
-        "value": "Caladea"
-    },
-    {
-        "name": "Goblin One",
-        "value": "Goblin+One"
-    },
-    {
-        "name": "RocknRoll One",
-        "value": "RocknRoll+One"
-    },
-    {
-        "name": "Kurale",
-        "value": "Kurale"
-    },
-    {
-        "name": "Clicker Script",
-        "value": "Clicker+Script"
-    },
-    {
-        "name": "Poller One",
-        "value": "Poller+One"
-    },
-    {
-        "name": "Mansalva",
-        "value": "Mansalva"
-    },
-    {
-        "name": "Baumans",
-        "value": "Baumans"
-    },
-    {
-        "name": "Brawler",
-        "value": "Brawler"
-    },
-    {
-        "name": "Farro",
-        "value": "Farro"
-    },
-    {
-        "name": "Ceviche One",
-        "value": "Ceviche+One"
-    },
-    {
-        "name": "Battambang",
-        "value": "Battambang"
-    },
-    {
-        "name": "Expletus Sans",
-        "value": "Expletus+Sans"
-    },
-    {
-        "name": "Galada",
-        "value": "Galada"
-    },
-    {
-        "name": "B612 Mono",
-        "value": "B612+Mono"
-    },
-    {
-        "name": "Bodoni Moda",
-        "value": "Bodoni+Moda"
+        "name": "Manuale",
+        "value": "Manuale"
     },
     {
         "name": "Lemon",
         "value": "Lemon"
     },
     {
-        "name": "Fondamento",
-        "value": "Fondamento"
+        "name": "Frijole",
+        "value": "Frijole"
     },
     {
-        "name": "Anaheim",
-        "value": "Anaheim"
-    },
-    {
-        "name": "Mallanna",
-        "value": "Mallanna"
-    },
-    {
-        "name": "Happy Monkey",
-        "value": "Happy+Monkey"
-    },
-    {
-        "name": "Finger Paint",
-        "value": "Finger+Paint"
-    },
-    {
-        "name": "Wendy One",
-        "value": "Wendy+One"
-    },
-    {
-        "name": "Patrick Hand SC",
-        "value": "Patrick+Hand+SC"
-    },
-    {
-        "name": "Freckle Face",
-        "value": "Freckle+Face"
-    },
-    {
-        "name": "Montez",
-        "value": "Montez"
-    },
-    {
-        "name": "Nova Mono",
-        "value": "Nova+Mono"
-    },
-    {
-        "name": "Meddon",
-        "value": "Meddon"
-    },
-    {
-        "name": "Antonio",
-        "value": "Antonio"
-    },
-    {
-        "name": "Megrim",
-        "value": "Megrim"
-    },
-    {
-        "name": "Oxanium",
-        "value": "Oxanium"
-    },
-    {
-        "name": "Federo",
-        "value": "Federo"
-    },
-    {
-        "name": "Tillana",
-        "value": "Tillana"
-    },
-    {
-        "name": "Yatra One",
-        "value": "Yatra+One"
-    },
-    {
-        "name": "Cambo",
-        "value": "Cambo"
-    },
-    {
-        "name": "BioRhyme",
-        "value": "BioRhyme"
-    },
-    {
-        "name": "Livvic",
-        "value": "Livvic"
-    },
-    {
-        "name": "Baloo Thambi 2",
-        "value": "Baloo+Thambi+2"
-    },
-    {
-        "name": "Major Mono Display",
-        "value": "Major+Mono+Display"
-    },
-    {
-        "name": "Andika",
-        "value": "Andika"
-    },
-    {
-        "name": "Ranchers",
-        "value": "Ranchers"
-    },
-    {
-        "name": "Antic Didone",
-        "value": "Antic+Didone"
-    },
-    {
-        "name": "Atma",
-        "value": "Atma"
-    },
-    {
-        "name": "Dokdo",
-        "value": "Dokdo"
-    },
-    {
-        "name": "Homenaje",
-        "value": "Homenaje"
+        "name": "Brawler",
+        "value": "Brawler"
     },
     {
         "name": "Zeyada",
         "value": "Zeyada"
     },
     {
-        "name": "Almendra",
-        "value": "Almendra"
+        "name": "Asar",
+        "value": "Asar"
     },
     {
-        "name": "Big Shoulders Text",
-        "value": "Big+Shoulders+Text"
+        "name": "Rasa",
+        "value": "Rasa"
     },
     {
-        "name": "Inder",
-        "value": "Inder"
+        "name": "Farro",
+        "value": "Farro"
     },
     {
-        "name": "Vampiro One",
-        "value": "Vampiro+One"
+        "name": "B612 Mono",
+        "value": "B612+Mono"
     },
     {
-        "name": "Creepster",
-        "value": "Creepster"
+        "name": "Baumans",
+        "value": "Baumans"
+    },
+    {
+        "name": "Proza Libre",
+        "value": "Proza+Libre"
+    },
+    {
+        "name": "Battambang",
+        "value": "Battambang"
+    },
+    {
+        "name": "Oleo Script Swash Caps",
+        "value": "Oleo+Script+Swash+Caps"
+    },
+    {
+        "name": "Grenze Gotisch",
+        "value": "Grenze+Gotisch"
+    },
+    {
+        "name": "Expletus Sans",
+        "value": "Expletus+Sans"
+    },
+    {
+        "name": "Averia Sans Libre",
+        "value": "Averia+Sans+Libre"
+    },
+    {
+        "name": "Pompiere",
+        "value": "Pompiere"
     },
     {
         "name": "Give You Glory",
         "value": "Give+You+Glory"
     },
     {
-        "name": "Katibeh",
-        "value": "Katibeh"
+        "name": "Bodoni Moda",
+        "value": "Bodoni+Moda"
     },
     {
-        "name": "ZCOOL QingKe HuangYou",
-        "value": "ZCOOL+QingKe+HuangYou"
+        "name": "Vast Shadow",
+        "value": "Vast+Shadow"
     },
     {
-        "name": "Faster One",
-        "value": "Faster+One"
+        "name": "Ceviche One",
+        "value": "Ceviche+One"
     },
     {
-        "name": "Rakkas",
-        "value": "Rakkas"
+        "name": "Anaheim",
+        "value": "Anaheim"
     },
     {
-        "name": "Vollkorn SC",
-        "value": "Vollkorn+SC"
+        "name": "Patrick Hand SC",
+        "value": "Patrick+Hand+SC"
     },
     {
-        "name": "Orienta",
-        "value": "Orienta"
+        "name": "Raleway Dots",
+        "value": "Raleway+Dots"
     },
     {
-        "name": "Iceland",
-        "value": "Iceland"
+        "name": "Caladea",
+        "value": "Caladea"
     },
     {
-        "name": "Italiana",
-        "value": "Italiana"
+        "name": "Finger Paint",
+        "value": "Finger+Paint"
     },
     {
-        "name": "Ledger",
-        "value": "Ledger"
+        "name": "Inder",
+        "value": "Inder"
     },
     {
-        "name": "Notable",
-        "value": "Notable"
+        "name": "Almendra",
+        "value": "Almendra"
     },
     {
-        "name": "Euphoria Script",
-        "value": "Euphoria+Script"
+        "name": "Livvic",
+        "value": "Livvic"
     },
     {
-        "name": "Walter Turncoat",
-        "value": "Walter+Turncoat"
+        "name": "Share Tech",
+        "value": "Share+Tech"
     },
     {
-        "name": "Vesper Libre",
-        "value": "Vesper+Libre"
+        "name": "Montez",
+        "value": "Montez"
     },
     {
-        "name": "Lexend Zetta",
-        "value": "Lexend+Zetta"
+        "name": "Kurale",
+        "value": "Kurale"
+    },
+    {
+        "name": "Happy Monkey",
+        "value": "Happy+Monkey"
+    },
+    {
+        "name": "Freckle Face",
+        "value": "Freckle+Face"
+    },
+    {
+        "name": "Andika",
+        "value": "Andika"
+    },
+    {
+        "name": "Galada",
+        "value": "Galada"
+    },
+    {
+        "name": "Clicker Script",
+        "value": "Clicker+Script"
+    },
+    {
+        "name": "RocknRoll One",
+        "value": "RocknRoll+One"
+    },
+    {
+        "name": "Atma",
+        "value": "Atma"
     },
     {
         "name": "Sail",
         "value": "Sail"
     },
     {
-        "name": "Aref Ruqaa",
-        "value": "Aref+Ruqaa"
+        "name": "Meddon",
+        "value": "Meddon"
     },
     {
-        "name": "Arya",
-        "value": "Arya"
+        "name": "Ledger",
+        "value": "Ledger"
     },
     {
-        "name": "Nova Round",
-        "value": "Nova+Round"
-    },
-    {
-        "name": "Cormorant Upright",
-        "value": "Cormorant+Upright"
-    },
-    {
-        "name": "Inknut Antiqua",
-        "value": "Inknut+Antiqua"
-    },
-    {
-        "name": "Mouse Memoirs",
-        "value": "Mouse+Memoirs"
-    },
-    {
-        "name": "Timmana",
-        "value": "Timmana"
-    },
-    {
-        "name": "Mukta Mahee",
-        "value": "Mukta+Mahee"
+        "name": "Mansalva",
+        "value": "Mansalva"
     },
     {
         "name": "Numans",
         "value": "Numans"
     },
     {
-        "name": "JetBrains Mono",
-        "value": "JetBrains+Mono"
+        "name": "Aguafina Script",
+        "value": "Aguafina+Script"
     },
     {
-        "name": "Tienne",
-        "value": "Tienne"
+        "name": "Antic Didone",
+        "value": "Antic+Didone"
     },
     {
-        "name": "Ruslan Display",
-        "value": "Ruslan+Display"
+        "name": "Major Mono Display",
+        "value": "Major+Mono+Display"
     },
     {
-        "name": "Bellota Text",
-        "value": "Bellota+Text"
-    },
-    {
-        "name": "IM Fell English SC",
-        "value": "IM+Fell+English+SC"
-    },
-    {
-        "name": "Mountains of Christmas",
-        "value": "Mountains+of+Christmas"
-    },
-    {
-        "name": "Montaga",
-        "value": "Montaga"
-    },
-    {
-        "name": "McLaren",
-        "value": "McLaren"
+        "name": "Federo",
+        "value": "Federo"
     },
     {
         "name": "Over the Rainbow",
         "value": "Over+the+Rainbow"
     },
     {
-        "name": "Salsa",
-        "value": "Salsa"
+        "name": "Poller One",
+        "value": "Poller+One"
     },
     {
-        "name": "Unkempt",
-        "value": "Unkempt"
+        "name": "Nova Mono",
+        "value": "Nova+Mono"
     },
     {
-        "name": "Crafty Girls",
-        "value": "Crafty+Girls"
+        "name": "BioRhyme",
+        "value": "BioRhyme"
     },
     {
-        "name": "Montserrat Subrayada",
-        "value": "Montserrat+Subrayada"
+        "name": "Faster One",
+        "value": "Faster+One"
     },
     {
-        "name": "Short Stack",
-        "value": "Short+Stack"
+        "name": "Antonio",
+        "value": "Antonio"
+    },
+    {
+        "name": "Tienne",
+        "value": "Tienne"
     },
     {
         "name": "Gurajada",
         "value": "Gurajada"
     },
     {
-        "name": "Life Savers",
-        "value": "Life+Savers"
+        "name": "Timmana",
+        "value": "Timmana"
     },
     {
-        "name": "Loved by the King",
-        "value": "Loved+by+the+King"
+        "name": "Homenaje",
+        "value": "Homenaje"
     },
     {
-        "name": "Coiny",
-        "value": "Coiny"
+        "name": "Fondamento",
+        "value": "Fondamento"
     },
     {
-        "name": "Headland One",
-        "value": "Headland+One"
+        "name": "Big Shoulders Text",
+        "value": "Big+Shoulders+Text"
+    },
+    {
+        "name": "Mallanna",
+        "value": "Mallanna"
+    },
+    {
+        "name": "Baloo Thambi 2",
+        "value": "Baloo+Thambi+2"
+    },
+    {
+        "name": "Cambo",
+        "value": "Cambo"
+    },
+    {
+        "name": "Wendy One",
+        "value": "Wendy+One"
+    },
+    {
+        "name": "Della Respira",
+        "value": "Della+Respira"
+    },
+    {
+        "name": "Nova Round",
+        "value": "Nova+Round"
+    },
+    {
+        "name": "Newsreader",
+        "value": "Newsreader"
     },
     {
         "name": "Calistoga",
         "value": "Calistoga"
     },
     {
-        "name": "Reggae One",
-        "value": "Reggae+One"
+        "name": "Iceland",
+        "value": "Iceland"
     },
     {
-        "name": "Cormorant Unicase",
-        "value": "Cormorant+Unicase"
+        "name": "Vollkorn SC",
+        "value": "Vollkorn+SC"
     },
     {
-        "name": "Mako",
-        "value": "Mako"
+        "name": "Oxanium",
+        "value": "Oxanium"
     },
     {
-        "name": "Codystar",
-        "value": "Codystar"
+        "name": "Orienta",
+        "value": "Orienta"
     },
     {
-        "name": "Shippori Mincho",
-        "value": "Shippori+Mincho"
+        "name": "ZCOOL QingKe HuangYou",
+        "value": "ZCOOL+QingKe+HuangYou"
     },
     {
-        "name": "Red Rose",
-        "value": "Red+Rose"
+        "name": "Goblin One",
+        "value": "Goblin+One"
     },
     {
-        "name": "Strait",
-        "value": "Strait"
+        "name": "Walter Turncoat",
+        "value": "Walter+Turncoat"
     },
     {
-        "name": "Yusei Magic",
-        "value": "Yusei+Magic"
+        "name": "Euphoria Script",
+        "value": "Euphoria+Script"
     },
     {
-        "name": "Cherry Cream Soda",
-        "value": "Cherry+Cream+Soda"
+        "name": "Short Stack",
+        "value": "Short+Stack"
     },
     {
-        "name": "Yeon Sung",
-        "value": "Yeon+Sung"
+        "name": "Mountains of Christmas",
+        "value": "Mountains+of+Christmas"
     },
     {
-        "name": "Trade Winds",
-        "value": "Trade+Winds"
+        "name": "Mukta Mahee",
+        "value": "Mukta+Mahee"
     },
     {
-        "name": "Elsie",
-        "value": "Elsie"
+        "name": "Vesper Libre",
+        "value": "Vesper+Libre"
     },
     {
-        "name": "Mina",
-        "value": "Mina"
+        "name": "Rakkas",
+        "value": "Rakkas"
     },
     {
-        "name": "Encode Sans Expanded",
-        "value": "Encode+Sans+Expanded"
+        "name": "Ranchers",
+        "value": "Ranchers"
     },
     {
-        "name": "Goldman",
-        "value": "Goldman"
+        "name": "Mouse Memoirs",
+        "value": "Mouse+Memoirs"
     },
     {
-        "name": "Delius Swash Caps",
-        "value": "Delius+Swash+Caps"
+        "name": "Dokdo",
+        "value": "Dokdo"
     },
     {
-        "name": "Wire One",
-        "value": "Wire+One"
+        "name": "Vampiro One",
+        "value": "Vampiro+One"
     },
     {
-        "name": "Odibee Sans",
-        "value": "Odibee+Sans"
-    },
-    {
-        "name": "Peralta",
-        "value": "Peralta"
-    },
-    {
-        "name": "Cherry Swash",
-        "value": "Cherry+Swash"
-    },
-    {
-        "name": "Asul",
-        "value": "Asul"
-    },
-    {
-        "name": "Metamorphous",
-        "value": "Metamorphous"
+        "name": "McLaren",
+        "value": "McLaren"
     },
     {
         "name": "Shojumaru",
         "value": "Shojumaru"
     },
     {
-        "name": "Bilbo Swash Caps",
-        "value": "Bilbo+Swash+Caps"
+        "name": "Cormorant Upright",
+        "value": "Cormorant+Upright"
     },
     {
-        "name": "Flamenco",
-        "value": "Flamenco"
+        "name": "Montserrat Subrayada",
+        "value": "Montserrat+Subrayada"
     },
     {
-        "name": "Delius Unicase",
-        "value": "Delius+Unicase"
+        "name": "Encode Sans Expanded",
+        "value": "Encode+Sans+Expanded"
     },
     {
-        "name": "The Girl Next Door",
-        "value": "The+Girl+Next+Door"
+        "name": "Italiana",
+        "value": "Italiana"
+    },
+    {
+        "name": "Katibeh",
+        "value": "Katibeh"
+    },
+    {
+        "name": "Coiny",
+        "value": "Coiny"
+    },
+    {
+        "name": "Inknut Antiqua",
+        "value": "Inknut+Antiqua"
+    },
+    {
+        "name": "Salsa",
+        "value": "Salsa"
+    },
+    {
+        "name": "Aref Ruqaa",
+        "value": "Aref+Ruqaa"
     },
     {
         "name": "DM Mono",
         "value": "DM+Mono"
     },
     {
-        "name": "Geo",
-        "value": "Geo"
+        "name": "Bellota Text",
+        "value": "Bellota+Text"
     },
     {
-        "name": "Hanalei Fill",
-        "value": "Hanalei+Fill"
+        "name": "Strait",
+        "value": "Strait"
     },
     {
-        "name": "Amarante",
-        "value": "Amarante"
+        "name": "Unkempt",
+        "value": "Unkempt"
     },
     {
-        "name": "Pavanam",
-        "value": "Pavanam"
+        "name": "Mako",
+        "value": "Mako"
+    },
+    {
+        "name": "Ruslan Display",
+        "value": "Ruslan+Display"
+    },
+    {
+        "name": "Notable",
+        "value": "Notable"
+    },
+    {
+        "name": "Arya",
+        "value": "Arya"
+    },
+    {
+        "name": "Crafty Girls",
+        "value": "Crafty+Girls"
+    },
+    {
+        "name": "Tillana",
+        "value": "Tillana"
+    },
+    {
+        "name": "Loved by the King",
+        "value": "Loved+by+the+King"
+    },
+    {
+        "name": "Cherry Cream Soda",
+        "value": "Cherry+Cream+Soda"
+    },
+    {
+        "name": "Bilbo Swash Caps",
+        "value": "Bilbo+Swash+Caps"
+    },
+    {
+        "name": "Lexend Zetta",
+        "value": "Lexend+Zetta"
+    },
+    {
+        "name": "Elsie",
+        "value": "Elsie"
+    },
+    {
+        "name": "Codystar",
+        "value": "Codystar"
+    },
+    {
+        "name": "Yatra One",
+        "value": "Yatra+One"
+    },
+    {
+        "name": "Ranga",
+        "value": "Ranga"
+    },
+    {
+        "name": "IM Fell English SC",
+        "value": "IM+Fell+English+SC"
+    },
+    {
+        "name": "Overlock SC",
+        "value": "Overlock+SC"
+    },
+    {
+        "name": "Life Savers",
+        "value": "Life+Savers"
+    },
+    {
+        "name": "Odibee Sans",
+        "value": "Odibee+Sans"
+    },
+    {
+        "name": "Delius Swash Caps",
+        "value": "Delius+Swash+Caps"
+    },
+    {
+        "name": "Flamenco",
+        "value": "Flamenco"
+    },
+    {
+        "name": "Engagement",
+        "value": "Engagement"
+    },
+    {
+        "name": "Gaegu",
+        "value": "Gaegu"
+    },
+    {
+        "name": "Peralta",
+        "value": "Peralta"
     },
     {
         "name": "Scope One",
         "value": "Scope+One"
     },
     {
-        "name": "Nova Square",
-        "value": "Nova+Square"
+        "name": "Bilbo",
+        "value": "Bilbo"
     },
     {
-        "name": "Prosto One",
-        "value": "Prosto+One"
+        "name": "Trade Winds",
+        "value": "Trade+Winds"
     },
     {
-        "name": "Encode Sans Semi Expanded",
-        "value": "Encode+Sans+Semi+Expanded"
+        "name": "Red Rose",
+        "value": "Red+Rose"
     },
     {
-        "name": "Chau Philomene One",
-        "value": "Chau+Philomene+One"
+        "name": "Carrois Gothic SC",
+        "value": "Carrois+Gothic+SC"
+    },
+    {
+        "name": "Montaga",
+        "value": "Montaga"
     },
     {
         "name": "Eater",
         "value": "Eater"
     },
     {
-        "name": "Lily Script One",
-        "value": "Lily+Script+One"
+        "name": "Dynalight",
+        "value": "Dynalight"
     },
     {
-        "name": "Gaegu",
-        "value": "Gaegu"
+        "name": "Metamorphous",
+        "value": "Metamorphous"
+    },
+    {
+        "name": "Wire One",
+        "value": "Wire+One"
+    },
+    {
+        "name": "The Girl Next Door",
+        "value": "The+Girl+Next+Door"
+    },
+    {
+        "name": "Gafata",
+        "value": "Gafata"
+    },
+    {
+        "name": "Geo",
+        "value": "Geo"
+    },
+    {
+        "name": "Artifika",
+        "value": "Artifika"
+    },
+    {
+        "name": "Mina",
+        "value": "Mina"
+    },
+    {
+        "name": "Voces",
+        "value": "Voces"
+    },
+    {
+        "name": "Headland One",
+        "value": "Headland+One"
+    },
+    {
+        "name": "Encode Sans Semi Expanded",
+        "value": "Encode+Sans+Semi+Expanded"
+    },
+    {
+        "name": "Nova Square",
+        "value": "Nova+Square"
+    },
+    {
+        "name": "Goldman",
+        "value": "Goldman"
+    },
+    {
+        "name": "Amarante",
+        "value": "Amarante"
+    },
+    {
+        "name": "Ma Shan Zheng",
+        "value": "Ma+Shan+Zheng"
+    },
+    {
+        "name": "Prosto One",
+        "value": "Prosto+One"
+    },
+    {
+        "name": "Cherry Swash",
+        "value": "Cherry+Swash"
+    },
+    {
+        "name": "Denk One",
+        "value": "Denk+One"
+    },
+    {
+        "name": "Cantora One",
+        "value": "Cantora+One"
+    },
+    {
+        "name": "Stalemate",
+        "value": "Stalemate"
+    },
+    {
+        "name": "Asul",
+        "value": "Asul"
+    },
+    {
+        "name": "Shippori Mincho",
+        "value": "Shippori+Mincho"
+    },
+    {
+        "name": "Chau Philomene One",
+        "value": "Chau+Philomene+One"
+    },
+    {
+        "name": "Reggae One",
+        "value": "Reggae+One"
+    },
+    {
+        "name": "Pavanam",
+        "value": "Pavanam"
+    },
+    {
+        "name": "Yusei Magic",
+        "value": "Yusei+Magic"
+    },
+    {
+        "name": "Yeon Sung",
+        "value": "Yeon+Sung"
+    },
+    {
+        "name": "Just Me Again Down Here",
+        "value": "Just+Me+Again+Down+Here"
+    },
+    {
+        "name": "Lily Script One",
+        "value": "Lily+Script+One"
     },
     {
         "name": "Imprima",
@@ -2860,344 +2912,252 @@
         "value": "Milonga"
     },
     {
-        "name": "Koulen",
-        "value": "Koulen"
-    },
-    {
-        "name": "Denk One",
-        "value": "Denk+One"
-    },
-    {
-        "name": "Gafata",
-        "value": "Gafata"
-    },
-    {
-        "name": "Port Lligat Slab",
-        "value": "Port+Lligat+Slab"
-    },
-    {
-        "name": "Artifika",
-        "value": "Artifika"
-    },
-    {
-        "name": "Puritan",
-        "value": "Puritan"
-    },
-    {
-        "name": "UnifrakturCook",
-        "value": "UnifrakturCook"
-    },
-    {
-        "name": "Carrois Gothic SC",
-        "value": "Carrois+Gothic+SC"
-    },
-    {
-        "name": "Sura",
-        "value": "Sura"
-    },
-    {
-        "name": "Song Myung",
-        "value": "Song+Myung"
-    },
-    {
-        "name": "Ma Shan Zheng",
-        "value": "Ma+Shan+Zheng"
-    },
-    {
-        "name": "New Rocker",
-        "value": "New+Rocker"
-    },
-    {
-        "name": "Engagement",
-        "value": "Engagement"
-    },
-    {
-        "name": "Voces",
-        "value": "Voces"
-    },
-    {
-        "name": "Nokora",
-        "value": "Nokora"
-    },
-    {
-        "name": "Kodchasan",
-        "value": "Kodchasan"
-    },
-    {
-        "name": "Dynalight",
-        "value": "Dynalight"
-    },
-    {
-        "name": "Just Me Again Down Here",
-        "value": "Just+Me+Again+Down+Here"
+        "name": "Hanalei Fill",
+        "value": "Hanalei+Fill"
     },
     {
         "name": "Meera Inimai",
         "value": "Meera+Inimai"
     },
     {
-        "name": "Libre Caslon Display",
-        "value": "Libre+Caslon+Display"
-    },
-    {
-        "name": "Germania One",
-        "value": "Germania+One"
-    },
-    {
-        "name": "Vibur",
-        "value": "Vibur"
-    },
-    {
-        "name": "Ribeye",
-        "value": "Ribeye"
-    },
-    {
-        "name": "Tauri",
-        "value": "Tauri"
-    },
-    {
-        "name": "Quintessential",
-        "value": "Quintessential"
-    },
-    {
-        "name": "Sarina",
-        "value": "Sarina"
-    },
-    {
-        "name": "Overlock SC",
-        "value": "Overlock+SC"
-    },
-    {
-        "name": "League Script",
-        "value": "League+Script"
-    },
-    {
-        "name": "Farsan",
-        "value": "Farsan"
-    },
-    {
-        "name": "Mogra",
-        "value": "Mogra"
-    },
-    {
-        "name": "Charmonman",
-        "value": "Charmonman"
-    },
-    {
-        "name": "Bilbo",
-        "value": "Bilbo"
-    },
-    {
-        "name": "Henny Penny",
-        "value": "Henny+Penny"
-    },
-    {
-        "name": "Slackey",
-        "value": "Slackey"
-    },
-    {
-        "name": "Saira Stencil One",
-        "value": "Saira+Stencil+One"
-    },
-    {
-        "name": "Kite One",
-        "value": "Kite+One"
-    },
-    {
-        "name": "Cantora One",
-        "value": "Cantora+One"
-    },
-    {
-        "name": "Modak",
-        "value": "Modak"
-    },
-    {
-        "name": "IM Fell French Canon",
-        "value": "IM+Fell+French+Canon"
-    },
-    {
-        "name": "Fjord One",
-        "value": "Fjord+One"
-    },
-    {
-        "name": "Asar",
-        "value": "Asar"
-    },
-    {
-        "name": "Fresca",
-        "value": "Fresca"
-    },
-    {
-        "name": "Manuale",
-        "value": "Manuale"
-    },
-    {
-        "name": "Lovers Quarrel",
-        "value": "Lovers+Quarrel"
-    },
-    {
-        "name": "Syne",
-        "value": "Syne"
-    },
-    {
-        "name": "Kranky",
-        "value": "Kranky"
-    },
-    {
-        "name": "Rosarivo",
-        "value": "Rosarivo"
-    },
-    {
-        "name": "Paprika",
-        "value": "Paprika"
-    },
-    {
-        "name": "Jomhuria",
-        "value": "Jomhuria"
-    },
-    {
-        "name": "Gamja Flower",
-        "value": "Gamja+Flower"
-    },
-    {
-        "name": "Shanti",
-        "value": "Shanti"
-    },
-    {
-        "name": "Julee",
-        "value": "Julee"
-    },
-    {
-        "name": "Dekko",
-        "value": "Dekko"
-    },
-    {
-        "name": "Habibi",
-        "value": "Habibi"
-    },
-    {
-        "name": "Londrina Outline",
-        "value": "Londrina+Outline"
-    },
-    {
-        "name": "Ramaraja",
-        "value": "Ramaraja"
-    },
-    {
-        "name": "Rationale",
-        "value": "Rationale"
-    },
-    {
-        "name": "Baloo Bhaina 2",
-        "value": "Baloo+Bhaina+2"
-    },
-    {
-        "name": "Sancreek",
-        "value": "Sancreek"
-    },
-    {
-        "name": "Chicle",
-        "value": "Chicle"
-    },
-    {
-        "name": "Kiwi Maru",
-        "value": "Kiwi+Maru"
-    },
-    {
-        "name": "Mystery Quest",
-        "value": "Mystery+Quest"
-    },
-    {
-        "name": "Fontdiner Swanky",
-        "value": "Fontdiner+Swanky"
-    },
-    {
-        "name": "Uncial Antiqua",
-        "value": "Uncial+Antiqua"
-    },
-    {
-        "name": "Wellfleet",
-        "value": "Wellfleet"
-    },
-    {
-        "name": "Spicy Rice",
-        "value": "Spicy+Rice"
-    },
-    {
-        "name": "Stalemate",
-        "value": "Stalemate"
-    },
-    {
-        "name": "Fraunces",
-        "value": "Fraunces"
-    },
-    {
-        "name": "Port Lligat Sans",
-        "value": "Port+Lligat+Sans"
-    },
-    {
-        "name": "Baloo Paaji 2",
-        "value": "Baloo+Paaji+2"
-    },
-    {
-        "name": "Stoke",
-        "value": "Stoke"
+        "name": "Georama",
+        "value": "Georama"
     },
     {
         "name": "Khmer",
         "value": "Khmer"
     },
     {
-        "name": "Simonetta",
-        "value": "Simonetta"
+        "name": "League Script",
+        "value": "League+Script"
     },
     {
-        "name": "Tomorrow",
-        "value": "Tomorrow"
+        "name": "Puritan",
+        "value": "Puritan"
     },
     {
-        "name": "Macondo Swash Caps",
-        "value": "Macondo+Swash+Caps"
+        "name": "Kodchasan",
+        "value": "Kodchasan"
     },
     {
-        "name": "Text Me One",
-        "value": "Text+Me+One"
+        "name": "Fjord One",
+        "value": "Fjord+One"
     },
     {
-        "name": "Georama",
-        "value": "Georama"
+        "name": "Tauri",
+        "value": "Tauri"
+    },
+    {
+        "name": "Nokora",
+        "value": "Nokora"
+    },
+    {
+        "name": "UnifrakturCook",
+        "value": "UnifrakturCook"
+    },
+    {
+        "name": "Port Lligat Slab",
+        "value": "Port+Lligat+Slab"
+    },
+    {
+        "name": "Song Myung",
+        "value": "Song+Myung"
+    },
+    {
+        "name": "Delius Unicase",
+        "value": "Delius+Unicase"
+    },
+    {
+        "name": "Port Lligat Sans",
+        "value": "Port+Lligat+Sans"
+    },
+    {
+        "name": "Kite One",
+        "value": "Kite+One"
+    },
+    {
+        "name": "Charmonman",
+        "value": "Charmonman"
+    },
+    {
+        "name": "Vibur",
+        "value": "Vibur"
+    },
+    {
+        "name": "Cormorant Unicase",
+        "value": "Cormorant+Unicase"
+    },
+    {
+        "name": "STIX Two Text",
+        "value": "STIX+Two+Text"
+    },
+    {
+        "name": "Sura",
+        "value": "Sura"
+    },
+    {
+        "name": "New Rocker",
+        "value": "New+Rocker"
+    },
+    {
+        "name": "Lovers Quarrel",
+        "value": "Lovers+Quarrel"
+    },
+    {
+        "name": "Libre Barcode 39 Text",
+        "value": "Libre+Barcode+39+Text"
+    },
+    {
+        "name": "Koulen",
+        "value": "Koulen"
+    },
+    {
+        "name": "Habibi",
+        "value": "Habibi"
+    },
+    {
+        "name": "Sarina",
+        "value": "Sarina"
+    },
+    {
+        "name": "Fontdiner Swanky",
+        "value": "Fontdiner+Swanky"
+    },
+    {
+        "name": "Henny Penny",
+        "value": "Henny+Penny"
+    },
+    {
+        "name": "Palette Mosaic",
+        "value": "Palette+Mosaic"
+    },
+    {
+        "name": "Slackey",
+        "value": "Slackey"
+    },
+    {
+        "name": "Germania One",
+        "value": "Germania+One"
+    },
+    {
+        "name": "Saira Stencil One",
+        "value": "Saira+Stencil+One"
+    },
+    {
+        "name": "Shanti",
+        "value": "Shanti"
+    },
+    {
+        "name": "Atkinson Hyperlegible",
+        "value": "Atkinson+Hyperlegible"
     },
     {
         "name": "Style Script",
         "value": "Style+Script"
     },
     {
-        "name": "Ranga",
-        "value": "Ranga"
+        "name": "Mogra",
+        "value": "Mogra"
     },
     {
-        "name": "Kotta One",
-        "value": "Kotta+One"
+        "name": "Baloo Paaji 2",
+        "value": "Baloo+Paaji+2"
     },
     {
-        "name": "Shippori Mincho B1",
-        "value": "Shippori+Mincho+B1"
+        "name": "Kranky",
+        "value": "Kranky"
+    },
+    {
+        "name": "Hahmlet",
+        "value": "Hahmlet"
+    },
+    {
+        "name": "East Sea Dokdo",
+        "value": "East+Sea+Dokdo"
+    },
+    {
+        "name": "IM Fell French Canon",
+        "value": "IM+Fell+French+Canon"
+    },
+    {
+        "name": "Ribeye",
+        "value": "Ribeye"
+    },
+    {
+        "name": "Paprika",
+        "value": "Paprika"
+    },
+    {
+        "name": "Libre Caslon Display",
+        "value": "Libre+Caslon+Display"
+    },
+    {
+        "name": "Gamja Flower",
+        "value": "Gamja+Flower"
+    },
+    {
+        "name": "Fresca",
+        "value": "Fresca"
+    },
+    {
+        "name": "Syne",
+        "value": "Syne"
     },
     {
         "name": "Lakki Reddy",
         "value": "Lakki+Reddy"
     },
     {
+        "name": "Stoke",
+        "value": "Stoke"
+    },
+    {
+        "name": "Kiwi Maru",
+        "value": "Kiwi+Maru"
+    },
+    {
+        "name": "Julee",
+        "value": "Julee"
+    },
+    {
+        "name": "Londrina Outline",
+        "value": "Londrina+Outline"
+    },
+    {
+        "name": "Rosarivo",
+        "value": "Rosarivo"
+    },
+    {
+        "name": "Dorsa",
+        "value": "Dorsa"
+    },
+    {
+        "name": "Cute Font",
+        "value": "Cute+Font"
+    },
+    {
         "name": "Bellota",
         "value": "Bellota"
     },
     {
-        "name": "Petrona",
-        "value": "Petrona"
+        "name": "Sancreek",
+        "value": "Sancreek"
     },
     {
-        "name": "B612",
-        "value": "B612"
+        "name": "Baloo Bhaina 2",
+        "value": "Baloo+Bhaina+2"
+    },
+    {
+        "name": "Zilla Slab Highlight",
+        "value": "Zilla+Slab+Highlight"
+    },
+    {
+        "name": "Rationale",
+        "value": "Rationale"
+    },
+    {
+        "name": "Chicle",
+        "value": "Chicle"
     },
     {
         "name": "IM Fell French Canon SC",
@@ -3208,364 +3168,444 @@
         "value": "Crushed"
     },
     {
-        "name": "Ibarra Real Nova",
-        "value": "Ibarra+Real+Nova"
+        "name": "Jomhuria",
+        "value": "Jomhuria"
     },
     {
-        "name": "Sumana",
-        "value": "Sumana"
+        "name": "B612",
+        "value": "B612"
+    },
+    {
+        "name": "Text Me One",
+        "value": "Text+Me+One"
+    },
+    {
+        "name": "Spicy Rice",
+        "value": "Spicy+Rice"
     },
     {
         "name": "Prociono",
         "value": "Prociono"
     },
     {
-        "name": "Kulim Park",
-        "value": "Kulim+Park"
+        "name": "Fraunces",
+        "value": "Fraunces"
     },
     {
-        "name": "Hahmlet",
-        "value": "Hahmlet"
+        "name": "Dekko",
+        "value": "Dekko"
     },
     {
-        "name": "Sonsie One",
-        "value": "Sonsie+One"
+        "name": "Mystery Quest",
+        "value": "Mystery+Quest"
     },
     {
-        "name": "Baloo Bhai 2",
-        "value": "Baloo+Bhai+2"
+        "name": "Modak",
+        "value": "Modak"
     },
     {
-        "name": "Englebert",
-        "value": "Englebert"
+        "name": "Uncial Antiqua",
+        "value": "Uncial+Antiqua"
     },
     {
-        "name": "Fenix",
-        "value": "Fenix"
+        "name": "Tomorrow",
+        "value": "Tomorrow"
     },
     {
-        "name": "Chango",
-        "value": "Chango"
+        "name": "Simonetta",
+        "value": "Simonetta"
     },
     {
-        "name": "Cute Font",
-        "value": "Cute+Font"
-    },
-    {
-        "name": "Libre Barcode 39 Text",
-        "value": "Libre+Barcode+39+Text"
-    },
-    {
-        "name": "Piazzolla",
-        "value": "Piazzolla"
+        "name": "Quintessential",
+        "value": "Quintessential"
     },
     {
         "name": "Fahkwang",
         "value": "Fahkwang"
     },
     {
-        "name": "Zilla Slab Highlight",
-        "value": "Zilla+Slab+Highlight"
+        "name": "Baloo Bhai 2",
+        "value": "Baloo+Bhai+2"
     },
     {
-        "name": "Palette Mosaic",
-        "value": "Palette+Mosaic"
+        "name": "Chango",
+        "value": "Chango"
     },
     {
-        "name": "Pirata One",
-        "value": "Pirata+One"
-    },
-    {
-        "name": "Cagliostro",
-        "value": "Cagliostro"
-    },
-    {
-        "name": "Piedra",
-        "value": "Piedra"
-    },
-    {
-        "name": "Ruluko",
-        "value": "Ruluko"
-    },
-    {
-        "name": "Nosifer",
-        "value": "Nosifer"
-    },
-    {
-        "name": "Bubbler One",
-        "value": "Bubbler+One"
-    },
-    {
-        "name": "STIX Two Text",
-        "value": "STIX+Two+Text"
-    },
-    {
-        "name": "IM Fell Great Primer",
-        "value": "IM+Fell+Great+Primer"
-    },
-    {
-        "name": "Angkor",
-        "value": "Angkor"
+        "name": "Kotta One",
+        "value": "Kotta+One"
     },
     {
         "name": "Gotu",
         "value": "Gotu"
     },
     {
-        "name": "Dorsa",
-        "value": "Dorsa"
+        "name": "Ramaraja",
+        "value": "Ramaraja"
     },
     {
-        "name": "DotGothic16",
-        "value": "DotGothic16"
+        "name": "Englebert",
+        "value": "Englebert"
     },
     {
-        "name": "Maiden Orange",
-        "value": "Maiden+Orange"
+        "name": "Petrona",
+        "value": "Petrona"
+    },
+    {
+        "name": "Farsan",
+        "value": "Farsan"
+    },
+    {
+        "name": "Sumana",
+        "value": "Sumana"
+    },
+    {
+        "name": "Sonsie One",
+        "value": "Sonsie+One"
+    },
+    {
+        "name": "Wellfleet",
+        "value": "Wellfleet"
+    },
+    {
+        "name": "Macondo Swash Caps",
+        "value": "Macondo+Swash+Caps"
+    },
+    {
+        "name": "Ibarra Real Nova",
+        "value": "Ibarra+Real+Nova"
+    },
+    {
+        "name": "Shippori Mincho B1",
+        "value": "Shippori+Mincho+B1"
+    },
+    {
+        "name": "Ruluko",
+        "value": "Ruluko"
+    },
+    {
+        "name": "Pirata One",
+        "value": "Pirata+One"
     },
     {
         "name": "Donegal One",
         "value": "Donegal+One"
     },
     {
-        "name": "Solway",
-        "value": "Solway"
-    },
-    {
-        "name": "Offside",
-        "value": "Offside"
-    },
-    {
-        "name": "Tenali Ramakrishna",
-        "value": "Tenali+Ramakrishna"
-    },
-    {
-        "name": "Nova Flat",
-        "value": "Nova+Flat"
-    },
-    {
-        "name": "Stint Ultra Expanded",
-        "value": "Stint+Ultra+Expanded"
-    },
-    {
-        "name": "Girassol",
-        "value": "Girassol"
-    },
-    {
-        "name": "Sulphur Point",
-        "value": "Sulphur+Point"
-    },
-    {
-        "name": "Kumar One",
-        "value": "Kumar+One"
-    },
-    {
-        "name": "Condiment",
-        "value": "Condiment"
-    },
-    {
-        "name": "Potta One",
-        "value": "Potta+One"
-    },
-    {
-        "name": "Lexend Exa",
-        "value": "Lexend+Exa"
-    },
-    {
-        "name": "Hachi Maru Pop",
-        "value": "Hachi+Maru+Pop"
-    },
-    {
-        "name": "Sree Krushnadevaraya",
-        "value": "Sree+Krushnadevaraya"
-    },
-    {
-        "name": "Akronim",
-        "value": "Akronim"
+        "name": "Kulim Park",
+        "value": "Kulim+Park"
     },
     {
         "name": "Dela Gothic One",
         "value": "Dela+Gothic+One"
     },
     {
-        "name": "Barriecito",
-        "value": "Barriecito"
-    },
-    {
-        "name": "East Sea Dokdo",
-        "value": "East+Sea+Dokdo"
-    },
-    {
-        "name": "Buda",
-        "value": "Buda"
-    },
-    {
-        "name": "Train One",
-        "value": "Train+One"
-    },
-    {
-        "name": "Trykker",
-        "value": "Trykker"
-    },
-    {
-        "name": "Chathura",
-        "value": "Chathura"
-    },
-    {
-        "name": "Redressed",
-        "value": "Redressed"
-    },
-    {
-        "name": "Stylish",
-        "value": "Stylish"
-    },
-    {
-        "name": "Inria Serif",
-        "value": "Inria+Serif"
-    },
-    {
-        "name": "Eagle Lake",
-        "value": "Eagle+Lake"
-    },
-    {
-        "name": "Barrio",
-        "value": "Barrio"
-    },
-    {
-        "name": "Sansita Swashed",
-        "value": "Sansita+Swashed"
-    },
-    {
-        "name": "Kavivanar",
-        "value": "Kavivanar"
+        "name": "Fenix",
+        "value": "Fenix"
     },
     {
         "name": "Moul",
         "value": "Moul"
     },
     {
-        "name": "Inika",
-        "value": "Inika"
+        "name": "IM Fell Great Primer",
+        "value": "IM+Fell+Great+Primer"
     },
     {
-        "name": "Croissant One",
-        "value": "Croissant+One"
+        "name": "Bubbler One",
+        "value": "Bubbler+One"
     },
     {
-        "name": "Jomolhari",
-        "value": "Jomolhari"
+        "name": "Cagliostro",
+        "value": "Cagliostro"
     },
     {
-        "name": "Spirax",
-        "value": "Spirax"
-    },
-    {
-        "name": "Linden Hill",
-        "value": "Linden+Hill"
-    },
-    {
-        "name": "Libre Barcode 39 Extended Text",
-        "value": "Libre+Barcode+39+Extended+Text"
-    },
-    {
-        "name": "Swanky and Moo Moo",
-        "value": "Swanky+and+Moo+Moo"
-    },
-    {
-        "name": "Ruthie",
-        "value": "Ruthie"
-    },
-    {
-        "name": "Sahitya",
-        "value": "Sahitya"
-    },
-    {
-        "name": "Joti One",
-        "value": "Joti+One"
-    },
-    {
-        "name": "Rum Raisin",
-        "value": "Rum+Raisin"
-    },
-    {
-        "name": "Margarine",
-        "value": "Margarine"
-    },
-    {
-        "name": "Modern Antiqua",
-        "value": "Modern+Antiqua"
+        "name": "Solway",
+        "value": "Solway"
     },
     {
         "name": "Averia Gruesa Libre",
         "value": "Averia+Gruesa+Libre"
     },
     {
-        "name": "Rowdies",
-        "value": "Rowdies"
+        "name": "Nosifer",
+        "value": "Nosifer"
     },
     {
-        "name": "Monofett",
-        "value": "Monofett"
+        "name": "Sulphur Point",
+        "value": "Sulphur+Point"
     },
     {
-        "name": "Junge",
-        "value": "Junge"
+        "name": "Libre Barcode 39 Extended Text",
+        "value": "Libre+Barcode+39+Extended+Text"
     },
     {
-        "name": "Miniver",
-        "value": "Miniver"
+        "name": "Girassol",
+        "value": "Girassol"
     },
     {
-        "name": "Tulpen One",
-        "value": "Tulpen+One"
+        "name": "Offside",
+        "value": "Offside"
     },
     {
-        "name": "Gowun Dodum",
-        "value": "Gowun+Dodum"
+        "name": "Akronim",
+        "value": "Akronim"
     },
     {
-        "name": "Chela One",
-        "value": "Chela+One"
+        "name": "Stylish",
+        "value": "Stylish"
     },
     {
-        "name": "Metal Mania",
-        "value": "Metal+Mania"
+        "name": "Redressed",
+        "value": "Redressed"
     },
     {
-        "name": "Iceberg",
-        "value": "Iceberg"
+        "name": "Nova Flat",
+        "value": "Nova+Flat"
     },
     {
-        "name": "Diplomata SC",
-        "value": "Diplomata+SC"
+        "name": "Angkor",
+        "value": "Angkor"
     },
     {
-        "name": "Autour One",
-        "value": "Autour+One"
+        "name": "Condiment",
+        "value": "Condiment"
     },
     {
-        "name": "Otomanopee One",
-        "value": "Otomanopee+One"
+        "name": "Lexend Exa",
+        "value": "Lexend+Exa"
     },
     {
-        "name": "Content",
-        "value": "Content"
+        "name": "Kumar One",
+        "value": "Kumar+One"
+    },
+    {
+        "name": "Tenali Ramakrishna",
+        "value": "Tenali+Ramakrishna"
+    },
+    {
+        "name": "Stint Ultra Expanded",
+        "value": "Stint+Ultra+Expanded"
+    },
+    {
+        "name": "Swanky and Moo Moo",
+        "value": "Swanky+and+Moo+Moo"
     },
     {
         "name": "IM Fell DW Pica SC",
         "value": "IM+Fell+DW+Pica+SC"
     },
     {
+        "name": "Piedra",
+        "value": "Piedra"
+    },
+    {
+        "name": "Buda",
+        "value": "Buda"
+    },
+    {
+        "name": "Hachi Maru Pop",
+        "value": "Hachi+Maru+Pop"
+    },
+    {
+        "name": "Modern Antiqua",
+        "value": "Modern+Antiqua"
+    },
+    {
+        "name": "Train One",
+        "value": "Train+One"
+    },
+    {
+        "name": "Kavivanar",
+        "value": "Kavivanar"
+    },
+    {
+        "name": "Inria Serif",
+        "value": "Inria+Serif"
+    },
+    {
+        "name": "Libre Barcode 128",
+        "value": "Libre+Barcode+128"
+    },
+    {
+        "name": "Gowun Dodum",
+        "value": "Gowun+Dodum"
+    },
+    {
+        "name": "Benne",
+        "value": "Benne"
+    },
+    {
         "name": "Meie Script",
         "value": "Meie+Script"
     },
     {
-        "name": "Jolly Lodger",
-        "value": "Jolly+Lodger"
+        "name": "DotGothic16",
+        "value": "DotGothic16"
+    },
+    {
+        "name": "Chathura",
+        "value": "Chathura"
+    },
+    {
+        "name": "Sree Krushnadevaraya",
+        "value": "Sree+Krushnadevaraya"
+    },
+    {
+        "name": "Galdeano",
+        "value": "Galdeano"
+    },
+    {
+        "name": "Junge",
+        "value": "Junge"
+    },
+    {
+        "name": "Croissant One",
+        "value": "Croissant+One"
+    },
+    {
+        "name": "Potta One",
+        "value": "Potta+One"
+    },
+    {
+        "name": "Rum Raisin",
+        "value": "Rum+Raisin"
+    },
+    {
+        "name": "Barriecito",
+        "value": "Barriecito"
+    },
+    {
+        "name": "Piazzolla",
+        "value": "Piazzolla"
+    },
+    {
+        "name": "Joti One",
+        "value": "Joti+One"
+    },
+    {
+        "name": "Tulpen One",
+        "value": "Tulpen+One"
+    },
+    {
+        "name": "Kdam Thmor",
+        "value": "Kdam+Thmor"
+    },
+    {
+        "name": "Margarine",
+        "value": "Margarine"
+    },
+    {
+        "name": "Beth Ellen",
+        "value": "Beth+Ellen"
+    },
+    {
+        "name": "Jomolhari",
+        "value": "Jomolhari"
+    },
+    {
+        "name": "Sahitya",
+        "value": "Sahitya"
+    },
+    {
+        "name": "Gorditas",
+        "value": "Gorditas"
+    },
+    {
+        "name": "Maiden Orange",
+        "value": "Maiden+Orange"
+    },
+    {
+        "name": "Monofett",
+        "value": "Monofett"
+    },
+    {
+        "name": "Barrio",
+        "value": "Barrio"
+    },
+    {
+        "name": "Linden Hill",
+        "value": "Linden+Hill"
+    },
+    {
+        "name": "Sansita Swashed",
+        "value": "Sansita+Swashed"
+    },
+    {
+        "name": "Eagle Lake",
+        "value": "Eagle+Lake"
+    },
+    {
+        "name": "Trykker",
+        "value": "Trykker"
+    },
+    {
+        "name": "Miniver",
+        "value": "Miniver"
+    },
+    {
+        "name": "Rowdies",
+        "value": "Rowdies"
+    },
+    {
+        "name": "Autour One",
+        "value": "Autour+One"
+    },
+    {
+        "name": "Content",
+        "value": "Content"
+    },
+    {
+        "name": "Inika",
+        "value": "Inika"
     },
     {
         "name": "Kavoon",
         "value": "Kavoon"
+    },
+    {
+        "name": "Siemreap",
+        "value": "Siemreap"
+    },
+    {
+        "name": "Iceberg",
+        "value": "Iceberg"
+    },
+    {
+        "name": "Felipa",
+        "value": "Felipa"
+    },
+    {
+        "name": "Ravi Prakash",
+        "value": "Ravi+Prakash"
+    },
+    {
+        "name": "Bigshot One",
+        "value": "Bigshot+One"
+    },
+    {
+        "name": "Ruthie",
+        "value": "Ruthie"
+    },
+    {
+        "name": "Arbutus",
+        "value": "Arbutus"
+    },
+    {
+        "name": "Metal Mania",
+        "value": "Metal+Mania"
+    },
+    {
+        "name": "Bayon",
+        "value": "Bayon"
+    },
+    {
+        "name": "Chilanka",
+        "value": "Chilanka"
+    },
+    {
+        "name": "Spirax",
+        "value": "Spirax"
     },
     {
         "name": "Sirin Stencil",
@@ -3576,132 +3616,152 @@
         "value": "Lexend+Mega"
     },
     {
-        "name": "Kufam",
-        "value": "Kufam"
-    },
-    {
-        "name": "Molle",
-        "value": "Molle"
-    },
-    {
-        "name": "Gorditas",
-        "value": "Gorditas"
-    },
-    {
-        "name": "Elsie Swash Caps",
-        "value": "Elsie+Swash+Caps"
-    },
-    {
-        "name": "Arbutus",
-        "value": "Arbutus"
-    },
-    {
-        "name": "MedievalSharp",
-        "value": "MedievalSharp"
-    },
-    {
-        "name": "Atomic Age",
-        "value": "Atomic+Age"
-    },
-    {
-        "name": "Stick",
-        "value": "Stick"
-    },
-    {
-        "name": "MuseoModerno",
-        "value": "MuseoModerno"
-    },
-    {
-        "name": "Galdeano",
-        "value": "Galdeano"
+        "name": "Marko One",
+        "value": "Marko+One"
     },
     {
         "name": "Griffy",
         "value": "Griffy"
     },
     {
-        "name": "Rhodium Libre",
-        "value": "Rhodium+Libre"
+        "name": "MonteCarlo",
+        "value": "MonteCarlo"
     },
     {
-        "name": "Caesar Dressing",
-        "value": "Caesar+Dressing"
-    },
-    {
-        "name": "Kdam Thmor",
-        "value": "Kdam+Thmor"
-    },
-    {
-        "name": "Asset",
-        "value": "Asset"
-    },
-    {
-        "name": "Bayon",
-        "value": "Bayon"
-    },
-    {
-        "name": "Libre Barcode 128 Text",
-        "value": "Libre+Barcode+128+Text"
+        "name": "Srisakdi",
+        "value": "Srisakdi"
     },
     {
         "name": "Mrs Sheppards",
         "value": "Mrs+Sheppards"
     },
     {
-        "name": "Londrina Shadow",
-        "value": "Londrina+Shadow"
+        "name": "Jolly Lodger",
+        "value": "Jolly+Lodger"
     },
     {
-        "name": "Bigshot One",
-        "value": "Bigshot+One"
-    },
-    {
-        "name": "Kantumruy",
-        "value": "Kantumruy"
-    },
-    {
-        "name": "Syne Mono",
-        "value": "Syne+Mono"
+        "name": "Otomanopee One",
+        "value": "Otomanopee+One"
     },
     {
         "name": "Ribeye Marrow",
         "value": "Ribeye+Marrow"
     },
     {
-        "name": "Lancelot",
-        "value": "Lancelot"
+        "name": "MuseoModerno",
+        "value": "MuseoModerno"
     },
     {
-        "name": "Chilanka",
-        "value": "Chilanka"
+        "name": "Flavors",
+        "value": "Flavors"
+    },
+    {
+        "name": "Caesar Dressing",
+        "value": "Caesar+Dressing"
+    },
+    {
+        "name": "Elsie Swash Caps",
+        "value": "Elsie+Swash+Caps"
+    },
+    {
+        "name": "Molle",
+        "value": "Molle"
+    },
+    {
+        "name": "Almendra SC",
+        "value": "Almendra+SC"
+    },
+    {
+        "name": "Rhodium Libre",
+        "value": "Rhodium+Libre"
+    },
+    {
+        "name": "Lexend Giga",
+        "value": "Lexend+Giga"
+    },
+    {
+        "name": "Revalia",
+        "value": "Revalia"
+    },
+    {
+        "name": "Atomic Age",
+        "value": "Atomic+Age"
+    },
+    {
+        "name": "Devonshire",
+        "value": "Devonshire"
     },
     {
         "name": "Romanesco",
         "value": "Romanesco"
     },
     {
+        "name": "Kantumruy",
+        "value": "Kantumruy"
+    },
+    {
         "name": "Gayathri",
         "value": "Gayathri"
     },
     {
-        "name": "Beth Ellen",
-        "value": "Beth+Ellen"
+        "name": "Asset",
+        "value": "Asset"
     },
     {
-        "name": "Marko One",
-        "value": "Marko+One"
+        "name": "Diplomata",
+        "value": "Diplomata"
+    },
+    {
+        "name": "Londrina Shadow",
+        "value": "Londrina+Shadow"
+    },
+    {
+        "name": "Lancelot",
+        "value": "Lancelot"
+    },
+    {
+        "name": "Bahianita",
+        "value": "Bahianita"
+    },
+    {
+        "name": "Zen Dots",
+        "value": "Zen+Dots"
+    },
+    {
+        "name": "Stick",
+        "value": "Stick"
+    },
+    {
+        "name": "Ewert",
+        "value": "Ewert"
+    },
+    {
+        "name": "Diplomata SC",
+        "value": "Diplomata+SC"
+    },
+    {
+        "name": "Sedgwick Ave Display",
+        "value": "Sedgwick+Ave+Display"
+    },
+    {
+        "name": "MedievalSharp",
+        "value": "MedievalSharp"
     },
     {
         "name": "Smythe",
         "value": "Smythe"
     },
     {
-        "name": "Libre Barcode 128",
-        "value": "Libre+Barcode+128"
+        "name": "Peddana",
+        "value": "Peddana"
     },
     {
-        "name": "MonteCarlo",
-        "value": "MonteCarlo"
+        "name": "Risque",
+        "value": "Risque"
+    },
+    {
+        "name": "Macondo",
+        "value": "Macondo"
     },
     {
         "name": "Bahiana",
@@ -3712,240 +3772,172 @@
         "value": "Long+Cang"
     },
     {
-        "name": "Revalia",
-        "value": "Revalia"
-    },
-    {
-        "name": "Ravi Prakash",
-        "value": "Ravi+Prakash"
-    },
-    {
-        "name": "Flavors",
-        "value": "Flavors"
-    },
-    {
-        "name": "Srisakdi",
-        "value": "Srisakdi"
-    },
-    {
-        "name": "Atkinson Hyperlegible",
-        "value": "Atkinson+Hyperlegible"
-    },
-    {
-        "name": "ZCOOL KuaiLe",
-        "value": "ZCOOL+KuaiLe"
-    },
-    {
-        "name": "Devonshire",
-        "value": "Devonshire"
+        "name": "Bigelow Rules",
+        "value": "Bigelow+Rules"
     },
     {
         "name": "Londrina Sketch",
         "value": "Londrina+Sketch"
     },
     {
-        "name": "Varta",
-        "value": "Varta"
-    },
-    {
-        "name": "Felipa",
-        "value": "Felipa"
-    },
-    {
-        "name": "Zen Dots",
-        "value": "Zen+Dots"
-    },
-    {
-        "name": "Macondo",
-        "value": "Macondo"
-    },
-    {
-        "name": "Ewert",
-        "value": "Ewert"
-    },
-    {
-        "name": "Diplomata",
-        "value": "Diplomata"
-    },
-    {
-        "name": "Bokor",
-        "value": "Bokor"
+        "name": "Snippet",
+        "value": "Snippet"
     },
     {
         "name": "Mr Bedfort",
         "value": "Mr+Bedfort"
     },
     {
-        "name": "Risque",
-        "value": "Risque"
+        "name": "Jim Nightshade",
+        "value": "Jim+Nightshade"
     },
     {
         "name": "Glass Antiqua",
         "value": "Glass+Antiqua"
     },
     {
-        "name": "Grenze",
-        "value": "Grenze"
-    },
-    {
-        "name": "Almendra SC",
-        "value": "Almendra+SC"
-    },
-    {
-        "name": "Galindo",
-        "value": "Galindo"
-    },
-    {
-        "name": "Jim Nightshade",
-        "value": "Jim+Nightshade"
-    },
-    {
-        "name": "Siemreap",
-        "value": "Siemreap"
-    },
-    {
-        "name": "Princess Sofia",
-        "value": "Princess+Sofia"
-    },
-    {
-        "name": "Sedgwick Ave Display",
-        "value": "Sedgwick+Ave+Display"
-    },
-    {
-        "name": "Peddana",
-        "value": "Peddana"
-    },
-    {
-        "name": "Benne",
-        "value": "Benne"
-    },
-    {
-        "name": "Gupter",
-        "value": "Gupter"
-    },
-    {
-        "name": "Snippet",
-        "value": "Snippet"
-    },
-    {
-        "name": "Lexend Giga",
-        "value": "Lexend+Giga"
-    },
-    {
-        "name": "Odor Mean Chey",
-        "value": "Odor+Mean+Chey"
-    },
-    {
-        "name": "Bahianita",
-        "value": "Bahianita"
-    },
-    {
-        "name": "Bigelow Rules",
-        "value": "Bigelow+Rules"
-    },
-    {
-        "name": "Underdog",
-        "value": "Underdog"
-    },
-    {
-        "name": "Emblema One",
-        "value": "Emblema+One"
-    },
-    {
-        "name": "Dr Sugiyama",
-        "value": "Dr+Sugiyama"
-    },
-    {
-        "name": "IM Fell Great Primer SC",
-        "value": "IM+Fell+Great+Primer+SC"
-    },
-    {
-        "name": "Chenla",
-        "value": "Chenla"
-    },
-    {
-        "name": "Nova Slim",
-        "value": "Nova+Slim"
-    },
-    {
-        "name": "Metal",
-        "value": "Metal"
+        "name": "Libre Barcode 128 Text",
+        "value": "Libre+Barcode+128+Text"
     },
     {
         "name": "WindSong",
         "value": "WindSong"
     },
     {
-        "name": "Jacques Francois Shadow",
-        "value": "Jacques+Francois+Shadow"
-    },
-    {
-        "name": "Kirang Haerang",
-        "value": "Kirang+Haerang"
-    },
-    {
-        "name": "Oldenburg",
-        "value": "Oldenburg"
+        "name": "Kufam",
+        "value": "Kufam"
     },
     {
         "name": "Poor Story",
         "value": "Poor+Story"
     },
     {
-        "name": "Keania One",
-        "value": "Keania+One"
+        "name": "Varta",
+        "value": "Varta"
     },
     {
-        "name": "Andika New Basic",
-        "value": "Andika+New+Basic"
+        "name": "Princess Sofia",
+        "value": "Princess+Sofia"
     },
     {
-        "name": "Almendra Display",
-        "value": "Almendra+Display"
+        "name": "Odor Mean Chey",
+        "value": "Odor+Mean+Chey"
     },
     {
-        "name": "Dangrek",
-        "value": "Dangrek"
+        "name": "Galindo",
+        "value": "Galindo"
     },
     {
-        "name": "Irish Grover",
-        "value": "Irish+Grover"
+        "name": "Bokor",
+        "value": "Bokor"
     },
     {
-        "name": "Taprom",
-        "value": "Taprom"
+        "name": "IM Fell Great Primer SC",
+        "value": "IM+Fell+Great+Primer+SC"
     },
     {
-        "name": "Purple Purse",
-        "value": "Purple+Purse"
-    },
-    {
-        "name": "Jacques Francois",
-        "value": "Jacques+Francois"
-    },
-    {
-        "name": "Kumar One Outline",
-        "value": "Kumar+One+Outline"
-    },
-    {
-        "name": "Unlock",
-        "value": "Unlock"
-    },
-    {
-        "name": "Freehand",
-        "value": "Freehand"
+        "name": "ZCOOL KuaiLe",
+        "value": "ZCOOL+KuaiLe"
     },
     {
         "name": "Miss Fajardose",
         "value": "Miss+Fajardose"
     },
     {
-        "name": "GFS Neohellenic",
-        "value": "GFS+Neohellenic"
+        "name": "Dr Sugiyama",
+        "value": "Dr+Sugiyama"
     },
     {
-        "name": "IM Fell Double Pica SC",
-        "value": "IM+Fell+Double+Pica+SC"
+        "name": "Unlock",
+        "value": "Unlock"
+    },
+    {
+        "name": "Syne Mono",
+        "value": "Syne+Mono"
+    },
+    {
+        "name": "Andada Pro",
+        "value": "Andada+Pro"
+    },
+    {
+        "name": "Grenze",
+        "value": "Grenze"
+    },
+    {
+        "name": "Chela One",
+        "value": "Chela+One"
+    },
+    {
+        "name": "Freehand",
+        "value": "Freehand"
+    },
+    {
+        "name": "Metal",
+        "value": "Metal"
+    },
+    {
+        "name": "Kirang Haerang",
+        "value": "Kirang+Haerang"
+    },
+    {
+        "name": "Jacques Francois Shadow",
+        "value": "Jacques+Francois+Shadow"
+    },
+    {
+        "name": "Viaoda Libre",
+        "value": "Viaoda+Libre"
+    },
+    {
+        "name": "Libre Barcode 39 Extended",
+        "value": "Libre+Barcode+39+Extended"
+    },
+    {
+        "name": "Irish Grover",
+        "value": "Irish+Grover"
+    },
+    {
+        "name": "Dangrek",
+        "value": "Dangrek"
+    },
+    {
+        "name": "Underdog",
+        "value": "Underdog"
+    },
+    {
+        "name": "Andika New Basic",
+        "value": "Andika+New+Basic"
+    },
+    {
+        "name": "Emblema One",
+        "value": "Emblema+One"
+    },
+    {
+        "name": "Nova Slim",
+        "value": "Nova+Slim"
+    },
+    {
+        "name": "Erica One",
+        "value": "Erica+One"
+    },
+    {
+        "name": "Kumar One Outline",
+        "value": "Kumar+One+Outline"
+    },
+    {
+        "name": "Gupter",
+        "value": "Gupter"
+    },
+    {
+        "name": "Oldenburg",
+        "value": "Oldenburg"
+    },
+    {
+        "name": "Gowun Batang",
+        "value": "Gowun+Batang"
+    },
+    {
+        "name": "Keania One",
+        "value": "Keania+One"
     },
     {
         "name": "Combo",
@@ -3956,176 +3948,200 @@
         "value": "Akaya+Kanadaka"
     },
     {
-        "name": "Libre Barcode 39 Extended",
-        "value": "Libre+Barcode+39+Extended"
-    },
-    {
-        "name": "Plaster",
-        "value": "Plaster"
-    },
-    {
-        "name": "Akaya Telivigala",
-        "value": "Akaya+Telivigala"
-    },
-    {
-        "name": "Gowun Batang",
-        "value": "Gowun+Batang"
-    },
-    {
-        "name": "Miltonian",
-        "value": "Miltonian"
-    },
-    {
-        "name": "Liu Jian Mao Cao",
-        "value": "Liu+Jian+Mao+Cao"
-    },
-    {
-        "name": "Viaoda Libre",
-        "value": "Viaoda+Libre"
-    },
-    {
-        "name": "Federant",
-        "value": "Federant"
-    },
-    {
-        "name": "Smokum",
-        "value": "Smokum"
-    },
-    {
-        "name": "Butterfly Kids",
-        "value": "Butterfly+Kids"
+        "name": "GFS Neohellenic",
+        "value": "GFS+Neohellenic"
     },
     {
         "name": "Fascinate Inline",
         "value": "Fascinate+Inline"
     },
     {
-        "name": "Trochut",
-        "value": "Trochut"
+        "name": "Tourney",
+        "value": "Tourney"
     },
     {
-        "name": "Brygada 1918",
-        "value": "Brygada+1918"
+        "name": "Almendra Display",
+        "value": "Almendra+Display"
     },
     {
-        "name": "Preahvihear",
-        "value": "Preahvihear"
+        "name": "Akaya Telivigala",
+        "value": "Akaya+Telivigala"
     },
     {
-        "name": "Encode Sans SC",
-        "value": "Encode+Sans+SC"
+        "name": "Plaster",
+        "value": "Plaster"
     },
     {
-        "name": "Black And White Picture",
-        "value": "Black+And+White+Picture"
+        "name": "Chenla",
+        "value": "Chenla"
     },
     {
-        "name": "Andada Pro",
-        "value": "Andada+Pro"
+        "name": "Jacques Francois",
+        "value": "Jacques+Francois"
     },
     {
         "name": "Inria Sans",
         "value": "Inria+Sans"
     },
     {
-        "name": "Bungee Outline",
-        "value": "Bungee+Outline"
+        "name": "Taprom",
+        "value": "Taprom"
     },
     {
-        "name": "Zhi Mang Xing",
-        "value": "Zhi+Mang+Xing"
+        "name": "Butterfly Kids",
+        "value": "Butterfly+Kids"
     },
     {
-        "name": "Texturina",
-        "value": "Texturina"
+        "name": "Liu Jian Mao Cao",
+        "value": "Liu+Jian+Mao+Cao"
     },
     {
-        "name": "Nova Oval",
-        "value": "Nova+Oval"
+        "name": "Preahvihear",
+        "value": "Preahvihear"
     },
     {
-        "name": "New Tegomin",
-        "value": "New+Tegomin"
+        "name": "Purple Purse",
+        "value": "Purple+Purse"
     },
     {
-        "name": "Supermercado One",
-        "value": "Supermercado+One"
+        "name": "Federant",
+        "value": "Federant"
     },
     {
-        "name": "Erica One",
-        "value": "Erica+One"
-    },
-    {
-        "name": "Nova Cut",
-        "value": "Nova+Cut"
-    },
-    {
-        "name": "Seymour One",
-        "value": "Seymour+One"
-    },
-    {
-        "name": "Fascinate",
-        "value": "Fascinate"
-    },
-    {
-        "name": "Nova Script",
-        "value": "Nova+Script"
-    },
-    {
-        "name": "Orelega One",
-        "value": "Orelega+One"
-    },
-    {
-        "name": "Snowburst One",
-        "value": "Snowburst+One"
-    },
-    {
-        "name": "Nerko One",
-        "value": "Nerko+One"
-    },
-    {
-        "name": "Big Shoulders Stencil Text",
-        "value": "Big+Shoulders+Stencil+Text"
+        "name": "IM Fell Double Pica SC",
+        "value": "IM+Fell+Double+Pica+SC"
     },
     {
         "name": "Stalinist One",
         "value": "Stalinist+One"
     },
     {
-        "name": "Ruge Boogie",
-        "value": "Ruge+Boogie"
+        "name": "Smokum",
+        "value": "Smokum"
+    },
+    {
+        "name": "Brygada 1918",
+        "value": "Brygada+1918"
+    },
+    {
+        "name": "Orelega One",
+        "value": "Orelega+One"
+    },
+    {
+        "name": "Big Shoulders Stencil Text",
+        "value": "Big+Shoulders+Stencil+Text"
+    },
+    {
+        "name": "Trochut",
+        "value": "Trochut"
+    },
+    {
+        "name": "Fascinate",
+        "value": "Fascinate"
+    },
+    {
+        "name": "Bungee Outline",
+        "value": "Bungee+Outline"
+    },
+    {
+        "name": "Black And White Picture",
+        "value": "Black+And+White+Picture"
+    },
+    {
+        "name": "Texturina",
+        "value": "Texturina"
+    },
+    {
+        "name": "Zhi Mang Xing",
+        "value": "Zhi+Mang+Xing"
+    },
+    {
+        "name": "Nerko One",
+        "value": "Nerko+One"
+    },
+    {
+        "name": "Snowburst One",
+        "value": "Snowburst+One"
     },
     {
         "name": "Gidugu",
         "value": "Gidugu"
     },
     {
-        "name": "Sunshiney",
-        "value": "Sunshiney"
-    },
-    {
-        "name": "Yomogi",
-        "value": "Yomogi"
+        "name": "New Tegomin",
+        "value": "New+Tegomin"
     },
     {
         "name": "Astloch",
         "value": "Astloch"
     },
     {
-        "name": "Passero One",
-        "value": "Passero+One"
+        "name": "Yomogi",
+        "value": "Yomogi"
     },
     {
-        "name": "Sevillana",
-        "value": "Sevillana"
+        "name": "Nova Script",
+        "value": "Nova+Script"
+    },
+    {
+        "name": "Ruge Boogie",
+        "value": "Ruge+Boogie"
+    },
+    {
+        "name": "Supermercado One",
+        "value": "Supermercado+One"
+    },
+    {
+        "name": "Seymour One",
+        "value": "Seymour+One"
     },
     {
         "name": "Bonbon",
         "value": "Bonbon"
     },
     {
+        "name": "Sunshiney",
+        "value": "Sunshiney"
+    },
+    {
+        "name": "Passero One",
+        "value": "Passero+One"
+    },
+    {
+        "name": "Bungee Hairline",
+        "value": "Bungee+Hairline"
+    },
+    {
+        "name": "Nova Cut",
+        "value": "Nova+Cut"
+    },
+    {
+        "name": "Nova Oval",
+        "value": "Nova+Oval"
+    },
+    {
+        "name": "Miltonian Tattoo",
+        "value": "Miltonian+Tattoo"
+    },
+    {
         "name": "Sofadi One",
         "value": "Sofadi+One"
+    },
+    {
+        "name": "STIX Two Math",
+        "value": "STIX+Two+Math"
+    },
+    {
+        "name": "Miltonian",
+        "value": "Miltonian"
+    },
+    {
+        "name": "Sevillana",
+        "value": "Sevillana"
+    },
+    {
+        "name": "Suwannaphum",
+        "value": "Suwannaphum"
     },
     {
         "name": "Moulpali",
@@ -4136,148 +4152,132 @@
         "value": "Suravaram"
     },
     {
-        "name": "Miltonian Tattoo",
-        "value": "Miltonian+Tattoo"
-    },
-    {
         "name": "Aubrey",
         "value": "Aubrey"
     },
     {
-        "name": "Bungee Hairline",
-        "value": "Bungee+Hairline"
-    },
-    {
-        "name": "Warnes",
-        "value": "Warnes"
-    },
-    {
-        "name": "Suwannaphum",
-        "value": "Suwannaphum"
-    },
-    {
-        "name": "BioRhyme Expanded",
-        "value": "BioRhyme+Expanded"
-    },
-    {
-        "name": "Fasthand",
-        "value": "Fasthand"
-    },
-    {
-        "name": "STIX Two Math",
-        "value": "STIX+Two+Math"
+        "name": "Encode Sans SC",
+        "value": "Encode+Sans+SC"
     },
     {
         "name": "Big Shoulders Stencil Display",
         "value": "Big+Shoulders+Stencil+Display"
     },
     {
-        "name": "Dhurjati",
-        "value": "Dhurjati"
-    },
-    {
         "name": "Vibes",
         "value": "Vibes"
-    },
-    {
-        "name": "Lexend Tera",
-        "value": "Lexend+Tera"
     },
     {
         "name": "Butcherman",
         "value": "Butcherman"
     },
     {
+        "name": "Fasthand",
+        "value": "Fasthand"
+    },
+    {
+        "name": "BioRhyme Expanded",
+        "value": "BioRhyme+Expanded"
+    },
+    {
         "name": "Lacquer",
         "value": "Lacquer"
     },
     {
-        "name": "Tourney",
-        "value": "Tourney"
+        "name": "Warnes",
+        "value": "Warnes"
     },
     {
-        "name": "Hanalei",
-        "value": "Hanalei"
-    },
-    {
-        "name": "Fruktur",
-        "value": "Fruktur"
-    },
-    {
-        "name": "Geostar Fill",
-        "value": "Geostar+Fill"
-    },
-    {
-        "name": "Big Shoulders Inline Text",
-        "value": "Big+Shoulders+Inline+Text"
+        "name": "Lexend Tera",
+        "value": "Lexend+Tera"
     },
     {
         "name": "Ballet",
         "value": "Ballet"
     },
     {
-        "name": "Langar",
-        "value": "Langar"
-    },
-    {
-        "name": "Lexend Peta",
-        "value": "Lexend+Peta"
-    },
-    {
-        "name": "Trispace",
-        "value": "Trispace"
-    },
-    {
         "name": "Zen Tokyo Zoo",
         "value": "Zen+Tokyo+Zoo"
-    },
-    {
-        "name": "Single Day",
-        "value": "Single+Day"
-    },
-    {
-        "name": "Fuggles",
-        "value": "Fuggles"
-    },
-    {
-        "name": "Karantina",
-        "value": "Karantina"
-    },
-    {
-        "name": "Imbue",
-        "value": "Imbue"
-    },
-    {
-        "name": "Truculenta",
-        "value": "Truculenta"
-    },
-    {
-        "name": "Kenia",
-        "value": "Kenia"
     },
     {
         "name": "Festive",
         "value": "Festive"
     },
     {
-        "name": "Big Shoulders Inline Display",
-        "value": "Big+Shoulders+Inline+Display"
+        "name": "Hanalei",
+        "value": "Hanalei"
     },
     {
-        "name": "Geostar",
-        "value": "Geostar"
+        "name": "Trispace",
+        "value": "Trispace"
+    },
+    {
+        "name": "Lexend Peta",
+        "value": "Lexend+Peta"
+    },
+    {
+        "name": "Fruktur",
+        "value": "Fruktur"
+    },
+    {
+        "name": "Fuggles",
+        "value": "Fuggles"
+    },
+    {
+        "name": "Big Shoulders Inline Text",
+        "value": "Big+Shoulders+Inline+Text"
+    },
+    {
+        "name": "Dhurjati",
+        "value": "Dhurjati"
+    },
+    {
+        "name": "Bona Nova",
+        "value": "Bona+Nova"
+    },
+    {
+        "name": "Single Day",
+        "value": "Single+Day"
+    },
+    {
+        "name": "Geostar Fill",
+        "value": "Geostar+Fill"
     },
     {
         "name": "Zen Loop",
         "value": "Zen+Loop"
     },
     {
+        "name": "Langar",
+        "value": "Langar"
+    },
+    {
+        "name": "Imbue",
+        "value": "Imbue"
+    },
+    {
         "name": "Xanh Mono",
         "value": "Xanh+Mono"
     },
     {
-        "name": "Bona Nova",
-        "value": "Bona+Nova"
+        "name": "Geostar",
+        "value": "Geostar"
+    },
+    {
+        "name": "Karantina",
+        "value": "Karantina"
+    },
+    {
+        "name": "Kenia",
+        "value": "Kenia"
+    },
+    {
+        "name": "Truculenta",
+        "value": "Truculenta"
+    },
+    {
+        "name": "Big Shoulders Inline Display",
+        "value": "Big+Shoulders+Inline+Display"
     },
     {
         "name": "Qahiri",

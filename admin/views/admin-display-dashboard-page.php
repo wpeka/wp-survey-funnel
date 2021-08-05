@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * Admin Dashboard page.
+ *
+ * @link  https://club.wpeka.com
+ * @since 1.0.0
+ *
+ * @package Wp_Survey_Funnel
+ */
 $args = array(
 	'post_type'   => 'wpsf-survey',
 	'post_status' => array( 'draft', 'publish' ),
@@ -29,9 +36,11 @@ function wpsf_get_background_image( $post_id ) {
 <div class="wpsf-container-fluid" id="wpsf-dashboard">
 	<div class="wpsf-modal">
 		<div class="wpsf-modal-dialog">
-			<span class="wpsf-dismiss">x</span>
+			<div class="wpsf-modal-dialog-navbar">
+				<span class="wpsf-dismiss">✕</span>
+			</div>
 			<div class="wpsf-modal-inner">
-				<span class="content-info-title">Select Content type</span>
+				<span class="content-info-title">Select Content Type</span>
 				<div class="select-content-type">
 					<div class="wpsf-modal-content-card">
 						<div class="card-image">
@@ -51,7 +60,7 @@ function wpsf_get_background_image( $post_id ) {
 							Basic Survey
 						</div>
 						<div class="card-text">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi.
 						</div>
 					</div>
 					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
@@ -72,7 +81,7 @@ function wpsf_get_background_image( $post_id ) {
 							Outcome Logic
 						</div>
 						<div class="card-text">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi.
 						</div>
 					</div>
 					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
@@ -93,12 +102,12 @@ function wpsf_get_background_image( $post_id ) {
 							Scoring Logic
 						</div>
 						<div class="card-text">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi numquam quas velit saepe asperiores commodi error maiores explicabo.
+							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi.
 						</div>
 					</div>
 				</div>
 				<div class="set-content-name">
-					<span class="content-info-title">Select Content name</span>
+					<span class="content-info-title">Select Content Name</span>
 					<input type="text" id="content-title" placeholder="Enter Title">
 					<button type="submit" id="wpsf-modal-submit">Continue</button>
 				</div>
@@ -106,29 +115,27 @@ function wpsf_get_background_image( $post_id ) {
 		</div>
 	</div>
 	<div class="wpsf-navbar">
-		<div class="wpsf-container wpsf-top-navbar --wpsf-flex">
+		<div class="wpsf-container-navbar wpsf-top-navbar --wpsf-flex">
 			<div class="wpsf-logo">SurveyFunnel</div>
 		</div>
 	</div>
 	<div class="wpsf-body">
 		<div class="wpsf-container">
-			<div class="wpsf-dashboard-container --wpsf-flex">
+			<div class="wpsf-dashboard-container">
 				<div class="wpsf-left">
 					<span><?php esc_html_e( 'DASHBOARD', 'wp-survey-funnel' ); ?></span>
 				</div>
-				<div class="wpsf-right --wpsf-flex">
-					<div class="wpsf-search">
-						<input class="wpsf-dashboard-search" type="text" data-search placeholder="<?php esc_html_e( 'Search By Content Name', 'wp-survey-funnel' ); ?>">
-					</div>
-					<div class="wpsf-filter">
-						<label for="wpsf-filter"><?php esc_html_e( 'Filter By:' ); ?></label>
-						<select <?php echo $disabled; //phpcs:ignore ?> id="wpsf-filter">
+				<div class="wpsf-filter wpsf-right">
+					<label for="wpsf-filter"><?php esc_html_e( 'Filter By:', 'wp-survey-funnel' ); ?></label>
+					<select <?php echo $disabled; //phpcs:ignore ?> id="wpsf-filter">
 
-							<option value="all-types"><?php esc_html_e( 'All Types' ); ?></option>
-							<option value="all-types"><?php esc_html_e( 'Scoring Logic' ); ?></option>
-							<option value="all-types"><?php esc_html_e( 'Outcome Logic' ); ?></option>
-						</select>
-					</div>
+						<option value="all-types"><?php esc_html_e( 'All Types', 'wp-survey-funnel' ); ?></option>
+						<option value="all-types"><?php esc_html_e( 'Scoring Logic', 'wp-survey-funnel' ); ?></option>
+						<option value="all-types"><?php esc_html_e( 'Outcome Logic', 'wp-survey-funnel' ); ?></option>
+					</select>
+				</div>
+				<div class="wpsf-search wpsf-right">
+					<input class="wpsf-dashboard-search" type="text" data-search placeholder="<?php esc_html_e( 'Search By Content Name', 'wp-survey-funnel' ); ?>">
 				</div>
 			</div>
 			<div class="wpsf-card-container">
@@ -144,7 +151,7 @@ function wpsf_get_background_image( $post_id ) {
 					<?php foreach ( $surveys as $survey ) : ?>
 						<?php $data = Wp_Survey_Funnel_Admin::wpsf_get_insights_data( $survey->ID ); ?>
 						<?php $url  = wpsf_get_background_image( $survey->ID ); ?>
-						<div class="wpsf-content" data-filter-item data-filter-name="<?php echo esc_html( $survey->post_title ); ?>">
+						<div class="wpsf-content" data-filter-item data-filter-name="<?php echo esc_html( strtolower( $survey->post_title ) ); ?>">
 							<div class="wpsf-image-box">
 								<div class="wpsf-image">
 									<?php if ( $url ) : ?>
@@ -189,7 +196,7 @@ function wpsf_get_background_image( $post_id ) {
 														<image id="share" width="12" height="12" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABHNCSVQICAgIfAhkiAAAANJJREFUKFNj/P//PwMewAaUWwrETkB8AIiTGQloCAEqWo1k4DR8GriACi8DsRKShunIGtiBEj+hkrVAuhSIdwDxNyAOgDopEaSBD8iZB8R2QLwTiCWBWAuIy4F4MdQAHiD9BcQGaZgGpDORrF0HZAfjCgiQhplAyTQkBWuBbJBnsQKQBgGgzHwgdgDi7VAnqQDpMiBeDtXFCaS/w5wEM4kbyPgK5TQC6UIg3goVA3n6IBDjjQdeoIJLQKyA5LappEYcSjxg8yQoblYAMSjIDwNxIgAOuESAZA8BnAAAAABJRU5ErkJggg=="/>
 													</svg>
 												</a>
-												<div class="icon">
+												<div class="icon deleteIcon" delete-id="<?php echo $survey->ID;//phpcs:ignore ?>">
 													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3" height="13" viewBox="0 0 3 13">
 														<image id="more-options" width="3" height="13" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAANCAYAAABsItTPAAAABHNCSVQICAgIfAhkiAAAAD5JREFUCFtj/P//fwsDA0MqEC9gBHL+AxlgAOKkAekkIF4M4sAkwDIoHJABiUC8hFwDEoCak4F4EYYBnTCjAWegMr8vTcqkAAAAAElFTkSuQmCC"/>
 													</svg>
@@ -201,8 +208,8 @@ function wpsf_get_background_image( $post_id ) {
 							</div>
 							<div class="wpsf-title-box --wpsf-flex">
 								<div class="wpsf-title"><?php echo $survey->post_title; //phpcs:ignore ?></div>
-								<div class="wpsf-badge wpsf-badge-sm wpsf-badge-outcome wpsf-badge-survey-type">
-									<small>outcome</small>
+								<div class="wpsf-badge wpsf-badge-sm wpsf-badge-<?php echo get_post_meta( $survey->ID, 'wpsf-survey-type', true );//phpcs:ignore ?> wpsf-badge-survey-type">
+									<small><?php echo get_post_meta( $survey->ID, 'wpsf-survey-type', true );//phpcs:ignore ?></small>
 								</div>
 							</div>
 							<div class="wpsf-content-stats --wpsf-grid">

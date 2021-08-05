@@ -8,7 +8,9 @@ const getAnswerBlocks = ( item ) => {
 			return <>
 				{item.answers.map(function(ele, i) {
 					return <div key={i} className="insightAnswerBlock">
-						{ele.name}
+						<div className="wpsf-insight-answer-box">
+							{ele.name}
+						</div>
 						<p>{ele.responseCount} Responses.</p>
 					</div>
 				})}
@@ -17,7 +19,9 @@ const getAnswerBlocks = ( item ) => {
 			return <>
 				{item.List.map(function(ele, i) {
 					return <div key={i} className="insightAnswerBlock">
-						{ele.name}
+						<div className="wpsf-insight-answer-box">
+							{ele.name}
+						</div>
 					</div>
 				})}
 			</>
@@ -45,6 +49,9 @@ export default function Insights() {
 				</div>
 			</div>
 			<div className="insights-container">
+				<div className="wpsf-insight-summary-heading">
+					<h3>Insight Summary</h3>
+				</div>
 				{insights.List.CONTENT_ELEMENTS.map(function( item, i ) {
 					return (
                         <div key={item.id} className="insights-summary-single">
@@ -53,9 +60,9 @@ export default function Insights() {
                                 <p>
 									{item.totalAnswered}
                                     {item.componentName === "FormElements" ? (
-                                        <span>Submissions</span>
+                                        <span> Submissions </span>
                                     ) : (
-                                        <span>Answered</span>
+                                        <span> Answered </span>
                                     )}
                                     | {item.totalViewed} Viewed.
                                 </p>
