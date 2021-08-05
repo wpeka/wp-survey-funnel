@@ -84,4 +84,12 @@ class Test_Wp_Survey_Funnel extends WP_UnitTestCase {
 		$this->assertTrue( in_array( 'wp_ajax_wpsf_save_design_data', $array, true ) );
 	}
 
+	/**
+	 * Test for run function.
+	 */
+	public function test_run() {
+		self::$wp_survey_funnel->run();
+		$this->assertTrue( true );
+	}
+
 }

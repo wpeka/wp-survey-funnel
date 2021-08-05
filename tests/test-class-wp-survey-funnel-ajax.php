@@ -219,4 +219,50 @@ class Test_Wp_Survey_Funnel_Ajax extends WP_Ajax_UnitTestCase {
 		$post_meta = get_post_meta( self::$post_ids[0], 'wpsf-survey-data', true );
 		$this->assertSame( $post_meta['configure'], $response->data->configure );
 	}
+
+	/**
+	 * Test for wpsf_new_survey_lead function
+	 */
+	public function test_wpsf_new_survey_lead() {
+		// become administrator.
+		$this->_setRole( 'administrator' );
+
+		$_POST['action']      = 'wpsf_new_survey_lead';
+		$_POST['security']    = wp_create_nonce( 'wpsf-security' );
+		$_POST['post_id']     = self::$post_ids[0];
+		$_POST['userLocalID'] = 'db68b4e27c3f063e6907f2f90f5b0efe';
+		$_POST['time']        = 1628141629;
+		$_POST['completed']   = 0;
+		$_POST['data']        = '{"question":"Which is your favorite flower? ","answer":"Daffodil","_id":"uy8m2kk2l2skrxekdtw","status":"answered","tabNumber":1,"componentName":"SingleChoice"}';
+
+		// To insert record.
+		try {
+			$this->_handleAjax( 'wpsf_new_survey_lead' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'srf_entries';
+		$rows       = $wpdb->get_results(
+			$wpdb->prepare(
+				'
+				SELECT * 
+				FROM ' . $table_name . ' 
+				WHERE survey_id = %d',
+				self::$post_ids[0]
+			)
+		); // db call ok; no cache ok.
+		$this->assertEquals( 1, count( $rows ) );
+
+		// To update record.
+		$_POST['data'] = '{"question":"Which is your favorite flower? ","answer":"Aster","_id":"uy8m2kk2l2skrxekdtw","status":"answered","tabNumber":1,"componentName":"SingleChoice"}';
+		try {
+			$this->_handleAjax( 'wpsf_new_survey_lead' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$this->assertTrue( true );
+	}
 }
