@@ -68,44 +68,53 @@ body {
 .wpsf-tab-SingleChoice, .wpsf-tab-MultiChoice{
     padding: 40px;
     max-width: 80%;
-    .wpsf-tab-answer-container{
-        border: 1px solid #0F4C81;
-        border-radius: 9px;
-        margin-bottom: 5px;
+    .tab-container{
+        .tab{
+            p{
+                word-wrap:break-word;
+            }
+            .wpsf-tab-answer-container{
+                border: 1px solid #0F4C81;
+                border-radius: 9px;
+                margin-bottom: 5px;
+        
+                label{
+                    display: flex;
+                    align-items: center;
+                    display: flex;
+                    align-items: center;
+                    min-height: 76px;
+                    width: 100%;
+                    cursor: pointer;
+                    border-radius: 9px;
+                    div{
+                        min-height: 54px;
+                        margin: 10px;
+                        min-width: 54px;
+                        background-color: #F0F2F5;
+                        border-radius: 9px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
 
-        label{
-            display: flex;
-            align-items: center;
-            display: flex;
-            align-items: center;
-            height: 76px;
-            width: 100%;
-            cursor: pointer;
-            border-radius: 9px;
-        }
-        div{
-            height: 54px;
-            margin: 10px;
-            width: 54px;
-            background-color: #F0F2F5;
-            border-radius: 9px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        input{
-            display: none;
-        }
-        input:checked + label{
-            background-color: var(--answer-highlight-box-color);
-        }
-        input:hover + label{
-            background-color: var(--answer-highlight-box-color);
-        }
-        input:hover + label div{
-            background-color: white;
+                input{
+                    display: none;
+                }
+                input:checked + label{
+                    background-color: var(--answer-highlight-box-color);
+                }
+                input:hover + label{
+                    background-color: var(--answer-highlight-box-color);
+                }
+                input:hover + label div{
+                    background-color: white;
+                }
+            }
         }
     }
+    
 }
 .wpsf-tab-FormElements{
     padding: 40px;
