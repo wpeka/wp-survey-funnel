@@ -265,4 +265,83 @@ class Test_Wp_Survey_Funnel_Ajax extends WP_Ajax_UnitTestCase {
 		}
 		$this->assertTrue( true );
 	}
+
+	/**
+	 * Test for wpsf_get_design_data function
+	 */
+	public function test_wpsf_get_design_data() {
+		// become administrator.
+		$this->_setRole( 'administrator' );
+
+		$_POST['action']   = 'wpsf_new_survey_lead';
+		$_POST['security'] = wp_create_nonce( 'wpsf-security' );
+		$_POST['post_id']  = self::$post_ids[0];
+		$attachment_id     = self::factory()->post->create( array( 'post_type' => 'attachment' ) );
+		update_post_meta( self::$post_ids[0], 'wpsf-survey-design-background', $attachment_id );
+		update_post_meta(
+			self::$post_ids[0],
+			'wpsf-survey-data',
+			array(
+				'design'    => self::$design,
+				'build'     => self::$build,
+				'configure' => self::$configure,
+			)
+		);
+		try {
+			$this->_handleAjax( 'wpsf_get_design_data' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
+		$this->assertSame( self::$design, $response->data->design );
+		$this->assertSame( wp_get_attachment_url( $attachment_id ), $response->data->backgroundImage );
+	}
+
+	/**
+	 * Test for wpsf_get_reports_data function
+	 */
+	public function test_wpsf_get_reports_data() {
+		// become administrator.
+		$this->_setRole( 'administrator' );
+
+		$_POST['action']    = 'wpsf_new_survey_lead';
+		$_POST['security']  = wp_create_nonce( 'wpsf-security' );
+		$_POST['post_id']   = self::$post_ids[0];
+		$survey_id          = self::$post_ids[0];
+		$_POST['startDate'] = '2021-08-05';
+		$_POST['endDate']   = '2021-08-08';
+		$user_id            = get_current_user_id();
+		$user_locale_id     = 'db68b4e27c3f063e6907f2f90f5b0efe';
+		$time               = 1628141629;
+		$fields             = '{"uy8m2kk2l2skrxekdtw":{"question":"Which is your favorite flower? ","answer":"Daffodil","_id":"uy8m2kk2l2skrxekdtw","status":"answered","tabNumber":1,"componentName":"SingleChoice"}}';
+		$date               = '2021-08-06';
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'srf_entries';
+		$wpdb->query(
+			$wpdb->prepare(
+				'
+				INSERT INTO ' . $table_name . ' ( `survey_id`, `user_id`, `fields`, `user_locale_id`, `time_created`, `date_created`, `user_meta` )
+				VALUES (%d, %d, %s, %s, %d, %s, 0)
+			',
+				$survey_id,
+				$user_id,
+				$fields,
+				$user_locale_id,
+				$time,
+				$date
+			)
+		);// db call ok; no cache ok.
+		try {
+			$this->_handleAjax( 'wpsf_get_reports_data' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
+		$this->assertSame( $fields, $response->data[0]->fields );
+		$this->assertSame( $user_locale_id, $response->data[0]->userLocaleID );
+		$this->assertSame( strval( $time ), $response->data[0]->time_created );
+		$this->assertSame( '0', $response->data[0]->userMeta );
+	}
 }
