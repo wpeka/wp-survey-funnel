@@ -130,7 +130,7 @@ export const Choices = React.memo(
                                     </div>
                                 </div>
                                 <div className="modalComponentSaveButton">
-                                    <button onClick={this.props.saveToList}>save</button>
+                                    <button onClick={this.props.saveToList}>Save</button>
                                 </div>
                             </div>
                             <div className="modalContent-right">
