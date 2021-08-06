@@ -157,17 +157,22 @@ export default function Responses() {
 
 	if ( reports.length <= 0 ) {
 		return (
-			<NoResponseRecorded />
+			<NoResponseRecorded title={'No Response Recorded'} description={'No responses/insights found for provided start date and end date!'} />
 		)
 	}
 	return (
 		<div className="responseDataViewer">
 			<div className="responseSelector">
+				<p>Total Responses: {reports.length}</p>
 				<div className="selectionElementsContainer">
 					<div className="selectionElements">
 						{reports.map(function(item, i) {
+							let className = 'selectElement ';
+							if ( currentReportSelected !== null && currentReportSelected.userLocaleID === item.userLocaleID ) {
+								className += 'selected';
+							}
 							return <div className="selectionElement" key={item.userLocaleID}>
-								<div className="selectElement" onClick={() => {handleReportChange(i)}} click-idx={i}>
+								<div className={className} onClick={() => {handleReportChange(i)}} click-idx={i}>
 									<input type="checkbox" value={item.checked} onChange={() => {handleCheckboxChange(i)}} />
 									<div className="selectElement-title">
 										<h3>{item.lead}</h3>

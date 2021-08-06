@@ -43,7 +43,7 @@ function Survey() {
     let build = JSON.parse(data.build)
     
     const iframeRef = React.createRef()
-    const [height, setHeight] = useState(500)
+    const [height, setHeight] = useState(600)
     
     let designCon = {}
     if (data.design === '') {
@@ -658,7 +658,7 @@ function Survey() {
     }
 
     let backgroundStyle = {
-        padding: `20px`,
+        padding: `50px`,
     }
 
     if (designCon.selectedImageUrl !== null) {
