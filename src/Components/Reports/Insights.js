@@ -8,11 +8,15 @@ const getAnswerBlocks = ( item ) => {
 		case 'MultiChoice':
 			return <>
 				{item.answers.map(function(ele, i) {
+					let percentageAnswered = 0.00;
+					if ( ele?.responseCount ) {
+						percentageAnswered = (ele.responseCount / item.totalAnswered) * 100;
+					}
 					return <div key={i} className="insightAnswerBlock">
 						<div className="wpsf-insight-answer-box">
 							{ele.name}
 						</div>
-						<p>{ele?.responseCount ? ele.responseCount : 0 } Responses.</p>
+						<p><span>{percentageAnswered.toFixed(2) + '%'}</span>{ele?.responseCount ? ele.responseCount : 0 } Responses.</p>
 					</div>
 				})}
 			</>
