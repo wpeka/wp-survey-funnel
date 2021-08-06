@@ -335,7 +335,7 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 	gap: 20px;
-	height: 320px;
+	height: 350px;
 	flex-wrap:wrap;
 }
 
@@ -351,7 +351,7 @@
 	transition: box-shadow 250ms;
 	cursor: pointer;
 	width:250px;
-	max-height: 310px;
+	max-height: 350px;
 }
 
 .wpsf-modal-content-card:hover {
@@ -391,7 +391,7 @@
 #content-title {
 	padding-top: 12.5px;
 	padding-bottom: 12.5px;
-	height:40px;
+	height:45px;
 
 }
 #wpsf-modal-submit {

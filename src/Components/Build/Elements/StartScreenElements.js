@@ -94,6 +94,7 @@ export const CoverPage = React.memo(
                                 <div className="modalContentPreview">
                                 {this.state.title === '' && this.state.description === '' && this.state.button === '' ? 
                                 (<div className="no-preview-available">
+                                    <img src={require(`../BuildImages/unavailable.png`)}></img>
                                     <div>
                                         No preview available
                                     </div>

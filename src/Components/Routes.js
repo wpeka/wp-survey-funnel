@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
-import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
 import { BuildContextProvider } from "./Context/BuildContext";
 import { DesignContext, DesignContextProvider } from "./Context/DesignContext";
 import { ReportContextProvider } from './Context/ReportContext';
@@ -59,19 +59,19 @@ export default function Routes() {
                 </div>
                 <ul>
                     <li>
-                        <Link to="/build">Build</Link>
+                        <NavLink to="/build" activeStyle={{ color: "#0F4C81" }}>Build</NavLink>
                     </li>
                     <li>
-                        <Link to="/design">Design</Link>
+                        <NavLink to="/design" activeStyle={{ color: "#0F4C81" }}>Design</NavLink>
                     </li>
                     <li>
-                        <Link to="/configure">Configure</Link>
+                        <NavLink to="/configure" activeStyle={{ color: "#0F4C81" }}>Configure</NavLink>
                     </li>
                     <li>
-                        <Link to="/share">Share</Link>
+                        <NavLink to="/share" activeStyle={{ color: "#0F4C81" }}>Share</NavLink>
                     </li>
                     <li>
-                        <Link to="/reports">Reports</Link>
+                        <NavLink to="/reports" activeStyle={{ color: "#0F4C81" }}>Reports</NavLink>
                     </li>
                 </ul>
                 <div>

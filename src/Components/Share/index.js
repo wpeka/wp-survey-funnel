@@ -48,7 +48,10 @@ export default function Share() {
         <div className="Share">
             <div className="shareTabs">
 				<div className="shareTabs-element">
-					<h3>Share ShortCode</h3>
+					<div className="shareTabs-element-title">
+						<h3>Share ShortCode</h3>
+						<p>Copy this and paste it into any post or page you want the survey to be displayed.</p>
+					</div>
 					<img src={require('../Build/BuildImages/arrowRight.png')}></img>
 				</div>
 			</div>

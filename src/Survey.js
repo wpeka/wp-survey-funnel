@@ -713,6 +713,7 @@ function Survey() {
                         >
                             {tabCount === 0 ? (
                                 <div className="no-preview-available">
+                                    <img src={require(`./Components/Build/BuildImages/unavailable.png`)}></img>
                                     {currentlyPreviewing
                                         ? 'No Preview Available'
                                         : 'No Questions were added in this survey'}
