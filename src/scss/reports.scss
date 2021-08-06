@@ -246,3 +246,20 @@
     }
 
 }
+
+.NRR {
+    margin-top: 45px;
+    text-align: center;
+    background: #fff;
+    .NRR-container {
+        padding: 50px;
+        .NRR-headline {
+            margin-bottom: 38px;
+
+            p {
+                margin: 0;
+                margin-bottom: 6px;
+            }
+        }
+    }
+}
