@@ -40,7 +40,7 @@ export const ResultScreen = React.memo(
                                 <div className="modalContent-left-fields">
                                     <div className="modalComponentTitle">
                                         <h3>Title</h3>
-                                        <textarea
+                                        <input
                                             type="text"
                                             placeholder="Set Title"
                                             name="title"
@@ -50,7 +50,7 @@ export const ResultScreen = React.memo(
                                     </div>
                                     <div className="modalComponentDescription">
                                         <h3>Description</h3>
-                                        <input
+                                        <textarea
                                             type="text"
                                             placeholder="Set Description"
                                             name="description"
@@ -69,10 +69,16 @@ export const ResultScreen = React.memo(
                                     <h4>Content Preview</h4>
                                 </div>
                                 <div className="modalContentPreview">
-                                    <ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
+                                {this.state.title === '' && this.state.description === '' ? 
+                                (<div className="no-preview-available">
+                                    <div>
+                                        No preview available
+                                    </div>
+                                </div>)
+                                 : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
                                         <h3>{this.state.title}</h3>
                                         <p>{this.state.description}</p>
-                                    </ModalContentRight>
+                                    </ModalContentRight>)}
                                 </div>
                             </div>
                         </div>

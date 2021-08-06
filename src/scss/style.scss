@@ -388,6 +388,11 @@ body {
                 overflow: auto;
                 padding: 0 20px;
                 height: calc(100vh - 186px);
+                .no-preview-available{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
                 .preview{
                     display: flex;
                     justify-content: center;
@@ -420,6 +425,12 @@ body {
                     overflow: auto;
                     padding: 0 20px;
                     height: calc(100vh - 186px);
+                    .no-preview-available{
+                        display:flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100%;
+                    }
                     .preview{
                         display: flex;
                         justify-content: center;
@@ -471,7 +482,7 @@ body {
                 padding: 0 40px 20px 40px;
                 height: calc(100vh - 180px);
                 .modalComponentTitle, .modalComponentDescription, .modalComponentButton, .modalComponentAnswers, .modalComponentButtonLabel{
-                    margin-top: 45px;
+                    margin-top: 20px;
                     h3{
                         margin: 0;
                     }
