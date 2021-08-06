@@ -6,6 +6,7 @@ import Responses from "./Responses";
 import Insights from "./Insights";
 import { ReportContext } from "../Context/ReportContext";
 import '../../scss/reports.scss';
+import NoResponseRecorded from "./NoResponseRecorded";
 
 export default function Reports() {
     const { dates, changeDate, dateValidations } = useContext( ReportContext );
@@ -14,11 +15,11 @@ export default function Reports() {
             <div className="wpsf-reports-container">
                 <Tabs>
                     <div label="Insights">
-                        {dateValidations().error ? (<div>{dateValidations().errorMessage}</div>) : (<Insights></Insights>)}
+                        {dateValidations().error ? (<NoResponseRecorded title={dateValidations().errorTitle} description={dateValidations().errorMessage}></NoResponseRecorded>) : (<Insights></Insights>)}
                         
                     </div>
                     <div label="Responses">
-                        {dateValidations().error ? (<div>{dateValidations().errorMessage}</div>) : (<Responses></Responses>)}
+                        {dateValidations().error ? (<NoResponseRecorded title={dateValidations().errorTitle} description={dateValidations().errorMessage}></NoResponseRecorded>) : (<Responses></Responses>)}
                     </div>
                 </Tabs>
                 <div className="datePicker">

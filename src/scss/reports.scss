@@ -93,6 +93,11 @@
                         p{
                             margin: 0;
                             padding: 0;
+                            font-size: 36px;
+                        }
+                        small {
+                            color: #9DA9B4;
+                            font-size: 16px;
                         }
                     }
                 }
@@ -140,6 +145,11 @@
                                     margin-right: 20px;
                                     background-color: #F0F2F5;
                                 }
+                                p {
+                                    span {
+                                        margin: 0px 10px;
+                                    }
+                                }
                             }
                         }
                     }
@@ -164,10 +174,14 @@
                                     margin-bottom: 20px;
                                     .selectElement{
                                         display: flex;
+                                        cursor: pointer;
                                         width: 378px;
-                                        background-color: #F0F2F5;
+                                        background-color: transparent;
                                         padding: 20px;
                                         border-radius: 9px;
+                                        &:hover {
+                                            background: #F0F2F5;
+                                        }
                                         input{
                                             width: 20px;
                                             height: 20px;
@@ -245,4 +259,25 @@
         }
     }
 
+}
+
+.selected {
+    background: #F0F2F5 !important;
+}
+
+.NRR {
+    margin-top: 45px;
+    text-align: center;
+    background: #fff;
+    .NRR-container {
+        padding: 50px;
+        .NRR-headline {
+            margin-bottom: 38px;
+
+            p {
+                margin: 0;
+                margin-bottom: 6px;
+            }
+        }
+    }
 }

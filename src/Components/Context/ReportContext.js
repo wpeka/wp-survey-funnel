@@ -34,12 +34,14 @@ export function ReportContextProvider(props) {
     const dateValidations = () => {
         if ( dates.startDate === null || dates.endDate === null ) {
             return {
+				errorTitle: 'Select Date Range',
                 errorMessage: 'Please Select Start date and end date to generate reports.',
                 error: true,
             }
         }
         else if ( moment(dates.startDate).isAfter(dates.endDate) ) {
             return {
+				errorTitle: 'Select Date Range',
                 errorMessage: 'Start Date cannot be less than end date.',
                 error: true,
             }
