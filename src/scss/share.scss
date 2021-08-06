@@ -30,6 +30,16 @@
             justify-content: space-between;
             border-bottom: 1px solid #d2dae2;
             padding: 20px;
+            .shareTabs-element-title{
+                h3{
+                    margin: 0;
+                }
+                p{
+                    margin: 5px 20px 0 0;
+                    color:#626F7D;
+                    font-size: 14px;
+                }
+            }
             h3{
                 margin: 20px;
             }

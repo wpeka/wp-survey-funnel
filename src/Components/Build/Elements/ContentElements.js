@@ -138,7 +138,7 @@ export const Choices = React.memo(
                                     <h4>Content Preview</h4>
                                 </div>
                                 <div className="modalContentPreview">
-                                {this.state.title === '' && this.state.description === '' && this.state.answers.length === 0 ? ( <div className="no-preview-available"><div>No Preview Available</div></div> ) : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
+                                {this.state.title === '' && this.state.description === '' && this.state.answers.length === 0 ? ( <div className="no-preview-available"><img src={require(`../BuildImages/unavailable.png`)}></img><div>No Preview Available</div></div> ) : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
                                     { this.checkForEmpty('title') && <h3>{this.state.title}</h3> }
                                     { this.checkForEmpty('description') && <p>{this.state.description}</p> }
                                     {this.state.answers.map(function(answer, idx) {

@@ -182,16 +182,16 @@ export const shortcodeTypes = [
 	{
 		name: 'Responsive',
 		id: 'responsive',
-		helpText: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, harum?"
+		helpText: "This code will place a responsive survey on your website."
 	},
 	{
 		name: 'Full Page',
 		id: 'fullpage',
-		helpText: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, harum? lorem"
+		helpText: "This code will place a responsive survey on your website."
 	},
 	{
 		name: 'Popup',
 		id: 'popup',
-		helpText: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, harum? popup"
+		helpText: "This code will place a responsive survey on your website."
 	}
 ]

@@ -57,10 +57,10 @@ function wpsf_get_background_image( $post_id ) {
 						</div>
 						</div>
 						<div class="card-title">
-							Basic Survey
+							Simple Survey
 						</div>
 						<div class="card-text">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi.
+							Create a linear survey. Respondents receive results when they complete the survey.
 						</div>
 					</div>
 					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
@@ -81,7 +81,7 @@ function wpsf_get_background_image( $post_id ) {
 							Outcome Logic
 						</div>
 						<div class="card-text">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi.
+							Map answers to outcomes. Respondents receive results based on the outcome with the most answers selected.
 						</div>
 					</div>
 					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
@@ -102,12 +102,12 @@ function wpsf_get_background_image( $post_id ) {
 							Scoring Logic
 						</div>
 						<div class="card-text">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore amet eligendi.
+							Assign a score value to each answer. Respondents receive results based on their score range.
 						</div>
 					</div>
 				</div>
 				<div class="set-content-name">
-					<span class="content-info-title">Select Content Name</span>
+					<span class="content-info-title">Enter Content Name</span>
 					<input type="text" id="content-title" placeholder="Enter Title">
 					<button type="submit" id="wpsf-modal-submit">Continue</button>
 				</div>
@@ -141,7 +141,7 @@ function wpsf_get_background_image( $post_id ) {
 			<div class="wpsf-card-container">
 				<div class="wpsf-content" style="cursor: pointer;">
 					<div class="wpsf-create-content">
-						<h3><?php esc_html_e( 'Create New Content', 'wp-survey-funnel' ); ?></h3>
+						<h3><?php esc_html_e( 'Create New Survey', 'wp-survey-funnel' ); ?></h3>
 						<div class="wpsf-create-button">
 							<button><span>+</span></button>
 						</div>

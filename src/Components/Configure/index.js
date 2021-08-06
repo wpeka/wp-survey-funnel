@@ -58,7 +58,10 @@ export default function Configure() {
 		<div className="configure">
 			<div className="configurationLeft">
 				<div className="configurationLeft-element">
-					<h3>General Settings</h3>
+					<div className="configurationLeft-element-title">
+						<h3>General</h3>
+						<p>Basic settings</p>
+					</div>
 					<img src={require('../Build/BuildImages/arrowRight.png')}></img>
 				</div>
 			</div>

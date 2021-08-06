@@ -24,6 +24,16 @@
         background-color: #F1F2F6;
         border-right: 1px solid #d2dae2;
         .configurationLeft-element{
+            .configurationLeft-element-title{
+                h3{
+                    margin: 0;
+                }
+                p{
+                    margin: 5px 20px 0 0;
+                    color:#626F7D;
+                    font-size: 14px;
+                }
+            }
             display: flex;
             align-items: center;
             justify-content: space-between;

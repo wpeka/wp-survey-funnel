@@ -71,6 +71,7 @@ export const ResultScreen = React.memo(
                                 <div className="modalContentPreview">
                                 {this.state.title === '' && this.state.description === '' ? 
                                 (<div className="no-preview-available">
+                                    <img src={require(`../BuildImages/unavailable.png`)}></img>
                                     <div>
                                         No preview available
                                     </div>
