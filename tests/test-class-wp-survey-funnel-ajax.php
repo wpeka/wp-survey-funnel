@@ -271,7 +271,7 @@ class Test_Wp_Survey_Funnel_Ajax extends WP_Ajax_UnitTestCase {
 				'
 				DELETE FROM ' . $table_name . ' WHERE survey_id = %d
 			',
-				self::$post_ids[0],
+				self::$post_ids[0]
 			)
 		);// db call ok; no cache ok.
 	}
@@ -360,7 +360,7 @@ class Test_Wp_Survey_Funnel_Ajax extends WP_Ajax_UnitTestCase {
 				'
 				DELETE FROM ' . $table_name . ' WHERE survey_id = %d
 			',
-				self::$post_ids[0],
+				self::$post_ids[0]
 			)
 		);// db call ok; no cache ok.
 	}
