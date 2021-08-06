@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { BuildContext } from '../Context/BuildContext';
 import { ReportContext } from '../Context/ReportContext'
+import NoResponseRecorded from './NoResponseRecorded';
 import moment from 'moment';
 
 export default function Responses() {
@@ -154,10 +155,14 @@ export default function Responses() {
 		setReports(newList);
 	}
 
+	if ( reports.length <= 0 ) {
+		return (
+			<NoResponseRecorded />
+		)
+	}
 	return (
 		<div className="responseDataViewer">
 			<div className="responseSelector">
-				{reports.length > 0 ? (<p>Total Responses. {reports.length}</p>) : (<p>No response recorded</p>)} 
 				<div className="selectionElementsContainer">
 					<div className="selectionElements">
 						{reports.map(function(item, i) {

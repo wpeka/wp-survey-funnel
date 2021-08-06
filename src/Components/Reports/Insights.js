@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { ReportContext } from '../Context/ReportContext';
+import NoResponseRecorded from './NoResponseRecorded';
 
 const getAnswerBlocks = ( item ) => {
 	switch( item.componentName ) {
@@ -11,7 +12,7 @@ const getAnswerBlocks = ( item ) => {
 						<div className="wpsf-insight-answer-box">
 							{ele.name}
 						</div>
-						<p>{ele.responseCount} Responses.</p>
+						<p>{ele?.responseCount ? ele.responseCount : 0 } Responses.</p>
 					</div>
 				})}
 			</>
@@ -34,7 +35,7 @@ export default function Insights() {
 	
 	return (
 		<div>
-			<div className="insightsOverview">
+			{ insights.List.CONTENT_ELEMENTS.length > 0 ? (<><div className="insightsOverview">
 				<div className="insightBox">
 					<p className="insightBoxViews">{insights.totalViewed}</p>
 					<small>Views</small>
@@ -74,7 +75,7 @@ export default function Insights() {
                         </div>
                     );
 				})}
-			</div>
+			</div></>) : (<NoResponseRecorded />)}
 		</div>
 	)
 }
