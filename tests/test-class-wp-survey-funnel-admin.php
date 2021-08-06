@@ -222,4 +222,33 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 		$this->assertEquals( 1, $count_after_include - $count_befor_include, 'Failed to include admin-display-dashboard-page.php file' );
 	}
 
+	/**
+	 * Test for wpsf_mascot_on_pages function
+	 */
+	public function test_wpsf_mascot_on_pages() {
+		$this->go_to( admin_url() . 'admin.php?page=wpsf-dashboard' );
+		ob_start();
+		self::$wp_survey_funnel_admin->wpsf_mascot_on_pages();
+		$output = ob_get_clean();
+		global $wp_scripts;
+		global $wp_styles;
+		$enqueue_scripts = $wp_scripts->queue;
+		$enqueue_styles  = $wp_styles->queue;
+		$data            = $wp_scripts->get_data( 'wp-survey-funnel-mascot', 'data' );
+		$data            = trim( str_replace( 'var mascot =', '', $data ) );
+		$data            = trim( str_replace( ';', '', $data ) );
+		$localize_data   = json_decode( $data, true );
+		update_option( 'wpadcenter_pro_active', true );
+
+		$this->assertCount( 3, $localize_data );
+		$this->assertArrayHasKey( 'menu_items', $localize_data );
+		$this->assertArrayHasKey( 'is_pro', $localize_data );
+		$this->assertArrayHasKey( 'quick_links_text', $localize_data );
+		$this->assertSame( __( 'See Quick Links', 'wp-survey-funnel' ), $localize_data['quick_links_text'] );
+
+		$this->assertSame( '<div id="adc-mascot-app"></div>', trim( $output ) );
+		$this->assertTrue( in_array( 'wp-survey-funnel-mascot', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertTrue( in_array( 'wp-survey-funnel-mascot', $enqueue_styles ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+	}
+
 }

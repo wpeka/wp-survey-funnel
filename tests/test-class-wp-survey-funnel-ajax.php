@@ -264,6 +264,16 @@ class Test_Wp_Survey_Funnel_Ajax extends WP_Ajax_UnitTestCase {
 			unset( $e );
 		}
 		$this->assertTrue( true );
+
+		// Reverting database to previous state.
+		$wpdb->query(
+			$wpdb->prepare(
+				'
+				DELETE FROM ' . $table_name . ' WHERE survey_id = %d
+			',
+				self::$post_ids[0]
+			)
+		);// db call ok; no cache ok.
 	}
 
 	/**
@@ -343,5 +353,74 @@ class Test_Wp_Survey_Funnel_Ajax extends WP_Ajax_UnitTestCase {
 		$this->assertSame( $user_locale_id, $response->data[0]->userLocaleID );
 		$this->assertSame( strval( $time ), $response->data[0]->time_created );
 		$this->assertSame( '0', $response->data[0]->userMeta );
+
+		// Reverting database to previous state.
+		$wpdb->query(
+			$wpdb->prepare(
+				'
+				DELETE FROM ' . $table_name . ' WHERE survey_id = %d
+			',
+				self::$post_ids[0]
+			)
+		);// db call ok; no cache ok.
+	}
+
+	/**
+	 * Test for wpsf_delete_survey function
+	 */
+	public function test_wpsf_delete_survey() {
+		// become administrator .
+		$this->_setRole( 'administrator' );
+
+		$_POST['action']   = 'wpsf_delete_survey';
+		$_POST['security'] = wp_create_nonce( 'surveySecurity' );
+		$_POST['id']       = self::$post_ids[0];
+		try {
+			$this->_handleAjax( 'wpsf_delete_survey' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
+	}
+
+	/**
+	 * Test for wpsf_get_status function
+	 */
+	public function test_wpsf_get_status() {
+		// become administrator .
+		$this->_setRole( 'administrator' );
+
+		$_POST['action']   = 'wpsf_get_status';
+		$_POST['security'] = wp_create_nonce( 'wpsf-security' );
+		$_POST['post_id']  = self::$post_ids[0];
+		try {
+			$this->_handleAjax( 'wpsf_get_status' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertFalse( (bool) $response->success );
+		$this->assertSame( get_post_status( self::$post_ids[0] ), $response->data );
+	}
+
+	/**
+	 * Test for wpsf_change_status function
+	 */
+	public function test_wpsf_change_status() {
+		// become administrator.
+		$this->_setRole( 'administrator' );
+
+		$_POST['action']   = 'wpsf_change_status';
+		$_POST['security'] = wp_create_nonce( 'wpsf-security' );
+		$_POST['post_id']  = self::$post_ids[0];
+		try {
+			$this->_handleAjax( 'wpsf_change_status' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
+		$this->assertSame( 'draft', $response->data );
 	}
 }
