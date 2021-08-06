@@ -93,8 +93,10 @@ export const CoverPage = React.memo(
                                 </div>
                                 <div className="modalContentPreview">
                                 {this.state.title === '' && this.state.description === '' && this.state.button === '' ? 
-                                (<div>
-                                    No preview available
+                                (<div className="no-preview-available">
+                                    <div>
+                                        No preview available
+                                    </div>
                                 </div>)
                                  : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
                                         { this.checkForEmpty('title') && <h3>{this.state.title}</h3> }

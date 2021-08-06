@@ -40,8 +40,10 @@
 
     }
     .shareShortcodeSettings{
+        overflow: auto;
+        height: calc(100vh - 108px);
         .contentShortcodeLabel-container{
-            padding: 20px;
+            padding: 20px 0 20px 40px;
             border-bottom: 1px solid #d2dae2;
 
             .contentShortcodeLabel{
@@ -50,7 +52,9 @@
                 justify-content: space-between;
                 align-items: center;
                 margin-bottom: 20px;
-                
+                h3{
+                    margin: 0;
+                }
                 button{
                     font-family: 'ApercuPro';
                     background: none;
@@ -71,9 +75,11 @@
             }
         }
         .contentTypes{
-            padding: 20px;
+            padding: 20px 0 20px 40px;
             .contentTypesLabel{
-
+                h3{
+                    margin:0;
+                }
             }
             .contentTypes-container{
                 width: 547px;
@@ -82,7 +88,7 @@
                 display: flex;
                 align-items: center;
                 border: 1px solid #B5C8C8;
-
+                margin-top: 20px;
                 .contentType-element{
                     width: 183px;
                     float: left;
@@ -111,7 +117,7 @@
             border: 1px solid #B5C8C8;
             border-radius: 9px;
             margin: left;
-            margin-left: 20px;
+            margin: 20px 0 20px 40px;
             background-color: #F0F2F5;
         }
     }
