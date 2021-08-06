@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { initColorState } from '../../Data';
 import fetchData from '../../HelperComponents/fetchData';
+import { convertToRgbaCSS } from '../../HelperComponents/HelperFunctions';
 
 export function DesignContextProvider(props) {
 	
@@ -63,6 +64,14 @@ export function DesignContextProvider(props) {
 			setSelectedImage(null);
 		}
 	};
+
+	useEffect(() => {
+		const root = document.body;
+		root?.style.setProperty(
+		  "--answer-highlight-box-color",
+		   convertToRgbaCSS(initialState.answersHighlightBoxColor)
+		);
+	}, [initialState]);
 
 	useEffect(() => {
 		if ( selectedImage === null || selectedImage === undefined ) {

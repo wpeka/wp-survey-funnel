@@ -14,10 +14,10 @@ export default function Responses() {
 		let { fields } = currentReportSelected;
 		fields = JSON.parse(fields);
 		const arrayOfObj = Object.values(fields);
-		return (<div>
+		return (<div className="wpsf-preview-container">
 			{arrayOfObj.map(function(item, i) {
 				if ( item.status === 'answered' ) {
-					return (<div key={item._id}>
+					return (<div key={item._id} className="wpsf-report-question-container">
 						<div className="currentReportQuestion">
 							<h2>{item.tabNumber}. {item.question}</h2>
 						</div>
@@ -158,21 +158,29 @@ export default function Responses() {
 		<div className="responseDataViewer">
 			<div className="responseSelector">
 				{reports.length > 0 ? (<p>Total Responses. {reports.length}</p>) : (<p>No response recorded</p>)} 
-				<div className="selectionElements">
-					{reports.map(function(item, i) {
-						return <div className="selectionElement" key={item.userLocaleID}>
-							<div className="selectElement" onClick={() => {handleReportChange(i)}} click-idx={i}>
-								<input type="checkbox" value={item.checked} onChange={() => {handleCheckboxChange(i)}} />
-								<h3>{item.lead}</h3>
-								<small>{moment.unix(item.time_created).format( 'YYYY-MM-DD HH:mm A' )}</small>
+				<div className="selectionElementsContainer">
+					<div className="selectionElements">
+						{reports.map(function(item, i) {
+							return <div className="selectionElement" key={item.userLocaleID}>
+								<div className="selectElement" onClick={() => {handleReportChange(i)}} click-idx={i}>
+									<input type="checkbox" value={item.checked} onChange={() => {handleCheckboxChange(i)}} />
+									<div className="selectElement-title">
+										<h3>{item.lead}</h3>
+										<small>{moment.unix(item.time_created).format( 'YYYY-MM-DD HH:mm A' )}</small>
+									</div>
+								</div>
 							</div>
-						</div>
-					})}
+						})}
+					</div>
+					<div className="wpsf-export-csv-btn">
+						<button onClick={exportCSV}>Export CSV</button>
+					</div>
 				</div>
-				<button onClick={exportCSV}>Export CSV</button>
+
+
 			</div>
 			<div className="responsePreview">
-				Response Preview For: {reports.length > 0 && currentReportSelected !== null ? (<p>Response preview for: {currentReportSelected.lead} {moment.unix(currentReportSelected.time_created).format( 'YYYY-MM-DD HH:mm A' )}</p>) : (<p>No response recorded</p>)}
+				{reports.length > 0 && currentReportSelected !== null ? (<p>Response preview for: {currentReportSelected.lead} <img src={require('../Build/BuildImages/calendar.png')}></img> {moment.unix(currentReportSelected.time_created).format( 'YYYY-MM-DD' )} <img src={require('../Build/BuildImages/clock.png')}></img> {moment.unix(currentReportSelected.time_created).format( ' HH:mm A' )}</p>) : (<p>No response recorded</p>)}
 				{getCurrentReportSelectedPreview()}
 			</div>
 			<form method="post" id="post_csv" action={document.getElementById('exportCSVAction').value}>

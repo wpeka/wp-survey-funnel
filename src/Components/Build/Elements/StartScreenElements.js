@@ -31,6 +31,13 @@ export const CoverPage = React.memo(
             }
         }
 
+        checkForEmpty( name ) {
+            if ( this.state[name] === '' ) {
+                return false;
+            }
+            return true;
+        }
+
         render() {
             const { designCon, currentElement } = this.props;
             return (
@@ -55,7 +62,7 @@ export const CoverPage = React.memo(
                                     </div>
                                     <div className="modalComponentDescription">
                                         <h3>Description</h3>
-                                        <input
+                                        <textarea
                                             type="text"
                                             placeholder="Set Description"
                                             name="description"
@@ -77,7 +84,7 @@ export const CoverPage = React.memo(
                                     </div>                                
                                 </div>
                                 <div className="modalComponentSaveButton">
-                                    <button onClick={this.props.saveToList}>save</button>
+                                    <button onClick={this.props.saveToList}>Save</button>
                                 </div>
                             </div>
                             <div className="modalContent-right">
@@ -90,9 +97,9 @@ export const CoverPage = React.memo(
                                     No preview available
                                 </div>)
                                  : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
-                                        <h3>{this.state.title}</h3>
-                                        <p>{this.state.description}</p>
-                                        <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}}>{this.state.button}</button>
+                                        { this.checkForEmpty('title') && <h3>{this.state.title}</h3> }
+                                        { this.checkForEmpty('description') && <p>{this.state.description}</p> }
+                                        { this.checkForEmpty('button') && <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}}>{this.state.button}</button> }
                                 </ModalContentRight>)}
 
                                 </div>

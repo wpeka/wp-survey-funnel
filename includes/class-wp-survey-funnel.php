@@ -5,8 +5,8 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       https://club.wpeka.com
- * @since      1.0.0
+ * @link  https://club.wpeka.com
+ * @since 1.0.0
  *
  * @package    Wp_Survey_Funnel
  * @subpackage Wp_Survey_Funnel/includes
@@ -33,27 +33,27 @@ class Wp_Survey_Funnel {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      Wp_Survey_Funnel_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @since  1.0.0
+	 * @access protected
+	 * @var    Wp_Survey_Funnel_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @since  1.0.0
+	 * @access protected
+	 * @var    string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @since  1.0.0
+	 * @access protected
+	 * @var    string    $version    The current version of the plugin.
 	 */
 	protected $version;
 
@@ -64,7 +64,7 @@ class Wp_Survey_Funnel {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 		if ( defined( 'WP_SURVEY_FUNNEL_VERSION' ) ) {
@@ -93,8 +93,8 @@ class Wp_Survey_Funnel {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
-	 * @access   private
+	 * @since  1.0.0
+	 * @access private
 	 */
 	private function load_dependencies() {
 
@@ -130,8 +130,8 @@ class Wp_Survey_Funnel {
 	 * Uses the Wp_Survey_Funnel_I18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
-	 * @access   private
+	 * @since  1.0.0
+	 * @access private
 	 */
 	private function set_locale() {
 
@@ -144,8 +144,8 @@ class Wp_Survey_Funnel {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   private
+	 * @since  1.0.0
+	 * @access private
 	 */
 	private function define_admin_hooks() {
 
@@ -161,12 +161,18 @@ class Wp_Survey_Funnel {
 
 		// ajax calls.
 		$this->loader->add_action( 'wp_ajax_wpsf_new_survey', $plugin_admin, 'wpsf_new_survey' );
+		$this->loader->add_action( 'wp_ajax_wpsf_delete_survey', $plugin_admin, 'wpsf_delete_survey' );
+		$this->loader->add_action( 'wp_ajax_wpsf_get_status', $plugin_admin, 'wpsf_get_status' );
+		$this->loader->add_action( 'wp_ajax_wpsf_change_status', $plugin_admin, 'wpsf_change_status' );
 		$this->loader->add_action( 'wp_ajax_wpsf_save_build_data', $plugin_admin, 'wpsf_save_build_data' );
 		$this->loader->add_action( 'wp_ajax_wpsf_get_build_data', $plugin_admin, 'wpsf_get_build_data' );
 		$this->loader->add_action( 'wp_ajax_wpsf_save_design_data', $plugin_admin, 'wpsf_save_design_data' );
 		$this->loader->add_action( 'wp_ajax_wpsf_get_design_data', $plugin_admin, 'wpsf_get_design_data' );
 		$this->loader->add_action( 'wp_ajax_wpsf_get_reports_data', $plugin_admin, 'wpsf_get_reports_data' );
+		$this->loader->add_action( 'wp_ajax_wpsf_save_configuration_data', $plugin_admin, 'wpsf_save_configuration_data' );
+		$this->loader->add_action( 'wp_ajax_wpsf_get_configuration_data', $plugin_admin, 'wpsf_get_configuration_data' );
 		$this->loader->add_action( 'admin_post_export_csv', $plugin_admin, 'wpsf_export_csv' );
+		$this->loader->add_action( 'admin_footer', $plugin_admin, 'wpsf_mascot_on_pages' );
 
 		// setup wpsf-survey (builder) page.
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'wpsf_survey_setup_page' );
@@ -176,8 +182,8 @@ class Wp_Survey_Funnel {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
-	 * @access   private
+	 * @since  1.0.0
+	 * @access private
 	 */
 	private function define_public_hooks() {
 
@@ -198,7 +204,7 @@ class Wp_Survey_Funnel {
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function run() {
 		$this->loader->run();
@@ -208,8 +214,8 @@ class Wp_Survey_Funnel {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
-	 * @return    string    The name of the plugin.
+	 * @since  1.0.0
+	 * @return string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
 		return $this->plugin_name;
@@ -218,7 +224,7 @@ class Wp_Survey_Funnel {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @return    Wp_Survey_Funnel_Loader    Orchestrates the hooks of the plugin.
+	 * @return Wp_Survey_Funnel_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -227,8 +233,8 @@ class Wp_Survey_Funnel {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
-	 * @return    string    The version number of the plugin.
+	 * @since  1.0.0
+	 * @return string    The version number of the plugin.
 	 */
 	public function get_version() {
 		return $this->version;

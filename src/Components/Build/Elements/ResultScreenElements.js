@@ -40,7 +40,7 @@ export const ResultScreen = React.memo(
                                 <div className="modalContent-left-fields">
                                     <div className="modalComponentTitle">
                                         <h3>Title</h3>
-                                        <input
+                                        <textarea
                                             type="text"
                                             placeholder="Set Title"
                                             name="title"
@@ -61,7 +61,7 @@ export const ResultScreen = React.memo(
                                     </div>
                                 </div>
                                 <div className="modalComponentSaveButton">
-                                    <button onClick={this.props.saveToList}>save</button>
+                                    <button onClick={this.props.saveToList}>Save</button>
                                 </div>
                             </div>
                             <div className="modalContent-right">

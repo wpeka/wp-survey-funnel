@@ -2,8 +2,8 @@
 /**
  * Fired during plugin activation
  *
- * @link       https://club.wpeka.com
- * @since      1.0.0
+ * @link  https://club.wpeka.com
+ * @since 1.0.0
  *
  * @package    Wp_Survey_Funnel
  * @subpackage Wp_Survey_Funnel/includes
@@ -27,7 +27,7 @@ class Wp_Survey_Funnel_Activator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public static function activate() {
 		global $wpdb;
@@ -56,7 +56,7 @@ class Wp_Survey_Funnel_Activator {
 			ID int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 			survey_id int(11) DEFAULT 0,
 			user_id int(11) DEFAULT 0,
-			fields JSON,
+			fields TEXT,
 			user_locale_id varchar(255),
 			time_created int(11) DEFAULT 0,
 			date_created DATE,
