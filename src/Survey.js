@@ -687,18 +687,19 @@ function Survey() {
                 return (currentTab !== tabCount - 1 && (componentList[currentTab].type !== 'RESULT_ELEMENTS' || componentList[currentTab].type !== 'START_ELEMENTS'));
         }
     }
-
     return (
         <Frame
             ref={iframeRef}
             initialContent={initialContent}
             width="100%"
+            height="100%"
             id={id + '_iframe'}
             style={{
                 margin: '0px',
                 border: '0px',
-                height,
+                height: data.type === 'responsive' ? height : '',                
             }}
+            className={'wpsf-sc-'+data.type}
             onLoad={() => handleResize(iframeRef)}
             scrolling="no"
         >
@@ -707,7 +708,7 @@ function Survey() {
                     <div className="design-preview wpsf-design-preview-container">
                         {addFontFamilyLink()}
                         <div
-                            className="wpsf-survey-form"
+                            className={ 'wpsf-survey-form '+ data.type }
                             style={{
                                 fontFamily: designCon.fontFamily,
                                 height: '100%',

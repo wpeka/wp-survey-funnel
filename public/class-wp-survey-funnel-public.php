@@ -59,10 +59,10 @@ class Wp_Survey_Funnel_Public {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style(
+		wp_register_style(
 			$this->plugin_name . '-public',
 			plugin_dir_url( __FILE__ ) . 'css/wp-survey-funnel-public.css',
-			array( 'jquery' ),
+			array(),
 			$this->version,
 			'all'
 		);
@@ -105,7 +105,7 @@ class Wp_Survey_Funnel_Public {
 	public function wpsf_survey_shortcode_render( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'id' => 0,
+				'id'   => 0,
 				'type' => 'responsive',
 			),
 			$atts
@@ -140,6 +140,7 @@ class Wp_Survey_Funnel_Public {
 			'time'            => $time,
 			'userLocalID'     => $unique_id,
 			'styleSurveyLink' => WP_SURVEY_FUNNEL_PLUGIN_URL . 'dist/survey.css',
+			'type'            => $atts['type'],
 		);
 
 		$design_image_id = get_post_meta( $atts['id'], 'wpsf-survey-design-background', true );
@@ -148,7 +149,7 @@ class Wp_Survey_Funnel_Public {
 		} else {
 			$data['designImageUrl'] = null;
 		}
-
+		wp_enqueue_style( $this->plugin_name . '-public' );
 		wp_enqueue_script( $this->plugin_name . '-survey' );
 		wp_localize_script( $this->plugin_name . '-survey', 'data', $data );
 		return '<div id="wpsf-survey-' . $unique_id . '" style="width: 100%; height: 100%;"></div>';
