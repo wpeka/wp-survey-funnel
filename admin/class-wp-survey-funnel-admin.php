@@ -59,7 +59,7 @@ class Wp_Survey_Funnel_Admin {
 	 */
 	public function enqueue_styles() {
 
-		wp_enqueue_style(
+		wp_register_style(
 			$this->plugin_name,
 			plugin_dir_url( __FILE__ ) . 'css/wp-survey-funnel-admin.css',
 			array(),
@@ -184,6 +184,7 @@ class Wp_Survey_Funnel_Admin {
 	 * @since 1.0.0
 	 */
 	public function wpsf_help() {
+		wp_enqueue_style( $this->plugin_name );
 		?>	
 			<div class="wpsf-container-main">
 				<div class="wpsf-header">
@@ -219,6 +220,7 @@ class Wp_Survey_Funnel_Admin {
 	 * @since 1.0.0
 	 */
 	public function wpsf_dashboard() {
+		wp_enqueue_style( $this->plugin_name );
 		include_once plugin_dir_path( __FILE__ ) . 'views/admin-display-dashboard-page.php';
 	}
 
