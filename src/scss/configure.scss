@@ -49,96 +49,102 @@
         }
     }
     .configurationRight{
-        overflow: auto;
-        height: calc(100vh - 108px);
+
         .meta-info{
-            .meta-info-container{
-                padding: 20px 0 0 40px;
-                border-bottom: 1px solid #d2dae2;
-                h3{
-                    margin: 0;
+            .configure-fields{
+                overflow: auto;
+                height: calc(100vh - 188px);
+                .meta-info-container{
+                    padding: 20px 0 0 40px;
+                    border-bottom: 1px solid #d2dae2;
+                    h3{
+                        margin: 0;
+                    }
+                    p{
+                        margin: 5px 0 20px 0;
+                        color: #626F7D;
+                    }
+                    label{
+                        display: block;
+                        font-weight: bold;
+                    }
+                    input{
+                        width: 546px;
+                        padding: 20px;
+                        border-radius: 9px;
+                        border: 1px solid #B5C8C8;
+                        margin: 10px 0 20px 0;
+                        outline: none;
+                    }
+                    textarea{
+                        width: 546px;
+                        border-radius: 9px;
+                        padding: 20px;
+                        border: 1px solid #B5C8C8;
+                        margin: 10px 0 20px 0;
+                        outline: none;
+                    }
+    
                 }
-                p{
-                    margin: 5px 0 20px 0;
-                    color: #626F7D;
-                }
-                label{
-                    display: block;
-                    font-weight: bold;
-                }
-                input{
-                    width: 546px;
-                    padding: 20px;
-                    border-radius: 9px;
-                    border: 1px solid #B5C8C8;
-                    margin: 10px 0 20px 0;
-                    outline: none;
-                }
-                textarea{
-                    width: 546px;
-                    border-radius: 9px;
-                    padding: 20px;
-                    border: 1px solid #B5C8C8;
-                    margin: 10px 0 20px 0;
-                    outline: none;
+                .company-name-container{
+                    padding: 20px 0 0 40px;
+                    h3{
+                        margin: 0;
+                    }
+                    .companyLogoBox{
+                        display: flex;
+                        align-items: center;
+                        margin: 20px 0 20px 0;
+                        p{
+                            margin: 0;
+                            padding-right: 20px;
+                            color: #626F7D;
+                        }
+                        label {
+                            cursor: pointer;
+                            width: 50px;
+                            height: 20px;
+                            background: grey;
+                            display: block;
+                            border-radius: 100px;
+                            position: relative;
+                        }
+                        
+                        label:after {
+                            content: '';
+                            position: absolute;
+                            top: 5px;
+                            left: 5px;
+                            width: 10px;
+                            height: 10px;
+                            background: #fff;
+                            border-radius: 90px;
+                            transition: 0.3s;
+                        }
+                        input{
+                            display: none;
+                        }
+                        input:checked + label {
+                            background: #4CAF50;
+                        }
+                        
+                        input:checked + label:after {
+                            left: calc(100% - 5px);
+                            transform: translateX(-100%);
+                        }
+                        
+                        label:active:after {
+                            width: 50px;
+                        }
+                    }
                 }
 
             }
-            .company-name-container{
-                padding: 20px 0 0 40px;
-                border-bottom: 1px solid #d2dae2;
-                h3{
-                    margin: 0;
-                }
-                .companyLogoBox{
-                    display: flex;
-                    align-items: center;
-                    margin: 20px 0 20px 0;
-                    p{
-                        margin: 0;
-                        padding-right: 20px;
-                        color: #626F7D;
-                    }
-                    label {
-                        cursor: pointer;
-                        width: 50px;
-                        height: 20px;
-                        background: grey;
-                        display: block;
-                        border-radius: 100px;
-                        position: relative;
-                    }
-                    
-                    label:after {
-                        content: '';
-                        position: absolute;
-                        top: 5px;
-                        left: 5px;
-                        width: 10px;
-                        height: 10px;
-                        background: #fff;
-                        border-radius: 90px;
-                        transition: 0.3s;
-                    }
-                    input{
-                        display: none;
-                    }
-                    input:checked + label {
-                        background: #4CAF50;
-                    }
-                    
-                    input:checked + label:after {
-                        left: calc(100% - 5px);
-                        transform: translateX(-100%);
-                    }
-                    
-                    label:active:after {
-                        width: 50px;
-                    }
-                }
-            }
+            
             .meta-info-save-container{
                 padding: 20px 0 20px 40px;
+                border-top: 1px solid #d2dae2;
+
                 button{
                     background-color: #0F4C81;
                     border: none;
