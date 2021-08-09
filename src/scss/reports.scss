@@ -30,11 +30,13 @@
             background-color: #fff;
             padding: 13px 20px;
             border-radius: 9px;
+            box-shadow: 0 3px 4px rgb(0 0 0 / 15%);
+
             .rdt{
                 input{
                     font-family: 'ApercuPro';
                     border:none;
-                    width: 120px;
+                    width: 130px;
                     padding: 0 10px;
                     outline: none;
                 }
@@ -65,7 +67,7 @@
                 }
                 .tab-list-active{
                     background-color: #E1E8F0;
-    
+                    box-shadow: 0 3px 4px rgb(0 0 0 / 15%);
                 }
             }
             .wpsf-header-tab-content{
@@ -119,6 +121,7 @@
                         margin: 20px 0;
                         padding: 0 20px;
                         border-radius: 9px;
+                        word-break: break-word;
                         .insights-data{
                             padding: 10px;
                             background-color: #E9F4FD;
@@ -144,6 +147,7 @@
                                     padding: 14px 20px;
                                     margin-right: 20px;
                                     background-color: #F0F2F5;
+                                    word-break: break-word;
                                 }
                                 p {
                                     span {
@@ -173,7 +177,8 @@
                                 .selectionElement{
                                     margin-bottom: 20px;
                                     .selectElement{
-                                        display: flex;
+                                        display: grid;
+                                        grid-template-columns: 30px 1fr;
                                         cursor: pointer;
                                         width: 378px;
                                         background-color: transparent;
@@ -188,7 +193,7 @@
                                         }
                                         .selectElement-title{
                                             padding-left: 10px;
-    
+                                            word-break:break-word;
                                             h3{
                                                 margin: 0;
                                             }
@@ -238,6 +243,7 @@
                             height: calc(100vh - 290px);
                             overflow: auto;
                             .currentReportQuestion{
+                                word-break: break-word;
                                 h2{
                                     margin: 0 0 20px 0;
                                 }
@@ -248,6 +254,7 @@
                                 background-color: #F0F2F5;
                                 border-radius: 9px;
                                 margin-bottom: 20px;
+                                word-break: break-word;
                             }
                         }
                     }
@@ -280,4 +287,59 @@
             }
         }
     }
+}
+$medium-size : 1400px;
+@media screen and (max-width: $medium-size) {
+    .wpsf-reports-body{
+        .wpsf-reports-container{
+            width: 900px;
+            .datePicker{
+                right: calc(calc(100vw - 860px)/2);
+            }
+            .wpsf-header-tabs{
+                .wpsf-header-tab-content{
+                    .insightsOverview{
+                        .insightBox{
+                            width: 294px;
+                        }
+                    }
+                    .insights-container{
+                        .insights-summary-single{
+                            .insights-answers{
+                                .insightAnswerBlock{
+                                    .wpsf-insight-answer-box{
+                                        width: 640px;
+                                    }
+                                }
+
+
+                            }
+
+                        }
+
+                    }
+                    .responseDataViewer{
+                    
+                        .responsePreview{
+    
+                            .wpsf-preview-container{
+    
+                                .currentReportAnswer{
+                                    width: 400px;
+    
+                                }
+                            }
+                        }
+    
+                    }
+                }
+
+
+            }
+
+
+        }
+
+    }
+
 }

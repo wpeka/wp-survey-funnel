@@ -207,7 +207,9 @@ body {
         .cardBox{
             border-radius: 9px;
             .wpsf-cardbox-title{
-                display: flex;
+                display: grid;
+                grid-template-columns: 30px 1fr;
+                word-break:break-word;
             }
             h3{
                 margin: 0 10px;
@@ -463,8 +465,9 @@ body {
                         .cardBox{
                             border-radius: 9px;
                             .wpsf-cardbox-title{
-                                display: flex;
-                            }
+                                display: grid;
+                                grid-template-columns: 30px 1fr;
+                                word-break:break-word;                            }
                             h3{
                                 margin: 0 10px;
                                 display: inline-block;
@@ -554,8 +557,9 @@ body {
                         border-radius: 9px;
                         border: 1px solid #d2dae2;
                         margin-top: 10px;
-                        padding-left: 20px;
+                        padding: 20px;
                         margin-bottom: 20px;
+                        outline:none;
                     }
                     input[type="checkbox"]{
                         height: 20px;
