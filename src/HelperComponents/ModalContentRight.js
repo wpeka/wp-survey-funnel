@@ -32,6 +32,8 @@ export default function ModalContentRight( props ) {
                 fontFamily: designCon.fontFamily,
             }}
         >
+            <div className="main-tab-container">
+
             <div
                 className={`tab-list wpsf-tab-${currentElement}`}
                 style={{
@@ -46,6 +48,8 @@ export default function ModalContentRight( props ) {
                     </div>
                 </div>
             </div>
+            </div>
+
         </div>
     );
 }
