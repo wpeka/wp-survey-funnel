@@ -43,7 +43,7 @@ function Survey() {
     let build = JSON.parse(data.build)
     
     const iframeRef = React.createRef()
-    const [height, setHeight] = useState(600)
+    const [height, setHeight] = useState(650)
     
     let designCon = {}
     if (data.design === '') {
@@ -663,6 +663,8 @@ function Survey() {
 
     if (designCon.selectedImageUrl !== null) {
         backgroundStyle.background = `linear-gradient(rgba(255,255,255,${designCon.opacity}), rgba(255,255,255,${designCon.opacity})), url('${designCon.selectedImageUrl}')`
+        backgroundStyle.backgroundSize = 'cover';
+        backgroundStyle.backgroundPosition = '50%';
     } else {
         backgroundStyle.background = convertToRgbaCSS(designCon.backgroundColor)
     }
@@ -721,7 +723,7 @@ function Survey() {
                             ) : (
                                 <div
                                     className="wpsf-design-preview-container"
-                                    style={{ height: '100%' }}
+                                    style={{ height: '100%', ...backgroundStyle }}
                                 >
                                     <div
                                         className="preview"
@@ -729,9 +731,10 @@ function Survey() {
                                             color: convertToRgbaCSS(
                                                 designCon.fontColor
                                             ),
-                                            ...backgroundStyle,
                                         }}
                                     >
+                                        <div className="main-tab-container">
+
                                         <div
                                             className="tab-list"
                                             style={{
@@ -772,6 +775,7 @@ function Survey() {
                                                 )
                                             })}
                                         </div>
+
                                         {error.length > 0 && (
                                             <div className="tab-validation-error">
                                                 {error.map(function (err) {
@@ -804,6 +808,7 @@ function Survey() {
                                                 setCurrentTab(0);
                                             }}>Restart</button>
                                         </div>}
+                                        </div>
                                     </div>
                                 </div>
                             )}

@@ -18,9 +18,13 @@ body {
     font-weight: 500;
     src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Medium.otf") format("opentype");
 }
+.main-tab-container {
+   
+    width: calc( 100% - 30px );
+    max-width: 900px;
+}
 .tab-list{
     border-radius: 12px;
-    width: 100%;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     .tab-container{
         .tab{
@@ -85,7 +89,6 @@ body {
 .wpsf-tab-SingleChoice, .wpsf-tab-MultiChoice{
     padding: 40px;
 
-    max-width: 80%;
     .tab-container{
         .tab{
             h3{
@@ -154,9 +157,6 @@ body {
 }
 .wpsf-tab-FormElements{
     padding: 40px;
-
-    max-width: 80%;
-    
     .tab-container{
         .tab{
             h3{
@@ -220,6 +220,7 @@ body {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                align-items: center;
                 .tab-list{
                     display: flex;
                     justify-content: center;

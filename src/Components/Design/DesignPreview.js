@@ -365,8 +365,10 @@ export default function DesignPreview() {
                         : "No Questions were added in this survey"}
                 </div>
             ) : (
-                <div className="wpsf-design-preview-container">
-                    <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), ...designCon.backgroundStyle }}>
+                <div className="wpsf-design-preview-container" style={{ ...designCon.backgroundStyle }}>
+                    <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ) }}>
+                        <div className="main-tab-container">
+
                         <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
                             {componentList.map(function (item, i) {
                                 if (currentTab === i) {
@@ -415,6 +417,8 @@ export default function DesignPreview() {
                             }}>Restart</button>
 
                         </div>}
+                        </div>
+
                     </div>
                 </div>
             )}
