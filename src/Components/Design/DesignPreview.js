@@ -392,7 +392,14 @@ export default function DesignPreview() {
                             })}	
                         </div>}
                     
-                        {componentList[currentTab].type !== 'START_ELEMENTS' && <div className="tab-controls">
+                        
+                        </div>
+
+                    </div>
+                    {componentList[currentTab].type !== 'START_ELEMENTS' && <div className="tab-controls">
+                            
+                            <a href="google.com">Powered By <img src={require('../../../images/wpsf-main-logo.png')} alt="" /></a>
+                            
                             {checkButtonVisibility( 'Previous' ) && <button
                                 type="button"
                                 onClick={() => {
@@ -417,9 +424,6 @@ export default function DesignPreview() {
                             }}>Restart</button>
 
                         </div>}
-                        </div>
-
-                    </div>
                 </div>
             )}
         </div>

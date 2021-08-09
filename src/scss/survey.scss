@@ -241,7 +241,7 @@ body {
             align-items: center;
             justify-content: flex-end;
             margin-top: 20px;
-            button{
+            button, a {
                 background-color: #F0F2F5;
                 border: 1px solid #d2dae2;
                 color: #60554F;
@@ -274,4 +274,11 @@ body {
 }
 .fullpage, .popup {
     height: 100vh !important;
+}
+
+.tab-controls {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 57px 0px;
 }
