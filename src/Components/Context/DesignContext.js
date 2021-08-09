@@ -83,7 +83,9 @@ export function DesignContextProvider(props) {
 		}
 	}, [selectedImage]);
 
-	const saveContext = () => {
+	const saveContext = (e) => {
+		e.target.classList.add('wpsf-button-loading');
+
 		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
@@ -96,6 +98,8 @@ export function DesignContextProvider(props) {
 
 		fetchData( ajaxURL, data, selectedImage )
 		.then(data => {
+			e.target.classList.remove('wpsf-button-loading');
+
         });
 	}
 

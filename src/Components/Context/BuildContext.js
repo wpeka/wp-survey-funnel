@@ -99,8 +99,8 @@ export class BuildContextProvider extends React.Component {
         return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);        
     }
 
-    saveData = () => {
-        document.querySelector('.wpsf-build-elements-save-button').classList.add('wpsf-button-loading');
+    saveData = (e) => {
+        e.target.classList.add('wpsf-button-loading');
         const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
@@ -113,7 +113,7 @@ export class BuildContextProvider extends React.Component {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData(ajaxURL, data)
         .then(data => {
-            document.querySelector('.wpsf-build-elements-save-button').classList.remove('wpsf-button-loading');
+            e.target.classList.remove('wpsf-button-loading');
         });
     }
 
