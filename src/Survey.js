@@ -45,7 +45,8 @@ function Survey() {
     let build = JSON.parse(data.build)
     
     const iframeRef = React.createRef()
-    const [height, setHeight] = useState(650)
+    const [height, setHeight] = useState(650);
+    const [ showSurvey, setShowSurvey ] = useState(true);
     
     let designCon = {}
     if (data.design === '') {
@@ -674,7 +675,7 @@ function Survey() {
                 return currentTab === 0;
 
             case 'Next':
-                return componentList[currentTab].componentName === 'FormElements' || ! checkValidations( 1, true );
+                return currentTab === tabCount - 1 || componentList[currentTab].componentName === 'FormElements' || ! checkValidations( 1, true );
         }
     }
 
@@ -686,8 +687,13 @@ function Survey() {
                 return (currentTab !== tabCount - 1 && (componentList[currentTab].type !== 'RESULT_ELEMENTS' || componentList[currentTab].type !== 'START_ELEMENTS'));
         }
     }
+
+    const dismissSurvey = () => {
+        setShowSurvey(false);
+    }
+
     return (
-        <Frame
+        showSurvey && <Frame
             ref={iframeRef}
             initialContent={initialContent}
             width="100%"
@@ -717,6 +723,9 @@ function Survey() {
                             ) : (
                                 <div className="wpsf-design-preview-container" style={{  }}>
                                     <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), padding: '40px' }}>
+                                        {data.type === 'fullpage' && <div className="dismissalContainer">
+                                            <button onClick={dismissSurvey}>dismiss</button>
+                                        </div>}
                                         <div className="main-tab-container">
 
                                         <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
@@ -750,7 +759,7 @@ function Survey() {
                                             <span className="tab-controls-inner">
                                             {companyBranding && <div><a href="google.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div> }
                                             
-                                            <div className="control-buttons">{checkButtonVisibility( 'Previous' ) && <button
+                                            <div className="control-buttons"><button
                                                 type="button"
                                                 onClick={() => {
                                                     changeCurrentTab(-1);
@@ -759,8 +768,8 @@ function Survey() {
                                                 style={{marginRight: '7px'}}
                                             >
                                                 &lt;
-                                            </button>}
-                                            { checkButtonVisibility( 'Next' ) &&
+                                            </button>
+                                            
                                             <button
                                                 type="button"
                                                 onClick={() => {
@@ -769,7 +778,7 @@ function Survey() {
                                                 disabled={checkButtonDisability('Next')}
                                             >
                                                 &gt;
-                                            </button>}</div>
+                                            </button></div>
                                             <div><button onClick={() => {
                                                 setCurrentTab(0);
                                             }}>Restart</button></div>
