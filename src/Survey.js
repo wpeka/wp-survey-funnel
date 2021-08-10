@@ -716,7 +716,7 @@ function Survey() {
                                 </div>
                             ) : (
                                 <div className="wpsf-design-preview-container" style={{  }}>
-                                    <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), padding: '20px' }}>
+                                    <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), padding: '40px' }}>
                                         <div className="main-tab-container">
 
                                         <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
