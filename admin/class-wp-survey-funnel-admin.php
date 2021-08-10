@@ -739,9 +739,9 @@ class Wp_Survey_Funnel_Admin {
 
 		$is_pro = get_option( 'wpadcenter_pro_active' );
 		if ( $is_pro ) {
-			$support_url = 'https://club.wpeka.com/my-account/orders/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=support';
+			$support_url = '#';
 		} else {
-			$support_url = 'https://wordpress.org/support/plugin/wpadcenter/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=forums';
+			$support_url = '#';
 		}
 
 		$return_array = array(
@@ -749,11 +749,11 @@ class Wp_Survey_Funnel_Admin {
 				'support_text'       => __( 'Support', 'wp-survey-funnel' ),
 				'support_url'        => $support_url,
 				'documentation_text' => __( 'Documentation', 'wp-survey-funnel' ),
-				'documentation_url'  => 'https://docs.wpeka.com/wp-adcenter/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=documentation',
+				'documentation_url'  => 'https://docs.wpeka.com/survey-funnel/v/master/',
 				'faq_text'           => __( 'FAQ', 'wp-survey-funnel' ),
-				'faq_url'            => 'https://docs.wpeka.com/wp-adcenter/faq/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=faq',
+				'faq_url'            => 'https://docs.wpeka.com/survey-funnel/v/master/faq',
 				'upgrade_text'       => __( 'Upgrade to Pro &raquo;', 'wp-survey-funnel' ),
-				'upgrade_url'        => 'https://club.wpeka.com/product/wpadcenter/?utm_source=wpadcenter&utm_medium=help-mascot&utm_campaign=link&utm_content=upgrade-to-pro',
+				'upgrade_url'        => 'https://club.wpeka.com/product/survey-funnel/?utm_source=survey-funnel&utm_medium=help-mascot&utm_campaign=link&utm_content=upgrade-to-pro',
 			),
 			'is_pro'           => $is_pro,
 			'quick_links_text' => __( 'See Quick Links', 'wp-survey-funnel' ),

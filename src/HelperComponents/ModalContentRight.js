@@ -30,6 +30,7 @@ export default function ModalContentRight( props ) {
                 color: convertToRgbaCSS(designCon.fontColor),
                 ...designCon.backgroundStyle,
                 fontFamily: designCon.fontFamily,
+                height: '100%',
             }}
         >
             <div className="main-tab-container">

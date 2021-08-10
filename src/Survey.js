@@ -23,11 +23,13 @@ let initialState = []
 let id = 'wpsf-survey-' + data.userLocalID
 let metaTitle = '';
 let metaDescription = '';
+let companyBranding = true;
 
 if ( data.configure !== '' ) {
     let configure = JSON.parse(data.configure);
     metaTitle = configure.metaInfo.title;
     metaDescription = configure.metaInfo.description;
+    companyBranding = configure.companyBranding;
 }
 
 const initialContent =
@@ -658,13 +660,10 @@ function Survey() {
     }
 
     let backgroundStyle = {
-        padding: `50px`,
     }
 
     if (designCon.selectedImageUrl !== null) {
-        backgroundStyle.background = `linear-gradient(rgba(255,255,255,${designCon.opacity}), rgba(255,255,255,${designCon.opacity})), url('${designCon.selectedImageUrl}')`
-        backgroundStyle.backgroundSize = 'cover';
-        backgroundStyle.backgroundPosition = '50%';
+        backgroundStyle.background = `linear-gradient(rgba(255,255,255,${designCon.opacity}), rgba(255,255,255,${designCon.opacity})), url('${designCon.selectedImageUrl}') 50%/cover`;
     } else {
         backgroundStyle.background = convertToRgbaCSS(designCon.backgroundColor)
     }
@@ -705,92 +704,59 @@ function Survey() {
         >
             <div id="design">
                 <div className="wpsf-design-container">
-                    <div className="design-preview wpsf-design-preview-container">
+                    <div className="design-preview wpsf-design-preview-container" style={{fontFamily: designCon.fontFamily, ...backgroundStyle}}>
                         {addFontFamilyLink()}
-                        <div
-                            className={ 'wpsf-survey-form '+ data.type }
-                            style={{
-                                fontFamily: designCon.fontFamily,
-                                height: '100%',
-                            }}
-                        >
+                        <div className="wpsf-survey-form" style={{height: data.type !== 'responsive' ? '100vh' : ''}}>
                             {tabCount === 0 ? (
                                 <div className="no-preview-available">
                                     <img src={require(`./Components/Build/BuildImages/unavailable.png`)}></img>
                                     {currentlyPreviewing
-                                        ? 'No Preview Available'
-                                        : 'No Questions were added in this survey'}
+                                        ? "No Preview Available"
+                                        : "No Questions were added in this survey"}
                                 </div>
                             ) : (
-                                <div
-                                    className="wpsf-design-preview-container"
-                                    style={{ height: '100%', ...backgroundStyle }}
-                                >
-                                    <div
-                                        className="preview"
-                                        style={{
-                                            color: convertToRgbaCSS(
-                                                designCon.fontColor
-                                            ),
-                                        }}
-                                    >
+                                <div className="wpsf-design-preview-container" style={{  }}>
+                                    <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), padding: '20px' }}>
                                         <div className="main-tab-container">
 
-                                        <div
-                                            className="tab-list"
-                                            style={{
-                                                background: convertToRgbaCSS(
-                                                    designCon.backgroundContainerColor
-                                                ),
-                                            }}
-                                        >
-                                            {componentList.map(function (
-                                                item,
-                                                i
-                                            ) {
+                                        <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
+                                            {componentList.map(function (item, i) {
                                                 if (currentTab === i) {
-                                                    switch (
-                                                        item.componentName
-                                                    ) {
+                                                    switch(item.componentName){
                                                         case 'CoverPage':
                                                         case 'ResultScreen':
-                                                            return renderContentElements(
-                                                                item,
-                                                                'flex',
-                                                                i
-                                                            )
+                                                            return renderContentElements(item, "flex", i);
                                                         case 'SingleChoice':
                                                         case 'MultiChoice':
                                                         case 'FormElements':
-                                                            return renderContentElements(
-                                                                item,
-                                                                'block',
-                                                                i
-                                                            )
+                                                            return renderContentElements(item, "block", i);
+
                                                     }
                                                 }
-                                                return renderContentElements(
-                                                    item,
-                                                    'none',
-                                                    i
-                                                )
+                                                return renderContentElements(item, 'none', i);
                                             })}
                                         </div>
+                                        {error.length > 0 && <div className="tab-validation-error">
+                                            {error.map(function(err) {
+                                                return err;
+                                            })}	
+                                        </div>}
+                                    
+                                        
+                                        </div>
 
-                                        {error.length > 0 && (
-                                            <div className="tab-validation-error">
-                                                {error.map(function (err) {
-                                                    return err
-                                                })}
-                                            </div>
-                                        )}
-                                        {componentList[currentTab].type !== 'START_ELEMENTS' && <div className="tab-controls">
-                                            {checkButtonVisibility( 'Previous' ) && <button
+                                    </div>
+                                    <div className="tab-controls">
+                                            <span className="tab-controls-inner">
+                                            {companyBranding && <div><a href="google.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div> }
+                                            
+                                            <div className="control-buttons">{checkButtonVisibility( 'Previous' ) && <button
                                                 type="button"
                                                 onClick={() => {
                                                     changeCurrentTab(-1);
                                                 }}
                                                 disabled={checkButtonDisability('Previous')}
+                                                style={{marginRight: '7px'}}
                                             >
                                                 &lt;
                                             </button>}
@@ -803,14 +769,12 @@ function Survey() {
                                                 disabled={checkButtonDisability('Next')}
                                             >
                                                 &gt;
-                                            </button>}
-
-                                            <button onClick={() => {
+                                            </button>}</div>
+                                            <div><button onClick={() => {
                                                 setCurrentTab(0);
-                                            }}>Restart</button>
-                                        </div>}
+                                            }}>Restart</button></div>
+                                            </span>
                                         </div>
-                                    </div>
                                 </div>
                             )}
                         </div>

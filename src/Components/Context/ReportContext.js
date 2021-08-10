@@ -66,7 +66,6 @@ export function ReportContextProvider(props) {
 			const ajaxURL = document.getElementById('ajaxURL').value;
 			fetchData( ajaxURL, data )
 			.then((data) => {
-				console.log(data);
 				setReports(data.data);
 			});
 		}
