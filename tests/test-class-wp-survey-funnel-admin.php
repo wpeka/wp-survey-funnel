@@ -98,8 +98,8 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 	public function test_enqueue_styles() {
 		self::$wp_survey_funnel_admin->enqueue_styles();
 		global $wp_styles;
-		$enqueue_styles = $wp_styles->queue;
-		$this->assertTrue( in_array( 'wp-survey-funnel', $enqueue_styles ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$enqueue_styles = $wp_styles->registered;
+		$this->assertArrayHasKey( 'wp-survey-funnel', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 	}
 
 	/**
@@ -233,7 +233,7 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 		global $wp_scripts;
 		global $wp_styles;
 		$enqueue_scripts = $wp_scripts->queue;
-		$enqueue_styles  = $wp_styles->queue;
+		$enqueue_styles  = $wp_styles->registered;
 		$data            = $wp_scripts->get_data( 'wp-survey-funnel-mascot', 'data' );
 		$data            = trim( str_replace( 'var mascot =', '', $data ) );
 		$data            = trim( str_replace( ';', '', $data ) );
@@ -248,7 +248,7 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 
 		$this->assertSame( '<div id="adc-mascot-app"></div>', trim( $output ) );
 		$this->assertTrue( in_array( 'wp-survey-funnel-mascot', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		$this->assertTrue( in_array( 'wp-survey-funnel-mascot', $enqueue_styles ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertArrayHasKey( 'wp-survey-funnel-mascot', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 	}
 
 }
