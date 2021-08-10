@@ -30,8 +30,11 @@ export default function ModalContentRight( props ) {
                 color: convertToRgbaCSS(designCon.fontColor),
                 ...designCon.backgroundStyle,
                 fontFamily: designCon.fontFamily,
+                height: '100%',
             }}
         >
+            <div className="main-tab-container">
+
             <div
                 className={`tab-list wpsf-tab-${currentElement}`}
                 style={{
@@ -46,6 +49,8 @@ export default function ModalContentRight( props ) {
                     </div>
                 </div>
             </div>
+            </div>
+
         </div>
     );
 }

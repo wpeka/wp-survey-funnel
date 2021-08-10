@@ -23,11 +23,13 @@ let initialState = []
 let id = 'wpsf-survey-' + data.userLocalID
 let metaTitle = '';
 let metaDescription = '';
+let companyBranding = true;
 
 if ( data.configure !== '' ) {
     let configure = JSON.parse(data.configure);
     metaTitle = configure.metaInfo.title;
     metaDescription = configure.metaInfo.description;
+    companyBranding = configure.companyBranding;
 }
 
 const initialContent =
@@ -43,7 +45,8 @@ function Survey() {
     let build = JSON.parse(data.build)
     
     const iframeRef = React.createRef()
-    const [height, setHeight] = useState(600)
+    const [height, setHeight] = useState(650);
+    const [ showSurvey, setShowSurvey ] = useState(true);
     
     let designCon = {}
     if (data.design === '') {
@@ -658,11 +661,10 @@ function Survey() {
     }
 
     let backgroundStyle = {
-        padding: `50px`,
     }
 
     if (designCon.selectedImageUrl !== null) {
-        backgroundStyle.background = `linear-gradient(rgba(255,255,255,${designCon.opacity}), rgba(255,255,255,${designCon.opacity})), url('${designCon.selectedImageUrl}')`
+        backgroundStyle.background = `linear-gradient(rgba(255,255,255,${designCon.opacity}), rgba(255,255,255,${designCon.opacity})), url('${designCon.selectedImageUrl}') 50%/cover`;
     } else {
         backgroundStyle.background = convertToRgbaCSS(designCon.backgroundColor)
     }
@@ -673,7 +675,7 @@ function Survey() {
                 return currentTab === 0;
 
             case 'Next':
-                return componentList[currentTab].componentName === 'FormElements' || ! checkValidations( 1, true );
+                return currentTab === tabCount - 1 || componentList[currentTab].componentName === 'FormElements' || ! checkValidations( 1, true );
         }
     }
 
@@ -686,110 +688,88 @@ function Survey() {
         }
     }
 
+    const dismissSurvey = () => {
+        setShowSurvey(false);
+    }
+
     return (
-        <Frame
+        showSurvey && <Frame
             ref={iframeRef}
             initialContent={initialContent}
             width="100%"
+            height="100%"
             id={id + '_iframe'}
             style={{
                 margin: '0px',
                 border: '0px',
-                height,
+                height: data.type === 'responsive' ? height : '',                
             }}
+            className={'wpsf-sc-'+data.type}
             onLoad={() => handleResize(iframeRef)}
             scrolling="no"
         >
             <div id="design">
                 <div className="wpsf-design-container">
-                    <div className="design-preview wpsf-design-preview-container">
+                    <div className="design-preview wpsf-design-preview-container" style={{fontFamily: designCon.fontFamily, ...backgroundStyle}}>
                         {addFontFamilyLink()}
-                        <div
-                            className="wpsf-survey-form"
-                            style={{
-                                fontFamily: designCon.fontFamily,
-                                height: '100%',
-                            }}
-                        >
+                        <div className="wpsf-survey-form" style={{height: data.type !== 'responsive' ? '100vh' : ''}}>
                             {tabCount === 0 ? (
                                 <div className="no-preview-available">
                                     <img src={require(`./Components/Build/BuildImages/unavailable.png`)}></img>
                                     {currentlyPreviewing
-                                        ? 'No Preview Available'
-                                        : 'No Questions were added in this survey'}
+                                        ? "No Preview Available"
+                                        : "No Questions were added in this survey"}
                                 </div>
                             ) : (
-                                <div
-                                    className="wpsf-design-preview-container"
-                                    style={{ height: '100%' }}
-                                >
-                                    <div
-                                        className="preview"
-                                        style={{
-                                            color: convertToRgbaCSS(
-                                                designCon.fontColor
-                                            ),
-                                            ...backgroundStyle,
-                                        }}
-                                    >
-                                        <div
-                                            className="tab-list"
-                                            style={{
-                                                background: convertToRgbaCSS(
-                                                    designCon.backgroundContainerColor
-                                                ),
-                                            }}
-                                        >
-                                            {componentList.map(function (
-                                                item,
-                                                i
-                                            ) {
+                                <div className="wpsf-design-preview-container" style={{  }}>
+                                    <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), padding: '40px' }}>
+                                        {data.type === 'fullpage' && <div className="dismissalContainer">
+                                            <button onClick={dismissSurvey}>dismiss</button>
+                                        </div>}
+                                        <div className="main-tab-container">
+
+                                        <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
+                                            {componentList.map(function (item, i) {
                                                 if (currentTab === i) {
-                                                    switch (
-                                                        item.componentName
-                                                    ) {
+                                                    switch(item.componentName){
                                                         case 'CoverPage':
                                                         case 'ResultScreen':
-                                                            return renderContentElements(
-                                                                item,
-                                                                'flex',
-                                                                i
-                                                            )
+                                                            return renderContentElements(item, "flex", i);
                                                         case 'SingleChoice':
                                                         case 'MultiChoice':
                                                         case 'FormElements':
-                                                            return renderContentElements(
-                                                                item,
-                                                                'block',
-                                                                i
-                                                            )
+                                                            return renderContentElements(item, "block", i);
+
                                                     }
                                                 }
-                                                return renderContentElements(
-                                                    item,
-                                                    'none',
-                                                    i
-                                                )
+                                                return renderContentElements(item, 'none', i);
                                             })}
                                         </div>
-                                        {error.length > 0 && (
-                                            <div className="tab-validation-error">
-                                                {error.map(function (err) {
-                                                    return err
-                                                })}
-                                            </div>
-                                        )}
-                                        {componentList[currentTab].type !== 'START_ELEMENTS' && <div className="tab-controls">
-                                            {checkButtonVisibility( 'Previous' ) && <button
+                                        {error.length > 0 && <div className="tab-validation-error">
+                                            {error.map(function(err) {
+                                                return err;
+                                            })}	
+                                        </div>}
+                                    
+                                        
+                                        </div>
+
+                                    </div>
+                                    <div className="tab-controls">
+                                            <span className="tab-controls-inner">
+                                            {companyBranding && <div><a href="google.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div> }
+                                            
+                                            <div className="control-buttons"><button
                                                 type="button"
                                                 onClick={() => {
                                                     changeCurrentTab(-1);
                                                 }}
                                                 disabled={checkButtonDisability('Previous')}
+                                                style={{marginRight: '7px'}}
                                             >
                                                 &lt;
-                                            </button>}
-                                            { checkButtonVisibility( 'Next' ) &&
+                                            </button>
+                                            
                                             <button
                                                 type="button"
                                                 onClick={() => {
@@ -798,13 +778,12 @@ function Survey() {
                                                 disabled={checkButtonDisability('Next')}
                                             >
                                                 &gt;
-                                            </button>}
-
-                                            <button onClick={() => {
+                                            </button></div>
+                                            <div><button onClick={() => {
                                                 setCurrentTab(0);
-                                            }}>Restart</button>
-                                        </div>}
-                                    </div>
+                                            }}>Restart</button></div>
+                                            </span>
+                                        </div>
                                 </div>
                             )}
                         </div>

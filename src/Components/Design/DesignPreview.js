@@ -356,7 +356,7 @@ export default function DesignPreview() {
     }
     
     return (
-        <div className="wpsf-survey-form" style={{fontFamily: designCon.fontFamily}}>
+        <div className="wpsf-survey-form" style={{fontFamily: designCon.fontFamily, ...designCon.backgroundStyle, height: 'calc(100vh - 108px)'}}>
             {tabCount === 0 ? (
                 <div className="no-preview-available">
                     <img src={require(`../Build/BuildImages/unavailable.png`)}></img>
@@ -365,8 +365,10 @@ export default function DesignPreview() {
                         : "No Questions were added in this survey"}
                 </div>
             ) : (
-                <div className="wpsf-design-preview-container">
-                    <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), ...designCon.backgroundStyle }}>
+                <div className="wpsf-design-preview-container" style={{  }}>
+                    <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ) }}>
+                        <div className="main-tab-container">
+
                         <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
                             {componentList.map(function (item, i) {
                                 if (currentTab === i) {
@@ -390,15 +392,23 @@ export default function DesignPreview() {
                             })}	
                         </div>}
                     
-                        {componentList[currentTab].type !== 'START_ELEMENTS' && <div className="tab-controls">
-                            {checkButtonVisibility( 'Previous' ) && <button
+                        
+                        </div>
+
+                    </div>
+                    <div className="tab-controls">
+                            <span className="tab-controls-inner">
+                            <div><a href="google.com"><span>Powered By</span><img src={require('../../../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div>
+                            
+                            <div className="control-buttons">{checkButtonVisibility( 'Previous' ) && <button
                                 type="button"
                                 onClick={() => {
                                     changeCurrentTab(-1);
                                 }}
                                 disabled={checkButtonDisability('Previous')}
+                                style={{marginRight: '7px'}}
                             >
-                                {currentTab === tabCount - 1 ? 'Enter New Submission?' : '<'}
+                                &lt;
                             </button>}
                             { checkButtonVisibility( 'Next' ) &&
                             <button
@@ -409,13 +419,12 @@ export default function DesignPreview() {
                                 disabled={checkButtonDisability('Next')}
                             >
                                 &gt;
-                            </button>}
-                            <button onClick={() => {
+                            </button>}</div>
+                            <div><button onClick={() => {
                                 setCurrentTab(0);
-                            }}>Restart</button>
-
-                        </div>}
-                    </div>
+                            }}>Restart</button></div>
+                            </span>
+                        </div>
                 </div>
             )}
         </div>

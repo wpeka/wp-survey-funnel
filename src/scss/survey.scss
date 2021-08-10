@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     --answer-highlight-box-color: #E2EDFF;
 }
@@ -18,9 +23,13 @@ body {
     font-weight: 500;
     src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Medium.otf") format("opentype");
 }
+.main-tab-container {
+   
+    width: calc( 100% - 30px );
+    max-width: 900px;
+}
 .tab-list{
     border-radius: 12px;
-    width: 100%;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     .tab-container{
         .tab{
@@ -85,7 +94,6 @@ body {
 .wpsf-tab-SingleChoice, .wpsf-tab-MultiChoice{
     padding: 40px;
 
-    max-width: 80%;
     .tab-container{
         .tab{
             h3{
@@ -154,9 +162,6 @@ body {
 }
 .wpsf-tab-FormElements{
     padding: 40px;
-
-    max-width: 80%;
-    
     .tab-container{
         .tab{
             h3{
@@ -214,14 +219,14 @@ body {
         display: flex;
         justify-content: center;
         overflow: auto;
-        height: calc(100vh - 108px);
         .wpsf-design-preview-container{
             width: 100%;
             .preview{
-                height: 100%;
+                height: calc( 100% - 108px );
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                align-items: center;
                 .tab-list{
                     display: flex;
                     justify-content: center;
@@ -231,27 +236,38 @@ body {
             }
         }
         .tab-controls{
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-top: 20px;
-            button{
-                background-color: #F0F2F5;
-                border: 1px solid #d2dae2;
-                color: #60554F;
-                padding: 8px 15px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-                border-radius: 9px;
+            .tab-controls-inner {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                margin-right: 75px;
+                height: 100%;
+                .control-buttons {
+                    margin-left: 20px;
+                    margin-right: 20px;
+                    button {
+                        padding: 0px 25px !important;
+                    }
+                }
+                button, a {
+                    background-color: #F0F2F5;
+                    border: 1px solid #d2dae2;
+                    color: #60554F;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    cursor: pointer;
+                    border-radius: 9px;
+                    padding: 0px 32px;
+                }
+                button:disabled{
+                    opacity: 0.7;
+                    background-color: #FFFFFF;
+                    cursor: not-allowed;
+                }
             }
-            button:disabled{
-                opacity: 0.7;
-                background-color: #FFFFFF;
-            }
+            
         }
         .no-preview-available{
             display: flex;
@@ -265,4 +281,30 @@ body {
 
     }
 
+}
+.fullpage, .popup {
+    height: 100vh !important;
+}
+
+.tab-controls {
+    padding: 25px 0px;
+    background: hsla(0,0%,100%,.25);
+    height: 108px;
+    div {
+        height: 100%;
+    }
+    a {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid#E1E8F0;
+        height: 100%;
+    }
+    img {
+        width: 140px;
+    }
+    button {
+        height: 100%;  
+        border: 1px solid#E1E8F0;
+    }
 }
