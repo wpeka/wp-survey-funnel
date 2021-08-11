@@ -124,6 +124,13 @@ class Wp_Survey_Funnel_Public {
 		if ( get_post_status( $atts['id'] ) !== 'publish' ) {
 			return '';
 		}
+
+		if ( isset( $_COOKIE['wpsf-survey-completed'] ) ) {
+			$match = '/' . $atts['id'] . '/';
+			if ( preg_match( $match, $_COOKIE['wpsf-survey-completed'] ) ) {//phpcs:ignore
+				return '';
+			}
+		}
 		$meta_data = get_post_meta( $atts['id'], 'wpsf-survey-data', true );
 		$ip        = $_SERVER['REMOTE_ADDR'];//phpcs:ignore
 		$m_time    = time() * 1000000;

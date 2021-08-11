@@ -692,6 +692,30 @@ function Survey() {
         setShowSurvey(false);
     }
 
+    const restartOrCompleteSurvey = ( status ) => {
+        switch ( status ) {
+            case 'Restart':
+                setCurrentTab(0);
+                return;
+            case 'Complete':
+                let wpsfSurveyCookie = getCookie( 'wpsf-survey-completed' );
+                if ( wpsfSurveyCookie ) {
+                    let pattern = new RegExp(data.post_id , "g");
+                    if ( pattern.test( wpsfSurveyCookie ) ) {
+                        return;
+                    }
+                    setCookie('wpsf-survey-completed', wpsfSurveyCookie + ',' + data.post_id , 1);
+                }
+                else {
+                    setCookie('wpsf-survey-completed', data.post_id , 1);
+                }
+                setShowSurvey(false);
+                return;
+            default:
+                return;
+        }
+    }
+
     return (
         showSurvey && <Frame
             ref={iframeRef}
@@ -780,8 +804,11 @@ function Survey() {
                                                 &gt;
                                             </button></div>
                                             <div><button onClick={() => {
-                                                setCurrentTab(0);
-                                            }}>Restart</button></div>
+                                                let survey = currentTab === tabCount - 1 ? "Complete" : "Restart";
+                                                restartOrCompleteSurvey(survey);
+                                            }}>
+                                                {currentTab === tabCount - 1 ? "Complete Survey" : "Restart"}    
+                                            </button></div>
                                             </span>
                                         </div>
                                 </div>
@@ -792,6 +819,31 @@ function Survey() {
             </div>
         </Frame>
     )
+}
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {   
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 ReactDOM.render(<Survey />, document.getElementById(id))
