@@ -53,7 +53,7 @@
         overflow: auto;
         height: calc(100vh - 108px);
         .contentShortcodeLabel-container{
-            padding: 20px 0 20px 40px;
+            margin-bottom: 20px;
             border-bottom: 1px solid #d2dae2;
 
             .contentShortcodeLabel{
@@ -85,7 +85,7 @@
             }
         }
         .contentTypes{
-            padding: 20px 0 20px 40px;
+            margin-top: 20px;
             .contentTypesLabel{
                 h3{
                     margin:0;
@@ -103,7 +103,6 @@
                     width: 183px;
                     float: left;
                     text-align: center;
-                    padding: 20px;
                     opacity: 0.5;
                     cursor: pointer;
                     input{
@@ -111,6 +110,10 @@
                     }
                     label{
                         cursor: pointer;
+                        padding: 20px;
+                        height: 100%;
+                        width: 100%;
+                        display: block;
                     }
                 }
                 .contentType-element-active{
@@ -127,8 +130,12 @@
             border: 1px solid #B5C8C8;
             border-radius: 9px;
             margin: left;
-            margin: 20px 0 20px 40px;
+            margin-top: 20px;
             background-color: #F0F2F5;
         }
     }
+}
+
+.shareTabContentContainer {
+    padding: 20px 40px;
 }

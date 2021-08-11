@@ -766,4 +766,47 @@ class Wp_Survey_Funnel_Admin {
 			<div id="adc-mascot-app"></div>
 		<?php
 	}
+
+	/**
+	 * Ajax: save share data.
+	 */
+	public function wpsf_save_share_data() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		$post_id       = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$defaults      = $this->wpsf_get_default_save_array();
+		$post_meta     = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$data          = wp_parse_args( (array) $post_meta, $defaults );
+		$data['share'] = $_POST['share'];//phpcs:ignore.
+
+		update_post_meta( $post_id, 'wpsf-survey-data', $data );
+		wp_send_json_success();
+		wp_die();
+	}
+
+	/**
+	 * Get share data for the post id
+	 */
+	public function wpsf_get_share_data() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		$post_id   = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$post_meta = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$data      = array(
+			'share' => $post_meta['share'],
+		);
+		wp_send_json_success( $data );
+		wp_die();
+	}
+
 }
