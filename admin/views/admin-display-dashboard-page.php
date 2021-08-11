@@ -171,36 +171,54 @@ function wpsf_get_background_image( $post_id ) {
 												<div class="wpsf-badge wpsf-badge-published"><?php echo "Published"; //phpcs:ignore ?></div>
 											<?php endif; ?>
 											<div class="--wpsf-flex wpsf-post-icons">
-												<a class="icon" href="<?php echo $url_to_redirect . $survey->ID . '#/build';//phpcs:ignore ?>">
-													<svg xmlns="http://www.w3.org/2000/svg" width="13.224" height="13.225" viewBox="0 0 13.224 13.225">
-														<path id="Form_24" data-name="Form 24" d="M1011.154,290.062a2.424,2.424,0,0,1-2.523-2.518,28.6,28.6,0,0,1-.087-2.992,29.476,29.476,0,0,1,.085-2.991,2.415,2.415,0,0,1,2.517-2.519,29.256,29.256,0,0,1,2.993-.085h.014a.509.509,0,0,1-.014,1.017c-1.269,0-2.214,0-2.879.078a1.452,1.452,0,0,0-1.621,1.623c-.075.665-.077,1.609-.077,2.876s0,2.211.08,2.876a1.457,1.457,0,0,0,1.626,1.623c.664.076,1.607.079,2.871.079s2.207,0,2.871-.08a1.459,1.459,0,0,0,1.626-1.625c.076-.665.08-1.608.08-2.874v-.014a.509.509,0,0,1,1.017.014,28.788,28.788,0,0,1-.087,2.989,2.424,2.424,0,0,1-2.522,2.52,52.163,52.163,0,0,1-5.971,0Zm2.477-4.493a.509.509,0,0,1-.509-.508v-1.526a.511.511,0,0,1,.149-.359l6.1-6.1a.507.507,0,0,1,.719,0l1.526,1.525a.509.509,0,0,1,0,.72l-6.1,6.1a.511.511,0,0,1-.36.149Zm.508-1.824v.806h.806l4.069-4.069-.806-.806Zm4.788-4.788.806.806.806-.806-.806-.806Z" transform="translate(-1008.544 -276.922)" fill="#fff"/>
-													</svg>
-												</a>
-												<a class="icon" href="<?php echo $url_to_redirect . $survey->ID . '#/design';//phpcs:ignore ?>">
-													<svg xmlns="http://www.w3.org/2000/svg" width="12.77" height="12.77" viewBox="0 0 12.77 12.77">
-														<path id="Form_27" data-name="Form 27" d="M1038.171,290.556a1.475,1.475,0,0,1-1.516-1.515c-.009-.085-.011-.193-.017-.285a2.839,2.839,0,0,1-.968-.185,1.308,1.308,0,0,1-.663-.643,5.869,5.869,0,0,1-.223-2.343v-4.559a15.93,15.93,0,0,1,.046-1.629,1.475,1.475,0,0,1,1.516-1.516,15.665,15.665,0,0,1,1.631-.047h4.559c.28,0,.532,0,.762,0a3.646,3.646,0,0,1,1.607.237,1.311,1.311,0,0,1,.632.691,2.984,2.984,0,0,1,.165.928c.094.006.2.006.287.016a1.475,1.475,0,0,1,1.516,1.515,15.645,15.645,0,0,1,.048,1.631v4.56a15.654,15.654,0,0,1-.047,1.629,1.475,1.475,0,0,1-1.515,1.516,15.648,15.648,0,0,1-1.631.048h-4.7A14.1,14.1,0,0,1,1038.171,290.556Zm.1-9.945a.612.612,0,0,0-.71.712c-.039.34-.041.846-.041,1.527v4.56c0,.682,0,1.188.041,1.528a.612.612,0,0,0,.711.711c.34.038.846.04,1.527.04h4.56c.682,0,1.188,0,1.528-.04a.612.612,0,0,0,.711-.712c.038-.34.041-.846.041-1.527v-4.56c0-.682,0-1.188-.041-1.528a.613.613,0,0,0-.712-.711c-.34-.038-.845-.04-1.527-.04h-4.56C1039.118,280.57,1038.612,280.573,1038.271,280.611Zm-1.823-1.823a.612.612,0,0,0-.711.711c-.039.34-.042.846-.042,1.528v4.559a7.035,7.035,0,0,0,.141,1.962.28.28,0,0,0,.192.184,2.136,2.136,0,0,0,.582.1c0-.143,0-.266,0-.427v-4.56a15.974,15.974,0,0,1,.046-1.629,1.475,1.475,0,0,1,1.515-1.516,15.645,15.645,0,0,1,1.631-.048h4.56c.159,0,.283,0,.425,0a2.321,2.321,0,0,0-.1-.565.288.288,0,0,0-.182-.205,6.949,6.949,0,0,0-1.972-.144h-4.559C1037.293,278.746,1036.787,278.749,1036.448,278.788Zm8.5,9.4-1.96-1.96-.729.717.142.142.012.012a.456.456,0,1,1-.657.633l-.4-.4,0,0a.445.445,0,0,1-.124-.125l-.973-.972-1.046,1.045-.013.013a.456.456,0,0,1-.632-.657l1.368-1.368a.454.454,0,0,1,.315-.133h0a.457.457,0,0,1,.329.134l1.038,1.038,1.057-1.04a.454.454,0,0,1,.642,0l2.28,2.28.013.013a.456.456,0,0,1-.657.633Zm-1.5-5.339a.91.91,0,1,1,.91.91A.91.91,0,0,1,1043.45,282.85Z" transform="translate(-1034.782 -277.833)" fill="#fff"/>
-													</svg>
-												</a>
-												<a class="icon" href="<?php echo $url_to_redirect . $survey->ID . '#/configure';//phpcs:ignore ?>">
-													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 14 14">
-														<image id="bar-chart-hover" width="14" height="14" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAVtJREFUKFON0ksoRFEcx3HXRh4jsmEsJDWShYYyxWZSliKSJTsLQlmIUlhSyk6N10qxEGbKirAjSXkkSsmChQUpkef3V/9bJ92FW5/+53H/53/uOdebX0ml/fMp5b1dvKHeC0gMMxHDJr6cRaton1g/EpR4wGQthjDpJG7QDmEaqb+JXQwu4h3fVvmUuIQ6RPyFlJhDZ8EGs4mduEQzJvCIcqum+Sw8KFEffWMrxYl7zvZmaXdjDcM4xw+i/lb76RRgDC0owjGu0IdlFGPbFo0FHc4rk5nQPTU51dtpr1q/2k/MYMCD7ugCFRi1qjpdVTrElpuob9QVpKMNA7bdXqK2P44ji0k3MWora6wDrRYHiZ+YgRIS0E+hp0ZbraRxZgM6mB40YgQfmMI+dPHrbsU8OrozPTsoQwm0Pf0E+ovucI0Gey+pinN0XmxACU94RiF0YPfIRT5u7b3QL0bfYPme+GX6AAAAAElFTkSuQmCC"/>
-													</svg>
-												</a>
-												<a class="icon" href="<?php echo $url_to_redirect . $survey->ID . '#/share';//phpcs:ignore ?>">
-													<svg xmlns="http://www.w3.org/2000/svg" width="9.126" height="12.775" viewBox="0 0 9.126 12.775">
-														<path id="Form_13" data-name="Form 13" d="M1094.56,289.691h-2.736a15.939,15.939,0,0,1-1.629-.046,1.475,1.475,0,0,1-1.516-1.516,15.91,15.91,0,0,1-.047-1.63v-6.385a15.939,15.939,0,0,1,.046-1.629,1.475,1.475,0,0,1,1.516-1.516,15.636,15.636,0,0,1,1.631-.048h2.663a.4.4,0,0,1,.066-.005.428.428,0,0,1,.1.008,2.192,2.192,0,0,1,1.031.163,8.7,8.7,0,0,1,1.908,1.911,2.164,2.164,0,0,1,.162,1.028.423.423,0,0,1,0,.165V286.5a15.649,15.649,0,0,1-.047,1.629,1.475,1.475,0,0,1-1.516,1.516,15.078,15.078,0,0,1-1.555.047Zm-4.265-11.816a.612.612,0,0,0-.71.712c-.039.34-.042.846-.042,1.527V286.5c0,.683,0,1.189.042,1.529a.612.612,0,0,0,.712.71c.339.039.845.041,1.527.041h2.767c.663,0,1.162,0,1.5-.041a.613.613,0,0,0,.711-.71c.039-.34.041-.846.041-1.529V280.57h-2.28a.456.456,0,0,1-.456-.456v-2.28h-2.28C1091.141,277.835,1090.635,277.837,1090.3,277.875Zm4.72,1.783h1.813a.676.676,0,0,0-.058-.252,9.722,9.722,0,0,0-1.5-1.5.656.656,0,0,0-.254-.058Zm.456,7.753H1090.9a.456.456,0,0,1,.013-.913h4.572a.456.456,0,0,1-.006.913Zm0-1.824H1090.9a.456.456,0,0,1,.013-.912h4.572a.456.456,0,0,1-.006.912Zm-4.573-1.824a.456.456,0,0,1,.013-.912h4.572a.456.456,0,1,1-.013.912H1090.9Z" transform="translate(-1088.632 -276.916)" fill="#fff"/>
-													</svg>
-												</a>
-												<a class="icon" href="<?php echo $url_to_redirect . $survey->ID . '#/reports';//phpcs:ignore ?>">
-													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12" viewBox="0 0 12 12">
-														<image id="share" width="12" height="12" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABHNCSVQICAgIfAhkiAAAANJJREFUKFNj/P//PwMewAaUWwrETkB8AIiTGQloCAEqWo1k4DR8GriACi8DsRKShunIGtiBEj+hkrVAuhSIdwDxNyAOgDopEaSBD8iZB8R2QLwTiCWBWAuIy4F4MdQAHiD9BcQGaZgGpDORrF0HZAfjCgiQhplAyTQkBWuBbJBnsQKQBgGgzHwgdgDi7VAnqQDpMiBeDtXFCaS/w5wEM4kbyPgK5TQC6UIg3goVA3n6IBDjjQdeoIJLQKyA5LappEYcSjxg8yQoblYAMSjIDwNxIgAOuESAZA8BnAAAAABJRU5ErkJggg=="/>
-													</svg>
-												</a>
-												<div class="icon deleteIcon" delete-id="<?php echo $survey->ID;//phpcs:ignore ?>">
-													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3" height="13" viewBox="0 0 3 13">
-														<image id="more-options" width="3" height="13" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAANCAYAAABsItTPAAAABHNCSVQICAgIfAhkiAAAAD5JREFUCFtj/P//fwsDA0MqEC9gBHL+AxlgAOKkAekkIF4M4sAkwDIoHJABiUC8hFwDEoCak4F4EYYBnTCjAWegMr8vTcqkAAAAAElFTkSuQmCC"/>
-													</svg>
-												</div>
+												<span  class="wpsf-tooltip">
+													<a class="icon" href="<?php echo $url_to_redirect . $survey->ID . '#/build';//phpcs:ignore ?>">
+														<svg xmlns="http://www.w3.org/2000/svg" width="13.224" height="13.225" viewBox="0 0 13.224 13.225">
+															<path id="Form_24" data-name="Form 24" d="M1011.154,290.062a2.424,2.424,0,0,1-2.523-2.518,28.6,28.6,0,0,1-.087-2.992,29.476,29.476,0,0,1,.085-2.991,2.415,2.415,0,0,1,2.517-2.519,29.256,29.256,0,0,1,2.993-.085h.014a.509.509,0,0,1-.014,1.017c-1.269,0-2.214,0-2.879.078a1.452,1.452,0,0,0-1.621,1.623c-.075.665-.077,1.609-.077,2.876s0,2.211.08,2.876a1.457,1.457,0,0,0,1.626,1.623c.664.076,1.607.079,2.871.079s2.207,0,2.871-.08a1.459,1.459,0,0,0,1.626-1.625c.076-.665.08-1.608.08-2.874v-.014a.509.509,0,0,1,1.017.014,28.788,28.788,0,0,1-.087,2.989,2.424,2.424,0,0,1-2.522,2.52,52.163,52.163,0,0,1-5.971,0Zm2.477-4.493a.509.509,0,0,1-.509-.508v-1.526a.511.511,0,0,1,.149-.359l6.1-6.1a.507.507,0,0,1,.719,0l1.526,1.525a.509.509,0,0,1,0,.72l-6.1,6.1a.511.511,0,0,1-.36.149Zm.508-1.824v.806h.806l4.069-4.069-.806-.806Zm4.788-4.788.806.806.806-.806-.806-.806Z" transform="translate(-1008.544 -276.922)" fill="#fff"/>
+														</svg>
+													</a>
+													<span class="wpsf-tooltiptext">Build</span>
+												</span>
+												<span  class="wpsf-tooltip">
+													<a class="icon" href="<?php echo $url_to_redirect . $survey->ID . '#/design';//phpcs:ignore ?>">
+														<svg xmlns="http://www.w3.org/2000/svg" width="12.77" height="12.77" viewBox="0 0 12.77 12.77">
+															<path id="Form_27" data-name="Form 27" d="M1038.171,290.556a1.475,1.475,0,0,1-1.516-1.515c-.009-.085-.011-.193-.017-.285a2.839,2.839,0,0,1-.968-.185,1.308,1.308,0,0,1-.663-.643,5.869,5.869,0,0,1-.223-2.343v-4.559a15.93,15.93,0,0,1,.046-1.629,1.475,1.475,0,0,1,1.516-1.516,15.665,15.665,0,0,1,1.631-.047h4.559c.28,0,.532,0,.762,0a3.646,3.646,0,0,1,1.607.237,1.311,1.311,0,0,1,.632.691,2.984,2.984,0,0,1,.165.928c.094.006.2.006.287.016a1.475,1.475,0,0,1,1.516,1.515,15.645,15.645,0,0,1,.048,1.631v4.56a15.654,15.654,0,0,1-.047,1.629,1.475,1.475,0,0,1-1.515,1.516,15.648,15.648,0,0,1-1.631.048h-4.7A14.1,14.1,0,0,1,1038.171,290.556Zm.1-9.945a.612.612,0,0,0-.71.712c-.039.34-.041.846-.041,1.527v4.56c0,.682,0,1.188.041,1.528a.612.612,0,0,0,.711.711c.34.038.846.04,1.527.04h4.56c.682,0,1.188,0,1.528-.04a.612.612,0,0,0,.711-.712c.038-.34.041-.846.041-1.527v-4.56c0-.682,0-1.188-.041-1.528a.613.613,0,0,0-.712-.711c-.34-.038-.845-.04-1.527-.04h-4.56C1039.118,280.57,1038.612,280.573,1038.271,280.611Zm-1.823-1.823a.612.612,0,0,0-.711.711c-.039.34-.042.846-.042,1.528v4.559a7.035,7.035,0,0,0,.141,1.962.28.28,0,0,0,.192.184,2.136,2.136,0,0,0,.582.1c0-.143,0-.266,0-.427v-4.56a15.974,15.974,0,0,1,.046-1.629,1.475,1.475,0,0,1,1.515-1.516,15.645,15.645,0,0,1,1.631-.048h4.56c.159,0,.283,0,.425,0a2.321,2.321,0,0,0-.1-.565.288.288,0,0,0-.182-.205,6.949,6.949,0,0,0-1.972-.144h-4.559C1037.293,278.746,1036.787,278.749,1036.448,278.788Zm8.5,9.4-1.96-1.96-.729.717.142.142.012.012a.456.456,0,1,1-.657.633l-.4-.4,0,0a.445.445,0,0,1-.124-.125l-.973-.972-1.046,1.045-.013.013a.456.456,0,0,1-.632-.657l1.368-1.368a.454.454,0,0,1,.315-.133h0a.457.457,0,0,1,.329.134l1.038,1.038,1.057-1.04a.454.454,0,0,1,.642,0l2.28,2.28.013.013a.456.456,0,0,1-.657.633Zm-1.5-5.339a.91.91,0,1,1,.91.91A.91.91,0,0,1,1043.45,282.85Z" transform="translate(-1034.782 -277.833)" fill="#fff"/>
+														</svg>
+													</a>
+													<span class="wpsf-tooltiptext">Design</span>
+												</span>
+												<span  class="wpsf-tooltip">
+													<a class="icon" href="<?php echo $url_to_redirect . $survey->ID . '#/configure';//phpcs:ignore ?>">
+														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 14 14">
+															<image id="bar-chart-hover" width="14" height="14" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAVtJREFUKFON0ksoRFEcx3HXRh4jsmEsJDWShYYyxWZSliKSJTsLQlmIUlhSyk6N10qxEGbKirAjSXkkSsmChQUpkef3V/9bJ92FW5/+53H/53/uOdebX0ml/fMp5b1dvKHeC0gMMxHDJr6cRaton1g/EpR4wGQthjDpJG7QDmEaqb+JXQwu4h3fVvmUuIQ6RPyFlJhDZ8EGs4mduEQzJvCIcqum+Sw8KFEffWMrxYl7zvZmaXdjDcM4xw+i/lb76RRgDC0owjGu0IdlFGPbFo0FHc4rk5nQPTU51dtpr1q/2k/MYMCD7ugCFRi1qjpdVTrElpuob9QVpKMNA7bdXqK2P44ji0k3MWora6wDrRYHiZ+YgRIS0E+hp0ZbraRxZgM6mB40YgQfmMI+dPHrbsU8OrozPTsoQwm0Pf0E+ovucI0Gey+pinN0XmxACU94RiF0YPfIRT5u7b3QL0bfYPme+GX6AAAAAElFTkSuQmCC"/>
+														</svg>
+													</a>
+													<span class="wpsf-tooltiptext">Configure</span>
+												</span>
+												<span  class="wpsf-tooltip">
+													<a class="icon" href="<?php echo $url_to_redirect . $survey->ID . '#/share';//phpcs:ignore ?>">
+														<svg xmlns="http://www.w3.org/2000/svg" width="9.126" height="12.775" viewBox="0 0 9.126 12.775">
+															<path id="Form_13" data-name="Form 13" d="M1094.56,289.691h-2.736a15.939,15.939,0,0,1-1.629-.046,1.475,1.475,0,0,1-1.516-1.516,15.91,15.91,0,0,1-.047-1.63v-6.385a15.939,15.939,0,0,1,.046-1.629,1.475,1.475,0,0,1,1.516-1.516,15.636,15.636,0,0,1,1.631-.048h2.663a.4.4,0,0,1,.066-.005.428.428,0,0,1,.1.008,2.192,2.192,0,0,1,1.031.163,8.7,8.7,0,0,1,1.908,1.911,2.164,2.164,0,0,1,.162,1.028.423.423,0,0,1,0,.165V286.5a15.649,15.649,0,0,1-.047,1.629,1.475,1.475,0,0,1-1.516,1.516,15.078,15.078,0,0,1-1.555.047Zm-4.265-11.816a.612.612,0,0,0-.71.712c-.039.34-.042.846-.042,1.527V286.5c0,.683,0,1.189.042,1.529a.612.612,0,0,0,.712.71c.339.039.845.041,1.527.041h2.767c.663,0,1.162,0,1.5-.041a.613.613,0,0,0,.711-.71c.039-.34.041-.846.041-1.529V280.57h-2.28a.456.456,0,0,1-.456-.456v-2.28h-2.28C1091.141,277.835,1090.635,277.837,1090.3,277.875Zm4.72,1.783h1.813a.676.676,0,0,0-.058-.252,9.722,9.722,0,0,0-1.5-1.5.656.656,0,0,0-.254-.058Zm.456,7.753H1090.9a.456.456,0,0,1,.013-.913h4.572a.456.456,0,0,1-.006.913Zm0-1.824H1090.9a.456.456,0,0,1,.013-.912h4.572a.456.456,0,0,1-.006.912Zm-4.573-1.824a.456.456,0,0,1,.013-.912h4.572a.456.456,0,1,1-.013.912H1090.9Z" transform="translate(-1088.632 -276.916)" fill="#fff"/>
+														</svg>
+													</a>
+													<span class="wpsf-tooltiptext">Share</span>
+												</span>
+												<span  class="wpsf-tooltip">
+													<a class="icon" href="<?php echo $url_to_redirect . $survey->ID . '#/reports';//phpcs:ignore ?>">
+														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="12" viewBox="0 0 12 12">
+															<image id="share" width="12" height="12" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABHNCSVQICAgIfAhkiAAAANJJREFUKFNj/P//PwMewAaUWwrETkB8AIiTGQloCAEqWo1k4DR8GriACi8DsRKShunIGtiBEj+hkrVAuhSIdwDxNyAOgDopEaSBD8iZB8R2QLwTiCWBWAuIy4F4MdQAHiD9BcQGaZgGpDORrF0HZAfjCgiQhplAyTQkBWuBbJBnsQKQBgGgzHwgdgDi7VAnqQDpMiBeDtXFCaS/w5wEM4kbyPgK5TQC6UIg3goVA3n6IBDjjQdeoIJLQKyA5LappEYcSjxg8yQoblYAMSjIDwNxIgAOuESAZA8BnAAAAABJRU5ErkJggg=="/>
+														</svg>
+													</a>
+													<span class="wpsf-tooltiptext">Reports</span>
+												</span>
+												<span  class="wpsf-tooltip">
+													<div class="icon deleteIcon" delete-id="<?php echo $survey->ID;//phpcs:ignore ?>">
+														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3" height="13" viewBox="0 0 3 13">
+															<image id="more-options" width="3" height="13" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAANCAYAAABsItTPAAAABHNCSVQICAgIfAhkiAAAAD5JREFUCFtj/P//fwsDA0MqEC9gBHL+AxlgAOKkAekkIF4M4sAkwDIoHJABiUC8hFwDEoCak4F4EYYBnTCjAWegMr8vTcqkAAAAAElFTkSuQmCC"/>
+														</svg>
+													</div>
+													<span class="wpsf-tooltiptext">Delete</span>
+												</span>
 											</div>
 										</div>
 									</div>
