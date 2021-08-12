@@ -747,7 +747,7 @@ function Survey() {
                             ) : (
                                 <div className="wpsf-design-preview-container" style={{  }}>
                                     <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), padding: '40px' }}>
-                                        {data.type === 'fullpage' && <div className="dismissalContainer">
+                                        {(data.type === 'fullpage' || data.type === 'popup') && <div className="dismissalContainer">
                                             <button onClick={dismissSurvey}>Dismiss</button>
                                         </div>}
                                         <div className="main-tab-container">

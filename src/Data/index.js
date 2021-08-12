@@ -190,8 +190,58 @@ export const shortcodeTypes = [
 		helpText: "This code will place a responsive survey on your website."
 	},
 	{
-		name: 'Popup',
-		id: 'popup',
-		helpText: "This code will place a responsive survey on your website."
+		name: 'Custom',
+		id: 'custom',
+		helpText: "This code will place a custom sized survey on your website."
 	}
 ]
+
+export const shareTabsData = [
+	{
+		name: 'Share Shortcode',
+		description: 'Copy this and paste it into any post or page you want the survey to be displayed.',
+		id: 'shortcode',
+	},
+	{
+		name: 'Popup',
+		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, quam?',
+		id: 'popup'
+	}
+]
+
+export const popupInitialState = {
+	targettingOptions: {
+		devices: [
+			{
+				name: 'Desktop',
+				checked: true,
+				id: 'desktop',
+			},
+			{
+				name: 'Mobile',
+				checked: true,
+				id: 'mobile',
+			},
+			{
+				name: 'Tablet',
+				checked: true,
+				id: 'tablet'
+			}
+		],
+		triggerPage: 'triggerOnSpecific',
+		selectedPagesAndPosts: [],
+	},
+	behaviourOptions: {
+		launchOptions: {
+			launchWhen: 'afterPageLoads',
+			afterTimeDelay: 5,
+			afterExitIntent: 'low',
+			afterScrollPercentage: 20,
+		},
+		frequencyOptions: {
+			frequency: 'alwaysShow',
+			hideFor: 3,
+			dontShowAgain: false,
+		}
+	}
+}

@@ -1,88 +1,49 @@
-import React, { useEffect, useState } from "react";
-import { shortcodeTypes } from "../../Data";
+import React, { useContext, useEffect, useState } from "react";
+import { shareTabsData } from "../../Data";
+import { ShareContext } from "../Context/ShareContext";
 import Tabs from "../../HelperComponents/Tabs";
+import ShareShortCode from "./ShareShortCode";
+import PopupSettings from "./PopupSettings";
 import '../../scss/share.scss';
 
+const getCurrentTabContent = ( currentShareTab ) => {
+	switch( currentShareTab ) {
+		case 'shortcode':
+			return <ShareShortCode />
+		case 'popup':
+			return <PopupSettings />
+		default:
+			return '';
+	}
+}
 
 export default function Share() {
-    
-	
-	const [types, setTypes] = useState(shortcodeTypes);
-	const [shortcode, setShortcode] = useState('');
-	const [checked, setChecked] = useState('responsive');
-	const [helpText, setHelpText] = useState('');
-	const [ copyStatus, setCopyStatus ] = useState('Copy Shortcode');
-	let shortcodeInputRef = React.createRef();
 
-	useEffect(() => {
-		setShortcode('[wpsf_survey id="'+ new URLSearchParams(window.location.search).get('post_id') +'" type="'+ checked +'"]');
-		for(let i = 0 ; i < shortcodeTypes.length; i++) {
-			if ( checked === shortcodeTypes[i].id ) {
-				setHelpText(shortcodeTypes[i].helpText);
-				return;
-			}
-		}
-	}, [checked])
-	const handleRadioChange = (e) => {
-		var clickedLabel = document.querySelectorAll('.contentTypeLabel');
-		clickedLabel.forEach(function(label){
-			label.parentNode.classList.remove('contentType-element-active');
-		});
-		e.currentTarget.parentNode.classList.add('contentType-element-active');
-		setChecked(e.target.value);
-	}
+	const [ currentShareTab, setCurrentShareTab ] = useState('shortcode');
 
-	const copyShortcode = () => {
-		shortcodeInputRef.current.removeAttribute('disabled');
-		shortcodeInputRef.current.select()
-		shortcodeInputRef.current.setSelectionRange(0, 99999)
-		document.execCommand("copy");
-		shortcodeInputRef.current.setAttribute('disabled', true);
-		setCopyStatus('Copied!');
-		setTimeout(() => {
-			setCopyStatus('Copy Shortcode');
-		}, 4000)
+	const changeCurrentShareTab = ( id ) => {
+		setCurrentShareTab(id);
 	}
 	
 	return (
         <div className="Share">
             <div className="shareTabs">
-				<div className="shareTabs-element">
-					<div className="shareTabs-element-title">
-						<h3>Share ShortCode</h3>
-						<p>Copy this and paste it into any post or page you want the survey to be displayed.</p>
-					</div>
-					<img src={require('../Build/BuildImages/arrowRight.png')}></img>
-				</div>
-			</div>
-            <div className="shareShortcodeSettings">
-				<div className="contentShortcodeLabel-container">
-					<div className="contentShortcodeLabel">
-						<h3>Content ShortCode: </h3>
-						<button onClick={copyShortcode}>{copyStatus}</button>
-					</div>
-					<input type="text" id="contentShortcode" disabled ref={shortcodeInputRef} onChange={() => {}} value={shortcode} />
-				</div>
-
-				<div className="contentTypes">
-					<div className="contentTypesLabel">
-						<h3>
-							Select Content Shortcode Type:
-						</h3>
-					</div>
-					<div className="contentTypes-container">
-						{types.map(function(item, i) {
-							
-							return <div key={item.id} className={item.id === checked ? 'contentType-element contentType-element-active' : 'contentType-element'}>
-								<label htmlFor={item.id} className={item.id === checked ? 'contentTypeLabel active' : 'contentTypeLabel'}>{item.name}</label>
-								<input type="radio" name="contentType" className="contentTypeRadio" checked={item.id === checked} onChange={handleRadioChange} value={item.id} id={item.id} disabled={item.id === 'reponsive' ? '' : 'disabled'} />
+				{shareTabsData.map(function(item, i) {
+					return <div key={i} className="shareTabs-element" style={{cursor: 'pointer'}} onClick={() => {
+						changeCurrentShareTab(item.id);
+					}}>
+								<div className="shareTabs-element-title">
+									<h3>{item.name}</h3>
+									<p>{item.description}</p>
+								</div>
+								{item.id === currentShareTab && <img src={require('../Build/BuildImages/arrowRight.png')}></img> }
 							</div>
-						})}
-					</div>
-
-				</div>
-				<div className="contentHelpText">
-					{helpText}
+				})}
+				
+			</div>
+			<div className="shareTabContent">
+				<div className="shareTabContentContainer">
+					{getCurrentTabContent( currentShareTab )}
 				</div>
 			</div>
         </div>

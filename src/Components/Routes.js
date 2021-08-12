@@ -4,6 +4,7 @@ import { BuildContextProvider } from "./Context/BuildContext";
 import { DesignContext, DesignContextProvider } from "./Context/DesignContext";
 import { ReportContextProvider } from './Context/ReportContext';
 import { ModalContextProvider } from "./Context/ModalContext";
+import { ShareContextProvider } from "./Context/ShareContext";
 import fetchData from "../HelperComponents/fetchData";
 const Build = lazy(() => import("./Build"));
 const Design = lazy(() => import("./Design"));
@@ -94,7 +95,9 @@ export default function Routes() {
                             <Configure />
                         </Route>
                         <Route path="/share">
-                            <Share />
+                            <ShareContextProvider>
+                                <Share />
+                            </ShareContextProvider>
                         </Route>
                         <Route path="/reports">
                             <ReportContextProvider>

@@ -171,6 +171,9 @@ class Wp_Survey_Funnel {
 		$this->loader->add_action( 'wp_ajax_wpsf_get_reports_data', $plugin_admin, 'wpsf_get_reports_data' );
 		$this->loader->add_action( 'wp_ajax_wpsf_save_configuration_data', $plugin_admin, 'wpsf_save_configuration_data' );
 		$this->loader->add_action( 'wp_ajax_wpsf_get_configuration_data', $plugin_admin, 'wpsf_get_configuration_data' );
+		$this->loader->add_action( 'wp_ajax_wpsf_save_share_data', $plugin_admin, 'wpsf_save_share_data' );
+		$this->loader->add_action( 'wp_ajax_wpsf_get_share_data', $plugin_admin, 'wpsf_get_share_data' );
+		$this->loader->add_action( 'wp_ajax_wpsf_get_posts_pages', $plugin_admin, 'wpsf_get_posts_pages' );
 		$this->loader->add_action( 'admin_post_export_csv', $plugin_admin, 'wpsf_export_csv' );
 		$this->loader->add_action( 'admin_footer', $plugin_admin, 'wpsf_mascot_on_pages' );
 
