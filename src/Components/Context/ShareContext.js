@@ -4,6 +4,7 @@ import fetchData from '../../HelperComponents/fetchData';
 
 export function ShareContextProvider( props ) {
 	const [popup, setPopup] = useState(popupInitialState);
+	const [options, setOptions] = useState([]);
 
 	const handleDevicesChange = (id) => {
 		let newPopup = JSON.parse(JSON.stringify(popup));
@@ -35,7 +36,7 @@ export function ShareContextProvider( props ) {
 
 	const handleTriggerPageChange = (e) => {
 		let newPopup = JSON.parse(JSON.stringify(popup));
-		newPopup.triggerPage = e.target.value;
+		newPopup.targettingOptions.triggerPage = e.target.value;
 		setPopup(newPopup);
 	}
 
@@ -50,20 +51,72 @@ export function ShareContextProvider( props ) {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData( ajaxURL, data )
         .then(data => {
-			console.log(data);
 			if ( data.data.share === '' ) {
 				return;
 			}
 			let share = JSON.parse(data.data.share);
 			setPopup(share.popup);
         })
+
+		const getOptions = () => {
+			const ajaxSecurity = document.getElementById('ajaxSecurity').value;
+			const post_id = new URLSearchParams(window.location.search).get('post_id');
+			const data = {
+				security: ajaxSecurity,
+				action: 'wpsf_get_posts_pages',
+				post_id,
+			};
+			const ajaxURL = document.getElementById('ajaxURL').value;
+			fetchData( ajaxURL, data )
+			.then(data => {
+				setOptions(data.data);
+			})
+		}
+
+		getOptions();
 	}, [])
+
+	const optionsChange = (data) => {
+		let newPopup = JSON.parse(JSON.stringify(popup));
+		newPopup.targettingOptions.selectedPagesAndPosts = data;
+		setPopup(newPopup);
+	}
+
+	const handleLaunchOptionsChange = ( data ) => {
+		let newPopup = JSON.parse(JSON.stringify(popup));
+		newPopup.behaviourOptions.launchOptions.launchWhen = data;
+		setPopup(newPopup);
+	}
+
+	const handleLaunchOptionsData = ( data, e ) => {
+		let newPopup = JSON.parse(JSON.stringify(popup));
+		newPopup.behaviourOptions.launchOptions[data] = e.target.value;
+		setPopup(newPopup);
+	}
+
+	const handleFrequencyOptionsChange = ( data ) => {
+		let newPopup = JSON.parse(JSON.stringify(popup));
+		newPopup.behaviourOptions.frequencyOptions.frequency = data;
+		setPopup(newPopup);
+	}
+
+	const handleFrequencyDataChange = (data, value) => {
+		let newPopup = JSON.parse(JSON.stringify(popup));
+		newPopup.behaviourOptions.frequencyOptions[data] = value;
+		setPopup(newPopup);
+	}
 
 	let state = {
 		popup,
 		handleDevicesChange,
 		saveSettings,
-		handleTriggerPageChange
+		handleTriggerPageChange,
+		optionsChange,
+		options,
+		handleLaunchOptionsChange,
+		handleLaunchOptionsData,
+		handleFrequencyOptionsChange,
+		handleFrequencyDataChange
 	}
 
 	return (

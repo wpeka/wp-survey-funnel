@@ -809,4 +809,57 @@ class Wp_Survey_Funnel_Admin {
 		wp_die();
 	}
 
+	/**
+	 * Ajax: get posts and pages for async select.
+	 */
+	public function wpsf_get_posts_pages() {
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		$args = array(
+			'post_type'     => 'post',
+			'post_status'   => 'publish',
+			'numberofposts' => -1,
+		);
+
+		$posts                 = get_posts( $args );
+		$post_object           = new stdClass();
+		$post_object->label    = 'Posts';
+		$post_object->options = array();
+
+		foreach ( $posts as $post ) {
+			$obj        = new stdClass();
+			$obj->label = $post->post_title;
+			$obj->value = $post->ID;
+			array_push( $post_object->options, $obj );
+		}
+
+		$args = array(
+			'post_type'     => 'page',
+			'post_status'   => 'publish',
+			'numberofposts' => -1,
+		);
+
+		$pages                 = get_posts( $args );
+		$page_object           = new stdClass();
+		$page_object->label    = 'Pages';
+		$page_object->options = array();
+
+		foreach ( $pages as $page ) {
+			$obj        = new stdClass();
+			$obj->label = $page->post_title;
+			$obj->value = $page->ID;
+			array_push( $page_object->options, $obj );
+		}
+
+		$data = array( $post_object, $page_object );
+
+		wp_send_json_success( $data );
+		wp_die();
+	}
+
 }

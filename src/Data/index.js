@@ -227,7 +227,21 @@ export const popupInitialState = {
 				checked: true,
 				id: 'tablet'
 			}
-		]
+		],
+		triggerPage: 'triggerOnSpecific',
+		selectedPagesAndPosts: [],
 	},
-	triggerPage: 'triggerOnSpecific',
+	behaviourOptions: {
+		launchOptions: {
+			launchWhen: 'afterPageLoads',
+			afterTimeDelay: 5,
+			afterExitIntent: 'low',
+			afterScrollPercentage: 20,
+		},
+		frequencyOptions: {
+			frequency: 'alwaysShow',
+			hideFor: 3,
+			dontShowAgain: false,
+		}
+	}
 }
