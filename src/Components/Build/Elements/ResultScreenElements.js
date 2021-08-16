@@ -32,7 +32,7 @@ export const ResultScreen = React.memo(
                 <>
                     <div className="modalOverlay">
                         <div className="modalContent-navbar">
-                            <h2>Result Screen</h2>
+                            <h3>Result Screen  &nbsp; &#62; &nbsp;  Results Page  &nbsp; &#62; &nbsp;  {this.state.title}</h3>
                             <CloseModal/>
                         </div>
                         <div className="modalContent">

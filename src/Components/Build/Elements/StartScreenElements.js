@@ -44,7 +44,7 @@ export const CoverPage = React.memo(
                 <>
                     <div className="modalOverlay">
                         <div className="modalContent-navbar">
-                            <h2>Cover Page</h2>
+                            <h3>Start Screen  &nbsp; &#62; &nbsp;  Cover Page  &nbsp; &#62; &nbsp;  {this.state.title}</h3>
                             <CloseModal/>
                         </div>
                         <div className="modalContent">
