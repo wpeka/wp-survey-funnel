@@ -790,7 +790,8 @@ function Survey() {
             style={{
                 margin: '0px',
                 border: '0px',
-                height: data.type === 'responsive' ? height : '',                
+                height: data.type === 'responsive' ? height : '',
+                background: 'rgba(39,43,47,.9)'
             }}
             className={'wpsf-sc-'+data.type}
             onLoad={() => handleResize(iframeRef)}
