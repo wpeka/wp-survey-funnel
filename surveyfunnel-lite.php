@@ -90,7 +90,7 @@ function activate_surveyfunnel_lite() {
  */
 function deactivate_surveyfunnel_lite() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-surveyfunnel-lite-deactivator.php';
-	Surveyfunnel_Deactivator::deactivate();
+	Surveyfunnel_Lite_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_surveyfunnel_lite' );
