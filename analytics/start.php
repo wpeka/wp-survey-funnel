@@ -63,7 +63,7 @@ if ( ! class_exists( 'Analytics' ) ) {
 	 * @param string $version Product Version.
 	 * @param string $module_type Module type.
 	 */
-	function analytics( $module_id, $slug, $product_name, $version, $module_type ) {
+	function analytics( $module_id, $product_name, $version, $module_type, $slug ) {
 		return Analytics::instance( $module_id, $product_name, $version, $module_type, $slug );
 	}
 }
