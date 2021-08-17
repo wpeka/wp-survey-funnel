@@ -1,6 +1,6 @@
 
-var adcvm = new Vue({
-    el: '#adc-mascot-app',
+var srfvm = new Vue({
+    el: '#srf-mascot-app',
     data: function() {
         return {
             showMenu: !1,
@@ -11,8 +11,8 @@ var adcvm = new Vue({
         {
             boxClass() {
                 return {
-                    'adc-mascot-quick-links adc-mascot-quick-links-open' : this.showMenu,
-                    'adc-mascot-quick-links' : !this.showMenu,
+                    'srf-mascot-quick-links srf-mascot-quick-links-open' : this.showMenu,
+                    'srf-mascot-quick-links' : !this.showMenu,
                 }
             },
             menuItems() {
@@ -67,7 +67,7 @@ var adcvm = new Vue({
                     }, [createElement('span', {
                         class: 'dashicons '+ value.icon
                     }), createElement('span', {
-                        staticClass: 'adc-mascot-quick-link-title',
+                        staticClass: 'srf-mascot-quick-link-title',
                         domProps: {
                             innerHTML: value.tooltip
                         }
@@ -77,17 +77,17 @@ var adcvm = new Vue({
             return html;
         },
         linkClass: function(key) {
-            return 'adc-mascot-quick-links-menu-item adc-mascot-quick-links-item-' + key;
+            return 'srf-mascot-quick-links-menu-item srf-mascot-quick-links-item-' + key;
         },
         enter:function(t,e) {
             var n = 50 * t.dataset.index;
             setTimeout((function() {
-                t.classList.add('adc-mascot-show'),
+                t.classList.add('srf-mascot-show'),
                     e()
             }), n)
         },
         leave:function(t,e) {
-            t.classList.remove('adc-mascot-show'),
+            t.classList.remove('srf-mascot-show'),
                 setTimeout((function() {
                     e()
                 }), 200)
@@ -98,23 +98,23 @@ var adcvm = new Vue({
             class: this.boxClass,
         }, [
             createElement('button', {
-                class: 'adc-mascot-quick-links-label',
+                class: 'srf-mascot-quick-links-label',
                 on: {
                     click: this.buttonClick
                 }
             },[
                 createElement('span', {
-                    class:'adc-mascot-bg-img adc-mascot-quick-links-mascot',
+                    class:'srf-mascot-bg-img srf-mascot-quick-links-mascot',
                 }),
                 createElement('span',{
-                    class: 'adc-mascot-quick-link-title'
+                    class: 'srf-mascot-quick-link-title'
                 }, mascot.quick_links_text)
             ]),
             createElement('transition-group', {
-                staticClass: 'adc-mascot-quick-links-menu',
+                staticClass: 'srf-mascot-quick-links-menu',
                 attrs:{
                     tag: 'div',
-                    name: 'adc-staggered-fade'
+                    name: 'srf-staggered-fade'
                 },
                 on: {
                     enter: this.enter,

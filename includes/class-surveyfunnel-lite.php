@@ -8,8 +8,8 @@
  * @link  https://club.wpeka.com
  * @since 1.0.0
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/includes
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/includes
  */
 
 /**
@@ -22,11 +22,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/includes
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/includes
  * @author     WPEka Club <support@wpeka.com>
  */
-class Wp_Survey_Funnel {
+class Surveyfunnel_Lite {
 
 
 	/**
@@ -35,7 +35,7 @@ class Wp_Survey_Funnel {
 	 *
 	 * @since  1.0.0
 	 * @access protected
-	 * @var    Wp_Survey_Funnel_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var    Surveyfunnel_Lite_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -67,12 +67,12 @@ class Wp_Survey_Funnel {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'WP_SURVEY_FUNNEL_VERSION' ) ) {
-			$this->version = WP_SURVEY_FUNNEL_VERSION;
+		if ( defined( 'SURVEYFUNNEL_LITE_VERSION' ) ) {
+			$this->version = SURVEYFUNNEL_LITE_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'wp-survey-funnel';
+		$this->plugin_name = 'surveyfunnel-lite';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -85,10 +85,10 @@ class Wp_Survey_Funnel {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Wp_Survey_Funnel_Loader. Orchestrates the hooks of the plugin.
-	 * - Wp_Survey_Funnel_I18n. Defines internationalization functionality.
-	 * - Wp_Survey_Funnel_Admin. Defines all hooks for the admin area.
-	 * - Wp_Survey_Funnel_Public. Defines all hooks for the public side of the site.
+	 * - Surveyfunnel_Lite_Loader. Orchestrates the hooks of the plugin.
+	 * - Surveyfunnel_Lite_I18n. Defines internationalization functionality.
+	 * - Surveyfunnel_Lite_Admin. Defines all hooks for the admin area.
+	 * - Surveyfunnel_Lite_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -102,32 +102,32 @@ class Wp_Survey_Funnel {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-survey-funnel-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-surveyfunnel-lite-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-survey-funnel-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-surveyfunnel-lite-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-survey-funnel-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-surveyfunnel-lite-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-survey-funnel-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-surveyfunnel-lite-public.php';
 
-		$this->loader = new Wp_Survey_Funnel_Loader();
+		$this->loader = new Surveyfunnel_Lite_Loader();
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Wp_Survey_Funnel_I18n class in order to set the domain and to register the hook
+	 * Uses the Surveyfunnel_Lite_I18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since  1.0.0
@@ -135,7 +135,7 @@ class Wp_Survey_Funnel {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Wp_Survey_Funnel_I18n();
+		$plugin_i18n = new Surveyfunnel_Lite_I18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 	}
@@ -149,7 +149,7 @@ class Wp_Survey_Funnel {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Wp_Survey_Funnel_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Surveyfunnel_Lite_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		// enqueue styles and scripts.
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
@@ -190,7 +190,7 @@ class Wp_Survey_Funnel {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Wp_Survey_Funnel_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Surveyfunnel_Lite_Public( $this->get_plugin_name(), $this->get_version() );
 
 		// enqueue necessary scripts and styles.
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
@@ -227,7 +227,7 @@ class Wp_Survey_Funnel {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @return Wp_Survey_Funnel_Loader    Orchestrates the hooks of the plugin.
+	 * @return Surveyfunnel_Lite_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -247,6 +247,6 @@ class Wp_Survey_Funnel {
 	 * Check if pro version is activated.
 	 */
 	public static function check_pro_activated() {
-		return get_option( 'wp_survey_funnel_activated', false );
+		return get_option( 'surveyfunnel_pro_activated', false );
 	}
 }

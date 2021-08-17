@@ -1,4 +1,4 @@
-=== WP Survey Funnel ===
+=== SurveyFunnel Lite ===
 Contributors: WPEka Club
 Donate link: https://club.wpeka.com
 Tags: comments, spam

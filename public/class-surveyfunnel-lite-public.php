@@ -5,8 +5,8 @@
  * @link  https://club.wpeka.com
  * @since 1.0.0
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/public
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/public
  */
 
 /**
@@ -15,11 +15,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/public
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/public
  * @author     WPEka Club <support@wpeka.com>
  */
-class Wp_Survey_Funnel_Public {
+class Surveyfunnel_Lite_Public {
 
 
 	/**
@@ -61,7 +61,7 @@ class Wp_Survey_Funnel_Public {
 
 		wp_register_style(
 			$this->plugin_name . '-public',
-			plugin_dir_url( __FILE__ ) . 'css/wp-survey-funnel-public.css',
+			plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-public.css',
 			array(),
 			$this->version,
 			'all'
@@ -77,7 +77,7 @@ class Wp_Survey_Funnel_Public {
 
 		wp_enqueue_script(
 			$this->plugin_name,
-			plugin_dir_url( __FILE__ ) . 'js/wp-survey-funnel-public.js',
+			plugin_dir_url( __FILE__ ) . 'js/surveyfunnel-lite-public.js',
 			array( 'jquery' ),
 			$this->version,
 			false
@@ -85,7 +85,7 @@ class Wp_Survey_Funnel_Public {
 
 		wp_register_script(
 			$this->plugin_name . '-survey',
-			WP_SURVEY_FUNNEL_PLUGIN_URL . 'dist/survey.bundle.js',
+			SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.bundle.js',
 			array(),
 			time(),
 			false
@@ -146,7 +146,7 @@ class Wp_Survey_Funnel_Public {
 			'post_id'         => $atts['id'],
 			'time'            => $time,
 			'userLocalID'     => $unique_id,
-			'styleSurveyLink' => WP_SURVEY_FUNNEL_PLUGIN_URL . 'dist/survey.css',
+			'styleSurveyLink' => SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css',
 			'type'            => $atts['type'],
 		);
 
