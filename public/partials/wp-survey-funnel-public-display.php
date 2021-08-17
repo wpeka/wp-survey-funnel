@@ -7,8 +7,8 @@
  * @link  https://club.wpeka.com
  * @since 1.0.0
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/public/partials
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/public/partials
  */
 ?>
 

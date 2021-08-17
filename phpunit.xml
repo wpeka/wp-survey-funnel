@@ -8,7 +8,7 @@
 	convertWarningsToExceptions="true"
 	>
 	<testsuites>
-		<testsuite name = "wp-survey-funnel">
+		<testsuite name = "surveyfunnel-lite">
 			<directory prefix="test-" suffix=".php">./tests/</directory>
 			<exclude>./tests/test-sample.php</exclude>
 		</testsuite>
@@ -18,7 +18,7 @@
 			<directory suffix=".php">./includes</directory>
 			<directory suffix=".php">./admin</directory>
 			<directory suffix=".php">./public</directory>
-			<file>wp-survey-funnel.php</file>
+			<file>surveyfunnel-lite.php</file>
 			<file>uninstall.php</file>
 		</whitelist>
 	</filter>

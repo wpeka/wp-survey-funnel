@@ -21,7 +21,7 @@
  * @link  https://club.wpeka.com
  * @since 1.0.0
  *
- * @package Wp_Survey_Funnel
+ * @package Surveyfunnel_Lite
  */
 
 // If uninstall not called from WordPress, then exit.

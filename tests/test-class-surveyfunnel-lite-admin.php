@@ -1,23 +1,23 @@
 <?php
 /**
- * Class Test_WP_Survey_Funnel_Admin
+ * Class Test_Surveyfunnel_Lite_Admin
  *
- * @package Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/Tests
+ * @package Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/Tests
  */
 
 /**
- * Test for Wp_Survey_Funnel_Admin class
+ * Test for Surveyfunnel_Lite_Admin class
  */
-class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
+class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 
 	/**
-	 * Wp_Survey_Funnel_Admin class instance.
+	 * Surveyfunnel_Lite_Admin class instance.
 	 *
 	 * @access public
-	 * @var string $wp_survey_funnel_admin class instance.
+	 * @var string $surveyfunnel_lite_admin class instance.
 	 */
-	public static $wp_survey_funnel_admin;
+	public static $surveyfunnel_lite_admin;
 
 	/**
 	 * Plugin name.
@@ -64,13 +64,13 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 	 */
 	public static function wpSetUpBeforeClass( WP_UnitTest_Factory $factory ) {
 
-		if ( defined( 'WP_SURVEY_FUNNEL_VERSION' ) ) {
-			self::$plugin_version = WP_SURVEY_FUNNEL_VERSION;
+		if ( defined( 'SURVEYFUNNEL_LITE_VERSION' ) ) {
+			self::$plugin_version = SURVEYFUNNEL_LITE_VERSION;
 		} else {
 			self::$plugin_version = '1.0.0';
 		}
-		self::$plugin_name            = 'wp-survey-funnel';
-		self::$wp_survey_funnel_admin = new Wp_Survey_Funnel_Admin( self::$plugin_name, self::$plugin_version );
+		self::$plugin_name            = 'surveyfunnel-lite';
+		self::$surveyfunnel_lite_admin = new Surveyfunnel_Lite_Admin( self::$plugin_name, self::$plugin_version );
 		self::$post_ids               = $factory->post->create_many( 2, array( 'post_type' => 'wpsf-survey' ) );
 		self::$design                 = '{\'opacity\':1,\'fontFamily\':null,\'fontFamilyValue\':\'\',\'backgroundColor\':{\'r\':255,\'g\':255,\'b\':255\'a\':1},\'buttonColor\':{r\':0,\'g\':222,\'b\':129,a\':1},\'buttonTextColor\':{\'r\':\'255\',\'g\':\'255\',\'b\':\'255\',\'a\':\'1\'},\'answersHighlightBoxColor\':{\'r\':\'232\',\'g\':\'238\',\'b\':\'244\',\'a\':\'1\'}}';
 		self::$build                  = '{"List":{"START_ELEMENTS":[{"button":"Start","title":"This is a cover page","description":"Cover page","id":"zh727zy9m7krvwz09k","componentName":"CoverPage","type":"START_ELEMENTS","currentlySaved":true}],"CONTENT_ELEMENTS":[{"title":"What is your age?","description":"Tell us about yourself","answers":[{"name":"20","checked":false},{"name":"10","checked":false},{"name":"40","checked":false},{"name":"60","checked":false}],"value":"","id":"0y566hzo1ewckrvwzvc8","componentName":"SingleChoice","type":"CONTENT_ELEMENTS","currentlySaved":true}],"RESULT_ELEMENTS":[{"title":"Thanks","description":"Thanks for participation","id":"cd98dnfel8krvx0db2","componentName":"ResultScreen","type":"RESULT_ELEMENTS","currentlySaved":true}]},"title":"Demo survey"}';
@@ -88,29 +88,29 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 	 * Test for constructor function.
 	 */
 	public function test_construct() {
-		$obj = new Wp_Survey_Funnel_Admin( self::$plugin_name, self::$plugin_version );
-		$this->assertTrue( $obj instanceof Wp_Survey_Funnel_Admin );
+		$obj = new Surveyfunnel_Lite_Admin( self::$plugin_name, self::$plugin_version );
+		$this->assertTrue( $obj instanceof Surveyfunnel_Lite_Admin );
 	}
 
 	/**
 	 * Test for enqueue_styles function.
 	 */
 	public function test_enqueue_styles() {
-		self::$wp_survey_funnel_admin->enqueue_styles();
+		self::$surveyfunnel_lite_admin->enqueue_styles();
 		global $wp_styles;
 		$enqueue_styles = $wp_styles->registered;
-		$this->assertArrayHasKey( 'wp-survey-funnel', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertArrayHasKey( 'surveyfunnel-lite', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 	}
 
 	/**
 	 * Test for enqueue_scripts function.
 	 */
 	public function test_enqueue_scripts() {
-		self::$wp_survey_funnel_admin->enqueue_scripts();
+		self::$surveyfunnel_lite_admin->enqueue_scripts();
 		global $wp_scripts;
 		$enqueue_scripts = $wp_scripts->queue;
-		$this->assertTrue( in_array( 'wp-survey-funnel', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		$data          = $wp_scripts->get_data( 'wp-survey-funnel', 'data' );
+		$this->assertTrue( in_array( 'surveyfunnel-lite', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$data          = $wp_scripts->get_data( 'surveyfunnel-lite', 'data' );
 		$data          = substr( $data, strpos( $data, '{' ), strpos( $data, '}' ) - 1 );
 		$data          = str_replace( ';', '', $data );
 		$localize_data = json_decode( $data, true );
@@ -128,7 +128,7 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 
 		$current_user = wp_get_current_user();
 		$current_user->add_cap( 'manage_options' );
-		self::$wp_survey_funnel_admin->wpsf_admin_menu();
+		self::$surveyfunnel_lite_admin->wpsf_admin_menu();
 		global $menu, $submenu;
 		$this->assertTrue( in_array( 'Survey Funnel', $menu[0] ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 		$submenu_array = wp_list_pluck( $submenu['wpsf-dashboard'], 2 );
@@ -143,7 +143,7 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 	public function test_wpsf_init() {
 		unregister_post_type( 'wpsf-survey' );
 		$this->assertFalse( post_type_exists( 'wpsf-survey' ) );
-		self::$wp_survey_funnel_admin->wpsf_init();
+		self::$surveyfunnel_lite_admin->wpsf_init();
 		$this->assertTrue( post_type_exists( 'wpsf-survey' ) );
 	}
 
@@ -151,7 +151,7 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 	 * Test for wpsf_get_setup_page_url function
 	 */
 	public function test_wpsf_get_setup_page_url() {
-		$actual_url   = self::$wp_survey_funnel_admin->wpsf_get_setup_page_url();
+		$actual_url   = self::$surveyfunnel_lite_admin->wpsf_get_setup_page_url();
 		$expected_url = get_admin_url() . 'index.php?page=wpsf-survey&post_id=';
 		$this->assertSame( $expected_url, $actual_url );
 	}
@@ -160,7 +160,7 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 	 * Test for wpsf_get_default_save_array function
 	 */
 	public function test_wpsf_get_default_save_array() {
-		$array = self::$wp_survey_funnel_admin->wpsf_get_default_save_array();
+		$array = self::$surveyfunnel_lite_admin->wpsf_get_default_save_array();
 		$this->assertArrayHasKey( 'build', $array );
 		$this->assertArrayHasKey( 'design', $array );
 		$this->assertArrayHasKey( 'configure', $array );
@@ -180,7 +180,7 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 				'survey_id' => self::$post_ids[0],
 			)
 		);
-		$args = self::$wp_survey_funnel_admin->wpsf_get_insights_data( self::$post_ids[0] );
+		$args = self::$surveyfunnel_lite_admin->wpsf_get_insights_data( self::$post_ids[0] );
 		$this->assertCount( 3, $args );
 		$this->assertTrue( is_array( $args ) );
 		$this->assertArrayHasKey( 'views', $args );
@@ -192,7 +192,7 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 	 * Test for wpsf_settings function
 	 */
 	public function test_wpsf_settings() {
-		self::$wp_survey_funnel_admin->wpsf_settings();
+		self::$surveyfunnel_lite_admin->wpsf_settings();
 		$this->assertTrue( true );
 	}
 
@@ -201,7 +201,7 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 	 */
 	public function test_wpsf_help() {
 		ob_start();
-		self::$wp_survey_funnel_admin->wpsf_help();
+		self::$surveyfunnel_lite_admin->wpsf_help();
 		$output = ob_get_clean();
 		$this->assertTrue( strpos( $output, '<div class="wpsf-container-main">' ) !== false );
 		$this->assertTrue( strpos( $output, 'Thank‌ ‌you‌ ‌for‌ ‌choosing‌ ‌SurveyFunnel‌ ‌plugin.' ) !== false );
@@ -215,7 +215,7 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 		$count_befor_include = count( get_included_files() );
 
 		ob_start();
-		self::$wp_survey_funnel_admin->wpsf_dashboard();
+		self::$surveyfunnel_lite_admin->wpsf_dashboard();
 		ob_get_clean();
 
 		$count_after_include = count( get_included_files() );
@@ -228,13 +228,13 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 	public function test_wpsf_mascot_on_pages() {
 		$this->go_to( admin_url() . 'admin.php?page=wpsf-dashboard' );
 		ob_start();
-		self::$wp_survey_funnel_admin->wpsf_mascot_on_pages();
+		self::$surveyfunnel_lite_admin->wpsf_mascot_on_pages();
 		$output = ob_get_clean();
 		global $wp_scripts;
 		global $wp_styles;
 		$enqueue_scripts = $wp_scripts->queue;
 		$enqueue_styles  = $wp_styles->registered;
-		$data            = $wp_scripts->get_data( 'wp-survey-funnel-mascot', 'data' );
+		$data            = $wp_scripts->get_data( 'surveyfunnel-lite-mascot', 'data' );
 		$data            = trim( str_replace( 'var mascot =', '', $data ) );
 		$data            = trim( str_replace( ';', '', $data ) );
 		$localize_data   = json_decode( $data, true );
@@ -244,11 +244,11 @@ class Test_WP_Survey_Funnel_Admin extends WP_UnitTestCase {
 		$this->assertArrayHasKey( 'menu_items', $localize_data );
 		$this->assertArrayHasKey( 'is_pro', $localize_data );
 		$this->assertArrayHasKey( 'quick_links_text', $localize_data );
-		$this->assertSame( __( 'See Quick Links', 'wp-survey-funnel' ), $localize_data['quick_links_text'] );
+		$this->assertSame( __( 'See Quick Links', 'surveyfunnel' ), $localize_data['quick_links_text'] );
 
-		$this->assertSame( '<div id="adc-mascot-app"></div>', trim( $output ) );
-		$this->assertTrue( in_array( 'wp-survey-funnel-mascot', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		$this->assertArrayHasKey( 'wp-survey-funnel-mascot', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertSame( '<div id="srf-mascot-app"></div>', trim( $output ) );
+		$this->assertTrue( in_array( 'surveyfunnel-lite-mascot', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertArrayHasKey( 'surveyfunnel-lite-mascot', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 	}
 
 }

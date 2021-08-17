@@ -47,7 +47,7 @@ if ( ! class_exists( 'Analytics' ) ) {
 		} else {
 			$plugin_url = $module['plugin_url'];
 		}
-		$ra = Analytics::instance( $module['id'], $module['slug'], $module['product_name'], $module['version'], $module['module_type'], $plugin_basename, $plugin_url );
+		$ra = Analytics::instance( $module['id'], $module['product_name'], $module['version'], $module['module_type'], $module['slug'], $plugin_basename, $plugin_url );
 		$ra->dynamic_init( $module );
 
 		return $ra;
@@ -64,6 +64,6 @@ if ( ! class_exists( 'Analytics' ) ) {
 	 * @param string $module_type Module type.
 	 */
 	function analytics( $module_id, $slug, $product_name, $version, $module_type ) {
-		return Analytics::instance( $module_id, $slug, $product_name, $version, $module_type );
+		return Analytics::instance( $module_id, $product_name, $version, $module_type, $slug );
 	}
 }

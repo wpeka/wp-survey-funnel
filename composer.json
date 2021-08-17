@@ -1,6 +1,6 @@
 {
-  "name": "wpeka/wp-survey-funnel",
-  "description": "WP Survey Funnel",
+  "name": "wpeka/surveyfunnel-lite",
+  "description": "SurveyFunnel Lite",
   "homepage": "https://club.wpeka.com/",
   "type": "wordpress-plugin",
   "license": "GPL-3.0-or-later",
