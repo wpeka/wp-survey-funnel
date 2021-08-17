@@ -130,7 +130,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$current_user->add_cap( 'manage_options' );
 		self::$surveyfunnel_lite_admin->wpsf_admin_menu();
 		global $menu, $submenu;
-		$this->assertTrue( in_array( 'Survey Funnel', $menu[0] ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertTrue( in_array( 'SurveyFunnel', $menu[0] ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 		$submenu_array = wp_list_pluck( $submenu['wpsf-dashboard'], 2 );
 		$this->assertTrue( in_array( 'wpsf-dashboard', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 		// $this->assertTrue( in_array( 'wpsf-settings', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
