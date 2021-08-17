@@ -129,8 +129,8 @@ class Surveyfunnel_Lite_Admin {
 		add_dashboard_page( '', '', 'manage_options', 'wpsf-survey', '' );
 
 		add_menu_page(
-			__( 'Survey Funnel', 'surveyfunnel' ),
-			__( 'Survey Funnel', 'surveyfunnel' ),
+			__( 'SurveyFunnel', 'surveyfunnel' ),
+			__( 'SurveyFunnel', 'surveyfunnel' ),
 			'manage_options',
 			'wpsf-dashboard',
 			'',
