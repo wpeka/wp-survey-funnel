@@ -59,6 +59,15 @@ export const Choices = React.memo(
             return true;
         }
 
+        currentElementName( componentName ) {
+            switch(componentName){
+                case 'SingleChoice':
+                    return 'Single Choice';
+                case 'MultiChoice':
+                    return 'Multi Choice';
+            }
+        }
+
         render() {
             const { currentElement } = this.props;
             const { designCon } = this.props;
@@ -66,7 +75,7 @@ export const Choices = React.memo(
                 <>
                     <div className="modalOverlay">
                         <div className="modalContent-navbar">
-                            <h2>{currentElement.name}</h2>
+                            <h3>Content Elements &nbsp; &#62; &nbsp; {this.currentElementName(currentElement.componentName)} &nbsp; &#62; &nbsp; {this.state.title}</h3>
                             <CloseModal/>
                         </div>
                         <div className="modalContent">
