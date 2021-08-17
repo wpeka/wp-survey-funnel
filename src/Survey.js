@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import 'regenerator-runtime/runtime'
 import Frame, { useFrame } from 'react-frame-component'
 import fetchData from './HelperComponents/fetchData'
-import { initColorState, ItemTypes } from './Data'
+import { initColorState, ItemTypes, popupInitialState } from './Data'
 import './scss/survey.scss'
 function validateEmail(email) {
     const re =
@@ -24,6 +24,14 @@ let id = 'wpsf-survey-' + data.userLocalID
 let metaTitle = '';
 let metaDescription = '';
 let companyBranding = true;
+let shareSettings = {
+    popup: { ...popupInitialState }
+};
+
+var available;
+var percentage_of_page;
+var half_screen;
+var contentHeight;
 
 if ( data.configure !== '' ) {
     let configure = JSON.parse(data.configure);
@@ -46,7 +54,7 @@ function Survey() {
     
     const iframeRef = React.createRef()
     const [height, setHeight] = useState(650);
-    const [ showSurvey, setShowSurvey ] = useState(true);
+    const [ showSurvey, setShowSurvey ] = useState( data.type === 'popup' ? false : true );
     
     let designCon = {}
     if (data.design === '') {
@@ -55,15 +63,58 @@ function Survey() {
         designCon = JSON.parse(data.design)
     }
 
+    if ( data.share !== '' ) {
+        shareSettings = JSON.parse( data.share );
+    }
+
+    useEffect(() => {
+        console.log('heere');
+        if ( data.type === 'popup' ) {
+            const { launchOptions } = shareSettings.popup.behaviourOptions;
+            switch( launchOptions.launchWhen ) {
+                case 'afterPageLoads':
+                    setShowSurvey(true);
+                    console.log('hello world');
+                    break;
+                case 'afterTimeDelay':
+                    setTimeout(() => {
+                        setShowSurvey(true);
+                    }, launchOptions.afterTimeDelay * 1000)
+                    break;
+                case 'afterScrollPercentage':
+                    showPopupOnScroll(launchOptions.afterScrollPercentage);
+                    break;
+            }
+        }
+    }, [shareSettings])
+
+    const showPopupOnScroll = (scrollPercentage) => {
+        window.addEventListener('scroll', () => {
+            available = document.body.scrollHeight;
+            half_screen = available * scrollPercentage;
+            contentHeight = window.scrollY || window.scrollTop || document.getElementsByTagName("html")[0].scrollTop;
+            let docHeight = window.innerHeight;
+            
+            var scrollPercent = (contentHeight) / (available - docHeight);
+			var scrollPercentRounded = Math.round(scrollPercent*100);
+            console.log(scrollPercentRounded);
+            if ( scrollPercentRounded > scrollPercentage ) {
+                setShowSurvey(true);
+            } else {
+                setShowSurvey(false);
+            }
+        })
+    }
+
     const handleResize = useCallback(
         (iframe) => {
             const height =
-                iframe.current?.node.contentDocument?.body.scrollHeight ?? 0
+                iframe.current?.node.contentDocument?.body?.scrollHeight ?? 0
             if (height !== 0) {
                 setHeight(height)
             }
 
-            iframe.current?.node.contentDocument?.body.style.setProperty(
+            iframe.current?.node.contentDocument?.body?.style.setProperty(
                 "--answer-highlight-box-color",
                 convertToRgbaCSS(designCon.answersHighlightBoxColor),
                 'important'
@@ -689,6 +740,11 @@ function Survey() {
     }
 
     const dismissSurvey = () => {
+        if ( data.type === 'popup' ) {
+            if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
+                setCookie('wpsf-dismiss-survey', data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
+            }
+        }
         setShowSurvey(false);
     }
 
@@ -704,10 +760,18 @@ function Survey() {
                     if ( pattern.test( wpsfSurveyCookie ) ) {
                         return;
                     }
-                    setCookie('wpsf-survey-completed', wpsfSurveyCookie + ',' + data.post_id , 1);
+                    if ( data.type === 'popup' ) {
+                        setCookie('wpsf-survey-completed', wpsfSurveyCookie + ',' + data.post_id , 28625 );
+                    }
+                    else
+                        setCookie('wpsf-survey-completed', wpsfSurveyCookie + ',' + data.post_id , 1);
                 }
                 else {
-                    setCookie('wpsf-survey-completed', data.post_id , 1);
+                    if ( data.type === 'popup' ) {
+                        setCookie('wpsf-survey-completed', data.post_id , 28625 );
+                    }
+                    else
+                        setCookie('wpsf-survey-completed', data.post_id , 1);
                 }
                 setShowSurvey(false);
                 return;
@@ -827,6 +891,7 @@ function setCookie(name,value,days) {
         var date = new Date();
         date.setTime(date.getTime() + (days*24*60*60*1000));
         expires = "; expires=" + date.toUTCString();
+        console.log(expires);
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }

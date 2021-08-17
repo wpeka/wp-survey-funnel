@@ -210,6 +210,7 @@ export const shareTabsData = [
 ]
 
 export const popupInitialState = {
+	active: false,
 	targettingOptions: {
 		devices: [
 			{
