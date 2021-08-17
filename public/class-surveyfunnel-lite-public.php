@@ -139,9 +139,11 @@ class Surveyfunnel_Lite_Public {
 			}
 		}
 
+		$defaults  = Surveyfunnel_Lite_Admin::wpsf_get_default_save_array();
 		$meta_data = get_post_meta( $atts['id'], 'wpsf-survey-data', true );
+		$meta_data = wp_parse_args( $meta_data, $defaults );
 		$share     = json_decode( $meta_data['share'] );
-		if ( ! $share || ! $share->popup->active ) {
+		if ( ! $share->popup->active && $atts['type'] === 'popup' ) {
 			return '';
 		}
 		$ip        = $_SERVER['REMOTE_ADDR'];//phpcs:ignore
