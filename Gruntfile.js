@@ -143,8 +143,8 @@ module.exports = function (grunt) {
 					options: {
 						domainPath: '/languages',
 						exclude: ['\.git/*', 'bin/*', 'node_modules/*', 'tests/*', '!vendor/**/*', '!auto-updates/*', '!analytics/*'],
-						mainFile: 'wp-survey-funnel.php',
-						potFilename: 'wp-survey-funnel.pot',
+						mainFile: 'surveyfunnel-lite.php',
+						potFilename: 'surveyfunnel.pot',
 						potHeaders: {
 							poedit: true,
 							'x-poedit-keywordslist': true

@@ -234,7 +234,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		global $wp_styles;
 		$enqueue_scripts = $wp_scripts->queue;
 		$enqueue_styles  = $wp_styles->registered;
-		$data            = $wp_scripts->get_data( 'wp-survey-funnel-mascot', 'data' );
+		$data            = $wp_scripts->get_data( 'surveyfunnel-lite-mascot', 'data' );
 		$data            = trim( str_replace( 'var mascot =', '', $data ) );
 		$data            = trim( str_replace( ';', '', $data ) );
 		$localize_data   = json_decode( $data, true );
@@ -247,8 +247,8 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$this->assertSame( __( 'See Quick Links', 'surveyfunnel' ), $localize_data['quick_links_text'] );
 
 		$this->assertSame( '<div id="adc-mascot-app"></div>', trim( $output ) );
-		$this->assertTrue( in_array( 'wp-survey-funnel-mascot', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		$this->assertArrayHasKey( 'wp-survey-funnel-mascot', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertTrue( in_array( 'surveyfunnel-lite-mascot', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertArrayHasKey( 'surveyfunnel-lite-mascot', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 	}
 
 }

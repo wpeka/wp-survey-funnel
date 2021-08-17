@@ -108,7 +108,7 @@ class Test_Surveyfunnel_Lite_Public extends WP_UnitTestCase {
 		self::$surveyfunnel_lite_public->enqueue_styles();
 		global $wp_styles;
 		$enqueue_styles = $wp_styles->registered;
-		$this->assertArrayHasKey( 'wp-survey-funnel-public', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertArrayHasKey( 'surveyfunnel-lite-public', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 	}
 
 	/**
