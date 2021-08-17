@@ -8,8 +8,8 @@
  * @link  https://club.wpeka.com
  * @since 1.0.0
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/includes
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/includes
  */
 
 /**
@@ -19,11 +19,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/includes
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/includes
  * @author     WPEka Club <support@wpeka.com>
  */
-class Wp_Survey_Funnel_I18n {
+class Surveyfunnel_Lite_I18n {
 
 
 
@@ -35,7 +35,7 @@ class Wp_Survey_Funnel_I18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'wp-survey-funnel',
+			'surveyfunnel',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

@@ -1,27 +1,27 @@
 <?php
 /**
- * Class Test_Wp_Survey_Funnel
+ * Class Test_Surveyfunnel_Lite
  *
- * @package Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/Tests
+ * @package Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/Tests
  */
 
 /**
- * Unit test cases for class Wp_Survey_Funnel.
+ * Unit test cases for class Surveyfunnel_Lite.
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/Tests
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/Tests
  * @author     WPEka <hello@wpeka.com>
  */
-class Test_Wp_Survey_Funnel extends WP_UnitTestCase {
+class Test_Surveyfunnel_Lite extends WP_UnitTestCase {
 
 	/**
-	 * Wp_Survey_Funnel class instance.
+	 * Surveyfunnel_Lite class instance.
 	 *
 	 * @access public
-	 * @var string $wp_survey_funnel class instance.
+	 * @var string $surveyfunnel_lite class instance.
 	 */
-	public static $wp_survey_funnel;
+	public static $surveyfunnel_lite;
 
 	/**
 	 * Set up function.
@@ -29,30 +29,30 @@ class Test_Wp_Survey_Funnel extends WP_UnitTestCase {
 	 * @param class WP_UnitTest_Factory $factory class instance.
 	 */
 	public static function wpSetUpBeforeClass( WP_UnitTest_Factory $factory ) {
-		self::$wp_survey_funnel = new Wp_Survey_Funnel();
+		self::$surveyfunnel_lite = new Surveyfunnel_Lite();
 	}
 
 	/**
 	 * Test for constructor
 	 */
 	public function test_construct() {
-		$obj = new Wp_Survey_Funnel();
-		$this->assertTrue( $obj instanceof Wp_Survey_Funnel );
+		$obj = new Surveyfunnel_Lite();
+		$this->assertTrue( $obj instanceof Surveyfunnel_Lite );
 	}
 
 	/**
 	 * Test for get_plugin_name function
 	 */
 	public function test_get_plugin_name() {
-		$plugin_name = self::$wp_survey_funnel->get_plugin_name();
-		$this->assertSame( 'wp-survey-funnel', $plugin_name );
+		$plugin_name = self::$surveyfunnel_lite->get_plugin_name();
+		$this->assertSame( 'surveyfunnel-lite', $plugin_name );
 	}
 
 	/**
 	 * Test for get_version function
 	 */
 	public function test_get_version() {
-		$version = self::$wp_survey_funnel->get_version();
+		$version = self::$surveyfunnel_lite->get_version();
 		$this->assertSame( '1.0.0', $version );
 	}
 
@@ -60,15 +60,15 @@ class Test_Wp_Survey_Funnel extends WP_UnitTestCase {
 	 * Test for check_pro_activated function
 	 */
 	public function test_check_pro_activated() {
-		$is_pro_activated = self::$wp_survey_funnel->check_pro_activated();
-		$this->assertEquals( get_option( 'wp_survey_funnel_activated' ), $is_pro_activated );
+		$is_pro_activated = self::$surveyfunnel_lite->check_pro_activated();
+		$this->assertEquals( get_option( 'surveyfunnel_pro_activated' ), $is_pro_activated );
 	}
 
 	/**
 	 * Test for get_loader function
 	 */
 	public function test_get_loader() {
-		$loader = self::$wp_survey_funnel->get_loader();
+		$loader = self::$surveyfunnel_lite->get_loader();
 		$loader = (array) $loader;
 		$it     = new RecursiveIteratorIterator( new RecursiveArrayIterator( $loader ) );
 		$array  = array();
@@ -88,7 +88,7 @@ class Test_Wp_Survey_Funnel extends WP_UnitTestCase {
 	 * Test for run function.
 	 */
 	public function test_run() {
-		self::$wp_survey_funnel->run();
+		self::$surveyfunnel_lite->run();
 		$this->assertTrue( true );
 	}
 

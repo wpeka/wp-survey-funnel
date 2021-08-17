@@ -1,5 +1,5 @@
 {
-  "name": "wp-survey-funnel",
+  "name": "surveyfunnel-lite",
   "version": "1.0.0",
   "main": "Gruntfile.js",
   "author": "WPEka Club",
@@ -48,7 +48,7 @@
   "scripts": {
     "serve": "webpack --mode development",
     "build": "webpack --mode production",
-    "makepot": "wp i18n make-pot . languages/wp-survey-funnel.pot",
+    "makepot": "wp i18n make-pot . languages/surveyfunnel.pot",
     "test": "jest"
   }
 }

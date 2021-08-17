@@ -5,8 +5,8 @@
  * @link  https://club.wpeka.com
  * @since 1.0.0
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/includes
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/includes
  */
 
 /**
@@ -15,11 +15,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/includes
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/includes
  * @author     WPEka Club <support@wpeka.com>
  */
-class Wp_Survey_Funnel_Deactivator {
+class Surveyfunnel_Lite_Deactivator {
 
 
 	/**

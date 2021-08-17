@@ -1,8 +1,8 @@
 /**
  * Grunt Tasks JavaScript.
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite
  * @author     WPEka Club <support@wpeka.com>
  */
 
@@ -120,7 +120,7 @@ module.exports = function (grunt) {
 
 			addtextdomain: {
 				options: {
-					textdomain: 'wp-survey-funnel',
+					textdomain: 'surveyfunnel',
 				},
 				update_all_domains: {
 					options: {

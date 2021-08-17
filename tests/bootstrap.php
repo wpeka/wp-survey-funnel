@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package Wp_Survey_Funnel
+ * @package Surveyfunnel_Lite
  */
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
@@ -23,7 +23,7 @@ require_once $_tests_dir . '/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	$string = dirname( dirname( __FILE__ ) ) . '/wp-survey-funnel.php';
+	$string = dirname( dirname( __FILE__ ) ) . '/surveyfunnel-lite.php';
 	require $string;
 	// activate the plugin to get table on activation for testing.
 	do_action( 'activate_' . trim( $string, '/' ) ); //phpcs:ignore
