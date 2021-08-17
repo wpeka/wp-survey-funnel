@@ -68,17 +68,16 @@ function Survey() {
     }
 
     useEffect(() => {
-        console.log('heere');
         if ( data.type === 'popup' ) {
             const { launchOptions } = shareSettings.popup.behaviourOptions;
             switch( launchOptions.launchWhen ) {
                 case 'afterPageLoads':
-                    setShowSurvey(true);
+                    showOrHideSurvey(true);
                     console.log('hello world');
                     break;
                 case 'afterTimeDelay':
                     setTimeout(() => {
-                        setShowSurvey(true);
+                        showOrHideSurvey(true);
                     }, launchOptions.afterTimeDelay * 1000)
                     break;
                 case 'afterScrollPercentage':
@@ -100,11 +99,10 @@ function Survey() {
             
             var scrollPercent = (contentHeight) / (available - docHeight);
 			var scrollPercentRounded = Math.round(scrollPercent*100);
-            console.log(scrollPercentRounded);
             if ( scrollPercentRounded > scrollPercentage ) {
-                setShowSurvey(true);
+                showOrHideSurvey(true);
             } else {
-                setShowSurvey(false);
+                showOrHideSurvey(false);
             }
         })
     }
@@ -125,10 +123,9 @@ function Survey() {
                         exitY = 25;
                         break;
                 }
-                console.log(e.clientY + " " + exitY);
                 if ( exitY > e.clientY ) {
                     setTimeout(() => {
-                        setShowSurvey(true);
+                        showOrHideSurvey(true);
                     }, 500); 
                 }
             }
@@ -774,7 +771,8 @@ function Survey() {
                 setCookie('wpsf-dismiss-survey', data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
             }
         }
-        setShowSurvey(false);
+        showOrHideSurvey(false);
+        window.location.reload();
     }
 
     const restartOrCompleteSurvey = ( status ) => {
@@ -802,11 +800,24 @@ function Survey() {
                     else
                         setCookie('wpsf-survey-completed', data.post_id , 1);
                 }
-                setShowSurvey(false);
+                showOrHideSurvey(false);
                 return;
             default:
                 return;
         }
+    }
+
+    const showOrHideSurvey = ( status ) => {
+        if ( ! status ) {
+            setShowSurvey(false);
+        }
+        let wpsfSurveyDismissed = getCookie('wpsf-survey-dismissed');
+        let wpsfSurveyCompleted = getCookie('wpsf-survey-completed');
+        let postIdRegEx = new RegExp( data.post_id, 'i' );
+        if ( postIdRegEx.test( wpsfSurveyDismissed ) || postIdRegEx.test(wpsfSurveyCompleted) ) {
+            return;
+        }
+        setShowSurvey(true);
     }
 
     return (
@@ -921,7 +932,6 @@ function setCookie(name,value,days) {
         var date = new Date();
         date.setTime(date.getTime() + (days*24*60*60*1000));
         expires = "; expires=" + date.toUTCString();
-        console.log(expires);
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
