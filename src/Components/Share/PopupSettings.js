@@ -4,7 +4,7 @@ import Select from 'react-select';
 import fetchData from '../../HelperComponents/fetchData';
 
 export default function PopupSettings() {
-	const { popup, handleDevicesChange, saveSettings, handleTriggerPageChange, optionsChange, options, handleLaunchOptionsChange, handleLaunchOptionsData, handleFrequencyOptionsChange, handleFrequencyDataChange } = useContext(ShareContext);
+	const { popup, handleDevicesChange, saveSettings, handleTriggerPageChange, optionsChange, options, handleLaunchOptionsChange, handleLaunchOptionsData, handleFrequencyOptionsChange, handleFrequencyDataChange, handlePopupActivation } = useContext(ShareContext);
 	return (
 		<div className="popupSettings-container">
 			<div className="targetting-options">
@@ -76,6 +76,14 @@ export default function PopupSettings() {
 						if the visitor has completed the survey dont show it again:
 						<input type="checkbox" checked={popup.behaviourOptions.frequencyOptions.dontShowAgain} value={popup.behaviourOptions.frequencyOptions.dontShowAgain} name="dontShowAgain" onChange={(e) => {handleFrequencyDataChange('dontShowAgain', e.target.checked)}} />
 					</div>
+				</div>
+			</div>
+
+			<div className="reviewAndActivateOptions">
+				<p>Activate Popup: </p>
+				<div>
+					<input type="checkbox" value={popup.active} checked={popup.active} onChange={() => {handlePopupActivation()}} />
+					<span>Activate Popup</span>
 				</div>
 			</div>
 			<button type="button" onClick={saveSettings}>save</button>

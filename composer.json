@@ -10,7 +10,8 @@
     "php": ">=7.0",
     "composer/installers": "~1.7",
     "pelago/emogrifier": "3.1.0",
-    "psr/container": "1.0.0"
+    "psr/container": "1.0.0",
+    "mobiledetect/mobiledetectlib": "^2.8"
   },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
