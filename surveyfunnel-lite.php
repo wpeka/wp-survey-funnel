@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       SurveyFunnel Lite
  * Plugin URI:        https://club.wpeka.com/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Create and embed high-conversion survey forms for generating leads. Design survey forms with drag & drop builder and turn your WordPress site into a lead generation funnel.
  * Version:           1.0.0
  * Author:            WPEka Club
  * Author URI:        https://club.wpeka.com
