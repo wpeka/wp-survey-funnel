@@ -33,7 +33,7 @@ if ( data.configure !== '' ) {
 }
 
 const initialContent =
-    `<!DOCTYPE html><html><head><link rel="stylesheet" href="${data.styleSurveyLink}" /><style>*{margin:0; padding:0;}</style>
+    `<!DOCTYPE html><html><head><link rel="stylesheet" href="${data.styleSurveyLink}" /><style>*{margin:0; padding:0;box-sizing:border-box;}</style>
         <meta name="title" content="${metaTitle}" />
         <meta name="description" content="${metaDescription}" />
     </head><body><div class="frame-root"></div></body></html>`;

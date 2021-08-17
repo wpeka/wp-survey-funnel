@@ -226,7 +226,7 @@ export const FormElements = React.memo(
                 <>
                     <div className="modalOverlay">
                         <div className="modalContent-navbar">
-                            <h2>Form Builder</h2>
+                        <h3>Content Elements  &nbsp; &#62; &nbsp;  Form Elements  &nbsp; &#62; &nbsp;  {this.state.title} { this.state.currentFormElement ?   <span>  &nbsp; &#62; &nbsp;  {this.state.currentFormElement.name}</span> : ""}</h3>
                             <CloseModal/>
                         </div>
                         <div className="modalContent">

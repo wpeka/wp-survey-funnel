@@ -32,7 +32,7 @@ export const buildElements = {
 	],
 	resultScreen: [
 		{
-			name: 'Result Screen',
+			name: 'Results Page',
 			componentName: 'ResultScreen',
 			itemType: ItemTypes.RESULT_ELEMENTS
 		}
@@ -51,7 +51,7 @@ export const dropBoard = [
 		itemType: ItemTypes.CONTENT_ELEMENTS
 	},
 	{
-		name: 'Results',
+		name: 'Results Screen',
 		type: 'ResultsScreen',
 		itemType: ItemTypes.RESULT_ELEMENTS
 	}
