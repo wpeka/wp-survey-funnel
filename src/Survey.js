@@ -84,6 +84,9 @@ function Survey() {
                 case 'afterScrollPercentage':
                     showPopupOnScroll(launchOptions.afterScrollPercentage);
                     break;
+                case 'afterExitIntent':
+                    showPopupOnExitIntent( launchOptions.afterExitIntent );
+                    break;
             }
         }
     }, [shareSettings])
@@ -104,6 +107,32 @@ function Survey() {
                 setShowSurvey(false);
             }
         })
+    }
+
+    const showPopupOnExitIntent = ( exitIntent ) => {
+        window.addEventListener('mousemove', (e) => {
+            
+            if ( ! showSurvey ) {
+                let exitY = 999999;
+                switch( exitIntent ) {
+                    case 'high':
+                        exitY = 100;
+                        break;
+                    case 'medium':
+                        exitY = 50;
+                        break;
+                    case 'low':
+                        exitY = 25;
+                        break;
+                }
+                console.log(e.clientY + " " + exitY);
+                if ( exitY > e.clientY ) {
+                    setTimeout(() => {
+                        setShowSurvey(true);
+                    }, 500); 
+                }
+            }
+        });
     }
 
     const handleResize = useCallback(
