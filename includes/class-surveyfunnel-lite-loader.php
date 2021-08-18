@@ -5,8 +5,8 @@
  * @link  https://club.wpeka.com
  * @since 1.0.0
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/includes
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/includes
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/includes
  * @author     WPEka Club <support@wpeka.com>
  */
-class Wp_Survey_Funnel_Loader {
+class Surveyfunnel_Lite_Loader {
 
 
 	/**
@@ -68,7 +68,7 @@ class Wp_Survey_Funnel_Loader {
 	 * @param object $component        A reference to the instance of the object on which the filter is defined.
 	 * @param string $callback         The name of the function definition on the $component.
 	 * @param int    $priority         Optional. The priority at which the function should be fired. Default is 10.
-	 * @param int    $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1
+	 * @param int    $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
 	 */
 	public function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
 		$this->filters = $this->add( $this->filters, $hook, $component, $callback, $priority, $accepted_args );
@@ -83,7 +83,7 @@ class Wp_Survey_Funnel_Loader {
 	 * @param object $component        A reference to the instance of the object on which the filter is defined.
 	 * @param string $callback         The name of the function definition on the $component.
 	 * @param int    $priority         The priority at which the function should be fired.
-	 * @param int    $accepted_args    The number of arguments that should be passed to the $callback.                               The collection of actions and filters registered with WordPress.
+	 * @param int    $accepted_args    The number of arguments that should be passed to the $callback. The collection of actions and filters registered with WordPress.
 	 */
 	private function add( $hooks, $hook, $component, $callback, $priority, $accepted_args ) {
 

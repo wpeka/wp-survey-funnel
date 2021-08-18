@@ -1,8 +1,8 @@
 /**
  * Grunt Tasks JavaScript.
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite
  * @author     WPEka Club <support@wpeka.com>
  */
 
@@ -86,6 +86,8 @@ module.exports = function (grunt) {
 					'**',
 					'!node_modules/**',
 					'!vendor/**',
+					'vendor/mobiledetect/**',
+                    'vendor/autoload.php',
 					'!release/**',
 					'!build/**',
 					'!tests/**',
@@ -120,7 +122,7 @@ module.exports = function (grunt) {
 
 			addtextdomain: {
 				options: {
-					textdomain: 'wp-survey-funnel',
+					textdomain: 'surveyfunnel',
 				},
 				update_all_domains: {
 					options: {
@@ -143,8 +145,8 @@ module.exports = function (grunt) {
 					options: {
 						domainPath: '/languages',
 						exclude: ['\.git/*', 'bin/*', 'node_modules/*', 'tests/*', '!vendor/**/*', '!auto-updates/*', '!analytics/*'],
-						mainFile: 'wp-survey-funnel.php',
-						potFilename: 'wp-survey-funnel.pot',
+						mainFile: 'surveyfunnel-lite.php',
+						potFilename: 'surveyfunnel.pot',
 						potHeaders: {
 							poedit: true,
 							'x-poedit-keywordslist': true

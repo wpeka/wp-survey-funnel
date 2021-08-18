@@ -61,7 +61,7 @@ export default function Build() {
 							</div>
 						</div>
 						<div className="wpsf-build-elements_results">
-							<h3>Result Screen:</h3>
+							<h3>Results Screen:</h3>
 							<div className="wpsf-build-elements_container">
 								{buildElements.resultScreen.map(function( ele, i ) {
 									return <BuildElement ele={ele} key={i}></BuildElement>

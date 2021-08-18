@@ -2,7 +2,7 @@
 /**
  * Class SampleTest
  *
- * @package Wp_Survey_Funnel
+ * @package Surveyfunnel_Lite
  */
 
 /**

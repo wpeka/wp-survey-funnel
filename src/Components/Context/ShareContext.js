@@ -19,7 +19,8 @@ export function ShareContextProvider( props ) {
 		setPopup(newPopup);
 	}
 
-	const saveSettings = () => {
+	const saveSettings = (e) => {
+		e.target.classList.add('wpsf-button-loading');
 		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
@@ -31,6 +32,7 @@ export function ShareContextProvider( props ) {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData( ajaxURL, data )
         .then(data => {
+			e.target.classList.remove('wpsf-button-loading');
         })
 	}
 
@@ -89,6 +91,17 @@ export function ShareContextProvider( props ) {
 	}
 
 	const handleLaunchOptionsData = ( data, e ) => {
+		if(data === 'afterScrollPercentage') {
+			const bubble = document.querySelector(".wpsf-bubble");
+			const range = e.target;
+			const val = range.value;
+			const min = range.min ? range.min : 0;
+			const max = range.max ? range.max : 100;
+			const newVal = Number(((val - min) * 100) / (max - min));
+			bubble.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+			bubble.innerHTML = val+'%';
+		}
+
 		let newPopup = JSON.parse(JSON.stringify(popup));
 		newPopup.behaviourOptions.launchOptions[data] = e.target.value;
 		setPopup(newPopup);
@@ -106,6 +119,12 @@ export function ShareContextProvider( props ) {
 		setPopup(newPopup);
 	}
 
+	const handlePopupActivation = () => {
+		let newPopup = JSON.parse(JSON.stringify(popup));
+		newPopup.active = !newPopup.active;
+		setPopup(newPopup);
+	}
+
 	let state = {
 		popup,
 		handleDevicesChange,
@@ -116,7 +135,8 @@ export function ShareContextProvider( props ) {
 		handleLaunchOptionsChange,
 		handleLaunchOptionsData,
 		handleFrequencyOptionsChange,
-		handleFrequencyDataChange
+		handleFrequencyDataChange,
+		handlePopupActivation
 	}
 
 	return (

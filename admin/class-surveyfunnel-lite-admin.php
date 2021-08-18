@@ -5,8 +5,8 @@
  * @link  https://club.wpeka.com
  * @since 1.0.0
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/admin
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/admin
  */
 
 /**
@@ -15,11 +15,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/admin
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/admin
  * @author     WPEka Club <support@wpeka.com>
  */
-class Wp_Survey_Funnel_Admin {
+class Surveyfunnel_Lite_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -61,7 +61,7 @@ class Wp_Survey_Funnel_Admin {
 
 		wp_register_style(
 			$this->plugin_name,
-			plugin_dir_url( __FILE__ ) . 'css/wp-survey-funnel-admin.css',
+			plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-admin.css',
 			array(),
 			time(),
 			'all'
@@ -69,7 +69,7 @@ class Wp_Survey_Funnel_Admin {
 
 		wp_register_style(
 			$this->plugin_name . '-mascot',
-			plugin_dir_url( __FILE__ ) . 'css/wp-survey-funnel-mascot.css',
+			plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-mascot.css',
 			array(),
 			time(),
 			'all'
@@ -86,7 +86,7 @@ class Wp_Survey_Funnel_Admin {
 
 		wp_enqueue_script(
 			$this->plugin_name,
-			plugin_dir_url( __FILE__ ) . 'js/wp-survey-funnel-admin.js',
+			plugin_dir_url( __FILE__ ) . 'js/surveyfunnel-lite-admin.js',
 			array( 'jquery' ),
 			$this->version,
 			false
@@ -111,7 +111,7 @@ class Wp_Survey_Funnel_Admin {
 
 		wp_register_script(
 			$this->plugin_name . '-mascot',
-			plugin_dir_url( __FILE__ ) . 'js/wp-survey-funnel-mascot.js',
+			plugin_dir_url( __FILE__ ) . 'js/surveyfunnel-lite-mascot.js',
 			array( $this->plugin_name . '-vue' ),
 			$this->version,
 			false
@@ -129,19 +129,19 @@ class Wp_Survey_Funnel_Admin {
 		add_dashboard_page( '', '', 'manage_options', 'wpsf-survey', '' );
 
 		add_menu_page(
-			__( 'Survey Funnel', 'wp-survey-funnel' ),
-			__( 'Survey Funnel', 'wp-survey-funnel' ),
+			__( 'SurveyFunnel', 'surveyfunnel' ),
+			__( 'SurveyFunnel', 'surveyfunnel' ),
 			'manage_options',
 			'wpsf-dashboard',
 			'',
-			WP_SURVEY_FUNNEL_PLUGIN_URL . 'images/SF-logo.png'
+			SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/SF-logo.png'
 		);
 
 		// Dashboard.
 		add_submenu_page(
 			'wpsf-dashboard',
-			__( 'Dashboard', 'wp-survey-funnel' ),
-			__( 'Dashboard', 'wp-survey-funnel' ),
+			__( 'Dashboard', 'surveyfunnel' ),
+			__( 'Dashboard', 'surveyfunnel' ),
 			'manage_options',
 			'wpsf-dashboard',
 			array( $this, 'wpsf_dashboard' )
@@ -151,8 +151,8 @@ class Wp_Survey_Funnel_Admin {
 		/*
 		 add_submenu_page(
 			'wpsf-dashboard',
-			__( 'Settings', 'wp-survey-funnel' ),
-			__( 'Settings', 'wp-survey-funnel' ),
+			__( 'Settings', 'surveyfunnel' ),
+			__( 'Settings', 'surveyfunnel' ),
 			'manage_options',
 			'wpsf-settings',
 			array( $this, 'wpsf_settings' )
@@ -161,8 +161,8 @@ class Wp_Survey_Funnel_Admin {
 		// Help.
 		add_submenu_page(
 			'wpsf-dashboard',
-			__( 'Help', 'wp-survey-funnel' ),
-			__( 'Help', 'wp-survey-funnel' ),
+			__( 'Help', 'surveyfunnel' ),
+			__( 'Help', 'surveyfunnel' ),
 			'manage_options',
 			'wpsf-help',
 			array( $this, 'wpsf_help' )
@@ -189,7 +189,7 @@ class Wp_Survey_Funnel_Admin {
 			<div class="wpsf-container-main">
 				<div class="wpsf-header">
 					<div class="wpsf-logo">
-						<img width="350" src="<?php echo WP_SURVEY_FUNNEL_PLUGIN_URL . 'images/wpsf-main-logo.png';//phpcs:ignore ?>" alt="wpsf-main-logo">
+						<img width="350" src="<?php echo SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/wpsf-main-logo.png';//phpcs:ignore ?>" alt="wpsf-main-logo">
 					</div>
 				</div>
 				<div class="wpsf-inner-container">
@@ -235,8 +235,8 @@ class Wp_Survey_Funnel_Admin {
 
 		// register hidden post type 'wpsf-survey'.
 		$args = array(
-			'label'               => __( 'wpsf-survey', 'wp-survey-funnel' ),
-			'description'         => __( 'wpsf-survey custom post type to generate surveys', 'wp-survey-funnel' ),
+			'label'               => __( 'wpsf-survey', 'surveyfunnel' ),
+			'description'         => __( 'wpsf-survey custom post type to generate surveys', 'surveyfunnel' ),
 			'labels'              => $labels,
 			'supports'            => array( 'title' ),
 			'hierarchical'        => false,
@@ -344,7 +344,7 @@ class Wp_Survey_Funnel_Admin {
 
 		wp_register_script(
 			$this->plugin_name . '-main',
-			WP_SURVEY_FUNNEL_PLUGIN_URL . 'dist/index.bundle.js',
+			SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/index.bundle.js',
 			array( 'wp-i18n' ),
 			time(),
 			true
@@ -501,12 +501,12 @@ class Wp_Survey_Funnel_Admin {
 	/**
 	 * Get default array save data in post_content.
 	 */
-	public function wpsf_get_default_save_array() {
+	public static function wpsf_get_default_save_array() {
 		return array(
-			'build'     => '',
-			'design'    => '',
-			'configure' => '',
-			'share'     => '',
+			'build'     => '{"List":{"START_ELEMENTS":[],"CONTENT_ELEMENTS":[],"RESULT_ELEMENTS":[]},"title":"survey test"}',
+			'design'    => '{"opacity":0,"fontFamily":null,"fontFamilyValue":"","backgroundColor":{"r":"255","g":"255","b":"255","a":"1"},"buttonColor":{"r":"1","g":"111","b":"222","a":"1"},"buttonTextColor":{"r":"255","g":"255","b":"255","a":"1"},"answersHighlightBoxColor":{"r":"232","g":"238","b":"244","a":"1"},"answerBorderColor":{"r":"180","g":"220","b":"255","a":"1"},"backgroundContainerColor":{"r":"255","g":"255","b":"255","a":"1"},"fontColor":{"r":"0","g":"0","b":"0","a":"1"}}',
+			'configure' => '{"metaInfo":{"title":"","description":""},"companyBranding":true}',
+			'share'     => '{"popup":{"active":false,"targettingOptions":{"devices":[{"name":"Desktop","checked":true,"id":"desktop"},{"name":"Mobile","checked":true,"id":"mobile"},{"name":"Tablet","checked":true,"id":"tablet"}],"triggerPage":"triggerOnSpecific","selectedPagesAndPosts":[]},"behaviourOptions":{"launchOptions":{"launchWhen":"afterPageLoads","afterTimeDelay":5,"afterExitIntent":"low","afterScrollPercentage":20},"frequencyOptions":{"frequency":"alwaysShow","hideFor":3,"dontShowAgain":false}}}}',
 			'reports'   => '',
 		);
 	}
@@ -746,24 +746,24 @@ class Wp_Survey_Funnel_Admin {
 
 		$return_array = array(
 			'menu_items'       => array(
-				'support_text'       => __( 'Support', 'wp-survey-funnel' ),
+				'support_text'       => __( 'Support', 'surveyfunnel' ),
 				'support_url'        => $support_url,
-				'documentation_text' => __( 'Documentation', 'wp-survey-funnel' ),
+				'documentation_text' => __( 'Documentation', 'surveyfunnel' ),
 				'documentation_url'  => 'https://docs.wpeka.com/survey-funnel/v/master/',
-				'faq_text'           => __( 'FAQ', 'wp-survey-funnel' ),
+				'faq_text'           => __( 'FAQ', 'surveyfunnel' ),
 				'faq_url'            => 'https://docs.wpeka.com/survey-funnel/v/master/faq',
-				'upgrade_text'       => __( 'Upgrade to Pro &raquo;', 'wp-survey-funnel' ),
+				'upgrade_text'       => __( 'Upgrade to Pro &raquo;', 'surveyfunnel' ),
 				'upgrade_url'        => 'https://club.wpeka.com/product/survey-funnel/?utm_source=survey-funnel&utm_medium=help-mascot&utm_campaign=link&utm_content=upgrade-to-pro',
 			),
 			'is_pro'           => $is_pro,
-			'quick_links_text' => __( 'See Quick Links', 'wp-survey-funnel' ),
+			'quick_links_text' => __( 'See Quick Links', 'surveyfunnel' ),
 		);
 		wp_enqueue_script( $this->plugin_name . '-mascot' );
 		wp_enqueue_style( $this->plugin_name . '-mascot' );
 		wp_localize_script( $this->plugin_name . '-mascot', 'mascot', $return_array );
 
 		?>
-			<div id="adc-mascot-app"></div>
+			<div id="srf-mascot-app"></div>
 		<?php
 	}
 

@@ -1,9 +1,9 @@
 <?php
 /**
- * Class Test_Wp_Survey_Funnel_Ajax
+ * Class Test_Surveyfunnel_Lite_Ajax
  *
- * @package Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/Tests
+ * @package Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/Tests
  */
 
 /**
@@ -14,11 +14,11 @@ require_once ABSPATH . 'wp-admin/includes/ajax-actions.php';
 /**
  * Unit test cases for ajax request.
  *
- * @package    Wp_Survey_Funnel
- * @subpackage Wp_Survey_Funnel/Tests
+ * @package    Surveyfunnel_Lite
+ * @subpackage Surveyfunnel_Lite/Tests
  * @author     WPEka <hello@wpeka.com>
  */
-class Test_Wp_Survey_Funnel_Ajax extends WP_Ajax_UnitTestCase {
+class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 
 	/**
 	 * Created dummy post id array
