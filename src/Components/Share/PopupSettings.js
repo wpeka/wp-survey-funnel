@@ -4,9 +4,8 @@ import Select from 'react-select';
 import fetchData from '../../HelperComponents/fetchData';
 
 export default function PopupSettings() {
-	const { popup, handleDevicesChange, saveSettings, handleTriggerPageChange, optionsChange, options, handleLaunchOptionsChange, handleLaunchOptionsData, handleFrequencyOptionsChange, handleFrequencyDataChange } = useContext(ShareContext);
+	const { popup, handleDevicesChange, saveSettings, handleTriggerPageChange, optionsChange, options, handleLaunchOptionsChange, handleLaunchOptionsData, handleFrequencyOptionsChange, handleFrequencyDataChange, handlePopupActivation } = useContext(ShareContext);
 	const handleCollapseTarget =function(e){
-		var collapseElementId = e.target.dataset.collapsetarget;
 		var collapseElement = document.getElementById('wpsf_targetting_options');
 		if ( collapseElement.style.display == 'none' ) {
 			collapseElement.style.display = 'block';
@@ -14,8 +13,15 @@ export default function PopupSettings() {
 		else {
 			collapseElement.style.display = 'none';
 		}
-
-
+	}
+	const handleCollapseActivate =function(e){
+		var collapseElement = document.getElementById('wpsf_activate_popup_container');
+		if ( collapseElement.style.display == 'none' ) {
+			collapseElement.style.display = 'block';
+		}
+		else {
+			collapseElement.style.display = 'none';
+		}
 	}
 	const handleCollapseBehaviour =function(e){
 		var collapseElement = document.getElementById('wpsf_behaviour');
@@ -152,9 +158,19 @@ export default function PopupSettings() {
 							<label htmlFor="wpsf_show_survey_again" > </label>
 
 						</div>
+
+					</div>
+				</div>
+				<button  className="wpsf-share-collapsible wpsf-activate-btn" onClick={(e)=>{handleCollapseActivate(e)}}><h3>Activate</h3></button>
+				<div id="wpsf_activate_popup_container" className="activate-popup-options"  style={{display:'none'}}>
+						<div className="reviewAndActivateOptions">
+							<p>Activate Popup: </p>
+							<input id="wpsf_activate_popup" type="checkbox" value={popup.active} checked={popup.active} onChange={() => {handlePopupActivation()}} />
+							<label htmlFor="wpsf_activate_popup"> </label>
 					</div>
 				</div>
 			</div>
+
 			<div className="share-info-save-container">
 				<button type="button" onClick={saveSettings}>Save</button>
 			</div>

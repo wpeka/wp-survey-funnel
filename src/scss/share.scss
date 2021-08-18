@@ -162,10 +162,11 @@
                             margin: 0;
                         }
                     }
-                    .wpsf-target-btn{
+                    .wpsf-target-btn, .wpsf-behaviour-btn{
                         margin-top: 20px;
                     }
-                    .wpsf-behaviour-btn{
+
+                    .wpsf-activate-btn{
                         margin : 20px 0 10px 0;
                     }
                     .targetting-options{
@@ -267,13 +268,12 @@
                     }
                     .behaviour-options{
                         background-color: #F0F2F5;
-                        background-color: #F0F2F5;
                         padding: 20px;
                         border-radius: 9px;
-                        margin: 0 0 20px 0;
                         width: 940px;
                         display: none;
                         color: #626F7D;
+                        margin-top: 10px;
                         .launchOptions, .frequency{
                             .launchOptions-field{
                                 margin-bottom: 10px;
@@ -440,7 +440,7 @@
                             }
 
                         }
-                        .frequency{
+                        .frequency {
                             .wpsf-freq-show-again{
                                 display: flex;
                                 flex-direction: column;
@@ -484,9 +484,64 @@
                                     width: 50px;
                                 }
                             }
+
                         }
                     }
 
+                }
+                .activate-popup-options{
+                    background-color: #F0F2F5;
+                    padding: 20px;
+                    border-radius: 9px;
+                    margin: 0 0 20px 0;
+                    width: 940px;
+                    display: none;
+                    color: #626F7D;
+                    margin: 0 0 20px 0;
+
+                    .reviewAndActivateOptions{
+                        display: flex;
+                        flex-direction: column;
+                        p{
+                            margin: 0 0 10px 0;;
+                        }
+                        label {
+                            cursor: pointer;
+                            width: 50px;
+                            height: 20px;
+                            background: grey;
+                            display: block;
+                            border-radius: 100px;
+                            position: relative;
+                        }
+                        
+                        label:after {
+                            content: '';
+                            position: absolute;
+                            top: 5px;
+                            left: 5px;
+                            width: 10px;
+                            height: 10px;
+                            background: #fff;
+                            border-radius: 90px;
+                            transition: 0.3s;
+                        }
+                        input{
+                            display: none;
+                        }
+                        input:checked + label {
+                            background: #4CAF50;
+                        }
+                        
+                        input:checked + label:after {
+                            left: calc(100% - 5px);
+                            transform: translateX(-100%);
+                        }
+                        
+                        label:active:after {
+                            width: 50px;
+                        }
+                    }          
                 }
                 .share-info-save-container{
                     padding: 20px 0 20px 40px;
@@ -535,6 +590,9 @@ $medium-size : 1400px;
                             }
                         }
                         .behaviour-options{
+                            width: 640px;
+                        }
+                        .activate-popup-options{
                             width: 640px;
                         }
                     }

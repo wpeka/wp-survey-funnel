@@ -129,8 +129,8 @@ class Surveyfunnel_Lite_Admin {
 		add_dashboard_page( '', '', 'manage_options', 'wpsf-survey', '' );
 
 		add_menu_page(
-			__( 'Survey Funnel', 'surveyfunnel' ),
-			__( 'Survey Funnel', 'surveyfunnel' ),
+			__( 'SurveyFunnel', 'surveyfunnel' ),
+			__( 'SurveyFunnel', 'surveyfunnel' ),
 			'manage_options',
 			'wpsf-dashboard',
 			'',
@@ -501,12 +501,12 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Get default array save data in post_content.
 	 */
-	public function wpsf_get_default_save_array() {
+	public static function wpsf_get_default_save_array() {
 		return array(
-			'build'     => '',
-			'design'    => '',
-			'configure' => '',
-			'share'     => '',
+			'build'     => '{"List":{"START_ELEMENTS":[],"CONTENT_ELEMENTS":[],"RESULT_ELEMENTS":[]},"title":"survey test"}',
+			'design'    => '{"opacity":0,"fontFamily":null,"fontFamilyValue":"","backgroundColor":{"r":"255","g":"255","b":"255","a":"1"},"buttonColor":{"r":"1","g":"111","b":"222","a":"1"},"buttonTextColor":{"r":"255","g":"255","b":"255","a":"1"},"answersHighlightBoxColor":{"r":"232","g":"238","b":"244","a":"1"},"answerBorderColor":{"r":"180","g":"220","b":"255","a":"1"},"backgroundContainerColor":{"r":"255","g":"255","b":"255","a":"1"},"fontColor":{"r":"0","g":"0","b":"0","a":"1"}}',
+			'configure' => '{"metaInfo":{"title":"","description":""},"companyBranding":true}',
+			'share'     => '{"popup":{"active":false,"targettingOptions":{"devices":[{"name":"Desktop","checked":true,"id":"desktop"},{"name":"Mobile","checked":true,"id":"mobile"},{"name":"Tablet","checked":true,"id":"tablet"}],"triggerPage":"triggerOnSpecific","selectedPagesAndPosts":[]},"behaviourOptions":{"launchOptions":{"launchWhen":"afterPageLoads","afterTimeDelay":5,"afterExitIntent":"low","afterScrollPercentage":20},"frequencyOptions":{"frequency":"alwaysShow","hideFor":3,"dontShowAgain":false}}}}',
 			'reports'   => '',
 		);
 	}

@@ -1,70 +1,104 @@
-=== SurveyFunnel Lite ===
+=== SurveyFunnel - Survey Plugin for WordPress ===
 Contributors: WPEka Club
-Donate link: https://club.wpeka.com
-Tags: comments, spam
+Donate link: https://www.surveyfunnel.com/
+Tags: surveys, survey tool, questionnaire, custom form, form builder, form maker, forms, lead generation, evaluation.
 Requires at least: 5.0
-Tested up to: 5.6
+Tested up to: 5.8
 Requires PHP: 7.0
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Create and embed high-conversion survey forms for generating leads. Design survey forms with drag & drop builder and turn your WordPress site into a lead generation funnel.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+SurveyFunnel is an easy-to-use survey plugin for WordPress that lets you create interesting and engaging survey forms with drag & drop options without any coding. You can create surveys to get insights about your audience, identify & segment your leads, and increase lead conversions with personalized marketing.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+This WordPress survey plugin offers many features like drag & drop survey builder, custom display pages, long & short answers, radio buttons & checkboxes, opt-in forms, custom results pages, and many more. [Read More](https://www.surveyfunnel.com/surveyfunnel-features/)
 
-A few notes about the sections above:
+All these features ensure that you gain higher engagement rates from your website users and generate more leads.
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+The plugin is designed to make it super easy for you to create engaging surveys for your audience within minutes.
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+== Features ==
 
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+SurveyFunnel offers you a wide range of features you need to engage your audience, learn about them and convert them into quality leads:
+
+- Create survey forms within minutes with <strong>drag & drop</strong> options without any code. Easily add custom fields and arrange them in the order you want.
+- <strong>Custom cover pages</strong> to grab users' attention and get more engagements.
+- The survey forms are <strong>responsive</strong> and work perfectly on all devices from mobiles to desktops.
+- All types of questions and answers; Single with <strong>radio buttons</strong> or MCQs with <strong>checkboxes</strong>, and more.
+- Create <strong>Opt-in forms</strong> for capturing leads and contact them further for updates, promotions, and marketing.
+- <strong>Custom survey styles</strong> to design your survey forms with different fonts, colors, background images, and buttons.
+- Custom result pages for surveys; show a <strong>thank-you page</strong> on survey completion.
+- Get <strong>detailed statistics for each survey form</strong> and questions. The number of form completions, most answered questions, number of opt-ins, etc.
+- Get detailed stats and <strong>reports for multiple or individual users</strong>, evaluate their responses, and segment accordingly.
+- Export the <strong>survey results in CSV</strong> format for offline analysis.
+
+== Why SurveyFunnel? ==
+
+SurveyFunnel is a part of the premium quality plugins family by WPeka. Here are some compelling reasons to trust the brand and choose this plugin:
+
+- Over 10 years in the WordPress plugins and themes space
+- Trusted and actively used by more than 20,000+ customers
+- Featured on [AppSumo](https://appsumo.com/products/marketplace-wp-adcenter/)
+- Featured on [WPLift](https://wplift.com/wordpress-plugins/plugin-directory/wp-adcenter)
+- Featured on [WPMayor](https://wpmayor.com/ad-management-in-wordpress-comparing-four-top-plugins/)
+- Plugins with over 30,000+ active installs
+
+WPeka offers premium WordPress Plugins. The team is backed by experts in the WordPress domain with a proven track record of creating top-notch products.
+
+== Attract & Engage ==
+
+Grab your users’ attention and engage them with interesting, smooth, and responsive forms.
+
+== Know Your Users ==
+
+Know the intent and needs of your audience with thoughtful surveys with multiple options to answer.
+
+== Generate Leads ==
+
+Identify and segment the qualified leads based upon the results and plan a more personalized marketing strategy.
+
+== Our other Awesome Projects ==
+
+If you like this plugin, then consider checking out our other projects:
+
+- [WP Legal Pages](https://wplegalpages.com/?utm_source=wporg&utm_medium=referral&utm_campaign=surveyfunnel): Generate 25+ legal policy pages for your WordPress website in just a few minutes, including, Privacy Policy, Terms & Conditions, Cookie Policy, and many more.
+
+- [WP Cookie Consent](https://wplegalpages.com/cookie-consent-banner-on-your-website/?utm_source=wporg&utm_medium=referral&utm_campaign=surveyfunnel): Display a customized cookie consent notice (for GDPR), and "Do Not Sell" opt-out notice (for CCPA). Get granular consent and record a consent log.
+
+- [WP Woo Auction Software](https://wpauctionsoftware.com/?utm_source=wporg&utm_medium=referral&utm_campaign=surveyfunnel): Host eBay like auctions or Simple / Reverse / Penny Auctions on your WooCommerce website.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+Installation is done in few easy steps mentioned below:
 
-e.g.
-
-1. Upload `wp-survey-funnel.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+1. Download the Surveyfunnel Lite Plugin
+2. Log in as the WordPress Admin of your website
+3. Navigate to Plugins > Add New to upload plugin
+4. Install & Activate the plugin
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Who should use SurveyFunnel? =
+SurveyFunnel can be used by all marketers and site owners who want to increase engagement on their website, collect more leads, and send more personalized and targeted marketing messages to their audience.
 
-An answer to that question.
+= What types of questions and answers can I make using SurveyFunnel? =
+You can create all types of questions and answers with SurveyFunnel including short & long text answers, single choice questions with radio buttons, multiple choice questions with checkboxes, opt-ins, file upload, image questions, etc.
 
-= What about foo bar? =
+= What statistics do I get?=
+In the statistics section within the plugin, you can get all the data related to the number of form completions, opt-ins, users with the most answers, the most answered questions, and much more.
 
-Answer to foo bar dilemma.
+= Can I download the data? =
+Yes, you can export and download all the survey data in CSV format to save on your computer.
+
+= Can I display the survey on specific pages or posts? =
+Yes, you can place surveys on specific posts or pages that you think are suitable for audience engagement.
 
 == Screenshots ==
-
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Dashboard
 
 == Changelog ==
 = 1.0.0 =

@@ -119,6 +119,12 @@ export function ShareContextProvider( props ) {
 		setPopup(newPopup);
 	}
 
+	const handlePopupActivation = () => {
+		let newPopup = JSON.parse(JSON.stringify(popup));
+		newPopup.active = !newPopup.active;
+		setPopup(newPopup);
+	}
+
 	let state = {
 		popup,
 		handleDevicesChange,
@@ -129,7 +135,8 @@ export function ShareContextProvider( props ) {
 		handleLaunchOptionsChange,
 		handleLaunchOptionsData,
 		handleFrequencyOptionsChange,
-		handleFrequencyDataChange
+		handleFrequencyDataChange,
+		handlePopupActivation
 	}
 
 	return (

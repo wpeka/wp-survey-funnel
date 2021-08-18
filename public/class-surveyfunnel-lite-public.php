@@ -131,15 +131,30 @@ class Surveyfunnel_Lite_Public {
 				return '';
 			}
 		}
+
+		if ( isset( $_COOKIE['wpsf-dismiss-survey'] ) && $atts['type'] === 'popup' ) {
+			$match = '/' . $atts['id'] . '/';
+			if ( preg_match( $match, $_COOKIE['wpsf-dismiss-survey'] ) ) {//phpcs:ignore
+				return '';
+			}
+		}
+
+		$defaults  = Surveyfunnel_Lite_Admin::wpsf_get_default_save_array();
 		$meta_data = get_post_meta( $atts['id'], 'wpsf-survey-data', true );
+		$meta_data = wp_parse_args( $meta_data, $defaults );
+		$share     = json_decode( $meta_data['share'] );
+		if ( ! $share->popup->active && $atts['type'] === 'popup' ) {
+			return '';
+		}
 		$ip        = $_SERVER['REMOTE_ADDR'];//phpcs:ignore
-		$m_time    = time() * 1000000;
+		$m_time = time() * 1000000;
 
 		$unique_id = md5( $ip . $m_time . wp_rand( 0, time() ) );
 		$time      = time();
 		$data      = array(
 			'build'           => $meta_data['build'],
 			'design'          => $meta_data['design'],
+			'share'           => $meta_data['share'],
 			'configure'       => $meta_data['configure'],
 			'ajaxURL'         => admin_url( 'admin-ajax.php' ),
 			'ajaxSecurity'    => wp_create_nonce( 'wpsf-security' ),
@@ -280,10 +295,134 @@ class Surveyfunnel_Lite_Public {
 					} else {
 						$value = sanitize_text_field( wp_unslash( $value ) );
 					}
+					break;
 				default:
 					break;
 			}
 		}
 		return $data;
+	}
+
+	/**
+	 * The content hook to add popup.
+	 *
+	 * @param string $content html content of the frontend.
+	 */
+	public function wpsf_the_content( $content ) {
+		global $wp_query;
+		$post_id = $wp_query->post->ID;
+
+		$args = array(
+			'post_type'   => 'wpsf-survey',
+			'post_status' => 'publish',
+			'numberposts' => -1,
+		);
+
+		$surveys = get_posts( $args );
+
+		foreach ( $surveys as $survey ) {
+			$meta_data = get_post_meta( $survey->ID, 'wpsf-survey-data', true );
+			$share     = json_decode( $meta_data['share'] );
+			if ( ! $share ) {
+				continue;
+			}
+
+			// check for conditions.
+			$show_popup = $this->wpsf_check_popup_conditions( $share, $post_id );
+
+			if ( $show_popup ) {
+				$content .= '[wpsf_survey id=' . $survey->ID . ' type="popup"]';
+			}
+		}
+
+		return $content;
+	}
+
+
+	/**
+	 * The content hook to add popup.
+	 *
+	 * @param object  $share Share Settings.
+	 * @param integer $post_id current post id.
+	 */
+	public function wpsf_check_popup_conditions( $share, $post_id ) {
+		$flag = false;
+		switch ( $share->popup->targettingOptions->triggerPage ) {
+			case 'triggerOnAll':
+				$flag = true;
+				break;
+			case 'triggerOnSpecific':
+				foreach ( $share->popup->targettingOptions->selectedPagesAndPosts as $posts ) {
+					if ( $posts->value === $post_id ) {
+						$flag = true;
+						break;
+					}
+				}
+				break;
+			default:
+				$flag = false;
+				break;
+		}
+		// check for devices.
+		$devices = array();
+		if ( $flag ) {
+			foreach ( $share->popup->targettingOptions->devices as $device ) {
+				if ( $device->checked ) {
+					array_push( $devices, $device->id );
+				}
+			}
+			$flag = self::wpsf_verify_device( $devices );
+		}
+		return $flag;
+	}
+
+	/**
+	 * Verifies if the survey should be displayed on the device.
+	 *
+	 * @param array $devices contains device names.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool return true or false depending upon the device.
+	 */
+	public static function wpsf_verify_device( $devices ) {
+
+		if ( ! class_exists( 'Mobile_Detect' ) ) {
+			/**
+			 * The class responsible for devices detection.
+			 * side of the site.
+			 */
+			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'vendor/mobiledetect/mobiledetectlib/Mobile_Detect.php';
+		}
+
+		$detect = new Mobile_Detect();
+		if ( ! $detect->isMobile() && ! $detect->isTablet() && in_array( 'desktop', $devices, true ) ||
+					$detect->isTablet() && in_array( 'tablet', $devices, true ) ||
+					$detect->isMobile() && ! $detect->isTablet() && in_array( 'mobile', $devices, true ) ) {
+			if ( ! $detect->isMobile() && ! $detect->isTablet() ) {
+				if ( in_array( 'desktop', $devices, true ) ) {
+					return true;
+				} else {
+					return false;
+				}
+			} elseif ( $detect->isTablet() ) {
+				if ( in_array( 'tablet', $devices, true ) ) {
+					return true;
+				} else {
+					return false;
+				}
+			} elseif ( $detect->isMobile() && ! $detect->isTablet() ) {
+				if ( in_array( 'mobile', $devices, true ) ) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+
 	}
 }
