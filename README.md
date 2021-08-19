@@ -17,4 +17,4 @@ If you are not a developer, please use the [SurveyFunnel Lite plugin](https://wo
 ## Support
 Please don't use this repository or our issue tracker here for support requests. You can raise only core WPAdcenter issues here. Support can be accessible through the appropriate channels:
 * The [WPeka Club Premium Support My-Account Area](https://club.wpeka.com/my-account/) for customers who have purchased WPEka plugins.
-* [Our community forum on wp.org](https://wordpress.org/support/plugin/surveyfunnel-lite/) which is available for all WPAdcenter users.
+* [Our community forum on wp.org](https://wordpress.org/support/plugin/surveyfunnel-lite/) which is available for all SurveyFunnel users.
