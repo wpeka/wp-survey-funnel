@@ -1,6 +1,6 @@
-name: Running Code Coverage
+name: Running JS Code Coverage
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   build:
