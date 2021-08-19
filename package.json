@@ -54,6 +54,7 @@
     "serve": "webpack --mode development",
     "build": "webpack --mode production",
     "makepot": "wp i18n make-pot . languages/surveyfunnel.pot",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "jest": "jest"
   }
 }
