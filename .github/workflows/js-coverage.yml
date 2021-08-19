@@ -28,7 +28,6 @@ jobs:
     - name: Run the tests
       run: npm run test
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-        with:
-          token: 'b9190d10-efa6-4420-9888-b8c5048e0a51'
+    - name: Send code coverage to Codecov.
+      run: |
+          bash <(curl -s https://codecov.io/bash) -t b9190d10-efa6-4420-9888-b8c5048e0a51
