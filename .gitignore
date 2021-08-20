@@ -34,5 +34,4 @@ yarn.lock
 
 *.asset.php
 
-__snapshots__/
 coverage/

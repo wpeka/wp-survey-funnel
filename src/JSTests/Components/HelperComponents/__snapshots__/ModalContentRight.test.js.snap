@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelperFunctions convertToRgbaCSS test 1`] = `
+<div
+  className="preview"
+  style={
+    Object {
+      "background": "linear-gradient(rgba(255,255,255,undefined), rgba(255,255,255,undefined)), url('none') 50%/cover",
+      "color": "rgba(undefined, undefined, undefined, undefined)",
+      "fontFamily": "sans",
+      "height": "100%",
+    }
+  }
+>
+  <div
+    className="main-tab-container"
+  >
+    <div
+      className="tab-list wpsf-tab-content-element"
+      style={
+        Object {
+          "background": "rgba(undefined, undefined, undefined, undefined)",
+        }
+      }
+    >
+      <div
+        className="tab-container"
+      >
+        <div
+          className="tab"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

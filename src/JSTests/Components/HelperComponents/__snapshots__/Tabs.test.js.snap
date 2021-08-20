@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelperComponents Tabs test 1`] = `
+<div
+  className="wpsf-header-tabs"
+>
+  <ol
+    className="wpsf-header-tab-list"
+  >
+    <li
+      className="tab-list-item tab-list-active"
+      onClick={[Function]}
+    >
+      none
+    </li>
+  </ol>
+  <div
+    className="wpsf-header-tab-content"
+  />
+</div>
+`;

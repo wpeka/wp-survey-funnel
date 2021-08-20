@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelperFunctions convertToRgbaCSS test 1`] = `"rgba(undefined, undefined, undefined, undefined)"`;

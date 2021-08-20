@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelperComponents Tab test 1`] = `
+<li
+  className="tab-list-item"
+  onClick={[Function]}
+>
+  test tab
+</li>
+`;
