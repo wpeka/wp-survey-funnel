@@ -40,7 +40,7 @@ function wpsf_get_background_image( $post_id ) {
 				<span class="wpsf-dismiss">✕</span>
 			</div>
 			<div class="wpsf-modal-inner">
-				<span class="content-info-title">Select Content Type</span>
+				<span class="content-info-title"><?php esc_html_e( 'Select Content Type', 'surveyfunnel' ); ?></span>
 				<div class="select-content-type">
 					<div class="wpsf-modal-content-card">
 						<div class="card-image">
@@ -57,10 +57,10 @@ function wpsf_get_background_image( $post_id ) {
 						</div>
 						</div>
 						<div class="card-title">
-							Simple Survey
+							<?php esc_html_e( 'Simple Survey', 'surveyfunnel' ); ?>
 						</div>
 						<div class="card-text">
-							Create a linear survey. Respondents receive results when they complete the survey.
+							<?php esc_html_e( 'Create a linear survey. Respondents receive results when they complete the survey.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
 					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
@@ -78,10 +78,10 @@ function wpsf_get_background_image( $post_id ) {
 						</div>
 						</div>
 						<div class="card-title">
-							Outcome Logic
+							<?php esc_html_e( 'Outcome Logic', 'surveyfunnel' ); ?>
 						</div>
 						<div class="card-text">
-							Map answers to outcomes. Respondents receive results based on the outcome with the most answers selected.
+							<?php esc_html_e( 'Map answers to outcomes. Respondents receive results based on the outcome with the most answers selected.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
 					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
@@ -99,10 +99,10 @@ function wpsf_get_background_image( $post_id ) {
 						</div>
 						</div>
 						<div class="card-title">
-							Scoring Logic
+							<?php esc_html_e( 'Scoring Logic', 'surveyfunnel' ); ?>
 						</div>
 						<div class="card-text">
-							Assign a score value to each answer. Respondents receive results based on their score range.
+							<?php esc_html_e( 'Assign a score value to each answer. Respondents receive results based on their score range.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
 				</div>
@@ -166,46 +166,46 @@ function wpsf_get_background_image( $post_id ) {
 									<div class="wpsf-post-status">
 										<div class="wpsf-post-status-inside --wpsf-flex">
 											<?php if ( 'draft' === $survey->post_status ) : ?>
-												<div class="wpsf-badge wpsf-badge-unpublished"><?php echo esc_attr( 'Unpublished' ); ?></div>
+												<div class="wpsf-badge wpsf-badge-unpublished"><?php echo esc_attr_e( 'Unpublished', 'surveyfunnel' ); ?></div>
 											<?php else : ?>
-												<div class="wpsf-badge wpsf-badge-published"><?php echo esc_attr( 'Published' ); ?></div>
+												<div class="wpsf-badge wpsf-badge-published"><?php echo esc_attr_e( 'Published', 'surveyfunnel' ); ?></div>
 											<?php endif; ?>
 											<div class="--wpsf-flex wpsf-post-icons">
 												<span  class="wpsf-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/build' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/build.png' ); ?>" alt="Build">
 													</a>
-													<span class="wpsf-tooltiptext">Build</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Build', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="wpsf-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/design' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Design.png' ); ?>" alt="Design">
 													</a>
-													<span class="wpsf-tooltiptext">Design</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Design', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="wpsf-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/configure' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Configure.png' ); ?>" alt="Configure">
 													</a>
-													<span class="wpsf-tooltiptext">Configure</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Configure', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="wpsf-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/share' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Share.png' ); ?>" alt="Configure">
 													</a>
-													<span class="wpsf-tooltiptext">Share</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Share', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="wpsf-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/reports' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Reports.png' ); ?>" alt="Configure">
 													</a>
-													<span class="wpsf-tooltiptext">Reports</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Reports', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="wpsf-tooltip">
 													<div class="icon deleteIcon" delete-id="<?php echo intval( $survey->ID ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Delete.png' ); ?>" alt="Configure">
 													</div>
-													<span class="wpsf-tooltiptext">Delete</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Delete', 'surveyfunnel' ); ?></span>
 												</span>
 											</div>
 										</div>
