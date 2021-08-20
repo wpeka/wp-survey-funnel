@@ -309,6 +309,11 @@ class Surveyfunnel_Lite_Public {
 	 * @param string $content html content of the frontend.
 	 */
 	public function wpsf_the_content( $content ) {
+
+		if ( ! Surveyfunnel_Lite::is_request( 'frontend' ) ) {
+			return;
+		}
+
 		global $wp_query;
 		$post_id = $wp_query->post->ID;
 
