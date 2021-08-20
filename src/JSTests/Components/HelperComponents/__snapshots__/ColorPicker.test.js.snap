@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popover picker test 1`] = `
+<div
+  className="picker"
+>
+  <div
+    className="swatch wpsf-color-box"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "rgba(155, 155, 155, 0.8)",
+      }
+    }
+  >
+    <div
+      className="wpsf-color-value"
+    >
+      #9b9b9bcc
+    </div>
+  </div>
+</div>
+`;
