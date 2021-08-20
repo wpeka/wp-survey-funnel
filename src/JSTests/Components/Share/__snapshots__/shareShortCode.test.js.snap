@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShareShortCodeComponent Snapshot 1`] = `
+<div
+  className="shareShortcodeSettings"
+>
+  <div
+    className="contentShortcodeLabel-container"
+  >
+    <div
+      className="contentShortcodeLabel"
+    >
+      <h3>
+        Content ShortCode: 
+      </h3>
+      <button
+        onClick={[Function]}
+      >
+        Copy Shortcode
+      </button>
+    </div>
+    <input
+      disabled={true}
+      id="contentShortcode"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="contentTypes"
+  >
+    <div
+      className="contentTypesLabel"
+    >
+      <h3>
+        Select Content Shortcode Type:
+      </h3>
+    </div>
+    <div
+      className="contentTypes-container"
+    >
+      <div
+        className="contentType-element contentType-element-active"
+      >
+        <label
+          className="contentTypeLabel active"
+          htmlFor="responsive"
+        >
+          Responsive
+        </label>
+        <input
+          checked={true}
+          className="contentTypeRadio"
+          id="responsive"
+          name="contentType"
+          onChange={[Function]}
+          type="radio"
+          value="responsive"
+        />
+      </div>
+      <div
+        className="contentType-element"
+      >
+        <label
+          className="contentTypeLabel"
+          htmlFor="fullpage"
+        >
+          Full Page
+        </label>
+        <input
+          checked={false}
+          className="contentTypeRadio"
+          id="fullpage"
+          name="contentType"
+          onChange={[Function]}
+          type="radio"
+          value="fullpage"
+        />
+      </div>
+      <div
+        className="contentType-element"
+      >
+        <label
+          className="contentTypeLabel"
+          htmlFor="custom"
+        >
+          Custom
+        </label>
+        <input
+          checked={false}
+          className="contentTypeRadio"
+          id="custom"
+          name="contentType"
+          onChange={[Function]}
+          type="radio"
+          value="custom"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="contentHelpText"
+  >
+    
+  </div>
+</div>
+`;
