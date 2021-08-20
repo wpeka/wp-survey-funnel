@@ -127,14 +127,14 @@ class Surveyfunnel_Lite_Public {
 
 		if ( isset( $_COOKIE['wpsf-survey-completed'] ) ) {
 			$match = '/' . $atts['id'] . '/';
-			if ( preg_match( $match, $_COOKIE['wpsf-survey-completed'] ) ) {//phpcs:ignore
+			if ( preg_match( $match, sanitize_text_field( wp_unslash( $_COOKIE['wpsf-survey-completed'] ) ) ) ) {
 				return '';
 			}
 		}
 
-		if ( isset( $_COOKIE['wpsf-dismiss-survey'] ) && $atts['type'] === 'popup' ) {
+		if ( isset( $_COOKIE['wpsf-dismiss-survey'] ) && 'popup' === $atts['type'] ) {
 			$match = '/' . $atts['id'] . '/';
-			if ( preg_match( $match, $_COOKIE['wpsf-dismiss-survey'] ) ) {//phpcs:ignore
+			if ( preg_match( $match, sanitize_text_field( wp_unslash( $_COOKIE['wpsf-dismiss-survey'] ) ) ) ) {
 				return '';
 			}
 		}
@@ -309,6 +309,11 @@ class Surveyfunnel_Lite_Public {
 	 * @param string $content html content of the frontend.
 	 */
 	public function wpsf_the_content( $content ) {
+
+		if ( ! Surveyfunnel_Lite::is_request( 'frontend' ) ) {
+			return;
+		}
+
 		global $wp_query;
 		$post_id = $wp_query->post->ID;
 

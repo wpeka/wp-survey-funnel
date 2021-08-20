@@ -40,7 +40,7 @@ function wpsf_get_background_image( $post_id ) {
 				<span class="wpsf-dismiss">✕</span>
 			</div>
 			<div class="wpsf-modal-inner">
-				<span class="content-info-title">Select Content Type</span>
+				<span class="content-info-title"><?php esc_html_e( 'Select Content Type', 'surveyfunnel' ); ?></span>
 				<div class="select-content-type">
 					<div class="wpsf-modal-content-card">
 						<div class="card-image">
@@ -57,16 +57,16 @@ function wpsf_get_background_image( $post_id ) {
 						</div>
 						</div>
 						<div class="card-title">
-							Simple Survey
+							<?php esc_html_e( 'Simple Survey', 'surveyfunnel' ); ?>
 						</div>
 						<div class="card-text">
-							Create a linear survey. Respondents receive results when they complete the survey.
+							<?php esc_html_e( 'Create a linear survey. Respondents receive results when they complete the survey.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
 					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
 						<div class="card-image">
 						<div class="wpsf-content-type-radios">
-    						<input <?php echo $disabled; //phpcs:ignore ?> id="wpsf-outcome-radio" type="radio" name="content-type" value="outcome">
+    						<input <?php echo esc_attr( $disabled ); ?> id="wpsf-outcome-radio" type="radio" name="content-type" value="outcome">
 							<label for="wpsf-outcome-radio">
 								<span>
 									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
@@ -78,16 +78,16 @@ function wpsf_get_background_image( $post_id ) {
 						</div>
 						</div>
 						<div class="card-title">
-							Outcome Logic
+							<?php esc_html_e( 'Outcome Logic', 'surveyfunnel' ); ?>
 						</div>
 						<div class="card-text">
-							Map answers to outcomes. Respondents receive results based on the outcome with the most answers selected.
+							<?php esc_html_e( 'Map answers to outcomes. Respondents receive results based on the outcome with the most answers selected.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
 					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
 						<div class="card-image">
 						<div class="wpsf-content-type-radios">
-    						<input <?php echo $disabled; //phpcs:ignore ?> id="wpsf-scoring-radio" type="radio" name="content-type" value="scoring">
+    						<input <?php echo esc_attr( $disabled ); ?> id="wpsf-scoring-radio" type="radio" name="content-type" value="scoring">
 							<label for="wpsf-scoring-radio">
 								<span>
 									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
@@ -99,10 +99,10 @@ function wpsf_get_background_image( $post_id ) {
 						</div>
 						</div>
 						<div class="card-title">
-							Scoring Logic
+							<?php esc_html_e( 'Scoring Logic', 'surveyfunnel' ); ?>
 						</div>
 						<div class="card-text">
-							Assign a score value to each answer. Respondents receive results based on their score range.
+							<?php esc_html_e( 'Assign a score value to each answer. Respondents receive results based on their score range.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
 				</div>
@@ -127,7 +127,7 @@ function wpsf_get_background_image( $post_id ) {
 				</div>
 				<div class="wpsf-filter wpsf-right">
 					<label for="wpsf-filter"><?php esc_html_e( 'Filter By:', 'surveyfunnel' ); ?></label>
-					<select <?php echo $disabled; //phpcs:ignore ?> id="wpsf-filter">
+					<select <?php echo esc_attr( $disabled ); ?> id="wpsf-filter">
 
 						<option value="all-types"><?php esc_html_e( 'All Types', 'surveyfunnel' ); ?></option>
 						<option value="all-types"><?php esc_html_e( 'Scoring Logic', 'surveyfunnel' ); ?></option>
@@ -155,7 +155,7 @@ function wpsf_get_background_image( $post_id ) {
 							<div class="wpsf-image-box">
 								<div class="wpsf-image">
 									<?php if ( $url ) : ?>
-										<img src="<?php echo $url;//phpcs:ignore ?>" alt="survey-background-image">
+										<img src="<?php echo esc_url( $url ); ?>" alt="survey-background-image">
 									<?php else : ?>
 									<svg xmlns="http://www.w3.org/2000/svg" width="67.491" height="67.49" viewBox="0 0 67.491 67.49">
 										<path id="Form_27_copy_2" data-name="Form 27 copy 2" d="M1366.16,773.5a7.8,7.8,0,0,1-8.011-8.007c-.051-.448-.058-1.018-.09-1.506a15.1,15.1,0,0,1-5.117-.975,6.913,6.913,0,0,1-3.5-3.4c-1.377-3-1.182-6.557-1.182-12.38v-24.1a83.678,83.678,0,0,1,.245-8.609,7.8,7.8,0,0,1,8.007-8.012,83.111,83.111,0,0,1,8.618-.249h24.1c1.478,0,2.81-.012,4.025-.009,3.644.007,6.229.156,8.5,1.252a6.923,6.923,0,0,1,3.342,3.652,15.79,15.79,0,0,1,.87,4.9c.492.032,1.065.034,1.516.085a7.8,7.8,0,0,1,8.012,8.007,82.835,82.835,0,0,1,.25,8.618v24.1a83.685,83.685,0,0,1-.245,8.609,7.8,7.8,0,0,1-8.007,8.011,83.108,83.108,0,0,1-8.618.249H1374A75.048,75.048,0,0,1,1366.16,773.5Zm.532-52.56c-1.8.2-2.521.559-2.862.9s-.692,1.066-.895,2.862-.216,4.469-.216,8.073v24.1c0,3.607.014,6.28.216,8.077s.559,2.522.9,2.862,1.066.693,2.862.895,4.469.216,8.073.216h24.1c3.607,0,6.279-.013,8.078-.216s2.521-.558,2.861-.9.693-1.065.895-2.862.217-4.469.217-8.072v-24.1c0-3.607-.014-6.28-.217-8.078s-.558-2.521-.9-2.862-1.065-.693-2.862-.895-4.469-.216-8.072-.216h-24.1C1371.163,720.72,1368.49,720.734,1366.692,720.936Zm-9.64-9.639c-1.8.2-2.522.558-2.862.9s-.693,1.065-.895,2.861-.216,4.469-.216,8.073v24.1c0,5.818.213,9.213.743,10.369a1.493,1.493,0,0,0,1.017.975,11.321,11.321,0,0,0,3.073.551c0-.756-.014-1.409-.014-2.255v-24.1a83.679,83.679,0,0,1,.245-8.609,7.8,7.8,0,0,1,8.007-8.012,83.107,83.107,0,0,1,8.618-.249h24.1c.842,0,1.492.012,2.245.014a12.3,12.3,0,0,0-.5-2.989,1.519,1.519,0,0,0-.96-1.083c-1.111-.537-4.514-.762-10.421-.762h-24.1C1361.523,711.08,1358.85,711.094,1357.052,711.3Zm44.932,49.687-10.36-10.361-3.85,3.794.749.748.064.065a2.41,2.41,0,1,1-3.472,3.344L1383,756.451l-.019-.014a2.416,2.416,0,0,1-.659-.659l-5.14-5.14-5.526,5.526-.065.065a2.41,2.41,0,1,1-3.344-3.473l7.23-7.23a2.411,2.411,0,0,1,1.667-.706h0a2.412,2.412,0,0,1,1.742.706l5.483,5.484,5.583-5.5a2.408,2.408,0,0,1,3.394.014l12.05,12.05c.022.021.044.042.065.065a2.41,2.41,0,0,1-3.473,3.343Zm-7.935-28.214a4.82,4.82,0,1,1,4.82,4.819A4.82,4.82,0,0,1,1394.05,732.77Z" transform="translate(-1348.25 -706.25)" fill="#f0f2f5"/>
@@ -165,47 +165,47 @@ function wpsf_get_background_image( $post_id ) {
 								<div class="wpsf-post-status">
 									<div class="wpsf-post-status">
 										<div class="wpsf-post-status-inside --wpsf-flex">
-											<?php if ( $survey->post_status === 'draft' ) ://phpcs:ignore ?>
-												<div class="wpsf-badge wpsf-badge-unpublished"><?php echo "Unpublished"; //phpcs:ignore ?></div>
+											<?php if ( 'draft' === $survey->post_status ) : ?>
+												<div class="wpsf-badge wpsf-badge-unpublished"><?php echo esc_attr_e( 'Unpublished', 'surveyfunnel' ); ?></div>
 											<?php else : ?>
-												<div class="wpsf-badge wpsf-badge-published"><?php echo "Published"; //phpcs:ignore ?></div>
+												<div class="wpsf-badge wpsf-badge-published"><?php echo esc_attr_e( 'Published', 'surveyfunnel' ); ?></div>
 											<?php endif; ?>
 											<div class="--wpsf-flex wpsf-post-icons">
 												<span  class="wpsf-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/build' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/build.png' ); ?>" alt="Build">
 													</a>
-													<span class="wpsf-tooltiptext">Build</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Build', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="wpsf-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/design' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Design.png' ); ?>" alt="Design">
 													</a>
-													<span class="wpsf-tooltiptext">Design</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Design', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="wpsf-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/configure' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Configure.png' ); ?>" alt="Configure">
 													</a>
-													<span class="wpsf-tooltiptext">Configure</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Configure', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="wpsf-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/share' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Share.png' ); ?>" alt="Configure">
 													</a>
-													<span class="wpsf-tooltiptext">Share</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Share', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="wpsf-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/reports' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Reports.png' ); ?>" alt="Configure">
 													</a>
-													<span class="wpsf-tooltiptext">Reports</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Reports', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="wpsf-tooltip">
-													<div class="icon deleteIcon" delete-id="<?php echo $survey->ID;//phpcs:ignore ?>">
+													<div class="icon deleteIcon" delete-id="<?php echo intval( $survey->ID ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Delete.png' ); ?>" alt="Configure">
 													</div>
-													<span class="wpsf-tooltiptext">Delete</span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Delete', 'surveyfunnel' ); ?></span>
 												</span>
 											</div>
 										</div>
@@ -213,27 +213,27 @@ function wpsf_get_background_image( $post_id ) {
 								</div> 
 							</div>
 							<div class="wpsf-title-box --wpsf-flex">
-								<div class="wpsf-title"><?php echo $survey->post_title; //phpcs:ignore ?></div>
-								<div class="wpsf-badge wpsf-badge-sm wpsf-badge-<?php echo get_post_meta( $survey->ID, 'wpsf-survey-type', true );//phpcs:ignore ?> wpsf-badge-survey-type">
-									<small><?php echo get_post_meta( $survey->ID, 'wpsf-survey-type', true );//phpcs:ignore ?></small>
+								<div class="wpsf-title"><?php echo esc_attr( $survey->post_title ); ?></div>
+								<div class="wpsf-badge wpsf-badge-sm wpsf-badge-<?php echo esc_html( get_post_meta( $survey->ID, 'wpsf-survey-type', true ) ); ?> wpsf-badge-survey-type">
+									<small><?php echo esc_html( get_post_meta( $survey->ID, 'wpsf-survey-type', true ) ); ?></small>
 								</div>
 							</div>
 							<div class="wpsf-content-stats --wpsf-grid">
 								<div class="wpsf-stat-box wpsf-views">
 									<div class="wpsf-stat">
-										<span><?php echo ( $data['views'] );//phpcs:ignore ?></span>
+										<span><?php echo esc_attr( $data['views'] ); ?></span>
 										<small><?php esc_html_e( 'Views', 'surveyfunnel' ); ?></small>
 									</div>
 								</div>
 								<div class="wpsf-stat-box wpsf-contacts">
 									<div class="wpsf-stat">
-										<span><?php echo ( $data['contacts'] );//phpcs:ignore ?></span>
+										<span><?php echo esc_attr( $data['contacts'] ); ?></span>
 										<small><?php esc_html_e( 'Contacts', 'surveyfunnel' ); ?></small>
 									</div>
 								</div>
 								<div class="wpsf-stat-box wpsf-completion-rate">
 									<div class="wpsf-stat">
-										<span><?php echo ( $data['completionRate'] . '%' );//phpcs:ignore ?></span>
+										<span><?php echo esc_attr( $data['completionRate'] . '%' ); ?></span>
 										<small><?php esc_html_e( 'Compl. Rate', 'surveyfunnel' ); ?></small>
 									</div>
 								</div>
