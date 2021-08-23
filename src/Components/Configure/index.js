@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import fetchData from '../../HelperComponents/fetchData';
 import '../../scss/configure.scss';
-
+const { applyFilters, doAction } = wp.hooks;
 
 export default function Configure() {
 	const [metaInfo, setMetaInfo] = useState({
@@ -10,6 +10,9 @@ export default function Configure() {
 	});
 
 	const [companyBranding, setCompanyBranding] = useState(true);
+	const [proSettings, setProSettings] = useState({
+		...applyFilters( 'configureProState', {} )
+	});
 
 	useEffect(() => {
 		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
@@ -28,6 +31,7 @@ export default function Configure() {
 			let configure = JSON.parse(data.data.configure);
 			setMetaInfo(configure.metaInfo);
 			setCompanyBranding(configure.companyBranding);
+			doAction( 'configureMount', configure, setProSettings );
         })
 	}, []);
 
@@ -46,7 +50,7 @@ export default function Configure() {
             security: ajaxSecurity,
             action: 'wpsf_save_configuration_data',
             post_id,
-			configuration: JSON.stringify({metaInfo, companyBranding})
+			configuration: JSON.stringify({metaInfo, companyBranding, proSettings})
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData( ajaxURL, data )
@@ -86,7 +90,7 @@ export default function Configure() {
 								<label htmlFor="useCompanyLogo" > </label>
 							</div>
 						</div>
-
+						{applyFilters('renderPrivacyPolicySettings', '', setProSettings, proSettings )}
 					</div>
 
 					<div className="meta-info-save-container">

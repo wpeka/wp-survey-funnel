@@ -5,6 +5,10 @@ import Frame, { useFrame } from 'react-frame-component'
 import fetchData from './HelperComponents/fetchData'
 import { initColorState, ItemTypes, popupInitialState } from './Data'
 import './scss/survey.scss'
+const { applyFilters } = wp.hooks;
+
+let currentIframe = null;
+
 function validateEmail(email) {
     const re =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -32,9 +36,9 @@ var available;
 var percentage_of_page;
 var half_screen;
 var contentHeight;
-
+let configure = '';
 if ( data.configure !== '' ) {
-    let configure = JSON.parse(data.configure);
+    configure = JSON.parse(data.configure);
     metaTitle = configure.metaInfo.title;
     metaDescription = configure.metaInfo.description;
     companyBranding = configure.companyBranding;
@@ -134,6 +138,7 @@ function Survey() {
 
     const handleResize = useCallback(
         (iframe) => {
+			currentIframe = iframe;
             const height =
                 iframe.current?.node.contentDocument?.body?.scrollHeight ?? 0
             if (height !== 0) {
@@ -553,6 +558,7 @@ function Survey() {
                                 <p className="surveyDescription">
                                     {item.description}
                                 </p>
+								{applyFilters( 'renderPrivacyPolicyOption', '', configure, item )}
                                 <button
                                     type="button"
                                     className="surveyButton"
@@ -567,6 +573,7 @@ function Survey() {
                                     onClick={() => {
                                         changeCurrentTab(1)
                                     }}
+									disabled={applyFilters('checkCoverPageButtonDisability', false, item, currentIframe )}
                                 >
                                     {item.button}
                                 </button>

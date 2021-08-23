@@ -345,7 +345,7 @@ class Surveyfunnel_Lite_Admin {
 		wp_register_script(
 			$this->plugin_name . '-main',
 			SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/index.bundle.js',
-			array( 'wp-i18n' ),
+			array( 'wp-i18n', 'wp-hooks' ),
 			time(),
 			true
 		);
@@ -365,6 +365,7 @@ class Surveyfunnel_Lite_Admin {
 				<input type="hidden" id="ajaxSecurity" value="<?php echo esc_attr( wp_create_nonce( 'wpsf-security' ) ); ?>">
 				<input type="hidden" id="dashboardLink" value="<?php echo esc_url( admin_url() . 'admin.php?page=wpsf-dashboard' ); ?>">
 				<input type="hidden" id="exportCSVAction" value="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>?action=export_csv">
+				<?php do_action( 'wpsf_survey_page_html' ); ?>
 				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
 			</body>
 			</html>

@@ -86,7 +86,7 @@ class Surveyfunnel_Lite_Public {
 		wp_register_script(
 			$this->plugin_name . '-survey',
 			SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.bundle.js',
-			array(),
+			array( 'wp-hooks' ),
 			time(),
 			false
 		);
@@ -171,6 +171,7 @@ class Surveyfunnel_Lite_Public {
 		} else {
 			$data['designImageUrl'] = null;
 		}
+		do_action( 'wpsf_display_survey' );
 		wp_enqueue_style( $this->plugin_name . '-public' );
 		wp_enqueue_script( $this->plugin_name . '-survey' );
 		wp_localize_script( $this->plugin_name . '-survey', 'data', $data );
