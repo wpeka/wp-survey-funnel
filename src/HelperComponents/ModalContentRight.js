@@ -24,14 +24,17 @@ export default function ModalContentRight( props ) {
 
 	}, [designCon.fontFamilyValue])
 	return (
+		<div className="image-container"
+			style={{
+				color: convertToRgbaCSS(designCon.fontColor),
+				...designCon.backgroundStyle,
+				fontFamily: designCon.fontFamily,
+				height: '100%',
+				width: '100%'
+			}}
+		>
         <div
             className="preview"
-            style={{
-                color: convertToRgbaCSS(designCon.fontColor),
-                ...designCon.backgroundStyle,
-                fontFamily: designCon.fontFamily,
-                height: '100%',
-            }}
         >
             <div className="main-tab-container">
 
@@ -52,5 +55,6 @@ export default function ModalContentRight( props ) {
             </div>
 
         </div>
+		</div>
     );
 }
