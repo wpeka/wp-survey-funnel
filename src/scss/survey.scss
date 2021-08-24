@@ -18,11 +18,12 @@ body {
     font-weight: 500;
     src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Medium.otf") format("opentype");
 }
-.main-tab-container {
+.main-tab-container, .tab-controls-inner, .preview, .tab-list {
    
     width: calc( 100% - 30px );
     max-width: 900px;
 }
+
 .dismissalContainer {
     button {
         padding: 12px 28px;
@@ -78,7 +79,10 @@ body {
     text-align: center;
 
     min-height: 450px;
-    padding: 40px;
+	padding: 40px;
+	@media screen and (max-width: 480px) {
+		padding: 15px;
+	}
     .tab-container{
         .tab{
             h3{
@@ -99,7 +103,9 @@ body {
 }
 .wpsf-tab-SingleChoice, .wpsf-tab-MultiChoice{
     padding: 40px;
-
+	@media screen and (max-width: 480px) {
+		padding: 15px;
+	}
     .tab-container{
         .tab{
             h3{
@@ -168,6 +174,9 @@ body {
 }
 .wpsf-tab-FormElements{
     padding: 40px;
+	@media screen and (max-width: 480px) {
+		padding: 15px;
+	}
     .tab-container{
         .tab{
             h3{
@@ -227,24 +236,50 @@ body {
     justify-content: flex-end;
 }
 
-.wpsf-design-preview-container{
+.design-preview{
     .wpsf-survey-form{
         display: flex;
         justify-content: center;
-        overflow: auto;
-        .wpsf-design-preview-container{
+        .wpsf-design-preview-container {
             width: 100%;
+			height: 100%;
+			min-height: 100%;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			
             .preview{
-                height: calc( 100% - 108px );
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+				overflow: auto;
+				position: relative;
+				display: block;
+				margin: 0 auto;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-ms-flex: 1;
+				flex: 1;
+				align-items: center;
+				padding: 30px 0px;
+				height: calc(100% - 80px);
+				.preview-container {
+					overflow: visible;
+					display: -ms-flexbox;
+					display: flex;
+					-ms-flex-direction: column;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					height: 100%;
+					flex-wrap: wrap;
+					.main-tab-container {
+						height: 100%;
+						width: 100%;
+					}
+				}
                 .tab-list{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 100%;
+                    overflow: auto;
                 }
             }
         }
@@ -253,7 +288,6 @@ body {
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
-                margin-right: 75px;
                 height: 100%;
                 .control-buttons {
                     margin-left: 20px;
@@ -262,6 +296,9 @@ body {
                         padding: 0px 25px !important;
                     }
                 }
+				button, div {
+					margin-right: 5px;
+				}
                 button, a {
                     background-color: #F0F2F5;
                     border: 1px solid #d2dae2;
@@ -272,7 +309,11 @@ body {
                     font-size: 16px;
                     cursor: pointer;
                     border-radius: 9px;
-                    padding: 0px 32px;
+					padding: 10px 15px 7px;
+					border: 1px solid rgba(0,0,0,.1);
+					border-radius: 5px;
+					background-color: #fff;
+					cursor: pointer;
                 }
                 button:disabled{
                     opacity: 0.7;
@@ -300,9 +341,11 @@ body {
 }
 
 .tab-controls {
-    padding: 25px 0px;
+	display: flex;
+	justify-content: center;
+    padding: 20px 0px;
     background: hsla(0,0%,100%,.25);
-    height: 108px;
+    height: 80px;
     div {
         height: 100%;
     }
@@ -314,10 +357,67 @@ body {
         height: 100%;
     }
     img {
-        width: 140px;
+        width: 100px;
     }
     button {
         height: 100%;  
         border: 1px solid#E1E8F0;
     }
+}
+
+.wpsf-sc-fullpage {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.wpsf-sc-popup {
+    position: fixed;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 80%;
+    height: 90%;
+    margin: auto;
+    z-index: 9999;
+
+	@media screen and (max-width: 360px) {
+		width: 100%;
+    	height: 100%;
+	}
+}
+
+.frame-root, .frame-content, #design, .wpsf-design-container, .design-preview, .wpsf-survey-form {
+	height: 100%;
+}
+
+.dismissalBox {
+	position: absolute;
+	
+	top: 20px;
+	right: 20px;
+
+	@media screen and (max-width: 460px) {
+		top: 10px;
+		right: 10px;
+
+		> button {
+			height: 18px;
+			width: 18px;
+		}
+	}
+
+	> button {
+		height: 36px;
+		width: 36px;
+		cursor: pointer;
+		background-color: #FFF;
+        border: 1px solid #d2dae2;
+        color: #60554F;
+		z-index: 9999999;
+	}
 }

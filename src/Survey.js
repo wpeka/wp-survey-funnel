@@ -44,7 +44,7 @@ const initialContent =
     `<!DOCTYPE html><html><head><link rel="stylesheet" href="${data.styleSurveyLink}" /><style>*{margin:0; padding:0;box-sizing:border-box;}</style>
         <meta name="title" content="${metaTitle}" />
         <meta name="description" content="${metaDescription}" />
-    </head><body><div class="frame-root"></div></body></html>`;
+    </head><body class="wpsf-sc-${data.type}"><div class="frame-root"></div></body></html>`;
 
 function Survey() {
     if (data.build === '') {
@@ -73,7 +73,6 @@ function Survey() {
             switch( launchOptions.launchWhen ) {
                 case 'afterPageLoads':
                     showOrHideSurvey(true);
-                    console.log('hello world');
                     break;
                 case 'afterTimeDelay':
                     setTimeout(() => {
@@ -88,7 +87,7 @@ function Survey() {
                     break;
             }
         }
-    }, [shareSettings])
+    }, [])
 
     const showPopupOnScroll = (scrollPercentage) => {
         window.addEventListener('scroll', () => {
@@ -772,7 +771,6 @@ function Survey() {
             }
         }
         showOrHideSurvey(false);
-        window.location.reload();
     }
 
     const restartOrCompleteSurvey = ( status ) => {
@@ -810,6 +808,7 @@ function Survey() {
     const showOrHideSurvey = ( status ) => {
         if ( ! status ) {
             setShowSurvey(false);
+			return;
         }
         let wpsfSurveyDismissed = getCookie('wpsf-survey-dismissed');
         let wpsfSurveyCompleted = getCookie('wpsf-survey-completed');
@@ -831,7 +830,7 @@ function Survey() {
                 margin: '0px',
                 border: '0px',
                 height: data.type === 'responsive' ? height : '',
-                background: 'rgba(39,43,47,.9)'
+                background: data.type === 'popup' ? 'rgba(39,43,47,.9)' : ''
             }}
             className={'wpsf-sc-'+data.type}
             onLoad={() => handleResize(iframeRef)}
@@ -839,9 +838,9 @@ function Survey() {
         >
             <div id="design">
                 <div className="wpsf-design-container">
-                    <div className="design-preview wpsf-design-preview-container" style={{fontFamily: designCon.fontFamily, ...backgroundStyle}}>
+                    <div className="design-preview" style={{fontFamily: designCon.fontFamily, ...backgroundStyle}}>
                         {addFontFamilyLink()}
-                        <div className="wpsf-survey-form" style={{height: data.type !== 'responsive' ? '100vh' : ''}}>
+                        <div className="wpsf-survey-form">
                             {tabCount === 0 ? (
                                 <div className="no-preview-available">
                                     <img src={require(`./Components/Build/BuildImages/unavailable.png`)}></img>
@@ -851,12 +850,11 @@ function Survey() {
                                 </div>
                             ) : (
                                 <div className="wpsf-design-preview-container" style={{  }}>
-                                    <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ), padding: '40px' }}>
-                                        {(data.type === 'fullpage' || data.type === 'popup') && <div className="dismissalContainer">
-                                            <button onClick={dismissSurvey}>Dismiss</button>
-                                        </div>}
-                                        <div className="main-tab-container">
-
+									{(data.type === 'fullpage' || data.type === 'popup') && <div className="dismissalBox">
+										<button onClick={dismissSurvey}>X</button>
+									</div>}
+                                    <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ) }}>
+										<div className="preview-container">
                                         <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
                                             {componentList.map(function (item, i) {
                                                 if (currentTab === i) {
@@ -881,20 +879,18 @@ function Survey() {
                                         </div>}
                                     
                                         
-                                        </div>
-
+										</div>
                                     </div>
                                     <div className="tab-controls">
                                             <span className="tab-controls-inner">
                                             {companyBranding && <div><a href="google.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div> }
                                             
-                                            <div className="control-buttons"><button
+                                            <button
                                                 type="button"
                                                 onClick={() => {
                                                     changeCurrentTab(-1);
                                                 }}
                                                 disabled={checkButtonDisability('Previous')}
-                                                style={{marginRight: '7px'}}
                                             >
                                                 &lt;
                                             </button>
@@ -907,13 +903,13 @@ function Survey() {
                                                 disabled={checkButtonDisability('Next')}
                                             >
                                                 &gt;
-                                            </button></div>
-                                            <div><button onClick={() => {
+                                            </button>
+                                            { componentList[currentTab].type === 'RESULT_ELEMENTS'  && <div><button onClick={() => {
                                                 let survey = currentTab === tabCount - 1 ? "Complete" : "Restart";
                                                 restartOrCompleteSurvey(survey);
                                             }}>
                                                 {currentTab === tabCount - 1 ? "Complete Survey" : "Restart"}    
-                                            </button></div>
+                                            </button></div>}
                                             </span>
                                         </div>
                                 </div>

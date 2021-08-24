@@ -37,7 +37,7 @@ export const FormElements = React.memo(
         };
 
         addToList = (item) => {
-            let newList = this.state.List.slice();
+            let newList = JSON.parse(JSON.stringify(this.state.List));
             item.id = this.generateId();
             newList.push(item);
             this.setState({
