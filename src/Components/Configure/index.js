@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import fetchData from '../../HelperComponents/fetchData';
 import '../../scss/configure.scss';
 const { applyFilters, doAction } = wp.hooks;
+import Select from 'react-select';
 
 export default function Configure() {
 	const [metaInfo, setMetaInfo] = useState({
@@ -13,6 +14,7 @@ export default function Configure() {
 	const [proSettings, setProSettings] = useState({
 		...applyFilters( 'configureProState', {} )
 	});
+	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
 		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
@@ -33,6 +35,25 @@ export default function Configure() {
 			setCompanyBranding(configure.companyBranding);
 			doAction( 'configureMount', configure, setProSettings );
         })
+
+		const getOptions = () => {
+			const ajaxSecurity = document.getElementById('ajaxSecurity').value;
+			const post_id = new URLSearchParams(window.location.search).get('post_id');
+			const data = {
+				security: ajaxSecurity,
+				action: 'wpsf_get_posts_pages',
+				post_id,
+				links: true,
+			};
+			const ajaxURL = document.getElementById('ajaxURL').value;
+			fetchData( ajaxURL, data )
+			.then(data => {
+				console.log(data);
+				setOptions(data.data);
+			})
+		}
+	
+		getOptions();
 	}, []);
 
 	const handleMetaChange = (e) => {
@@ -90,7 +111,7 @@ export default function Configure() {
 								<label htmlFor="useCompanyLogo" > </label>
 							</div>
 						</div>
-						{applyFilters('renderPrivacyPolicySettings', '', setProSettings, proSettings )}
+						{applyFilters('renderPrivacyPolicySettings', '', setProSettings, proSettings, fetchData, Select, options, setOptions )}
 					</div>
 
 					<div className="meta-info-save-container">

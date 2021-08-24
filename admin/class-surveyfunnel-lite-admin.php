@@ -813,13 +813,15 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: get posts and pages for async select.
 	 */
-	public function wpsf_get_posts_pages() {
+	public function wpsf_get_posts_pages( $flag = false ) {
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'wpsf-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
 		}
+
+		$flag = isset( $_POST['links'] ) ? true : false;
 
 		$args = array(
 			'post_type'     => 'post',
@@ -835,7 +837,11 @@ class Surveyfunnel_Lite_Admin {
 		foreach ( $posts as $post ) {
 			$obj        = new stdClass();
 			$obj->label = $post->post_title;
-			$obj->value = $post->ID;
+			if ( $flag ) {
+				$obj->value = get_permalink( $post->ID );
+			} else {
+				$obj->value = $post->ID;
+			}
 			array_push( $post_object->options, $obj );
 		}
 
@@ -853,7 +859,11 @@ class Surveyfunnel_Lite_Admin {
 		foreach ( $pages as $page ) {
 			$obj        = new stdClass();
 			$obj->label = $page->post_title;
-			$obj->value = $page->ID;
+			if ( $flag ) {
+				$obj->value = get_permalink( $page->ID );
+			} else {
+				$obj->value = $page->ID;
+			}
 			array_push( $page_object->options, $obj );
 		}
 
