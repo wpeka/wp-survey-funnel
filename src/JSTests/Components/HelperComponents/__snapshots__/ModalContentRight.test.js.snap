@@ -2,33 +2,38 @@
 
 exports[`HelperFunctions convertToRgbaCSS test 1`] = `
 <div
-  className="preview"
+  className="image-container"
   style={
     Object {
       "background": "linear-gradient(rgba(255,255,255,undefined), rgba(255,255,255,undefined)), url('none') 50%/cover",
       "color": "rgba(undefined, undefined, undefined, undefined)",
       "fontFamily": "sans",
       "height": "100%",
+      "width": "100%",
     }
   }
 >
   <div
-    className="main-tab-container"
+    className="preview"
   >
     <div
-      className="tab-list wpsf-tab-content-element"
-      style={
-        Object {
-          "background": "rgba(undefined, undefined, undefined, undefined)",
-        }
-      }
+      className="main-tab-container"
     >
       <div
-        className="tab-container"
+        className="tab-list wpsf-tab-content-element"
+        style={
+          Object {
+            "background": "rgba(undefined, undefined, undefined, undefined)",
+          }
+        }
       >
         <div
-          className="tab"
-        />
+          className="tab-container"
+        >
+          <div
+            className="tab"
+          />
+        </div>
       </div>
     </div>
   </div>

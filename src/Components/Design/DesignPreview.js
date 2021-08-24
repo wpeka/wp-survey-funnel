@@ -369,7 +369,7 @@ export default function DesignPreview() {
             ) : (
                 <div className="wpsf-design-preview-container" style={{  }}>
                     <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ) }}>
-                        <div className="main-tab-container">
+                        <div className="preview-container">
 
                         <div className="tab-list" style={{background: convertToRgbaCSS( designCon.backgroundContainerColor )}}>
                             {componentList.map(function (item, i) {
@@ -402,7 +402,7 @@ export default function DesignPreview() {
                             <span className="tab-controls-inner">
                             <div><a href="google.com"><span>Powered By</span><img src={require('../../../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div>
                             
-                            <div className="control-buttons">{checkButtonVisibility( 'Previous' ) && <button
+                            {checkButtonVisibility( 'Previous' ) && <button
                                 type="button"
                                 onClick={() => {
                                     changeCurrentTab(-1);
@@ -421,7 +421,7 @@ export default function DesignPreview() {
                                 disabled={checkButtonDisability('Next')}
                             >
                                 &gt;
-                            </button>}</div>
+                            </button>}
                             <div><button onClick={() => {
                                 setCurrentTab(0);
                             }}>Restart</button></div>
