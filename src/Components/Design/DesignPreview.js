@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { BuildContext } from "../Context/BuildContext";
 import fetchData from "../../HelperComponents/fetchData";
 import { DesignContext } from "../Context/DesignContext";
+import { ConfigureContext } from "../Context/ConfigureContext";
 import { convertToRgbaCSS, designBackground } from "../../HelperComponents/HelperFunctions";
 const { applyFilters } = wp.hooks;
 
@@ -21,6 +22,7 @@ export default function DesignPreview() {
     const [tabCount, setTabCount] = useState(0);
     const [componentList, setComponentList] = useState([]);
 	const [error, setError] = useState([]);
+	const { proSettings } = useContext(ConfigureContext);
 
     useEffect(() => {
         setComponentList([
@@ -242,7 +244,7 @@ export default function DesignPreview() {
                             <div className="tab" tab-componentname={item.componentName}>
                                 <h3 className="surveyTitle">{item.title}</h3>
                                 <p className="surveyDescription">{item.description}</p>
-								{applyFilters( 'renderPrivacyPolicy', '', item )}                        
+								{applyFilters( 'renderPrivacyPolicy', '', item, proSettings )}                        
 								<button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
                                     changeCurrentTab(1);
                                 }}>

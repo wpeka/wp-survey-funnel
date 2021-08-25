@@ -171,14 +171,18 @@ class Surveyfunnel_Lite_Public {
 		} else {
 			$data['designImageUrl'] = null;
 		}
-		do_action( 'wpsf_display_survey' );
+		
 
 		$data = wp_json_encode( $data );
 		$script_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.bundle.js';
 		$style_string  = plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-public.css';
+		$hooks_string = admin_url() . 'wp-includes/js/dist/hooks.js?ver=' . time();
 		wp_enqueue_style( $this->plugin_name . '-public' );
 		$survey_style_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css';
-		return '<div class="iframewrapper" id="wpsf-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" data-content=\'<!DOCTYPE html><html><head><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="wpsf-survey-' . $unique_id . '" style="width: 100%; height: 100%;"><script src="' . $script_string . '"></script></div></body></html>\'><iframe width="100%" height="100%" scrolling="no" id="wpsf-iframe" class="wpsf-iframe wpsf-sc-' . $atts['type'] . '" frameborder="0" src=""></iframe></div>';
+		$pro_script_string = '';
+		$pro_script_string = apply_filters( 'wpsf_display_survey', $pro_script_string );
+		$return_string = '<div class="iframewrapper" id="wpsf-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" data-content=\'<!DOCTYPE html><html><head><script src="' . $hooks_string . '"></script>' . $pro_script_string . '<script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="wpsf-survey-' . $unique_id . '" style="width: 100%; height: 100%;"><script src="' . $script_string . '"></script></div></body></html>\'><iframe width="100%" height="100%" scrolling="no" id="wpsf-iframe" class="wpsf-iframe wpsf-sc-' . $atts['type'] . '" frameborder="0" src=""></iframe></div>';
+		return $return_string;
 	}
 
 	/**
