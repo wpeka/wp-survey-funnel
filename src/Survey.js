@@ -37,6 +37,9 @@ var percentage_of_page;
 var half_screen;
 var contentHeight;
 let configure = '';
+
+let dismissEvent = new CustomEvent('wpsf-remove-event', { detail: {id}, } );
+
 if ( data.configure !== '' ) {
     configure = JSON.parse(data.configure);
     metaTitle = configure.metaInfo.title;
@@ -45,10 +48,10 @@ if ( data.configure !== '' ) {
 }
 
 const initialContent =
-    `<!DOCTYPE html><html><head><link rel="stylesheet" href="${data.styleSurveyLink}" /><style>*{margin:0; padding:0;box-sizing:border-box;}</style>
+    `<!DOCTYPE html><html><head><link rel="stylesheet" href="${data.styleSurveyLink}" /><style>*{margin:0; padding:0;box-sizing:border-box;}html{height: 100%}body{height: 100%}</style>
         <meta name="title" content="${metaTitle}" />
         <meta name="description" content="${metaDescription}" />
-    </head><body class="wpsf-sc-${data.type}"><div class="frame-root"></div></body></html>`;
+    </head><body><div class="frame-root"></div></body></html>`;
 
 function Survey() {
     if (data.build === '') {
@@ -466,6 +469,9 @@ function Survey() {
                                         )
                                     })}
                                 </div>
+								{checkValidations( 1, true ) && <div className="nextButtonChoices">
+									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+								</div>}
                             </div>
                         </div>
                     </div>
@@ -537,6 +543,9 @@ function Survey() {
                                         )
                                     })}
                                 </div>
+								{checkValidations( 1, true ) && <div className="nextButtonChoices">
+									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+								</div>}
                             </div>
                         </div>
                     </div>
@@ -772,11 +781,21 @@ function Survey() {
     }
 
     const dismissSurvey = () => {
-        if ( data.type === 'popup' ) {
-            if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
-                setCookie('wpsf-dismiss-survey', data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
-            }
-        }
+		let wpsfSurveyCookie = getCookie( 'wpsf-dismiss-survey' );
+		if ( wpsfSurveyCookie ) {
+			if ( data.type === 'popup' ) {
+				if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
+					setCookie('wpsf-dismiss-survey', wpsfSurveyCookie + data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
+				}
+			}
+			else {
+				setCookie('wpsf-dismiss-survey', wpsfSurveyCookie + data.post_id + ',', 1 );
+			}
+		}
+        else {
+			setCookie('wpsf-dismiss-survey', data.post_id + ',', 1 );
+		}
+		window.parent.dispatchEvent(dismissEvent);
         showOrHideSurvey(false);
     }
 
@@ -805,6 +824,7 @@ function Survey() {
                     else
                         setCookie('wpsf-survey-completed', data.post_id , 1);
                 }
+				window.parent.dispatchEvent(dismissEvent);
                 showOrHideSurvey(false);
                 return;
             default:
@@ -834,10 +854,9 @@ function Survey() {
             height="100%"
             id={id + '_iframe'}
             style={{
-                margin: '0px',
-                border: '0px',
+                border: '0',
+				margin: 'auto',
                 height: data.type === 'responsive' ? height : '',
-                background: data.type === 'popup' ? 'rgba(39,43,47,.9)' : ''
             }}
             className={'wpsf-sc-'+data.type}
             onLoad={() => handleResize(iframeRef)}

@@ -42,7 +42,7 @@ export default function ShareShortCode() {
         <div className="shareShortcodeSettings">
             <div className="contentShortcodeLabel-container">
                 <div className="contentShortcodeLabel">
-                    <h3>Content ShortCode: </h3>
+                    <h3>ShortCode: </h3>
                     <button onClick={copyShortcode}>{copyStatus}</button>
                 </div>
                 <input
@@ -57,7 +57,7 @@ export default function ShareShortCode() {
 
             <div className="contentTypes">
                 <div className="contentTypesLabel">
-                    <h3>Select Content Shortcode Type:</h3>
+                    <h3>Select Shortcode Type:</h3>
                 </div>
                 <div className="contentTypes-container">
                     {types.map(function (item, i) {
