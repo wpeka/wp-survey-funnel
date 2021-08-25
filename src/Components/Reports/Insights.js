@@ -79,7 +79,7 @@ export default function Insights() {
                         </div>
                     );
 				})}
-			</div></>) : (<NoResponseRecorded title={'No Response Recorded'} description={'No responses/insights found for provided start date and end date!'} />)}
+			</div></>) : (<NoResponseRecorded title={'No Responses Received'} description={'No responses/insights received for provided start date and end date!'} />)}
 		</div>
 	)
 }

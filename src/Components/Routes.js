@@ -69,7 +69,7 @@ export default function Routes() {
                         <NavLink to="/configure" activeStyle={{ color: "#0F4C81" }}>Configure</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/share" activeStyle={{ color: "#0F4C81" }}>Share</NavLink>
+                        <NavLink to="/share" activeStyle={{ color: "#0F4C81" }}>Deploy</NavLink>
                     </li>
                     <li>
                         <NavLink to="/reports" activeStyle={{ color: "#0F4C81" }}>Reports</NavLink>
