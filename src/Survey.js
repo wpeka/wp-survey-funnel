@@ -33,6 +33,8 @@ var percentage_of_page;
 var half_screen;
 var contentHeight;
 
+let dismissEvent = new CustomEvent('wpsf-remove-event', { detail: {id}, } );
+
 if ( data.configure !== '' ) {
     let configure = JSON.parse(data.configure);
     metaTitle = configure.metaInfo.title;
@@ -765,14 +767,21 @@ function Survey() {
     }
 
     const dismissSurvey = () => {
-        if ( data.type === 'popup' ) {
-            if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
-                setCookie('wpsf-dismiss-survey', data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
-            }
-        }
-		else {
+		let wpsfSurveyCookie = getCookie( 'wpsf-dismiss-survey' );
+		if ( wpsfSurveyCookie ) {
+			if ( data.type === 'popup' ) {
+				if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
+					setCookie('wpsf-dismiss-survey', wpsfSurveyCookie + data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
+				}
+			}
+			else {
+				setCookie('wpsf-dismiss-survey', wpsfSurveyCookie + data.post_id + ',', 1 );
+			}
+		}
+        else {
 			setCookie('wpsf-dismiss-survey', data.post_id + ',', 1 );
 		}
+		window.parent.dispatchEvent(dismissEvent);
         showOrHideSurvey(false);
     }
 
@@ -811,7 +820,6 @@ function Survey() {
     const showOrHideSurvey = ( status ) => {
         if ( ! status ) {
             setShowSurvey(false);
-			window.top.location.reload();
 			return;
         }
         let wpsfSurveyDismissed = getCookie('wpsf-survey-dismissed');
