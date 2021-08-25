@@ -768,9 +768,11 @@ function Survey() {
         if ( data.type === 'popup' ) {
             if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
                 setCookie('wpsf-dismiss-survey', data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
-				window.top.location.reload();
             }
         }
+		else {
+			setCookie('wpsf-dismiss-survey', data.post_id + ',', 1 );
+		}
         showOrHideSurvey(false);
     }
 
@@ -809,6 +811,7 @@ function Survey() {
     const showOrHideSurvey = ( status ) => {
         if ( ! status ) {
             setShowSurvey(false);
+			window.top.location.reload();
 			return;
         }
         let wpsfSurveyDismissed = getCookie('wpsf-survey-dismissed');

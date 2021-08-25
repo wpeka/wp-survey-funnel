@@ -132,7 +132,7 @@ class Surveyfunnel_Lite_Public {
 			}
 		}
 
-		if ( isset( $_COOKIE['wpsf-dismiss-survey'] ) && 'popup' === $atts['type'] ) {
+		if ( isset( $_COOKIE['wpsf-dismiss-survey'] ) ) {
 			$match = '/' . $atts['id'] . '/';
 			if ( preg_match( $match, sanitize_text_field( wp_unslash( $_COOKIE['wpsf-dismiss-survey'] ) ) ) ) {
 				return '';
