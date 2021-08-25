@@ -1,84 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import fetchData from '../../HelperComponents/fetchData';
 import '../../scss/configure.scss';
 const { applyFilters, doAction } = wp.hooks;
 import Select from 'react-select';
+import { ConfigureContext } from '../Context/ConfigureContext';
 
 export default function Configure() {
-	const [metaInfo, setMetaInfo] = useState({
-		title: '',
-		description: ''
-	});
-
-	const [companyBranding, setCompanyBranding] = useState(true);
-	const [proSettings, setProSettings] = useState({
-		...applyFilters( 'configureProState', {} )
-	});
-	const [options, setOptions] = useState([]);
-
-	useEffect(() => {
-		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
-        const post_id = new URLSearchParams(window.location.search).get('post_id');
-        const data = {
-            security: ajaxSecurity,
-            action: 'wpsf_get_configuration_data',
-            post_id,
-        };
-        const ajaxURL = document.getElementById('ajaxURL').value;
-        fetchData( ajaxURL, data )
-        .then(data => {
-            if ( data.data.configure === '' ) {
-				return;
-			}
-			let configure = JSON.parse(data.data.configure);
-			setMetaInfo(configure.metaInfo);
-			setCompanyBranding(configure.companyBranding);
-			doAction( 'configureMount', configure, setProSettings );
-        })
-
-		const getOptions = () => {
-			const ajaxSecurity = document.getElementById('ajaxSecurity').value;
-			const post_id = new URLSearchParams(window.location.search).get('post_id');
-			const data = {
-				security: ajaxSecurity,
-				action: 'wpsf_get_posts_pages',
-				post_id,
-				links: true,
-			};
-			const ajaxURL = document.getElementById('ajaxURL').value;
-			fetchData( ajaxURL, data )
-			.then(data => {
-				console.log(data);
-				setOptions(data.data);
-			})
-		}
 	
-		getOptions();
-	}, []);
-
-	const handleMetaChange = (e) => {
-		setMetaInfo({
-			...metaInfo,
-			[e.target.name]: e.target.value,
-		});
-	}
-
-	const saveConfiguration = (e) => {
-		e.target.classList.add('wpsf-button-loading');
-		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
-        const post_id = new URLSearchParams(window.location.search).get('post_id');
-        const data = {
-            security: ajaxSecurity,
-            action: 'wpsf_save_configuration_data',
-            post_id,
-			configuration: JSON.stringify({metaInfo, companyBranding, proSettings})
-        };
-        const ajaxURL = document.getElementById('ajaxURL').value;
-        fetchData( ajaxURL, data )
-        .then(data => {
-			e.target.classList.remove('wpsf-button-loading');
-        })
-	}
+	const { metaInfo, companyBranding, setCompanyBranding, options, setOptions, handleMetaChange, saveConfiguration, proSettings, setProSettings } = useContext(ConfigureContext);
 
 	return (
 		<div className="configure">

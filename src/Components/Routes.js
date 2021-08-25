@@ -5,6 +5,7 @@ import { DesignContext, DesignContextProvider } from "./Context/DesignContext";
 import { ReportContextProvider } from './Context/ReportContext';
 import { ModalContextProvider } from "./Context/ModalContext";
 import { ShareContextProvider } from "./Context/ShareContext";
+import { ConfigureContextProvider } from "./Context/ConfigureContext";
 import fetchData from "../HelperComponents/fetchData";
 const Build = lazy(() => import("./Build"));
 const Design = lazy(() => import("./Design"));
@@ -79,35 +80,37 @@ export default function Routes() {
                     <button onClick={changeStatus}>{ status === 'draft' ? 'Publish' : 'Unpublish' }</button>
                 </div>
             </div>
-            <DesignContextProvider>
-                <BuildContextProvider>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Switch>
-                        <Route path="/build">
-                            <ModalContextProvider>
-                            <Build></Build>
-                            </ModalContextProvider>
-                        </Route>
-                        <Route path="/design">
-                            <Design></Design>
-                        </Route>
-                        <Route path="/configure">
-                            <Configure />
-                        </Route>
-                        <Route path="/share">
-                            <ShareContextProvider>
-                                <Share />
-                            </ShareContextProvider>
-                        </Route>
-                        <Route path="/reports">
-                            <ReportContextProvider>
-                                <Reports></Reports>
-                            </ReportContextProvider>
-                        </Route>
-                    </Switch>
-                </Suspense>
-                </BuildContextProvider>
-            </DesignContextProvider>
+			<ConfigureContextProvider>
+				<DesignContextProvider>
+					<BuildContextProvider>
+						<Suspense fallback={<div>Loading...</div>}>
+							<Switch>
+								<Route path="/build">
+									<ModalContextProvider>
+									<Build></Build>
+									</ModalContextProvider>
+								</Route>
+								<Route path="/design">
+									<Design></Design>
+								</Route>
+								<Route path="/configure">
+									<Configure />
+								</Route>
+								<Route path="/share">
+									<ShareContextProvider>
+										<Share />
+									</ShareContextProvider>
+								</Route>
+								<Route path="/reports">
+									<ReportContextProvider>
+										<Reports></Reports>
+									</ReportContextProvider>
+								</Route>
+							</Switch>
+						</Suspense>
+					</BuildContextProvider>
+				</DesignContextProvider>
+			</ConfigureContextProvider>
         </Router>
     );
 }
