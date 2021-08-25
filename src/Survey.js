@@ -41,10 +41,10 @@ if ( data.configure !== '' ) {
 }
 
 const initialContent =
-    `<!DOCTYPE html><html><head><link rel="stylesheet" href="${data.styleSurveyLink}" /><style>*{margin:0; padding:0;box-sizing:border-box;}</style>
+    `<!DOCTYPE html><html><head><link rel="stylesheet" href="${data.styleSurveyLink}" /><style>*{margin:0; padding:0;box-sizing:border-box;}html{height: 100%}body{height: 100%}</style>
         <meta name="title" content="${metaTitle}" />
         <meta name="description" content="${metaDescription}" />
-    </head><body class="wpsf-sc-${data.type}"><div class="frame-root"></div></body></html>`;
+    </head><body><div class="frame-root"></div></body></html>`;
 
 function Survey() {
     if (data.build === '') {
@@ -808,6 +808,7 @@ function Survey() {
     const showOrHideSurvey = ( status ) => {
         if ( ! status ) {
             setShowSurvey(false);
+			window.top.location.reload();
 			return;
         }
         let wpsfSurveyDismissed = getCookie('wpsf-survey-dismissed');
@@ -827,10 +828,9 @@ function Survey() {
             height="100%"
             id={id + '_iframe'}
             style={{
-                margin: '0px',
-                border: '0px',
+                border: '0',
+				margin: 'auto',
                 height: data.type === 'responsive' ? height : '',
-                background: data.type === 'popup' ? 'rgba(39,43,47,.9)' : ''
             }}
             className={'wpsf-sc-'+data.type}
             onLoad={() => handleResize(iframeRef)}

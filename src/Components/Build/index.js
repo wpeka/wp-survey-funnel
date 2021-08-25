@@ -53,7 +53,7 @@ export default function Build() {
 							</div>
 						</div>
 						<div className="wpsf-build-elements_content">
-							<h3>Survey‌ ‌Elements‌ ‌(NR):‌</h3>
+							<h3>Content Elements:‌</h3>
 							<div className="wpsf-build-elements_container">
 								{buildElements.contentElements.map(function( ele, i ) {
 									return <BuildElement ele={ele} key={i}></BuildElement>
