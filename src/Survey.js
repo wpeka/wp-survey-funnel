@@ -901,7 +901,7 @@ function Survey() {
                                     </div>
                                     <div className="tab-controls">
                                             <span className="tab-controls-inner">
-                                            {companyBranding && <div><a href="google.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div> }
+                                            {companyBranding && <div><a target="_blank" href="https://www.surveyfunnel.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div> }
                                             
                                             <button
                                                 type="button"

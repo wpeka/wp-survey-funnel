@@ -398,7 +398,7 @@ export default function DesignPreview() {
                     </div>
                     <div className="tab-controls">
                             <span className="tab-controls-inner">
-                            <div><a href="google.com"><span>Powered By</span><img src={require('../../../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div>
+                            <div><a target="_blank" href="https://www.surveyfunnel.com"><span>Powered By</span><img src={require('../../../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div>
                             
                             {checkButtonVisibility( 'Previous' ) && <button
                                 type="button"
