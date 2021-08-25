@@ -35,7 +35,7 @@ export function ReportContextProvider(props) {
         if ( dates.startDate === null || dates.endDate === null ) {
             return {
 				errorTitle: 'Select Date Range',
-                errorMessage: 'Please Select Start date and end date to generate reports.',
+                errorMessage: 'Please‌ ‌select‌ ‌a‌ ‌start‌ ‌date‌ ‌and‌ ‌an‌ ‌end‌ ‌date‌ ‌to‌ ‌generate‌ ‌reports.‌',
                 error: true,
             }
         }

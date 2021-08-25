@@ -100,7 +100,7 @@ export default function PopupSettings() {
 
 				</div>
 
-				<button  className="wpsf-share-collapsible wpsf-behaviour-btn" onClick={(e)=>{handleCollapseBehaviour(e)}}><h3>Behaviours</h3></button>
+				<button  className="wpsf-share-collapsible wpsf-behaviour-btn" onClick={(e)=>{handleCollapseBehaviour(e)}}><h3>Behaviour</h3></button>
 				<div id="wpsf_behaviour" className="behaviour-options"  style={{display:'none'}}>
 					<div className="launchOptions">
 						<p>Launch when: </p>
@@ -117,7 +117,7 @@ export default function PopupSettings() {
 						<div className="launchOptions-field sensitivity-container">
 							<input id="afterExitIntent"  type="radio" name="launchWhen" value="afterExitIntent" checked={popup.behaviourOptions.launchOptions.launchWhen === 'afterExitIntent'} onChange={() => {handleLaunchOptionsChange('afterExitIntent')}} />
 							<label htmlFor="afterExitIntent" >
-								Select sensitivity
+								Select‌ ‌exit-intent‌ ‌sensitivity‌
 								<div className="launchOptions-field-sensitivity">
 									<input id="wpsf_low"type="radio" name="sensitivity" checked={popup.behaviourOptions.launchOptions.afterExitIntent === 'low'} value="low" onChange={(e) => {handleLaunchOptionsData('afterExitIntent', e)}} />
 									<label htmlFor="wpsf_low" >Low</label>

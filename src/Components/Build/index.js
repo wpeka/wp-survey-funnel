@@ -40,8 +40,8 @@ export default function Build() {
 			<div className="wpsf-build-container-menu">
 				<div className="wpsf-build-eles">
 					<div className="wpsf-build-text">
-						<h2>Content Builder</h2>
-						<p>Drag and drop contents to the right</p>
+						<h2>Survey‌ ‌Builder‌</h2>
+						<p>Drag‌ ‌and‌ ‌Drop‌ ‌elements‌ ‌to‌ ‌the‌ ‌right‌ ‌to‌ ‌start‌ ‌creating‌ ‌your‌ ‌survey‌</p>
 					</div>
 					<div className="wpsf-build-elements">
 						<div className="wpsf-build-elements_start">
@@ -53,7 +53,7 @@ export default function Build() {
 							</div>
 						</div>
 						<div className="wpsf-build-elements_content">
-							<h3>Content Elements:</h3>
+							<h3>Survey‌ ‌Elements‌ ‌(NR):‌</h3>
 							<div className="wpsf-build-elements_container">
 								{buildElements.contentElements.map(function( ele, i ) {
 									return <BuildElement ele={ele} key={i}></BuildElement>
