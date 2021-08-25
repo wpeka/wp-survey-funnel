@@ -463,6 +463,9 @@ function Survey() {
                                         )
                                     })}
                                 </div>
+								{checkValidations( 1, true ) && <div className="nextButtonChoices">
+									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+								</div>}
                             </div>
                         </div>
                     </div>
@@ -534,6 +537,9 @@ function Survey() {
                                         )
                                     })}
                                 </div>
+								{checkValidations( 1, true ) && <div className="nextButtonChoices">
+									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+								</div>}
                             </div>
                         </div>
                     </div>
@@ -810,6 +816,7 @@ function Survey() {
                     else
                         setCookie('wpsf-survey-completed', data.post_id , 1);
                 }
+				window.parent.dispatchEvent(dismissEvent);
                 showOrHideSurvey(false);
                 return;
             default:
