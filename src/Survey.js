@@ -48,6 +48,21 @@ const initialContent =
         <meta name="description" content="${metaDescription}" />
     </head><body><div class="frame-root"></div></body></html>`;
 
+function ShowErrors({error}) {
+	return (
+		<>
+			{error.length > 0 && (
+				<div className="tab-validation-error">
+					{error.map(function (err) {
+						return err;
+					})}
+				</div>
+			)}
+		</>
+	);
+}
+	
+
 function Survey() {
     if (data.build === '') {
         return <p>No Preview Available</p>
@@ -463,6 +478,7 @@ function Survey() {
                                         )
                                     })}
                                 </div>
+								<ShowErrors error={error} />
 								{checkValidations( 1, true ) && <div className="nextButtonChoices">
 									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
 								</div>}
@@ -537,6 +553,7 @@ function Survey() {
                                         )
                                     })}
                                 </div>
+								<ShowErrors error={error} />
 								{checkValidations( 1, true ) && <div className="nextButtonChoices">
 									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
 								</div>}
@@ -560,6 +577,7 @@ function Survey() {
                                 <p className="surveyDescription">
                                     {item.description}
                                 </p>
+								<ShowErrors error={error} />
                                 <button
                                     type="button"
                                     className="surveyButton"
@@ -703,6 +721,7 @@ function Survey() {
                                             )
                                     }
                                 })}
+								<ShowErrors error={error} />
                                 <button
                                     type="button"
                                     onClick={() => {
@@ -890,11 +909,6 @@ function Survey() {
                                                 return renderContentElements(item, 'none', i);
                                             })}
                                         </div>
-                                        {error.length > 0 && <div className="tab-validation-error">
-                                            {error.map(function(err) {
-                                                return err;
-                                            })}	
-                                        </div>}
                                     
                                         
 										</div>
