@@ -335,6 +335,8 @@ function Survey() {
         let error = []
         switch (componentList[currentTab].componentName) {
             case 'CoverPage':
+				applyFilters('checkCoverPageButtonValidations', flag, componentList[currentTab], iframeRef, error, configure)
+				break;
             case 'ResultScreen':
                 break
             case 'FormElements':
@@ -599,7 +601,6 @@ function Survey() {
                                     onClick={() => {
                                         changeCurrentTab(1)
                                     }}
-									disabled={applyFilters('checkCoverPageButtonDisability', false, item, currentIframe )}
                                 >
                                     {item.button}
                                 </button>
@@ -916,9 +917,7 @@ function Survey() {
                                                 }
                                                 return renderContentElements(item, 'none', i);
                                             })}
-                                        </div>
-                                    
-                                        
+                                        </div>    
 										</div>
                                     </div>
                                     <div className="tab-controls">
