@@ -69,6 +69,12 @@ body {
             .wpsf-tab-CoverPage, .wpsf-tab-ResultScreen{
                 text-align: center;
             }
+			.tab-validation-error {
+				p {
+					margin: 0;
+					margin-bottom: 6px;
+				}
+			}
         }
     }
 }
