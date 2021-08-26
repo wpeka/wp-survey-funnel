@@ -40,7 +40,7 @@ function wpsf_get_background_image( $post_id ) {
 				<span class="wpsf-dismiss">✕</span>
 			</div>
 			<div class="wpsf-modal-inner">
-				<span class="content-info-title"><?php esc_html_e( 'Select Content Type', 'surveyfunnel' ); ?></span>
+				<span class="content-info-title"><?php esc_html_e( 'Select Survey Type', 'surveyfunnel' ); ?></span>
 				<div class="select-content-type">
 					<div class="wpsf-modal-content-card">
 						<div class="card-image">
@@ -107,7 +107,7 @@ function wpsf_get_background_image( $post_id ) {
 					</div>
 				</div>
 				<div class="set-content-name">
-					<span class="content-info-title">Enter Content Name</span>
+					<span class="content-info-title"><?php esc_html_e( 'Enter Survey Name', 'surveyfunnel' ); ?></span>
 					<input type="text" id="content-title" placeholder="Enter Title">
 					<button type="submit" id="wpsf-modal-submit">Continue</button>
 				</div>
@@ -193,7 +193,7 @@ function wpsf_get_background_image( $post_id ) {
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/share' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Share.png' ); ?>" alt="Configure">
 													</a>
-													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Share', 'surveyfunnel' ); ?></span>
+													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Deploy', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="wpsf-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/reports' ); ?>">
