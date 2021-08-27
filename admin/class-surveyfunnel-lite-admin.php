@@ -249,9 +249,9 @@ class Surveyfunnel_Lite_Admin {
 			'can_export'          => true,
 			'has_archive'         => false,
 			'exclude_from_search' => true,
-			'publicly_queryable'  => false,
+			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
-			'show_in_rest'        => false,
+			'show_in_rest'        => true,
 		);
 		register_post_type( 'wpsf-survey', $args );
 	}
@@ -861,5 +861,80 @@ class Surveyfunnel_Lite_Admin {
 		wp_send_json_success( $data );
 		wp_die();
 	}
+
+	/**
+	 * Registers gutenberg block for surveys.
+	 *
+	 * @since 1.0.0
+	 */
+	public function wpsf_register_gutenberg_blocks() {
+
+		wp_register_script(
+			'wpsf-gutenberg-single-survey',
+			plugin_dir_url( __DIR__ ) . 'admin/js/gutenberg-blocks/wpsf-gutenberg-singlesurvey.js',
+			array( 'wp-blocks', 'wp-api-fetch', 'wp-components', 'wp-i18n' ),
+			$this->version,
+			false
+		);
+		wp_localize_script( 'wpsf-gutenberg-single-survey', 'wpadcenter_single_survey_verify', array( 'single_survey_nonce' => wp_create_nonce( 'single_survey_nonce' ) ) );
+		if ( function_exists( 'register_block_type' ) ) {
+			register_block_type(
+				'surveyfunnel/single-survey',
+				array(
+					'editor_script'   => 'wpsf-gutenberg-single-survey',
+					'attributes'      => array(
+						'survey_id'           => array(
+							'type' => 'number',
+						),
+						'survey_name'    => array(
+							'type' => 'string',
+						),
+						'survey_embed_type' => array(
+							'type'    => 'string',
+						),
+						'survey_custom_width'    => array(
+							'type'    => 'string',
+						),
+						'survey_custom_height'         => array(
+							'type'    => 'string',
+						),
+					),
+					'render_callback' => array( $this, 'gutenberg_display_single_survey' ),
+				)
+			);
+		}
+	}
+
+	public function gutenberg_display_single_survey( $attributes ){
+		$survey_atts = array();
+		if (isset($attributes['survey_id'])){
+			$survey_atts['id'] = $attributes['survey_id'];
+		}
+		if (isset($attributes['survey_embed_type'])){
+			$survey_atts['type'] = $attributes['survey_embed_type'];
+		}
+		return Surveyfunnel_Lite_Public::wpsf_display_survey( $survey_atts );
+	}
+
+	/**
+	 * Registers gutenberg block categories.
+	 *
+	 * @param array $categories contains categories of gutenberg block.
+	 *
+	 * @since 1.0.0
+	 */
+	public function wpsf_gutenberg_block_categories( $categories ) {
+
+		return array_merge(
+			$categories,
+			array(
+				array(
+					'slug'  => 'surveyfunnel-lite',
+					'title' => __( 'SurveyFunnel', 'surveyfunnel' ),
+				),
+			)
+		);
+	}
+
 
 }

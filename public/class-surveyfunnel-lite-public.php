@@ -117,7 +117,7 @@ class Surveyfunnel_Lite_Public {
 	/**
 	 * Display function of survey.
 	 */
-	public function wpsf_display_survey( $atts ) {
+	public static function wpsf_display_survey( $atts ) {
 		if ( intval( $atts['id'] ) === 0 ) {
 			return '';
 		}
