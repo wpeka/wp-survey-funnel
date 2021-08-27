@@ -114,9 +114,13 @@ function wpsf_get_background_image( $post_id ) {
 			</div>
 		</div>
 	</div>
-	<div class="wpsf-navbar">
-		<div class="wpsf-container-navbar wpsf-top-navbar --wpsf-flex">
-			<div class="wpsf-logo">SurveyFunnel</div>
+	<div class="wpsf-navbar-container">
+		<div class="wpsf-navbar">
+			<div class="wpsf-container-navbar wpsf-top-navbar --wpsf-flex">
+				<div class="wpsf-logo">
+					<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/wpsf-main-logo.png' ); ?>" alt="<?php echo esc_html( 'Survey Funnel Lite Logo' ); ?>">
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="wpsf-body">
