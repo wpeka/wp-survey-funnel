@@ -76,7 +76,7 @@ function Survey() {
     
     const iframeRef = React.createRef()
     const [height, setHeight] = useState(650);
-    const [ showSurvey, setShowSurvey ] = useState( data.type === 'popup' ? false : true );
+    const [ showSurvey, setShowSurvey ] = useState( true );
     
     let designCon = {}
     if (data.design === '') {
@@ -87,70 +87,6 @@ function Survey() {
 
     if ( data.share !== '' ) {
         shareSettings = JSON.parse( data.share );
-    }
-
-    useEffect(() => {
-        if ( data.type === 'popup' ) {
-            const { launchOptions } = shareSettings.popup.behaviourOptions;
-            switch( launchOptions.launchWhen ) {
-                case 'afterPageLoads':
-                    showOrHideSurvey(true);
-                    break;
-                case 'afterTimeDelay':
-                    setTimeout(() => {
-                        showOrHideSurvey(true);
-                    }, launchOptions.afterTimeDelay * 1000)
-                    break;
-                case 'afterScrollPercentage':
-                    showPopupOnScroll(launchOptions.afterScrollPercentage);
-                    break;
-                case 'afterExitIntent':
-                    showPopupOnExitIntent( launchOptions.afterExitIntent );
-                    break;
-            }
-        }
-    }, [])
-
-    const showPopupOnScroll = (scrollPercentage) => {
-        window.addEventListener('scroll', () => {
-            available = document.body.scrollHeight;
-            half_screen = available * scrollPercentage;
-            contentHeight = window.scrollY || window.scrollTop || document.getElementsByTagName("html")[0].scrollTop;
-            let docHeight = window.innerHeight;
-            
-            var scrollPercent = (contentHeight) / (available - docHeight);
-			var scrollPercentRounded = Math.round(scrollPercent*100);
-            if ( scrollPercentRounded > scrollPercentage ) {
-                showOrHideSurvey(true);
-            } else {
-                showOrHideSurvey(false);
-            }
-        })
-    }
-
-    const showPopupOnExitIntent = ( exitIntent ) => {
-        window.addEventListener('mousemove', (e) => {
-            
-            if ( ! showSurvey ) {
-                let exitY = 999999;
-                switch( exitIntent ) {
-                    case 'high':
-                        exitY = 100;
-                        break;
-                    case 'medium':
-                        exitY = 50;
-                        break;
-                    case 'low':
-                        exitY = 25;
-                        break;
-                }
-                if ( exitY > e.clientY ) {
-                    setTimeout(() => {
-                        showOrHideSurvey(true);
-                    }, 500); 
-                }
-            }
-        });
     }
 
     const handleResize = useCallback(
