@@ -87,6 +87,7 @@ export default function ShareShortCode() {
                                     checked={item.id === checked}
                                     onChange={handleRadioChange}
                                     value={item.id}
+									disabled={item?.disabled}
                                     id={item.id}
                                 />
                             </div>
