@@ -174,6 +174,9 @@ export default function DesignPreview() {
                                         );
                                     })}
                                 </div>
+								{ checkValidations( 1, true ) && <div className="nextButtonChoices">
+									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+								</div>}
                             </div>
                         </div>
                     </div>
@@ -226,6 +229,9 @@ export default function DesignPreview() {
                                         );
                                     })}
                                 </div>
+								{ checkValidations( 1, true ) && <div className="nextButtonChoices">
+									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+								</div>}
                             </div>
                         </div>
                     </div>
@@ -402,19 +408,18 @@ export default function DesignPreview() {
                     </div>
                     <div className="tab-controls">
                             <span className="tab-controls-inner">
-                            <div><a target="_blank" href="https://www.surveyfunnel.com"><span>Powered By</span><img src={require('../../../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div>
+                            <div><a target="_blank" href="https://www.surveyfunnel.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../../../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div>
                             
-                            {checkButtonVisibility( 'Previous' ) && <button
+                            <button
                                 type="button"
                                 onClick={() => {
                                     changeCurrentTab(-1);
                                 }}
                                 disabled={checkButtonDisability('Previous')}
-                                style={{marginRight: '7px'}}
                             >
                                 &lt;
-                            </button>}
-                            { checkButtonVisibility( 'Next' ) &&
+                            </button>
+                            
                             <button
                                 type="button"
                                 onClick={() => {
@@ -423,10 +428,13 @@ export default function DesignPreview() {
                                 disabled={checkButtonDisability('Next')}
                             >
                                 &gt;
-                            </button>}
-                            <div><button onClick={() => {
-                                setCurrentTab(0);
-                            }}>Restart</button></div>
+                            </button>
+                            { componentList[currentTab].type === 'RESULT_ELEMENTS'  && <div><button onClick={() => {
+                                let survey = currentTab === tabCount - 1 ? "Complete" : "Restart";
+								setCurrentTab(0);
+							}}>
+								{currentTab === tabCount - 1 ? "Complete Survey" : "Restart"}    
+							</button></div>}
                             </span>
                         </div>
                 </div>

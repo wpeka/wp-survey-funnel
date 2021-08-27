@@ -52,9 +52,15 @@
 }
 
 .wpsf-navbar {
-	background: #fff;
 	height: 80px;
-	padding-left: 36px;
+}
+
+.wpsf-navbar-container {
+	background: #fff;
+}
+
+.wpsf-container-navbar {
+	padding: 0px 36px;
 }
 
 .wpsf-logo {
@@ -62,6 +68,10 @@
 	font-size: 26px;
 	letter-spacing: -0.52;
 	font-weight: 500;
+}
+
+.wpsf-logo > img {
+	max-width: 256px;
 }
 
 .wpsf-dashboard-container {
@@ -491,28 +501,28 @@
 
 
 @media screen and (max-width: 1920px) {
-	.wpsf-container{
+	.wpsf-container, .wpsf-navbar{
 		margin: auto;
 		width: 1606px;
 	
 	}
 }
 @media screen and (max-width: 1612px) {
-	.wpsf-container{
+	.wpsf-container, .wpsf-navbar{
 		margin: auto;
 		width: 1292px;
 	
 	}
 }
 @media screen and (max-width: 1452px) {
-	.wpsf-container{
+	.wpsf-container, .wpsf-navbar{
 		margin: auto;
 		width: 978px;
 	
 	}
 }
 @media screen and (max-width: 1140px) {
-	.wpsf-container{
+	.wpsf-container, .wpsf-navbar{
 		margin: auto;
 		width: 664px;
 	
