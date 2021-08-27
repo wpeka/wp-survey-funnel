@@ -412,7 +412,6 @@ export default function DesignPreview() {
                                     changeCurrentTab(-1);
                                 }}
                                 disabled={checkButtonDisability('Previous')}
-                                style={{marginRight: '7px'}}
                             >
                                 &lt;
                             </button>
