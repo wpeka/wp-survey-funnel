@@ -90,6 +90,7 @@ exports[`ShareShortCodeComponent Snapshot 1`] = `
         <input
           checked={false}
           className="contentTypeRadio"
+          disabled={true}
           id="custom"
           name="contentType"
           onChange={[Function]}
