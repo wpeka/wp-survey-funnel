@@ -15,6 +15,14 @@ export default function Responses() {
 		let { fields } = currentReportSelected;
 		fields = JSON.parse(fields);
 		const arrayOfObj = Object.values(fields);
+		console.log(arrayOfObj);
+		if ( arrayOfObj.length === 1 ) {
+			if ( arrayOfObj[0].status === 'viewed' ) {
+				return (<div className="wpsf-preview-container" style={{textAlign: 'center'}}>
+					<span className="wpsf-no-response">The user did not submit any responses.</span>
+				</div>)
+			}
+		}
 		return (<div className="wpsf-preview-container">
 			{arrayOfObj.map(function(item, i) {
 				if ( item.status === 'answered' ) {
@@ -157,7 +165,7 @@ export default function Responses() {
 
 	if ( reports.length <= 0 ) {
 		return (
-			<NoResponseRecorded title={'No Response Recorded'} description={'No responses/insights found for provided start date and end date!'} />
+			<NoResponseRecorded title={'No Responses Received'} description={'No responses/insights received for provided start date and end date!'} />
 		)
 	}
 	return (

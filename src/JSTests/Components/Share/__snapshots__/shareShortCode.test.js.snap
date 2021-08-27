@@ -11,7 +11,7 @@ exports[`ShareShortCodeComponent Snapshot 1`] = `
       className="contentShortcodeLabel"
     >
       <h3>
-        Content ShortCode: 
+        ShortCode: 
       </h3>
       <button
         onClick={[Function]}
@@ -34,7 +34,7 @@ exports[`ShareShortCodeComponent Snapshot 1`] = `
       className="contentTypesLabel"
     >
       <h3>
-        Select Content Shortcode Type:
+        Select Shortcode Type:
       </h3>
     </div>
     <div
@@ -90,6 +90,7 @@ exports[`ShareShortCodeComponent Snapshot 1`] = `
         <input
           checked={false}
           className="contentTypeRadio"
+          disabled={true}
           id="custom"
           name="contentType"
           onChange={[Function]}

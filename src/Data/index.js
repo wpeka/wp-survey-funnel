@@ -187,24 +187,25 @@ export const shortcodeTypes = [
 	{
 		name: 'Full Page',
 		id: 'fullpage',
-		helpText: "This code will place a responsive survey on your website."
+		helpText: "This‌ ‌code‌ ‌will‌ ‌place‌ ‌a‌ ‌full-page‌ ‌survey‌ ‌on‌ ‌your‌ ‌website.‌"
 	},
 	{
 		name: 'Custom',
 		id: 'custom',
-		helpText: "This code will place a custom sized survey on your website."
+		helpText: "This code will place a custom sized survey on your website.",
+		disabled: true,
 	}
 ]
 
 export const shareTabsData = [
 	{
 		name: 'Share Shortcode',
-		description: 'Copy this and paste it into any post or page you want the survey to be displayed.',
+		description: ' ‌Copy‌ ‌and‌ ‌paste‌ ‌this‌ ‌into‌ ‌any‌ ‌post‌ ‌or‌ ‌page‌ ‌you‌ ‌want‌ ‌the‌ ‌survey‌ ‌to‌ ‌be‌ ‌displayed.‌',
 		id: 'shortcode',
 	},
 	{
 		name: 'Popup',
-		description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, quam?',
+		description: '‌Enable‌ ‌a‌ ‌pop-up‌ ‌survey‌ ‌on‌ ‌selected‌ ‌pages',
 		id: 'popup'
 	}
 ]

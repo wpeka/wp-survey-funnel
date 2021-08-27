@@ -5,6 +5,9 @@ import Frame, { useFrame } from 'react-frame-component'
 import fetchData from './HelperComponents/fetchData'
 import { initColorState, ItemTypes, popupInitialState } from './Data'
 import './scss/survey.scss'
+
+let currentIframe = null;
+
 function validateEmail(email) {
     const re =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -32,19 +35,37 @@ var available;
 var percentage_of_page;
 var half_screen;
 var contentHeight;
+let configure = '';
+
+let dismissEvent = new CustomEvent('wpsf-remove-event', { detail: {id}, } );
 
 if ( data.configure !== '' ) {
-    let configure = JSON.parse(data.configure);
+    configure = JSON.parse(data.configure);
     metaTitle = configure.metaInfo.title;
     metaDescription = configure.metaInfo.description;
     companyBranding = configure.companyBranding;
 }
 
 const initialContent =
-    `<!DOCTYPE html><html><head><link rel="stylesheet" href="${data.styleSurveyLink}" /><style>*{margin:0; padding:0;box-sizing:border-box;}</style>
+    `<!DOCTYPE html><html><head><link rel="stylesheet" href="${data.styleSurveyLink}" /><style>*{margin:0; padding:0;box-sizing:border-box;}html{height: 100%}body{height: 100%}</style>
         <meta name="title" content="${metaTitle}" />
         <meta name="description" content="${metaDescription}" />
-    </head><body class="wpsf-sc-${data.type}"><div class="frame-root"></div></body></html>`;
+    </head><body><div class="frame-root"></div></body></html>`;
+
+function ShowErrors({error}) {
+	return (
+		<>
+			{error.length > 0 && (
+				<div className="tab-validation-error">
+					{error.map(function (err) {
+						return err;
+					})}
+				</div>
+			)}
+		</>
+	);
+}
+	
 
 function Survey() {
     if (data.build === '') {
@@ -54,7 +75,7 @@ function Survey() {
     
     const iframeRef = React.createRef()
     const [height, setHeight] = useState(650);
-    const [ showSurvey, setShowSurvey ] = useState( data.type === 'popup' ? false : true );
+    const [ showSurvey, setShowSurvey ] = useState( true );
     
     let designCon = {}
     if (data.design === '') {
@@ -67,72 +88,9 @@ function Survey() {
         shareSettings = JSON.parse( data.share );
     }
 
-    useEffect(() => {
-        if ( data.type === 'popup' ) {
-            const { launchOptions } = shareSettings.popup.behaviourOptions;
-            switch( launchOptions.launchWhen ) {
-                case 'afterPageLoads':
-                    showOrHideSurvey(true);
-                    break;
-                case 'afterTimeDelay':
-                    setTimeout(() => {
-                        showOrHideSurvey(true);
-                    }, launchOptions.afterTimeDelay * 1000)
-                    break;
-                case 'afterScrollPercentage':
-                    showPopupOnScroll(launchOptions.afterScrollPercentage);
-                    break;
-                case 'afterExitIntent':
-                    showPopupOnExitIntent( launchOptions.afterExitIntent );
-                    break;
-            }
-        }
-    }, [])
-
-    const showPopupOnScroll = (scrollPercentage) => {
-        window.addEventListener('scroll', () => {
-            available = document.body.scrollHeight;
-            half_screen = available * scrollPercentage;
-            contentHeight = window.scrollY || window.scrollTop || document.getElementsByTagName("html")[0].scrollTop;
-            let docHeight = window.innerHeight;
-            
-            var scrollPercent = (contentHeight) / (available - docHeight);
-			var scrollPercentRounded = Math.round(scrollPercent*100);
-            if ( scrollPercentRounded > scrollPercentage ) {
-                showOrHideSurvey(true);
-            } else {
-                showOrHideSurvey(false);
-            }
-        })
-    }
-
-    const showPopupOnExitIntent = ( exitIntent ) => {
-        window.addEventListener('mousemove', (e) => {
-            
-            if ( ! showSurvey ) {
-                let exitY = 999999;
-                switch( exitIntent ) {
-                    case 'high':
-                        exitY = 100;
-                        break;
-                    case 'medium':
-                        exitY = 50;
-                        break;
-                    case 'low':
-                        exitY = 25;
-                        break;
-                }
-                if ( exitY > e.clientY ) {
-                    setTimeout(() => {
-                        showOrHideSurvey(true);
-                    }, 500); 
-                }
-            }
-        });
-    }
-
     const handleResize = useCallback(
         (iframe) => {
+			currentIframe = iframe;
             const height =
                 iframe.current?.node.contentDocument?.body?.scrollHeight ?? 0
             if (height !== 0) {
@@ -461,6 +419,10 @@ function Survey() {
                                         )
                                     })}
                                 </div>
+								<ShowErrors error={error} />
+								{checkValidations( 1, true ) && <div className="nextButtonChoices">
+									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+								</div>}
                             </div>
                         </div>
                     </div>
@@ -532,6 +494,10 @@ function Survey() {
                                         )
                                     })}
                                 </div>
+								<ShowErrors error={error} />
+								{checkValidations( 1, true ) && <div className="nextButtonChoices">
+									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+								</div>}
                             </div>
                         </div>
                     </div>
@@ -552,6 +518,7 @@ function Survey() {
                                 <p className="surveyDescription">
                                     {item.description}
                                 </p>
+								<ShowErrors error={error} />
                                 <button
                                     type="button"
                                     className="surveyButton"
@@ -695,6 +662,7 @@ function Survey() {
                                             )
                                     }
                                 })}
+								<ShowErrors error={error} />
                                 <button
                                     type="button"
                                     onClick={() => {
@@ -765,11 +733,21 @@ function Survey() {
     }
 
     const dismissSurvey = () => {
-        if ( data.type === 'popup' ) {
-            if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
-                setCookie('wpsf-dismiss-survey', data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
-            }
-        }
+		let wpsfSurveyCookie = getCookie( 'wpsf-dismiss-survey' );
+		if ( wpsfSurveyCookie ) {
+			if ( data.type === 'popup' ) {
+				if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
+					setCookie('wpsf-dismiss-survey', wpsfSurveyCookie + data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
+				}
+			}
+			else {
+				setCookie('wpsf-dismiss-survey', wpsfSurveyCookie + data.post_id + ',', 1 );
+			}
+		}
+        else {
+			setCookie('wpsf-dismiss-survey', data.post_id + ',', 1 );
+		}
+		window.parent.dispatchEvent(dismissEvent);
         showOrHideSurvey(false);
     }
 
@@ -798,6 +776,7 @@ function Survey() {
                     else
                         setCookie('wpsf-survey-completed', data.post_id , 1);
                 }
+				window.parent.dispatchEvent(dismissEvent);
                 showOrHideSurvey(false);
                 return;
             default:
@@ -827,10 +806,9 @@ function Survey() {
             height="100%"
             id={id + '_iframe'}
             style={{
-                margin: '0px',
-                border: '0px',
+                border: '0',
+				margin: 'auto',
                 height: data.type === 'responsive' ? height : '',
-                background: data.type === 'popup' ? 'rgba(39,43,47,.9)' : ''
             }}
             className={'wpsf-sc-'+data.type}
             onLoad={() => handleResize(iframeRef)}
@@ -871,19 +849,12 @@ function Survey() {
                                                 }
                                                 return renderContentElements(item, 'none', i);
                                             })}
-                                        </div>
-                                        {error.length > 0 && <div className="tab-validation-error">
-                                            {error.map(function(err) {
-                                                return err;
-                                            })}	
-                                        </div>}
-                                    
-                                        
+                                        </div>    
 										</div>
                                     </div>
                                     <div className="tab-controls">
                                             <span className="tab-controls-inner">
-                                            {companyBranding && <div><a href="google.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div> }
+                                            {companyBranding && <div><a target="_blank" href="https://www.surveyfunnel.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div> }
                                             
                                             <button
                                                 type="button"

@@ -189,7 +189,7 @@ class Surveyfunnel_Lite_Admin {
 			<div class="wpsf-container-main">
 				<div class="wpsf-header">
 					<div class="wpsf-logo">
-						<img width="350" src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/wpsf-main-logo.png' ); ?>" alt="wpsf-main-logo">
+						<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/wpsf-help-logo.png' ); ?>" alt="wpsf-main-logo">
 					</div>
 				</div>
 				<div class="wpsf-inner-container">

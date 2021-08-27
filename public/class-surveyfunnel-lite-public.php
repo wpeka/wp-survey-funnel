@@ -86,7 +86,7 @@ class Surveyfunnel_Lite_Public {
 		wp_register_script(
 			$this->plugin_name . '-survey',
 			SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.bundle.js',
-			array(),
+			array( 'wp-hooks' ),
 			time(),
 			false
 		);
@@ -132,7 +132,7 @@ class Surveyfunnel_Lite_Public {
 			}
 		}
 
-		if ( isset( $_COOKIE['wpsf-dismiss-survey'] ) && 'popup' === $atts['type'] ) {
+		if ( isset( $_COOKIE['wpsf-dismiss-survey'] ) ) {
 			$match = '/' . $atts['id'] . '/';
 			if ( preg_match( $match, sanitize_text_field( wp_unslash( $_COOKIE['wpsf-dismiss-survey'] ) ) ) ) {
 				return '';
@@ -171,10 +171,15 @@ class Surveyfunnel_Lite_Public {
 		} else {
 			$data['designImageUrl'] = null;
 		}
+
+		$configure_data = $atts['type'] === 'popup' ? $data['share'] : '';
+		$data           = wp_json_encode( $data );
+		$script_string  = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.bundle.js';
+		$style_string   = plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-public.css';
 		wp_enqueue_style( $this->plugin_name . '-public' );
-		wp_enqueue_script( $this->plugin_name . '-survey' );
-		wp_localize_script( $this->plugin_name . '-survey', 'data', $data );
-		return '<div id="wpsf-survey-' . $unique_id . '" style="width: 100%; height: 100%;"></div>';
+		$survey_style_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css';
+		$return_string       = '<div class="iframewrapper" id="wpsf-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="wpsf-survey-' . $unique_id . '" style="width: 100%; height: 100%;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';
+		return $return_string;
 	}
 
 	/**

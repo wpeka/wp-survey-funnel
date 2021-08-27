@@ -86,6 +86,8 @@ module.exports = function (grunt) {
 					'**',
 					'!node_modules/**',
 					'!vendor/**',
+					'!**/JSTests/**',
+					'!__mocks__/**',
 					'vendor/mobiledetect/**',
                     'vendor/autoload.php',
 					'!release/**',

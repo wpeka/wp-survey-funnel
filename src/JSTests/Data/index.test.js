@@ -227,22 +227,23 @@ it("initColorState test",()=>{
 
 it("shortcodeTypes test",()=>{
     const expectedshortcodeTypes =  [
-        {
-            name: 'Responsive',
-            id: 'responsive',
-            helpText: "This code will place a responsive survey on your website."
-        },
-        {
-            name: 'Full Page',
-            id: 'fullpage',
-            helpText: "This code will place a responsive survey on your website."
-        },
-        {
-            name: 'Custom',
-            id: 'custom',
-            helpText: "This code will place a custom sized survey on your website."
-        }
-    ]
+		{
+			name: 'Responsive',
+			id: 'responsive',
+			helpText: "This code will place a responsive survey on your website."
+		},
+		{
+			name: 'Full Page',
+			id: 'fullpage',
+			helpText: "This‌ ‌code‌ ‌will‌ ‌place‌ ‌a‌ ‌full-page‌ ‌survey‌ ‌on‌ ‌your‌ ‌website.‌"
+		},
+		{
+			name: 'Custom',
+			id: 'custom',
+			helpText: "This code will place a custom sized survey on your website.",
+			disabled: true,
+		}
+	]
     
     const receivedshortcodeTypes = data.shortcodeTypes;
 
@@ -296,17 +297,17 @@ it("popupInitialState test",()=>{
 })
 it("shareTabsData test",()=>{
     const expectedshareTabsData =  [
-        {
-            name: 'Share Shortcode',
-            description: 'Copy this and paste it into any post or page you want the survey to be displayed.',
-            id: 'shortcode',
-        },
-        {
-            name: 'Popup',
-            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, quam?',
-            id: 'popup'
-        }
-    ]
+		{
+			name: 'Share Shortcode',
+			description: ' ‌Copy‌ ‌and‌ ‌paste‌ ‌this‌ ‌into‌ ‌any‌ ‌post‌ ‌or‌ ‌page‌ ‌you‌ ‌want‌ ‌the‌ ‌survey‌ ‌to‌ ‌be‌ ‌displayed.‌',
+			id: 'shortcode',
+		},
+		{
+			name: 'Popup',
+			description: '‌Enable‌ ‌a‌ ‌pop-up‌ ‌survey‌ ‌on‌ ‌selected‌ ‌pages',
+			id: 'popup'
+		}
+	]
     const receivedshareTabsData = data.shareTabsData;
 
     expect(expectedshareTabsData).toEqual(expect.arrayContaining(receivedshareTabsData));
