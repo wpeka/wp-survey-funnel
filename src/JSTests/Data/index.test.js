@@ -240,7 +240,8 @@ it("shortcodeTypes test",()=>{
 		{
 			name: 'Custom',
 			id: 'custom',
-			helpText: "This code will place a custom sized survey on your website."
+			helpText: "This code will place a custom sized survey on your website.",
+			disabled: true,
 		}
 	]
     

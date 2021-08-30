@@ -165,7 +165,7 @@ export default function Responses() {
 
 	if ( reports.length <= 0 ) {
 		return (
-			<NoResponseRecorded title={'No Response Recorded'} description={'No responses/insights received for provided start date and end date!'} />
+			<NoResponseRecorded title={'No Responses Received'} description={'No responses/insights received for provided start date and end date!'} />
 		)
 	}
 	return (

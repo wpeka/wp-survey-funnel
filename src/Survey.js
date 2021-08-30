@@ -5,6 +5,9 @@ import Frame, { useFrame } from 'react-frame-component'
 import fetchData from './HelperComponents/fetchData'
 import { initColorState, ItemTypes, popupInitialState } from './Data'
 import './scss/survey.scss'
+
+let currentIframe = null;
+
 function validateEmail(email) {
     const re =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -32,11 +35,12 @@ var available;
 var percentage_of_page;
 var half_screen;
 var contentHeight;
+let configure = '';
 
 let dismissEvent = new CustomEvent('wpsf-remove-event', { detail: {id}, } );
 
 if ( data.configure !== '' ) {
-    let configure = JSON.parse(data.configure);
+    configure = JSON.parse(data.configure);
     metaTitle = configure.metaInfo.title;
     metaDescription = configure.metaInfo.description;
     companyBranding = configure.companyBranding;
@@ -71,7 +75,7 @@ function Survey() {
     
     const iframeRef = React.createRef()
     const [height, setHeight] = useState(650);
-    const [ showSurvey, setShowSurvey ] = useState( data.type === 'popup' ? false : true );
+    const [ showSurvey, setShowSurvey ] = useState( true );
     
     let designCon = {}
     if (data.design === '') {
@@ -84,72 +88,9 @@ function Survey() {
         shareSettings = JSON.parse( data.share );
     }
 
-    useEffect(() => {
-        if ( data.type === 'popup' ) {
-            const { launchOptions } = shareSettings.popup.behaviourOptions;
-            switch( launchOptions.launchWhen ) {
-                case 'afterPageLoads':
-                    showOrHideSurvey(true);
-                    break;
-                case 'afterTimeDelay':
-                    setTimeout(() => {
-                        showOrHideSurvey(true);
-                    }, launchOptions.afterTimeDelay * 1000)
-                    break;
-                case 'afterScrollPercentage':
-                    showPopupOnScroll(launchOptions.afterScrollPercentage);
-                    break;
-                case 'afterExitIntent':
-                    showPopupOnExitIntent( launchOptions.afterExitIntent );
-                    break;
-            }
-        }
-    }, [])
-
-    const showPopupOnScroll = (scrollPercentage) => {
-        window.addEventListener('scroll', () => {
-            available = document.body.scrollHeight;
-            half_screen = available * scrollPercentage;
-            contentHeight = window.scrollY || window.scrollTop || document.getElementsByTagName("html")[0].scrollTop;
-            let docHeight = window.innerHeight;
-            
-            var scrollPercent = (contentHeight) / (available - docHeight);
-			var scrollPercentRounded = Math.round(scrollPercent*100);
-            if ( scrollPercentRounded > scrollPercentage ) {
-                showOrHideSurvey(true);
-            } else {
-                showOrHideSurvey(false);
-            }
-        })
-    }
-
-    const showPopupOnExitIntent = ( exitIntent ) => {
-        window.addEventListener('mousemove', (e) => {
-            
-            if ( ! showSurvey ) {
-                let exitY = 999999;
-                switch( exitIntent ) {
-                    case 'high':
-                        exitY = 100;
-                        break;
-                    case 'medium':
-                        exitY = 50;
-                        break;
-                    case 'low':
-                        exitY = 25;
-                        break;
-                }
-                if ( exitY > e.clientY ) {
-                    setTimeout(() => {
-                        showOrHideSurvey(true);
-                    }, 500); 
-                }
-            }
-        });
-    }
-
     const handleResize = useCallback(
         (iframe) => {
+			currentIframe = iframe;
             const height =
                 iframe.current?.node.contentDocument?.body?.scrollHeight ?? 0
             if (height !== 0) {
@@ -908,9 +849,7 @@ function Survey() {
                                                 }
                                                 return renderContentElements(item, 'none', i);
                                             })}
-                                        </div>
-                                    
-                                        
+                                        </div>    
 										</div>
                                     </div>
                                     <div className="tab-controls">
