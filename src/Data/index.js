@@ -247,3 +247,7 @@ export const popupInitialState = {
 		}
 	}
 }
+
+export const dimensionTypes = [
+	'%', 'px', 'em', 'rem'
+];

@@ -37,9 +37,12 @@
 		function writeContentHtml(html, type, iframe, ele) {
 
 			let iframee = document.createElement('iframe');
-			iframee.setAttribute('width', '100%');
-			iframee.setAttribute('height', '100%');
-			iframee.setAttribute('scrolling', 'no');
+			
+			if ( type !== 'custom' ) {
+				iframee.setAttribute('width', '100%');
+				iframee.setAttribute('height', '100%');
+				iframee.setAttribute('scrolling', 'no');
+			}
 			iframee.setAttribute('frameborder', '0');
 			iframee.setAttribute( 'src', '' );
 			iframee.classList.add( 'wpsf-sc-' + type );
@@ -50,12 +53,13 @@
 			iframee.contentWindow.document.close(); //without this line, page loading animations won't go away!
 
 			function resizeIframe(iframe) {
+				console.log('hellllllo wrold');
 				iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";
 			}
 
 			$(iframee).on("load", function() {
 				
-				if ( type === 'responsive' ) {
+				if ( type === 'responsive' || type === 'custom' ) {
 					resizeIframe(this);
 				}				
 			})

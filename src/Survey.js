@@ -802,8 +802,8 @@ function Survey() {
         showSurvey && <Frame
             ref={iframeRef}
             initialContent={initialContent}
-            width="100%"
-            height="100%"
+            width={ data.type === 'custom' ? data.width : "100%"}
+            height={ data.type === 'custom' ? data.height : "100%"}
             id={id + '_iframe'}
             style={{
                 border: '0',

@@ -105,8 +105,10 @@ class Surveyfunnel_Lite_Public {
 	public function wpsf_survey_shortcode_render( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'id'   => 0,
-				'type' => 'responsive',
+				'id'     => 0,
+				'type'   => 'responsive',
+				'width'  => '100%',
+				'height' => '100%',
 			),
 			$atts
 		);
@@ -163,6 +165,8 @@ class Surveyfunnel_Lite_Public {
 			'userLocalID'     => $unique_id,
 			'styleSurveyLink' => SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css',
 			'type'            => $atts['type'],
+			'width'           => $atts['width'],
+			'height'          => $atts['height'],
 		);
 
 		$design_image_id = get_post_meta( $atts['id'], 'wpsf-survey-design-background', true );
@@ -178,7 +182,11 @@ class Surveyfunnel_Lite_Public {
 		$style_string   = plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-public.css';
 		wp_enqueue_style( $this->plugin_name . '-public' );
 		$survey_style_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css';
-		$return_string       = '<div class="iframewrapper" id="wpsf-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="wpsf-survey-' . $unique_id . '" style="width: 100%; height: 100%;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';
+		$return_string       = '';
+		if ( $atts['type'] === 'custom' ) {
+			$return_string .= '<style>#wpsf-survey-' . $unique_id . ' iframe { height: ' . $atts['height'] . '; width: ' . $atts['width'] . ';  }</style>';
+		}
+		$return_string .= '<div class="iframewrapper" id="wpsf-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="wpsf-survey-' . $unique_id . '" style="width: 100vw; height: 100vh;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';
 		return $return_string;
 	}
 
