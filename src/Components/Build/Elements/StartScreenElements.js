@@ -113,8 +113,8 @@ export const CoverPage = React.memo(
                                     </div>
                                 </div>)
                                  : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
-                                        { this.checkForEmpty('title') && <h3>{this.state.title}</h3> }
-                                        { this.checkForEmpty('description') && <p>{this.state.description}</p> }
+                                        { this.checkForEmpty('title') && <h3 className="surveyTitle">{this.state.title}</h3> }
+                                        { this.checkForEmpty('description') && <p className="surveyDescription">{this.state.description}</p> }
 										<ConfigureContext.Consumer>
 											{consumer => applyFilters('startScreenRightPrivacyPolicy', '', this.state, consumer.proSettings)}
 										</ConfigureContext.Consumer>
