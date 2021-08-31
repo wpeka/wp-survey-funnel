@@ -7,6 +7,10 @@ import { initColorState, ItemTypes, popupInitialState } from './Data'
 import './scss/survey.scss'
 
 let currentIframe = null;
+data = {
+	...data,
+	...surveyData
+}
 
 function validateEmail(email) {
     const re =

@@ -83,6 +83,15 @@ class Surveyfunnel_Lite_Public {
 			false
 		);
 
+		wp_localize_script(
+			$this->plugin_name,
+			'ajaxData',
+			array(
+				'ajaxURL'      => admin_url( 'admin-ajax.php' ),
+				'ajaxSecurity' => wp_create_nonce( 'wpsf-security' ),
+			)
+		);
+
 		wp_register_script(
 			$this->plugin_name . '-survey',
 			SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.bundle.js',
@@ -152,10 +161,6 @@ class Surveyfunnel_Lite_Public {
 		$unique_id = md5( $ip . $m_time . wp_rand( 0, time() ) );
 		$time      = time();
 		$data      = array(
-			'build'           => $meta_data['build'],
-			'design'          => $meta_data['design'],
-			'share'           => $meta_data['share'],
-			'configure'       => $meta_data['configure'],
 			'ajaxURL'         => admin_url( 'admin-ajax.php' ),
 			'ajaxSecurity'    => wp_create_nonce( 'wpsf-security' ),
 			'post_id'         => $atts['id'],
@@ -178,8 +183,35 @@ class Surveyfunnel_Lite_Public {
 		$style_string   = plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-public.css';
 		wp_enqueue_style( $this->plugin_name . '-public' );
 		$survey_style_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css';
-		$return_string       = '<div class="iframewrapper" id="wpsf-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="wpsf-survey-' . $unique_id . '" style="width: 100%; height: 100%;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';
+		$pro_script_string = '';
+		$pro_script_string = apply_filters( 'wpsf_display_survey', $pro_script_string );
+		$return_string = '<div class="iframewrapper" post_id="' . $atts['id'] . '" id="wpsf-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script src="' . $hooks_string . '"></script>' . $pro_script_string . '<script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="wpsf-survey-' . $unique_id . '" style="width: 100%; height: 100%;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';
 		return $return_string;
+	}
+
+	/**
+	 * Ajax call to get display data.
+	 */
+	public function wpsf_get_display_data() {
+
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'wpsf-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		$post_id   = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$defaults  = Surveyfunnel_Lite_Admin::wpsf_get_default_save_array();
+		$meta_data = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$meta_data = wp_parse_args( $meta_data, $defaults );
+		$data      = array(
+			'build'           => $meta_data['build'],
+			'design'          => $meta_data['design'],
+			'share'           => $meta_data['share'],
+			'configure'       => $meta_data['configure'],
+		);
+		wp_send_json_success( $data );
 	}
 
 	/**

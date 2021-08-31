@@ -4,6 +4,7 @@
 		$(".iframewrapper").each(function(){
 			let html = $(this).attr("data-content");
 			let type = $(this).attr('survey-type');
+			let post_id = $(this).attr('post_id');
 			let iframe = '<iframe width="100%" height="100%" scrolling="no" id="wpsf-iframe" class="wpsf-iframe wpsf-sc-' + type + '" frameborder="0" src=""></iframe>';
 			
 
@@ -31,35 +32,51 @@
 						break;
 				}
 			}
+
+			function writeContentHtml(html, type, iframe, ele) {
+
+				let iframee = document.createElement('iframe');
+				iframee.setAttribute('width', '100%');
+				iframee.setAttribute('height', '100%');
+				iframee.setAttribute('scrolling', 'no');
+				iframee.setAttribute('frameborder', '0');
+				iframee.setAttribute( 'src', '' );
+				iframee.classList.add( 'wpsf-sc-' + type );
+				iframee.id = 'wpsf-iframe';
+				$(ele).append( iframee );
+	
+				$.ajax({
+					type: "POST",
+					url: ajaxData.ajaxURL,
+					data: {
+						action: 'wpsf_get_display_data',
+						security: ajaxData.ajaxSecurity,
+						post_id,
+					}
+				}).done(data => {
+					iframee.contentWindow.surveyData = data.data;
+				
+					var context = iframee.contentDocument.write(html);
+					iframee.contentWindow.document.close(); //without this line, page loading animations won't go away!
+				});
+	
+				
+	
+				function resizeIframe(iframe) {
+					iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";
+				}
+	
+				$(iframee).on("load", function() {
+					
+					if ( type === 'responsive' ) {
+						resizeIframe(this);
+					}				
+				})
+			}
 			
 		});
 
-		function writeContentHtml(html, type, iframe, ele) {
-
-			let iframee = document.createElement('iframe');
-			iframee.setAttribute('width', '100%');
-			iframee.setAttribute('height', '100%');
-			iframee.setAttribute('scrolling', 'no');
-			iframee.setAttribute('frameborder', '0');
-			iframee.setAttribute( 'src', '' );
-			iframee.classList.add( 'wpsf-sc-' + type );
-			iframee.id = 'wpsf-iframe';
-			$(ele).append( iframee );
-			
-			var context = iframee.contentDocument.write(html);
-			iframee.contentWindow.document.close(); //without this line, page loading animations won't go away!
-
-			function resizeIframe(iframe) {
-				iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";
-			}
-
-			$(iframee).on("load", function() {
-				
-				if ( type === 'responsive' ) {
-					resizeIframe(this);
-				}				
-			})
-		}
+		
 
 		window.addEventListener('wpsf-remove-event', function(e) {
 			document.getElementById(e.detail.id).remove();
