@@ -1,11 +1,11 @@
-export const ItemTypes = {
+const ItemTypes = {
 	CARD: 'card',
 	START_ELEMENTS: 'START_ELEMENTS',
 	CONTENT_ELEMENTS: 'CONTENT_ELEMENTS',
 	RESULT_ELEMENTS: 'RESULT_ELEMENTS'
 }  
 
-export const buildElements = {
+let buildElements = {
 	startScreen: [
 		{
 			name: 'Cover Page',
@@ -39,7 +39,7 @@ export const buildElements = {
 	]
 };
 
-export const dropBoard = [
+const dropBoard = [
 	{
 		name: 'Start Screen',
 		type: 'StartScreen',
@@ -57,7 +57,7 @@ export const dropBoard = [
 	}
 ];
 
-export const formElementsDropBoard = [
+const formElementsDropBoard = [
 	{
 		name: 'Form Fields',
 		type: 'FormFields',
@@ -65,7 +65,7 @@ export const formElementsDropBoard = [
 	}
 ]
 
-export const formElements = [
+let formElements = [
 	{
 		name: 'First Name',
 		componentName: 'FirstName',
@@ -91,7 +91,7 @@ export const formElements = [
 		value: ''
 	},
 ]
-export const designColors = [
+const designColors = [
 	{
 		name: 'Font Color',
 		itemName: 'fontColor'
@@ -122,7 +122,7 @@ export const designColors = [
 	},
 ]
 
-export const initColorState = {
+const initColorState = {
 	opacity: 0,
 
 	fontFamily: null,
@@ -178,7 +178,7 @@ export const initColorState = {
 	},
 }
 
-export const shortcodeTypes = [
+const shortcodeTypes = [
 	{
 		name: 'Responsive',
 		id: 'responsive',
@@ -197,7 +197,7 @@ export const shortcodeTypes = [
 	}
 ]
 
-export const shareTabsData = [
+const shareTabsData = [
 	{
 		name: 'Share Shortcode',
 		description: ' ‌Copy‌ ‌and‌ ‌paste‌ ‌this‌ ‌into‌ ‌any‌ ‌post‌ ‌or‌ ‌page‌ ‌you‌ ‌want‌ ‌the‌ ‌survey‌ ‌to‌ ‌be‌ ‌displayed.‌',
@@ -210,7 +210,7 @@ export const shareTabsData = [
 	}
 ]
 
-export const popupInitialState = {
+const popupInitialState = {
 	active: false,
 	targettingOptions: {
 		devices: [
@@ -247,3 +247,5 @@ export const popupInitialState = {
 		}
 	}
 }
+
+export { ItemTypes, buildElements, popupInitialState, shareTabsData, shortcodeTypes, initColorState, designColors, formElements, formElementsDropBoard, dropBoard };

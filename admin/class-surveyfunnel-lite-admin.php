@@ -345,7 +345,7 @@ class Surveyfunnel_Lite_Admin {
 		wp_register_script(
 			$this->plugin_name . '-main',
 			SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/index.bundle.js',
-			array( 'wp-i18n' ),
+			array( 'wp-i18n', 'wp-hooks' ),
 			time(),
 			true
 		);
@@ -365,6 +365,7 @@ class Surveyfunnel_Lite_Admin {
 				<input type="hidden" id="ajaxSecurity" value="<?php echo esc_attr( wp_create_nonce( 'wpsf-security' ) ); ?>">
 				<input type="hidden" id="dashboardLink" value="<?php echo esc_url( admin_url() . 'admin.php?page=wpsf-dashboard' ); ?>">
 				<input type="hidden" id="exportCSVAction" value="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>?action=export_csv">
+				<?php do_action( 'wpsf_survey_page_html' ); ?>
 				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
 			</body>
 			</html>
@@ -812,13 +813,15 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: get posts and pages for async select.
 	 */
-	public function wpsf_get_posts_pages() {
+	public function wpsf_get_posts_pages( $flag = false ) {
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'wpsf-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
 		}
+
+		$flag = isset( $_POST['links'] ) ? true : false;
 
 		$args = array(
 			'post_type'     => 'post',
@@ -834,7 +837,11 @@ class Surveyfunnel_Lite_Admin {
 		foreach ( $posts as $post ) {
 			$obj        = new stdClass();
 			$obj->label = $post->post_title;
-			$obj->value = $post->ID;
+			if ( $flag ) {
+				$obj->value = get_permalink( $post->ID );
+			} else {
+				$obj->value = $post->ID;
+			}
 			array_push( $post_object->options, $obj );
 		}
 
@@ -852,7 +859,11 @@ class Surveyfunnel_Lite_Admin {
 		foreach ( $pages as $page ) {
 			$obj        = new stdClass();
 			$obj->label = $page->post_title;
-			$obj->value = $page->ID;
+			if ( $flag ) {
+				$obj->value = get_permalink( $page->ID );
+			} else {
+				$obj->value = $page->ID;
+			}
 			array_push( $page_object->options, $obj );
 		}
 

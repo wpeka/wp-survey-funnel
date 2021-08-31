@@ -13,6 +13,15 @@ module.exports = {
         path: path.join(__dirname, "/dist"),
         filename: "[name].bundle.js",
     },
+
+    resolve: {
+        fallback: {
+            'util': false,
+            'path': false,
+            'fs'  : false,
+        }
+    },
+
     // Rules of how webpack will take our files, complie & bundle them for the browser
     module: {
         rules: [

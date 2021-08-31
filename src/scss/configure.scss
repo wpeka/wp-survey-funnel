@@ -54,7 +54,7 @@
             .configure-fields{
                 overflow: auto;
                 height: calc(100vh - 198px);
-                .meta-info-container{
+                .meta-info-container, .privacy-policy-container{
                     padding: 20px 0 0 40px;
                     border-bottom: 1px solid #d2dae2;
                     h3{
@@ -68,7 +68,7 @@
                         display: block;
                         font-weight: bold;
                     }
-                    input{
+                    input {
                         width: 546px;
                         padding: 20px;
                         border-radius: 9px;
@@ -76,6 +76,10 @@
                         margin: 10px 0 20px 0;
                         outline: none;
                     }
+					> div {
+						margin: 10px 0 20px 0;
+						width: 546px;
+					}
                     textarea{
                         width: 546px;
                         border-radius: 9px;
@@ -88,6 +92,7 @@
                 }
                 .company-name-container{
                     padding: 20px 0 0 40px;
+					border-bottom: 1px solid #d2dae2;
                     h3{
                         margin: 0;
                     }
