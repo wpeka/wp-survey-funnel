@@ -200,6 +200,7 @@ class Surveyfunnel_Lite {
 		// enqueue necessary scripts and styles.
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'enqueue_block_editor_assets', $plugin_public, 'wpsf_register_gutenberg_scripts' );
 
 		// init functionality - add_shortcode.
 		$this->loader->add_action( 'init', $plugin_public, 'wpsf_public_init' );
@@ -208,6 +209,7 @@ class Surveyfunnel_Lite {
 		// ajax calls
 		$this->loader->add_action( 'wp_ajax_wpsf_new_survey_lead', $plugin_public, 'wpsf_new_survey_lead' );
 		$this->loader->add_action( 'wp_ajax_nopriv_wpsf_new_survey_lead', $plugin_public, 'wpsf_new_survey_lead' );
+
 	}
 
 	/**

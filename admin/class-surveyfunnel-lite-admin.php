@@ -883,20 +883,20 @@ class Surveyfunnel_Lite_Admin {
 				array(
 					'editor_script'   => 'wpsf-gutenberg-single-survey',
 					'attributes'      => array(
-						'survey_id'           => array(
+						'survey_id'            => array(
 							'type' => 'number',
 						),
-						'survey_name'    => array(
+						'survey_name'          => array(
 							'type' => 'string',
 						),
-						'survey_embed_type' => array(
-							'type'    => 'string',
+						'survey_embed_type'    => array(
+							'type' => 'string',
 						),
-						'survey_custom_width'    => array(
-							'type'    => 'string',
+						'survey_custom_width'  => array(
+							'type' => 'string',
 						),
-						'survey_custom_height'         => array(
-							'type'    => 'string',
+						'survey_custom_height' => array(
+							'type' => 'string',
 						),
 					),
 					'render_callback' => array( $this, 'gutenberg_display_single_survey' ),
@@ -905,14 +905,21 @@ class Surveyfunnel_Lite_Admin {
 		}
 	}
 
-	public function gutenberg_display_single_survey( $attributes ){
+	public function gutenberg_display_single_survey( $attributes ) {
 		$survey_atts = array();
-		if (isset($attributes['survey_id'])){
+		if ( isset( $attributes['survey_id'] ) ) {
 			$survey_atts['id'] = $attributes['survey_id'];
 		}
-		if (isset($attributes['survey_embed_type'])){
+		if ( isset( $attributes['survey_embed_type'] ) ) {
 			$survey_atts['type'] = $attributes['survey_embed_type'];
 		}
+		if ( isset( $attributes['survey_custom_width'] ) ) {
+			$survey_atts['width'] = $attributes['survey_custom_width'];
+		}
+		if ( isset( $attributes['survey_custom_height'] ) ) {
+			$survey_atts['height'] = $attributes['survey_custom_height'];
+		}
+
 		return Surveyfunnel_Lite_Public::wpsf_display_survey( $survey_atts );
 	}
 

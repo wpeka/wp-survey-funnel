@@ -1,75 +1,74 @@
-// const apiFetch       = wp.apiFetch;
-// const { Component, } = wp.element;
-// const { __, }       = wp.i18n;
+const apiFetch       = wp.apiFetch;
+const { Component, } = wp.element;
+const { __, }       = wp.i18n;
 
 
 
-// class SingleSurveyPreview extends Component{
-//   constructor(){
-//     super(...arguments);
-//     this.state={
-//       survey_id:this.props.adId,
+class SingleSurveyPreview extends Component{
+  constructor(){
+    super(...arguments);
+    this.state={
+      survey_id:this.props.surveyId,
 
-//       ad_html:{
-//         __html:'',
-//       },
-//     }
+      survey_html:{
+        __html:'',
+      },
+    }
 
-//   }
+  }
 
-//   componentDidMount() {
-//     this.setState( {
-//       ad_html:{
-//         __html:`<h4 style="font-weight:300">${__('Loading survey','surveyfunnel')}</h4>`,
-//       },
-//     } );
-//     this.loadAds();
+  componentDidMount() {
+    this.setState( {
+      ad_html:{
+        __html:`<h4 style="font-weight:300">${__('Loading survey','surveyfunnel')}</h4>`,
+      },
+    } );
+    this.loadAds();
 
-// 	}
+	}
 
-//   loadAds(){
+  loadAds(){
    
 
 
-//     var j = jQuery.noConflict();
-//     j.ajax({
-//       type:"POST",
-//       url: "./admin-ajax.php",
-//       data: {
-//           action:'wpadcenter_singlead_gutenberg_preview', 
-//           singlead_nonce:wpadcenter_singlead_verify.singlead_nonce,   
-//           ad_id:this.props.adId,
-//           alignment:this.props.adAlignment,
-//           max_width_check:this.props.max_width_check,
-//           max_width_px:this.props.max_width_px,
-//       }
-//   }).done(singlead_html => {
-//         this.setState( {
-//             ad_html:{
-//             __html:singlead_html,
-//         },
-//     } );
-//   });
+    var j = jQuery.noConflict();
+    j.ajax({
+      type:"POST",
+      url: "./admin-ajax.php",
+      data: {
+          action:'wpsf_single_survey_preview', 
+          single_survey_nonce:wpsf_single_survey_verify.single_survey_nonce,   
+          survey_id:this.props.surveyId,
+          survey_type:this.props.surveyType,
+
+      }
+  }).done(single_survey_html => {
+        this.setState( {
+            survey_html:{
+            __html:single_survey_html,
+        },
+    } );
+  });
 
 
-//   }
+  }
 
 
-//   render() {
+  render() {
 
-//     let adAlignment = {
-//       zIndex:"20",
-//       position:"relative",
-//   }; 
-
-
+    let adAlignment = {
+      zIndex:"20",
+      position:"relative",
+  }; 
 
 
-// return (
 
-//   <div style={adAlignment} dangerouslySetInnerHTML={ this.state.ad_html } ></div>
-// )
 
-//   	}
-// }
-// export default SingleAd;
+return (
+
+  <div style={adAlignment} dangerouslySetInnerHTML={ this.state.survey_html } ></div>
+)
+
+  	}
+}
+export default SingleSurveyPreview;

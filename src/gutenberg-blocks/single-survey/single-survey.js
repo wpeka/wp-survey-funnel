@@ -68,11 +68,12 @@ registerBlockType('surveyfunnel/single-survey',{
           ...base,
       
           minWidth: "300px",
-          maxWidth:"400px",
+          maxWidth:"547px",
       
       
           fontSize:"125%",
-          borderRadius: state.isFocused ? "3px 3px 0 0" : 3,
+          borderRadius: "9px",
+          padding:"10px",
          
          boxShadow: state.isFocused ? null : null,
       
@@ -84,11 +85,14 @@ registerBlockType('surveyfunnel/single-survey',{
         
           marginTop: 0,
           minWidth: "300px",
+          borderRadius:"9px"
+
         }),
         menuList: base => ({
           ...base,
           padding: 0,
-          maxWidth: "300px",
+          maxWidth: "547px",
+          borderRadius:"9px"
          
         })
       };
@@ -156,46 +160,72 @@ registerBlockType('surveyfunnel/single-survey',{
 
       }
 
-       return <div className="">
+      const surveyTypes = {
+        responsive: "Responsive",
+        fullpage:"Fullpage",
+        custom:"Custom"
+      }
+
+       return <div className="wpsf-gutenberg-block-container">
        { !! props.isSelected ? (
 
-      <Placeholder label="SurveyFunnel Single Survey"  isColumnLayout="true">
+      <Placeholder  isColumnLayout="true">
+      <div className="wpsf-gutenberg-block-component-area">
 
-      <h3 style={{fontWeight:"300",textAlign:"center",fontSize:"medium"}}>{__('Select Survey','wpadcenter')}</h3>
-      <AsyncSelect
-       styles={customStyles}
-       className="wpadcenter-async-select"
-       defaultOptions
-			 loadOptions={ getOptions }
-			 defaultValue={ defaultValue }
-			 onChange={ onSurveySelection }
+          <div className="wpsf-gutenberg-heading">
+            <h3 style={{fontSize:"24px",margin:"20px 0",fontWeight:"bold"}}>SurveyFunnel Single Survey</h3>
+          </div>
+
+          <h4 style={{fontSize:"18px",margin:"0 0 10px 0",fontWeight:"bold"}}>{__('Select Survey','wpadcenter')}</h4>
+          <AsyncSelect
+          styles={customStyles}
+          className="wpsf-async-select"
+          defaultOptions
+          loadOptions={ getOptions }
+          defaultValue={ defaultValue }
+          onChange={ onSurveySelection }
 
 
-      />
-      <div>
-        <input id="wpsf-responsive-survey" name="survey_embed_type" type="radio" value="reponsive" onChange={onSurveyTypeSelection} checked={props.attributes.survey_embed_type === 'responsive'}></input>
-        <label htmlFor="wpsf-responsive-survey">Responsive</label>
-        <input id="wpsf-fullpage-survey" name="survey_embed_type" type="radio" value="fullpage" onChange={onSurveyTypeSelection} checked={props.attributes.survey_embed_type === 'fullpage'}></input>
-        <label htmlFor="wpsf-fullpage-survey" >Full Page</label>
-        <input id="wpsf-custom-survey" name="survey_embed_type" type="radio" value="custom" onChange={onSurveyTypeSelection} checked={props.attributes.survey_embed_type === 'custom'}></input>
-        <label htmlFor="wpsf-custom-survey">Custom</label>
+          />
+          <h4 style={{fontSize:"18px", margin:"20px 0 10px 0",fontWeight:"bold"}}>Survey Embed Type</h4>
+          <div className="wpsf-contentTypes-container">
+            <div className={props.attributes.survey_embed_type === 'responsive' ? 'wpsf-contentType-element wpsf-contentType-element-active':'wpsf-contentType-element'}>
+              <label htmlFor="wpsf-responsive-survey">Responsive</label>
+              <input id="wpsf-responsive-survey" name="survey_embed_type" type="radio" value="responsive" onChange={onSurveyTypeSelection} checked={props.attributes.survey_embed_type === 'responsive'}></input>
+            </div>
+            <div className={props.attributes.survey_embed_type === 'fullpage' ? 'wpsf-contentType-element wpsf-contentType-element-active':'wpsf-contentType-element'}>
+              <label htmlFor="wpsf-fullpage-survey" >Full Page</label>
+              <input id="wpsf-fullpage-survey" name="survey_embed_type" type="radio" value="fullpage" onChange={onSurveyTypeSelection} checked={props.attributes.survey_embed_type === 'fullpage'}></input>
+            </div>
+            <div className={props.attributes.survey_embed_type === 'custom' ? 'wpsf-contentType-element wpsf-contentType-element-active':'wpsf-contentType-element'}>
+              <label htmlFor="wpsf-custom-survey">Custom</label>
+              <input id="wpsf-custom-survey" name="survey_embed_type" type="radio" value="custom" onChange={onSurveyTypeSelection} checked={props.attributes.survey_embed_type === 'custom'}></input>
+            </div>
+          </div>
+
+          { props.attributes.survey_embed_type === 'custom' && (<div className="wpsf-gutenberg-custom-options-main">
+            <div className="wpsf-gutenberg-custom-options-container">
+              <div className="wpsf-gutenberg-custom-options">
+                <label htmlFor="wpsf_custom_width" >Width</label>
+                <input type="number" id="wpsf_custom_width" value={props.attributes.survey_custom_width_value} onChange={onWidthChange} />
+                <select  name="survey_custom_width_unit_type" dangerouslySetInnerHTML={{__html:  printUnitOptions(props.attributes.survey_custom_width_unit_type)}} onChange={onWidthUnitChange}>
+                </select>
+
+              </div>
+              <div className="wpsf-gutenberg-custom-options">
+                <label htmlFor="wpsf_custom_width">Height</label>
+                <input type="number" id="wpsf_custom_height" value={props.attributes.survey_custom_height_value} onChange={onHeightChange} />
+                <select name="survey_custom_height_unit_type" dangerouslySetInnerHTML={{__html:  printUnitOptions(props.attributes.survey_custom_height_unit_type)}} onChange={onHeightUnitChange}>
+                </select>
+              </div>
+            </div>
+          </div>)}
+
       </div>
-
-      { props.attributes.survey_embed_type === 'custom' && (<div>
-        <input type="number" id="wpsf_custom_width" value={props.attributes.survey_custom_width_value} onChange={onWidthChange} />
-        <label htmlFor="wpsf_custom_width" >Width</label>
-        <select  name="survey_custom_width_unit_type" dangerouslySetInnerHTML={{__html:  printUnitOptions(props.attributes.survey_custom_width_unit_type)}} onChange={onWidthUnitChange}>
-
-        </select>
-        <input type="number" id="wpsf_custom_height" value={props.attributes.survey_custom_height_value} onChange={onHeightChange} />
-        <label htmlFor="wpsf_custom_width">Height</label>
-        <select name="survey_custom_height_unit_type" dangerouslySetInnerHTML={{__html:  printUnitOptions(props.attributes.survey_custom_height_unit_type)}} onChange={onHeightUnitChange}>
-        </select>
-      </div>)}
-
-
       </Placeholder>):(
-        <h3>Loading.</h3>
+        <div className="wpsf-gutenberg-preview-box">
+          <p style={{fontSize:"18px",fontWeight:"normal"}}>{surveyTypes[props.attributes.survey_embed_type]} survey has been added. Click on this box to edit.</p>
+        </div>
 
       )}
 

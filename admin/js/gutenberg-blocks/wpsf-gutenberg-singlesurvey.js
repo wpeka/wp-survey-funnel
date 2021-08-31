@@ -9694,23 +9694,25 @@ registerBlockType('surveyfunnel/single-survey', {
       control: function control(base, state) {
         return _objectSpread(_objectSpread({}, base), {}, {
           minWidth: "300px",
-          maxWidth: "400px",
+          maxWidth: "547px",
           fontSize: "125%",
-          borderRadius: state.isFocused ? "3px 3px 0 0" : 3,
+          borderRadius: "9px",
+          padding: "10px",
           boxShadow: state.isFocused ? null : null
         });
       },
       menu: function menu(base) {
-        return _objectSpread(_objectSpread({}, base), {}, {
+        return _objectSpread(_objectSpread({}, base), {}, _defineProperty({
           borderRadius: 0,
           marginTop: 0,
           minWidth: "300px"
-        });
+        }, "borderRadius", "9px"));
       },
       menuList: function menuList(base) {
         return _objectSpread(_objectSpread({}, base), {}, {
           padding: 0,
-          maxWidth: "300px"
+          maxWidth: "547px",
+          borderRadius: "9px"
         });
       }
     };
@@ -9773,78 +9775,121 @@ registerBlockType('surveyfunnel/single-survey', {
       });
     };
 
+    var surveyTypes = {
+      responsive: "Responsive",
+      fullpage: "Fullpage",
+      custom: "Custom"
+    };
     return /*#__PURE__*/React.createElement("div", {
-      className: ""
+      className: "wpsf-gutenberg-block-container"
     }, !!props.isSelected ? /*#__PURE__*/React.createElement(Placeholder, {
-      label: "SurveyFunnel Single Survey",
       isColumnLayout: "true"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "wpsf-gutenberg-block-component-area"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "wpsf-gutenberg-heading"
     }, /*#__PURE__*/React.createElement("h3", {
       style: {
-        fontWeight: "300",
-        textAlign: "center",
-        fontSize: "medium"
+        fontSize: "24px",
+        margin: "20px 0",
+        fontWeight: "bold"
+      }
+    }, "SurveyFunnel Single Survey")), /*#__PURE__*/React.createElement("h4", {
+      style: {
+        fontSize: "18px",
+        margin: "0 0 10px 0",
+        fontWeight: "bold"
       }
     }, __('Select Survey', 'wpadcenter')), /*#__PURE__*/React.createElement(react_select_async__WEBPACK_IMPORTED_MODULE_0__.default, {
       styles: customStyles,
-      className: "wpadcenter-async-select",
+      className: "wpsf-async-select",
       defaultOptions: true,
       loadOptions: getOptions,
       defaultValue: defaultValue,
       onChange: onSurveySelection
-    }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("input", {
+    }), /*#__PURE__*/React.createElement("h4", {
+      style: {
+        fontSize: "18px",
+        margin: "20px 0 10px 0",
+        fontWeight: "bold"
+      }
+    }, "Survey Embed Type"), /*#__PURE__*/React.createElement("div", {
+      className: "wpsf-contentTypes-container"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: props.attributes.survey_embed_type === 'responsive' ? 'wpsf-contentType-element wpsf-contentType-element-active' : 'wpsf-contentType-element'
+    }, /*#__PURE__*/React.createElement("label", {
+      htmlFor: "wpsf-responsive-survey"
+    }, "Responsive"), /*#__PURE__*/React.createElement("input", {
       id: "wpsf-responsive-survey",
       name: "survey_embed_type",
       type: "radio",
-      value: "reponsive",
+      value: "responsive",
       onChange: onSurveyTypeSelection,
       checked: props.attributes.survey_embed_type === 'responsive'
-    }), /*#__PURE__*/React.createElement("label", {
-      htmlFor: "wpsf-responsive-survey"
-    }, "Responsive"), /*#__PURE__*/React.createElement("input", {
+    })), /*#__PURE__*/React.createElement("div", {
+      className: props.attributes.survey_embed_type === 'fullpage' ? 'wpsf-contentType-element wpsf-contentType-element-active' : 'wpsf-contentType-element'
+    }, /*#__PURE__*/React.createElement("label", {
+      htmlFor: "wpsf-fullpage-survey"
+    }, "Full Page"), /*#__PURE__*/React.createElement("input", {
       id: "wpsf-fullpage-survey",
       name: "survey_embed_type",
       type: "radio",
       value: "fullpage",
       onChange: onSurveyTypeSelection,
       checked: props.attributes.survey_embed_type === 'fullpage'
-    }), /*#__PURE__*/React.createElement("label", {
-      htmlFor: "wpsf-fullpage-survey"
-    }, "Full Page"), /*#__PURE__*/React.createElement("input", {
+    })), /*#__PURE__*/React.createElement("div", {
+      className: props.attributes.survey_embed_type === 'custom' ? 'wpsf-contentType-element wpsf-contentType-element-active' : 'wpsf-contentType-element'
+    }, /*#__PURE__*/React.createElement("label", {
+      htmlFor: "wpsf-custom-survey"
+    }, "Custom"), /*#__PURE__*/React.createElement("input", {
       id: "wpsf-custom-survey",
       name: "survey_embed_type",
       type: "radio",
       value: "custom",
       onChange: onSurveyTypeSelection,
       checked: props.attributes.survey_embed_type === 'custom'
-    }), /*#__PURE__*/React.createElement("label", {
-      htmlFor: "wpsf-custom-survey"
-    }, "Custom")), props.attributes.survey_embed_type === 'custom' && /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("input", {
+    }))), props.attributes.survey_embed_type === 'custom' && /*#__PURE__*/React.createElement("div", {
+      className: "wpsf-gutenberg-custom-options-main"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "wpsf-gutenberg-custom-options-container"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "wpsf-gutenberg-custom-options"
+    }, /*#__PURE__*/React.createElement("label", {
+      htmlFor: "wpsf_custom_width"
+    }, "Width"), /*#__PURE__*/React.createElement("input", {
       type: "number",
       id: "wpsf_custom_width",
       value: props.attributes.survey_custom_width_value,
       onChange: onWidthChange
-    }), /*#__PURE__*/React.createElement("label", {
-      htmlFor: "wpsf_custom_width"
-    }, "Width"), /*#__PURE__*/React.createElement("select", {
+    }), /*#__PURE__*/React.createElement("select", {
       name: "survey_custom_width_unit_type",
       dangerouslySetInnerHTML: {
         __html: printUnitOptions(props.attributes.survey_custom_width_unit_type)
       },
       onChange: onWidthUnitChange
-    }), /*#__PURE__*/React.createElement("input", {
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "wpsf-gutenberg-custom-options"
+    }, /*#__PURE__*/React.createElement("label", {
+      htmlFor: "wpsf_custom_width"
+    }, "Height"), /*#__PURE__*/React.createElement("input", {
       type: "number",
       id: "wpsf_custom_height",
       value: props.attributes.survey_custom_height_value,
       onChange: onHeightChange
-    }), /*#__PURE__*/React.createElement("label", {
-      htmlFor: "wpsf_custom_width"
-    }, "Height"), /*#__PURE__*/React.createElement("select", {
+    }), /*#__PURE__*/React.createElement("select", {
       name: "survey_custom_height_unit_type",
       dangerouslySetInnerHTML: {
         __html: printUnitOptions(props.attributes.survey_custom_height_unit_type)
       },
       onChange: onHeightUnitChange
-    }))) : /*#__PURE__*/React.createElement("h3", null, "Loading."));
+    })))))) : /*#__PURE__*/React.createElement("div", {
+      className: "wpsf-gutenberg-preview-box"
+    }, /*#__PURE__*/React.createElement("p", {
+      style: {
+        fontSize: "18px",
+        fontWeight: "normal"
+      }
+    }, surveyTypes[props.attributes.survey_embed_type], " survey has been added. Click on this box to edit.")));
   },
   save: function save() {
     return null;
