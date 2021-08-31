@@ -521,7 +521,8 @@ function Survey() {
                                 <p className="surveyDescription">
                                     {item.description}
                                 </p>
-								{applyFilters( 'renderPrivacyPolicyOption', '', configure, item )}
+								
+								{applyFilters( 'renderPrivacyPolicyOption', '', configure, item, require( './Components/Build/BuildImages/checkmark.png' ) )}
 								<ShowErrors error={error} />
                                 <button
                                     type="button"

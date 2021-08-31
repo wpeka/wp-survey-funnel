@@ -116,7 +116,7 @@ export const CoverPage = React.memo(
                                         { this.checkForEmpty('title') && <h3 className="surveyTitle">{this.state.title}</h3> }
                                         { this.checkForEmpty('description') && <p className="surveyDescription">{this.state.description}</p> }
 										<ConfigureContext.Consumer>
-											{consumer => applyFilters('startScreenRightPrivacyPolicy', '', this.state, consumer.proSettings)}
+											{consumer => applyFilters('startScreenRightPrivacyPolicy', '', this.state, consumer.proSettings, require('../BuildImages/checkmark.png'))}
 										</ConfigureContext.Consumer>
                                         { this.checkForEmpty('button') && <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}}>{this.state.button}</button> }
                                 </ModalContentRight>)}

@@ -250,7 +250,7 @@ export default function DesignPreview() {
                             <div className="tab" tab-componentname={item.componentName}>
                                 <h3 className="surveyTitle">{item.title}</h3>
                                 <p className="surveyDescription">{item.description}</p>
-								{applyFilters( 'renderPrivacyPolicy', '', item, proSettings )}                        
+								{applyFilters( 'renderPrivacyPolicy', '', item, proSettings, require('../Build/BuildImages/checkmark.png') )}                        
 								<button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
                                     changeCurrentTab(1);
                                 }}>
