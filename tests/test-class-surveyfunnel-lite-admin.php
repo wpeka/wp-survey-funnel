@@ -246,7 +246,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$this->assertArrayHasKey( 'quick_links_text', $localize_data );
 		$this->assertSame( __( 'See Quick Links', 'surveyfunnel' ), $localize_data['quick_links_text'] );
 
-		$this->assertSame( '<div id="srf-mascot-app"></div>', trim( $output ) );
+		$this->assertSame( '<div id="surveyfunnel-lite-mascot-app"></div>', trim( $output ) );
 		$this->assertTrue( in_array( 'surveyfunnel-lite-mascot', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 		$this->assertArrayHasKey( 'surveyfunnel-lite-mascot', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 	}
