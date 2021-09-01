@@ -358,7 +358,7 @@ function Survey() {
             case 'SingleChoice':
                 return (
                     <div
-                        className="wpsf-tab-SingleChoice"
+                        className="surveyfunnel-lite-tab-SingleChoice"
                         style={{ ...style }}
                         key={item.id}
                     >
@@ -385,7 +385,7 @@ function Survey() {
                                                         designCon.answerBorderColor
                                                     )}`,
                                                 }}
-                                                className="wpsf-tab-answer-container"
+                                                className="surveyfunnel-lite-tab-answer-container"
                                             >
                                                 <input
                                                     type="radio"
@@ -430,7 +430,7 @@ function Survey() {
             case 'MultiChoice':
                 return (
                     <div
-                        className="wpsf-tab-MultiChoice"
+                        className="surveyfunnel-lite-tab-MultiChoice"
                         style={{ ...style }}
                         key={item.id}
                     >
@@ -460,7 +460,7 @@ function Survey() {
                                                         designCon.answerBorderColor
                                                     )}`,
                                                 }}
-                                                className="wpsf-tab-answer-container"
+                                                className="surveyfunnel-lite-tab-answer-container"
                                             >
                                                 <input
                                                     type="checkbox"
@@ -505,7 +505,7 @@ function Survey() {
             case 'CoverPage':
                 return (
                     <div
-                        className="wpsf-tab-CoverPage"
+                        className="surveyfunnel-lite-tab-CoverPage"
                         style={{ ...style }}
                         key={item.id}
                     >
@@ -543,7 +543,7 @@ function Survey() {
             case 'ResultScreen':
                 return (
                     <div
-                        className="wpsf-tab-ResultScreen"
+                        className="surveyfunnel-lite-tab-ResultScreen"
                         style={{ ...style }}
                         key={item.id}
                     >
@@ -563,7 +563,7 @@ function Survey() {
             case 'FormElements':
                 return (
                     <div
-                        className="wpsf-tab-FormElements"
+                        className="surveyfunnel-lite-tab-FormElements"
                         style={{ ...style }}
                         key={item.id}
                     >
@@ -810,15 +810,15 @@ function Survey() {
 				margin: 'auto',
                 height: data.type === 'responsive' ? height : '',
             }}
-            className={'wpsf-sc-'+data.type}
+            className={'surveyfunnel-lite-sc-'+data.type}
             onLoad={() => handleResize(iframeRef)}
             scrolling="no"
         >
             <div id="design">
-                <div className="wpsf-design-container">
+                <div className="surveyfunnel-lite-design-container">
                     <div className="design-preview" style={{fontFamily: designCon.fontFamily, ...backgroundStyle}}>
                         {addFontFamilyLink()}
-                        <div className="wpsf-survey-form">
+                        <div className="surveyfunnel-lite-survey-form">
                             {tabCount === 0 ? (
                                 <div className="no-preview-available">
                                     <img src={require(`./Components/Build/BuildImages/unavailable.png`)}></img>
@@ -827,7 +827,7 @@ function Survey() {
                                         : "No Questions were added in this survey"}
                                 </div>
                             ) : (
-                                <div className="wpsf-design-preview-container" style={{  }}>
+                                <div className="surveyfunnel-lite-design-preview-container" style={{  }}>
 									{(data.type === 'fullpage' || data.type === 'popup') && <div className="dismissalBox">
 										<button onClick={dismissSurvey}>X</button>
 									</div>}
@@ -854,7 +854,7 @@ function Survey() {
                                     </div>
                                     <div className="tab-controls">
                                             <span className="tab-controls-inner">
-                                            {companyBranding && <div><a target="_blank" href="https://www.surveyfunnel.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div> }
+                                            {companyBranding && <div><a target="_blank" href="https://www.surveyfunnel.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="surveyfunnel-lite-main-logo" /></a></div> }
                                             
                                             <button
                                                 type="button"

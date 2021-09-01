@@ -36,33 +36,33 @@ export default function Build() {
 
 	return (
 		<>
-		<div className="wpsf-build-container">
-			<div className="wpsf-build-container-menu">
-				<div className="wpsf-build-eles">
-					<div className="wpsf-build-text">
+		<div className="surveyfunnel-lite-build-container">
+			<div className="surveyfunnel-lite-build-container-menu">
+				<div className="surveyfunnel-lite-build-eles">
+					<div className="surveyfunnel-lite-build-text">
 						<h2>Survey‌ ‌Builder‌</h2>
 						<p>Drag‌ ‌and‌ ‌Drop‌ ‌elements‌ ‌to‌ ‌the‌ ‌right‌ ‌to‌ ‌start‌ ‌creating‌ ‌your‌ ‌survey‌</p>
 					</div>
-					<div className="wpsf-build-elements">
-						<div className="wpsf-build-elements_start">
+					<div className="surveyfunnel-lite-build-elements">
+						<div className="surveyfunnel-lite-build-elements_start">
 							<h3>Start Screen:</h3>
-							<div className="wpsf-build-elements_container">
+							<div className="surveyfunnel-lite-build-elements_container">
 								{buildElements.startScreen.map(function( ele, i ) {
 									return <BuildElement ele={ele} key={i}></BuildElement>
 								})}
 							</div>
 						</div>
-						<div className="wpsf-build-elements_content">
+						<div className="surveyfunnel-lite-build-elements_content">
 							<h3>Content Elements:‌</h3>
-							<div className="wpsf-build-elements_container">
+							<div className="surveyfunnel-lite-build-elements_container">
 								{buildElements.contentElements.map(function( ele, i ) {
 									return <BuildElement ele={ele} key={i}></BuildElement>
 								})}
 							</div>
 						</div>
-						<div className="wpsf-build-elements_results">
+						<div className="surveyfunnel-lite-build-elements_results">
 							<h3>Results Screen:</h3>
-							<div className="wpsf-build-elements_container">
+							<div className="surveyfunnel-lite-build-elements_container">
 								{buildElements.resultScreen.map(function( ele, i ) {
 									return <BuildElement ele={ele} key={i}></BuildElement>
 								})}
@@ -72,14 +72,14 @@ export default function Build() {
 				
 
 				</div>
-				<div className="wpsf-build-elements-save">
-							<button className="wpsf-build-elements-save-button" onClick={saveData}>Save</button>
+				<div className="surveyfunnel-lite-build-elements-save">
+							<button className="surveyfunnel-lite-build-elements-save-button" onClick={saveData}>Save</button>
 				</div>
 			</div>
-			<div className="wpsf-build-content">
-				<div className="wpsf-build-content-title-container">
+			<div className="surveyfunnel-lite-build-content">
+				<div className="surveyfunnel-lite-build-content-title-container">
 					<h2>{title?title:'no name'}</h2>
-					<button className="wpsf-build-content-title-edit" type="button" onClick={changeTitle}><img src={require('./BuildImages/pencil.png')}></img></button>
+					<button className="surveyfunnel-lite-build-content-title-edit" type="button" onClick={changeTitle}><img src={require('./BuildImages/pencil.png')}></img></button>
 					<div>
 						<p>basic</p>
 					</div>

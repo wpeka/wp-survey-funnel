@@ -78,19 +78,19 @@ export default function (props) {
     }
     
     return (
-        <div ref={ref} style={style} className="wpsf-card-area">
-        {item.type === 'CONTENT_ELEMENTS' && <div className="wpsf-cardbox-number">
+        <div ref={ref} style={style} className="surveyfunnel-lite-card-area">
+        {item.type === 'CONTENT_ELEMENTS' && <div className="surveyfunnel-lite-cardbox-number">
                 {props.index + 1}
             </div>}
         <div className="cardBox" >
-            <div className="wpsf-cardbox-title" >
+            <div className="surveyfunnel-lite-cardbox-title" >
                 <img src={require(`./BuildImages/${item.componentName}.png`)}></img>
                 <h3>{item.title}</h3>
             </div>
 
             <div className="card-flex">
-                <button className="wpsf-cardBox-btn" onClick={editCard}><img src={require('./BuildImages/pencil.png')}></img></button>
-                <button className="wpsf-cardBox-btn" onClick={deleteCard}><img src={require('./BuildImages/delete-icon.png')}></img></button>
+                <button className="surveyfunnel-lite-cardBox-btn" onClick={editCard}><img src={require('./BuildImages/pencil.png')}></img></button>
+                <button className="surveyfunnel-lite-cardBox-btn" onClick={deleteCard}><img src={require('./BuildImages/delete-icon.png')}></img></button>
             </div>
         </div>
         </div>

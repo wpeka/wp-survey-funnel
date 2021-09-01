@@ -100,7 +100,7 @@ export class BuildContextProvider extends React.Component {
     }
 
     saveData = (e) => {
-        e.target.classList.add('wpsf-button-loading');
+        e.target.classList.add('surveyfunnel-lite-button-loading');
         const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
@@ -113,7 +113,7 @@ export class BuildContextProvider extends React.Component {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData(ajaxURL, data)
         .then(data => {
-            e.target.classList.remove('wpsf-button-loading');
+            e.target.classList.remove('surveyfunnel-lite-button-loading');
         });
     }
 

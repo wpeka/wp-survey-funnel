@@ -1,6 +1,6 @@
 
 var srfvm = new Vue({
-    el: '#srf-mascot-app',
+    el: '#surveyfunnel-lite-mascot-app',
     data: function() {
         return {
             showMenu: !1,
@@ -11,8 +11,8 @@ var srfvm = new Vue({
         {
             boxClass() {
                 return {
-                    'srf-mascot-quick-links srf-mascot-quick-links-open' : this.showMenu,
-                    'srf-mascot-quick-links' : !this.showMenu,
+                    'surveyfunnel-lite-mascot-quick-links surveyfunnel-lite-mascot-quick-links-open' : this.showMenu,
+                    'surveyfunnel-lite-mascot-quick-links' : !this.showMenu,
                 }
             },
             menuItems() {
@@ -67,7 +67,7 @@ var srfvm = new Vue({
                     }, [createElement('span', {
                         class: 'dashicons '+ value.icon
                     }), createElement('span', {
-                        staticClass: 'srf-mascot-quick-link-title',
+                        staticClass: 'surveyfunnel-lite-mascot-quick-link-title',
                         domProps: {
                             innerHTML: value.tooltip
                         }
@@ -77,17 +77,17 @@ var srfvm = new Vue({
             return html;
         },
         linkClass: function(key) {
-            return 'srf-mascot-quick-links-menu-item srf-mascot-quick-links-item-' + key;
+            return 'surveyfunnel-lite-mascot-quick-links-menu-item surveyfunnel-lite-mascot-quick-links-item-' + key;
         },
         enter:function(t,e) {
             var n = 50 * t.dataset.index;
             setTimeout((function() {
-                t.classList.add('srf-mascot-show'),
+                t.classList.add('surveyfunnel-lite-mascot-show'),
                     e()
             }), n)
         },
         leave:function(t,e) {
-            t.classList.remove('srf-mascot-show'),
+            t.classList.remove('surveyfunnel-lite-mascot-show'),
                 setTimeout((function() {
                     e()
                 }), 200)
@@ -98,23 +98,23 @@ var srfvm = new Vue({
             class: this.boxClass,
         }, [
             createElement('button', {
-                class: 'srf-mascot-quick-links-label',
+                class: 'surveyfunnel-lite-mascot-quick-links-label',
                 on: {
                     click: this.buttonClick
                 }
             },[
                 createElement('span', {
-                    class:'srf-mascot-bg-img srf-mascot-quick-links-mascot',
+                    class:'surveyfunnel-lite-mascot-bg-img surveyfunnel-lite-mascot-quick-links-mascot',
                 }),
                 createElement('span',{
-                    class: 'srf-mascot-quick-link-title'
+                    class: 'surveyfunnel-lite-mascot-quick-link-title'
                 }, mascot.quick_links_text)
             ]),
             createElement('transition-group', {
-                staticClass: 'srf-mascot-quick-links-menu',
+                staticClass: 'surveyfunnel-lite-mascot-quick-links-menu',
                 attrs:{
                     tag: 'div',
-                    name: 'srf-staggered-fade'
+                    name: 'surveyfunnel-lite-staggered-fade'
                 },
                 on: {
                     enter: this.enter,
