@@ -867,7 +867,7 @@ class Surveyfunnel_Lite_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function wpsf_register_gutenberg_blocks() {
+	public function surveyfunnel_lite_register_gutenberg_blocks() {
 
 		wp_register_script(
 			'wpsf-gutenberg-single-survey',
@@ -905,17 +905,26 @@ class Surveyfunnel_Lite_Admin {
 		}
 	}
 
+	/**
+	 * Display surveys added by gutenberg block.
+	 *
+	 * @param array $attributes survey attributes.
+	 */
 	public function gutenberg_display_single_survey( $attributes ) {
-		$survey_atts = array();
+		$survey_atts       = array();
+		$survey_atts['id'] = 0;
 		if ( isset( $attributes['survey_id'] ) ) {
 			$survey_atts['id'] = $attributes['survey_id'];
 		}
+		$survey_atts['type'] = 'responsive';
 		if ( isset( $attributes['survey_embed_type'] ) ) {
 			$survey_atts['type'] = $attributes['survey_embed_type'];
 		}
+		$survey_atts['width'] = '400px';
 		if ( isset( $attributes['survey_custom_width'] ) ) {
 			$survey_atts['width'] = $attributes['survey_custom_width'];
 		}
+		$survey_atts['height'] = '400px';
 		if ( isset( $attributes['survey_custom_height'] ) ) {
 			$survey_atts['height'] = $attributes['survey_custom_height'];
 		}
@@ -930,7 +939,7 @@ class Surveyfunnel_Lite_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function wpsf_gutenberg_block_categories( $categories ) {
+	public function surveyfunnel_lite_gutenberg_block_categories( $categories ) {
 
 		return array_merge(
 			$categories,

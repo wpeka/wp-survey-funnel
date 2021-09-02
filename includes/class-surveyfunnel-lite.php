@@ -181,8 +181,8 @@ class Surveyfunnel_Lite {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'wpsf_survey_setup_page' );
 
 		//For gutenbergblocks
-		$this->loader->add_action( 'init', $plugin_admin, 'wpsf_register_gutenberg_blocks' );
-		$this->loader->add_filter( 'block_categories_all', $plugin_admin, 'wpsf_gutenberg_block_categories', 10, 1 );
+		$this->loader->add_action( 'init', $plugin_admin, 'surveyfunnel_lite_register_gutenberg_blocks' );
+		$this->loader->add_filter( 'block_categories_all', $plugin_admin, 'surveyfunnel_lite_gutenberg_block_categories', 10, 1 );
 
 	}
 

@@ -1683,6 +1683,45 @@ var weakMemoize = function weakMemoize(func) {
 
 /***/ }),
 
+/***/ "./src/gutenberg-blocks/single-survey/single-survey-icon.js":
+/*!******************************************************************!*\
+  !*** ./src/gutenberg-blocks/single-survey/single-survey-icon.js ***!
+  \******************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function SingleSurveyIcon(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", {
+    version: "1.1",
+    id: "Layer_1",
+    xmlns: "http://www.w3.org/2000/svg",
+    xmlnsXlink: "http://www.w3.org/1999/xlink",
+    x: "0px",
+    y: "0px",
+    width: "128px",
+    height: "128px",
+    viewBox: "0 0 128 128",
+    enableBackground: "new 0 0 128 128",
+    xmlSpace: "preserve"
+  }, "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("image", {
+    id: "image0",
+    width: "128",
+    height: "128",
+    x: "0",
+    y: "0",
+    xlinkHref: "data:image/png;base64,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\r\nYmUgSW1hZ2VSZWFkeXHJZTwAAAAASUVORK5CYII="
+  }));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (SingleSurveyIcon);
+
+/***/ }),
+
 /***/ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js":
 /*!**********************************************************************************!*\
   !*** ./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js ***!
@@ -9624,6 +9663,7 @@ var __webpack_exports__ = {};
   \*************************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_select_async__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-select/async */ "./node_modules/react-select/async/dist/react-select.esm.js");
+/* harmony import */ var _single_survey_icon_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./single-survey-icon.js */ "./src/gutenberg-blocks/single-survey/single-survey-icon.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -9635,10 +9675,11 @@ var registerBlockType = wp.blocks.registerBlockType;
 var apiFetch = wp.apiFetch;
 var Placeholder = wp.components.Placeholder;
 var __ = wp.i18n.__;
+
 registerBlockType('surveyfunnel/single-survey', {
   title: __('SurveyFunnel Single Survey', 'surveyfunnel'),
   description: __('Block to generate single survey', 'surveyfunnel'),
-  icon: 'flag',
+  icon: _single_survey_icon_js__WEBPACK_IMPORTED_MODULE_1__.default,
   category: 'surveyfunnel-lite',
   attributes: {
     survey_id: {
@@ -9776,9 +9817,9 @@ registerBlockType('surveyfunnel/single-survey', {
     };
 
     var surveyTypes = {
-      responsive: "Responsive",
-      fullpage: "Fullpage",
-      custom: "Custom"
+      responsive: __('Responsive', 'surveyfunnel'),
+      fullpage: __('Fullpage', 'surveyfunnel'),
+      custom: __('Custom', 'surveyfunnel')
     };
     return /*#__PURE__*/React.createElement("div", {
       className: "wpsf-gutenberg-block-container"
@@ -9791,16 +9832,16 @@ registerBlockType('surveyfunnel/single-survey', {
     }, /*#__PURE__*/React.createElement("h3", {
       style: {
         fontSize: "24px",
-        margin: "20px 0",
+        margin: "38px 0",
         fontWeight: "bold"
       }
-    }, "SurveyFunnel Single Survey")), /*#__PURE__*/React.createElement("h4", {
+    }, __('SurveyFunnel Single Survey', 'surveyfunnel'))), /*#__PURE__*/React.createElement("h4", {
       style: {
         fontSize: "18px",
-        margin: "0 0 10px 0",
+        margin: "0 0 20px 0",
         fontWeight: "bold"
       }
-    }, __('Select Survey', 'wpadcenter')), /*#__PURE__*/React.createElement(react_select_async__WEBPACK_IMPORTED_MODULE_0__.default, {
+    }, __('Select Survey', 'surveyfunnel')), /*#__PURE__*/React.createElement(react_select_async__WEBPACK_IMPORTED_MODULE_0__.default, {
       styles: customStyles,
       className: "wpsf-async-select",
       defaultOptions: true,
@@ -9810,16 +9851,16 @@ registerBlockType('surveyfunnel/single-survey', {
     }), /*#__PURE__*/React.createElement("h4", {
       style: {
         fontSize: "18px",
-        margin: "20px 0 10px 0",
+        margin: "38px 0 20px 0",
         fontWeight: "bold"
       }
-    }, "Survey Embed Type"), /*#__PURE__*/React.createElement("div", {
+    }, __('Survey Embed Type', 'surveyfunnel')), /*#__PURE__*/React.createElement("div", {
       className: "wpsf-contentTypes-container"
     }, /*#__PURE__*/React.createElement("div", {
       className: props.attributes.survey_embed_type === 'responsive' ? 'wpsf-contentType-element wpsf-contentType-element-active' : 'wpsf-contentType-element'
     }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "wpsf-responsive-survey"
-    }, "Responsive"), /*#__PURE__*/React.createElement("input", {
+    }, __('Responsive', 'surveyfunnel')), /*#__PURE__*/React.createElement("input", {
       id: "wpsf-responsive-survey",
       name: "survey_embed_type",
       type: "radio",
@@ -9830,7 +9871,7 @@ registerBlockType('surveyfunnel/single-survey', {
       className: props.attributes.survey_embed_type === 'fullpage' ? 'wpsf-contentType-element wpsf-contentType-element-active' : 'wpsf-contentType-element'
     }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "wpsf-fullpage-survey"
-    }, "Full Page"), /*#__PURE__*/React.createElement("input", {
+    }, __('Full Page', 'surveyfunnel')), /*#__PURE__*/React.createElement("input", {
       id: "wpsf-fullpage-survey",
       name: "survey_embed_type",
       type: "radio",
@@ -9841,7 +9882,7 @@ registerBlockType('surveyfunnel/single-survey', {
       className: props.attributes.survey_embed_type === 'custom' ? 'wpsf-contentType-element wpsf-contentType-element-active' : 'wpsf-contentType-element'
     }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "wpsf-custom-survey"
-    }, "Custom"), /*#__PURE__*/React.createElement("input", {
+    }, __('Custom', 'surveyfunnel')), /*#__PURE__*/React.createElement("input", {
       id: "wpsf-custom-survey",
       name: "survey_embed_type",
       type: "radio",
@@ -9856,7 +9897,7 @@ registerBlockType('surveyfunnel/single-survey', {
       className: "wpsf-gutenberg-custom-options"
     }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "wpsf_custom_width"
-    }, "Width"), /*#__PURE__*/React.createElement("input", {
+    }, __('Width', 'surveyfunnel')), /*#__PURE__*/React.createElement("input", {
       type: "number",
       id: "wpsf_custom_width",
       value: props.attributes.survey_custom_width_value,
@@ -9871,7 +9912,7 @@ registerBlockType('surveyfunnel/single-survey', {
       className: "wpsf-gutenberg-custom-options"
     }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "wpsf_custom_width"
-    }, "Height"), /*#__PURE__*/React.createElement("input", {
+    }, __('Height', 'surveyfunnel')), /*#__PURE__*/React.createElement("input", {
       type: "number",
       id: "wpsf_custom_height",
       value: props.attributes.survey_custom_height_value,
@@ -9884,12 +9925,17 @@ registerBlockType('surveyfunnel/single-survey', {
       onChange: onHeightUnitChange
     })))))) : /*#__PURE__*/React.createElement("div", {
       className: "wpsf-gutenberg-preview-box"
-    }, /*#__PURE__*/React.createElement("p", {
+    }, props.attributes.survey_id ? /*#__PURE__*/React.createElement("p", {
       style: {
         fontSize: "18px",
         fontWeight: "normal"
       }
-    }, surveyTypes[props.attributes.survey_embed_type], " survey has been added. Click on this box to edit.")));
+    }, surveyTypes[props.attributes.survey_embed_type], __('survey has been added. Click on this box to edit.', 'surveyfunnel'), " ") : /*#__PURE__*/React.createElement("p", {
+      style: {
+        fontSize: "18px",
+        fontWeight: "normal"
+      }
+    }, __('No survey selected. Click on this box to edit.', 'surveyfunnel'))));
   },
   save: function save() {
     return null;
