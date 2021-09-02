@@ -737,7 +737,7 @@ class Surveyfunnel_Lite_Admin {
 			return;
 		}
 
-		$is_pro = get_option( 'wpadcenter_pro_active' );
+		$is_pro = get_option( 'surveyfunnel_pro_active' );
 		if ( $is_pro ) {
 			$support_url = '#';
 		} else {
@@ -876,7 +876,6 @@ class Surveyfunnel_Lite_Admin {
 			$this->version,
 			false
 		);
-		wp_localize_script( 'surveyfunnel-lite-gutenberg-single-survey', 'wpadcenter_single_survey_verify', array( 'single_survey_nonce' => wp_create_nonce( 'single_survey_nonce' ) ) );
 		if ( function_exists( 'register_block_type' ) ) {
 			register_block_type(
 				'surveyfunnel/single-survey',
@@ -899,7 +898,7 @@ class Surveyfunnel_Lite_Admin {
 							'type' => 'string',
 						),
 					),
-					'render_callback' => array( $this, 'gutenberg_display_single_survey' ),
+					'render_callback' => array( $this, 'surveyfunnel_lite_gutenberg_display_single_survey' ),
 				)
 			);
 		}
@@ -910,7 +909,7 @@ class Surveyfunnel_Lite_Admin {
 	 *
 	 * @param array $attributes survey attributes.
 	 */
-	public function gutenberg_display_single_survey( $attributes ) {
+	public function surveyfunnel_lite_gutenberg_display_single_survey( $attributes ) {
 		$survey_atts       = array();
 		$survey_atts['id'] = 0;
 		if ( isset( $attributes['survey_id'] ) ) {

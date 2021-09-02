@@ -238,7 +238,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$data            = trim( str_replace( 'var mascot =', '', $data ) );
 		$data            = trim( str_replace( ';', '', $data ) );
 		$localize_data   = json_decode( $data, true );
-		update_option( 'wpadcenter_pro_active', true );
+		update_option( 'surveyfunnel_pro_active', true );
 
 		$this->assertCount( 3, $localize_data );
 		$this->assertArrayHasKey( 'menu_items', $localize_data );
@@ -257,20 +257,20 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 	public function test_surveyfunnel_lite_register_gutenberg_blocks() {
 
 		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
-		$this->assertArrayHasKey( 'surveyfunnel/single-survey', $registered_blocks, 'Failed to register single ad gutenberg block' );
+		$this->assertArrayHasKey( 'surveyfunnel/single-survey', $registered_blocks, 'Failed to register single survey gutenberg block' );
 	}
 
 	/**
-	 * Tests for gutenberg_display_single_survey function
+	 * Tests for surveyfunnel_lite_gutenberg_display_single_survey function
 	 */
-	public function test_gutenberg_display_single_survey() {
+	public function test_surveyfunnel_lite_gutenberg_display_single_survey() {
 		$attributes         = array(
 			'id'     => self::$post_ids[0],
 			'type'   => 'aligncenter',
 			'width'  => '400px',
 			'height' => '400px',
 		);
-		$single_survey_html = self::$surveyfunnel_lite_admin->gutenberg_display_single_survey( $attributes );
+		$single_survey_html = self::$surveyfunnel_lite_admin->surveyfunnel_lite_gutenberg_display_single_survey( $attributes );
 		$this->assertTrue( is_string( $single_survey_html ) );
 
 	}
