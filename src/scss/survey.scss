@@ -417,6 +417,7 @@ body {
 
 .dismissalBox {
 	position: absolute;
+	z-index: 999999;
 	
 	top: 20px;
 	right: 20px;
