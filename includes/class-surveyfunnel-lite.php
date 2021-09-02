@@ -156,29 +156,29 @@ class Surveyfunnel_Lite {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 		// admin functionalities.
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wpsf_admin_menu' );
-		$this->loader->add_action( 'init', $plugin_admin, 'wpsf_init', 0 );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'surveyfunnel_lite_admin_menu' );
+		$this->loader->add_action( 'init', $plugin_admin, 'surveyfunnel_lite_init', 0 );
 
 		// ajax calls.
-		$this->loader->add_action( 'wp_ajax_wpsf_new_survey', $plugin_admin, 'wpsf_new_survey' );
-		$this->loader->add_action( 'wp_ajax_wpsf_delete_survey', $plugin_admin, 'wpsf_delete_survey' );
-		$this->loader->add_action( 'wp_ajax_wpsf_get_status', $plugin_admin, 'wpsf_get_status' );
-		$this->loader->add_action( 'wp_ajax_wpsf_change_status', $plugin_admin, 'wpsf_change_status' );
-		$this->loader->add_action( 'wp_ajax_wpsf_save_build_data', $plugin_admin, 'wpsf_save_build_data' );
-		$this->loader->add_action( 'wp_ajax_wpsf_get_build_data', $plugin_admin, 'wpsf_get_build_data' );
-		$this->loader->add_action( 'wp_ajax_wpsf_save_design_data', $plugin_admin, 'wpsf_save_design_data' );
-		$this->loader->add_action( 'wp_ajax_wpsf_get_design_data', $plugin_admin, 'wpsf_get_design_data' );
-		$this->loader->add_action( 'wp_ajax_wpsf_get_reports_data', $plugin_admin, 'wpsf_get_reports_data' );
-		$this->loader->add_action( 'wp_ajax_wpsf_save_configuration_data', $plugin_admin, 'wpsf_save_configuration_data' );
-		$this->loader->add_action( 'wp_ajax_wpsf_get_configuration_data', $plugin_admin, 'wpsf_get_configuration_data' );
-		$this->loader->add_action( 'wp_ajax_wpsf_save_share_data', $plugin_admin, 'wpsf_save_share_data' );
-		$this->loader->add_action( 'wp_ajax_wpsf_get_share_data', $plugin_admin, 'wpsf_get_share_data' );
-		$this->loader->add_action( 'wp_ajax_wpsf_get_posts_pages', $plugin_admin, 'wpsf_get_posts_pages' );
-		$this->loader->add_action( 'admin_post_export_csv', $plugin_admin, 'wpsf_export_csv' );
-		$this->loader->add_action( 'admin_footer', $plugin_admin, 'wpsf_mascot_on_pages' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_new_survey', $plugin_admin, 'surveyfunnel_lite_new_survey' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_delete_survey', $plugin_admin, 'surveyfunnel_lite_delete_survey' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_status', $plugin_admin, 'surveyfunnel_lite_get_status' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_change_status', $plugin_admin, 'surveyfunnel_lite_change_status' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_save_build_data', $plugin_admin, 'surveyfunnel_lite_save_build_data' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_build_data', $plugin_admin, 'surveyfunnel_lite_get_build_data' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_save_design_data', $plugin_admin, 'surveyfunnel_lite_save_design_data' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_design_data', $plugin_admin, 'surveyfunnel_lite_get_design_data' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_reports_data', $plugin_admin, 'surveyfunnel_lite_get_reports_data' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_save_configuration_data', $plugin_admin, 'surveyfunnel_lite_save_configuration_data' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_configuration_data', $plugin_admin, 'surveyfunnel_lite_get_configuration_data' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_save_share_data', $plugin_admin, 'surveyfunnel_lite_save_share_data' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_share_data', $plugin_admin, 'surveyfunnel_lite_get_share_data' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_posts_pages', $plugin_admin, 'surveyfunnel_lite_get_posts_pages' );
+		$this->loader->add_action( 'admin_post_export_csv', $plugin_admin, 'surveyfunnel_lite_export_csv' );
+		$this->loader->add_action( 'admin_footer', $plugin_admin, 'surveyfunnel_lite_mascot_on_pages' );
 
-		// setup wpsf-survey (builder) page.
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'wpsf_survey_setup_page' );
+		// setup surveyfunnel-lite (builder) page.
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'surveyfunnel_lite_survey_setup_page' );
 	}
 
 	/**
@@ -197,12 +197,12 @@ class Surveyfunnel_Lite {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 		// init functionality - add_shortcode.
-		$this->loader->add_action( 'init', $plugin_public, 'wpsf_public_init' );
-		$this->loader->add_filter( 'the_content', $plugin_public, 'wpsf_the_content' );
+		$this->loader->add_action( 'init', $plugin_public, 'surveyfunnel_lite_public_init' );
+		$this->loader->add_filter( 'the_content', $plugin_public, 'surveyfunnel_lite_the_content' );
 
 		// ajax calls
-		$this->loader->add_action( 'wp_ajax_wpsf_new_survey_lead', $plugin_public, 'wpsf_new_survey_lead' );
-		$this->loader->add_action( 'wp_ajax_nopriv_wpsf_new_survey_lead', $plugin_public, 'wpsf_new_survey_lead' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_new_survey_lead', $plugin_public, 'surveyfunnel_lite_new_survey_lead' );
+		$this->loader->add_action( 'wp_ajax_nopriv_surveyfunnel_lite_new_survey_lead', $plugin_public, 'surveyfunnel_lite_new_survey_lead' );
 	}
 
 	/**

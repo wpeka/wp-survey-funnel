@@ -2,10 +2,10 @@
 
 exports[`HelperComponents Tabs test 1`] = `
 <div
-  className="wpsf-header-tabs"
+  className="surveyfunnel-lite-header-tabs"
 >
   <ol
-    className="wpsf-header-tab-list"
+    className="surveyfunnel-lite-header-tab-list"
   >
     <li
       className="tab-list-item tab-list-active"
@@ -15,7 +15,7 @@ exports[`HelperComponents Tabs test 1`] = `
     </li>
   </ol>
   <div
-    className="wpsf-header-tab-content"
+    className="surveyfunnel-lite-header-tab-content"
   />
 </div>
 `;

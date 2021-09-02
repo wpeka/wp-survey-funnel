@@ -39,7 +39,7 @@ export default function ModalContentRight( props ) {
             <div className="main-tab-container">
 
             <div
-                className={`tab-list wpsf-tab-${currentElement}`}
+                className={`tab-list surveyfunnel-lite-tab-${currentElement}`}
                 style={{
                     background: convertToRgbaCSS(
                         designCon.backgroundContainerColor

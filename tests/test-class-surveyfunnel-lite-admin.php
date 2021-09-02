@@ -76,7 +76,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		self::$build                  = '{"List":{"START_ELEMENTS":[{"button":"Start","title":"This is a cover page","description":"Cover page","id":"zh727zy9m7krvwz09k","componentName":"CoverPage","type":"START_ELEMENTS","currentlySaved":true}],"CONTENT_ELEMENTS":[{"title":"What is your age?","description":"Tell us about yourself","answers":[{"name":"20","checked":false},{"name":"10","checked":false},{"name":"40","checked":false},{"name":"60","checked":false}],"value":"","id":"0y566hzo1ewckrvwzvc8","componentName":"SingleChoice","type":"CONTENT_ELEMENTS","currentlySaved":true}],"RESULT_ELEMENTS":[{"title":"Thanks","description":"Thanks for participation","id":"cd98dnfel8krvx0db2","componentName":"ResultScreen","type":"RESULT_ELEMENTS","currentlySaved":true}]},"title":"Demo survey"}';
 		update_post_meta(
 			self::$post_ids[0],
-			'wpsf-survey-data',
+			'surveyfunnel-lite-data',
 			array(
 				'design' => self::$design,
 				'build'  => self::$build,
@@ -122,45 +122,45 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_admin_menu function
+	 * Test for surveyfunnel_lite_admin_menu function
 	 */
-	public function test_wpsf_admin_menu() {
+	public function test_surveyfunnel_lite_admin_menu() {
 
 		$current_user = wp_get_current_user();
 		$current_user->add_cap( 'manage_options' );
-		self::$surveyfunnel_lite_admin->wpsf_admin_menu();
+		self::$surveyfunnel_lite_admin->surveyfunnel_lite_admin_menu();
 		global $menu, $submenu;
 		$this->assertTrue( in_array( 'SurveyFunnel', $menu[0] ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		$submenu_array = wp_list_pluck( $submenu['wpsf-dashboard'], 2 );
-		$this->assertTrue( in_array( 'wpsf-dashboard', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		// $this->assertTrue( in_array( 'wpsf-settings', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		$this->assertTrue( in_array( 'wpsf-help', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$submenu_array = wp_list_pluck( $submenu['surveyfunnel-lite-dashboard'], 2 );
+		$this->assertTrue( in_array( 'surveyfunnel-lite-dashboard', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		// $this->assertTrue( in_array( 'surveyfunnel-lite-settings', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertTrue( in_array( 'surveyfunnel-lite-help', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 	}
 
 	/**
-	 * Test for wpsf_init function
+	 * Test for surveyfunnel_lite_init function
 	 */
-	public function test_wpsf_init() {
+	public function test_surveyfunnel_lite_init() {
 		unregister_post_type( 'wpsf-survey' );
 		$this->assertFalse( post_type_exists( 'wpsf-survey' ) );
-		self::$surveyfunnel_lite_admin->wpsf_init();
+		self::$surveyfunnel_lite_admin->surveyfunnel_lite_init();
 		$this->assertTrue( post_type_exists( 'wpsf-survey' ) );
 	}
 
 	/**
-	 * Test for wpsf_get_setup_page_url function
+	 * Test for surveyfunnel_lite_get_setup_page_url function
 	 */
-	public function test_wpsf_get_setup_page_url() {
-		$actual_url   = self::$surveyfunnel_lite_admin->wpsf_get_setup_page_url();
-		$expected_url = get_admin_url() . 'index.php?page=wpsf-survey&post_id=';
+	public function test_surveyfunnel_lite_get_setup_page_url() {
+		$actual_url   = self::$surveyfunnel_lite_admin->surveyfunnel_lite_get_setup_page_url();
+		$expected_url = get_admin_url() . 'index.php?page=surveyfunnel-lite&post_id=';
 		$this->assertSame( $expected_url, $actual_url );
 	}
 
 	/**
-	 * Test for wpsf_get_default_save_array function
+	 * Test for surveyfunnel_lite_get_default_save_array function
 	 */
-	public function test_wpsf_get_default_save_array() {
-		$array = self::$surveyfunnel_lite_admin->wpsf_get_default_save_array();
+	public function test_surveyfunnel_lite_get_default_save_array() {
+		$array = self::$surveyfunnel_lite_admin->surveyfunnel_lite_get_default_save_array();
 		$this->assertArrayHasKey( 'build', $array );
 		$this->assertArrayHasKey( 'design', $array );
 		$this->assertArrayHasKey( 'configure', $array );
@@ -169,9 +169,9 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_get_insights_data function
+	 * Test for surveyfunnel_lite_get_insights_data function
 	 */
-	public function test_wpsf_get_insights_data() {
+	public function test_surveyfunnel_lite_get_insights_data() {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
 		$wpdb->insert( //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
@@ -180,7 +180,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 				'survey_id' => self::$post_ids[0],
 			)
 		);
-		$args = self::$surveyfunnel_lite_admin->wpsf_get_insights_data( self::$post_ids[0] );
+		$args = self::$surveyfunnel_lite_admin->surveyfunnel_lite_get_insights_data( self::$post_ids[0] );
 		$this->assertCount( 3, $args );
 		$this->assertTrue( is_array( $args ) );
 		$this->assertArrayHasKey( 'views', $args );
@@ -189,33 +189,33 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_settings function
+	 * Test for surveyfunnel_lite_settings function
 	 */
-	public function test_wpsf_settings() {
-		self::$surveyfunnel_lite_admin->wpsf_settings();
+	public function test_surveyfunnel_lite_settings() {
+		self::$surveyfunnel_lite_admin->surveyfunnel_lite_settings();
 		$this->assertTrue( true );
 	}
 
 	/**
-	 * Test for wpsf_help function
+	 * Test for surveyfunnel_lite_help function
 	 */
-	public function test_wpsf_help() {
+	public function test_surveyfunnel_lite_help() {
 		ob_start();
-		self::$surveyfunnel_lite_admin->wpsf_help();
+		self::$surveyfunnel_lite_admin->surveyfunnel_lite_help();
 		$output = ob_get_clean();
-		$this->assertTrue( strpos( $output, '<div class="wpsf-container-main">' ) !== false );
+		$this->assertTrue( strpos( $output, '<div class="surveyfunnel-lite-container-main">' ) !== false );
 		$this->assertTrue( strpos( $output, 'Thank‌ ‌you‌ ‌for‌ ‌choosing‌ ‌SurveyFunnel‌ ‌plugin.' ) !== false );
 		$this->assertTrue( strpos( $output, 'Welcome‌ ‌to‌ ‌SurveyFunnel!‌' ) !== false );
 	}
 
 	/**
-	 * Test for wpsf_dashboard function
+	 * Test for surveyfunnel_lite_dashboard function
 	 */
-	public function test_wpsf_dashboard() {
+	public function test_surveyfunnel_lite_dashboard() {
 		$count_befor_include = count( get_included_files() );
 
 		ob_start();
-		self::$surveyfunnel_lite_admin->wpsf_dashboard();
+		self::$surveyfunnel_lite_admin->surveyfunnel_lite_dashboard();
 		ob_get_clean();
 
 		$count_after_include = count( get_included_files() );
@@ -223,12 +223,12 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_mascot_on_pages function
+	 * Test for surveyfunnel_lite_mascot_on_pages function
 	 */
-	public function test_wpsf_mascot_on_pages() {
-		$this->go_to( admin_url() . 'admin.php?page=wpsf-dashboard' );
+	public function test_surveyfunnel_lite_mascot_on_pages() {
+		$this->go_to( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard' );
 		ob_start();
-		self::$surveyfunnel_lite_admin->wpsf_mascot_on_pages();
+		self::$surveyfunnel_lite_admin->surveyfunnel_lite_mascot_on_pages();
 		$output = ob_get_clean();
 		global $wp_scripts;
 		global $wp_styles;
@@ -246,7 +246,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$this->assertArrayHasKey( 'quick_links_text', $localize_data );
 		$this->assertSame( __( 'See Quick Links', 'surveyfunnel' ), $localize_data['quick_links_text'] );
 
-		$this->assertSame( '<div id="srf-mascot-app"></div>', trim( $output ) );
+		$this->assertSame( '<div id="surveyfunnel-lite-mascot-app"></div>', trim( $output ) );
 		$this->assertTrue( in_array( 'surveyfunnel-lite-mascot', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 		$this->assertArrayHasKey( 'surveyfunnel-lite-mascot', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 	}
