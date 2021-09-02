@@ -33,26 +33,26 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 }
 
 ?>
-<div class="wpsf-container-fluid" id="wpsf-dashboard">
-	<div class="wpsf-modal">
-		<div class="wpsf-modal-dialog">
-			<div class="wpsf-modal-dialog-navbar">
-				<span class="wpsf-dismiss">✕</span>
+<div class="surveyfunnel-lite-container-fluid" id="surveyfunnel-lite-dashboard">
+	<div class="surveyfunnel-lite-modal">
+		<div class="surveyfunnel-lite-modal-dialog">
+			<div class="surveyfunnel-lite-modal-dialog-navbar">
+				<span class="surveyfunnel-lite-dismiss">✕</span>
 			</div>
-			<div class="wpsf-modal-inner">
+			<div class="surveyfunnel-lite-modal-inner">
 				<span class="content-info-title"><?php esc_html_e( 'Select Survey Type', 'surveyfunnel' ); ?></span>
 				<div class="select-content-type">
-					<div class="wpsf-modal-content-card">
+					<div class="surveyfunnel-lite-modal-content-card">
 						<div class="card-image">
-						<div class="wpsf-content-type-radios">
-							<input id="wpsf-basic-radio" type="radio" name="content-type" value="basic" checked>
-							<label for="wpsf-basic-radio">
+						<div class="surveyfunnel-lite-content-type-radios">
+							<input id="surveyfunnel-lite-basic-radio" type="radio" name="content-type" value="basic" checked>
+							<label for="surveyfunnel-lite-basic-radio">
 								<span>
 									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
 								</span>
 							</label>
 						</div>
-						<div class="wpsf-content-type-icon" >
+						<div class="surveyfunnel-lite-content-type-icon" >
 							<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/basic-survey.png' ); ?>">
 						</div>
 						</div>
@@ -63,17 +63,17 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 							<?php esc_html_e( 'Create a linear survey. Respondents receive results when they complete the survey.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
-					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
+					<div class="surveyfunnel-lite-modal-content-card  <?php echo $disabled ? 'surveyfunnel-lite-modal-content-card-disabled' : ''; ?>">
 						<div class="card-image">
-						<div class="wpsf-content-type-radios">
-    						<input <?php echo esc_attr( $disabled ); ?> id="wpsf-outcome-radio" type="radio" name="content-type" value="outcome">
-							<label for="wpsf-outcome-radio">
+						<div class="surveyfunnel-lite-content-type-radios">
+    						<input <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-outcome-radio" type="radio" name="content-type" value="outcome">
+							<label for="surveyfunnel-lite-outcome-radio">
 								<span>
 									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
 								</span>
 							</label>
 						</div>
-						<div class="wpsf-content-type-icon" >
+						<div class="surveyfunnel-lite-content-type-icon" >
 							<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/outcome-logic.png' ); ?>">
 						</div>
 						</div>
@@ -84,17 +84,17 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 							<?php esc_html_e( 'Map answers to outcomes. Respondents receive results based on the outcome with the most answers selected.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
-					<div class="wpsf-modal-content-card  <?php echo $disabled ? 'wpsf-modal-content-card-disabled' : ''; ?>">
+					<div class="surveyfunnel-lite-modal-content-card  <?php echo $disabled ? 'surveyfunnel-lite-modal-content-card-disabled' : ''; ?>">
 						<div class="card-image">
-						<div class="wpsf-content-type-radios">
-    						<input <?php echo esc_attr( $disabled ); ?> id="wpsf-scoring-radio" type="radio" name="content-type" value="scoring">
-							<label for="wpsf-scoring-radio">
+						<div class="surveyfunnel-lite-content-type-radios">
+    						<input <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-scoring-radio" type="radio" name="content-type" value="scoring">
+							<label for="surveyfunnel-lite-scoring-radio">
 								<span>
 									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
 								</span>
 							</label>
 						</div>
-						<div class="wpsf-content-type-icon" >
+						<div class="surveyfunnel-lite-content-type-icon" >
 							<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/scoring-logic.png' ); ?>">
 						</div>
 						</div>
@@ -109,44 +109,44 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 				<div class="set-content-name">
 					<span class="content-info-title"><?php esc_html_e( 'Enter Survey Name', 'surveyfunnel' ); ?></span>
 					<input type="text" id="content-title" placeholder="Enter Title">
-					<button type="submit" id="wpsf-modal-submit">Continue</button>
+					<button type="submit" id="surveyfunnel-lite-modal-submit">Continue</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="wpsf-navbar-container">
-		<div class="wpsf-navbar">
-			<div class="wpsf-container-navbar wpsf-top-navbar --wpsf-flex">
-				<div class="wpsf-logo">
-					<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/wpsf-main-logo.png' ); ?>" alt="<?php echo esc_html( 'Survey Funnel Lite Logo' ); ?>">
+	<div class="surveyfunnel-lite-navbar-container">
+		<div class="surveyfunnel-lite-navbar">
+			<div class="surveyfunnel-lite-container-navbar surveyfunnel-lite-top-navbar --surveyfunnel-lite-flex">
+				<div class="surveyfunnel-lite-logo">
+					<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/surveyfunnel-lite-main-logo.png' ); ?>" alt="<?php echo esc_html( 'Survey Funnel Lite Logo' ); ?>">
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="wpsf-body">
-		<div class="wpsf-container">
-			<div class="wpsf-dashboard-container">
-				<div class="wpsf-left">
+	<div class="surveyfunnel-lite-body">
+		<div class="surveyfunnel-lite-container">
+			<div class="surveyfunnel-lite-dashboard-container">
+				<div class="surveyfunnel-lite-left">
 					<span><?php esc_html_e( 'DASHBOARD', 'surveyfunnel' ); ?></span>
 				</div>
-				<div class="wpsf-filter wpsf-right">
-					<label for="wpsf-filter"><?php esc_html_e( 'Filter By:', 'surveyfunnel' ); ?></label>
-					<select <?php echo esc_attr( $disabled ); ?> id="wpsf-filter">
+				<div class="surveyfunnel-lite-filter surveyfunnel-lite-right">
+					<label for="surveyfunnel-lite-filter"><?php esc_html_e( 'Filter By:', 'surveyfunnel' ); ?></label>
+					<select <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-filter">
 
 						<option value="all-types"><?php esc_html_e( 'All Types', 'surveyfunnel' ); ?></option>
 						<option value="all-types"><?php esc_html_e( 'Scoring Logic', 'surveyfunnel' ); ?></option>
 						<option value="all-types"><?php esc_html_e( 'Outcome Logic', 'surveyfunnel' ); ?></option>
 					</select>
 				</div>
-				<div class="wpsf-search wpsf-right">
-					<input class="wpsf-dashboard-search" type="text" data-search placeholder="<?php esc_html_e( 'Search By Content Name', 'surveyfunnel' ); ?>">
+				<div class="surveyfunnel-lite-search surveyfunnel-lite-right">
+					<input class="surveyfunnel-lite-dashboard-search" type="text" data-search placeholder="<?php esc_html_e( 'Search By Content Name', 'surveyfunnel' ); ?>">
 				</div>
 			</div>
-			<div class="wpsf-card-container">
-				<div class="wpsf-content" style="cursor: pointer;">
-					<div class="wpsf-create-content">
+			<div class="surveyfunnel-lite-card-container">
+				<div class="surveyfunnel-lite-content" style="cursor: pointer;">
+					<div class="surveyfunnel-lite-create-content">
 						<h3><?php esc_html_e( 'Create New Survey', 'surveyfunnel' ); ?></h3>
-						<div class="wpsf-create-button">
+						<div class="surveyfunnel-lite-create-button">
 							<button><span>+</span></button>
 						</div>
 					</div>
@@ -155,9 +155,9 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 					<?php foreach ( $surveys as $survey ) : ?>
 						<?php $data = Surveyfunnel_Lite_Admin::surveyfunnel_lite_get_insights_data( $survey->ID ); ?>
 						<?php $url  = surveyfunnel_lite_get_background_image( $survey->ID ); ?>
-						<div class="wpsf-content" data-filter-item data-filter-name="<?php echo esc_html( strtolower( $survey->post_title ) ); ?>">
-							<div class="wpsf-image-box">
-								<div class="wpsf-image">
+						<div class="surveyfunnel-lite-content" data-filter-item data-filter-name="<?php echo esc_html( strtolower( $survey->post_title ) ); ?>">
+							<div class="surveyfunnel-lite-image-box">
+								<div class="surveyfunnel-lite-image">
 									<?php if ( $url ) : ?>
 										<img src="<?php echo esc_url( $url ); ?>" alt="survey-background-image">
 									<?php else : ?>
@@ -166,77 +166,77 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 									</svg>
 									<?php endif; ?>
 								</div>
-								<div class="wpsf-post-status">
-									<div class="wpsf-post-status">
-										<div class="wpsf-post-status-inside --wpsf-flex">
+								<div class="surveyfunnel-lite-post-status">
+									<div class="surveyfunnel-lite-post-status">
+										<div class="surveyfunnel-lite-post-status-inside --surveyfunnel-lite-flex">
 											<?php if ( 'draft' === $survey->post_status ) : ?>
-												<div class="wpsf-badge wpsf-badge-unpublished"><?php echo esc_attr_e( 'Unpublished', 'surveyfunnel' ); ?></div>
+												<div class="surveyfunnel-lite-badge surveyfunnel-lite-badge-unpublished"><?php echo esc_attr_e( 'Unpublished', 'surveyfunnel' ); ?></div>
 											<?php else : ?>
-												<div class="wpsf-badge wpsf-badge-published"><?php echo esc_attr_e( 'Published', 'surveyfunnel' ); ?></div>
+												<div class="surveyfunnel-lite-badge surveyfunnel-lite-badge-published"><?php echo esc_attr_e( 'Published', 'surveyfunnel' ); ?></div>
 											<?php endif; ?>
-											<div class="--wpsf-flex wpsf-post-icons">
-												<span  class="wpsf-tooltip">
+											<div class="--surveyfunnel-lite-flex surveyfunnel-lite-post-icons">
+												<span  class="surveyfunnel-lite-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/build' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/build.png' ); ?>" alt="Build">
 													</a>
-													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Build', 'surveyfunnel' ); ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php esc_html_e( 'Build', 'surveyfunnel' ); ?></span>
 												</span>
-												<span  class="wpsf-tooltip">
+												<span  class="surveyfunnel-lite-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/design' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Design.png' ); ?>" alt="Design">
 													</a>
-													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Design', 'surveyfunnel' ); ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php esc_html_e( 'Design', 'surveyfunnel' ); ?></span>
 												</span>
-												<span  class="wpsf-tooltip">
+												<span  class="surveyfunnel-lite-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/configure' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Configure.png' ); ?>" alt="Configure">
 													</a>
-													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Configure', 'surveyfunnel' ); ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php esc_html_e( 'Configure', 'surveyfunnel' ); ?></span>
 												</span>
-												<span  class="wpsf-tooltip">
+												<span  class="surveyfunnel-lite-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/share' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Share.png' ); ?>" alt="Configure">
 													</a>
-													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Deploy', 'surveyfunnel' ); ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php esc_html_e( 'Deploy', 'surveyfunnel' ); ?></span>
 												</span>
-												<span  class="wpsf-tooltip">
+												<span  class="surveyfunnel-lite-tooltip">
 													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/reports' ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Reports.png' ); ?>" alt="Configure">
 													</a>
-													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Reports', 'surveyfunnel' ); ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php esc_html_e( 'Reports', 'surveyfunnel' ); ?></span>
 												</span>
-												<span  class="wpsf-tooltip">
+												<span  class="surveyfunnel-lite-tooltip">
 													<div class="icon deleteIcon" delete-id="<?php echo intval( $survey->ID ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Delete.png' ); ?>" alt="Configure">
 													</div>
-													<span class="wpsf-tooltiptext"><?php esc_html_e( 'Delete', 'surveyfunnel' ); ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php esc_html_e( 'Delete', 'surveyfunnel' ); ?></span>
 												</span>
 											</div>
 										</div>
 									</div>
 								</div> 
 							</div>
-							<div class="wpsf-title-box --wpsf-flex">
-								<div class="wpsf-title"><?php echo esc_attr( $survey->post_title ); ?></div>
-								<div class="wpsf-badge wpsf-badge-sm wpsf-badge-<?php echo esc_html( get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) ); ?> wpsf-badge-type">
+							<div class="surveyfunnel-lite-title-box --surveyfunnel-lite-flex">
+								<div class="surveyfunnel-lite-title"><?php echo esc_attr( $survey->post_title ); ?></div>
+								<div class="surveyfunnel-lite-badge surveyfunnel-lite-badge-sm surveyfunnel-lite-badge-<?php echo esc_html( get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) ); ?> surveyfunnel-lite-badge-survey-type">
 									<small><?php echo esc_html( get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) ); ?></small>
 								</div>
 							</div>
-							<div class="wpsf-content-stats --wpsf-grid">
-								<div class="wpsf-stat-box wpsf-views">
-									<div class="wpsf-stat">
+							<div class="surveyfunnel-lite-content-stats --surveyfunnel-lite-grid">
+								<div class="surveyfunnel-lite-stat-box surveyfunnel-lite-views">
+									<div class="surveyfunnel-lite-stat">
 										<span><?php echo esc_attr( $data['views'] ); ?></span>
 										<small><?php esc_html_e( 'Views', 'surveyfunnel' ); ?></small>
 									</div>
 								</div>
-								<div class="wpsf-stat-box wpsf-contacts">
-									<div class="wpsf-stat">
+								<div class="surveyfunnel-lite-stat-box surveyfunnel-lite-contacts">
+									<div class="surveyfunnel-lite-stat">
 										<span><?php echo esc_attr( $data['contacts'] ); ?></span>
 										<small><?php esc_html_e( 'Contacts', 'surveyfunnel' ); ?></small>
 									</div>
 								</div>
-								<div class="wpsf-stat-box wpsf-completion-rate">
-									<div class="wpsf-stat">
+								<div class="surveyfunnel-lite-stat-box surveyfunnel-lite-completion-rate">
+									<div class="surveyfunnel-lite-stat">
 										<span><?php echo esc_attr( $data['completionRate'] . '%' ); ?></span>
 										<small><?php esc_html_e( 'Compl. Rate', 'surveyfunnel' ); ?></small>
 									</div>

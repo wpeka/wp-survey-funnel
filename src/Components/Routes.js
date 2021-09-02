@@ -32,7 +32,7 @@ export default function Routes() {
     }, []);
 
     const changeStatus = (e) => {
-        e.target.classList.add('wpsf-button-loading');
+        e.target.classList.add('surveyfunnel-lite-button-loading');
         const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
@@ -44,7 +44,7 @@ export default function Routes() {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData(ajaxURL, data)
         .then(data => {
-            e.target.classList.remove('wpsf-button-loading');
+            e.target.classList.remove('surveyfunnel-lite-button-loading');
             if ( data?.success ) {
                 setStatus( data.data );
                 
@@ -54,8 +54,8 @@ export default function Routes() {
     
     return (
         <Router>
-            <div className="wpsf-cb-nav-container">
-                <div className="wpsf-back">                    
+            <div className="surveyfunnel-lite-cb-nav-container">
+                <div className="surveyfunnel-lite-back">                    
                     <img src={require('./Build/BuildImages/arrow.png')}></img><a href={dashboardLink}>Back to dashboard</a>
                 </div>
                 <ul>

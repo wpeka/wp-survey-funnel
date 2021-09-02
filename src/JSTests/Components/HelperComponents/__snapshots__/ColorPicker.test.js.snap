@@ -5,7 +5,7 @@ exports[`Popover picker test 1`] = `
   className="picker"
 >
   <div
-    className="swatch wpsf-color-box"
+    className="swatch surveyfunnel-lite-color-box"
     onClick={[Function]}
     style={
       Object {
@@ -14,7 +14,7 @@ exports[`Popover picker test 1`] = `
     }
   >
     <div
-      className="wpsf-color-value"
+      className="surveyfunnel-lite-color-value"
     >
       #9b9b9bcc
     </div>

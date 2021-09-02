@@ -9,14 +9,14 @@ export default function Design() {
 	const { saveContext } = useContext( DesignContext );
 	return (
 		<div id="design">
-			<div className="wpsf-design-container">
-				<div className="design-elements wpsf-design-setting-container">
+			<div className="surveyfunnel-lite-design-container">
+				<div className="design-elements surveyfunnel-lite-design-setting-container">
 					<DesignSettings></DesignSettings>
-					<div className="wpsf-design-settings-save">
+					<div className="surveyfunnel-lite-design-settings-save">
 						<button onClick={saveContext}>Save</button>
 					</div>
 				</div>
-				<div className="design-preview wpsf-design-preview-container">
+				<div className="design-preview surveyfunnel-lite-design-preview-container">
 					<DesignPreview></DesignPreview>
 				</div>
 			</div>

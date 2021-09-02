@@ -37,9 +37,9 @@ export default function BuildElement({ ele }) {
                 role="BuildElement"
                 style={{ opacity }}
                 data-testid={`buildelement-${name}`}
-				className="wpsf-build-elements_box"
+				className="surveyfunnel-lite-build-elements_box"
             >
-                <img src={require(`./BuildImages/${ele.componentName}.png`)} className={`wpsf-build-${ele.itemType}-img`}></img>
+                <img src={require(`./BuildImages/${ele.componentName}.png`)} className={`surveyfunnel-lite-build-${ele.itemType}-img`}></img>
                 <p>{ele.name}</p>
         </div>
     );
