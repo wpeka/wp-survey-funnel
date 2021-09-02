@@ -23,7 +23,7 @@ const currentlyPreviewing = false
 
 let initialState = []
 
-let id = 'wpsf-survey-' + data.userLocalID
+let id = 'surveyfunnel-lite-survey-' + data.userLocalID
 let metaTitle = '';
 let metaDescription = '';
 let companyBranding = true;
@@ -854,7 +854,7 @@ function Survey() {
                                     </div>
                                     <div className="tab-controls">
                                             <span className="tab-controls-inner">
-                                            {companyBranding && <div><a target="_blank" href="https://www.surveyfunnel.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="surveyfunnel-lite-main-logo" /></a></div> }
+                                            {companyBranding && <div><a target="_blank" href="https://www.surveyfunnel.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/surveyfunnel-lite-main-logo.png')} alt="surveyfunnel-lite-main-logo" /></a></div> }
                                             
                                             <button
                                                 type="button"

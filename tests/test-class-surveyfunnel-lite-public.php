@@ -141,6 +141,6 @@ class Test_Surveyfunnel_Lite_Public extends WP_UnitTestCase {
 			'id' => self::$post_ids[0],
 		);
 		$output = self::$surveyfunnel_lite_public->surveyfunnel_lite_survey_shortcode_render( $atts );
-		$this->assertEquals( 1, preg_match( '/id="wpsf-survey-[0-9a-z]{32}"/', $output ) );
+		$this->assertEquals( 1, preg_match( '/id="surveyfunnel-lite-survey-[0-9a-z]{32}"/', $output ) );
 	}
 }

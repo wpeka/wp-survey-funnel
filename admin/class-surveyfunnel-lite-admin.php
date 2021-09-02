@@ -186,28 +186,28 @@ class Surveyfunnel_Lite_Admin {
 	public function surveyfunnel_lite_help() {
 		wp_enqueue_style( $this->plugin_name );
 		?>	
-			<div class="wpsf-container-main">
-				<div class="wpsf-header">
-					<div class="wpsf-logo">
-						<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/wpsf-help-logo.png' ); ?>" alt="surveyfunnel-lite-main-logo">
+			<div class="surveyfunnel-lite-container-main">
+				<div class="surveyfunnel-lite-header">
+					<div class="surveyfunnel-lite-logo">
+						<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/surveyfunnel-lite-help-logo.png' ); ?>" alt="surveyfunnel-lite-main-logo">
 					</div>
 				</div>
-				<div class="wpsf-inner-container">
-				<div class="wpsf-section">
-					<div class="wpsf-section-heading">
-						<div class="wpsf-section-title">
+				<div class="surveyfunnel-lite-inner-container">
+				<div class="surveyfunnel-lite-section">
+					<div class="surveyfunnel-lite-section-heading">
+						<div class="surveyfunnel-lite-section-title">
 							<p>Welcome‌ ‌to‌ ‌SurveyFunnel!‌</p>
 						</div>
-						<div class="wpsf-section-subtitle">
+						<div class="surveyfunnel-lite-section-subtitle">
 							<p>Complete Survey Management Plugin.</p>
 						</div>
 					</div>
-					<div class="wpsf-section-content">
+					<div class="surveyfunnel-lite-section-content">
 						<p>Thank‌ ‌you‌ ‌for‌ ‌choosing‌ ‌SurveyFunnel‌ ‌plugin.‌ ‌SurveyFunnel‌ ‌lets‌ ‌you‌ ‌create‌ ‌interesting‌ ‌surveys‌ ‌to‌ ‌keep‌ ‌your‌ ‌audience‌ ‌engaged,‌ ‌and‌ ‌collect‌ ‌qualified‌ ‌leads.‌ ‌With‌ ‌drag‌ ‌and‌ ‌drop‌ ‌features‌ ‌you‌ ‌can‌ ‌create‌ ‌a‌ ‌survey‌ ‌in‌ ‌minutes‌ ‌and‌ ‌get‌ ‌better‌ ‌insights‌ ‌about‌ ‌your‌ ‌audience.‌</p>
 					</div>
 				</div>
-				<div class="wpsf-section">
-					<a class="wpsf-button" href="<?php echo esc_url( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard' ); ?>">Create Your First Survey</a>
+				<div class="surveyfunnel-lite-section">
+					<a class="surveyfunnel-lite-button" href="<?php echo esc_url( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard' ); ?>">Create Your First Survey</a>
 				</div>
 				</div>
 			</div>
@@ -359,8 +359,8 @@ class Surveyfunnel_Lite_Admin {
 				<?php wp_print_styles( 'dashicons' ); ?>
 				<title>WP Survey Funnel</title>
 			</head>
-			<body class="wpsf-body">
-				<div id="root" class="wpsf-root"></div>
+			<body class="surveyfunnel-lite-body">
+				<div id="root" class="surveyfunnel-lite-root"></div>
 				<input type="hidden" id="ajaxURL" value="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>">
 				<input type="hidden" id="ajaxSecurity" value="<?php echo esc_attr( wp_create_nonce( 'surveyfunnel-lite-security' ) ); ?>">
 				<input type="hidden" id="dashboardLink" value="<?php echo esc_url( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard' ); ?>">

@@ -203,7 +203,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		ob_start();
 		self::$surveyfunnel_lite_admin->surveyfunnel_lite_help();
 		$output = ob_get_clean();
-		$this->assertTrue( strpos( $output, '<div class="wpsf-container-main">' ) !== false );
+		$this->assertTrue( strpos( $output, '<div class="surveyfunnel-lite-container-main">' ) !== false );
 		$this->assertTrue( strpos( $output, 'Thank‌ ‌you‌ ‌for‌ ‌choosing‌ ‌SurveyFunnel‌ ‌plugin.' ) !== false );
 		$this->assertTrue( strpos( $output, 'Welcome‌ ‌to‌ ‌SurveyFunnel!‌' ) !== false );
 	}
