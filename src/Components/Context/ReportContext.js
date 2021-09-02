@@ -58,7 +58,7 @@ export function ReportContextProvider(props) {
 			const post_id = new URLSearchParams(window.location.search).get('post_id');
 			const data = {
 				security: ajaxSecurity,
-				action: 'wpsf_get_reports_data',
+				action: 'surveyfunnel_lite_get_reports_data',
 				post_id,
 				startDate: moment(dates.startDate).format('YYYY-MM-DD'),
 				endDate: moment(dates.endDate).format('YYYY-MM-DD')

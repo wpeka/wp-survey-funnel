@@ -24,7 +24,7 @@ const currentlyPreviewing = false
 
 let initialState = []
 
-let id = 'wpsf-survey-' + data.userLocalID
+let id = 'surveyfunnel-lite-survey-' + data.userLocalID
 let metaTitle = '';
 let metaDescription = '';
 let companyBranding = true;
@@ -38,7 +38,7 @@ var half_screen;
 var contentHeight;
 let configure = '';
 
-let dismissEvent = new CustomEvent('wpsf-remove-event', { detail: {id}, } );
+let dismissEvent = new CustomEvent('surveyfunnel-lite-remove-event', { detail: {id}, } );
 
 if ( data.configure !== '' ) {
     configure = JSON.parse(data.configure);
@@ -153,7 +153,7 @@ function Survey() {
             let formData = {
                 security: data.ajaxSecurity,
                 post_id: data.post_id,
-                action: 'wpsf_new_survey_lead',
+                action: 'surveyfunnel_lite_new_survey_lead',
                 userLocalID: data.userLocalID,
                 time: data.time,
                 completed: List.CONTENT_ELEMENTS.length,
@@ -234,7 +234,7 @@ function Survey() {
             let formData = {
                 security: data.ajaxSecurity,
                 post_id: data.post_id,
-                action: 'wpsf_new_survey_lead',
+                action: 'surveyfunnel_lite_new_survey_lead',
                 userLocalID: data.userLocalID,
                 time: data.time,
                 data: JSON.stringify({
@@ -361,7 +361,7 @@ function Survey() {
             case 'SingleChoice':
                 return (
                     <div
-                        className="wpsf-tab-SingleChoice"
+                        className="surveyfunnel-lite-tab-SingleChoice"
                         style={{ ...style }}
                         key={item.id}
                     >
@@ -388,7 +388,7 @@ function Survey() {
                                                         designCon.answerBorderColor
                                                     )}`,
                                                 }}
-                                                className="wpsf-tab-answer-container"
+                                                className="surveyfunnel-lite-tab-answer-container"
                                             >
                                                 <input
                                                     type="radio"
@@ -433,7 +433,7 @@ function Survey() {
             case 'MultiChoice':
                 return (
                     <div
-                        className="wpsf-tab-MultiChoice"
+                        className="surveyfunnel-lite-tab-MultiChoice"
                         style={{ ...style }}
                         key={item.id}
                     >
@@ -463,7 +463,7 @@ function Survey() {
                                                         designCon.answerBorderColor
                                                     )}`,
                                                 }}
-                                                className="wpsf-tab-answer-container"
+                                                className="surveyfunnel-lite-tab-answer-container"
                                             >
                                                 <input
                                                     type="checkbox"
@@ -508,7 +508,7 @@ function Survey() {
             case 'CoverPage':
                 return (
                     <div
-                        className="wpsf-tab-CoverPage"
+                        className="surveyfunnel-lite-tab-CoverPage"
                         style={{ ...style }}
                         key={item.id}
                     >
@@ -548,7 +548,7 @@ function Survey() {
             case 'ResultScreen':
                 return (
                     <div
-                        className="wpsf-tab-ResultScreen"
+                        className="surveyfunnel-lite-tab-ResultScreen"
                         style={{ ...style }}
                         key={item.id}
                     >
@@ -568,7 +568,7 @@ function Survey() {
             case 'FormElements':
                 return (
                     <div
-                        className="wpsf-tab-FormElements"
+                        className="surveyfunnel-lite-tab-FormElements"
                         style={{ ...style }}
                         key={item.id}
                     >
@@ -738,19 +738,19 @@ function Survey() {
     }
 
     const dismissSurvey = () => {
-		let wpsfSurveyCookie = getCookie( 'wpsf-dismiss-survey' );
+		let wpsfSurveyCookie = getCookie( 'surveyfunnel-lite-dismiss' );
 		if ( wpsfSurveyCookie ) {
 			if ( data.type === 'popup' ) {
 				if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
-					setCookie('wpsf-dismiss-survey', wpsfSurveyCookie + data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
+					setCookie('surveyfunnel-lite-dismiss', wpsfSurveyCookie + data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
 				}
 			}
 			else {
-				setCookie('wpsf-dismiss-survey', wpsfSurveyCookie + data.post_id + ',', 1 );
+				setCookie('surveyfunnel-lite-dismiss', wpsfSurveyCookie + data.post_id + ',', 1 );
 			}
 		}
         else {
-			setCookie('wpsf-dismiss-survey', data.post_id + ',', 1 );
+			setCookie('surveyfunnel-lite-dismiss', data.post_id + ',', 1 );
 		}
 		window.parent.dispatchEvent(dismissEvent);
         showOrHideSurvey(false);
@@ -762,24 +762,24 @@ function Survey() {
                 setCurrentTab(0);
                 return;
             case 'Complete':
-                let wpsfSurveyCookie = getCookie( 'wpsf-survey-completed' );
+                let wpsfSurveyCookie = getCookie( 'surveyfunnel-lite-completed' );
                 if ( wpsfSurveyCookie ) {
                     let pattern = new RegExp(data.post_id , "g");
                     if ( pattern.test( wpsfSurveyCookie ) ) {
                         return;
                     }
                     if ( data.type === 'popup' ) {
-                        setCookie('wpsf-survey-completed', wpsfSurveyCookie + ',' + data.post_id , 28625 );
+                        setCookie('surveyfunnel-lite-completed', wpsfSurveyCookie + ',' + data.post_id , 28625 );
                     }
                     else
-                        setCookie('wpsf-survey-completed', wpsfSurveyCookie + ',' + data.post_id , 1);
+                        setCookie('surveyfunnel-lite-completed', wpsfSurveyCookie + ',' + data.post_id , 1);
                 }
                 else {
                     if ( data.type === 'popup' ) {
-                        setCookie('wpsf-survey-completed', data.post_id , 28625 );
+                        setCookie('surveyfunnel-lite-completed', data.post_id , 28625 );
                     }
                     else
-                        setCookie('wpsf-survey-completed', data.post_id , 1);
+                        setCookie('surveyfunnel-lite-completed', data.post_id , 1);
                 }
 				window.parent.dispatchEvent(dismissEvent);
                 showOrHideSurvey(false);
@@ -794,8 +794,8 @@ function Survey() {
             setShowSurvey(false);
 			return;
         }
-        let wpsfSurveyDismissed = getCookie('wpsf-survey-dismissed');
-        let wpsfSurveyCompleted = getCookie('wpsf-survey-completed');
+        let wpsfSurveyDismissed = getCookie('surveyfunnel-lite-dismissed');
+        let wpsfSurveyCompleted = getCookie('surveyfunnel-lite-completed');
         let postIdRegEx = new RegExp( data.post_id, 'i' );
         if ( postIdRegEx.test( wpsfSurveyDismissed ) || postIdRegEx.test(wpsfSurveyCompleted) ) {
             return;
@@ -815,15 +815,15 @@ function Survey() {
 				margin: 'auto',
                 height: data.type === 'responsive' ? height : '',
             }}
-            className={'wpsf-sc-'+data.type}
+            className={'surveyfunnel-lite-sc-'+data.type}
             onLoad={() => handleResize(iframeRef)}
             scrolling="no"
         >
             <div id="design">
-                <div className="wpsf-design-container">
+                <div className="surveyfunnel-lite-design-container">
                     <div className="design-preview" style={{fontFamily: designCon.fontFamily, ...backgroundStyle}}>
                         {addFontFamilyLink()}
-                        <div className="wpsf-survey-form">
+                        <div className="surveyfunnel-lite-survey-form">
                             {tabCount === 0 ? (
                                 <div className="no-preview-available">
                                     <img src={require(`./Components/Build/BuildImages/unavailable.png`)}></img>
@@ -832,7 +832,7 @@ function Survey() {
                                         : "No Questions were added in this survey"}
                                 </div>
                             ) : (
-                                <div className="wpsf-design-preview-container" style={{  }}>
+                                <div className="surveyfunnel-lite-design-preview-container" style={{  }}>
 									{(data.type === 'fullpage' || data.type === 'popup') && <div className="dismissalBox">
 										<button onClick={dismissSurvey}>X</button>
 									</div>}
@@ -859,7 +859,7 @@ function Survey() {
                                     </div>
                                     <div className="tab-controls">
                                             <span className="tab-controls-inner">
-                                            {companyBranding && <div><a target="_blank" href="https://www.surveyfunnel.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div> }
+                                            {companyBranding && <div><a target="_blank" href="https://www.surveyfunnel.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../images/surveyfunnel-lite-main-logo.png')} alt="surveyfunnel-lite-main-logo" /></a></div> }
                                             
                                             <button
                                                 type="button"

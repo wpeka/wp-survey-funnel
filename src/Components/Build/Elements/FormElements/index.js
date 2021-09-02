@@ -29,7 +29,7 @@ export const FormElements = React.memo(
 
         setCurrentFormElement = (element) => {
             document
-                .querySelectorAll(".wpsf-build-container .tab-list-item")[1]
+                .querySelectorAll(".surveyfunnel-lite-build-container .tab-list-item")[1]
                 .click();
             this.setState({
                 currentFormElement: element,
@@ -109,7 +109,7 @@ export const FormElements = React.memo(
                                     this.handleInputChange(e);
                                 }}
                             />
-                            <div className="wpsf-required-field-container">
+                            <div className="surveyfunnel-lite-required-field-container">
                                 <h3>Mark field Required</h3>
                                 <input
                                     type="checkbox"
@@ -257,9 +257,9 @@ export const FormElements = React.memo(
                                                     style={{height:"150px"}}
                                                 />
                                             </div>
-                                            <div className="wpsf-form-elements_content">
+                                            <div className="surveyfunnel-lite-form-elements_content">
                                                 <h3 style={{display:"inline-block"}}>Form Fields</h3><span> (Simply drag & drop to use)</span>
-                                                <div className="wpsf-form-elements_container">
+                                                <div className="surveyfunnel-lite-form-elements_container">
 
                                             {formElements.map(function (ele, i) {
                                                 return (
@@ -310,7 +310,7 @@ export const FormElements = React.memo(
                                                                     null
                                                                 );
                                                                 document
-                                                                .querySelector(".wpsf-build-container .tab-list-item")
+                                                                .querySelector(".surveyfunnel-lite-build-container .tab-list-item")
                                                                 .click();
                                                             }}
                                                         >
@@ -356,7 +356,7 @@ export const FormElements = React.memo(
                                                         i
                                                     );
                                                 }, this)}
-                                                <div className="wpsf-form-submit-button">
+                                                <div className="surveyfunnel-lite-form-submit-button">
                                                     { this.checkForEmpty('buttonLabel') && <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}} type="button">{this.state.buttonLabel}</button> }
                                                 </div>
                                             </ModalContentRight>)}

@@ -13,7 +13,7 @@ export default function ShareShortCode() {
 	
 
 	useEffect(() => {
-		setShortcode('[wpsf_survey id="'+ new URLSearchParams(window.location.search).get('post_id') +'" type="'+ checked +'"]');
+		setShortcode('[surveyfunnel_lite_survey id="'+ new URLSearchParams(window.location.search).get('post_id') +'" type="'+ checked +'"]');
 		for(let i = 0 ; i < shortcodeTypes.length; i++) {
 			if ( checked === shortcodeTypes[i].id ) {
 				setHelpText(shortcodeTypes[i].helpText);

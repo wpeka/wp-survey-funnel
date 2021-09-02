@@ -84,7 +84,7 @@ class Test_Surveyfunnel_Lite_Public extends WP_UnitTestCase {
 		self::$configure               = '{\"metaInfo\":{\"title\":\"Title\",\"description\":\"Description\"},\"companyBranding\":false}';
 		update_post_meta(
 			self::$post_ids[0],
-			'wpsf-survey-data',
+			'surveyfunnel-lite-data',
 			array(
 				'design'    => self::$design,
 				'build'     => self::$build,
@@ -124,23 +124,23 @@ class Test_Surveyfunnel_Lite_Public extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_public_init function.
+	 * Test for surveyfunnel_lite_public_init function.
 	 */
-	public function test_wpsf_public_init() {
-		remove_shortcode( 'wpsf_survey' );
-		$this->assertFalse( shortcode_exists( 'wpsf_survey' ) );
-		self::$surveyfunnel_lite_public->wpsf_public_init();
-		$this->assertTrue( shortcode_exists( 'wpsf_survey' ) );
+	public function test_surveyfunnel_lite_public_init() {
+		remove_shortcode( 'surveyfunnel_lite_survey' );
+		$this->assertFalse( shortcode_exists( 'surveyfunnel_lite_survey' ) );
+		self::$surveyfunnel_lite_public->surveyfunnel_lite_public_init();
+		$this->assertTrue( shortcode_exists( 'surveyfunnel_lite_survey' ) );
 	}
 
 	/**
-	 * Test for wpsf_survey_shortcode_render function
+	 * Test for surveyfunnel_lite_survey_shortcode_render function
 	 */
-	public function test_wpsf_survey_shortcode_render() {
+	public function test_surveyfunnel_lite_survey_shortcode_render() {
 		$atts   = array(
 			'id' => self::$post_ids[0],
 		);
-		$output = self::$surveyfunnel_lite_public->wpsf_survey_shortcode_render( $atts );
-		$this->assertEquals( 1, preg_match( '/id="wpsf-survey-[0-9a-z]{32}"/', $output ) );
+		$output = self::$surveyfunnel_lite_public->surveyfunnel_lite_survey_shortcode_render( $atts );
+		$this->assertEquals( 1, preg_match( '/id="surveyfunnel-lite-survey-[0-9a-z]{32}"/', $output ) );
 	}
 }

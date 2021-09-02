@@ -20,7 +20,7 @@ export function ConfigureContextProvider( props ) {
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
             security: ajaxSecurity,
-            action: 'wpsf_get_configuration_data',
+            action: 'surveyfunnel_lite_get_configuration_data',
             post_id,
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
@@ -40,7 +40,7 @@ export function ConfigureContextProvider( props ) {
 			const post_id = new URLSearchParams(window.location.search).get('post_id');
 			const data = {
 				security: ajaxSecurity,
-				action: 'wpsf_get_posts_pages',
+				action: 'surveyfunnel_lite_get_posts_pages',
 				post_id,
 				links: true,
 			};
@@ -63,19 +63,19 @@ export function ConfigureContextProvider( props ) {
 	}
 
 	const saveConfiguration = (e) => {
-		e.target.classList.add('wpsf-button-loading');
+		e.target.classList.add('surveyfunnel-lite-button-loading');
 		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
             security: ajaxSecurity,
-            action: 'wpsf_save_configuration_data',
+            action: 'surveyfunnel_lite_save_configuration_data',
             post_id,
 			configuration: JSON.stringify({metaInfo, companyBranding, proSettings})
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData( ajaxURL, data )
         .then(data => {
-			e.target.classList.remove('wpsf-button-loading');
+			e.target.classList.remove('surveyfunnel-lite-button-loading');
         })
 	}
 

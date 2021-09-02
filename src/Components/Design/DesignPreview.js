@@ -130,7 +130,7 @@ export default function DesignPreview() {
         switch (item.componentName) {
             case "SingleChoice":
                 return (
-                    <div className="wpsf-tab-SingleChoice"
+                    <div className="surveyfunnel-lite-tab-SingleChoice"
                         style={{ ...style }}
                         key={item.id}
                     >
@@ -146,7 +146,7 @@ export default function DesignPreview() {
                                 <div className="radio-group">
                                     {item.answers.map(function (ele, i) {
                                         return (
-                                            <div key={item.id + "_radio" + "_" + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="wpsf-tab-answer-container">
+                                            <div key={item.id + "_radio" + "_" + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="surveyfunnel-lite-tab-answer-container">
                                                 <input
                                                     type="radio"
                                                     name={item.id + "_radio"}
@@ -183,7 +183,7 @@ export default function DesignPreview() {
                 );
             case "MultiChoice":
                 return (
-                    <div className="wpsf-tab-MultiChoice"
+                    <div className="surveyfunnel-lite-tab-MultiChoice"
                     style={{ ...style }}
                     key={item.id}
                     >
@@ -202,7 +202,7 @@ export default function DesignPreview() {
                                 <div className="checkbox-group">
                                     {item.answers.map(function (ele, i) {
                                         return (
-                                            <div key={item.id + "_checkbox" + "_" + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="wpsf-tab-answer-container">
+                                            <div key={item.id + "_checkbox" + "_" + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="surveyfunnel-lite-tab-answer-container">
                                                 <input
                                                     type="checkbox"
                                                     name={item.id + "_checkbox"}
@@ -238,7 +238,7 @@ export default function DesignPreview() {
                 );
             case "CoverPage":
                 return (
-                    <div className="wpsf-tab-CoverPage"
+                    <div className="surveyfunnel-lite-tab-CoverPage"
                     style={{ ...style }}
                     key={item.id}
                     >
@@ -262,7 +262,7 @@ export default function DesignPreview() {
                 );
             case "ResultScreen":
                 return (
-                    <div className="wpsf-tab-ResultScreen"
+                    <div className="surveyfunnel-lite-tab-ResultScreen"
                     style={{ ...style }}
                     key={item.id}
                     >
@@ -279,7 +279,7 @@ export default function DesignPreview() {
                 );
             case 'FormElements':
                 return (
-                    <div className="wpsf-tab-FormElements"
+                    <div className="surveyfunnel-lite-tab-FormElements"
                     style={{ ...style }}
                     key={item.id}
                     >
@@ -366,7 +366,7 @@ export default function DesignPreview() {
     }
     
     return (
-        <div className="wpsf-survey-form" style={{fontFamily: designCon.fontFamily, ...designCon.backgroundStyle, height: 'calc(100vh - 108px)'}}>
+        <div className="surveyfunnel-lite-survey-form" style={{fontFamily: designCon.fontFamily, ...designCon.backgroundStyle, height: 'calc(100vh - 108px)'}}>
             {tabCount === 0 ? (
                 <div className="no-preview-available">
                     <img src={require(`../Build/BuildImages/unavailable.png`)}></img>
@@ -375,7 +375,7 @@ export default function DesignPreview() {
                         : "No Questions were added in this survey"}
                 </div>
             ) : (
-                <div className="wpsf-design-preview-container" style={{  }}>
+                <div className="surveyfunnel-lite-design-preview-container" style={{  }}>
                     <div className="preview" style={{color: convertToRgbaCSS( designCon.fontColor ) }}>
                         <div className="preview-container">
 
@@ -408,7 +408,7 @@ export default function DesignPreview() {
                     </div>
                     <div className="tab-controls">
                             <span className="tab-controls-inner">
-                            <div><a target="_blank" href="https://www.surveyfunnel.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../../../images/wpsf-main-logo.png')} alt="wpsf-main-logo" /></a></div>
+                            <div><a target="_blank" href="https://www.surveyfunnel.com"><span style={{fontSize: '10px'}}>Powered By</span><img src={require('../../../images/surveyfunnel-lite-main-logo.png')} alt="surveyfunnel-lite-main-logo" /></a></div>
                             
                             <button
                                 type="button"
