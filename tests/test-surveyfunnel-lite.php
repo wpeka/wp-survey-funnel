@@ -20,14 +20,6 @@
 class Test_Main_Plugin_File extends WP_UnitTestCase {
 
 	/**
-	 * Test for srf_fs function
-	 */
-	public function test_srf_fs() {
-		$analytics = srf_fs();
-		$this->assertTrue( is_object( $analytics ) && ! empty( $analytics ) );
-	}
-
-	/**
 	 * Test for activate_surveyfunnel_lite function
 	 */
 	public function test_activate_surveyfunnel_lite() {
