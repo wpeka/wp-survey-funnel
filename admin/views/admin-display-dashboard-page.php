@@ -8,7 +8,7 @@
  * @package Surveyfunnel_Lite
  */
 $args = array(
-	'post_type'   => 'surveyfunnel-lite',
+	'post_type'   => 'wpsf-survey',
 	'post_status' => array( 'draft', 'publish' ),
 	'numberposts' => -1,
 );

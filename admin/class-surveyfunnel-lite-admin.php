@@ -253,7 +253,7 @@ class Surveyfunnel_Lite_Admin {
 			'capability_type'     => 'page',
 			'show_in_rest'        => false,
 		);
-		register_post_type( 'surveyfunnel-lite', $args );
+		register_post_type( 'wpsf-survey', $args );
 	}
 
 	/**
@@ -272,7 +272,7 @@ class Surveyfunnel_Lite_Admin {
 		// create surveyfunnel-lite survey post.
 		$post_id = wp_insert_post(
 			array(
-				'post_type'  => 'surveyfunnel-lite',
+				'post_type'  => 'wpsf-survey',
 				'post_title' => sanitize_text_field( wp_unslash( $_POST['title'] ) ),
 			),
 			true

@@ -322,7 +322,7 @@ class Surveyfunnel_Lite_Public {
 		$post_id = $wp_query->post->ID;
 
 		$args = array(
-			'post_type'   => 'surveyfunnel-lite',
+			'post_type'   => 'wpsf-survey',
 			'post_status' => 'publish',
 			'numberposts' => -1,
 		);
