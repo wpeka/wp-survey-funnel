@@ -93,7 +93,7 @@ class Surveyfunnel_Lite_Public {
 	}
 
 	/**
-	 * Public init of wpsf.
+	 * Public init of surveyfunnel-lite.
 	 */
 	public function surveyfunnel_lite_public_init() {
 		add_shortcode( 'surveyfunnel_lite_survey', array( $this, 'surveyfunnel_lite_survey_shortcode_render' ) );

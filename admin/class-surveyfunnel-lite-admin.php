@@ -225,7 +225,7 @@ class Surveyfunnel_Lite_Admin {
 	}
 
 	/**
-	 * Initialize wpsf functionalities.
+	 * Initialize surveyfunnel-lite functionalities.
 	 *
 	 * @since 1.0.0
 	 */
@@ -269,7 +269,7 @@ class Surveyfunnel_Lite_Admin {
 		}
 		// check for validations.
 		$type = isset( $_POST['type'] ) ? sanitize_text_field( wp_unslash( $_POST['type'] ) ) : 'basic';
-		// create wpsf survey post.
+		// create surveyfunnel-lite survey post.
 		$post_id = wp_insert_post(
 			array(
 				'post_type'  => 'surveyfunnel-lite',
