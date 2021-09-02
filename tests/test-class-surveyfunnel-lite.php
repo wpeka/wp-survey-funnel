@@ -78,10 +78,10 @@ class Test_Surveyfunnel_Lite extends WP_UnitTestCase {
 
 		// Test for some hooks.
 		$this->assertTrue( in_array( 'plugins_loaded', $array, true ) );
-		$this->assertTrue( in_array( 'wp_ajax_wpsf_save_build_data', $array, true ) );
-		$this->assertTrue( in_array( 'wp_ajax_wpsf_new_survey_lead', $array, true ) );
-		$this->assertTrue( in_array( 'wp_ajax_wpsf_get_configuration_data', $array, true ) );
-		$this->assertTrue( in_array( 'wp_ajax_wpsf_save_design_data', $array, true ) );
+		$this->assertTrue( in_array( 'wp_ajax_surveyfunnel_lite_save_build_data', $array, true ) );
+		$this->assertTrue( in_array( 'wp_ajax_surveyfunnel_lite_new_survey_lead', $array, true ) );
+		$this->assertTrue( in_array( 'wp_ajax_surveyfunnel_lite_get_configuration_data', $array, true ) );
+		$this->assertTrue( in_array( 'wp_ajax_surveyfunnel_lite_save_design_data', $array, true ) );
 	}
 
 	/**
