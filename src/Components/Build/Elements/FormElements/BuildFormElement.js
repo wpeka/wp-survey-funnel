@@ -24,9 +24,9 @@ export default function BuildFormElement({ ele, setCurrentFormElement, addToList
                 role="BuildElement"
                 style={{ opacity }}
                 data-testid={`buildelement-${name}`}
-				className="wpsf-form-elements_box"
+				className="surveyfunnel-lite-form-elements_box"
             >
-                <img src={require(`../../BuildImages/${ele.componentName}.png`)} className={`wpsf-build-${ele.itemType}-img`}></img>
+                <img src={require(`../../BuildImages/${ele.componentName}.png`)} className={`surveyfunnel-lite-build-${ele.itemType}-img`}></img>
                 <p>{ele.name}</p>
         </div>
     );

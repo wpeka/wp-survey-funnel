@@ -17,8 +17,8 @@ test('ShareShortCodeComponent Snapshot', () => {
 test('CopyShortcode test', () => {
 
 	const wrapper = mount(<ShareShortCode />);
-	expect(wrapper.find('#contentShortcode').getDOMNode().value).toEqual('[wpsf_survey id="null" type="responsive"]');
+	expect(wrapper.find('#contentShortcode').getDOMNode().value).toEqual('[surveyfunnel_lite_survey id="null" type="responsive"]');
 	
 	wrapper.find('#fullpage').simulate('change');
-	expect(wrapper.find('#contentShortcode').getDOMNode().value).toEqual('[wpsf_survey id="null" type="fullpage"]');
+	expect(wrapper.find('#contentShortcode').getDOMNode().value).toEqual('[surveyfunnel_lite_survey id="null" type="fullpage"]');
 })

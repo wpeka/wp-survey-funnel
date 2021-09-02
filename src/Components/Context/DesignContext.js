@@ -36,7 +36,7 @@ export function DesignContextProvider(props) {
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
             security: ajaxSecurity,
-            action: 'wpsf_get_design_data',
+            action: 'surveyfunnel_lite_get_design_data',
             post_id,
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
@@ -84,13 +84,13 @@ export function DesignContextProvider(props) {
 	}, [selectedImage]);
 
 	const saveContext = (e) => {
-		e.target.classList.add('wpsf-button-loading');
+		e.target.classList.add('surveyfunnel-lite-button-loading');
 
 		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
             security: ajaxSecurity,
-            action: 'wpsf_save_design_data',
+            action: 'surveyfunnel_lite_save_design_data',
             post_id,
 			state: JSON.stringify( { ...initialState } ),
         };
@@ -98,7 +98,7 @@ export function DesignContextProvider(props) {
 
 		fetchData( ajaxURL, data, selectedImage )
 		.then(data => {
-			e.target.classList.remove('wpsf-button-loading');
+			e.target.classList.remove('surveyfunnel-lite-button-loading');
 
         });
 	}

@@ -25,15 +25,15 @@
 	--primary: #0F4C81;
 }
 
-.wpsf-container-fluid {
+.surveyfunnel-lite-container-fluid {
 	font-family: ApercuPro;
 	width: 100%;
 }
-.wpsf-container{
+.surveyfunnel-lite-container{
 	width: 1920px;
 }
 
-.wpsf-top-navbar {
+.surveyfunnel-lite-top-navbar {
 	height: 100%;
 }
 
@@ -45,43 +45,43 @@
 	background: #F0F2F5;
 }
 
-.--wpsf-flex {
+.--surveyfunnel-lite-flex {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.wpsf-navbar {
+.surveyfunnel-lite-navbar {
 	height: 80px;
 }
 
-.wpsf-navbar-container {
+.surveyfunnel-lite-navbar-container {
 	background: #fff;
 }
 
-.wpsf-container-navbar {
+.surveyfunnel-lite-container-navbar {
 	padding: 0px 36px;
 }
 
-.wpsf-logo {
+.surveyfunnel-lite-logo {
 	color: var( --primary );
 	font-size: 26px;
 	letter-spacing: -0.52;
 	font-weight: 500;
 }
 
-.wpsf-logo > img {
+.surveyfunnel-lite-logo > img {
 	max-width: 256px;
 }
 
-.wpsf-dashboard-container {
+.surveyfunnel-lite-dashboard-container {
 	padding: 0 36px;
 }
 
 .icon:focus{
 	box-shadow: none;
 }
-.wpsf-dashboard-container .wpsf-left {
+.surveyfunnel-lite-dashboard-container .surveyfunnel-lite-left {
 	font-size: 22px;
 	color: #495560;
 	font-weight: bold;
@@ -90,18 +90,18 @@
 	margin: 36px 0;
 }
 
-.wpsf-search {
+.surveyfunnel-lite-search {
 	width:315px;
 	margin: 36px;
 }
 
-.wpsf-right input {
+.surveyfunnel-lite-right input {
 	border: 0.75px solid #94ADC4;
 	padding: 13px 40px 13px 20px;
 	box-shadow: 0px 4px 1px rgba(33,30,30, 0.04) !important;
 	border-radius: 10px;
 }
-.wpsf-filter > select{
+.surveyfunnel-lite-filter > select{
 	width: 150px;
 	border: 0.75px solid #94ADC4;
 	padding: 13px 10px;
@@ -112,18 +112,18 @@
 	background-position-x: 120px;
 }
 
-.wpsf-filter{
+.surveyfunnel-lite-filter{
 	margin: 36px 0;
 }
-.wpsf-filter label{
+.surveyfunnel-lite-filter label{
 	padding-right: 10px;
 }
-.wpsf-card-container {
+.surveyfunnel-lite-card-container {
 	padding-left: 36px;
 	clear: both;
 }
 
-.wpsf-content {
+.surveyfunnel-lite-content {
 	position: relative;
 	float: left;
 	width: 272px;
@@ -135,23 +135,23 @@
 	color: #495560;
 }
 
-.wpsf-content:hover {
+.surveyfunnel-lite-content:hover {
 	box-shadow: 0px 9px 16px rgba(33,30,30, 0.04);
 }
 
-.wpsf-card-container > div:first-child {
+.surveyfunnel-lite-card-container > div:first-child {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.wpsf-create-button {
+.surveyfunnel-lite-create-button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.wpsf-create-button > button{
+.surveyfunnel-lite-create-button > button{
 	all: unset;
 	width: 50px;
 	height: 50px;
@@ -165,11 +165,11 @@
 	justify-content: center;
 }
 
-.wpsf-content {
+.surveyfunnel-lite-content {
 	padding: 3px;
 }
 
-.wpsf-image {
+.surveyfunnel-lite-image {
 
 	background: #E1E8F0;
 	display: flex;
@@ -180,111 +180,111 @@
 	border-radius: 9px;
 }
 
-.wpsf-image-box {
+.surveyfunnel-lite-image-box {
 	position: relative;
 }
 
-.wpsf-image-box > .wpsf-post-status {
+.surveyfunnel-lite-image-box > .surveyfunnel-lite-post-status {
 	position: absolute;
 	width: 100%;
 	top: 0;
 }
 
-.wpsf-image {
+.surveyfunnel-lite-image {
 	overflow: hidden;
 }
 
-.wpsf-image > img {
+.surveyfunnel-lite-image > img {
 	max-width: 100%;
 }
 
-.wpsf-badge {
+.surveyfunnel-lite-badge {
 	padding: 4.5px 8.5px;
 	color: white;
 	border-radius: 9px;
 }
 
-.wpsf-badge-sm {
+.surveyfunnel-lite-badge-sm {
 	padding: 1.5px 8px;
 	font-weight: normal;
 }
 
-.wpsf-post-status-inside {
+.surveyfunnel-lite-post-status-inside {
 	padding: 6px;
 }
 
-.wpsf-badge-unpublished {
+.surveyfunnel-lite-badge-unpublished {
 	background: #2196F3;
 }
 
-.wpsf-badge-published {
+.surveyfunnel-lite-badge-published {
 	background: #4CAF50;
 }
 
-.wpsf-badge-outcome {
+.surveyfunnel-lite-badge-outcome {
 	background: #687AE2;
 }
 
-.wpsf-badge-scoring {
+.surveyfunnel-lite-badge-scoring {
 	background: #3EB595;
 }
 
-.wpsf-badge-basic {
+.surveyfunnel-lite-badge-basic {
 	color: black;
 	background: #E1E8F0;
 }
 
-.wpsf-title-box {
+.surveyfunnel-lite-title-box {
 	font-size: 13px;
 	padding: 11.5px;
 	border-bottom: 1px #E0E0E0 solid;
 }
 
-.--wpsf-grid {
+.--surveyfunnel-lite-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 }
-.wpsf-stat-box {
+.surveyfunnel-lite-stat-box {
 	padding: 11.5px;
 }
 
-.wpsf-stat-box:not(:last-child) {
+.surveyfunnel-lite-stat-box:not(:last-child) {
 	border-right: 1px #E0E0E0 solid;
 }
 
-.wpsf-stat > span {
+.surveyfunnel-lite-stat > span {
 	display: block;
 }
 
-.wpsf-post-icons > .wpsf-tooltip {
+.surveyfunnel-lite-post-icons > .surveyfunnel-lite-tooltip {
 	margin-left: 9.7px; 
 }
 
-.wpsf-content {
+.surveyfunnel-lite-content {
 	min-height: 272px;
 }
 
-.wpsf-create-content > h3 {
+.surveyfunnel-lite-create-content > h3 {
 	font-weight: bold;
 	color: #495560;
 }
 
-.wpsf-stat > span {
+.surveyfunnel-lite-stat > span {
 	font-weight: bold;
 	font-size: 12px;
 }
 
-.wpsf-stat > small {
+.surveyfunnel-lite-stat > small {
 	font-weight: 500;
 	font-size: 10.5px;
 	color: #9DA9B4;
 }
 
-.wpsf-image-box .icon {
+.surveyfunnel-lite-image-box .icon {
 	visibility: hidden;
 }
 
-.wpsf-image-box:hover .icon{
+.surveyfunnel-lite-image-box:hover .icon{
 	visibility: visible;
 }
 
@@ -300,7 +300,7 @@
 	display: none;
 }
 
-.wpsf-modal {
+.surveyfunnel-lite-modal {
 	position: absolute;
     top: 0;
     right: 0;
@@ -315,7 +315,7 @@
 	display: none;
 }
 
-.wpsf-modal-dialog {
+.surveyfunnel-lite-modal-dialog {
 	position: fixed;
 	top: 8vh;
 	background: #F0F2F5;
@@ -323,19 +323,19 @@
 
 }
 
-.wpsf-modal-dialog-navbar{
+.surveyfunnel-lite-modal-dialog-navbar{
 	display: flex;
 	justify-content: flex-end;
 	padding: 20px;
 }
 
-.wpsf-modal-inner {
+.surveyfunnel-lite-modal-inner {
 	margin-left: 70px;
 	margin-right: 70px;
 	margin-bottom: 45px;
 }
 
-#wpsf-dashboard {
+#surveyfunnel-lite-dashboard {
 	position: relative;
 	min-height: 100vh;
 }
@@ -353,7 +353,7 @@
 	margin-top: 20px;
 }
 
-.wpsf-modal-content-card {
+.surveyfunnel-lite-modal-content-card {
 	padding: 4px;
 	background: white;
 	border-radius: 12px;
@@ -364,7 +364,7 @@
 	max-height: 350px;
 }
 
-.wpsf-modal-content-card:hover {
+.surveyfunnel-lite-modal-content-card:hover {
 	box-shadow: 0px 9px 16px rgba(33,30,30, 0.04);
 }
 
@@ -404,7 +404,7 @@
 	height:45px;
 
 }
-#wpsf-modal-submit {
+#surveyfunnel-lite-modal-submit {
 	background-color: #0F4C81;
 	border: none;
 	color: white;
@@ -424,13 +424,13 @@
 	border-radius: 12px;
 }
 
-.wpsf-dismiss {
+.surveyfunnel-lite-dismiss {
 	font-size: 20px;
 	color: #9da9b4;
 	cursor: pointer;
 }
 
-.wpsf-dashboard-search{
+.surveyfunnel-lite-dashboard-search{
 
     background-image: url('../admin-images/search-icon.png');
     background-repeat: no-repeat;
@@ -443,25 +443,25 @@
 }
 
 
-.wpsf-content-type-icon{
+.surveyfunnel-lite-content-type-icon{
 	text-align:center;
 	margin-top: 25px;
 }
-.wpsf-content-type-radios{
+.surveyfunnel-lite-content-type-radios{
 	position: relative;
     left: 85%;
     top: 12px;
     border-radius: 12px;
 }
-.wpsf-content-type-radios input[type="radio"] {
+.surveyfunnel-lite-content-type-radios input[type="radio"] {
 	display: none;
   }
-  .wpsf-content-type-radios input[type="radio"] + label {
+  .surveyfunnel-lite-content-type-radios input[type="radio"] + label {
 	color: #333;
 	font-family: Arial, sans-serif;
 	font-size: 14px;
   }
-  .wpsf-content-type-radios input[type="radio"] + label span {
+  .surveyfunnel-lite-content-type-radios input[type="radio"] + label span {
 	display: inline-block;
 	width: 25px;
 	height: 25px;
@@ -475,25 +475,25 @@
 	text-align: center;
 	line-height: 25px;
   }
-  .wpsf-content-type-radios input[type="radio"] + label span img {
+  .surveyfunnel-lite-content-type-radios input[type="radio"] + label span img {
 	opacity: 0;
 	transition: all 0.3s ease;
 	width:50%;
   }
-  .wpsf-content-type-radios input[type="radio"] + label span {
+  .surveyfunnel-lite-content-type-radios input[type="radio"] + label span {
 	border-radius:8px;
   }
-  .wpsf-content-type-radios input[type="radio"]:checked + label span img {
+  .surveyfunnel-lite-content-type-radios input[type="radio"]:checked + label span img {
 	opacity: 1;
   }
-  .wpsf-content-type-radios input[type="radio"]:checked + label span{
+  .surveyfunnel-lite-content-type-radios input[type="radio"]:checked + label span{
 	background-color:#0F4C81;
   }
-  .wpsf-modal-content-card-disabled{
+  .surveyfunnel-lite-modal-content-card-disabled{
 	  opacity:0.4;
   }
 
-.wpsf-right{
+.surveyfunnel-lite-right{
 	float:right;
 }
 
@@ -501,51 +501,51 @@
 
 
 @media screen and (max-width: 1920px) {
-	.wpsf-container, .wpsf-navbar{
+	.surveyfunnel-lite-container, .surveyfunnel-lite-navbar{
 		margin: auto;
 		width: 1606px;
 	
 	}
 }
 @media screen and (max-width: 1612px) {
-	.wpsf-container, .wpsf-navbar{
+	.surveyfunnel-lite-container, .surveyfunnel-lite-navbar{
 		margin: auto;
 		width: 1292px;
 	
 	}
 }
 @media screen and (max-width: 1452px) {
-	.wpsf-container, .wpsf-navbar{
+	.surveyfunnel-lite-container, .surveyfunnel-lite-navbar{
 		margin: auto;
 		width: 978px;
 	
 	}
 }
 @media screen and (max-width: 1140px) {
-	.wpsf-container, .wpsf-navbar{
+	.surveyfunnel-lite-container, .surveyfunnel-lite-navbar{
 		margin: auto;
 		width: 664px;
 	
 	}
-	.wpsf-search{
+	.surveyfunnel-lite-search{
 		width: 215px;
 		margin: 36px 25px;
 	}
 
-	.wpsf-filter > select{
+	.surveyfunnel-lite-filter > select{
 		width: 100px;
 		background-position-x: 75px;
 	}
 
 }
 @media screen and (max-width: 648px) {
-	#wpsf-modal-submit{
+	#surveyfunnel-lite-modal-submit{
 		margin: 20px 0;
 	
 	}
 }
 
-.wpsf-container-main {
+.surveyfunnel-lite-container-main {
 	text-align: center;
 	position: relative;
     font-size: 16px;
@@ -555,18 +555,18 @@
     margin: 50px auto;
 }
 
-.wpsf-inner-container {
+.surveyfunnel-lite-inner-container {
 	background: #fff;
 	margin: 20px 0;
 }
 
-.wpsf-container-main .wpsf-section {
+.surveyfunnel-lite-container-main .surveyfunnel-lite-section {
 	padding: 45px;
     border: 1px solid #d6e2ed;
     border-collapse: collapse;
 }
 
-.wpsf-container-main p {
+.surveyfunnel-lite-container-main p {
 	color: inherit;
     margin: 0;
     padding: 0;
@@ -575,19 +575,19 @@
     font-weight: inherit;
 }
 
-.wpsf-container-main .wpsf-section-title {
+.surveyfunnel-lite-container-main .surveyfunnel-lite-section-title {
 	font-size: 26px;
     font-weight: 600;
 }
-.wpsf-section-subtitle {
+.surveyfunnel-lite-section-subtitle {
 	font-size: 14px;
 	color: #777;
 }
-.wpsf-section-heading {
+.surveyfunnel-lite-section-heading {
 	margin-bottom: 25px;
 }
 
-.wpsf-container-main .wpsf-button {
+.surveyfunnel-lite-container-main .surveyfunnel-lite-button {
 	border: 1px solid;
     border-radius: 4px;
     color: #fff;
@@ -602,17 +602,17 @@
     text-transform: uppercase;
 }
 
-.wpsf-container-main .wpsf-header .wpsf-logo {
+.surveyfunnel-lite-container-main .surveyfunnel-lite-header .surveyfunnel-lite-logo {
     width: 100%;
     position: relative;
 }
 
-.wpsf-tooltip {
+.surveyfunnel-lite-tooltip {
 	position: relative;
 }
 
  /* Tooltip text */
- .wpsf-tooltip .wpsf-tooltiptext {
+ .surveyfunnel-lite-tooltip .surveyfunnel-lite-tooltiptext {
 	visibility: hidden;
 	background-color: black;
 	color: #fff;
@@ -629,6 +629,6 @@
 }
 
   /* Show the tooltip text when you mouse over the tooltip container */
-.wpsf-tooltip:hover .wpsf-tooltiptext {
+.surveyfunnel-lite-tooltip:hover .surveyfunnel-lite-tooltiptext {
 	visibility: visible;
 }

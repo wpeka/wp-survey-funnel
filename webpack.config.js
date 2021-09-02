@@ -67,7 +67,7 @@ var gutenbergScript = {
     },
     output: {
         path: path.resolve(__dirname, 'admin/js/gutenberg-blocks'),
-        filename: 'wpsf-gutenberg-[name].js'
+        filename: 'surveyfunnel-lite-gutenberg-[name].js'
     },
     module: {
         ...defaultScriptConfig.module,
@@ -76,7 +76,6 @@ var gutenbergScript = {
 
         ],
     },
-    watch: true,
 }
 
 module.exports = [

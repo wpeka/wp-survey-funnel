@@ -123,49 +123,49 @@ class Surveyfunnel_Lite_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function wpsf_admin_menu() {
+	public function surveyfunnel_lite_admin_menu() {
 
 		// dashboard page is nothing but react one page app to build surveys.
-		add_dashboard_page( '', '', 'manage_options', 'wpsf-survey', '' );
+		add_dashboard_page( '', '', 'manage_options', 'surveyfunnel-lite', '' );
 
 		add_menu_page(
 			__( 'SurveyFunnel', 'surveyfunnel' ),
 			__( 'SurveyFunnel', 'surveyfunnel' ),
 			'manage_options',
-			'wpsf-dashboard',
+			'surveyfunnel-lite-dashboard',
 			'',
 			SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/SF-logo.png'
 		);
 
 		// Dashboard.
 		add_submenu_page(
-			'wpsf-dashboard',
+			'surveyfunnel-lite-dashboard',
 			__( 'Dashboard', 'surveyfunnel' ),
 			__( 'Dashboard', 'surveyfunnel' ),
 			'manage_options',
-			'wpsf-dashboard',
-			array( $this, 'wpsf_dashboard' )
+			'surveyfunnel-lite-dashboard',
+			array( $this, 'surveyfunnel_lite_dashboard' )
 		);
 
 		// Settings.
 		/*
 		 add_submenu_page(
-			'wpsf-dashboard',
+			'surveyfunnel-lite-dashboard',
 			__( 'Settings', 'surveyfunnel' ),
 			__( 'Settings', 'surveyfunnel' ),
 			'manage_options',
-			'wpsf-settings',
-			array( $this, 'wpsf_settings' )
+			'surveyfunnel-lite-settings',
+			array( $this, 'surveyfunnel_lite_settings' )
 		); */
 
 		// Help.
 		add_submenu_page(
-			'wpsf-dashboard',
+			'surveyfunnel-lite-dashboard',
 			__( 'Help', 'surveyfunnel' ),
 			__( 'Help', 'surveyfunnel' ),
 			'manage_options',
-			'wpsf-help',
-			array( $this, 'wpsf_help' )
+			'surveyfunnel-lite-help',
+			array( $this, 'surveyfunnel_lite_help' )
 		);
 	}
 
@@ -174,7 +174,7 @@ class Surveyfunnel_Lite_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function wpsf_settings() {
+	public function surveyfunnel_lite_settings() {
 		echo '';
 	}
 
@@ -183,31 +183,31 @@ class Surveyfunnel_Lite_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function wpsf_help() {
+	public function surveyfunnel_lite_help() {
 		wp_enqueue_style( $this->plugin_name );
 		?>	
-			<div class="wpsf-container-main">
-				<div class="wpsf-header">
-					<div class="wpsf-logo">
-						<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/wpsf-help-logo.png' ); ?>" alt="wpsf-main-logo">
+			<div class="surveyfunnel-lite-container-main">
+				<div class="surveyfunnel-lite-header">
+					<div class="surveyfunnel-lite-logo">
+						<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/surveyfunnel-lite-help-logo.png' ); ?>" alt="surveyfunnel-lite-main-logo">
 					</div>
 				</div>
-				<div class="wpsf-inner-container">
-				<div class="wpsf-section">
-					<div class="wpsf-section-heading">
-						<div class="wpsf-section-title">
+				<div class="surveyfunnel-lite-inner-container">
+				<div class="surveyfunnel-lite-section">
+					<div class="surveyfunnel-lite-section-heading">
+						<div class="surveyfunnel-lite-section-title">
 							<p>Welcome‌ ‌to‌ ‌SurveyFunnel!‌</p>
 						</div>
-						<div class="wpsf-section-subtitle">
+						<div class="surveyfunnel-lite-section-subtitle">
 							<p>Complete Survey Management Plugin.</p>
 						</div>
 					</div>
-					<div class="wpsf-section-content">
+					<div class="surveyfunnel-lite-section-content">
 						<p>Thank‌ ‌you‌ ‌for‌ ‌choosing‌ ‌SurveyFunnel‌ ‌plugin.‌ ‌SurveyFunnel‌ ‌lets‌ ‌you‌ ‌create‌ ‌interesting‌ ‌surveys‌ ‌to‌ ‌keep‌ ‌your‌ ‌audience‌ ‌engaged,‌ ‌and‌ ‌collect‌ ‌qualified‌ ‌leads.‌ ‌With‌ ‌drag‌ ‌and‌ ‌drop‌ ‌features‌ ‌you‌ ‌can‌ ‌create‌ ‌a‌ ‌survey‌ ‌in‌ ‌minutes‌ ‌and‌ ‌get‌ ‌better‌ ‌insights‌ ‌about‌ ‌your‌ ‌audience.‌</p>
 					</div>
 				</div>
-				<div class="wpsf-section">
-					<a class="wpsf-button" href="<?php echo esc_url( admin_url() . 'admin.php?page=wpsf-dashboard' ); ?>">Create Your First Survey</a>
+				<div class="surveyfunnel-lite-section">
+					<a class="surveyfunnel-lite-button" href="<?php echo esc_url( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard' ); ?>">Create Your First Survey</a>
 				</div>
 				</div>
 			</div>
@@ -219,24 +219,24 @@ class Surveyfunnel_Lite_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	public function wpsf_dashboard() {
+	public function surveyfunnel_lite_dashboard() {
 		wp_enqueue_style( $this->plugin_name );
 		include_once plugin_dir_path( __FILE__ ) . 'views/admin-display-dashboard-page.php';
 	}
 
 	/**
-	 * Initialize wpsf functionalities.
+	 * Initialize surveyfunnel-lite functionalities.
 	 *
 	 * @since 1.0.0
 	 */
-	public function wpsf_init() {
+	public function surveyfunnel_lite_init() {
 		// no labels required.
 		$labels = array();
 
-		// register hidden post type 'wpsf-survey'.
+		// register hidden post type 'surveyfunnel-lite'.
 		$args = array(
-			'label'               => __( 'wpsf-survey', 'surveyfunnel' ),
-			'description'         => __( 'wpsf-survey custom post type to generate surveys', 'surveyfunnel' ),
+			'label'               => __( 'surveyfunnel-lite', 'surveyfunnel' ),
+			'description'         => __( 'surveyfunnel-lite custom post type to generate surveys', 'surveyfunnel' ),
 			'labels'              => $labels,
 			'supports'            => array( 'title' ),
 			'hierarchical'        => false,
@@ -259,7 +259,7 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: new survey.
 	 */
-	public function wpsf_new_survey() {
+	public function surveyfunnel_lite_new_survey() {
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveySecurity', 'security' );
 		} else {
@@ -269,7 +269,7 @@ class Surveyfunnel_Lite_Admin {
 		}
 		// check for validations.
 		$type = isset( $_POST['type'] ) ? sanitize_text_field( wp_unslash( $_POST['type'] ) ) : 'basic';
-		// create wpsf survey post.
+		// create surveyfunnel-lite survey post.
 		$post_id = wp_insert_post(
 			array(
 				'post_type'  => 'wpsf-survey',
@@ -281,13 +281,13 @@ class Surveyfunnel_Lite_Admin {
 		if ( is_wp_error( $post_id ) ) {
 			wp_send_json_error();
 		} else {
-			$defaults = $this->wpsf_get_default_save_array();
-			update_post_meta( $post_id, 'wpsf-survey-data', $defaults );
-			update_post_meta( $post_id, 'wpsf-survey-type', $type );
+			$defaults = $this->surveyfunnel_lite_get_default_save_array();
+			update_post_meta( $post_id, 'surveyfunnel-lite-data', $defaults );
+			update_post_meta( $post_id, 'surveyfunnel-lite-type', $type );
 			// send success if validated.
 			wp_send_json_success(
 				array(
-					'url_to_redirect' => self::wpsf_get_setup_page_url() . $post_id . '#build',
+					'url_to_redirect' => self::surveyfunnel_lite_get_setup_page_url() . $post_id . '#build',
 				)
 			);
 		}
@@ -297,7 +297,7 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: delete survey.
 	 */
-	public function wpsf_delete_survey() {
+	public function surveyfunnel_lite_delete_survey() {
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveySecurity', 'security' );
 		} else {
@@ -319,10 +319,10 @@ class Surveyfunnel_Lite_Admin {
 	}
 
 	/**
-	 * Setup page for wpsf-survey
+	 * Setup page for surveyfunnel-lite
 	 */
-	public function wpsf_survey_setup_page() {
-		if ( empty( $_GET['page'] ) || 'wpsf-survey' !== $_GET['page'] ) { // phpcs:ignore CSRF ok, input var ok.
+	public function surveyfunnel_lite_survey_setup_page() {
+		if ( empty( $_GET['page'] ) || 'surveyfunnel-lite' !== $_GET['page'] ) { // phpcs:ignore CSRF ok, input var ok.
 			return;
 		}
 
@@ -334,13 +334,13 @@ class Surveyfunnel_Lite_Admin {
 		set_current_screen();
 		// Remove an action in the Gutenberg plugin ( not core Gutenberg ) which throws an error.
 		remove_action( 'admin_print_styles', 'gutenberg_block_editor_admin_print_styles' );
-		$this->wpsf_survey_page_html();
+		$this->surveyfunnel_lite_survey_page_html();
 	}
 
 	/**
-	 * Html,CSS and JS of wpsf-survey page.
+	 * Html,CSS and JS of surveyfunnel-lite page.
 	 */
-	public function wpsf_survey_page_html() {
+	public function surveyfunnel_lite_survey_page_html() {
 
 		wp_register_script(
 			$this->plugin_name . '-main',
@@ -359,11 +359,11 @@ class Surveyfunnel_Lite_Admin {
 				<?php wp_print_styles( 'dashicons' ); ?>
 				<title>WP Survey Funnel</title>
 			</head>
-			<body class="wpsf-body">
-				<div id="root" class="wpsf-root"></div>
+			<body class="surveyfunnel-lite-body">
+				<div id="root" class="surveyfunnel-lite-root"></div>
 				<input type="hidden" id="ajaxURL" value="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>">
-				<input type="hidden" id="ajaxSecurity" value="<?php echo esc_attr( wp_create_nonce( 'wpsf-security' ) ); ?>">
-				<input type="hidden" id="dashboardLink" value="<?php echo esc_url( admin_url() . 'admin.php?page=wpsf-dashboard' ); ?>">
+				<input type="hidden" id="ajaxSecurity" value="<?php echo esc_attr( wp_create_nonce( 'surveyfunnel-lite-security' ) ); ?>">
+				<input type="hidden" id="dashboardLink" value="<?php echo esc_url( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard' ); ?>">
 				<input type="hidden" id="exportCSVAction" value="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>?action=export_csv">
 				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
 			</body>
@@ -375,16 +375,16 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Returns the setup page url.
 	 */
-	public static function wpsf_get_setup_page_url() {
-		return get_admin_url() . 'index.php?page=wpsf-survey&post_id=';
+	public static function surveyfunnel_lite_get_setup_page_url() {
+		return get_admin_url() . 'index.php?page=surveyfunnel-lite&post_id=';
 	}
 
 	/**
 	 * Ajax: get status.
 	 */
-	public function wpsf_get_status() {
+	public function surveyfunnel_lite_get_status() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
@@ -401,9 +401,9 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: Change Status.
 	 */
-	public function wpsf_change_status() {
+	public function surveyfunnel_lite_change_status() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
@@ -431,9 +431,9 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: save build question and answers.
 	 */
-	public function wpsf_save_build_data() {
+	public function surveyfunnel_lite_save_build_data() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
@@ -441,12 +441,12 @@ class Surveyfunnel_Lite_Admin {
 
 		$post_id       = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$post_title    = isset( $_POST['post_title'] ) ? sanitize_text_field( wp_unslash( $_POST['post_title'] ) ) : '';
-		$defaults      = $this->wpsf_get_default_save_array();
-		$post_meta     = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$defaults      = $this->surveyfunnel_lite_get_default_save_array();
+		$post_meta     = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data          = wp_parse_args( (array) $post_meta, $defaults );
 		$data['build'] = isset( $_POST['state'] ) ? sanitize_text_field( wp_unslash( $_POST['state'] ) ) : '';
 
-		update_post_meta( $post_id, 'wpsf-survey-data', $data );
+		update_post_meta( $post_id, 'surveyfunnel-lite-data', $data );
 		$post_update = array(
 			'ID'         => $post_id,
 			'post_title' => $post_title,
@@ -459,21 +459,21 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: save build question and answers.
 	 */
-	public function wpsf_save_configuration_data() {
+	public function surveyfunnel_lite_save_configuration_data() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
 		}
 
 		$post_id           = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$defaults          = $this->wpsf_get_default_save_array();
-		$post_meta         = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$defaults          = $this->surveyfunnel_lite_get_default_save_array();
+		$post_meta         = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data              = wp_parse_args( (array) $post_meta, $defaults );
 		$data['configure'] = isset( $_POST['configuration'] ) ? sanitize_text_field( wp_unslash( $_POST['configuration'] ) ) : '';
 
-		update_post_meta( $post_id, 'wpsf-survey-data', $data );
+		update_post_meta( $post_id, 'surveyfunnel-lite-data', $data );
 		wp_send_json_success();
 		wp_die();
 	}
@@ -481,16 +481,16 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Get configuration data for the post id
 	 */
-	public function wpsf_get_configuration_data() {
+	public function surveyfunnel_lite_get_configuration_data() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
 		}
 
 		$post_id   = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$post_meta = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$post_meta = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data      = array(
 			'configure' => $post_meta['configure'],
 		);
@@ -501,7 +501,7 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Get default array save data in post_content.
 	 */
-	public static function wpsf_get_default_save_array() {
+	public static function surveyfunnel_lite_get_default_save_array() {
 		return array(
 			'build'     => '{"List":{"START_ELEMENTS":[],"CONTENT_ELEMENTS":[],"RESULT_ELEMENTS":[]},"title":"survey test"}',
 			'design'    => '{"opacity":0,"fontFamily":null,"fontFamilyValue":"","backgroundColor":{"r":"255","g":"255","b":"255","a":"1"},"buttonColor":{"r":"1","g":"111","b":"222","a":"1"},"buttonTextColor":{"r":"255","g":"255","b":"255","a":"1"},"answersHighlightBoxColor":{"r":"232","g":"238","b":"244","a":"1"},"answerBorderColor":{"r":"180","g":"220","b":"255","a":"1"},"backgroundContainerColor":{"r":"255","g":"255","b":"255","a":"1"},"fontColor":{"r":"0","g":"0","b":"0","a":"1"}}',
@@ -514,16 +514,16 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Get Build data for the post id
 	 */
-	public function wpsf_get_build_data() {
+	public function surveyfunnel_lite_get_build_data() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
 		}
 
 		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$post_meta  = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$post_meta  = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$post_title = get_the_title( $post_id );
 		$data       = array(
 			'build'      => $post_meta['build'],
@@ -536,20 +536,20 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: Save design data for the post id
 	 */
-	public function wpsf_save_design_data() {
+	public function surveyfunnel_lite_save_design_data() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
 		}
 
 		$post_id        = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$defaults       = $this->wpsf_get_default_save_array();
-		$post_meta      = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$defaults       = $this->surveyfunnel_lite_get_default_save_array();
+		$post_meta      = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data           = wp_parse_args( (array) $post_meta, $defaults );
 		$data['design'] = isset( $_POST['state'] ) ? sanitize_text_field( wp_unslash( $_POST['state'] ) ) : '';
-		update_post_meta( $post_id, 'wpsf-survey-data', $data );
+		update_post_meta( $post_id, 'surveyfunnel-lite-data', $data );
 
 		if ( isset( $_FILES['designImage'] ) ) {
 			$image_type = isset( $_FILES['designImage']['type'] ) ? sanitize_text_field( wp_unslash( $_FILES['designImage']['type'] ) ) : '';
@@ -569,12 +569,12 @@ class Surveyfunnel_Lite_Admin {
 					require_once ABSPATH . 'wp-admin/includes/image.php';
 					$attachment_data = wp_generate_attachment_metadata( $attachment_id, $file_name );
 					wp_update_attachment_metadata( $attachment_id, $attachment_data );
-					update_post_meta( $post_id, 'wpsf-survey-design-background', $attachment_id );
+					update_post_meta( $post_id, 'surveyfunnel-lite-design-background', $attachment_id );
 				} else {
-					update_post_meta( $post_id, 'wpsf-survey-design-background', false );
+					update_post_meta( $post_id, 'surveyfunnel-lite-design-background', false );
 				}
 			} else {
-				update_post_meta( $post_id, 'wpsf-survey-design-background', false );
+				update_post_meta( $post_id, 'surveyfunnel-lite-design-background', false );
 			}
 		}
 
@@ -585,17 +585,17 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: get design data.
 	 */
-	public function wpsf_get_design_data() {
+	public function surveyfunnel_lite_get_design_data() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
 		}
 
 		$post_id               = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$post_meta             = get_post_meta( $post_id, 'wpsf-survey-data', true );
-		$background_image_meta = get_post_meta( $post_id, 'wpsf-survey-design-background', true );
+		$post_meta             = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
+		$background_image_meta = get_post_meta( $post_id, 'surveyfunnel-lite-design-background', true );
 		$data                  = array(
 			'design'          => $post_meta['design'],
 			'backgroundImage' => wp_get_attachment_url( $background_image_meta ),
@@ -607,9 +607,9 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: Get reports data.
 	 */
-	public function wpsf_get_reports_data() {
+	public function surveyfunnel_lite_get_reports_data() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
@@ -662,7 +662,7 @@ class Surveyfunnel_Lite_Admin {
 	 *
 	 * @param int $post_id post id.
 	 */
-	public static function wpsf_get_insights_data( $post_id ) {
+	public static function surveyfunnel_lite_get_insights_data( $post_id ) {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
 		$rows       = $wpdb->get_results(
@@ -685,7 +685,7 @@ class Surveyfunnel_Lite_Admin {
 		$completed_count = 0;
 
 		if ( count( $rows ) ) {
-			$data             = get_post_meta( $post_id, 'wpsf-survey-data', true );
+			$data             = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 			$build            = json_decode( $data['build'] );
 			$content_elements = $build->List->CONTENT_ELEMENTS;//phpcs:ignore
 			foreach ( $content_elements as $content ) {
@@ -716,7 +716,7 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Export CSV string.
 	 */
-	public function wpsf_export_csv() {
+	public function surveyfunnel_lite_export_csv() {
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'exportSecurity', 'security' );
 		}
@@ -732,8 +732,8 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Mascot on all pages.
 	 */
-	public function wpsf_mascot_on_pages() {
-		if ( empty( $_GET['page'] ) || ('wpsf-dashboard' !== $_GET['page'] && 'wpsf-help' !== $_GET['page']) ) {//phpcs:ignore
+	public function surveyfunnel_lite_mascot_on_pages() {
+		if ( empty( $_GET['page'] ) || ('surveyfunnel-lite-dashboard' !== $_GET['page'] && 'surveyfunnel-lite-help' !== $_GET['page']) ) {//phpcs:ignore
 			return;
 		}
 
@@ -763,28 +763,28 @@ class Surveyfunnel_Lite_Admin {
 		wp_localize_script( $this->plugin_name . '-mascot', 'mascot', $return_array );
 
 		?>
-			<div id="srf-mascot-app"></div>
+			<div id="surveyfunnel-lite-mascot-app"></div>
 		<?php
 	}
 
 	/**
 	 * Ajax: save share data.
 	 */
-	public function wpsf_save_share_data() {
+	public function surveyfunnel_lite_save_share_data() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
 		}
 
 		$post_id       = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$defaults      = $this->wpsf_get_default_save_array();
-		$post_meta     = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$defaults      = $this->surveyfunnel_lite_get_default_save_array();
+		$post_meta     = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data          = wp_parse_args( (array) $post_meta, $defaults );
 		$data['share'] = isset( $_POST['share'] ) ? sanitize_text_field( wp_unslash( $_POST['share'] ) ) : '';
 
-		update_post_meta( $post_id, 'wpsf-survey-data', $data );
+		update_post_meta( $post_id, 'surveyfunnel-lite-data', $data );
 		wp_send_json_success();
 		wp_die();
 	}
@@ -792,16 +792,16 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Get share data for the post id
 	 */
-	public function wpsf_get_share_data() {
+	public function surveyfunnel_lite_get_share_data() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
 		}
 
 		$post_id   = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$post_meta = get_post_meta( $post_id, 'wpsf-survey-data', true );
+		$post_meta = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data      = array(
 			'share' => $post_meta['share'],
 		);
@@ -812,9 +812,9 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: get posts and pages for async select.
 	 */
-	public function wpsf_get_posts_pages() {
+	public function surveyfunnel_lite_get_posts_pages() {
 		if ( isset( $_POST['action'] ) ) {
-			check_admin_referer( 'wpsf-security', 'security' );
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
@@ -870,18 +870,18 @@ class Surveyfunnel_Lite_Admin {
 	public function surveyfunnel_lite_register_gutenberg_blocks() {
 
 		wp_register_script(
-			'wpsf-gutenberg-single-survey',
-			plugin_dir_url( __DIR__ ) . 'admin/js/gutenberg-blocks/wpsf-gutenberg-singlesurvey.js',
+			'surveyfunnel-lite-gutenberg-single-survey',
+			plugin_dir_url( __DIR__ ) . 'admin/js/gutenberg-blocks/surveyfunnel-lite-gutenberg-singlesurvey.js',
 			array( 'wp-blocks', 'wp-api-fetch', 'wp-components', 'wp-i18n' ),
 			$this->version,
 			false
 		);
-		wp_localize_script( 'wpsf-gutenberg-single-survey', 'wpadcenter_single_survey_verify', array( 'single_survey_nonce' => wp_create_nonce( 'single_survey_nonce' ) ) );
+		wp_localize_script( 'surveyfunnel-lite-gutenberg-single-survey', 'wpadcenter_single_survey_verify', array( 'single_survey_nonce' => wp_create_nonce( 'single_survey_nonce' ) ) );
 		if ( function_exists( 'register_block_type' ) ) {
 			register_block_type(
 				'surveyfunnel/single-survey',
 				array(
-					'editor_script'   => 'wpsf-gutenberg-single-survey',
+					'editor_script'   => 'surveyfunnel-lite-gutenberg-single-survey',
 					'attributes'      => array(
 						'survey_id'            => array(
 							'type' => 'number',
@@ -929,7 +929,7 @@ class Surveyfunnel_Lite_Admin {
 			$survey_atts['height'] = $attributes['survey_custom_height'];
 		}
 
-		return Surveyfunnel_Lite_Public::wpsf_display_survey( $survey_atts );
+		return Surveyfunnel_Lite_Public::surveyfunnel_lite_display_survey( $survey_atts );
 	}
 
 	/**

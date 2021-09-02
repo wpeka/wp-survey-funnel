@@ -9822,13 +9822,13 @@ registerBlockType('surveyfunnel/single-survey', {
       custom: __('Custom', 'surveyfunnel')
     };
     return /*#__PURE__*/React.createElement("div", {
-      className: "wpsf-gutenberg-block-container"
+      className: "surveyfunnel-lite-gutenberg-block-container"
     }, !!props.isSelected ? /*#__PURE__*/React.createElement(Placeholder, {
       isColumnLayout: "true"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "wpsf-gutenberg-block-component-area"
+      className: "surveyfunnel-lite-gutenberg-block-component-area"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "wpsf-gutenberg-heading"
+      className: "surveyfunnel-lite-gutenberg-heading"
     }, /*#__PURE__*/React.createElement("h3", {
       style: {
         fontSize: "24px",
@@ -9843,7 +9843,7 @@ registerBlockType('surveyfunnel/single-survey', {
       }
     }, __('Select Survey', 'surveyfunnel')), /*#__PURE__*/React.createElement(react_select_async__WEBPACK_IMPORTED_MODULE_0__.default, {
       styles: customStyles,
-      className: "wpsf-async-select",
+      className: "surveyfunnel-lite-async-select",
       defaultOptions: true,
       loadOptions: getOptions,
       defaultValue: defaultValue,
@@ -9855,51 +9855,51 @@ registerBlockType('surveyfunnel/single-survey', {
         fontWeight: "bold"
       }
     }, __('Survey Embed Type', 'surveyfunnel')), /*#__PURE__*/React.createElement("div", {
-      className: "wpsf-contentTypes-container"
+      className: "surveyfunnel-lite-contentTypes-container"
     }, /*#__PURE__*/React.createElement("div", {
-      className: props.attributes.survey_embed_type === 'responsive' ? 'wpsf-contentType-element wpsf-contentType-element-active' : 'wpsf-contentType-element'
+      className: props.attributes.survey_embed_type === 'responsive' ? 'surveyfunnel-lite-contentType-element surveyfunnel-lite-contentType-element-active' : 'surveyfunnel-lite-contentType-element'
     }, /*#__PURE__*/React.createElement("label", {
-      htmlFor: "wpsf-responsive-survey"
+      htmlFor: "surveyfunnel-lite-responsive-survey"
     }, __('Responsive', 'surveyfunnel')), /*#__PURE__*/React.createElement("input", {
-      id: "wpsf-responsive-survey",
+      id: "surveyfunnel-lite-responsive-survey",
       name: "survey_embed_type",
       type: "radio",
       value: "responsive",
       onChange: onSurveyTypeSelection,
       checked: props.attributes.survey_embed_type === 'responsive'
     })), /*#__PURE__*/React.createElement("div", {
-      className: props.attributes.survey_embed_type === 'fullpage' ? 'wpsf-contentType-element wpsf-contentType-element-active' : 'wpsf-contentType-element'
+      className: props.attributes.survey_embed_type === 'fullpage' ? 'surveyfunnel-lite-contentType-element surveyfunnel-lite-contentType-element-active' : 'surveyfunnel-lite-contentType-element'
     }, /*#__PURE__*/React.createElement("label", {
-      htmlFor: "wpsf-fullpage-survey"
+      htmlFor: "surveyfunnel-lite-fullpage-survey"
     }, __('Full Page', 'surveyfunnel')), /*#__PURE__*/React.createElement("input", {
-      id: "wpsf-fullpage-survey",
+      id: "surveyfunnel-lite-fullpage-survey",
       name: "survey_embed_type",
       type: "radio",
       value: "fullpage",
       onChange: onSurveyTypeSelection,
       checked: props.attributes.survey_embed_type === 'fullpage'
     })), /*#__PURE__*/React.createElement("div", {
-      className: props.attributes.survey_embed_type === 'custom' ? 'wpsf-contentType-element wpsf-contentType-element-active' : 'wpsf-contentType-element'
+      className: props.attributes.survey_embed_type === 'custom' ? 'surveyfunnel-lite-contentType-element surveyfunnel-lite-contentType-element-active' : 'surveyfunnel-lite-contentType-element'
     }, /*#__PURE__*/React.createElement("label", {
-      htmlFor: "wpsf-custom-survey"
+      htmlFor: "surveyfunnel-lite-custom-survey"
     }, __('Custom', 'surveyfunnel')), /*#__PURE__*/React.createElement("input", {
-      id: "wpsf-custom-survey",
+      id: "surveyfunnel-lite-custom-survey",
       name: "survey_embed_type",
       type: "radio",
       value: "custom",
       onChange: onSurveyTypeSelection,
       checked: props.attributes.survey_embed_type === 'custom'
     }))), props.attributes.survey_embed_type === 'custom' && /*#__PURE__*/React.createElement("div", {
-      className: "wpsf-gutenberg-custom-options-main"
+      className: "surveyfunnel-lite-gutenberg-custom-options-main"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "wpsf-gutenberg-custom-options-container"
+      className: "surveyfunnel-lite-gutenberg-custom-options-container"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "wpsf-gutenberg-custom-options"
+      className: "surveyfunnel-lite-gutenberg-custom-options"
     }, /*#__PURE__*/React.createElement("label", {
-      htmlFor: "wpsf_custom_width"
+      htmlFor: "surveyfunnel-lite_custom_width"
     }, __('Width', 'surveyfunnel')), /*#__PURE__*/React.createElement("input", {
       type: "number",
-      id: "wpsf_custom_width",
+      id: "surveyfunnel-lite_custom_width",
       value: props.attributes.survey_custom_width_value,
       onChange: onWidthChange
     }), /*#__PURE__*/React.createElement("select", {
@@ -9909,12 +9909,12 @@ registerBlockType('surveyfunnel/single-survey', {
       },
       onChange: onWidthUnitChange
     })), /*#__PURE__*/React.createElement("div", {
-      className: "wpsf-gutenberg-custom-options"
+      className: "surveyfunnel-lite-gutenberg-custom-options"
     }, /*#__PURE__*/React.createElement("label", {
-      htmlFor: "wpsf_custom_width"
+      htmlFor: "surveyfunnel-lite_custom_width"
     }, __('Height', 'surveyfunnel')), /*#__PURE__*/React.createElement("input", {
       type: "number",
-      id: "wpsf_custom_height",
+      id: "surveyfunnel-lite_custom_height",
       value: props.attributes.survey_custom_height_value,
       onChange: onHeightChange
     }), /*#__PURE__*/React.createElement("select", {
@@ -9924,13 +9924,13 @@ registerBlockType('surveyfunnel/single-survey', {
       },
       onChange: onHeightUnitChange
     })))))) : /*#__PURE__*/React.createElement("div", {
-      className: "wpsf-gutenberg-preview-box"
+      className: "surveyfunnel-lite-gutenberg-preview-box"
     }, props.attributes.survey_id ? /*#__PURE__*/React.createElement("p", {
       style: {
         fontSize: "18px",
         fontWeight: "normal"
       }
-    }, surveyTypes[props.attributes.survey_embed_type], __('survey has been added. Click on this box to edit.', 'surveyfunnel'), " ") : /*#__PURE__*/React.createElement("p", {
+    }, surveyTypes[props.attributes.survey_embed_type], __(' survey has been added. Click on this box to edit. Preview for survey will be available on live or preview page.', 'surveyfunnel'), " ") : /*#__PURE__*/React.createElement("p", {
       style: {
         fontSize: "18px",
         fontWeight: "normal"
@@ -9944,4 +9944,4 @@ registerBlockType('surveyfunnel/single-survey', {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=wpsf-gutenberg-singlesurvey.js.map
+//# sourceMappingURL=surveyfunnel-lite-gutenberg-singlesurvey.js.map

@@ -40,10 +40,10 @@ export default function DesignSettings() {
 	}
 
 	return (
-		<div className="wpsf-design-setting-fields">
-			<div className="fontFamily-picker wpsf-design-elements">
+		<div className="surveyfunnel-lite-design-setting-fields">
+			<div className="fontFamily-picker surveyfunnel-lite-design-elements">
 				<h2>Text</h2>
-				<div className="wpsf-font-family-container">
+				<div className="surveyfunnel-lite-font-family-container">
 					<h4>Font Family</h4>
 					<select onChange={handleSelection} value={designCon.fontFamilyValue}>
 						{fontFamily.map(function(item) {
@@ -52,29 +52,29 @@ export default function DesignSettings() {
 					</select>
 				</div>
 			</div>
-			<div className="color-pickers wpsf-design-elements">
+			<div className="color-pickers surveyfunnel-lite-design-elements">
 				<h2>Color</h2>
-				<div className="wpsf-design-color-container">
+				<div className="surveyfunnel-lite-design-color-container">
 					{designColors.map(function(item, i) {
-						return <div key={i} className="wpsf-design-color-type">
+						return <div key={i} className="surveyfunnel-lite-design-color-type">
 							<h4>{item.name}</h4>
 							<PopoverPicker color={designCon[item.itemName]} onChange={(color) => {handleChange(color, item.itemName)}} />
 						</div>
 					})}
 				</div>
 			</div>
-			<div className="file-picker wpsf-design-elements">
-				<div className="wpsf-img-upload-container">
+			<div className="file-picker surveyfunnel-lite-design-elements">
+				<div className="surveyfunnel-lite-img-upload-container">
 					<span>Background Image (Recommended image size 1920x1080px)</span>
-					<label htmlFor="wpsf_bg_img" className="wpsf-custom-file-upload">
-						<input id="wpsf_bg_img" type="file" name="file" onChange={designCon.changeHandler} />
+					<label htmlFor="surveyfunnel-lite_bg_img" className="surveyfunnel-lite-custom-file-upload">
+						<input id="surveyfunnel-lite_bg_img" type="file" name="file" onChange={designCon.changeHandler} />
 						Upload Image
 					</label>
 				</div>
-				<div className="opacity-picker wpsf-opacity-section">
+				<div className="opacity-picker surveyfunnel-lite-opacity-section">
 					<span>Image Opacity</span>
 					<input type="range" value={designCon.opacity} min='0' max='1' step="0.10" onChange={handleRangeChange} />
-					<div className="wpsf-opacity-percentage">
+					<div className="surveyfunnel-lite-opacity-percentage">
 						<span>0%</span>
 						<span>100%</span>
 					</div>
