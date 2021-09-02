@@ -2,8 +2,9 @@ const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const defaultScriptConfig = require( '@wordpress/scripts/config/webpack.config' );
 
-module.exports = {
+var main = {
     entry: {
         index: './src/index.js',
         survey: './src/Survey.js',
@@ -57,4 +58,26 @@ module.exports = {
             filename: 'survey.css',
         })
     ],
-};
+}
+
+var gutenbergScript = {
+    ...defaultScriptConfig,
+    entry: {
+        singlesurvey:'./src/gutenberg-blocks/single-survey/single-survey.js',
+    },
+    output: {
+        path: path.resolve(__dirname, 'admin/js/gutenberg-blocks'),
+        filename: 'surveyfunnel-lite-gutenberg-[name].js'
+    },
+    module: {
+        ...defaultScriptConfig.module,
+        rules: [
+            ...defaultScriptConfig.module.rules,
+
+        ],
+    },
+}
+
+module.exports = [
+   main, gutenbergScript
+];
