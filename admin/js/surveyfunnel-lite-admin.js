@@ -46,7 +46,7 @@
 				type: 'POST',
 				url: ajax.ajaxURL,
 				data: {
-					action: 'wpsf_new_survey',
+					action: 'surveyfunnel_lite_new_survey',
 					security: ajax.ajaxSecurity,
 					title: contentTitle,
 					type: contentType,
@@ -75,7 +75,7 @@
 				type: 'POST',
 				url: ajax.ajaxURL,
 				data: {
-					action: 'wpsf_delete_survey',
+					action: 'surveyfunnel_lite_delete_survey',
 					security: ajax.ajaxSecurity,
 					id: $(this).attr('delete-id'),
 				}

@@ -36,7 +36,7 @@ export function DesignContextProvider(props) {
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
             security: ajaxSecurity,
-            action: 'wpsf_get_design_data',
+            action: 'surveyfunnel_lite_get_design_data',
             post_id,
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
@@ -90,7 +90,7 @@ export function DesignContextProvider(props) {
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
             security: ajaxSecurity,
-            action: 'wpsf_save_design_data',
+            action: 'surveyfunnel_lite_save_design_data',
             post_id,
 			state: JSON.stringify( { ...initialState } ),
         };

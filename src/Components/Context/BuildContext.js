@@ -18,7 +18,7 @@ export class BuildContextProvider extends React.Component {
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
             security: ajaxSecurity,
-            action: 'wpsf_get_build_data',
+            action: 'surveyfunnel_lite_get_build_data',
             post_id
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
@@ -106,7 +106,7 @@ export class BuildContextProvider extends React.Component {
         const data = {
             state: JSON.stringify( { ...this.state } ),
             security: ajaxSecurity,
-            action: 'wpsf_save_build_data',
+            action: 'surveyfunnel_lite_save_build_data',
             post_id,
             post_title: this.state.title
         };

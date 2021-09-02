@@ -21,7 +21,7 @@ export default function Routes() {
         const data = {
             status,
             security: ajaxSecurity,
-            action: 'wpsf_get_status',
+            action: 'surveyfunnel_lite_get_status',
             post_id,
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
@@ -38,7 +38,7 @@ export default function Routes() {
         const data = {
             status,
             security: ajaxSecurity,
-            action: 'wpsf_change_status',
+            action: 'surveyfunnel_lite_change_status',
             post_id,
         };
         const ajaxURL = document.getElementById('ajaxURL').value;

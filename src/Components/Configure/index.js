@@ -16,7 +16,7 @@ export default function Configure() {
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
             security: ajaxSecurity,
-            action: 'wpsf_get_configuration_data',
+            action: 'surveyfunnel_lite_get_configuration_data',
             post_id,
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
@@ -44,7 +44,7 @@ export default function Configure() {
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
             security: ajaxSecurity,
-            action: 'wpsf_save_configuration_data',
+            action: 'surveyfunnel_lite_save_configuration_data',
             post_id,
 			configuration: JSON.stringify({metaInfo, companyBranding})
         };

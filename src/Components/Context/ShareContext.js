@@ -25,7 +25,7 @@ export function ShareContextProvider( props ) {
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
             security: ajaxSecurity,
-            action: 'wpsf_save_share_data',
+            action: 'surveyfunnel_lite_save_share_data',
             post_id,
 			share: JSON.stringify({popup})
         };
@@ -47,7 +47,7 @@ export function ShareContextProvider( props ) {
         const post_id = new URLSearchParams(window.location.search).get('post_id');
         const data = {
             security: ajaxSecurity,
-            action: 'wpsf_get_share_data',
+            action: 'surveyfunnel_lite_get_share_data',
             post_id,
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
@@ -65,7 +65,7 @@ export function ShareContextProvider( props ) {
 			const post_id = new URLSearchParams(window.location.search).get('post_id');
 			const data = {
 				security: ajaxSecurity,
-				action: 'wpsf_get_posts_pages',
+				action: 'surveyfunnel_lite_get_posts_pages',
 				post_id,
 			};
 			const ajaxURL = document.getElementById('ajaxURL').value;
