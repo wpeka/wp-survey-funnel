@@ -66,8 +66,8 @@ export default function DesignSettings() {
 			<div className="file-picker wpsf-design-elements">
 				<div className="wpsf-img-upload-container">
 					<span>Background Image (Recommended image size 1920x1080px)</span>
-					<label htmlFor="wpsf_bg_img" className="wpsf-custom-file-upload">
-						<input id="wpsf_bg_img" type="file" name="file" onChange={designCon.changeHandler} />
+					<label htmlFor="surveyfunnel_lite_bg_img" className="wpsf-custom-file-upload">
+						<input id="surveyfunnel_lite_bg_img" type="file" name="file" onChange={designCon.changeHandler} />
 						Upload Image
 					</label>
 				</div>

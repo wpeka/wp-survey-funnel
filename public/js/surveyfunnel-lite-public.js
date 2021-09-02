@@ -61,7 +61,7 @@
 			})
 		}
 
-		window.addEventListener('wpsf-remove-event', function(e) {
+		window.addEventListener('surveyfunnel-lite-remove-event', function(e) {
 			document.getElementById(e.detail.id).remove();
 		})
 

@@ -8,7 +8,7 @@
  * @package Surveyfunnel_Lite
  */
 $args = array(
-	'post_type'   => 'wpsf-survey',
+	'post_type'   => 'surveyfunnel-lite',
 	'post_status' => array( 'draft', 'publish' ),
 	'numberposts' => -1,
 );
@@ -17,15 +17,15 @@ $surveys = get_posts( $args );
 
 $disabled = Surveyfunnel_Lite::check_pro_activated() ? '' : 'disabled="disabled"';
 
-$url_to_redirect = Surveyfunnel_Lite_Admin::wpsf_get_setup_page_url();
+$url_to_redirect = Surveyfunnel_Lite_Admin::surveyfunnel_lite_get_setup_page_url();
 
 /**
  * Gets background image stored for the particular survey.
  *
  * @param int $post_id post id/survey id.
  */
-function wpsf_get_background_image( $post_id ) {
-	$id = get_post_meta( $post_id, 'wpsf-survey-design-background', true );
+function surveyfunnel_lite_get_background_image( $post_id ) {
+	$id = get_post_meta( $post_id, 'surveyfunnel-lite-design-background', true );
 	if ( $id ) {
 		return wp_get_attachment_url( $id );
 	}
@@ -153,8 +153,8 @@ function wpsf_get_background_image( $post_id ) {
 				</div>
 				<?php if ( is_array( $surveys ) ) : ?>
 					<?php foreach ( $surveys as $survey ) : ?>
-						<?php $data = Surveyfunnel_Lite_Admin::wpsf_get_insights_data( $survey->ID ); ?>
-						<?php $url  = wpsf_get_background_image( $survey->ID ); ?>
+						<?php $data = Surveyfunnel_Lite_Admin::surveyfunnel_lite_get_insights_data( $survey->ID ); ?>
+						<?php $url  = surveyfunnel_lite_get_background_image( $survey->ID ); ?>
 						<div class="wpsf-content" data-filter-item data-filter-name="<?php echo esc_html( strtolower( $survey->post_title ) ); ?>">
 							<div class="wpsf-image-box">
 								<div class="wpsf-image">
@@ -218,8 +218,8 @@ function wpsf_get_background_image( $post_id ) {
 							</div>
 							<div class="wpsf-title-box --wpsf-flex">
 								<div class="wpsf-title"><?php echo esc_attr( $survey->post_title ); ?></div>
-								<div class="wpsf-badge wpsf-badge-sm wpsf-badge-<?php echo esc_html( get_post_meta( $survey->ID, 'wpsf-survey-type', true ) ); ?> wpsf-badge-survey-type">
-									<small><?php echo esc_html( get_post_meta( $survey->ID, 'wpsf-survey-type', true ) ); ?></small>
+								<div class="wpsf-badge wpsf-badge-sm wpsf-badge-<?php echo esc_html( get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) ); ?> wpsf-badge-type">
+									<small><?php echo esc_html( get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) ); ?></small>
 								</div>
 							</div>
 							<div class="wpsf-content-stats --wpsf-grid">

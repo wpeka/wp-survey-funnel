@@ -6,7 +6,7 @@ import fetchData from '../../HelperComponents/fetchData';
 export default function PopupSettings() {
 	const { popup, handleDevicesChange, saveSettings, handleTriggerPageChange, optionsChange, options, handleLaunchOptionsChange, handleLaunchOptionsData, handleFrequencyOptionsChange, handleFrequencyDataChange, handlePopupActivation } = useContext(ShareContext);
 	const handleCollapseTarget =function(e){
-		var collapseElement = document.getElementById('wpsf_targetting_options');
+		var collapseElement = document.getElementById('surveyfunnel_lite_targetting_options');
 		if ( collapseElement.style.display == 'none' ) {
 			collapseElement.style.display = 'block';
 		}
@@ -15,7 +15,7 @@ export default function PopupSettings() {
 		}
 	}
 	const handleCollapseActivate =function(e){
-		var collapseElement = document.getElementById('wpsf_activate_popup_container');
+		var collapseElement = document.getElementById('surveyfunnel_lite_activate_popup_container');
 		if ( collapseElement.style.display == 'none' ) {
 			collapseElement.style.display = 'block';
 		}
@@ -24,10 +24,10 @@ export default function PopupSettings() {
 		}
 	}
 	const handleCollapseBehaviour =function(e){
-		var collapseElement = document.getElementById('wpsf_behaviour');
+		var collapseElement = document.getElementById('surveyfunnel_lite_behaviour');
 		if ( collapseElement.style.display == 'none' ) {
 			collapseElement.style.display = 'block';
-			var range = document.getElementById('wpsf_scroll_range');
+			var range = document.getElementById('surveyfunnel_lite_scroll_range');
 			if (range) {
 				const bubble = document.querySelector(".wpsf-bubble");
 				const val = range.value;
@@ -54,7 +54,7 @@ export default function PopupSettings() {
 		<div className="popupSettings-container">
 			<div className="popupSettings">
 				<button className="wpsf-share-collapsible wpsf-target-btn" onClick={(e)=>{handleCollapseTarget(e)}}><h3>Targetting Options</h3></button>
-				<div id="wpsf_targetting_options" className="targetting-options"  style={{display:'none'}}>
+				<div id="surveyfunnel_lite_targetting_options" className="targetting-options"  style={{display:'none'}}>
 					<label>Show on following devices</label>
 					<div className="wpsf-show-device-container">
 						{popup.targettingOptions.devices.map(function(item, i) {
@@ -101,7 +101,7 @@ export default function PopupSettings() {
 				</div>
 
 				<button  className="wpsf-share-collapsible wpsf-behaviour-btn" onClick={(e)=>{handleCollapseBehaviour(e)}}><h3>Behaviour</h3></button>
-				<div id="wpsf_behaviour" className="behaviour-options"  style={{display:'none'}}>
+				<div id="surveyfunnel_lite_behaviour" className="behaviour-options"  style={{display:'none'}}>
 					<div className="launchOptions">
 						<p>Launch when: </p>
 						<div className="launchOptions-field">
@@ -119,12 +119,12 @@ export default function PopupSettings() {
 							<label htmlFor="afterExitIntent" >
 								Select‌ ‌exit-intent‌ ‌sensitivity‌
 								<div className="launchOptions-field-sensitivity">
-									<input id="wpsf_low"type="radio" name="sensitivity" checked={popup.behaviourOptions.launchOptions.afterExitIntent === 'low'} value="low" onChange={(e) => {handleLaunchOptionsData('afterExitIntent', e)}} />
-									<label htmlFor="wpsf_low" >Low</label>
-									<input id="wpsf_medium" type="radio" name="sensitivity" checked={popup.behaviourOptions.launchOptions.afterExitIntent === 'medium'} value="medium" onChange={(e) => {handleLaunchOptionsData('afterExitIntent', e)}} />
-									<label htmlFor="wpsf_medium" >Medium</label>
-									<input id="wpsf_high" type="radio" name="sensitivity" checked={popup.behaviourOptions.launchOptions.afterExitIntent === 'high'} value="high" onChange={(e) => {handleLaunchOptionsData('afterExitIntent', e)}} />
-									<label htmlFor="wpsf_high" >High</label>
+									<input id="surveyfunnel_lite_low"type="radio" name="sensitivity" checked={popup.behaviourOptions.launchOptions.afterExitIntent === 'low'} value="low" onChange={(e) => {handleLaunchOptionsData('afterExitIntent', e)}} />
+									<label htmlFor="surveyfunnel_lite_low" >Low</label>
+									<input id="surveyfunnel_lite_medium" type="radio" name="sensitivity" checked={popup.behaviourOptions.launchOptions.afterExitIntent === 'medium'} value="medium" onChange={(e) => {handleLaunchOptionsData('afterExitIntent', e)}} />
+									<label htmlFor="surveyfunnel_lite_medium" >Medium</label>
+									<input id="surveyfunnel_lite_high" type="radio" name="sensitivity" checked={popup.behaviourOptions.launchOptions.afterExitIntent === 'high'} value="high" onChange={(e) => {handleLaunchOptionsData('afterExitIntent', e)}} />
+									<label htmlFor="surveyfunnel_lite_high" >High</label>
 								</div>
 
 							</label>
@@ -135,7 +135,7 @@ export default function PopupSettings() {
 							<label htmlFor="afterScrollPercentage" >After scroll percentage</label>
 						</div>
 						<div className="launchOptions-field-range">
-							<input id="wpsf_scroll_range" type="range" name="scrollPercentage" min="0" max="100" value={popup.behaviourOptions.launchOptions.afterScrollPercentage} onChange={(e) => {handleLaunchOptionsData('afterScrollPercentage', e)}} />
+							<input id="surveyfunnel_lite_scroll_range" type="range" name="scrollPercentage" min="0" max="100" value={popup.behaviourOptions.launchOptions.afterScrollPercentage} onChange={(e) => {handleLaunchOptionsData('afterScrollPercentage', e)}} />
 							<output className="wpsf-bubble"></output>
 						</div>
 
@@ -143,30 +143,30 @@ export default function PopupSettings() {
 					<div className="frequency">
 						<p>Frequency: </p>
 						<div className="launchOptions-field">
-							<input id="wpsf_always_show" type="radio" name="frequency" value="alwaysShow" checked={popup.behaviourOptions.frequencyOptions.frequency === 'alwaysShow'} onChange={() => {handleFrequencyOptionsChange('alwaysShow')}} />
-							<label htmlFor="wpsf_always_show" >Always show</label>
+							<input id="surveyfunnel_lite_always_show" type="radio" name="frequency" value="alwaysShow" checked={popup.behaviourOptions.frequencyOptions.frequency === 'alwaysShow'} onChange={() => {handleFrequencyOptionsChange('alwaysShow')}} />
+							<label htmlFor="surveyfunnel_lite_always_show" >Always show</label>
 						</div>
 
 						<div className="launchOptions-field">
-							<input id="wpsf_hide_for" type="radio" name="frequency" value="hideFor" checked={popup.behaviourOptions.frequencyOptions.frequency === 'hideFor'} onChange={() => {handleFrequencyOptionsChange('hideFor')}} />
-							<label htmlFor="wpsf_hide_for" >Hide for <input type="number" value={popup.behaviourOptions.frequencyOptions.hideFor} onChange={(e) => {handleFrequencyDataChange('hideFor', e.target.value)}} /> days after closing</label>
+							<input id="surveyfunnel_lite_hide_for" type="radio" name="frequency" value="hideFor" checked={popup.behaviourOptions.frequencyOptions.frequency === 'hideFor'} onChange={() => {handleFrequencyOptionsChange('hideFor')}} />
+							<label htmlFor="surveyfunnel_lite_hide_for" >Hide for <input type="number" value={popup.behaviourOptions.frequencyOptions.hideFor} onChange={(e) => {handleFrequencyDataChange('hideFor', e.target.value)}} /> days after closing</label>
 						</div>
 
 						<div className="wpsf-freq-show-again">
 							<p>If the visitor has completed the survey don't show it again:</p>
-							<input id="wpsf_show_survey_again" type="checkbox" checked={popup.behaviourOptions.frequencyOptions.dontShowAgain} value={popup.behaviourOptions.frequencyOptions.dontShowAgain} name="dontShowAgain" onChange={(e) => {handleFrequencyDataChange('dontShowAgain', e.target.checked)}} />
-							<label htmlFor="wpsf_show_survey_again" > </label>
+							<input id="surveyfunnel_lite_show_survey_again" type="checkbox" checked={popup.behaviourOptions.frequencyOptions.dontShowAgain} value={popup.behaviourOptions.frequencyOptions.dontShowAgain} name="dontShowAgain" onChange={(e) => {handleFrequencyDataChange('dontShowAgain', e.target.checked)}} />
+							<label htmlFor="surveyfunnel_lite_show_survey_again" > </label>
 
 						</div>
 
 					</div>
 				</div>
 				<button  className="wpsf-share-collapsible wpsf-activate-btn" onClick={(e)=>{handleCollapseActivate(e)}}><h3>Activate</h3></button>
-				<div id="wpsf_activate_popup_container" className="activate-popup-options"  style={{display:'none'}}>
+				<div id="surveyfunnel_lite_activate_popup_container" className="activate-popup-options"  style={{display:'none'}}>
 						<div className="reviewAndActivateOptions">
 							<p>Activate Popup: </p>
-							<input id="wpsf_activate_popup" type="checkbox" value={popup.active} checked={popup.active} onChange={() => {handlePopupActivation()}} />
-							<label htmlFor="wpsf_activate_popup"> </label>
+							<input id="surveyfunnel_lite_activate_popup" type="checkbox" value={popup.active} checked={popup.active} onChange={() => {handlePopupActivation()}} />
+							<label htmlFor="surveyfunnel_lite_activate_popup"> </label>
 					</div>
 				</div>
 			</div>

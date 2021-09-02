@@ -37,7 +37,7 @@ var half_screen;
 var contentHeight;
 let configure = '';
 
-let dismissEvent = new CustomEvent('wpsf-remove-event', { detail: {id}, } );
+let dismissEvent = new CustomEvent('surveyfunnel-lite-remove-event', { detail: {id}, } );
 
 if ( data.configure !== '' ) {
     configure = JSON.parse(data.configure);
@@ -152,7 +152,7 @@ function Survey() {
             let formData = {
                 security: data.ajaxSecurity,
                 post_id: data.post_id,
-                action: 'wpsf_new_survey_lead',
+                action: 'surveyfunnel_lite_new_survey_lead',
                 userLocalID: data.userLocalID,
                 time: data.time,
                 completed: List.CONTENT_ELEMENTS.length,
@@ -233,7 +233,7 @@ function Survey() {
             let formData = {
                 security: data.ajaxSecurity,
                 post_id: data.post_id,
-                action: 'wpsf_new_survey_lead',
+                action: 'surveyfunnel_lite_new_survey_lead',
                 userLocalID: data.userLocalID,
                 time: data.time,
                 data: JSON.stringify({
@@ -733,19 +733,19 @@ function Survey() {
     }
 
     const dismissSurvey = () => {
-		let wpsfSurveyCookie = getCookie( 'wpsf-dismiss-survey' );
+		let wpsfSurveyCookie = getCookie( 'surveyfunnel-lite-dismiss' );
 		if ( wpsfSurveyCookie ) {
 			if ( data.type === 'popup' ) {
 				if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
-					setCookie('wpsf-dismiss-survey', wpsfSurveyCookie + data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
+					setCookie('surveyfunnel-lite-dismiss', wpsfSurveyCookie + data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
 				}
 			}
 			else {
-				setCookie('wpsf-dismiss-survey', wpsfSurveyCookie + data.post_id + ',', 1 );
+				setCookie('surveyfunnel-lite-dismiss', wpsfSurveyCookie + data.post_id + ',', 1 );
 			}
 		}
         else {
-			setCookie('wpsf-dismiss-survey', data.post_id + ',', 1 );
+			setCookie('surveyfunnel-lite-dismiss', data.post_id + ',', 1 );
 		}
 		window.parent.dispatchEvent(dismissEvent);
         showOrHideSurvey(false);
@@ -757,24 +757,24 @@ function Survey() {
                 setCurrentTab(0);
                 return;
             case 'Complete':
-                let wpsfSurveyCookie = getCookie( 'wpsf-survey-completed' );
+                let wpsfSurveyCookie = getCookie( 'surveyfunnel-lite-completed' );
                 if ( wpsfSurveyCookie ) {
                     let pattern = new RegExp(data.post_id , "g");
                     if ( pattern.test( wpsfSurveyCookie ) ) {
                         return;
                     }
                     if ( data.type === 'popup' ) {
-                        setCookie('wpsf-survey-completed', wpsfSurveyCookie + ',' + data.post_id , 28625 );
+                        setCookie('surveyfunnel-lite-completed', wpsfSurveyCookie + ',' + data.post_id , 28625 );
                     }
                     else
-                        setCookie('wpsf-survey-completed', wpsfSurveyCookie + ',' + data.post_id , 1);
+                        setCookie('surveyfunnel-lite-completed', wpsfSurveyCookie + ',' + data.post_id , 1);
                 }
                 else {
                     if ( data.type === 'popup' ) {
-                        setCookie('wpsf-survey-completed', data.post_id , 28625 );
+                        setCookie('surveyfunnel-lite-completed', data.post_id , 28625 );
                     }
                     else
-                        setCookie('wpsf-survey-completed', data.post_id , 1);
+                        setCookie('surveyfunnel-lite-completed', data.post_id , 1);
                 }
 				window.parent.dispatchEvent(dismissEvent);
                 showOrHideSurvey(false);
@@ -789,8 +789,8 @@ function Survey() {
             setShowSurvey(false);
 			return;
         }
-        let wpsfSurveyDismissed = getCookie('wpsf-survey-dismissed');
-        let wpsfSurveyCompleted = getCookie('wpsf-survey-completed');
+        let wpsfSurveyDismissed = getCookie('surveyfunnel-lite-dismissed');
+        let wpsfSurveyCompleted = getCookie('surveyfunnel-lite-completed');
         let postIdRegEx = new RegExp( data.post_id, 'i' );
         if ( postIdRegEx.test( wpsfSurveyDismissed ) || postIdRegEx.test(wpsfSurveyCompleted) ) {
             return;
