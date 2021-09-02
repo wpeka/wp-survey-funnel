@@ -21,7 +21,7 @@ export default function ShareShortCode() {
 
 	useEffect(() => {
 		let id = new URLSearchParams(window.location.search).get('post_id');
-		let shortcode = '[wpsf_survey id="'+ id +'" type="'+ checked +'"';
+		let shortcode = '[surveyfunnel_lite_survey id="'+ id +'" type="'+ checked +'"';
 		if ( checked === 'custom' ) {
 			let widthString = 'width="' + width.input + width.select + '"';
 			let heightString = 'height="' + height.input + height.select + '"';

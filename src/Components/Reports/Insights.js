@@ -13,7 +13,7 @@ const getAnswerBlocks = ( item ) => {
 						percentageAnswered = (ele.responseCount / item.totalAnswered) * 100;
 					}
 					return <div key={i} className="insightAnswerBlock">
-						<div className="wpsf-insight-answer-box">
+						<div className="surveyfunnel-lite-insight-answer-box">
 							{ele.name}
 						</div>
 						<p><span>{percentageAnswered.toFixed(2) + '%'}</span>{ele?.responseCount ? ele.responseCount : 0 } Responses.</p>
@@ -24,7 +24,7 @@ const getAnswerBlocks = ( item ) => {
 			return <>
 				{item.List.map(function(ele, i) {
 					return <div key={i} className="insightAnswerBlock">
-						<div className="wpsf-insight-answer-box">
+						<div className="surveyfunnel-lite-insight-answer-box">
 							{ele.name}
 						</div>
 					</div>
@@ -54,7 +54,7 @@ export default function Insights() {
 				</div>
 			</div>
 			<div className="insights-container">
-				<div className="wpsf-insight-summary-heading">
+				<div className="surveyfunnel-lite-insight-summary-heading">
 					<h3>Insight Summary</h3>
 				</div>
 				{insights.List.CONTENT_ELEMENTS.map(function( item, i ) {

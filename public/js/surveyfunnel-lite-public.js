@@ -4,7 +4,7 @@
 		$(".iframewrapper").each(function(){
 			let html = $(this).attr("data-content");
 			let type = $(this).attr('survey-type');
-			let iframe = '<iframe width="100%" height="100%" scrolling="no" id="wpsf-iframe" class="wpsf-iframe wpsf-sc-' + type + '" frameborder="0" src=""></iframe>';
+			let iframe = '<iframe width="100%" height="100%" scrolling="no" id="surveyfunnel-lite-iframe" class="surveyfunnel-lite-iframe surveyfunnel-lite-sc-' + type + '" frameborder="0" src=""></iframe>';
 			
 
 			if ( type !== 'popup' ) {
@@ -45,8 +45,8 @@
 			}
 			iframee.setAttribute('frameborder', '0');
 			iframee.setAttribute( 'src', '' );
-			iframee.classList.add( 'wpsf-sc-' + type );
-			iframee.id = 'wpsf-iframe';
+			iframee.classList.add( 'surveyfunnel-lite-sc-' + type );
+			iframee.id = 'surveyfunnel-lite-iframe';
 			$(ele).append( iframee );
 			
 			var context = iframee.contentDocument.write(html);
@@ -65,7 +65,7 @@
 			})
 		}
 
-		window.addEventListener('wpsf-remove-event', function(e) {
+		window.addEventListener('surveyfunnel-lite-remove-event', function(e) {
 			document.getElementById(e.detail.id).remove();
 		})
 

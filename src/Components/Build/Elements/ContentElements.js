@@ -153,7 +153,7 @@ export const Choices = React.memo(
                                     {this.state.answers.map(function(answer, idx) {
                                         switch( currentElement.componentName ) {
                                             case 'SingleChoice':
-                                                return  <div key={idx} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="wpsf-tab-answer-container">
+                                                return  <div key={idx} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="surveyfunnel-lite-tab-answer-container">
                                                             <input id={`${idx}_${answer.name}_single`} type="radio" name="radiogroup" value={answer.name} />
                                                             <label htmlFor={`${idx}_${answer.name}_single`}>
                                                                 <div>
@@ -166,7 +166,7 @@ export const Choices = React.memo(
                                                         </div>
                                             
                                             case 'MultiChoice':
-                                                return  <div key={idx}  style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="wpsf-tab-answer-container">
+                                                return  <div key={idx}  style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} className="surveyfunnel-lite-tab-answer-container">
                                                             <input id={`${idx}_${answer.name}_multiple`} type="checkbox" name="checkboxGroup" value={answer.name} />
                                                             <label htmlFor={`${idx}_${answer.name}_multiple`} >
                                                                 <div>

@@ -50,29 +50,29 @@ body {
 }
 //build css
 
-.wpsf-root{
+.surveyfunnel-lite-root{
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
     right: 0;
 }
-.wpsf-build-container {
+.surveyfunnel-lite-build-container {
 	display: grid;
 	grid-template-columns:572px 1fr;
     font-family: 'ApercuPro';
     color: #495560;
 }
 
-.wpsf-build-container-menu{
+.surveyfunnel-lite-build-container-menu{
     background-color: #F6F8FA;
     border-right: 1px solid #d2dae2;
-    .wpsf-build-eles {
+    .surveyfunnel-lite-build-eles {
         overflow: auto;
         // height: calc(100vh - 108px);
         height: calc(100vh - 180px);
 
-        .wpsf-build-text{
+        .surveyfunnel-lite-build-text{
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -90,20 +90,20 @@ body {
             }
         }
     
-         .wpsf-build-elements {
+         .surveyfunnel-lite-build-elements {
             padding-left: 20px;
             padding-bottom: 20px;
-             .wpsf-build-elements_start, .wpsf-build-elements_content,  .wpsf-build-elements_results{
+             .surveyfunnel-lite-build-elements_start, .surveyfunnel-lite-build-elements_content,  .surveyfunnel-lite-build-elements_results{
                 margin-top: 20px;
                 h3{
                     font-size: 20px;
                     margin: 0;
                 }
-                .wpsf-build-elements_container{
+                .surveyfunnel-lite-build-elements_container{
                     display: flex;
                     flex-wrap: wrap;
                     margin-top: 10px;
-                    .wpsf-build-elements_box{
+                    .surveyfunnel-lite-build-elements_box{
                         cursor: move;
                         height: 66px;
                         width: 256px;
@@ -129,7 +129,7 @@ body {
         }
 
     }
-    .wpsf-build-elements-save{
+    .surveyfunnel-lite-build-elements-save{
 
         border-top: 1px solid #d2dae2;
         height: 64px;
@@ -155,30 +155,30 @@ body {
 
 }
 
-.wpsf-build-START_ELEMENTS-img{
+.surveyfunnel-lite-build-START_ELEMENTS-img{
     background-color: #FFE7F5;
 }
-.wpsf-build-CONTENT_ELEMENTS-img{
+.surveyfunnel-lite-build-CONTENT_ELEMENTS-img{
     background-color: #E2EDFF;
 }
-.wpsf-build-RESULT_ELEMENTS-img{
+.surveyfunnel-lite-build-RESULT_ELEMENTS-img{
     background-color: #F4F4D5;
 }
-.wpsf-build-FORMFIELDS_ELEMENTS-img{
+.surveyfunnel-lite-build-FORMFIELDS_ELEMENTS-img{
     background-color: #E2EDFF;
 }
 
-.wpsf-build-content{
+.surveyfunnel-lite-build-content{
     overflow: auto;
     height: calc(100vh - 108px);
-    .wpsf-build-content-title-container{
+    .surveyfunnel-lite-build-content-title-container{
         height: 108px;
         padding-left: 20px;
         h2{
             display: inline-block;
             margin: 20px 10px 10px 0;
         }
-        .wpsf-build-content-title-edit{
+        .surveyfunnel-lite-build-content-title-edit{
             border: none;
             background-color: transparent;
             cursor: pointer;
@@ -194,7 +194,7 @@ body {
             border-radius:99px;
         }
     }
-    .wpsf-dropboard{
+    .surveyfunnel-lite-dropboard{
         margin-left: 20px;
         padding: 20px;
         margin-bottom: 20px;
@@ -206,7 +206,7 @@ body {
         }
         .cardBox{
             border-radius: 9px;
-            .wpsf-cardbox-title{
+            .surveyfunnel-lite-cardbox-title{
                 display: grid;
                 grid-template-columns: 30px 1fr;
                 word-break:break-word;
@@ -215,7 +215,7 @@ body {
                 margin: 0 10px;
                 display: inline-block;
             }
-            .wpsf-cardBox-btn{
+            .surveyfunnel-lite-cardBox-btn{
                 border: none;
                 background-color: transparent;
                 cursor: pointer;
@@ -227,12 +227,12 @@ body {
         }
     }
 }
-.wpsf-card-area {
+.surveyfunnel-lite-card-area {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
 
-    .wpsf-cardbox-number {
+    .surveyfunnel-lite-cardbox-number {
         padding: 22px 30px;
         background: white;
         border-radius: 9px;
@@ -254,7 +254,7 @@ body {
     grid-template-columns: 1fr 1fr;
     gird-gap: 20px;
 } 
-.wpsf-cb-nav-container{
+.surveyfunnel-lite-cb-nav-container{
     font-family: 'ApercuPro';
     font-weight: 500;
     border-bottom: 1px solid #d2dae2;
@@ -264,7 +264,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    .wpsf-back{
+    .surveyfunnel-lite-back{
         img{
             width: 6px;
             margin-right: 5px;
@@ -304,7 +304,7 @@ body {
         border-radius: 9px;
     }
 }
-.wpsf-button-loading::after {
+.surveyfunnel-lite-button-loading::after {
 	content: "";
 	position: absolute;
 	width: 10px;
@@ -408,8 +408,8 @@ body {
                     height: 100%;
                 }
             }
-            .wpsf-header-tabs{
-                .wpsf-header-tab-list{
+            .surveyfunnel-lite-header-tabs{
+                .surveyfunnel-lite-header-tab-list{
                     border-bottom: 1px solid #d2dae2;
                     .tab-list-item {
                         display: inline-block;
@@ -426,7 +426,7 @@ body {
                         border-bottom: 1px solid white;
                     }
                 }
-                .wpsf-header-tab-content{
+                .surveyfunnel-lite-header-tab-content{
                     display: flex;
                     justify-content: center;
                     align-items: flex-start;
@@ -453,7 +453,7 @@ body {
                         width: 100%;
                         height: 100%;
                     }
-                    .wpsf-dropboard{
+                    .surveyfunnel-lite-dropboard{
                         margin-left: 20px;
                         padding: 20px;
                         margin-bottom: 20px;
@@ -466,7 +466,7 @@ body {
                         }
                         .cardBox{
                             border-radius: 9px;
-                            .wpsf-cardbox-title{
+                            .surveyfunnel-lite-cardbox-title{
                                 display: grid;
                                 grid-template-columns: 30px 1fr;
                                 word-break:break-word;                            }
@@ -474,7 +474,7 @@ body {
                                 margin: 0 10px;
                                 display: inline-block;
                             }
-                            .wpsf-cardBox-btn{
+                            .surveyfunnel-lite-cardBox-btn{
                                 border: none;
                                 background-color: transparent;
                                 cursor: pointer;
@@ -567,20 +567,20 @@ body {
                         height: 20px;
                         width: 40px;
                     }
-                    .wpsf-required-field-container{
+                    .surveyfunnel-lite-required-field-container{
                         display: flex;
                         align-items: center;
                     }
                 }
-                .wpsf-form-elements_content{
+                .surveyfunnel-lite-form-elements_content{
                     margin-top: 20px;
                     h3{
                         margin: 0;
                     }
-                    .wpsf-form-elements_container{
+                    .surveyfunnel-lite-form-elements_container{
                         display: flex;
                         flex-wrap: wrap;
-                        .wpsf-form-elements_box{
+                        .surveyfunnel-lite-form-elements_box{
                             cursor: move;
                             height: 66px;
                             width: 256px;
@@ -692,27 +692,27 @@ body {
 }
 
 //design css
-.wpsf-design-container{
+.surveyfunnel-lite-design-container{
 	display: grid;
 	grid-template-columns:550px 1fr;
     font-family: 'ApercuPro';
     color: #495560;
 }
-.wpsf-design-setting-container{
+.surveyfunnel-lite-design-setting-container{
 	border-right: 1px solid #d2dae2;
     background-color: #F6F8FA;
     height: calc(100vh - 108px);
-    .wpsf-design-setting-fields{
+    .surveyfunnel-lite-design-setting-fields{
         overflow: auto;
         height: calc(100vh - 196px);
-        .wpsf-design-elements{
+        .surveyfunnel-lite-design-elements{
             border-bottom: 1px solid #d2dae2;
             padding-bottom: 20px;
             padding: 0 0 20px 20px;
             h2{
                 margin: 20px 0 0 0;
             }
-            .wpsf-font-family-container{
+            .surveyfunnel-lite-font-family-container{
                 select{
                     height: 66px;
                     width: 275px;
@@ -732,11 +732,11 @@ body {
                 }
             }
     
-            .wpsf-design-color-container{
+            .surveyfunnel-lite-design-color-container{
                 display: flex;
                 flex-wrap: wrap;
-                .wpsf-design-color-type{
-                    .wpsf-color-box{
+                .surveyfunnel-lite-design-color-type{
+                    .surveyfunnel-lite-color-box{
                         width: 235px;
                         height: 80px;
                         display: flex;
@@ -746,7 +746,7 @@ body {
                         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
                         cursor: pointer;
                         margin-right: 20px;
-                        .wpsf-color-value{
+                        .surveyfunnel-lite-color-value{
                             background-color: #FFFFFF;
                             height: 40px;
                             width: 95%;
@@ -760,9 +760,9 @@ body {
                     }
                 }
             }
-            .wpsf-opacity-section{
+            .surveyfunnel-lite-opacity-section{
                 padding-right: 20px;
-                .wpsf-opacity-percentage{
+                .surveyfunnel-lite-opacity-percentage{
                     display: flex;
                     justify-content: space-between;
                 }
@@ -857,13 +857,13 @@ body {
                     background: #0F4C81;
                   }
             }
-            .wpsf-img-upload-container{
+            .surveyfunnel-lite-img-upload-container{
                 display: flex;
                 justify-content: space-between;
                 margin-top: 20px;
                 padding-right: 20px;
             }
-            .wpsf-custom-file-upload{
+            .surveyfunnel-lite-custom-file-upload{
                 background-color: #4CAF50;
                 border: none;
                 color: white;
@@ -883,7 +883,7 @@ body {
         }
     }
     
-    .wpsf-design-settings-save{
+    .surveyfunnel-lite-design-settings-save{
         display: flex;
         justify-content: flex-end;
         margin-top: 10px;
