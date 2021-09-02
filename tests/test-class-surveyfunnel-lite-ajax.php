@@ -61,7 +61,7 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 
 		update_post_meta(
 			self::$post_ids[0],
-			'wpsf-survey-data',
+			'surveyfunnel-lite-data',
 			array(
 				'design'    => '',
 				'build'     => '',
@@ -72,18 +72,18 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 
 
 	/**
-	 * Test for wpsf_new_survey function
+	 * Test for surveyfunnel_lite_new_survey function
 	 */
-	public function test_wpsf_new_survey() {
+	public function test_surveyfunnel_lite_new_survey() {
 		// become administrator.
 		$this->_setRole( 'administrator' );
 
 		// setup an ajax request.
-		$_POST['action']   = 'wpsf_new_survey';
+		$_POST['action']   = 'surveyfunnel_lite_new_survey';
 		$_POST['security'] = wp_create_nonce( 'surveySecurity' );
 		$_POST['title']    = 'Demo survey';
 		try {
-			$this->_handleAjax( 'wpsf_new_survey' );
+			$this->_handleAjax( 'surveyfunnel_lite_new_survey' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
@@ -93,42 +93,42 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_save_build_data function
+	 * Test for surveyfunnel_lite_save_build_data function
 	 */
-	public function test_wpsf_save_build_data() {
+	public function test_surveyfunnel_lite_save_build_data() {
 		// become administrator.
 		$this->_setRole( 'administrator' );
 
-		$_POST['action']     = 'wpsf_save_build_data';
-		$_POST['security']   = wp_create_nonce( 'wpsf-security' );
+		$_POST['action']     = 'surveyfunnel_lite_save_build_data';
+		$_POST['security']   = wp_create_nonce( 'surveyfunnel-lite-security' );
 		$_POST['post_id']    = self::$post_ids[0];
 		$_POST['post_title'] = 'Demo survey';
 		$_POST['state']      = self::$build;
 		try {
-			$this->_handleAjax( 'wpsf_save_build_data' );
+			$this->_handleAjax( 'surveyfunnel_lite_save_build_data' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
 		$this->assertSame( 'Demo survey', get_the_title( self::$post_ids[0] ) );
-		$survey_data = get_post_meta( self::$post_ids[0], 'wpsf-survey-data', true );
+		$survey_data = get_post_meta( self::$post_ids[0], 'surveyfunnel-lite-data', true );
 		$this->assertSame( self::$build, $survey_data['build'] );
 		$response = json_decode( $this->_last_response );
 		$this->assertTrue( (bool) $response->success );
 	}
 
 	/**
-	 * Test for wpsf_get_build_data function
+	 * Test for surveyfunnel_lite_get_build_data function
 	 */
-	public function test_wpsf_get_build_data() {
+	public function test_surveyfunnel_lite_get_build_data() {
 		// become administrator.
 		$this->_setRole( 'administrator' );
 
-		$_POST['action']   = 'wpsf_get_build_data';
-		$_POST['security'] = wp_create_nonce( 'wpsf-security' );
+		$_POST['action']   = 'surveyfunnel_lite_get_build_data';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
 		$_POST['post_id']  = self::$post_ids[0];
 		update_post_meta(
 			self::$post_ids[0],
-			'wpsf-survey-data',
+			'surveyfunnel-lite-data',
 			array(
 				'design'    => self::$design,
 				'build'     => self::$build,
@@ -137,30 +137,30 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		);
 
 		try {
-			$this->_handleAjax( 'wpsf_get_build_data' );
+			$this->_handleAjax( 'surveyfunnel_lite_get_build_data' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
 		$response = json_decode( $this->_last_response );
 		$this->assertTrue( (bool) $response->success );
 		$this->assertSame( get_the_title( self::$post_ids[0] ), $response->data->post_title );
-		$post_meta = get_post_meta( self::$post_ids[0], 'wpsf-survey-data', true );
+		$post_meta = get_post_meta( self::$post_ids[0], 'surveyfunnel-lite-data', true );
 		$this->assertSame( $post_meta['build'], $response->data->build );
 	}
 
 	/**
-	 * Test for wpsf_save_design_data function
+	 * Test for surveyfunnel_lite_save_design_data function
 	 */
-	public function test_wpsf_save_design_data() {
+	public function test_surveyfunnel_lite_save_design_data() {
 		// become administrator.
 		$this->_setRole( 'administrator' );
 
-		$_POST['action']   = 'wpsf_save_design_data';
-		$_POST['security'] = wp_create_nonce( 'wpsf-security' );
+		$_POST['action']   = 'surveyfunnel_lite_save_design_data';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
 		$_POST['post_id']  = self::$post_ids[0];
 		$_POST['state']    = self::$design;
 		try {
-			$this->_handleAjax( 'wpsf_save_design_data' );
+			$this->_handleAjax( 'surveyfunnel_lite_save_design_data' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
@@ -169,40 +169,40 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_save_configuration_data function
+	 * Test for surveyfunnel_lite_save_configuration_data function
 	 */
-	public function test_wpsf_save_configuration_data() {
+	public function test_surveyfunnel_lite_save_configuration_data() {
 		// become administrator.
 		$this->_setRole( 'administrator' );
 
-		$_POST['action']        = 'wpsf_save_configuration_data';
-		$_POST['security']      = wp_create_nonce( 'wpsf-security' );
+		$_POST['action']        = 'surveyfunnel_lite_save_configuration_data';
+		$_POST['security']      = wp_create_nonce( 'surveyfunnel-lite-security' );
 		$_POST['post_id']       = self::$post_ids[0];
 		$_POST['configuration'] = self::$configure;
 		try {
-			$this->_handleAjax( 'wpsf_save_configuration_data' );
+			$this->_handleAjax( 'surveyfunnel_lite_save_configuration_data' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
 		$response = json_decode( $this->_last_response );
 		$this->assertTrue( $response->success );
-		$post_meta = get_post_meta( self::$post_ids[0], 'wpsf-survey-data', true );
+		$post_meta = get_post_meta( self::$post_ids[0], 'surveyfunnel-lite-data', true );
 		$this->assertSame( self::$configure, $post_meta['configure'] );
 	}
 
 	/**
-	 * Test for wpsf_get_configuration_data function
+	 * Test for surveyfunnel_lite_get_configuration_data function
 	 */
-	public function test_wpsf_get_configuration_data() {
+	public function test_surveyfunnel_lite_get_configuration_data() {
 		// become administrator.
 		$this->_setRole( 'administrator' );
 
-		$_POST['action']   = 'wpsf_get_configuration_data';
-		$_POST['security'] = wp_create_nonce( 'wpsf-security' );
+		$_POST['action']   = 'surveyfunnel_lite_get_configuration_data';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
 		$_POST['post_id']  = self::$post_ids[0];
 		update_post_meta(
 			self::$post_ids[0],
-			'wpsf-survey-data',
+			'surveyfunnel-lite-data',
 			array(
 				'design'    => self::$design,
 				'build'     => self::$build,
@@ -210,25 +210,25 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 			)
 		);
 		try {
-			$this->_handleAjax( 'wpsf_get_configuration_data' );
+			$this->_handleAjax( 'surveyfunnel_lite_get_configuration_data' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
 		$response = json_decode( $this->_last_response );
 		$this->assertTrue( (bool) $response->success );
-		$post_meta = get_post_meta( self::$post_ids[0], 'wpsf-survey-data', true );
+		$post_meta = get_post_meta( self::$post_ids[0], 'surveyfunnel-lite-data', true );
 		$this->assertSame( $post_meta['configure'], $response->data->configure );
 	}
 
 	/**
-	 * Test for wpsf_new_survey_lead function
+	 * Test for surveyfunnel_lite_new_survey_lead function
 	 */
-	public function test_wpsf_new_survey_lead() {
+	public function test_surveyfunnel_lite_new_survey_lead() {
 		// become administrator.
 		$this->_setRole( 'administrator' );
 
-		$_POST['action']      = 'wpsf_new_survey_lead';
-		$_POST['security']    = wp_create_nonce( 'wpsf-security' );
+		$_POST['action']      = 'surveyfunnel_lite_new_survey_lead';
+		$_POST['security']    = wp_create_nonce( 'surveyfunnel-lite-security' );
 		$_POST['post_id']     = self::$post_ids[0];
 		$_POST['userLocalID'] = 'db68b4e27c3f063e6907f2f90f5b0efe';
 		$_POST['time']        = 1628141629;
@@ -237,7 +237,7 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 
 		// To insert record.
 		try {
-			$this->_handleAjax( 'wpsf_new_survey_lead' );
+			$this->_handleAjax( 'surveyfunnel_lite_new_survey_lead' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
@@ -259,7 +259,7 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		// To update record.
 		$_POST['data'] = '{"question":"Which is your favorite flower? ","answer":"Aster","_id":"uy8m2kk2l2skrxekdtw","status":"answered","tabNumber":1,"componentName":"SingleChoice"}';
 		try {
-			$this->_handleAjax( 'wpsf_new_survey_lead' );
+			$this->_handleAjax( 'surveyfunnel_lite_new_survey_lead' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
@@ -277,20 +277,20 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_get_design_data function
+	 * Test for surveyfunnel_lite_get_design_data function
 	 */
-	public function test_wpsf_get_design_data() {
+	public function test_surveyfunnel_lite_get_design_data() {
 		// become administrator.
 		$this->_setRole( 'administrator' );
 
-		$_POST['action']   = 'wpsf_new_survey_lead';
-		$_POST['security'] = wp_create_nonce( 'wpsf-security' );
+		$_POST['action']   = 'surveyfunnel_lite_new_survey_lead';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
 		$_POST['post_id']  = self::$post_ids[0];
 		$attachment_id     = self::factory()->post->create( array( 'post_type' => 'attachment' ) );
-		update_post_meta( self::$post_ids[0], 'wpsf-survey-design-background', $attachment_id );
+		update_post_meta( self::$post_ids[0], 'surveyfunnel-lite-design-background', $attachment_id );
 		update_post_meta(
 			self::$post_ids[0],
-			'wpsf-survey-data',
+			'surveyfunnel-lite-data',
 			array(
 				'design'    => self::$design,
 				'build'     => self::$build,
@@ -298,7 +298,7 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 			)
 		);
 		try {
-			$this->_handleAjax( 'wpsf_get_design_data' );
+			$this->_handleAjax( 'surveyfunnel_lite_get_design_data' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
@@ -309,14 +309,14 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_get_reports_data function
+	 * Test for surveyfunnel_lite_get_reports_data function
 	 */
-	public function test_wpsf_get_reports_data() {
+	public function test_surveyfunnel_lite_get_reports_data() {
 		// become administrator.
 		$this->_setRole( 'administrator' );
 
-		$_POST['action']    = 'wpsf_new_survey_lead';
-		$_POST['security']  = wp_create_nonce( 'wpsf-security' );
+		$_POST['action']    = 'surveyfunnel_lite_new_survey_lead';
+		$_POST['security']  = wp_create_nonce( 'surveyfunnel-lite-security' );
 		$_POST['post_id']   = self::$post_ids[0];
 		$survey_id          = self::$post_ids[0];
 		$_POST['startDate'] = '2021-08-05';
@@ -343,7 +343,7 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 			)
 		);// db call ok; no cache ok.
 		try {
-			$this->_handleAjax( 'wpsf_get_reports_data' );
+			$this->_handleAjax( 'surveyfunnel_lite_get_reports_data' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
@@ -366,17 +366,17 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_delete_survey function
+	 * Test for surveyfunnel_lite_delete_survey function
 	 */
-	public function test_wpsf_delete_survey() {
+	public function test_surveyfunnel_lite_delete_survey() {
 		// become administrator .
 		$this->_setRole( 'administrator' );
 
-		$_POST['action']   = 'wpsf_delete_survey';
+		$_POST['action']   = 'surveyfunnel_lite_delete_survey';
 		$_POST['security'] = wp_create_nonce( 'surveySecurity' );
 		$_POST['id']       = self::$post_ids[0];
 		try {
-			$this->_handleAjax( 'wpsf_delete_survey' );
+			$this->_handleAjax( 'surveyfunnel_lite_delete_survey' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
@@ -385,17 +385,17 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_get_status function
+	 * Test for surveyfunnel_lite_get_status function
 	 */
-	public function test_wpsf_get_status() {
+	public function test_surveyfunnel_lite_get_status() {
 		// become administrator .
 		$this->_setRole( 'administrator' );
 
-		$_POST['action']   = 'wpsf_get_status';
-		$_POST['security'] = wp_create_nonce( 'wpsf-security' );
+		$_POST['action']   = 'surveyfunnel_lite_get_status';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
 		$_POST['post_id']  = self::$post_ids[0];
 		try {
-			$this->_handleAjax( 'wpsf_get_status' );
+			$this->_handleAjax( 'surveyfunnel_lite_get_status' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}
@@ -405,17 +405,17 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 	}
 
 	/**
-	 * Test for wpsf_change_status function
+	 * Test for surveyfunnel_lite_change_status function
 	 */
-	public function test_wpsf_change_status() {
+	public function test_surveyfunnel_lite_change_status() {
 		// become administrator.
 		$this->_setRole( 'administrator' );
 
-		$_POST['action']   = 'wpsf_change_status';
-		$_POST['security'] = wp_create_nonce( 'wpsf-security' );
+		$_POST['action']   = 'surveyfunnel_lite_change_status';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
 		$_POST['post_id']  = self::$post_ids[0];
 		try {
-			$this->_handleAjax( 'wpsf_change_status' );
+			$this->_handleAjax( 'surveyfunnel_lite_change_status' );
 		} catch ( WPAjaxDieContinueException $e ) {
 			unset( $e );
 		}

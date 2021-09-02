@@ -15,10 +15,10 @@
     src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Medium.otf") format("opentype");
 }
 
-.wpsf-reports-body{
+.surveyfunnel-lite-reports-body{
     background-color: #F0F2F5;
     height: 100vh;
-    .wpsf-reports-container{
+    .surveyfunnel-lite-reports-container{
         width: 1315px;
         margin: auto;
         font-family: 'ApercuPro';
@@ -46,8 +46,8 @@
                 }
             }        
         }
-        .wpsf-header-tabs{
-            .wpsf-header-tab-list{
+        .surveyfunnel-lite-header-tabs{
+            .surveyfunnel-lite-header-tab-list{
                 margin: 0;
                 padding-inline-start: 0;
                 padding-top: 20px;
@@ -70,7 +70,7 @@
                     box-shadow: 0 3px 4px rgb(0 0 0 / 15%);
                 }
             }
-            .wpsf-header-tab-content{
+            .surveyfunnel-lite-header-tab-content{
                 overflow-y: auto;
                 overflow-x: hidden;
                 height: calc(100vh - 200px);
@@ -105,7 +105,7 @@
                 }
                 .insights-container{
                     clear: both;
-                    .wpsf-insight-summary-heading{
+                    .surveyfunnel-lite-insight-summary-heading{
                         h3{
                             color: #626F7D;
                             height: 16px;
@@ -138,7 +138,7 @@
                             .insightAnswerBlock{
                                 display: flex;
                                 margin-bottom: 20px;
-                                .wpsf-insight-answer-box{
+                                .surveyfunnel-lite-insight-answer-box{
                                     width: 1046px;
                                     display: flex;
                                     align-items: center;
@@ -201,7 +201,7 @@
                                     }
                                 }
                             }
-                            .wpsf-export-csv-btn{
+                            .surveyfunnel-lite-export-csv-btn{
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
@@ -235,7 +235,7 @@
                                 width: 15px;
                             }
                         }
-                        .wpsf-preview-container{
+                        .surveyfunnel-lite-preview-container{
                             background-color: #ffffff;
                             padding: 20px;
                             border-radius: 9px;
@@ -243,7 +243,7 @@
                             height: calc(100vh - 290px);
                             overflow: auto;
 							position: relative;
-							.wpsf-no-response {
+							.surveyfunnel-lite-no-response {
 								margin: 0;
 								position: absolute;
 								top: 50%;
@@ -298,14 +298,14 @@
 }
 $medium-size : 1400px;
 @media screen and (max-width: $medium-size) {
-    .wpsf-reports-body{
-        .wpsf-reports-container{
+    .surveyfunnel-lite-reports-body{
+        .surveyfunnel-lite-reports-container{
             width: 900px;
             .datePicker{
                 right: calc(calc(100vw - 860px)/2);
             }
-            .wpsf-header-tabs{
-                .wpsf-header-tab-content{
+            .surveyfunnel-lite-header-tabs{
+                .surveyfunnel-lite-header-tab-content{
                     .insightsOverview{
                         .insightBox{
                             width: 294px;
@@ -315,7 +315,7 @@ $medium-size : 1400px;
                         .insights-summary-single{
                             .insights-answers{
                                 .insightAnswerBlock{
-                                    .wpsf-insight-answer-box{
+                                    .surveyfunnel-lite-insight-answer-box{
                                         width: 640px;
                                     }
                                 }
@@ -330,7 +330,7 @@ $medium-size : 1400px;
                     
                         .responsePreview{
     
-                            .wpsf-preview-container{
+                            .surveyfunnel-lite-preview-container{
     
                                 .currentReportAnswer{
                                     width: 400px;

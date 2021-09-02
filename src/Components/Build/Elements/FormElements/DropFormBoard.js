@@ -20,7 +20,7 @@ const DropFromBoard = ({ ele, List, editList, deleteFromList, moveCard }) => {
             ref={drop}
             role={"DropBoard"}
             style={{ backgroundColor }}
-            className="wpsf-dropboard"
+            className="surveyfunnel-lite-dropboard"
         >
             {isActive ? "Release to drop" : "Drag a box here"}
             <h2>{ele.name}</h2>

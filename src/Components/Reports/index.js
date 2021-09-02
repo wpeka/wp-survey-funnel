@@ -11,8 +11,8 @@ import NoResponseRecorded from "./NoResponseRecorded";
 export default function Reports() {
     const { dates, changeDate, dateValidations } = useContext( ReportContext );
     return (
-        <div className="wpsf-reports-body">
-            <div className="wpsf-reports-container">
+        <div className="surveyfunnel-lite-reports-body">
+            <div className="surveyfunnel-lite-reports-container">
                 <Tabs>
                     <div label="Insights">
                         {dateValidations().error ? (<NoResponseRecorded title={dateValidations().errorTitle} description={dateValidations().errorMessage}></NoResponseRecorded>) : (<Insights></Insights>)}
