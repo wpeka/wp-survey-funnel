@@ -36,11 +36,11 @@ export const PopoverPicker = ({ color, onChange }) => {
     return (
         <div className="picker">
             <div
-                className="swatch wpsf-color-box"
+                className="swatch surveyfunnel-lite-color-box"
                 style={{ backgroundColor: colour }}
                 onClick={() => toggle(true)}
             >
-                <div className="wpsf-color-value">{rgbatohex(color)}</div>
+                <div className="surveyfunnel-lite-color-value">{rgbatohex(color)}</div>
             </div>
 
             {isOpen && (

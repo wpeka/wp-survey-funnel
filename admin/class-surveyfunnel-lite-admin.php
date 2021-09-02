@@ -763,7 +763,7 @@ class Surveyfunnel_Lite_Admin {
 		wp_localize_script( $this->plugin_name . '-mascot', 'mascot', $return_array );
 
 		?>
-			<div id="srf-mascot-app"></div>
+			<div id="surveyfunnel-lite-mascot-app"></div>
 		<?php
 	}
 

@@ -20,7 +20,7 @@ exports[`HelperFunctions convertToRgbaCSS test 1`] = `
       className="main-tab-container"
     >
       <div
-        className="tab-list wpsf-tab-content-element"
+        className="tab-list surveyfunnel-lite-tab-content-element"
         style={
           Object {
             "background": "rgba(undefined, undefined, undefined, undefined)",

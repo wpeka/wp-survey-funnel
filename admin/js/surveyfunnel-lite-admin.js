@@ -36,7 +36,7 @@
 			};
 		};
 
-		$('#wpsf-modal-submit').on('click', function() {
+		$('#surveyfunnel-lite-modal-submit').on('click', function() {
 			let contentTitle = $('#content-title').val();
 			let contentType = $("input:radio[name ='content-type']:checked").val();
 			// check for validations.
@@ -61,12 +61,12 @@
 			});
 		});
 
-		$( '.wpsf-content:first-child' ).on( 'click', function() {
-			$('.wpsf-modal').css('display', 'flex');
+		$( '.surveyfunnel-lite-content:first-child' ).on( 'click', function() {
+			$('.surveyfunnel-lite-modal').css('display', 'flex');
 		} );
 
-		$( '.wpsf-dismiss' ).on('click', function() {
-			$('.wpsf-modal').css('display', 'none');
+		$( '.surveyfunnel-lite-dismiss' ).on('click', function() {
+			$('.surveyfunnel-lite-modal').css('display', 'none');
 		})
 
 		$( '.deleteIcon' ).on('click', function() {
