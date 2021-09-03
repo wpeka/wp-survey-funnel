@@ -54,6 +54,45 @@
             .shareShortcodeSettings{
                 overflow: auto;
                 height: calc(100vh - 108px);
+
+				.contentCustomAttributes {
+					display: flex;
+					justify-content: space-between;
+					.width, .height {
+						input[type=number]::-webkit-inner-spin-button {
+							opacity: 1
+						}
+						input, select {
+							max-width: 90px;
+							min-width: 90px;
+							min-height: 60px;
+							margin-left: 5px;
+							margin-top: 0;
+							margin-bottom: 0;
+							padding-left: 10px;
+							padding-right: 10px;
+							font-size: 16px;
+							border: 0.75px solid #E1E8F0;
+							border-radius: 12px;
+						}
+						
+						input:focus-visible, select:focus-visible {
+							border: 0.75px solid #0F4C81;
+							outline: none;
+						}
+
+						select {
+							background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='%23000000' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>") no-repeat;
+							background-position: calc(100% - 0.75rem) center !important;
+							-moz-appearance:none !important;
+							-webkit-appearance: none !important; 
+							appearance: none !important;
+							padding-right: 2rem !important;
+							background-color: white;
+						}
+					}
+				}
+
                 .contentShortcodeLabel-container{
                     margin-bottom: 20px;
                     border-bottom: 1px solid #d2dae2;
@@ -79,7 +118,7 @@
                         }
                     }
                     input{
-                        border: 1px solid #B5C8C8;
+                        border: 1px solid #E1E8F0;
                         background-color: #ffffff;
                         padding: 20px;
                         border-radius: 9px;
@@ -100,7 +139,7 @@
                         border-radius: 9px;
                         display: flex;
                         align-items: center;
-                        border: 1px solid #B5C8C8;
+                        border: 1px solid #E1E8F0;
                         margin-top: 20px;
                         .contentType-element{
                             width: 183px;
@@ -127,10 +166,10 @@
                     }
 
                 }
-                .contentHelpText{
+                .contentHelpText, .contentCustomAttributes{
                     width: 548px;
                     padding: 20px;
-                    border: 1px solid #B5C8C8;
+                    border: 1px solid #E1E8F0;
                     border-radius: 9px;
                     margin: 20px 0 0 40px;
                     background-color: #F0F2F5;

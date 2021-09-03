@@ -914,7 +914,7 @@ class Surveyfunnel_Lite_Admin {
 			'id'     => 0,
 			'type'   => 'responsive',
 			'width'  => '100%',
-			'height' => '100%',
+			'height' => '700px',
 		);
 		$shortcode   = '[surveyfunnel_lite_survey';
 
