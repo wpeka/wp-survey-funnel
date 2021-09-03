@@ -133,7 +133,7 @@ class Surveyfunnel_Lite_Public {
 	/**
 	 * Display function of survey.
 	 */
-	public static function surveyfunnel_lite_display_survey( $atts ) {
+	public function surveyfunnel_lite_display_survey( $atts ) {
 		if ( intval( $atts['id'] ) === 0 ) {
 			return '';
 		}
@@ -192,7 +192,7 @@ class Surveyfunnel_Lite_Public {
 		$data           = wp_json_encode( $data );
 		$script_string  = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.bundle.js';
 		$style_string   = plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-public.css';
-		wp_enqueue_style( 'surveyfunnel-lite-public' );
+		wp_enqueue_style( $this->plugin_name . '-public' );
 		$survey_style_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css';
 		$return_string       = '<div class="iframewrapper" id="surveyfunnel-lite-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="surveyfunnel-lite-survey-' . $unique_id . '" style="width: 100%; height: 100%;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';
 		return $return_string;

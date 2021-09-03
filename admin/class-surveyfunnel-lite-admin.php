@@ -910,25 +910,36 @@ class Surveyfunnel_Lite_Admin {
 	 * @param array $attributes survey attributes.
 	 */
 	public function surveyfunnel_lite_gutenberg_display_single_survey( $attributes ) {
-		$survey_atts       = array();
-		$survey_atts['id'] = 0;
+		$survey_atts = array(
+			'id'     => 0,
+			'type'   => 'responsive',
+			'width'  => '100%',
+			'height' => '100%',
+		);
+		$shortcode   = '[surveyfunnel_lite_survey';
+
 		if ( isset( $attributes['survey_id'] ) ) {
 			$survey_atts['id'] = $attributes['survey_id'];
 		}
-		$survey_atts['type'] = 'responsive';
+		$shortcode .= ' id="' . $survey_atts['id'] . '"';
+
 		if ( isset( $attributes['survey_embed_type'] ) ) {
 			$survey_atts['type'] = $attributes['survey_embed_type'];
 		}
-		$survey_atts['width'] = '400px';
+		$shortcode .= ' type="' . $survey_atts['type'] . '"';
+
 		if ( isset( $attributes['survey_custom_width'] ) ) {
 			$survey_atts['width'] = $attributes['survey_custom_width'];
 		}
-		$survey_atts['height'] = '400px';
+		$shortcode .= ' width="' . $survey_atts['width'] . '"';
+
 		if ( isset( $attributes['survey_custom_height'] ) ) {
 			$survey_atts['height'] = $attributes['survey_custom_height'];
 		}
+		$shortcode .= ' height="' . $survey_atts['height'] . '"';
 
-		return Surveyfunnel_Lite_Public::surveyfunnel_lite_display_survey( $survey_atts );
+		$shortcode .= ']';
+		return $shortcode;
 	}
 
 	/**
