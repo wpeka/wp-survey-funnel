@@ -26,7 +26,7 @@ registerBlockType('surveyfunnel/single-survey',{
     },
     survey_custom_width_unit_type:{
       type:'text',
-      default:'px'
+      default:'%'
     },
     survey_custom_height_unit_type:{
       type:'text',
@@ -41,7 +41,7 @@ registerBlockType('surveyfunnel/single-survey',{
     },
     survey_custom_height_value:{
       type:'text',
-      default:100,
+      default:700,
     },
     survey_custom_height:{
       type:'text',
@@ -129,7 +129,7 @@ registerBlockType('surveyfunnel/single-survey',{
         let height_val = props.attributes.survey_custom_height_value;
         props.setAttributes( {
           survey_custom_height_unit_type : e.target.value,
-          survey_custom_height : height_val + ' ' + e.target.value
+          survey_custom_height : height_val + e.target.value
         } );
 
       }
@@ -139,7 +139,7 @@ registerBlockType('surveyfunnel/single-survey',{
 
         props.setAttributes( {
           survey_custom_width_unit_type : e.target.value,
-          survey_custom_width : width_val + ' ' + e.target.value
+          survey_custom_width : width_val + e.target.value
         } );
 
       }
@@ -148,7 +148,7 @@ registerBlockType('surveyfunnel/single-survey',{
         let width_unit = props.attributes.survey_custom_width_unit_type;
         props.setAttributes( {
           survey_custom_width_value : e.target.value,
-          survey_custom_width : e.target.value + ' ' + width_unit
+          survey_custom_width : e.target.value + width_unit
         } );
 
       }
@@ -157,7 +157,7 @@ registerBlockType('surveyfunnel/single-survey',{
         let height_unit = props.attributes.survey_custom_height_unit_type;
         props.setAttributes( {
           survey_custom_height_value : e.target.value,
-          survey_custom_height : e.target.value + ' ' + height_unit
+          survey_custom_height : e.target.value + height_unit
         } );
 
       }
