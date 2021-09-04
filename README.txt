@@ -99,6 +99,15 @@ Yes, you can place surveys on specific posts or pages that you think are suitabl
 
 == Screenshots ==
 1. Dashboard
+2. Build Tab
+3. Build Tab - Covers page
+4. Build Tab - Adding questions.
+5. Build Tab - Adding form to the survey.
+6. Build Tab - Results page.
+7. Design Tab
+8. Configure Tab
+9. Deploy Tab
+10. Reports Tab
 
 == Changelog ==
 = 1.0.0 =
