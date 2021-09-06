@@ -175,7 +175,7 @@ class Surveyfunnel_Lite_Public {
 		$data = wp_json_encode( $data );
 		$script_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.bundle.js';
 		$style_string  = plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-public.css';
-		$hooks_string = admin_url() . 'wp-includes/js/dist/hooks.js?ver=' . time();
+		$hooks_string = get_site_url() . '/wp-includes/js/dist/hooks.js?ver=' . time();
 		wp_enqueue_style( $this->plugin_name . '-public' );
 		$survey_style_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css';
 		$pro_script_string = '';
