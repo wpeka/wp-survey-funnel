@@ -102,7 +102,7 @@
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        margin: 20px 0 20px 40px;
+                        margin: 37px 0 22px 44px;
                         h3{
                             margin: 0;
                         }
@@ -110,11 +110,12 @@
                             font-family: 'ApercuPro';
                             background: none;
                             border: none;
-                            padding: 5px;
                             background-color: #2196F3;
-                            border-radius: 9px;
+                            border-radius: 6px;
                             cursor: pointer;
                             color: #ffffff;
+                            width: 132px;
+                            height: 23px;
                         }
                     }
                     input{
@@ -123,11 +124,11 @@
                         padding: 20px;
                         border-radius: 9px;
                         width: 546px;
-                        margin: 0 0 20px 40px;
+                        margin: 0 0 44px 44px;
                     }
                 }
                 .contentTypes{
-                    margin: 20px 0 0 40px;
+                    margin: 44px 0 0 44px;
                     .contentTypesLabel{
                         h3{
                             margin:0;
@@ -140,7 +141,7 @@
                         display: flex;
                         align-items: center;
                         border: 1px solid #E1E8F0;
-                        margin-top: 20px;
+                        margin-top: 15px;
                         .contentType-element{
                             width: 183px;
                             float: left;
@@ -171,7 +172,7 @@
                     padding: 20px;
                     border: 1px solid #E1E8F0;
                     border-radius: 9px;
-                    margin: 20px 0 0 40px;
+                    margin: 30px 0 0 44px;
                     background-color: #F0F2F5;
                 }
             }
