@@ -526,9 +526,11 @@ class Surveyfunnel_Lite_Admin {
 		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$post_meta  = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$post_title = get_the_title( $post_id );
+		$post_type  = get_post_meta( $post_id, 'surveyfunnel-lite-type', true );
 		$data       = array(
-			'build'      => $post_meta['build'],
-			'post_title' => $post_title,
+			'build'       => $post_meta['build'],
+			'post_title'  => $post_title,
+			'survey_type' => $post_type,
 		);
 		wp_send_json_success( $data );
 		wp_die();

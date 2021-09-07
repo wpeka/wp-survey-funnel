@@ -1,12 +1,14 @@
 import React, { createElement, Fragment } from "react";
 import ModalContentRight from '../../../HelperComponents/ModalContentRight';
 import { CloseModal } from '../../../HelperComponents/CloseModalPopUp';
+const { applyFilters } = wp.hooks;
 
 export const ResultScreen = React.memo(
     class extends React.Component {
         state = {
             title: "",
             description: "",
+			...applyFilters( 'resultScreenState', {}, this.props.type )
         };
 
         handleChange = (event) => {
@@ -15,12 +17,20 @@ export const ResultScreen = React.memo(
             });
         };
 
+		handleResultChange = ( e, checkbox = false ) => {
+			this.setState({
+				...this.state,
+				[e.target.name]: checkbox ? e.target.checked : e.target.value,
+			})
+		}
+
         componentDidMount() {
             const { currentElement } = this.props;
             if ( 'currentlySaved' in currentElement ) {
                 let state = {
                     title: currentElement.title,
                     description: currentElement.description,
+					...applyFilters( 'resultScreenSetComponentMount', {}, this.props.type, currentElement )
                 }
                 this.setState(state);
             }
@@ -59,6 +69,7 @@ export const ResultScreen = React.memo(
                                             style={{height:"150px"}}
                                         />
                                     </div>
+									{applyFilters( 'resultScreenLeftElementsRender', '', this.props.type, this.state, this.handleResultChange )}
                                 </div>
                                 <div className="modalComponentSaveButton">
                                     <button onClick={this.props.saveToList}>Save</button>
@@ -77,6 +88,7 @@ export const ResultScreen = React.memo(
                                     </div>
                                 </div>)
                                  : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
+									 	{applyFilters('resultScreenRightElementsRender', '', this.props.type, this.state)}
                                         <h3 className="surveyTitle">{this.state.title}</h3>
                                         <p className="surveyDescription">{this.state.description}</p>
                                     </ModalContentRight>)}
