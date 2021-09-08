@@ -22,6 +22,7 @@ body {
    
     width: calc( 100% - 30px );
     max-width: 900px;
+	opacity: 0.9;
 }
 
 .checkbox-group, .radio-group {
@@ -47,9 +48,6 @@ body {
             h3{
                 margin: 0;
             }
-            p{
-                margin: 27px 0;
-            }
             input{
                 word-wrap: break-word
             }
@@ -57,7 +55,7 @@ body {
                 background-color: #0F4C81;
                 border: none;
                 color: white;
-                padding: 12px 28px;
+                padding: 20px 40px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
@@ -72,7 +70,6 @@ body {
 			.tab-validation-error {
 				p {
 					margin: 0;
-					margin-bottom: 6px;
 				}
 			}
         }
@@ -290,6 +287,7 @@ body {
 				}
                 .tab-list{
                     overflow: auto;
+					opacity: 0.9;
                 }
             }
         }
@@ -383,6 +381,85 @@ body {
         height: 100%;  
         border: 1px solid#E1E8F0;
     }
+}
+
+.tab {
+	p {
+		margin: 0;
+	}
+	.surveyTitle {
+		font-size: 36px;
+		font-weight: bold;
+		margin-bottom: 12px !important;
+	}
+	.surveyDescription {
+		font-size: 18px;
+		font-weight: 400;
+		margin-bottom: 30px;
+	}
+	.privacyPolicy {
+		font-size: 16px;
+		font-weight: 400;
+		margin: 40px 0px;
+
+		p {
+			input[type="checkbox"] {
+				display: none;
+			}
+			input[type="checkbox"] + label {
+				color: #333;
+				font-family: Arial, sans-serif;
+				font-size: 14px;
+			}
+			input[type="checkbox"] + label span {
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				margin: -1px 4px 0 0;
+				vertical-align: middle;
+				cursor: pointer;
+				border: 1px solid #0F4C81;
+				box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+				background-repeat: no-repeat;
+				background-position: center;
+				text-align: center;
+				line-height: 25px;
+			}
+			input[type="checkbox"] + label span img {
+				opacity: 0;
+				transition: all 0.3s ease;
+				width:50%;
+			}
+			input[type="checkbox"] + label span {
+				border-radius:4px;
+			}
+			input[type="checkbox"]:checked + label span img {
+				opacity: 1;
+			}
+			input[type="checkbox"]:checked + label span{
+				background-color:#0F4C81;
+			}
+
+		}
+	}
+
+	button {
+		font-size: 20px !important;
+	}
+
+	.tab-validation-error {
+		margin: 40px 0px;
+
+		padding: 23px 33px;
+		color: #C16200;
+		border: 0.5px solid #F57C00;
+		background-color: #FFF4E6;
+		border-radius: 12px;
+
+		p {
+			margin: 0;
+		}
+	}
 }
 
 .surveyfunnel-lite-sc-fullpage {

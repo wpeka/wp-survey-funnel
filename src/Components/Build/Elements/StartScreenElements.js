@@ -2,7 +2,8 @@ import React, { createElement, Fragment } from "react";
 import { convertToRgbaCSS } from "../../../HelperComponents/HelperFunctions";
 import ModalContentRight from '../../../HelperComponents/ModalContentRight';
 import { CloseModal } from '../../../HelperComponents/CloseModalPopUp';
-
+const { applyFilters } = wp.hooks;
+import { ConfigureContext } from "../../Context/ConfigureContext";
 
 export const CoverPage = React.memo(
     class extends React.Component {
@@ -11,12 +12,20 @@ export const CoverPage = React.memo(
             button: "",
             title: "",
             description: "",
+			...applyFilters('addCoverPageStateElements', {}),
         };
 
-        handleChange = (event) => {
-            this.setState({
-                [event.target.name]: event.target.value,
-            });
+        handleChange = (event, checkbox = false) => {
+			if ( ! checkbox ) {
+				this.setState({
+					[event.target.name]: event.target.value,
+				});
+			}
+			else {
+				this.setState({
+					[event.target.name]: event.target.checked,
+				})
+			}			
         };
 
         componentDidMount() {
@@ -26,6 +35,7 @@ export const CoverPage = React.memo(
                     button: currentElement.button,
                     title: currentElement.title,
                     description: currentElement.description,
+					...applyFilters('componentDidMountStartScreen', {} ,currentElement)
                 }
                 this.setState(state);
             }
@@ -71,7 +81,10 @@ export const CoverPage = React.memo(
                                             style={{height:"150px"}}
                                         />
                                     </div>
-                                    <div className="modalComponentButton">
+									<ConfigureContext.Consumer>
+										{consumer => applyFilters('startScreenLeftElements', '', this.handleChange, this.state, consumer.proSettings)}
+									</ConfigureContext.Consumer>                           
+									<div className="modalComponentButton">
                                         <h3>Button</h3>
                                         <input
                                             type="text"
@@ -100,8 +113,11 @@ export const CoverPage = React.memo(
                                     </div>
                                 </div>)
                                  : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
-                                        { this.checkForEmpty('title') && <h3>{this.state.title}</h3> }
-                                        { this.checkForEmpty('description') && <p>{this.state.description}</p> }
+                                        { this.checkForEmpty('title') && <h3 className="surveyTitle">{this.state.title}</h3> }
+                                        { this.checkForEmpty('description') && <p className="surveyDescription">{this.state.description}</p> }
+										<ConfigureContext.Consumer>
+											{consumer => applyFilters('startScreenRightPrivacyPolicy', '', this.state, consumer.proSettings, require('../BuildImages/checkmark.png'))}
+										</ConfigureContext.Consumer>
                                         { this.checkForEmpty('button') && <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}}>{this.state.button}</button> }
                                 </ModalContentRight>)}
 
