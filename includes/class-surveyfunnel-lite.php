@@ -179,6 +179,10 @@ class Surveyfunnel_Lite {
 
 		// setup surveyfunnel-lite (builder) page.
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'surveyfunnel_lite_survey_setup_page' );
+
+		// For gutenbergblocks.
+		$this->loader->add_action( 'init', $plugin_admin, 'surveyfunnel_lite_register_gutenberg_blocks' );
+		$this->loader->add_filter( 'block_categories_all', $plugin_admin, 'surveyfunnel_lite_gutenberg_block_categories', 10, 1 );
 	}
 
 	/**
@@ -195,6 +199,7 @@ class Surveyfunnel_Lite {
 		// enqueue necessary scripts and styles.
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'enqueue_block_editor_assets', $plugin_public, 'surveyfunnel_lite_register_gutenberg_scripts' );
 
 		// init functionality - add_shortcode.
 		$this->loader->add_action( 'init', $plugin_public, 'surveyfunnel_lite_public_init' );

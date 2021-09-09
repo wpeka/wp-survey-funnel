@@ -739,15 +739,19 @@ function Survey() {
 
     const dismissSurvey = () => {
 		let wpsfSurveyCookie = getCookie( 'surveyfunnel-lite-dismiss' );
-		if ( wpsfSurveyCookie ) {
-			if ( data.type === 'popup' ) {
-				if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
-					setCookie('surveyfunnel-lite-dismiss', wpsfSurveyCookie + data.post_id + ',', shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
-				}
+
+		if ( data.type === 'popup' ) {
+			// frequency is always show?
+			if ( shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'alwaysShow' ) {
+				window.parent.dispatchEvent(dismissEvent);
+				showOrHideSurvey(false);
+				return;
 			}
-			else {
-				setCookie('surveyfunnel-lite-dismiss', wpsfSurveyCookie + data.post_id + ',', 1 );
+			let cookieName = data.post_id + ',';
+			if ( wpsfSurveyCookie && shareSettings.popup.behaviourOptions.frequencyOptions.frequency === 'hideFor' ) {
+				cookieName = wpsfSurveyCookie + cookieName;
 			}
+			setCookie('surveyfunnel-lite-dismiss', cookieName, shareSettings.popup.behaviourOptions.frequencyOptions.hideFor );
 		}
         else {
 			setCookie('surveyfunnel-lite-dismiss', data.post_id + ',', 1 );
@@ -807,8 +811,8 @@ function Survey() {
         showSurvey && <Frame
             ref={iframeRef}
             initialContent={initialContent}
-            width="100%"
-            height="100%"
+            width={data.type === 'custom' ? data.width : "100%"}
+            height={data.type === 'custom' ? data.height : "100%"}
             id={id + '_iframe'}
             style={{
                 border: '0',

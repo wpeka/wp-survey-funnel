@@ -93,6 +93,23 @@ class Surveyfunnel_Lite_Public {
 	}
 
 	/**
+	 * Register scripts for gutenberg block.
+	 *
+	 * @since 1.0.0
+	 */
+	public function surveyfunnel_lite_register_gutenberg_scripts() {
+		wp_enqueue_style(
+			$this->plugin_name . 'public',
+			plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-public.css',
+			array(),
+			$this->version,
+			'all'
+		);
+
+	}
+
+	/**
+	 * Public init of wpsf.
 	 * Public init of surveyfunnel-lite.
 	 */
 	public function surveyfunnel_lite_public_init() {
@@ -105,8 +122,10 @@ class Surveyfunnel_Lite_Public {
 	public function surveyfunnel_lite_survey_shortcode_render( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'id'   => 0,
-				'type' => 'responsive',
+				'id'     => 0,
+				'type'   => 'responsive',
+				'width'  => '100%',
+				'height' => '700px',
 			),
 			$atts
 		);
@@ -162,6 +181,8 @@ class Surveyfunnel_Lite_Public {
 			'userLocalID'     => $unique_id,
 			'styleSurveyLink' => SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css',
 			'type'            => $atts['type'],
+			'width'           => $atts['width'],
+			'height'          => $atts['height'],
 		);
 
 		$design_image_id = get_post_meta( $atts['id'], 'surveyfunnel-lite-design-background', true );
@@ -180,7 +201,11 @@ class Surveyfunnel_Lite_Public {
 		$survey_style_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css';
 		$pro_script_string = '';
 		$pro_script_string = apply_filters( 'surveyfunnel_lite_display_survey', $pro_script_string );
-		$return_string = '<div class="iframewrapper" id="surveyfunnel-lite-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script src="' . $hooks_string . '"></script>' . $pro_script_string . '<script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="surveyfunnel-lite-survey-' . $unique_id . '" style="width: 100%; height: 100%;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';
+		$return_string       = '';
+		if ( $atts['type'] === 'custom' ) {
+			$return_string .= '<style>#surveyfunnel-lite-survey-' . $unique_id . ' iframe { max-width: 100%; height: ' . $atts['height'] . '; width: ' . $atts['width'] . ';  }</style>';
+		}
+		$return_string .= '<div class="iframewrapper" id="surveyfunnel-lite-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script src="' . $hooks_string . '"></script>' . $pro_script_string . '<style>*{margin: 0; padding:0; box-sizing: border-box;}</style><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="surveyfunnel-lite-survey-' . $unique_id . '" style="width: 100vw; height: 100vh;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';
 		return $return_string;
 	}
 
