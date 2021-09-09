@@ -2,8 +2,9 @@ const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const defaultScriptConfig = require( '@wordpress/scripts/config/webpack.config' );
 
-module.exports = {
+var main = {
     entry: {
         index: './src/index.js',
         survey: './src/Survey.js',
@@ -13,6 +14,15 @@ module.exports = {
         path: path.join(__dirname, "/dist"),
         filename: "[name].bundle.js",
     },
+
+    resolve: {
+        fallback: {
+            'util': false,
+            'path': false,
+            'fs'  : false,
+        }
+    },
+
     // Rules of how webpack will take our files, complie & bundle them for the browser
     module: {
         rules: [
@@ -57,4 +67,26 @@ module.exports = {
             filename: 'survey.css',
         })
     ],
-};
+}
+
+var gutenbergScript = {
+    ...defaultScriptConfig,
+    entry: {
+        singlesurvey:'./src/gutenberg-blocks/single-survey/single-survey.js',
+    },
+    output: {
+        path: path.resolve(__dirname, 'admin/js/gutenberg-blocks'),
+        filename: 'surveyfunnel-lite-gutenberg-[name].js'
+    },
+    module: {
+        ...defaultScriptConfig.module,
+        rules: [
+            ...defaultScriptConfig.module.rules,
+
+        ],
+    },
+}
+
+module.exports = [
+   main, gutenbergScript
+];

@@ -5,6 +5,7 @@ import Frame, { useFrame } from 'react-frame-component'
 import fetchData from './HelperComponents/fetchData'
 import { initColorState, ItemTypes, popupInitialState } from './Data'
 import './scss/survey.scss'
+const { applyFilters } = wp.hooks;
 
 let currentIframe = null;
 
@@ -270,6 +271,8 @@ function Survey() {
         let error = []
         switch (componentList[currentTab].componentName) {
             case 'CoverPage':
+				applyFilters('checkCoverPageButtonValidations', flag, componentList[currentTab], iframeRef, error, configure)
+				break;
             case 'ResultScreen':
                 break
             case 'FormElements':
@@ -518,6 +521,8 @@ function Survey() {
                                 <p className="surveyDescription">
                                     {item.description}
                                 </p>
+								
+								{applyFilters( 'renderPrivacyPolicyOption', '', configure, item, require( './Components/Build/BuildImages/checkmark.png' ) )}
 								<ShowErrors error={error} />
                                 <button
                                     type="button"
@@ -806,8 +811,8 @@ function Survey() {
         showSurvey && <Frame
             ref={iframeRef}
             initialContent={initialContent}
-            width="100%"
-            height="100%"
+            width={data.type === 'custom' ? data.width : "100%"}
+            height={data.type === 'custom' ? data.height : "100%"}
             id={id + '_iframe'}
             style={{
                 border: '0',
