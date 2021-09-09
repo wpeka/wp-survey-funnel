@@ -248,4 +248,9 @@ const popupInitialState = {
 	}
 }
 
-export { ItemTypes, buildElements, popupInitialState, shareTabsData, shortcodeTypes, initColorState, designColors, formElements, formElementsDropBoard, dropBoard };
+const dimensionTypes = [
+	'%', 'px', 'em', 'rem'
+];
+
+export { ItemTypes, buildElements, popupInitialState, shareTabsData, shortcodeTypes, initColorState, designColors, formElements, formElementsDropBoard, dropBoard, dimensionTypes };
+

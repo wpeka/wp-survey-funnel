@@ -1,6 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { ShareContext } from "../Context/ShareContext";
-import { shortcodeTypes } from "../../Data";
+import React, { useState, useEffect } from "react";
+import { dimensionTypes, shortcodeTypes } from "../../Data";
 
 export default function ShareShortCode() {
 	const [ copyStatus, setCopyStatus ] = useState('Copy Shortcode');
@@ -10,17 +9,33 @@ export default function ShareShortCode() {
 	const [shortcode, setShortcode] = useState('');
 	const [checked, setChecked] = useState('responsive');
 	const [helpText, setHelpText] = useState('');
-	
+
+	const [width, setWidth] = useState({
+		input: 100,
+		select: '%',
+	});
+	const [height, setHeight] = useState({
+		input: 700,
+		select: 'px',
+	});
 
 	useEffect(() => {
-		setShortcode('[surveyfunnel_lite_survey id="'+ new URLSearchParams(window.location.search).get('post_id') +'" type="'+ checked +'"]');
+		let id = new URLSearchParams(window.location.search).get('post_id');
+		let shortcode = '[surveyfunnel_lite_survey id="'+ id +'" type="'+ checked +'"';
+		if ( checked === 'custom' ) {
+			let widthString = 'width="' + width.input + width.select + '"';
+			let heightString = 'height="' + height.input + height.select + '"';
+			shortcode += " " + widthString + " " + heightString;
+		}
+		shortcode += ']';
+		setShortcode(shortcode);
 		for(let i = 0 ; i < shortcodeTypes.length; i++) {
 			if ( checked === shortcodeTypes[i].id ) {
 				setHelpText(shortcodeTypes[i].helpText);
 				return;
 			}
 		}
-	}, [checked])
+	}, [checked, width, height])
 
 	const handleRadioChange = (e) => {
 		setChecked(e.target.value);
@@ -37,7 +52,24 @@ export default function ShareShortCode() {
 			setCopyStatus('Copy Shortcode');
 		}, 4000)
 	}
-
+	
+	const handleCustomChange = (e, type) => {
+		console.log(e.target.name + " " + e.target.value);
+		switch( type ) {
+			case 'width':
+				let newWidth = JSON.parse(JSON.stringify( width ));
+				newWidth[e.target.name] = e.target.value;
+				setWidth(newWidth);
+				break;
+			case 'height':
+				let newHeight = JSON.parse(JSON.stringify( height ));
+				newHeight[e.target.name] = e.target.value;
+				setHeight(newHeight);
+				break;
+			default:
+				break;
+		}
+	}
     return (
         <div className="shareShortcodeSettings">
             <div className="contentShortcodeLabel-container">
@@ -87,7 +119,6 @@ export default function ShareShortCode() {
                                     checked={item.id === checked}
                                     onChange={handleRadioChange}
                                     value={item.id}
-									disabled={item?.disabled}
                                     id={item.id}
                                 />
                             </div>
@@ -96,6 +127,26 @@ export default function ShareShortCode() {
                 </div>
             </div>
             <div className="contentHelpText">{helpText}</div>
+			{checked === 'custom' && <div className="contentCustomAttributes">
+				<div className="width">
+					<label htmlFor="width">Width: </label>
+					<input type="number" name="input" value={width.input} id="width" onChange={(e) => { handleCustomChange(e, 'width') }} />
+					<select name="select" onChange={(e) => { handleCustomChange(e, 'width', true) }} defaultValue={width.select}>
+						{dimensionTypes.map((item, i) => {
+							return <option key={i} value={item} >{item}</option>
+						})}
+					</select>
+				</div>
+				<div className="height">
+					<label htmlFor="height">Height: </label>
+					<input type="number" name="input" value={height.input} id="height"  onChange={(e) => { handleCustomChange(e, 'height') }} />
+					<select name="select" onChange={(e) => { handleCustomChange(e, 'height', true) }} defaultValue={height.select}>
+						{dimensionTypes.map((item, i) => {
+							return <option key={i} value={item}>{item}</option>
+						})}
+					</select>
+				</div>
+			</div>}
         </div>
     );
 }

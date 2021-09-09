@@ -249,9 +249,9 @@ class Surveyfunnel_Lite_Admin {
 			'can_export'          => true,
 			'has_archive'         => false,
 			'exclude_from_search' => true,
-			'publicly_queryable'  => false,
+			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
-			'show_in_rest'        => false,
+			'show_in_rest'        => true,
 		);
 		register_post_type( 'wpsf-survey', $args );
 	}
@@ -738,7 +738,7 @@ class Surveyfunnel_Lite_Admin {
 			return;
 		}
 
-		$is_pro = get_option( 'wpadcenter_pro_active' );
+		$is_pro = get_option( 'surveyfunnel_pro_active' );
 		if ( $is_pro ) {
 			$support_url = '#';
 		} else {
@@ -872,5 +872,106 @@ class Surveyfunnel_Lite_Admin {
 		wp_send_json_success( $data );
 		wp_die();
 	}
+
+	/**
+	 * Registers gutenberg block for surveys.
+	 *
+	 * @since 1.0.0
+	 */
+	public function surveyfunnel_lite_register_gutenberg_blocks() {
+
+		wp_register_script(
+			'surveyfunnel-lite-gutenberg-single-survey',
+			plugin_dir_url( __DIR__ ) . 'admin/js/gutenberg-blocks/surveyfunnel-lite-gutenberg-singlesurvey.js',
+			array( 'wp-blocks', 'wp-api-fetch', 'wp-components', 'wp-i18n' ),
+			$this->version,
+			false
+		);
+		if ( function_exists( 'register_block_type' ) ) {
+			register_block_type(
+				'surveyfunnel/single-survey',
+				array(
+					'editor_script'   => 'surveyfunnel-lite-gutenberg-single-survey',
+					'attributes'      => array(
+						'survey_id'            => array(
+							'type' => 'number',
+						),
+						'survey_name'          => array(
+							'type' => 'string',
+						),
+						'survey_embed_type'    => array(
+							'type' => 'string',
+						),
+						'survey_custom_width'  => array(
+							'type' => 'string',
+						),
+						'survey_custom_height' => array(
+							'type' => 'string',
+						),
+					),
+					'render_callback' => array( $this, 'surveyfunnel_lite_gutenberg_display_single_survey' ),
+				)
+			);
+		}
+	}
+
+	/**
+	 * Display surveys added by gutenberg block.
+	 *
+	 * @param array $attributes survey attributes.
+	 */
+	public function surveyfunnel_lite_gutenberg_display_single_survey( $attributes ) {
+		$survey_atts = array(
+			'id'     => 0,
+			'type'   => 'responsive',
+			'width'  => '100%',
+			'height' => '700px',
+		);
+		$shortcode   = '[surveyfunnel_lite_survey';
+
+		if ( isset( $attributes['survey_id'] ) ) {
+			$survey_atts['id'] = $attributes['survey_id'];
+		}
+		$shortcode .= ' id="' . $survey_atts['id'] . '"';
+
+		if ( isset( $attributes['survey_embed_type'] ) ) {
+			$survey_atts['type'] = $attributes['survey_embed_type'];
+		}
+		$shortcode .= ' type="' . $survey_atts['type'] . '"';
+
+		if ( isset( $attributes['survey_custom_width'] ) ) {
+			$survey_atts['width'] = $attributes['survey_custom_width'];
+		}
+		$shortcode .= ' width="' . $survey_atts['width'] . '"';
+
+		if ( isset( $attributes['survey_custom_height'] ) ) {
+			$survey_atts['height'] = $attributes['survey_custom_height'];
+		}
+		$shortcode .= ' height="' . $survey_atts['height'] . '"';
+
+		$shortcode .= ']';
+		return $shortcode;
+	}
+
+	/**
+	 * Registers gutenberg block categories.
+	 *
+	 * @param array $categories contains categories of gutenberg block.
+	 *
+	 * @since 1.0.0
+	 */
+	public function surveyfunnel_lite_gutenberg_block_categories( $categories ) {
+
+		return array_merge(
+			$categories,
+			array(
+				array(
+					'slug'  => 'surveyfunnel-lite',
+					'title' => __( 'SurveyFunnel', 'surveyfunnel' ),
+				),
+			)
+		);
+	}
+
 
 }
