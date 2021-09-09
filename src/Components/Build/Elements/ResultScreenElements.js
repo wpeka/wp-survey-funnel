@@ -8,7 +8,8 @@ export const ResultScreen = React.memo(
         state = {
             title: "",
             description: "",
-			...applyFilters( 'resultScreenState', {}, this.props.type )
+			...applyFilters( 'resultScreenState', {}, this.props.type ),
+			errors: [],
         };
 
         handleChange = (event) => {
@@ -30,11 +31,26 @@ export const ResultScreen = React.memo(
                 let state = {
                     title: currentElement.title,
                     description: currentElement.description,
+					id: currentElement.id,
 					...applyFilters( 'resultScreenSetComponentMount', {}, this.props.type, currentElement )
                 }
                 this.setState(state);
             }
         }
+
+		saveResultScreen = () => {
+			let errorArray = [];
+			errorArray = applyFilters( 'resultScreenValidation', errorArray, this.state, this.props.List );
+			if ( errorArray.length === 0 ) {
+				this.props.saveToList();
+			}
+			else {
+				this.setState({
+					...this.state,
+					errors: errorArray
+				});
+			}
+		}
 
         render() {
             const { designCon, currentElement } = this.props;
@@ -70,9 +86,12 @@ export const ResultScreen = React.memo(
                                         />
                                     </div>
 									{applyFilters( 'resultScreenLeftElementsRender', '', this.props.type, this.state, this.handleResultChange )}
+									{this.state.errors.map(function( error, index ) {
+										return error;
+									})}
                                 </div>
                                 <div className="modalComponentSaveButton">
-                                    <button onClick={this.props.saveToList}>Save</button>
+                                    <button onClick={this.saveResultScreen}>Save</button>
                                 </div>
                             </div>
                             <div className="modalContent-right">

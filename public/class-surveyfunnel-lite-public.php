@@ -166,6 +166,7 @@ class Surveyfunnel_Lite_Public {
 			'userLocalID'     => $unique_id,
 			'styleSurveyLink' => SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css',
 			'type'            => $atts['type'],
+			'surveyType'      => get_post_meta( $atts['id'], 'surveyfunnel-lite-type', true ),
 		);
 
 		$design_image_id = get_post_meta( $atts['id'], 'surveyfunnel-lite-design-background', true );
