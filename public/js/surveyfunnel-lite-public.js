@@ -33,7 +33,6 @@
 			}
 
 			function writeContentHtml(html, type, iframe, ele) {
-				console.log(type);
 				let iframee = document.createElement('iframe');
 				
 				if ( type !== 'custom' ) {
