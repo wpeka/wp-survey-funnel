@@ -3,7 +3,6 @@
 	$(document).ready(function() {
 		$(".iframewrapper").each(function(){
 			let html = $(this).attr("data-content");
-			console.log(html);
 			let type = $(this).attr('survey-type');
 			let post_id = $(this).attr('post_id');
 			let iframe = '<iframe width="100%" height="100%" scrolling="no" id="wpsf-iframe" class="surveyfunnel-lite-iframe surveyfunnel-lite-sc-' + type + '" frameborder="0" src=""></iframe>';
@@ -14,7 +13,6 @@
 			}
 			else if ( type === 'popup' ){
 				let shareSettings = JSON.parse($(this).attr('config-settings'));
-				console.log(shareSettings);
 				const { launchOptions } = shareSettings.popup.behaviourOptions;
 				switch( launchOptions.launchWhen ) {
 					case 'afterPageLoads':
@@ -35,20 +33,19 @@
 			}
 
 			function writeContentHtml(html, type, iframe, ele) {
-
+				console.log(type);
 				let iframee = document.createElement('iframe');
+				
 				if ( type !== 'custom' ) {
 					iframee.setAttribute('width', '100%');
 					iframee.setAttribute('height', '100%');
 					iframee.setAttribute('scrolling', 'no');
 				}
-				iframee.setAttribute('scrolling', 'no');
 				iframee.setAttribute('frameborder', '0');
 				iframee.setAttribute( 'src', '' );
 				iframee.classList.add( 'surveyfunnel-lite-sc-' + type );
 				iframee.id = 'surveyfunnel-lite-iframe';
 				$(ele).append( iframee );
-				console.log(post_id);
 				$.ajax({
 					type: "POST",
 					url: ajaxData.ajaxURL,
