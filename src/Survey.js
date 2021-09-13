@@ -8,6 +8,10 @@ import './scss/survey.scss'
 const { applyFilters } = wp.hooks;
 
 let currentIframe = null;
+data = {
+	...data,
+	...surveyData
+}
 
 function validateEmail(email) {
     const re =

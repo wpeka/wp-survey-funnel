@@ -3,8 +3,10 @@
 	$(document).ready(function() {
 		$(".iframewrapper").each(function(){
 			let html = $(this).attr("data-content");
+			console.log(html);
 			let type = $(this).attr('survey-type');
-			let iframe = '<iframe width="100%" height="100%" scrolling="no" id="surveyfunnel-lite-iframe" class="surveyfunnel-lite-iframe surveyfunnel-lite-sc-' + type + '" frameborder="0" src=""></iframe>';
+			let post_id = $(this).attr('post_id');
+			let iframe = '<iframe width="100%" height="100%" scrolling="no" id="wpsf-iframe" class="surveyfunnel-lite-iframe surveyfunnel-lite-sc-' + type + '" frameborder="0" src=""></iframe>';
 			
 
 			if ( type !== 'popup' ) {
@@ -31,39 +33,52 @@
 						break;
 				}
 			}
+
+			function writeContentHtml(html, type, iframe, ele) {
+
+				let iframee = document.createElement('iframe');
+				if ( type !== 'custom' ) {
+					iframee.setAttribute('width', '100%');
+					iframee.setAttribute('height', '100%');
+					iframee.setAttribute('scrolling', 'no');
+				}
+				iframee.setAttribute('scrolling', 'no');
+				iframee.setAttribute('frameborder', '0');
+				iframee.setAttribute( 'src', '' );
+				iframee.classList.add( 'surveyfunnel-lite-sc-' + type );
+				iframee.id = 'surveyfunnel-lite-iframe';
+				$(ele).append( iframee );
+				console.log(post_id);
+				$.ajax({
+					type: "POST",
+					url: ajaxData.ajaxURL,
+					data: {
+						action: 'surveyfunnel_lite_get_display_data',
+						security: ajaxData.ajaxSecurity,
+						post_id,
+					}
+				}).done(data => {
+					iframee.contentWindow.surveyData = data.data;
+				
+					var context = iframee.contentDocument.write(html);
+					iframee.contentWindow.document.close(); //without this line, page loading animations won't go away!
+				});
+	
+				
+	
+				function resizeIframe(iframe) {
+					iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";
+				}
+	
+				$(iframee).on("load", function() {
+					
+					if ( type === 'responsive' || type === 'custom' ) {
+						resizeIframe(this);
+					}				
+				})
+			}
 			
 		});
-
-		function writeContentHtml(html, type, iframe, ele) {
-
-			let iframee = document.createElement('iframe');
-			
-			if ( type !== 'custom' ) {
-				iframee.setAttribute('width', '100%');
-				iframee.setAttribute('height', '100%');
-				iframee.setAttribute('scrolling', 'no');
-			}
-			iframee.setAttribute('frameborder', '0');
-			iframee.setAttribute( 'src', '' );
-			iframee.classList.add( 'surveyfunnel-lite-sc-' + type );
-			iframee.id = 'surveyfunnel-lite-iframe';
-			$(ele).append( iframee );
-			
-			var context = iframee.contentDocument.write(html);
-			iframee.contentWindow.document.close(); //without this line, page loading animations won't go away!
-
-			function resizeIframe(iframe) {
-				console.log('hellllllo wrold');
-				iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";
-			}
-
-			$(iframee).on("load", function() {
-				
-				if ( type === 'responsive' || type === 'custom' ) {
-					resizeIframe(this);
-				}				
-			})
-		}
 
 		window.addEventListener('surveyfunnel-lite-remove-event', function(e) {
 			document.getElementById(e.detail.id).remove();
