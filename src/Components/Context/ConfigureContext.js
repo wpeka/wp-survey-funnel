@@ -47,7 +47,6 @@ export function ConfigureContextProvider( props ) {
 			const ajaxURL = document.getElementById('ajaxURL').value;
 			fetchData( ajaxURL, data )
 			.then(data => {
-				console.log(data);
 				setOptions(data.data);
 			})
 		}

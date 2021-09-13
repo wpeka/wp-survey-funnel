@@ -25,6 +25,7 @@
     left: 0;
     right: 0;
     z-index: 9999;
+	width: 100% !important;
 }
 
 .surveyfunnel-lite-sc-popup {

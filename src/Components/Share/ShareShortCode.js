@@ -54,7 +54,6 @@ export default function ShareShortCode() {
 	}
 	
 	const handleCustomChange = (e, type) => {
-		console.log(e.target.name + " " + e.target.value);
 		switch( type ) {
 			case 'width':
 				let newWidth = JSON.parse(JSON.stringify( width ));
