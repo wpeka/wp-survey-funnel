@@ -742,9 +742,9 @@ class Surveyfunnel_Lite_Admin {
 
 		$is_pro = get_option( 'surveyfunnel_pro_active' );
 		if ( $is_pro ) {
-			$support_url = '#';
+			$support_url = 'https://club.wpeka.com/my-account/orders/?utm_source=surveyfunnel&utm_medium=help-mascot&utm_campaign=link&utm_content=support';
 		} else {
-			$support_url = '#';
+			$support_url = 'https://wordpress.org/support/plugin/surveyfunnel-lite/';
 		}
 
 		$return_array = array(

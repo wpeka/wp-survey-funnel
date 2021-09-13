@@ -8,6 +8,10 @@ import './scss/survey.scss'
 const { applyFilters } = wp.hooks;
 
 let currentIframe = null;
+data = {
+	...data,
+	...surveyData
+}
 
 let __defaultResultScreen = [{
 	title: 'Thank you for your submission',

@@ -208,6 +208,8 @@ class Surveyfunnel_Lite {
 		// ajax calls
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_new_survey_lead', $plugin_public, 'surveyfunnel_lite_new_survey_lead' );
 		$this->loader->add_action( 'wp_ajax_nopriv_surveyfunnel_lite_new_survey_lead', $plugin_public, 'surveyfunnel_lite_new_survey_lead' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_display_data', $plugin_public, 'surveyfunnel_lite_get_display_data' );
+		$this->loader->add_action( 'wp_ajax_nopriv_surveyfunnel_lite_get_display_data', $plugin_public, 'surveyfunnel_lite_get_display_data' );
 	}
 
 	/**
