@@ -1,2 +1,12 @@
+.answers {
+	display: flex;
 
+	input {
+		margin-right: 8px;
+	}
+
+	input[type=number] {
+		max-width: 140px;
+	}
+}
 
