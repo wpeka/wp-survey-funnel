@@ -15,7 +15,6 @@ export default function Responses() {
 		let { fields } = currentReportSelected;
 		fields = JSON.parse(fields);
 		const arrayOfObj = Object.values(fields);
-		console.log(arrayOfObj);
 		if ( arrayOfObj.length === 1 ) {
 			if ( arrayOfObj[0].status === 'viewed' ) {
 				return (<div className="surveyfunnel-lite-preview-container" style={{textAlign: 'center'}}>
