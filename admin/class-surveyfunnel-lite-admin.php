@@ -754,7 +754,7 @@ class Surveyfunnel_Lite_Admin {
 				'documentation_text' => __( 'Documentation', 'surveyfunnel' ),
 				'documentation_url'  => 'https://docs.wpeka.com/survey-funnel/v/master/',
 				'faq_text'           => __( 'FAQ', 'surveyfunnel' ),
-				'faq_url'            => 'https://docs.wpeka.com/survey-funnel/v/master/faq',
+				'faq_url'            => 'https://docs.wpeka.com/survey-funnel/v/master/faqs',
 				'upgrade_text'       => __( 'Upgrade to Pro &raquo;', 'surveyfunnel' ),
 				'upgrade_url'        => 'https://club.wpeka.com/product/survey-funnel/?utm_source=survey-funnel&utm_medium=help-mascot&utm_campaign=link&utm_content=upgrade-to-pro',
 			),
