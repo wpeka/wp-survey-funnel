@@ -77,8 +77,8 @@ export const ResultScreen = React.memo(
                                     </div>
                                 </div>)
                                  : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
-                                        <h3>{this.state.title}</h3>
-                                        <p>{this.state.description}</p>
+                                        <h3 className="surveyTitle">{this.state.title}</h3>
+                                        <p className="surveyDescription">{this.state.description}</p>
                                     </ModalContentRight>)}
                                 </div>
                             </div>
