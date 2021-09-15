@@ -5,7 +5,7 @@ Tags: surveys, survey tool, questionnaire, custom form, form builder, form maker
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,9 +110,17 @@ Yes, you can place surveys on specific posts or pages that you think are suitabl
 10. Reports Tab
 
 == Changelog ==
+= 1.0.1 =
+* Feature : Users can use Gutenberg block to display survey on the frontend.
+* Feature : Users can use shortcode to display custom size survey on the frontend.
+
 = 1.0.0 =
 * Initial release
 
 == Upgrade Notice ==
+= 1.0.1 =
+* Feature : Users can use Gutenberg block to display survey on the frontend.
+* Feature : Users can use shortcode to display custom size survey on the frontend.
+
 = 1.0.0 =
 * Initial release
