@@ -248,12 +248,6 @@ body {
     padding: 20px;
     background: white;
 }
-
-.card-flex {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gird-gap: 20px;
-} 
 .surveyfunnel-lite-cb-nav-container{
     font-family: 'ApercuPro';
     font-weight: 500;
@@ -498,7 +492,7 @@ body {
                 overflow: auto;
                 padding: 0 40px 20px 40px;
                 height: calc(100vh - 180px);
-				.modalComponentPrivacyPolicy {
+				.modalComponentPrivacyPolicy, .showScoreOnResultPage {
 					label {
 						cursor: pointer;
 						width: 50px;
@@ -951,6 +945,6 @@ body {
 	.tab-list {
 		max-height: calc(100vh - 300px);
 		overflow: auto;
-		opacity: 0.9;
+		background-color: rgba(255,255,255,0.84) !important;
 	}
 }

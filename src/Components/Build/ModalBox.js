@@ -16,6 +16,7 @@ import { DesignContext } from "../Context/DesignContext";
 
 export default function ModalBox() {
     const { showModal, currentElement } = useContext(ModalContext);
+	const { type, List } = useContext(BuildContext);
     const designCon = useContext( DesignContext );
     const childRef = React.createRef();
 
@@ -24,7 +25,9 @@ export default function ModalBox() {
             currentElement,
             ref: childRef,
             saveToList,
-            designCon
+            designCon,
+			type,
+			List
         }
         switch (currentElement.componentName) {
             case "CoverPage":

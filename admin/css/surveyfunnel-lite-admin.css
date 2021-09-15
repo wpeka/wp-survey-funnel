@@ -632,3 +632,11 @@
 .surveyfunnel-lite-tooltip:hover .surveyfunnel-lite-tooltiptext {
 	visibility: visible;
 }
+
+.tooltip-disabled .surveyfunnel-lite-tooltiptext {
+	width: max-content;
+}
+
+.tooltip-disabled a {
+	cursor: not-allowed;
+}

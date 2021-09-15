@@ -4,8 +4,10 @@ import { useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { ModalContext } from "../Context/ModalContext";
 
+const { applyFilters } = wp.hooks;
+
 export default function (props) {
-	const { deleteItemInList, moveCard } = useContext(BuildContext);
+	const { deleteItemInList, moveCard, type } = useContext(BuildContext);
 
     const ref = useRef(null);
     const { id, text, index, item } = props;
@@ -89,6 +91,7 @@ export default function (props) {
             </div>
 
             <div className="card-flex">
+				{item.type === 'RESULT_ELEMENTS' && applyFilters( 'scoringLogicCardFilter', '', item, type )}
                 <button className="surveyfunnel-lite-cardBox-btn" onClick={editCard}><img src={require('./BuildImages/pencil.png')}></img></button>
                 <button className="surveyfunnel-lite-cardBox-btn" onClick={deleteCard}><img src={require('./BuildImages/delete-icon.png')}></img></button>
             </div>

@@ -166,6 +166,10 @@ class Surveyfunnel_Lite_Public {
 			}
 		}
 
+		$survey_type = get_post_meta( $atts['id'], 'surveyfunnel-lite-type' );
+
+		
+
 		$defaults  = Surveyfunnel_Lite_Admin::surveyfunnel_lite_get_default_save_array();
 		$meta_data = get_post_meta( $atts['id'], 'surveyfunnel-lite-data', true );
 		$meta_data = wp_parse_args( $meta_data, $defaults );
@@ -186,6 +190,7 @@ class Surveyfunnel_Lite_Public {
 			'userLocalID'     => $unique_id,
 			'styleSurveyLink' => SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css',
 			'type'            => $atts['type'],
+			'surveyType'      => get_post_meta( $atts['id'], 'surveyfunnel-lite-type', true ),
 			'width'           => $atts['width'],
 			'height'          => $atts['height'],
 		);
@@ -196,12 +201,12 @@ class Surveyfunnel_Lite_Public {
 		} else {
 			$data['designImageUrl'] = null;
 		}
-		
-		$configure_data =  $atts['type'] === 'popup' ? $data['share'] : '';
-		$data = wp_json_encode( $data );
-		$script_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.bundle.js';
-		$style_string  = plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-public.css';
-		$hooks_string = get_site_url() . '/wp-includes/js/dist/hooks.js?ver=' . time();
+
+		$configure_data = $atts['type'] === 'popup' ? $data['share'] : '';
+		$data           = wp_json_encode( $data );
+		$script_string  = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.bundle.js';
+		$style_string   = plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-public.css';
+		$hooks_string   = get_site_url() . '/wp-includes/js/dist/hooks.js?ver=' . time();
 		wp_enqueue_style( $this->plugin_name . '-public' );
 		$survey_style_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css';
 		$pro_script_string = '';

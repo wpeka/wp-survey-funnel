@@ -13,10 +13,25 @@ function validateEmail(email) {
 
 const currentlyPreviewing = true;
 
+let __defaultResultScreen = [{
+	title: 'Thank you for your submission',
+	description: 'Complete the survey by click on "Complete Survey" button',
+	id: '__defaultResultScreen',
+	componentName: 'ResultScreen',
+	type: 'RESULT_ELEMENTS',
+	currentlySaved: true,
+}];
+
+let globalTotalScore = {
+	score: 0,
+};
+
+let contentElementsLastIndex = 0;
+
 let initialState = [];
 
 export default function DesignPreview() {
-    const { List } = useContext(BuildContext);
+    const { List, type: surveyType } = useContext(BuildContext);
     const designCon = useContext(DesignContext);
     const [currentTab, setCurrentTab] = useState(0);
     const [tabCount, setTabCount] = useState(0);
@@ -29,25 +44,42 @@ export default function DesignPreview() {
             ...List.START_ELEMENTS,
             ...List.CONTENT_ELEMENTS,
             ...List.RESULT_ELEMENTS,
+			...__defaultResultScreen
         ]);
         setTabCount(
             List.START_ELEMENTS.length +
 			List.CONTENT_ELEMENTS.length +
-			List.RESULT_ELEMENTS.length
+			List.RESULT_ELEMENTS.length + 1
         );
+		contentElementsLastIndex = List.START_ELEMENTS.length + List.CONTENT_ELEMENTS.length - 1;
         initialState = [
             ...List.START_ELEMENTS,
             ...List.CONTENT_ELEMENTS,
             ...List.RESULT_ELEMENTS,
+			...__defaultResultScreen
         ];
     }, [List]);
 
     const changeCurrentTab = function (num) {
 		// check for validations
-		if ( ! checkValidations( num ) || currentTab + num >= tabCount ) {
+		if ( ! checkValidations(num) || currentTab + num >= tabCount || ( componentList[currentTab].type === 'RESULT_ELEMENTS'  && num !== -1 ) ) {
 			return;
 		}
-        setCurrentTab(currentTab + num);
+		let temp = num;
+		let surveyTypeFlag = false;
+		num = applyFilters( 'changeCurrentTabAsPerSurveyType', num, surveyType, componentList, currentTab, globalTotalScore );
+		if ( num !== temp ) {
+			surveyTypeFlag = true;
+		}
+		if ( surveyTypeFlag && num !== -1 ) {
+			setCurrentTab(num);
+		}
+		else if( componentList[currentTab].type !== 'RESULT_ELEMENTS' ) {
+			setCurrentTab(currentTab + num);
+		}
+		else {
+			setCurrentTab(contentElementsLastIndex);
+		}
     };
 
 	const checkValidations = ( num, disablity = false ) => {
@@ -271,6 +303,7 @@ export default function DesignPreview() {
                             key={item.id}
                         >
                             <div className="tab" tab-componentname={item.componentName}>
+								{applyFilters( 'renderResultScreen', '', item, surveyType, globalTotalScore )}
                                 <h3 className="surveyTitle">{item.title}</h3>
                                 <p className="surveyDescription">{item.description}</p>
                             </div>
@@ -352,7 +385,7 @@ export default function DesignPreview() {
                 return currentTab === 0;
 
             case 'Next':
-                return componentList[currentTab].componentName === 'FormElements' || ! checkValidations( 1, true );
+                return currentTab === tabCount - 1 || componentList[currentTab].componentName === 'FormElements' || ! checkValidations( 1, true ) || componentList[currentTab].type === 'RESULT_ELEMENTS';
         }
     }
 
@@ -430,10 +463,9 @@ export default function DesignPreview() {
                                 &gt;
                             </button>
                             { componentList[currentTab].type === 'RESULT_ELEMENTS'  && <div><button onClick={() => {
-                                let survey = currentTab === tabCount - 1 ? "Complete" : "Restart";
-								setCurrentTab(0);
-							}}>
-								{currentTab === tabCount - 1 ? "Complete Survey" : "Restart"}    
+                                                setCurrentTab(0);
+                                            }}>
+                                                Complete Survey    
 							</button></div>}
                             </span>
                         </div>

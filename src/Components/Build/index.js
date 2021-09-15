@@ -23,7 +23,7 @@ class ModalContainer extends React.Component {
 
 export default function Build() {
 
-	const { saveData, title } = useContext(BuildContext);
+	const { saveData, title, type } = useContext(BuildContext);
 	const { setCurrentElement, setShowModal } = useContext( ModalContext );
 	
 	const changeTitle = () => {
@@ -81,7 +81,7 @@ export default function Build() {
 					<h2>{title?title:'no name'}</h2>
 					<button className="surveyfunnel-lite-build-content-title-edit" type="button" onClick={changeTitle}><img src={require('./BuildImages/pencil.png')}></img></button>
 					<div>
-						<p>basic</p>
+						<p className={type}>{type}</p>
 					</div>
 				</div>
 				{dropBoard.map(function( ele, i ) {

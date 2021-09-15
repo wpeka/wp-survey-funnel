@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import ModalContentRight from '../../../HelperComponents/ModalContentRight';
 import { convertToRgbaCSS } from "../../../HelperComponents/HelperFunctions";
 import { CloseModal } from '../../../HelperComponents/CloseModalPopUp';
+const { applyFilters } = wp.hooks;
 
 export const Choices = React.memo(
     class extends Component {
         state = {
             title: "",
             description: "",
-            answers: [{ name: "", checked: false }],
+            answers: [{ name: "", checked: false, ...applyFilters( 'choicesState', {},this.props.type ) }],
             value: '',
         };
 
@@ -27,7 +28,7 @@ export const Choices = React.memo(
 
         handleAddAnswer = () => {
             this.setState({
-                answers: this.state.answers.concat([{ name: "", checked: false }]),
+                answers: this.state.answers.concat([{ name: "", checked: false, ...applyFilters( 'choicesState', {},this.props.type ) }]),
             });
         };
 
@@ -37,10 +38,10 @@ export const Choices = React.memo(
             });
         };
 
-        handleAnswerNameChange = (idx) => (evt) => {
+        handleAnswerChange = (idx, key) => (evt) => {
             const newAnswers = this.state.answers.map((answer, sidx) => {
                 if (idx !== sidx) return answer;
-                return { ...answer, name: evt.target.value };
+                return { ...answer, [key]: evt.target.value };
             });
 
             this.setState({ answers: newAnswers });
@@ -70,8 +71,8 @@ export const Choices = React.memo(
 
         render() {
             const { currentElement } = this.props;
-            const { designCon } = this.props;
-            return (
+            const { designCon, type } = this.props;
+            return (	
                 <>
                     <div className="modalOverlay">
                         <div className="modalContent-navbar">
@@ -113,10 +114,12 @@ export const Choices = React.memo(
                                                     idx + 1
                                                 }`}
                                                 value={answer.name}
-                                                onChange={this.handleAnswerNameChange(
-                                                    idx
+                                                onChange={this.handleAnswerChange(
+                                                    idx,
+													'name'
                                                 )}
                                             />
+											{applyFilters('answersLeftBoxes', '', type, answer, this.handleAnswerChange, idx)}
                                             <button
                                                 type="button"
                                                 onClick={this.handleRemoveAnswer(
