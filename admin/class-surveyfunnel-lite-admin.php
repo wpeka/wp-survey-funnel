@@ -249,9 +249,9 @@ class Surveyfunnel_Lite_Admin {
 			'can_export'          => true,
 			'has_archive'         => false,
 			'exclude_from_search' => true,
-			'publicly_queryable'  => false,
+			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
-			'show_in_rest'        => false,
+			'show_in_rest'        => true,
 		);
 		register_post_type( 'wpsf-survey', $args );
 	}
@@ -345,7 +345,7 @@ class Surveyfunnel_Lite_Admin {
 		wp_register_script(
 			$this->plugin_name . '-main',
 			SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/index.bundle.js',
-			array( 'wp-i18n' ),
+			array( 'wp-i18n', 'wp-hooks' ),
 			time(),
 			true
 		);
@@ -365,6 +365,7 @@ class Surveyfunnel_Lite_Admin {
 				<input type="hidden" id="ajaxSecurity" value="<?php echo esc_attr( wp_create_nonce( 'surveyfunnel-lite-security' ) ); ?>">
 				<input type="hidden" id="dashboardLink" value="<?php echo esc_url( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard' ); ?>">
 				<input type="hidden" id="exportCSVAction" value="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>?action=export_csv">
+				<?php do_action( 'surveyfunnel_lite_survey_page_html' ); ?>
 				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
 			</body>
 			</html>
@@ -737,11 +738,11 @@ class Surveyfunnel_Lite_Admin {
 			return;
 		}
 
-		$is_pro = get_option( 'wpadcenter_pro_active' );
+		$is_pro = get_option( 'surveyfunnel_pro_active' );
 		if ( $is_pro ) {
-			$support_url = '#';
+			$support_url = 'https://club.wpeka.com/my-account/orders/?utm_source=surveyfunnel&utm_medium=help-mascot&utm_campaign=link&utm_content=support';
 		} else {
-			$support_url = '#';
+			$support_url = 'https://wordpress.org/support/plugin/surveyfunnel-lite/';
 		}
 
 		$return_array = array(
@@ -751,7 +752,7 @@ class Surveyfunnel_Lite_Admin {
 				'documentation_text' => __( 'Documentation', 'surveyfunnel' ),
 				'documentation_url'  => 'https://docs.wpeka.com/survey-funnel/v/master/',
 				'faq_text'           => __( 'FAQ', 'surveyfunnel' ),
-				'faq_url'            => 'https://docs.wpeka.com/survey-funnel/v/master/faq',
+				'faq_url'            => 'https://docs.wpeka.com/survey-funnel/v/master/faqs',
 				'upgrade_text'       => __( 'Upgrade to Pro &raquo;', 'surveyfunnel' ),
 				'upgrade_url'        => 'https://club.wpeka.com/product/survey-funnel/?utm_source=survey-funnel&utm_medium=help-mascot&utm_campaign=link&utm_content=upgrade-to-pro',
 			),
@@ -812,13 +813,15 @@ class Surveyfunnel_Lite_Admin {
 	/**
 	 * Ajax: get posts and pages for async select.
 	 */
-	public function surveyfunnel_lite_get_posts_pages() {
+	public function surveyfunnel_lite_get_posts_pages( $flag = false ) {
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
 		}
+
+		$flag = isset( $_POST['links'] ) ? true : false;
 
 		$args = array(
 			'post_type'     => 'post',
@@ -834,7 +837,11 @@ class Surveyfunnel_Lite_Admin {
 		foreach ( $posts as $post ) {
 			$obj        = new stdClass();
 			$obj->label = $post->post_title;
-			$obj->value = $post->ID;
+			if ( $flag ) {
+				$obj->value = get_permalink( $post->ID );
+			} else {
+				$obj->value = $post->ID;
+			}
 			array_push( $post_object->options, $obj );
 		}
 
@@ -852,7 +859,11 @@ class Surveyfunnel_Lite_Admin {
 		foreach ( $pages as $page ) {
 			$obj        = new stdClass();
 			$obj->label = $page->post_title;
-			$obj->value = $page->ID;
+			if ( $flag ) {
+				$obj->value = get_permalink( $page->ID );
+			} else {
+				$obj->value = $page->ID;
+			}
 			array_push( $page_object->options, $obj );
 		}
 
@@ -861,5 +872,106 @@ class Surveyfunnel_Lite_Admin {
 		wp_send_json_success( $data );
 		wp_die();
 	}
+
+	/**
+	 * Registers gutenberg block for surveys.
+	 *
+	 * @since 1.0.0
+	 */
+	public function surveyfunnel_lite_register_gutenberg_blocks() {
+
+		wp_register_script(
+			'surveyfunnel-lite-gutenberg-single-survey',
+			plugin_dir_url( __DIR__ ) . 'admin/js/gutenberg-blocks/surveyfunnel-lite-gutenberg-singlesurvey.js',
+			array( 'wp-blocks', 'wp-api-fetch', 'wp-components', 'wp-i18n' ),
+			$this->version,
+			false
+		);
+		if ( function_exists( 'register_block_type' ) ) {
+			register_block_type(
+				'surveyfunnel/single-survey',
+				array(
+					'editor_script'   => 'surveyfunnel-lite-gutenberg-single-survey',
+					'attributes'      => array(
+						'survey_id'            => array(
+							'type' => 'number',
+						),
+						'survey_name'          => array(
+							'type' => 'string',
+						),
+						'survey_embed_type'    => array(
+							'type' => 'string',
+						),
+						'survey_custom_width'  => array(
+							'type' => 'string',
+						),
+						'survey_custom_height' => array(
+							'type' => 'string',
+						),
+					),
+					'render_callback' => array( $this, 'surveyfunnel_lite_gutenberg_display_single_survey' ),
+				)
+			);
+		}
+	}
+
+	/**
+	 * Display surveys added by gutenberg block.
+	 *
+	 * @param array $attributes survey attributes.
+	 */
+	public function surveyfunnel_lite_gutenberg_display_single_survey( $attributes ) {
+		$survey_atts = array(
+			'id'     => 0,
+			'type'   => 'responsive',
+			'width'  => '100%',
+			'height' => '700px',
+		);
+		$shortcode   = '[surveyfunnel_lite_survey';
+
+		if ( isset( $attributes['survey_id'] ) ) {
+			$survey_atts['id'] = $attributes['survey_id'];
+		}
+		$shortcode .= ' id="' . $survey_atts['id'] . '"';
+
+		if ( isset( $attributes['survey_embed_type'] ) ) {
+			$survey_atts['type'] = $attributes['survey_embed_type'];
+		}
+		$shortcode .= ' type="' . $survey_atts['type'] . '"';
+
+		if ( isset( $attributes['survey_custom_width'] ) ) {
+			$survey_atts['width'] = $attributes['survey_custom_width'];
+		}
+		$shortcode .= ' width="' . $survey_atts['width'] . '"';
+
+		if ( isset( $attributes['survey_custom_height'] ) ) {
+			$survey_atts['height'] = $attributes['survey_custom_height'];
+		}
+		$shortcode .= ' height="' . $survey_atts['height'] . '"';
+
+		$shortcode .= ']';
+		return $shortcode;
+	}
+
+	/**
+	 * Registers gutenberg block categories.
+	 *
+	 * @param array $categories contains categories of gutenberg block.
+	 *
+	 * @since 1.0.0
+	 */
+	public function surveyfunnel_lite_gutenberg_block_categories( $categories ) {
+
+		return array_merge(
+			$categories,
+			array(
+				array(
+					'slug'  => 'surveyfunnel-lite',
+					'title' => __( 'SurveyFunnel', 'surveyfunnel' ),
+				),
+			)
+		);
+	}
+
 
 }

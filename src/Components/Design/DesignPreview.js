@@ -2,7 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { BuildContext } from "../Context/BuildContext";
 import fetchData from "../../HelperComponents/fetchData";
 import { DesignContext } from "../Context/DesignContext";
+import { ConfigureContext } from "../Context/ConfigureContext";
 import { convertToRgbaCSS, designBackground } from "../../HelperComponents/HelperFunctions";
+const { applyFilters } = wp.hooks;
 
 function validateEmail(email) {
 	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -20,6 +22,7 @@ export default function DesignPreview() {
     const [tabCount, setTabCount] = useState(0);
     const [componentList, setComponentList] = useState([]);
 	const [error, setError] = useState([]);
+	const { proSettings } = useContext(ConfigureContext);
 
     useEffect(() => {
         setComponentList([
@@ -247,7 +250,8 @@ export default function DesignPreview() {
                             <div className="tab" tab-componentname={item.componentName}>
                                 <h3 className="surveyTitle">{item.title}</h3>
                                 <p className="surveyDescription">{item.description}</p>
-                                <button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
+								{applyFilters( 'renderPrivacyPolicy', '', item, proSettings, require('../Build/BuildImages/checkmark.png') )}                        
+								<button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
                                     changeCurrentTab(1);
                                 }}>
                                     {item.button}
