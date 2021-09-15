@@ -110,9 +110,17 @@ Yes, you can place surveys on specific posts or pages that you think are suitabl
 10. Reports Tab
 
 == Changelog ==
+= 1.0.1 =
+* Feature : Users can use Gutenberg block to display survey on the frontend.
+* Feature : Users can use shortcode to display custom size survey on the frontend.
+
 = 1.0.0 =
 * Initial release
 
 == Upgrade Notice ==
+= 1.0.1 =
+* Feature : Users can use Gutenberg block to display survey on the frontend.
+* Feature : Users can use shortcode to display custom size survey on the frontend.
+
 = 1.0.0 =
 * Initial release
