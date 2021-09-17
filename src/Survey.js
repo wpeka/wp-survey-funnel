@@ -15,7 +15,7 @@ data = {
 
 let __defaultResultScreen = [{
 	title: 'Thank you for your submission',
-	description: 'Complete the survey by click on "Complete Survey" button',
+	description: 'Click on the “Complete Survey” button to finish the survey',
 	id: '__defaultResultScreen',
 	componentName: 'ResultScreen',
 	type: 'RESULT_ELEMENTS',
