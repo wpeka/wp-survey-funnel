@@ -65,31 +65,10 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 							<?php esc_html_e( 'Create a linear survey. Respondents receive results when they complete the survey.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
-					<div class="surveyfunnel-lite-modal-content-card  <?php echo $disabled ? 'surveyfunnel-lite-modal-content-card-disabled' : 'surveyfunnel-lite-modal-content-card-disabled'; ?>">
-						<div class="card-image">
-						<div class="surveyfunnel-lite-content-type-radios">
-    						<input <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-outcome-radio" type="radio" name="content-type" value="outcome">
-							<label for="surveyfunnel-lite-outcome-radio">
-								<span>
-									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
-								</span>
-							</label>
-						</div>
-						<div class="surveyfunnel-lite-content-type-icon" >
-							<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/outcome-logic.png' ); ?>">
-						</div>
-						</div>
-						<div class="card-title">
-							<?php esc_html_e( 'Outcome Logic', 'surveyfunnel' ); ?>
-						</div>
-						<div class="card-text">
-							<?php esc_html_e( 'Map answers to outcomes. Respondents receive results based on the outcome with the most answers selected.', 'surveyfunnel' ); ?>
-						</div>
-					</div>
 					<div class="surveyfunnel-lite-modal-content-card  <?php echo $disabled ? 'surveyfunnel-lite-modal-content-card-disabled' : ''; ?>">
 						<div class="card-image">
 						<div class="surveyfunnel-lite-content-type-radios">
-    						<input <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-scoring-radio" type="radio" name="content-type" value="scoring">
+							<input <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-scoring-radio" type="radio" name="content-type" value="scoring">
 							<label for="surveyfunnel-lite-scoring-radio">
 								<span>
 									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
@@ -105,6 +84,27 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 						</div>
 						<div class="card-text">
 							<?php esc_html_e( 'Assign a score value to each answer. Respondents receive results based on their score range.', 'surveyfunnel' ); ?>
+						</div>
+					</div>
+					<div class="surveyfunnel-lite-modal-content-card  <?php echo $disabled ? 'surveyfunnel-lite-modal-content-card-disabled' : 'surveyfunnel-lite-modal-content-card-disabled'; ?>">
+						<div class="card-image">
+						<div class="surveyfunnel-lite-content-type-radios">
+							<input <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-outcome-radio" type="radio" name="content-type" value="outcome">
+							<label for="surveyfunnel-lite-outcome-radio">
+								<span>
+									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
+								</span>
+							</label>
+						</div>
+						<div class="surveyfunnel-lite-content-type-icon" >
+							<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/outcome-logic.png' ); ?>">
+						</div>
+						</div>
+						<div class="card-title">
+							<?php esc_html_e( 'Outcome Logic', 'surveyfunnel' ); ?>
+						</div>
+						<div class="card-text">
+							<?php esc_html_e( 'Map answers to outcomes. Respondents receive results based on the outcome with the most answers selected.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
 				</div>
@@ -157,10 +157,10 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 				<?php if ( is_array( $surveys ) ) : ?>
 					<?php foreach ( $surveys as $survey ) : ?>
 						<?php $data = Surveyfunnel_Lite_Admin::surveyfunnel_lite_get_insights_data( $survey->ID ); ?>
-						<?php $url  = surveyfunnel_lite_get_background_image( $survey->ID ); ?>
-						<?php $dis  = '' !== $disabled && get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) !== 'basic' ? true : false; ?>
-						<?php $tooltip_text = $dis ? __( 'Please activate the Pro Version to access this survey', 'surveyfunnel' ) : '' ?>
-						<?php $tooltip_class = $dis ? 'tooltip-disabled' : '' ?>
+						<?php $url = surveyfunnel_lite_get_background_image( $survey->ID ); ?>
+						<?php $dis = '' !== $disabled && get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) !== 'basic' ? true : false; ?>
+						<?php $tooltip_text = $dis ? __( 'Please activate the Pro Version to access this survey', 'surveyfunnel' ) : ''; ?>
+						<?php $tooltip_class = $dis ? 'tooltip-disabled' : ''; ?>
 						<div class="surveyfunnel-lite-content" data-filter-item data-filter-type="<?php echo esc_html( get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) ); ?>" data-filter-name="<?php echo esc_html( strtolower( $survey->post_title ) ); ?>">
 							<div class="surveyfunnel-lite-image-box">
 								<div class="surveyfunnel-lite-image">
