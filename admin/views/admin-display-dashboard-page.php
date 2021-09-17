@@ -89,7 +89,7 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 					<div class="surveyfunnel-lite-modal-content-card  <?php echo $disabled ? 'surveyfunnel-lite-modal-content-card-disabled' : 'surveyfunnel-lite-modal-content-card-disabled'; ?>">
 						<div class="card-image">
 						<div class="surveyfunnel-lite-content-type-radios">
-							<input <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-outcome-radio" type="radio" name="content-type" value="outcome">
+							<input <?php echo esc_attr( $disabled ); ?> disabled="disabled" id="surveyfunnel-lite-outcome-radio" type="radio" name="content-type" value="outcome">
 							<label for="surveyfunnel-lite-outcome-radio">
 								<span>
 									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
