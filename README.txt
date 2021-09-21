@@ -1,7 +1,7 @@
 === SurveyFunnel - Survey Plugin for WordPress ===
 Contributors: WPEka Club
 Donate link: https://www.surveyfunnel.com/
-Tags: surveys, survey tool, questionnaire, custom form, form builder, form maker, forms, lead generation, evaluation.
+Tags: lead quizzes, survey form, feedback form, form builder, forms builder, mailchimp, popup survey, free survey, online survey, survey funnel, poll, quiz, survey tool, questionnaire, custom form, form builder, form maker, forms, lead generation, scoring, getresponse, widget, survey block, quiz widget, quiz block, email form
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 7.0
@@ -9,19 +9,27 @@ Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create and embed high-conversion survey forms for generating leads. Design survey forms with drag & drop builder and turn your WordPress site into a lead generation funnel.
+Boost your leads using quiz / survey lead techniques . Drag & drop form builder to launch quizzes within minutes.
 
 == Description ==
 
-SurveyFunnel is an easy-to-use survey plugin for WordPress that lets you create interesting and engaging survey forms with drag & drop options without any coding. You can create surveys to get insights about your audience, identify & segment your leads, and increase lead conversions with personalized marketing.
+= WordPress Survey Plugin =
 
-This WordPress survey plugin offers many features like drag & drop survey builder, custom display pages, long & short answers, radio buttons & checkboxes, opt-in forms, custom results pages, and many more. [Read More](https://www.surveyfunnel.com/surveyfunnel-features/)
+We believe that the best way to increase leads is to learn about your customer. That's why we built <a href="https://surveyfunnel.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin" rel="friend" title="SurveyFunnel">SurveyFunnel</a>, a drag & drop WordPress survey builder that's EASY and POWERFUL.
+
+SurveyFunnel Methods are used by top marketers to increase Conversion Rates by 450%. We have built the SurveyFunnel plugin for marketers to create effective lead quizzes on your site within minutes.
+
+To kick-start your lead generation journey, the plugin offers powerful features like drag & drop survey builder, wide variety of types of questions & answers, design customization, opt-in forms, custom thank you pages, and more. [Read More Features](https://www.surveyfunnel.com/features/)
 
 All these features ensure that you gain higher engagement rates from your website users and generate more leads.
 
-The plugin is designed to make it super easy for you to create engaging surveys for your audience within minutes.
+The SurveyFunnel plugin is designed to make it super easy for you to create lead generating survey for your audience within minutes.
 
-== Features ==
+> <strong>SurveyFunnel Pro</strong><br />
+> This plugin is the lite version of the SurveyFunnel Pro plugin that comes with all the lead generating quiz features you will ever need including conditional logic, scoring logic, multiple result pages, CRM integrations, file uploads, survey templates, and tons more. <a href="https://surveyfunnel.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin" rel="friend" title="SurveyFunnel">Click here to purchase the best premium WordPress survey / quiz funnel plugin now!</a>
+
+= Drag & Drop Survey / Quiz Builder =
+As a marketer, you need a fast and easy to use survey form builder. That's why we built SurveyFunnel with latest frameworks which allows you to create effective lead quizzes in minutes. By using our modern <a href="https://www.surveyfunnel.com/features/drag-drop-form-builder/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin" rel="friend">drag and drop online form builder</a> and guided wizard, you can easily add questions, rearrange them, build an optin-form and start generating leads within a few minutes.
 
 SurveyFunnel offers you a wide range of features you need to engage your audience, learn about them and convert them into quality leads:
 
@@ -42,12 +50,11 @@ SurveyFunnel is a part of the premium quality plugins family by WPeka. Here are 
 
 - Over 10 years in the WordPress plugins and themes space
 - Trusted and actively used by more than 20,000+ customers
-- Featured on [AppSumo](https://appsumo.com/products/marketplace-wp-adcenter/)
-- Featured on [WPLift](https://wplift.com/wordpress-plugins/plugin-directory/wp-adcenter)
-- Featured on [WPMayor](https://wpmayor.com/ad-management-in-wordpress-comparing-four-top-plugins/)
-- Plugins with over 30,000+ active installs
+- Featured on WPLift
+- Featured on WPMayor
+- Plugins with over 500K downloads
 
-WPeka offers premium WordPress Plugins. The team is backed by experts in the WordPress domain with a proven track record of creating top-notch products.
+WPeka offers premium WordPress Plugins. The team is backed by experts in the WordPress domain with a proven track record of creating quality products & professional support.
 
 == Attract & Engage ==
 
