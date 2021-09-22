@@ -53,7 +53,7 @@ class Test_Surveyfunnel_Lite extends WP_UnitTestCase {
 	 */
 	public function test_get_version() {
 		$version = self::$surveyfunnel_lite->get_version();
-		$this->assertSame( '1.0.1', $version );
+		$this->assertSame( '1.0.2', $version );
 	}
 
 	/**

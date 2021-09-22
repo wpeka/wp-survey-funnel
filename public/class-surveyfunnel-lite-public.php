@@ -193,6 +193,7 @@ class Surveyfunnel_Lite_Public {
 			'surveyType'      => get_post_meta( $atts['id'], 'surveyfunnel-lite-type', true ),
 			'width'           => $atts['width'],
 			'height'          => $atts['height'],
+			'share'           => $meta_data['share'],
 		);
 
 		$design_image_id = get_post_meta( $atts['id'], 'surveyfunnel-lite-design-background', true );
