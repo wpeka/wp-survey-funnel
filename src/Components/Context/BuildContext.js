@@ -10,7 +10,8 @@ export class BuildContextProvider extends React.Component {
 			[ItemTypes.CONTENT_ELEMENTS]: [],
             [ItemTypes.RESULT_ELEMENTS]: [],
 		},
-        title: ''
+        title: '',
+		type: ''
     };
 
     componentDidMount() {
@@ -27,15 +28,19 @@ export class BuildContextProvider extends React.Component {
             if ( data.data.build !== '' ) {
                 let build = JSON.parse(data.data.build);
                 let title = data.data.post_title;
+				let type  = data.data.survey_type;
                 this.setState( {
                     ...build,
-                   title
+                   title,
+				   type
                 } );
             }
             else {
                 let title = data.data.post_title;
+				let type  = data.data.survey_type;
                 this.setState( {
-                   title
+                   title,
+				   type
                 } );
             }
         })

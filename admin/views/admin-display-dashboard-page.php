@@ -15,7 +15,9 @@ $args = array(
 
 $surveys = get_posts( $args );
 
-$disabled = Surveyfunnel_Lite::check_pro_activated() ? '' : 'disabled="disabled"';
+$flag = apply_filters( 'surveyfunnel_pro_activated', false );
+
+$disabled = $flag ? '' : 'disabled="disabled"';
 
 $url_to_redirect = Surveyfunnel_Lite_Admin::surveyfunnel_lite_get_setup_page_url();
 
@@ -66,28 +68,7 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 					<div class="surveyfunnel-lite-modal-content-card  <?php echo $disabled ? 'surveyfunnel-lite-modal-content-card-disabled' : ''; ?>">
 						<div class="card-image">
 						<div class="surveyfunnel-lite-content-type-radios">
-    						<input <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-outcome-radio" type="radio" name="content-type" value="outcome">
-							<label for="surveyfunnel-lite-outcome-radio">
-								<span>
-									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
-								</span>
-							</label>
-						</div>
-						<div class="surveyfunnel-lite-content-type-icon" >
-							<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/outcome-logic.png' ); ?>">
-						</div>
-						</div>
-						<div class="card-title">
-							<?php esc_html_e( 'Outcome Logic', 'surveyfunnel' ); ?>
-						</div>
-						<div class="card-text">
-							<?php esc_html_e( 'Map answers to outcomes. Respondents receive results based on the outcome with the most answers selected.', 'surveyfunnel' ); ?>
-						</div>
-					</div>
-					<div class="surveyfunnel-lite-modal-content-card  <?php echo $disabled ? 'surveyfunnel-lite-modal-content-card-disabled' : ''; ?>">
-						<div class="card-image">
-						<div class="surveyfunnel-lite-content-type-radios">
-    						<input <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-scoring-radio" type="radio" name="content-type" value="scoring">
+							<input <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-scoring-radio" type="radio" name="content-type" value="scoring">
 							<label for="surveyfunnel-lite-scoring-radio">
 								<span>
 									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
@@ -103,6 +84,27 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 						</div>
 						<div class="card-text">
 							<?php esc_html_e( 'Assign a score value to each answer. Respondents receive results based on their score range.', 'surveyfunnel' ); ?>
+						</div>
+					</div>
+					<div class="surveyfunnel-lite-modal-content-card  <?php echo $disabled ? 'surveyfunnel-lite-modal-content-card-disabled' : 'surveyfunnel-lite-modal-content-card-disabled'; ?>">
+						<div class="card-image">
+						<div class="surveyfunnel-lite-content-type-radios">
+							<input <?php echo esc_attr( $disabled ); ?> disabled="disabled" id="surveyfunnel-lite-outcome-radio" type="radio" name="content-type" value="outcome">
+							<label for="surveyfunnel-lite-outcome-radio">
+								<span>
+									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
+								</span>
+							</label>
+						</div>
+						<div class="surveyfunnel-lite-content-type-icon" >
+							<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/outcome-logic.png' ); ?>">
+						</div>
+						</div>
+						<div class="card-title">
+							<?php esc_html_e( 'Outcome Logic', 'surveyfunnel' ); ?>
+						</div>
+						<div class="card-text">
+							<?php esc_html_e( 'Map answers to outcomes. Respondents receive results based on the outcome with the most answers selected.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
 				</div>
@@ -131,11 +133,12 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 				</div>
 				<div class="surveyfunnel-lite-filter surveyfunnel-lite-right">
 					<label for="surveyfunnel-lite-filter"><?php esc_html_e( 'Filter By:', 'surveyfunnel' ); ?></label>
-					<select <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-filter">
+					<select filter-search <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-filter">
 
 						<option value="all-types"><?php esc_html_e( 'All Types', 'surveyfunnel' ); ?></option>
-						<option value="all-types"><?php esc_html_e( 'Scoring Logic', 'surveyfunnel' ); ?></option>
-						<option value="all-types"><?php esc_html_e( 'Outcome Logic', 'surveyfunnel' ); ?></option>
+						<option value="basic-survey"><?php esc_html_e( 'Basic Survey', 'surveyfunnel' ); ?></option>
+						<option value="scoring-logic"><?php esc_html_e( 'Scoring Logic', 'surveyfunnel' ); ?></option>
+						<option value="outcome-logic"><?php esc_html_e( 'Outcome Logic', 'surveyfunnel' ); ?></option>	
 					</select>
 				</div>
 				<div class="surveyfunnel-lite-search surveyfunnel-lite-right">
@@ -154,8 +157,11 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 				<?php if ( is_array( $surveys ) ) : ?>
 					<?php foreach ( $surveys as $survey ) : ?>
 						<?php $data = Surveyfunnel_Lite_Admin::surveyfunnel_lite_get_insights_data( $survey->ID ); ?>
-						<?php $url  = surveyfunnel_lite_get_background_image( $survey->ID ); ?>
-						<div class="surveyfunnel-lite-content" data-filter-item data-filter-name="<?php echo esc_html( strtolower( $survey->post_title ) ); ?>">
+						<?php $url = surveyfunnel_lite_get_background_image( $survey->ID ); ?>
+						<?php $dis = '' !== $disabled && get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) !== 'basic' ? true : false; ?>
+						<?php $tooltip_text = $dis ? __( 'Please activate the Pro Version to access this survey', 'surveyfunnel' ) : ''; ?>
+						<?php $tooltip_class = $dis ? 'tooltip-disabled' : ''; ?>
+						<div class="surveyfunnel-lite-content" data-filter-item data-filter-type="<?php echo esc_html( get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) ); ?>" data-filter-name="<?php echo esc_html( strtolower( $survey->post_title ) ); ?>">
 							<div class="surveyfunnel-lite-image-box">
 								<div class="surveyfunnel-lite-image">
 									<?php if ( $url ) : ?>
@@ -174,36 +180,36 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 											<?php else : ?>
 												<div class="surveyfunnel-lite-badge surveyfunnel-lite-badge-published"><?php echo esc_attr_e( 'Published', 'surveyfunnel' ); ?></div>
 											<?php endif; ?>
-											<div class="--surveyfunnel-lite-flex surveyfunnel-lite-post-icons">
+											<div class="--surveyfunnel-lite-flex surveyfunnel-lite-post-icons <?php echo esc_html( $tooltip_class ); ?>">
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/build' ); ?>">
+													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/build' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/build.png' ); ?>" alt="Build">
 													</a>
-													<span class="surveyfunnel-lite-tooltiptext"><?php esc_html_e( 'Build', 'surveyfunnel' ); ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Build', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/design' ); ?>">
+													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/design' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Design.png' ); ?>" alt="Design">
 													</a>
-													<span class="surveyfunnel-lite-tooltiptext"><?php esc_html_e( 'Design', 'surveyfunnel' ); ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Design', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/configure' ); ?>">
+													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/configure' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Configure.png' ); ?>" alt="Configure">
 													</a>
-													<span class="surveyfunnel-lite-tooltiptext"><?php esc_html_e( 'Configure', 'surveyfunnel' ); ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Configure', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/share' ); ?>">
+													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/share' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Share.png' ); ?>" alt="Configure">
 													</a>
-													<span class="surveyfunnel-lite-tooltiptext"><?php esc_html_e( 'Deploy', 'surveyfunnel' ); ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Deploy', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo esc_url( $url_to_redirect . $survey->ID . '#/reports' ); ?>">
+													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/reports' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Reports.png' ); ?>" alt="Configure">
 													</a>
-													<span class="surveyfunnel-lite-tooltiptext"><?php esc_html_e( 'Reports', 'surveyfunnel' ); ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Reports', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
 													<div class="icon deleteIcon" delete-id="<?php echo intval( $survey->ID ); ?>">

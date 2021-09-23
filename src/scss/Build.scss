@@ -1,2 +1,21 @@
+.answers {
+	display: flex;
 
+	input {
+		margin-right: 17px;
+	}
+
+	button {
+		margin-top: 17px;
+	}
+
+	input[type=text] {
+		min-width: 180px;
+	}
+
+	input[type=number] {
+		max-width: 140px;
+		min-width: 80px;
+	}
+}
 
