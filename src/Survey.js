@@ -811,14 +811,18 @@ function Survey() {
                         return;
                     }
                     if ( data.type === 'popup' ) {
-                        setCookie('surveyfunnel-lite-completed', wpsfSurveyCookie + ',' + data.post_id , 28625 );
+						if ( shareSettings.popup.behaviourOptions.frequencyOptions.dontShowAgain ) {
+							setCookie('surveyfunnel-lite-completed', wpsfSurveyCookie + ',' + data.post_id , 28625 );
+						}
                     }
                     else
                         setCookie('surveyfunnel-lite-completed', wpsfSurveyCookie + ',' + data.post_id , 1);
                 }
                 else {
                     if ( data.type === 'popup' ) {
-                        setCookie('surveyfunnel-lite-completed', data.post_id , 28625 );
+                        if ( shareSettings.popup.behaviourOptions.frequencyOptions.dontShowAgain ) {
+							setCookie('surveyfunnel-lite-completed', wpsfSurveyCookie + ',' + data.post_id , 28625 );
+						}
                     }
                     else
                         setCookie('surveyfunnel-lite-completed', data.post_id , 1);
