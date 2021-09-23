@@ -826,14 +826,14 @@ class Surveyfunnel_Lite_Admin {
 		$flag = isset( $_POST['links'] ) ? true : false;
 
 		$args = array(
-			'post_type'     => 'post',
-			'post_status'   => 'publish',
-			'numberofposts' => -1,
+			'post_type'   => 'post',
+			'post_status' => 'publish',
+			'numberposts' => -1,
 		);
 
-		$posts                 = get_posts( $args );
-		$post_object           = new stdClass();
-		$post_object->label    = 'Posts';
+		$posts                = get_posts( $args );
+		$post_object          = new stdClass();
+		$post_object->label   = 'Posts';
 		$post_object->options = array();
 
 		foreach ( $posts as $post ) {
@@ -848,14 +848,14 @@ class Surveyfunnel_Lite_Admin {
 		}
 
 		$args = array(
-			'post_type'     => 'page',
-			'post_status'   => 'publish',
-			'numberofposts' => -1,
+			'post_type'   => 'page',
+			'post_status' => 'publish',
+			'numberposts' => -1,
 		);
 
-		$pages                 = get_posts( $args );
-		$page_object           = new stdClass();
-		$page_object->label    = 'Pages';
+		$pages                = get_posts( $args );
+		$page_object          = new stdClass();
+		$page_object->label   = 'Pages';
 		$page_object->options = array();
 
 		foreach ( $pages as $page ) {
