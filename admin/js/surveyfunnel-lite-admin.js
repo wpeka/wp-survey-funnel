@@ -36,6 +36,13 @@
 			};
 		};
 
+		$('.surveyfunnel-lite-modal-content-card').on('click', function(e) {
+			
+			if(e.target.tagName.toUpperCase() === 'INPUT') return;
+			
+			$(this).find('input[type="radio"]').click();
+		});
+
 		$('#surveyfunnel-lite-modal-submit').on('click', function() {
 			let contentTitle = $('#content-title').val();
 			let contentType = $("input:radio[name ='content-type']:checked").val();

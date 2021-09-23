@@ -3,6 +3,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const defaultScriptConfig = require( '@wordpress/scripts/config/webpack.config' );
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
 
 var main = {
     entry: {
@@ -65,8 +66,10 @@ var main = {
         // Define the filename pattern for CSS.
         new MiniCssExtractPlugin({
             filename: 'survey.css',
-        })
+        }),
+		new ErrorOverlayPlugin(),
     ],
+	devtool: 'cheap-module-source-map', // 'eval' is not supported by error-overlay-webpack-plugin
 }
 
 var gutenbergScript = {

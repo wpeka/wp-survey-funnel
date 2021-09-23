@@ -13,6 +13,19 @@ data = {
 	...surveyData
 }
 
+let __defaultResultScreen = [{
+	title: 'Thank you for your submission',
+	description: 'Click on the “Complete Survey” button to finish the survey',
+	id: '__defaultResultScreen',
+	componentName: 'ResultScreen',
+	type: 'RESULT_ELEMENTS',
+	currentlySaved: true,
+}];
+
+let globalTotalScore = {
+	score: 0,
+};
+
 function validateEmail(email) {
     const re =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -56,6 +69,8 @@ const initialContent =
         <meta name="title" content="${metaTitle}" />
         <meta name="description" content="${metaDescription}" />
     </head><body><div class="frame-root"></div></body></html>`;
+
+let contentElementsLastIndex = 0;
 
 function ShowErrors({error}) {
 	return (
@@ -125,16 +140,19 @@ function Survey() {
             ...List.START_ELEMENTS,
             ...List.CONTENT_ELEMENTS,
             ...List.RESULT_ELEMENTS,
+			...__defaultResultScreen
         ])
         setTabCount(
             List.START_ELEMENTS.length +
                 List.CONTENT_ELEMENTS.length +
-                List.RESULT_ELEMENTS.length
+                List.RESULT_ELEMENTS.length + 1
         )
+		contentElementsLastIndex = List.START_ELEMENTS.length + List.CONTENT_ELEMENTS.length - 1;
         initialState = [
             ...List.START_ELEMENTS,
             ...List.CONTENT_ELEMENTS,
             ...List.RESULT_ELEMENTS,
+			...__defaultResultScreen
         ]
     }, [])
 
@@ -150,9 +168,15 @@ function Survey() {
 
     const changeCurrentTab = function (num) {
         // check for validations
-        if ( ! checkValidations(num) || currentTab + num >= tabCount ) {
+        if ( ! checkValidations(num) || currentTab + num >= tabCount || ( componentList[currentTab].type === 'RESULT_ELEMENTS'  && num !== -1 ) ) {
             return;
         }
+		let temp = num;
+		let surveyTypeFlag = false;
+		num = applyFilters( 'changeCurrentTabAsPerSurveyType', num, data.surveyType, componentList, currentTab, globalTotalScore );
+		if ( num !== temp ) {
+			surveyTypeFlag = true;
+		}
         if (!currentlyPreviewing && num !== -1) {
             let formData = {
                 security: data.ajaxSecurity,
@@ -171,15 +195,24 @@ function Survey() {
             ) {
                 formData.data = JSON.stringify(resultData)
                 fetchData(data.ajaxURL, formData).then((data) => {
-                    setCurrentTab(currentTab + num)
+					if ( surveyTypeFlag ) {
+						setCurrentTab(num);
+					}
+					else {
+						setCurrentTab(currentTab + num)
+					}
                 })
             } else {
                 setCurrentTab(currentTab + num)
             }
             return
         }
-
-        setCurrentTab(currentTab + num)
+		if ( componentList[currentTab].type !== 'RESULT_ELEMENTS' ) {
+			setCurrentTab(currentTab + num);
+		}
+		else {
+			setCurrentTab(contentElementsLastIndex);
+		}
     }
 
     const getResultOfCurrentTab = () => {
@@ -561,6 +594,7 @@ function Survey() {
                                 className="tab"
                                 tab-componentname={item.componentName}
                             >
+								{applyFilters( 'renderResultScreen', '', item, data.surveyType, globalTotalScore )}
                                 <h3 className="surveyTitle">{item.title}</h3>
                                 <p className="surveyDescription">
                                     {item.description}
@@ -728,7 +762,7 @@ function Survey() {
                 return currentTab === 0;
 
             case 'Next':
-                return currentTab === tabCount - 1 || componentList[currentTab].componentName === 'FormElements' || ! checkValidations( 1, true );
+                return currentTab === tabCount - 1 || componentList[currentTab].componentName === 'FormElements' || ! checkValidations( 1, true ) || componentList[currentTab].type === 'RESULT_ELEMENTS';
         }
     }
 
@@ -889,10 +923,9 @@ function Survey() {
                                                 &gt;
                                             </button>
                                             { componentList[currentTab].type === 'RESULT_ELEMENTS'  && <div><button onClick={() => {
-                                                let survey = currentTab === tabCount - 1 ? "Complete" : "Restart";
-                                                restartOrCompleteSurvey(survey);
+                                                restartOrCompleteSurvey("Complete");
                                             }}>
-                                                {currentTab === tabCount - 1 ? "Complete Survey" : "Restart"}    
+                                                Complete Survey    
                                             </button></div>}
                                             </span>
                                         </div>
