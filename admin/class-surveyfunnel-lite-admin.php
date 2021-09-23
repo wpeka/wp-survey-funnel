@@ -445,8 +445,8 @@ class Surveyfunnel_Lite_Admin {
 		$defaults      = $this->surveyfunnel_lite_get_default_save_array();
 		$post_meta     = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data          = wp_parse_args( (array) $post_meta, $defaults );
-		$data['build'] = isset( $_POST['state'] ) ? sanitize_text_field( wp_unslash( $_POST['state'] ) ) : '';
-
+		$data['build'] = str_replace( '\\', '\\\\', json_encode( $data['build'], true ) );
+		$data['build'] = isset( $_POST['state'] ) ? sanitize_text_field( $_POST['state'] ) : '';
 		update_post_meta( $post_id, 'surveyfunnel-lite-data', $data );
 		$post_update = array(
 			'ID'         => $post_id,
