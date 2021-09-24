@@ -227,9 +227,9 @@ registerBlockType('surveyfunnel/single-survey',{
       </Placeholder>):(
         <div className="surveyfunnel-lite-gutenberg-preview-box">
           {props.attributes.survey_id ? 
-            <p style={{fontSize:"18px",fontWeight:"normal"}}>{surveyTypes[props.attributes.survey_embed_type]}{__(' survey has been added. Click on this box to edit. Preview for survey will be available on live or preview page.','surveyfunnel')} </p>
+            <p style={{fontSize:"18px",fontWeight:"normal",margin:"0px"}}>{surveyTypes[props.attributes.survey_embed_type]}{__(' survey has been added. Click on this box to edit. Preview for survey will be available on live or preview page.','surveyfunnel')} </p>
             :
-            <p style={{fontSize:"18px",fontWeight:"normal"}}>{__('No survey selected. Click on this box to edit.','surveyfunnel')}</p>
+            <p style={{fontSize:"18px",fontWeight:"normal",margin:"0px"}}>{__('No survey selected. Click on this box to edit.','surveyfunnel')}</p>
           }
         </div>
 
