@@ -172,8 +172,11 @@ class Surveyfunnel_Lite_Public {
 		}
 
 		$survey_type = get_post_meta( $atts['id'], 'surveyfunnel-lite-type' );
-
-		
+		$flag        = apply_filters( 'surveyfunnel_pro_activated', false );
+		// if pro is not activated and current survey type is scoring or outcome.
+		if ( $survey_type !== 'basic' && ! $flag ) {
+			return '';
+		}
 
 		$defaults  = Surveyfunnel_Lite_Admin::surveyfunnel_lite_get_default_save_array();
 		$meta_data = get_post_meta( $atts['id'], 'surveyfunnel-lite-data', true );
