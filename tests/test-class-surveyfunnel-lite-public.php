@@ -99,6 +99,12 @@ class Test_Surveyfunnel_Lite_Public extends WP_UnitTestCase {
 				'configure' => self::$configure,
 			)
 		);
+
+		update_post_meta(
+			self::$post_ids[0],
+			'surveyfunnel-lite-type',
+			'basic'
+		);
 	}
 
 	/**
