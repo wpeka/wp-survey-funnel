@@ -148,6 +148,11 @@ class Surveyfunnel_Lite_Public {
 		if ( intval( $atts['id'] ) === 0 ) {
 			return '';
 		}
+
+		if ( ! ( is_singular() ) ) {
+			return '';
+		}
+		
 		if ( get_post_status( $atts['id'] ) !== 'publish' ) {
 			return '';
 		}
@@ -216,7 +221,7 @@ class Surveyfunnel_Lite_Public {
 		if ( $atts['type'] === 'custom' ) {
 			$return_string .= '<style>#surveyfunnel-lite-survey-' . $unique_id . ' iframe { max-width: 100%; height: ' . $atts['height'] . '; width: ' . $atts['width'] . ';  }</style>';
 		}
-		$return_string .= '<div class="iframewrapper" post_id="' . $atts['id'] . '" id="surveyfunnel-lite-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script src="' . $hooks_string . '"></script>' . $pro_script_string . '<style>*{margin: 0; padding:0; box-sizing: border-box;}</style><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="surveyfunnel-lite-survey-' . $unique_id . '" style="width: 100vw; height: 100vh;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';
+		$return_string .= '<div class="iframewrapper intrinsic-ignore" post_id="' . $atts['id'] . '" id="surveyfunnel-lite-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script src="' . $hooks_string . '"></script>' . $pro_script_string . '<style>*{margin: 0; padding:0; box-sizing: border-box;}</style><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="surveyfunnel-lite-survey-' . $unique_id . '" style="width: 100vw; height: 100vh;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';
 		return $return_string;
 	}
 
