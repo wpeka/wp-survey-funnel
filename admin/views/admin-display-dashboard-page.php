@@ -112,6 +112,7 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 					<span class="content-info-title"><?php esc_html_e( 'Enter Survey Name', 'surveyfunnel' ); ?></span>
 					<input type="text" id="content-title" placeholder="Enter Title">
 					<button type="submit" id="surveyfunnel-lite-modal-submit">Continue</button>
+					<span id="content-title-warning" class="surveyfunnel-lite-content-title-warning" style="display:none">*<?php esc_html_e( 'Kindly name the survey in order to proceed', 'surveyfunnel' ); ?></span>
 				</div>
 			</div>
 		</div>

@@ -43,8 +43,19 @@
 			$(this).find('input[type="radio"]').click();
 		});
 
+		$('#content-title').on('focus', function() {
+			$('#content-title-warning').css('display','none');
+		});
+
 		$('#surveyfunnel-lite-modal-submit').on('click', function() {
+			
 			let contentTitle = $('#content-title').val();
+
+			if ( ! contentTitle ) {
+				$('#content-title-warning').css('display','block');
+				return;
+			}
+			
 			let contentType = $("input:radio[name ='content-type']:checked").val();
 			// check for validations.
 
