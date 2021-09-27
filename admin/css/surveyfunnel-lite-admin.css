@@ -353,6 +353,11 @@
 	margin-top: 20px;
 }
 
+.surveyfunnel-lite-content-title-warning {
+	color:red;
+	margin-top:5px;
+}
+
 .surveyfunnel-lite-modal-content-card {
 	padding: 4px;
 	background: white;
