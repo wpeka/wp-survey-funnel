@@ -117,6 +117,9 @@ Yes, you can place surveys on specific posts or pages that you think are suitabl
 10. Reports Tab
 
 == Changelog ==
+= 1.0.3 =
+* Update: Added default results page.
+
 = 1.0.2 =
 * Fix : Hot fix for the issue of undefined variable in displaying survey as popup.
 
@@ -128,6 +131,9 @@ Yes, you can place surveys on specific posts or pages that you think are suitabl
 * Initial release
 
 == Upgrade Notice ==
+= 1.0.3 =
+* Update: Added default results page.
+
 = 1.0.2 =
 * Fix : Hot fix for the issue of undefined variable in displaying survey as popup.
 
