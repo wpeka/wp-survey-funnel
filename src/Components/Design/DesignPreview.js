@@ -355,12 +355,12 @@ export default function DesignPreview() {
                                         case 'LastName':
                                         case 'ShortTextAnswer':
                                             return <div key={ele.id + '_' + i + 'key'}>
-                                                <label>{ele.name}</label>
+                                                <label>{ele.name} {ele.required ? '*' : ''}</label>
                                                 <input type="text" id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx} />
                                             </div>
                                         case 'Email':
                                             return <div key={ele.id + '_' + i + 'key'}>
-                                                <label>{ele.name}</label>
+                                                <label>{ele.name} {ele.required ? '*' : ''}</label>
                                                 <input type="email" id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}/>
                                             </div>
                                         case 'LongTextAnswer':

@@ -321,8 +321,6 @@ function Survey() {
                     switch (item.componentName) {
                         case 'FirstName':
                         case 'LastName':
-                        case 'ShortTextAnswer':
-                        case 'LongTextAnswer':
                             if (item.required) {
                                 // do validation.
                                 if (item.value === '') {
@@ -652,14 +650,13 @@ function Survey() {
                                     switch (ele.componentName) {
                                         case 'FirstName':
                                         case 'LastName':
-                                        case 'ShortTextAnswer':
                                             return (
                                                 <div
                                                     key={
                                                         ele.id + '_' + i + 'key'
                                                     }
                                                 >
-                                                    <label>{ele.name}</label>
+                                                    <label>{ele.name}{ele.required?'*':''}</label>
                                                     <input
                                                         type="text"
                                                         id={ele.id + '_' + i}
@@ -686,7 +683,7 @@ function Survey() {
                                                         ele.id + '_' + i + 'key'
                                                     }
                                                 >
-                                                    <label>{ele.name}</label>
+                                                    <label>{ele.name} {ele.required?'*':''}</label>
                                                     <input
                                                         type="email"
                                                         id={ele.id + '_' + i}

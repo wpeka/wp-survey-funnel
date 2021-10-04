@@ -149,7 +149,7 @@ export const FormElements = React.memo(
                 case "ShortTextAnswer":
                     return (
                         <div key={ele.id}>
-                            <label>{List[index].name}</label>
+                            <label>{List[index].name} {List[index].required?'*':''}</label>
                             <input
                                 type="text"
                                 name="name"
