@@ -19,6 +19,7 @@ export const FormElements = React.memo(
             currentFormElement: null,
             buttonLabel: '',
             List: [],
+			error: '',
         };
 
         handleChange = (event) => {
@@ -220,6 +221,23 @@ export const FormElements = React.memo(
             return true;
         }
 
+		handleSave = () => {
+			let err = '';
+			if ( this.state.title !== '' ) {
+				err = '';
+			}
+			else {
+				err = 'Please add title before saving';
+			}
+			this.setState({
+				error: err
+			}, () => {
+				if ( this.state.error === '' ) {
+					this.props.saveToList();
+				}
+			})
+		}
+
         render() {
             const { designCon, currentElement } = this.props;
             return (
@@ -288,9 +306,12 @@ export const FormElements = React.memo(
                                                     onChange={this.handleChange}
                                                 />
                                             </div>
+											<div className="modalComponentError">
+												{this.state.error}
+											</div>
                                         </div>
                                         <div className="modalComponentSaveButton">
-                                                <button onClick={this.props.saveToList}>
+                                                <button onClick={this.handleSave}>
                                                     Save
                                                 </button>
                                         </div>

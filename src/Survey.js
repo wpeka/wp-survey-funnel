@@ -311,7 +311,7 @@ function Survey() {
         let error = []
         switch (componentList[currentTab].componentName) {
             case 'CoverPage':
-				applyFilters('checkCoverPageButtonValidations', flag, componentList[currentTab], iframeRef, error, configure)
+				applyFilters('checkCoverPageButtonValidations', false, componentList[currentTab], iframeRef, error, configure)
 				break;
             case 'ResultScreen':
                 break
@@ -353,24 +353,27 @@ function Survey() {
                 })
                 break
             case 'MultiChoice':
-                const { answers } = componentList[currentTab]
-                let flag = false
-                for (let i = 0; i < answers.length; i++) {
-                    if (answers[i].checked) {
-                        flag = true
-                        break
-                    }
-                }
-                if (!flag) {
-                    error.push(
-                        <p key={error.length}>
-                            Please select atleast one answer!
-                        </p>
-                    )
-                }
+				if ( componentList[currentTab].mandatory ) {
+				
+					const { answers } = componentList[currentTab]
+					let flag = false
+					for (let i = 0; i < answers.length; i++) {
+						if (answers[i].checked) {
+							flag = true
+							break
+						}
+					}
+					if (!flag) {
+						error.push(
+							<p key={error.length}>
+								Please select atleast one answer!
+							</p>
+						)
+					}
+				}
                 break
             case 'SingleChoice':
-                if (componentList[currentTab].value === '') {
+                if (componentList[currentTab].value === '' && componentList[currentTab].mandatory ) {
                     error.push(
                         <p key={error.length}>
                             Please select atleast one answer!
@@ -461,9 +464,9 @@ function Survey() {
                                     })}
                                 </div>
 								<ShowErrors error={error} />
-								{checkValidations( 1, true ) && <div className="nextButtonChoices">
+								<div className="nextButtonChoices">
 									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
-								</div>}
+								</div>
                             </div>
                         </div>
                     </div>
@@ -536,9 +539,9 @@ function Survey() {
                                     })}
                                 </div>
 								<ShowErrors error={error} />
-								{checkValidations( 1, true ) && <div className="nextButtonChoices">
+								<div className="nextButtonChoices">
 									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
-								</div>}
+								</div>
                             </div>
                         </div>
                     </div>

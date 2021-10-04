@@ -11,6 +11,8 @@ export const Choices = React.memo(
             description: "",
             answers: [{ name: "", checked: false, ...applyFilters( 'choicesState', {},this.props.type ) }],
             value: '',
+			mandatory: false,
+			error: '',
         };
 
         componentDidMount() {
@@ -21,6 +23,7 @@ export const Choices = React.memo(
                     title: currentElement.title,
                     description: currentElement.description,
                     answers: currentElement.answers,
+					mandatory: currentElement?.mandatory,
                 };
                 this.setState(state);
             }
@@ -68,6 +71,26 @@ export const Choices = React.memo(
                     return 'Multi Choice';
             }
         }
+
+		handleSave = () => {
+			let err = '';
+			if ( this.state.answers.length >= 2 && this.state.title !== '' ) {
+				err = '';
+			}
+			else if ( this.state.answers.length < 2 ) {
+				err = 'Add atleast two answers';
+			}
+			else {
+				err = 'Please add title before saving';
+			}
+			this.setState({
+				error: err
+			}, () => {
+				if ( err === '' ) {
+					this.props.saveToList();
+				}
+			})
+		}
 
         render() {
             const { currentElement } = this.props;
@@ -140,9 +163,21 @@ export const Choices = React.memo(
                                         Add New Answer
                                     </button>
                                     </div>
+
+									<div className="modalComponentMandatory">
+										<label htmlFor="mandatory">Set Question as mandatory</label>
+										<input type="checkbox" id="mandatory" name="mandatory" checked={this.state.mandatory} onChange={(e) => {
+											this.setState({
+												mandatory: !this.state.mandatory
+											})
+										}} />
+									</div>
+									<div className="modalComponentError">
+										{this.state.error}
+									</div>
                                 </div>
                                 <div className="modalComponentSaveButton">
-                                    <button onClick={this.props.saveToList}>Save</button>
+                                    <button onClick={this.handleSave}>Save</button>
                                 </div>
                             </div>
                             <div className="modalContent-right">
@@ -198,6 +233,8 @@ export class Answer extends React.Component {
     state = {
         title: '',
         description: '',
+		mandatory: false,
+		error: '',
     };
 
     handleChange = (event) => {
@@ -229,10 +266,28 @@ export class Answer extends React.Component {
             let state = {
                 title: currentElement.title,
                 description: currentElement.description,
+				mandatory: currentElement?.mandatory,
             };
             this.setState(state);
         }
     }
+
+	handleSave = () => {
+		let err = '';
+		if ( this.state.title !== '' ) {
+			err = '';
+		}
+		else {
+			err = 'Please add title before saving';
+		}
+		this.setState({
+			error: err
+		}, () => {
+			if ( err === '' ) {
+				this.props.saveToList();
+			}
+		})
+	}
 
     render() {
         const { currentElement } = this.props;
@@ -267,9 +322,21 @@ export class Answer extends React.Component {
                                     style={{height:"150px"}}
                                 />
                             </div>
+							
+							<div className="modalComponentMandatory">
+								<label htmlFor="mandatory">Set Question as mandatory</label>
+								<input type="checkbox" id="mandatory" name="mandatory" checked={this.state.mandatory} onChange={(e) => {
+									this.setState({
+										mandatory: !this.state.mandatory
+									})
+								}} />
+							</div>
+							<div className="modalComponentError">
+								{this.state.error}
+							</div>
                         </div>
                         <div className="modalComponentSaveButton">
-                            <button onClick={this.props.saveToList}>Save</button>
+                            <button onClick={handleSave}>Save</button>
                         </div>
                     </div>
                     <div className="modalContent-right">
