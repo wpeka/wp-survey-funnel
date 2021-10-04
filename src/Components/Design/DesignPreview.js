@@ -292,6 +292,32 @@ export default function DesignPreview() {
                         </div>
                     </div>
                 );
+                case "ShortAnswer":
+                case "LongAnswer":
+                    return (
+                        <div className={"surveyfunnel-lite-tab-" + item.componentName}
+                        style={{ ...style }}
+                        key={item.id}
+                        >
+                            <div
+                                className="tab-container"
+                                key={item.id}
+    
+                            >
+                                <div className="tab" tab-componentname={item.componentName}>
+                                    <h3 className="surveyTitle">{item.title}</h3>
+                                    <p className="surveyDescription">{item.description}</p>
+                                    {item.componentName === 'ShortAnswer' && <input type="text" />}
+                                    {item.componentName === 'LongAnswer' && <textarea />}
+                                    <button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
+                                        changeCurrentTab(1);
+                                    }}>
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    );
             case "ResultScreen":
                 return (
                     <div className="surveyfunnel-lite-tab-ResultScreen"
@@ -422,6 +448,8 @@ export default function DesignPreview() {
                                         case 'SingleChoice':
                                         case 'MultiChoice':
                                         case 'FormElements':
+                                        case 'ShortAnswer':
+                                        case 'LongAnswer':
                                             return renderContentElements(item, "block", i);
 
                                     }

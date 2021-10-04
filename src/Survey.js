@@ -231,6 +231,9 @@ function Survey() {
         resultData._id = componentList[currentTab].id
         switch (componentList[currentTab].componentName) {
             case 'SingleChoice':
+            case 'ShortAnswer':
+            case 'LongAnswer':
+            case 'ShortAnswer':
                 resultData.question = componentList[currentTab].title
                 resultData.answer = componentList[currentTab].value
                 break
@@ -582,6 +585,32 @@ function Survey() {
                         </div>
                     </div>
                 )
+            case "ShortAnswer":
+            case "LongAnswer":
+                return (
+                    <div className={"surveyfunnel-lite-tab-" + item.componentName}
+                    style={{ ...style }}
+                    key={item.id}
+                    >
+                        <div
+                            className="tab-container"
+                            key={item.id}
+
+                        >
+                            <div className="tab" tab-componentname={item.componentName}>
+                                <h3 className="surveyTitle">{item.title}</h3>
+                                <p className="surveyDescription">{item.description}</p>
+                                {item.componentName === 'ShortAnswer' && <input type="text" value={item.value} listidx={idx} onChange={handleRadioChange} />}
+                                {item.componentName === 'LongAnswer' && <textarea value={item.value} listidx={idx} onChange={handleRadioChange} />}
+                                <button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
+                                    changeCurrentTab(1);
+                                }}>
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                );
             case 'ResultScreen':
                 return (
                     <div
@@ -894,6 +923,8 @@ function Survey() {
                                                         case 'SingleChoice':
                                                         case 'MultiChoice':
                                                         case 'FormElements':
+                                                        case 'ShortAnswer':
+                                                        case 'LongAnswer':
                                                             return renderContentElements(item, "block", i);
 
                                                     }

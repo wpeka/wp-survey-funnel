@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { BuildContext } from "../Context/BuildContext";
 import { ModalContext } from "../Context/ModalContext";
-import { Choices } from "./Elements/ContentElements";
+import { Choices, Answer } from "./Elements/ContentElements";
 import { FormElements } from "./Elements/FormElements";
 import { ResultScreen } from "./Elements/ResultScreenElements";
 import { CoverPage } from "./Elements/StartScreenElements";
@@ -41,6 +41,9 @@ export default function ModalBox() {
                 return <FormElements {...componentProps} />
             case 'postTitle':
                 return <PostTitle {...componentProps} />
+            case 'ShortAnswer':
+            case 'LongAnswer':
+                return <Answer {...componentProps} />
             default:
                 return "";
         }

@@ -1,3 +1,5 @@
+const { applyFilters } = wp.hooks;
+
 const ItemTypes = {
 	CARD: 'card',
 	START_ELEMENTS: 'START_ELEMENTS',
@@ -28,7 +30,17 @@ let buildElements = {
 			name: 'Form Elements',
 			componentName: 'FormElements',
 			itemType: ItemTypes.CONTENT_ELEMENTS
-		}
+		},
+		{
+			name: 'Short Answer',
+			componentName: 'ShortAnswer',
+			itemType: ItemTypes.CONTENT_ELEMENTS
+		},
+		{
+			name: 'Long Answer',
+			componentName: 'LongAnswer',
+			itemType: ItemTypes.CONTENT_ELEMENTS
+		},
 	],
 	resultScreen: [
 		{
