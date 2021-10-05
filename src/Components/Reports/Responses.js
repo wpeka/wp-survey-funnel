@@ -130,6 +130,7 @@ export default function Responses() {
 			case 'SingleChoice':
 			case 'ShortAnswer':
 			case 'LongAnswer':
+			case 'TextElement':
 				return <div className="currentAnswer">
 					{report.answer}
 				</div>

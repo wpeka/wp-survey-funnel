@@ -41,6 +41,7 @@ let buildElements = {
 			componentName: 'LongAnswer',
 			itemType: ItemTypes.CONTENT_ELEMENTS
 		},
+		...applyFilters('contentElements', [])
 	],
 	resultScreen: [
 		{

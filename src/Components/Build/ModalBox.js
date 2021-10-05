@@ -13,6 +13,10 @@ import { ResultScreen } from "./Elements/ResultScreenElements";
 import { CoverPage } from "./Elements/StartScreenElements";
 import PostTitle from "./Elements/PostTitle";
 import { DesignContext } from "../Context/DesignContext";
+import ModalContentRight from "../../HelperComponents/ModalContentRight";
+import { CloseModal } from "../../HelperComponents/CloseModalPopUp";
+
+const { applyFilters } = wp.hooks;
 
 export default function ModalBox() {
     const { showModal, currentElement } = useContext(ModalContext);
@@ -45,7 +49,7 @@ export default function ModalBox() {
             case 'LongAnswer':
                 return <Answer {...componentProps} />
             default:
-                return "";
+                return applyFilters( 'getComponentRender', "", componentProps, currentElement.componentName, ModalContentRight, CloseModal );
         }
     };
 

@@ -234,6 +234,7 @@ function Survey() {
             case 'ShortAnswer':
             case 'LongAnswer':
             case 'ShortAnswer':
+			case 'TextElement':
                 resultData.question = componentList[currentTab].title
                 resultData.answer = componentList[currentTab].value
                 break
@@ -748,7 +749,7 @@ function Survey() {
                     </div>
                 )
             default:
-                return ''
+                return applyFilters( 'renderContentElements', '', item, style, convertToRgbaCSS, changeCurrentTab, designCon );
         }
     }
 
@@ -926,7 +927,8 @@ function Survey() {
                                                         case 'ShortAnswer':
                                                         case 'LongAnswer':
                                                             return renderContentElements(item, "block", i);
-
+														default:
+															return applyFilters( 'callRenderContentElements', '', renderContentElements, item, i );
                                                     }
                                                 }
                                                 return renderContentElements(item, 'none', i);

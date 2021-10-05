@@ -376,7 +376,7 @@ export default function DesignPreview() {
                     </div>
                 )
             default:
-                return "";
+                return applyFilters( 'renderContentElements', '', item, style, convertToRgbaCSS, changeCurrentTab, designCon );
         }
     };
 
@@ -451,7 +451,8 @@ export default function DesignPreview() {
                                         case 'ShortAnswer':
                                         case 'LongAnswer':
                                             return renderContentElements(item, "block", i);
-
+										default:
+											return applyFilters( 'callRenderContentElements', '', renderContentElements, item, i );
                                     }
                                 }
                                 return renderContentElements(item, 'none', i);

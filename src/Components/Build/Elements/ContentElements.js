@@ -336,7 +336,7 @@ export class Answer extends React.Component {
 							</div>
                         </div>
                         <div className="modalComponentSaveButton">
-                            <button onClick={handleSave}>Save</button>
+                            <button onClick={this.handleSave}>Save</button>
                         </div>
                     </div>
                     <div className="modalContent-right">
