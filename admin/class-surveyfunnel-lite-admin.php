@@ -443,11 +443,13 @@ class Surveyfunnel_Lite_Admin {
 		$post_id       = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$post_title    = isset( $_POST['post_title'] ) ? sanitize_text_field( wp_unslash( $_POST['post_title'] ) ) : '';
 		$defaults      = $this->surveyfunnel_lite_get_default_save_array();
+		$has_pro       = isset( $_POST['hasProQuestions'] ) ? sanitize_text_field( wp_unslash( $_POST['hasProQuestions'] ) ) : 0;
 		$post_meta     = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data          = wp_parse_args( (array) $post_meta, $defaults );
 		$data['build'] = str_replace( '\\', '\\\\', json_encode( $data['build'], true ) );
 		$data['build'] = isset( $_POST['state'] ) ? sanitize_text_field( $_POST['state'] ) : '';
 		update_post_meta( $post_id, 'surveyfunnel-lite-data', $data );
+		update_post_meta( $post_id, 'surveyfunnel-lite_hasProQuestions', $has_pro );
 		$post_update = array(
 			'ID'         => $post_id,
 			'post_title' => $post_title,
@@ -531,6 +533,7 @@ class Surveyfunnel_Lite_Admin {
 			'build'       => $post_meta['build'],
 			'post_title'  => $post_title,
 			'survey_type' => $post_type,
+			'proActive'  => apply_filters( 'surveyfunnel_pro_activated', false ),
 		);
 		wp_send_json_success( $data );
 		wp_die();

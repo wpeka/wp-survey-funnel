@@ -15,6 +15,15 @@ $args = array(
 
 $surveys = get_posts( $args );
 
+foreach ( $surveys as $survey ) {
+	if ( get_post_meta( $survey->ID, 'surveyfunnel-lite_hasProQuestions', true ) && ! apply_filters( 'surveyfunnel_pro_activated', false ) ) {
+		echo '<div class="notice notice-warning is-dismissable"><p><strong>' . sprintf(
+			/* translators: 1: href link */
+			esc_html__( "Some of the PRO feature questions won't be available to use as pro version is deactivated.", 'surveyfunnel' )
+		) . '</strong></p></div>';
+	}
+}
+
 $flag = apply_filters( 'surveyfunnel_pro_activated', false );
 
 $disabled = $flag ? '' : 'disabled="disabled"';

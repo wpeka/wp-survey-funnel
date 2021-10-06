@@ -7,8 +7,7 @@ import { ModalContext } from "../Context/ModalContext";
 const { applyFilters } = wp.hooks;
 
 export default function (props) {
-	const { deleteItemInList, moveCard, type } = useContext(BuildContext);
-
+	const { deleteItemInList, moveCard, type, proActive } = useContext(BuildContext);
     const ref = useRef(null);
     const { id, text, index, item } = props;
 
@@ -80,7 +79,7 @@ export default function (props) {
     }
     
     return (
-        <div ref={ref} style={style} className="surveyfunnel-lite-card-area">
+        <div ref={ref} style={style} className={(!proActive && item.componentName === 'TextElement') ? 'card-disabled surveyfunnel-lite-card-area' : 'surveyfunnel-lite-card-area' }>
         {item.type === 'CONTENT_ELEMENTS' && <div className="surveyfunnel-lite-cardbox-number">
                 {props.index + 1}
             </div>}
@@ -92,8 +91,8 @@ export default function (props) {
 
             <div className="card-flex">
 				{item.type === 'RESULT_ELEMENTS' && applyFilters( 'scoringLogicCardFilter', '', item, type )}
-                <button className="surveyfunnel-lite-cardBox-btn" onClick={editCard}><img src={require('./BuildImages/pencil.png')}></img></button>
-                <button className="surveyfunnel-lite-cardBox-btn" onClick={deleteCard}><img src={require('./BuildImages/delete-icon.png')}></img></button>
+                <button className="surveyfunnel-lite-cardBox-btn" onClick={editCard} disabled={!proActive && item.componentName === 'TextElement' }><img src={require('./BuildImages/pencil.png')}></img></button>
+                <button className="surveyfunnel-lite-cardBox-btn" onClick={deleteCard} disabled={!proActive && item.componentName === 'TextElement' }><img src={require('./BuildImages/delete-icon.png')}></img></button>
             </div>
         </div>
         </div>

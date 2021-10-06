@@ -11,7 +11,8 @@ export class BuildContextProvider extends React.Component {
             [ItemTypes.RESULT_ELEMENTS]: [],
 		},
         title: '',
-		type: ''
+		type: '',
+		proActive: false,
     };
 
     componentDidMount() {
@@ -29,10 +30,12 @@ export class BuildContextProvider extends React.Component {
                 let build = JSON.parse(data.data.build);
                 let title = data.data.post_title;
 				let type  = data.data.survey_type;
+				let proActive = data.data.proActive;
                 this.setState( {
                     ...build,
                    title,
-				   type
+				   type,
+					proActive: proActive === '1' ? true : false
                 } );
             }
             else {
@@ -108,12 +111,16 @@ export class BuildContextProvider extends React.Component {
         e.target.classList.add('surveyfunnel-lite-button-loading');
         const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
+		const stateData = JSON.stringify( { ...this.state } );
+		const hasProQuestions = stateData.match( /proVersionQuestionType/g ) ? true : false;
+		console.log(hasProQuestions);
         const data = {
             state: JSON.stringify( { ...this.state } ),
             security: ajaxSecurity,
             action: 'surveyfunnel_lite_save_build_data',
             post_id,
-            post_title: this.state.title
+            post_title: this.state.title,
+			hasProQuestions
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData(ajaxURL, data)

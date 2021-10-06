@@ -85,7 +85,27 @@ function ShowErrors({error}) {
 		</>
 	);
 }
-	
+// remove pro question types if pro is not activated.
+if ( surveyData.proActive !== '1' ) {
+	console.log(data.build);
+	if( data.build.match( /proVersionQuestionType/g ) ) {
+		console.log('hello world');
+		const build = JSON.parse(data.build);
+		const { CONTENT_ELEMENTS } = build.List;
+		let proQuestions = [];
+		for(let i = 0; i < CONTENT_ELEMENTS.length; i++) {
+			if ( CONTENT_ELEMENTS[i].componentName === 'TextElement' ) {
+				continue;
+			}
+			proQuestions.push( CONTENT_ELEMENTS[i] );
+		}
+
+		build.List.CONTENT_ELEMENTS = proQuestions;
+		data.build = JSON.stringify(build);
+	}
+}
+
+
 
 function Survey() {
     if (data.build === '') {
