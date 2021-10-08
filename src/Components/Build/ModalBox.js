@@ -15,6 +15,7 @@ import PostTitle from "./Elements/PostTitle";
 import { DesignContext } from "../Context/DesignContext";
 import ModalContentRight from "../../HelperComponents/ModalContentRight";
 import { CloseModal } from "../../HelperComponents/CloseModalPopUp";
+import { convertToRgbaCSS } from "../../HelperComponents/HelperFunctions";
 
 const { applyFilters } = wp.hooks;
 
@@ -31,7 +32,8 @@ export default function ModalBox() {
             saveToList,
             designCon,
 			type,
-			List
+			List,
+			convertToRgbaCSS
         }
         switch (currentElement.componentName) {
             case "CoverPage":

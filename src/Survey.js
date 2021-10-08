@@ -89,7 +89,6 @@ function ShowErrors({error}) {
 if ( surveyData.proActive !== '1' ) {
 	console.log(data.build);
 	if( data.build.match( /proVersionQuestionType/g ) ) {
-		console.log('hello world');
 		const build = JSON.parse(data.build);
 		const { CONTENT_ELEMENTS } = build.List;
 		let proQuestions = [];

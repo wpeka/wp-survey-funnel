@@ -47,9 +47,7 @@ export function DesignContextProvider(props) {
 	}
 
 	useEffect(() => {
-		console.log(selectedImageUrl);
 		if ( selectedImageUrl === null || selectedImageUrl === false ) {
-			console.log('hellow orld');
 			return;
 		}
 		if ( ! validateImageUrl( selectedImageUrl ) ) {
@@ -75,7 +73,7 @@ export function DesignContextProvider(props) {
 			}
 			const design = JSON.parse( data.data.design );
 			setinitialState(design);
-			if ( data.data.backgroundImage !== false ) {
+			if ( data.data.backgroundImage !== '' ) {
 				setSelectedImageUrl(data.data.backgroundImage);
 			}
         });

@@ -113,7 +113,6 @@ export class BuildContextProvider extends React.Component {
         const post_id = new URLSearchParams(window.location.search).get('post_id');
 		const stateData = JSON.stringify( { ...this.state } );
 		const hasProQuestions = stateData.match( /proVersionQuestionType/g ) ? true : false;
-		console.log(hasProQuestions);
         const data = {
             state: JSON.stringify( { ...this.state } ),
             security: ajaxSecurity,
