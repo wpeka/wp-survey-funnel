@@ -14,3 +14,7 @@ export function designBackground( designCon ) {
 
     designCon.backgroundStyle = backgroundStyle;
 }
+
+export function validateImageUrl( url ) {
+	return url.match(/^http.*\.(jpeg|jpg|png)$/) != null
+}

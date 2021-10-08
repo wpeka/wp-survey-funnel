@@ -350,13 +350,27 @@ class Surveyfunnel_Lite_Admin {
 			true
 		);
 
+		wp_register_script(
+			$this->plugin_name . '-mediaupload',
+			plugin_dir_url( __FILE__ ) . 'js/surveyfunnel-lite-mediaupload.js',
+			array(),
+			$this->version,
+			false
+		);
+
 		?>
 			<!DOCTYPE html>
 			<html <?php language_attributes(); ?>>
 			<head>
 				<meta name="viewport" content="width=device-width"/>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+				<style>.screen-reader-text {
+					display: none;
+				}</style>
 				<?php wp_print_styles( 'dashicons' ); ?>
+				<?php wp_print_styles( 'thickbox' ); ?>
+				<?php wp_print_scripts( 'thickbox' ); ?>
+				<?php wp_print_scripts( 'media-upload' ); ?>
 				<title>WP Survey Funnel</title>
 			</head>
 			<body class="surveyfunnel-lite-body">
@@ -370,6 +384,7 @@ class Surveyfunnel_Lite_Admin {
 			</body>
 			</html>
 		<?php
+		wp_enqueue_media();
 		exit;
 	}
 
@@ -533,7 +548,7 @@ class Surveyfunnel_Lite_Admin {
 			'build'       => $post_meta['build'],
 			'post_title'  => $post_title,
 			'survey_type' => $post_type,
-			'proActive'  => apply_filters( 'surveyfunnel_pro_activated', false ),
+			'proActive'   => apply_filters( 'surveyfunnel_pro_activated', false ),
 		);
 		wp_send_json_success( $data );
 		wp_die();
@@ -557,28 +572,12 @@ class Surveyfunnel_Lite_Admin {
 		$data['design'] = isset( $_POST['state'] ) ? sanitize_text_field( wp_unslash( $_POST['state'] ) ) : '';
 		update_post_meta( $post_id, 'surveyfunnel-lite-data', $data );
 
-		if ( isset( $_FILES['designImage'] ) ) {
-			$image_type = isset( $_FILES['designImage']['type'] ) ? sanitize_text_field( wp_unslash( $_FILES['designImage']['type'] ) ) : '';
-			if ( 'image/jpeg' === $image_type || 'image/jpg' === $image_type || 'image/png' === $image_type ) {
-				require_once ABSPATH . 'wp-admin/includes/file.php';
-				$img           = wp_handle_upload( $_FILES['designImage'], array( 'test_form' => false ) ); // phpcs:ignore input var ok, CSRF ok, sanitization ok.
-				$file_name     = $img['file'];
-				$wp_filetype   = wp_check_filetype( basename( $file_name ), null );
-				$attachment    = array(
-					'post_mime_type' => $wp_filetype['type'],
-					'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $file_name ) ),
-					'post_content'   => '',
-					'post_status'    => 'inherit',
-				);
-				$attachment_id = wp_insert_attachment( $attachment, $file_name );
-				if ( $attachment_id ) {
-					require_once ABSPATH . 'wp-admin/includes/image.php';
-					$attachment_data = wp_generate_attachment_metadata( $attachment_id, $file_name );
-					wp_update_attachment_metadata( $attachment_id, $attachment_data );
-					update_post_meta( $post_id, 'surveyfunnel-lite-design-background', $attachment_id );
-				} else {
-					update_post_meta( $post_id, 'surveyfunnel-lite-design-background', false );
-				}
+		if ( isset( $_POST['selectedImageUrl'] ) ) {
+			$url        = esc_url_raw( wp_unslash( $_POST['selectedImageUrl'] ) );
+			$image_type = explode( '.', $url ); // Explode the string.
+			$image_type = end( $image_type );
+			if ( 'jpeg' === $image_type || 'jpg' === $image_type || 'png' === $image_type ) {
+				update_post_meta( $post_id, 'surveyfunnel-lite-design-background', $url );
 			} else {
 				update_post_meta( $post_id, 'surveyfunnel-lite-design-background', false );
 			}
@@ -604,7 +603,7 @@ class Surveyfunnel_Lite_Admin {
 		$background_image_meta = get_post_meta( $post_id, 'surveyfunnel-lite-design-background', true );
 		$data                  = array(
 			'design'          => $post_meta['design'],
-			'backgroundImage' => wp_get_attachment_url( $background_image_meta ),
+			'backgroundImage' => $background_image_meta,
 		);
 		wp_send_json_success( $data );
 		wp_die();

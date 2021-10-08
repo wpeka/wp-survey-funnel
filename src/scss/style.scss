@@ -954,3 +954,17 @@ body {
 		overflow: auto;
 	}
 }
+
+.selectedBackgroundImage {
+	margin: 10px 0px;
+    display: flex;
+    align-items: center;
+
+	div {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		margin-right: 10px;
+		width: calc(100% - 300px);
+	}
+}
