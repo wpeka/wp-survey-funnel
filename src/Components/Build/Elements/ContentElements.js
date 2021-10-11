@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useContext, useState } from "react";
 import ModalContentRight from '../../../HelperComponents/ModalContentRight';
 import { convertToRgbaCSS } from "../../../HelperComponents/HelperFunctions";
 import { CloseModal } from '../../../HelperComponents/CloseModalPopUp';
@@ -347,7 +347,8 @@ export class Answer extends React.Component {
                         {this.state.title === '' && this.state.description === '' ? ( <div className="no-preview-available"><img src={require(`../BuildImages/unavailable.png`)}></img><div>No Preview Available</div></div> ) : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
                             { this.checkForEmpty('title') && <h3 className="surveyTitle">{this.state.title}</h3> }
                             { this.checkForEmpty('description') && <p className="surveyDescription">{this.state.description}</p> }
-                            { getAnswerComponentInput(currentElement) }
+                            { getAnswerComponentInput(currentElement, designCon) }
+							<button>Next</button>
                         </ModalContentRight>)}
                         </div>
                     </div>
@@ -357,12 +358,12 @@ export class Answer extends React.Component {
     }
 }
 
-function getAnswerComponentInput(currentElement) {
+function getAnswerComponentInput(currentElement, designCon) {
     switch(currentElement.componentName) {
         case 'ShortAnswer':
-            return <input />
+            return <input type="text" style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}/>
         case 'LongAnswer':
-            return <textarea />
+            return <textarea cols="10" style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} />
         default:
             return '';
     }

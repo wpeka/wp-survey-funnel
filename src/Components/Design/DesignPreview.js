@@ -307,8 +307,8 @@ export default function DesignPreview() {
                                 <div className="tab" tab-componentname={item.componentName}>
                                     <h3 className="surveyTitle">{item.title}</h3>
                                     <p className="surveyDescription">{item.description}</p>
-                                    {item.componentName === 'ShortAnswer' && <input type="text" />}
-                                    {item.componentName === 'LongAnswer' && <textarea />}
+                                    {item.componentName === 'ShortAnswer' && <input style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} type="text" />}
+                                    {item.componentName === 'LongAnswer' && <textarea style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} />}
                                     <button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
                                         changeCurrentTab(1);
                                     }}>
@@ -376,7 +376,7 @@ export default function DesignPreview() {
                     </div>
                 )
             default:
-                return applyFilters( 'renderContentElements', '', item, style, convertToRgbaCSS, changeCurrentTab, designCon );
+                return applyFilters( 'renderContentElementsDesignPreview', '', item, style, convertToRgbaCSS, changeCurrentTab, designCon );
         }
     };
 

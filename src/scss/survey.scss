@@ -517,3 +517,26 @@ body {
 		z-index: 9999999;
 	}
 }
+
+.surveyfunnel-lite-tab-ShortAnswer, .surveyfunnel-lite-tab-LongAnswer, .surveyfunnel-lite-tab-TextElement, .surveyfunnel-lite-tab-ImageQuestion {
+	padding: 40px;
+	border-radius: 12px;
+	width: 100%;
+
+	input[type="text"], textarea {
+		width: 100%;
+		border-radius: 9px;
+		margin: 10px 0;
+		word-break: break-word;
+		outline: none;
+		padding: 20px;
+	}
+
+	input[type="text"] {
+		height: 40px;
+	}
+
+	textarea {
+		min-height: 100px;
+	}
+}

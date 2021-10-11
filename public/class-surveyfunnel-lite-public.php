@@ -206,7 +206,7 @@ class Surveyfunnel_Lite_Public {
 
 		$design_image_id = get_post_meta( $atts['id'], 'surveyfunnel-lite-design-background', true );
 		if ( $design_image_id ) {
-			$data['designImageUrl'] = wp_get_attachment_url( $design_image_id );
+			$data['designImageUrl'] = $design_image_id;
 		} else {
 			$data['designImageUrl'] = null;
 		}

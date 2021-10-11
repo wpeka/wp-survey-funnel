@@ -401,6 +401,18 @@ function Survey() {
                     )
                 }
                 break
+			case 'ShortAnswer':
+			case 'LongAnswer':
+				if (componentList[currentTab].value === '' && componentList[currentTab].mandatory ) {
+                    error.push(
+                        <p key={error.length}>
+                            Entered answer is blank, please add answer!
+                        </p>
+                    )
+                }
+			default:
+				let data = applyFilters( 'checkValidations', false, componentList[currentTab], error );
+				break;
         }
         if (error.length > 0) {
             if ( ! disablity ) {
@@ -768,7 +780,7 @@ function Survey() {
                     </div>
                 )
             default:
-                return applyFilters( 'renderContentElements', '', item, style, convertToRgbaCSS, changeCurrentTab, designCon );
+                return applyFilters( 'renderContentElements', '', item, style, convertToRgbaCSS, changeCurrentTab, designCon, handleRadioChange, idx, error, ShowErrors );
         }
     }
 
