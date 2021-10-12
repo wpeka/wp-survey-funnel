@@ -207,7 +207,14 @@ export default function DesignPreview() {
                                     })}
                                 </div>
 								{ checkValidations( 1, true ) && <div className="nextButtonChoices">
-									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+                                    <button type="button" style={{
+                                        background: convertToRgbaCSS(
+                                            designCon.buttonColor
+                                        ),
+                                        color: convertToRgbaCSS(
+                                            designCon.buttonTextColor
+                                        ),
+                                    }} onClick={() => {changeCurrentTab(1);}}>Next</button>
 								</div>}
                             </div>
                         </div>
@@ -262,7 +269,14 @@ export default function DesignPreview() {
                                     })}
                                 </div>
 								{ checkValidations( 1, true ) && <div className="nextButtonChoices">
-									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+                                    <button type="button" style={{
+                                        background: convertToRgbaCSS(
+                                            designCon.buttonColor
+                                        ),
+                                        color: convertToRgbaCSS(
+                                            designCon.buttonTextColor
+                                        ),
+                                    }} onClick={() => {changeCurrentTab(1);}}>Next</button>	
 								</div>}
                             </div>
                         </div>
@@ -370,7 +384,14 @@ export default function DesignPreview() {
                                             </div>
                                     }
                                 })}
-                                <button type="button" onClick={() => {changeCurrentTab(1)}}>{item.buttonLabel}</button>
+                                <button type="button" style={{
+                                        background: convertToRgbaCSS(
+                                            designCon.buttonColor
+                                        ),
+                                        color: convertToRgbaCSS(
+                                            designCon.buttonTextColor
+                                        ),
+                                    }} onClick={() => {changeCurrentTab(1);}}>{item.buttonLabel}</button>
                             </div>
                         </div>
                     </div>
