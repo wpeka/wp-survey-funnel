@@ -235,6 +235,7 @@ export class Answer extends React.Component {
         description: '',
 		mandatory: false,
 		error: '',
+		value: ''
     };
 
     handleChange = (event) => {

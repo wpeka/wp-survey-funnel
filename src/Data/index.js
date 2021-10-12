@@ -34,12 +34,14 @@ let buildElements = {
 		{
 			name: 'Short Answer',
 			componentName: 'ShortAnswer',
-			itemType: ItemTypes.CONTENT_ELEMENTS
+			itemType: ItemTypes.CONTENT_ELEMENTS,
+			value: ''
 		},
 		{
 			name: 'Long Answer',
 			componentName: 'LongAnswer',
-			itemType: ItemTypes.CONTENT_ELEMENTS
+			itemType: ItemTypes.CONTENT_ELEMENTS,
+			value: ''
 		},
 		...applyFilters('contentElements', [])
 	],
