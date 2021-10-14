@@ -165,12 +165,13 @@ export const Choices = React.memo(
                                     </div>
 
 									<div className="modalComponentMandatory">
-										<label htmlFor="mandatory">Set Question as mandatory</label>
+										<h3>Set Question as mandatory</h3>
 										<input type="checkbox" id="mandatory" name="mandatory" checked={this.state.mandatory} onChange={(e) => {
 											this.setState({
 												mandatory: !this.state.mandatory
 											})
 										}} />
+										<label htmlFor="mandatory"></label>
 									</div>
 									<div className="modalComponentError">
 										{this.state.error}
@@ -325,12 +326,13 @@ export class Answer extends React.Component {
                             </div>
 							
 							<div className="modalComponentMandatory">
-								<label htmlFor="mandatory">Set Question as mandatory</label>
+								<h3>Set Question as mandatory</h3>
 								<input type="checkbox" id="mandatory" name="mandatory" checked={this.state.mandatory} onChange={(e) => {
 									this.setState({
 										mandatory: !this.state.mandatory
 									})
 								}} />
+								<label htmlFor="mandatory"></label>
 							</div>
 							<div className="modalComponentError">
 								{this.state.error}

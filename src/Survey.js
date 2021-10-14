@@ -87,7 +87,6 @@ function ShowErrors({error}) {
 }
 // remove pro question types if pro is not activated.
 if ( surveyData.proActive !== '1' ) {
-	console.log(data.build);
 	if( data.build.match( /proVersionQuestionType/g ) ) {
 		const build = JSON.parse(data.build);
 		const { CONTENT_ELEMENTS } = build.List;
@@ -818,6 +817,7 @@ function Survey() {
     }
 
     const handleRadioChange = (e) => {
+
         let listidx = e.target.getAttribute('listidx')
         let newList = JSON.parse(JSON.stringify(componentList))
         newList[listidx].value = e.target.value

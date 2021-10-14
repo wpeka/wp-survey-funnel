@@ -968,3 +968,42 @@ body {
 		width: calc(100% - 300px);
 	}
 }
+
+.modalComponentMandatory {
+	label {
+		cursor: pointer;
+		width: 50px;
+		height: 20px;
+		background: grey;
+		display: block;
+		border-radius: 100px;
+		position: relative;
+	}
+	
+	label:after {
+		content: '';
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		width: 10px;
+		height: 10px;
+		background: #fff;
+		border-radius: 90px;
+		transition: 0.3s;
+	}
+	input{
+		display: none;
+	}
+	input:checked + label {
+		background: #4CAF50;
+	}
+	
+	input:checked + label:after {
+		left: calc(100% - 5px);
+		transform: translateX(-100%);
+	}
+	
+	label:active:after {
+		width: 50px;
+	}
+}
