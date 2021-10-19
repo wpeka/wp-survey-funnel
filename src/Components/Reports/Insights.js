@@ -6,6 +6,7 @@ const getAnswerBlocks = ( item ) => {
 	switch( item.componentName ) {
 		case 'SingleChoice':
 		case 'MultiChoice':
+		case 'ImageQuestion':
 			return <>
 				{item.answers.map(function(ele, i) {
 					let percentageAnswered = 0.00;

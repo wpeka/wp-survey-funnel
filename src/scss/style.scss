@@ -956,16 +956,27 @@ body {
 }
 
 .selectedBackgroundImage {
-	margin: 10px 0px;
+	margin: 20px 0px;
     display: flex;
     align-items: center;
+	justify-content: space-between;
+	padding-right: 20px;
 
 	div {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		margin-right: 10px;
-		width: calc(100% - 300px);
+		width: calc(100% - 100px);
+	}
+
+	button {
+		background: #F44336;
+		color: white;
+		padding: 8px 19px;
+		border: none;
+		border-radius: 6px;
+		cursor: pointer;
 	}
 }
 

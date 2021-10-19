@@ -397,7 +397,7 @@ export default function DesignPreview() {
                     </div>
                 )
             default:
-                return applyFilters( 'renderContentElementsDesignPreview', '', item, style, convertToRgbaCSS, changeCurrentTab, designCon );
+                return applyFilters( 'renderContentElementsDesignPreview', '', item, style, convertToRgbaCSS, changeCurrentTab, designCon, handleRadioChange, idx );
         }
     };
 

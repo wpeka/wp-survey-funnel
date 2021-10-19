@@ -104,6 +104,7 @@ export function ReportContextProvider(props) {
 						let answer = fields[List.CONTENT_ELEMENTS[i].id].answer;
 						switch( List.CONTENT_ELEMENTS[i].componentName ) {
 							case 'SingleChoice':
+							case 'ImageQuestion':
 								for ( let idx = 0 ; idx < answers.length ; idx++ ) {
 									if ( answers[idx].name === answer ) {
 										if ( answers[idx]?.responseCount ) {

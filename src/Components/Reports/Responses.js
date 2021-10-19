@@ -131,6 +131,7 @@ export default function Responses() {
 			case 'ShortAnswer':
 			case 'LongAnswer':
 			case 'TextElement':
+			case 'ImageQuestion':
 				return <div className="currentAnswer">
 					{report.answer}
 				</div>

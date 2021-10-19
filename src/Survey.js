@@ -253,6 +253,7 @@ function Survey() {
             case 'LongAnswer':
             case 'ShortAnswer':
 			case 'TextElement':
+			case 'ImageQuestion':
                 resultData.question = componentList[currentTab].title
                 resultData.answer = componentList[currentTab].value
                 break
