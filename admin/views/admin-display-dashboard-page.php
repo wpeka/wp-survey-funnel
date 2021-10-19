@@ -21,6 +21,7 @@ foreach ( $surveys as $survey ) {
 			/* translators: 1: href link */
 			esc_html__( "Some of the PRO feature questions won't be available to use as pro version is deactivated.", 'surveyfunnel' )
 		) . '</strong></p></div>';
+		break;
 	}
 }
 
@@ -38,7 +39,7 @@ $url_to_redirect = Surveyfunnel_Lite_Admin::surveyfunnel_lite_get_setup_page_url
 function surveyfunnel_lite_get_background_image( $post_id ) {
 	$id = get_post_meta( $post_id, 'surveyfunnel-lite-design-background', true );
 	if ( $id ) {
-		return wp_get_attachment_url( $id );
+		return $id;
 	}
 	return false;
 }

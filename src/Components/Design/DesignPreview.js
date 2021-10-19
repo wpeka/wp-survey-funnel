@@ -31,7 +31,7 @@ let contentElementsLastIndex = 0;
 let initialState = [];
 
 export default function DesignPreview() {
-    const { List, type: surveyType } = useContext(BuildContext);
+    const { List, type: surveyType, proActive } = useContext(BuildContext);
     const designCon = useContext(DesignContext);
     const [currentTab, setCurrentTab] = useState(0);
     const [tabCount, setTabCount] = useState(0);
@@ -40,6 +40,20 @@ export default function DesignPreview() {
 	const { proSettings } = useContext(ConfigureContext);
 
     useEffect(() => {
+		// remove pro question types if pro is not activated.
+		if ( proActive === false ) {
+			const { CONTENT_ELEMENTS } = List;
+			let proQuestions = [];
+			for(let i = 0; i < CONTENT_ELEMENTS.length; i++) {
+				if ( CONTENT_ELEMENTS[i].componentName === 'TextElement' || CONTENT_ELEMENTS[i].componentName === 'ImageQuestion' ) {
+					continue;
+				}
+				proQuestions.push( CONTENT_ELEMENTS[i] );
+			}
+
+			List.CONTENT_ELEMENTS = proQuestions;
+		}
+
         setComponentList([
             ...List.START_ELEMENTS,
             ...List.CONTENT_ELEMENTS,

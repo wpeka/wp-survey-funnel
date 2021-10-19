@@ -92,7 +92,7 @@ if ( surveyData.proActive !== '1' ) {
 		const { CONTENT_ELEMENTS } = build.List;
 		let proQuestions = [];
 		for(let i = 0; i < CONTENT_ELEMENTS.length; i++) {
-			if ( CONTENT_ELEMENTS[i].componentName === 'TextElement' ) {
+			if ( CONTENT_ELEMENTS[i].componentName === 'TextElement' || CONTENT_ELEMENTS[i].componentName === 'ImageQuestion' ) {
 				continue;
 			}
 			proQuestions.push( CONTENT_ELEMENTS[i] );
@@ -707,7 +707,7 @@ function Survey() {
                                                         ele.id + '_' + i + 'key'
                                                     }
                                                 >
-                                                    <label>{ele.name}{ele.required?'*':''}</label>
+                                                    <label>{ele.name} {ele.required?'*':''}</label>
                                                     <input
                                                         type="text"
                                                         id={ele.id + '_' + i}
