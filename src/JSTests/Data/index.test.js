@@ -37,7 +37,19 @@ it("buildElements test",()=>{
                 name: 'Form Elements',
                 componentName: 'FormElements',
                 itemType: data.ItemTypes.CONTENT_ELEMENTS
-            }
+            },
+			{
+				name: 'Short Answer',
+				componentName: 'ShortAnswer',
+				itemType: data.ItemTypes.CONTENT_ELEMENTS,
+				value: ''
+			},
+			{
+				name: 'Long Answer',
+				componentName: 'LongAnswer',
+				itemType: data.ItemTypes.CONTENT_ELEMENTS,
+				value: ''
+			},
         ],
         resultScreen: [
             {
