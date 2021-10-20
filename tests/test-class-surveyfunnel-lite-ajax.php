@@ -287,7 +287,7 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
 		$_POST['post_id']  = self::$post_ids[0];
 		$attachment_id     = self::factory()->post->create( array( 'post_type' => 'attachment' ) );
-		update_post_meta( self::$post_ids[0], 'surveyfunnel-lite-design-background', $attachment_id );
+		update_post_meta( self::$post_ids[0], 'surveyfunnel-lite-design-background', wp_get_attachment_url( $attachment_id ) );
 		update_post_meta(
 			self::$post_ids[0],
 			'surveyfunnel-lite-data',

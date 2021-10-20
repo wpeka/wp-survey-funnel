@@ -12,6 +12,7 @@ export const CoverPage = React.memo(
             button: "",
             title: "",
             description: "",
+			error: '',
 			...applyFilters('addCoverPageStateElements', {}),
         };
 
@@ -27,6 +28,23 @@ export const CoverPage = React.memo(
 				})
 			}			
         };
+
+		handleSave = () => {
+			let err = '';
+			if ( this.state.title !== '' ) {
+				err = '';
+			}
+			else {
+				err = 'Please add title before saving';
+			}
+			this.setState({
+				error: err
+			}, () => {
+				if ( this.state.error === '' ) {
+					this.props.saveToList();
+				}
+			})
+		}
 
         componentDidMount() {
             const { currentElement } = this.props;
@@ -94,10 +112,13 @@ export const CoverPage = React.memo(
                                             placeholder="Button Label"
 
                                         />
-                                    </div>                                
+                                    </div>
+									<div className="modalComponentError">
+										{this.state.error}
+									</div>                                
                                 </div>
                                 <div className="modalComponentSaveButton">
-                                    <button onClick={this.props.saveToList}>Save</button>
+                                    <button onClick={this.handleSave}>Save</button>
                                 </div>
                             </div>
                             <div className="modalContent-right">

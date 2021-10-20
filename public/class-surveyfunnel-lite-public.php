@@ -152,7 +152,7 @@ class Surveyfunnel_Lite_Public {
 		if ( ! ( is_singular() ) ) {
 			return '';
 		}
-		
+
 		if ( get_post_status( $atts['id'] ) !== 'publish' ) {
 			return '';
 		}
@@ -170,7 +170,7 @@ class Surveyfunnel_Lite_Public {
 				return '';
 			}
 		}
-		
+
 		$survey_type = get_post_meta( $atts['id'], 'surveyfunnel-lite-type', true );
 		$flag        = apply_filters( 'surveyfunnel_pro_activated', false );
 		// if pro is not activated and current survey type is scoring or outcome.
@@ -206,7 +206,7 @@ class Surveyfunnel_Lite_Public {
 
 		$design_image_id = get_post_meta( $atts['id'], 'surveyfunnel-lite-design-background', true );
 		if ( $design_image_id ) {
-			$data['designImageUrl'] = wp_get_attachment_url( $design_image_id );
+			$data['designImageUrl'] = $design_image_id;
 		} else {
 			$data['designImageUrl'] = null;
 		}
@@ -218,8 +218,8 @@ class Surveyfunnel_Lite_Public {
 		$hooks_string   = get_site_url() . '/wp-includes/js/dist/hooks.js?ver=' . time();
 		wp_enqueue_style( $this->plugin_name . '-public' );
 		$survey_style_string = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.css';
-		$pro_script_string = '';
-		$pro_script_string = apply_filters( 'surveyfunnel_lite_display_survey', $pro_script_string );
+		$pro_script_string   = '';
+		$pro_script_string   = apply_filters( 'surveyfunnel_lite_display_survey', $pro_script_string );
 		$return_string       = '';
 		if ( $atts['type'] === 'custom' ) {
 			$return_string .= '<style>#surveyfunnel-lite-survey-' . $unique_id . ' iframe { max-width: 100%; height: ' . $atts['height'] . '; width: ' . $atts['width'] . ';  }</style>';
@@ -244,10 +244,11 @@ class Surveyfunnel_Lite_Public {
 		$meta_data = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$meta_data = wp_parse_args( $meta_data, $defaults );
 		$data      = array(
-			'build'           => $meta_data['build'],
-			'design'          => $meta_data['design'],
-			'share'           => $meta_data['share'],
-			'configure'       => $meta_data['configure'],
+			'build'     => $meta_data['build'],
+			'design'    => $meta_data['design'],
+			'share'     => $meta_data['share'],
+			'configure' => $meta_data['configure'],
+			'proActive' => apply_filters( 'surveyfunnel_pro_activated', false ),
 		);
 		wp_send_json_success( $data );
 		wp_die();

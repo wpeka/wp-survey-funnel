@@ -31,7 +31,7 @@ let contentElementsLastIndex = 0;
 let initialState = [];
 
 export default function DesignPreview() {
-    const { List, type: surveyType } = useContext(BuildContext);
+    const { List, type: surveyType, proActive } = useContext(BuildContext);
     const designCon = useContext(DesignContext);
     const [currentTab, setCurrentTab] = useState(0);
     const [tabCount, setTabCount] = useState(0);
@@ -40,21 +40,30 @@ export default function DesignPreview() {
 	const { proSettings } = useContext(ConfigureContext);
 
     useEffect(() => {
+		const { CONTENT_ELEMENTS } = List;
+		let proQuestions = [];
+		for(let i = 0; i < CONTENT_ELEMENTS.length; i++) {
+			if ( ( CONTENT_ELEMENTS[i].componentName === 'TextElement' || CONTENT_ELEMENTS[i].componentName === 'ImageQuestion' ) && ! proActive ) {
+				continue;
+			}
+			proQuestions.push( CONTENT_ELEMENTS[i] );
+		}
+
         setComponentList([
             ...List.START_ELEMENTS,
-            ...List.CONTENT_ELEMENTS,
+            ...proQuestions,
             ...List.RESULT_ELEMENTS,
 			...__defaultResultScreen
         ]);
         setTabCount(
             List.START_ELEMENTS.length +
-			List.CONTENT_ELEMENTS.length +
+			proQuestions.length +
 			List.RESULT_ELEMENTS.length + 1
         );
 		contentElementsLastIndex = List.START_ELEMENTS.length + List.CONTENT_ELEMENTS.length - 1;
         initialState = [
             ...List.START_ELEMENTS,
-            ...List.CONTENT_ELEMENTS,
+            proQuestions,
             ...List.RESULT_ELEMENTS,
 			...__defaultResultScreen
         ];
@@ -207,7 +216,14 @@ export default function DesignPreview() {
                                     })}
                                 </div>
 								{ checkValidations( 1, true ) && <div className="nextButtonChoices">
-									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+                                    <button type="button" style={{
+                                        background: convertToRgbaCSS(
+                                            designCon.buttonColor
+                                        ),
+                                        color: convertToRgbaCSS(
+                                            designCon.buttonTextColor
+                                        ),
+                                    }} onClick={() => {changeCurrentTab(1);}}>Next</button>
 								</div>}
                             </div>
                         </div>
@@ -262,7 +278,14 @@ export default function DesignPreview() {
                                     })}
                                 </div>
 								{ checkValidations( 1, true ) && <div className="nextButtonChoices">
-									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
+                                    <button type="button" style={{
+                                        background: convertToRgbaCSS(
+                                            designCon.buttonColor
+                                        ),
+                                        color: convertToRgbaCSS(
+                                            designCon.buttonTextColor
+                                        ),
+                                    }} onClick={() => {changeCurrentTab(1);}}>Next</button>	
 								</div>}
                             </div>
                         </div>
@@ -292,6 +315,32 @@ export default function DesignPreview() {
                         </div>
                     </div>
                 );
+                case "ShortAnswer":
+                case "LongAnswer":
+                    return (
+                        <div className={"surveyfunnel-lite-tab-" + item.componentName}
+                        style={{ ...style }}
+                        key={item.id}
+                        >
+                            <div
+                                className="tab-container"
+                                key={item.id}
+    
+                            >
+                                <div className="tab" tab-componentname={item.componentName}>
+                                    <h3 className="surveyTitle">{item.title}</h3>
+                                    <p className="surveyDescription">{item.description}</p>
+                                    {item.componentName === 'ShortAnswer' && <input style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} type="text" />}
+                                    {item.componentName === 'LongAnswer' && <textarea style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} />}
+                                    <button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
+                                        changeCurrentTab(1);
+                                    }}>
+                                        Next
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    );
             case "ResultScreen":
                 return (
                     <div className="surveyfunnel-lite-tab-ResultScreen"
@@ -329,12 +378,12 @@ export default function DesignPreview() {
                                         case 'LastName':
                                         case 'ShortTextAnswer':
                                             return <div key={ele.id + '_' + i + 'key'}>
-                                                <label>{ele.name}</label>
+                                                <label>{ele.name} {ele.required ? '*' : ''}</label>
                                                 <input type="text" id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx} />
                                             </div>
                                         case 'Email':
                                             return <div key={ele.id + '_' + i + 'key'}>
-                                                <label>{ele.name}</label>
+                                                <label>{ele.name} {ele.required ? '*' : ''}</label>
                                                 <input type="email" id={ele.id + '_' + i} style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} placeholder={ele.placeholder} required={ele.required} value={ele.value} onChange={handleChange} inputidx={i} listidx={idx}/>
                                             </div>
                                         case 'LongTextAnswer':
@@ -344,13 +393,20 @@ export default function DesignPreview() {
                                             </div>
                                     }
                                 })}
-                                <button type="button" onClick={() => {changeCurrentTab(1)}}>{item.buttonLabel}</button>
+                                <button type="button" style={{
+                                        background: convertToRgbaCSS(
+                                            designCon.buttonColor
+                                        ),
+                                        color: convertToRgbaCSS(
+                                            designCon.buttonTextColor
+                                        ),
+                                    }} onClick={() => {changeCurrentTab(1);}}>{item.buttonLabel}</button>
                             </div>
                         </div>
                     </div>
                 )
             default:
-                return "";
+                return applyFilters( 'renderContentElementsDesignPreview', '', item, style, convertToRgbaCSS, changeCurrentTab, designCon, handleRadioChange, idx );
         }
     };
 
@@ -422,8 +478,11 @@ export default function DesignPreview() {
                                         case 'SingleChoice':
                                         case 'MultiChoice':
                                         case 'FormElements':
+                                        case 'ShortAnswer':
+                                        case 'LongAnswer':
                                             return renderContentElements(item, "block", i);
-
+										default:
+											return applyFilters( 'callRenderContentElements', '', renderContentElements, item, i );
                                     }
                                 }
                                 return renderContentElements(item, 'none', i);

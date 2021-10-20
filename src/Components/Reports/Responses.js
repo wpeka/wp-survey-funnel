@@ -128,6 +128,10 @@ export default function Responses() {
 	const getCurrentReportAnswer = ( report ) => {
 		switch ( report.componentName ) {
 			case 'SingleChoice':
+			case 'ShortAnswer':
+			case 'LongAnswer':
+			case 'TextElement':
+			case 'ImageQuestion':
 				return <div className="currentAnswer">
 					{report.answer}
 				</div>

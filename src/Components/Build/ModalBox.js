@@ -7,12 +7,17 @@ import React, {
 } from "react";
 import { BuildContext } from "../Context/BuildContext";
 import { ModalContext } from "../Context/ModalContext";
-import { Choices } from "./Elements/ContentElements";
+import { Choices, Answer } from "./Elements/ContentElements";
 import { FormElements } from "./Elements/FormElements";
 import { ResultScreen } from "./Elements/ResultScreenElements";
 import { CoverPage } from "./Elements/StartScreenElements";
 import PostTitle from "./Elements/PostTitle";
 import { DesignContext } from "../Context/DesignContext";
+import ModalContentRight from "../../HelperComponents/ModalContentRight";
+import { CloseModal } from "../../HelperComponents/CloseModalPopUp";
+import { convertToRgbaCSS } from "../../HelperComponents/HelperFunctions";
+
+const { applyFilters } = wp.hooks;
 
 export default function ModalBox() {
     const { showModal, currentElement } = useContext(ModalContext);
@@ -27,7 +32,8 @@ export default function ModalBox() {
             saveToList,
             designCon,
 			type,
-			List
+			List,
+			convertToRgbaCSS
         }
         switch (currentElement.componentName) {
             case "CoverPage":
@@ -41,8 +47,11 @@ export default function ModalBox() {
                 return <FormElements {...componentProps} />
             case 'postTitle':
                 return <PostTitle {...componentProps} />
+            case 'ShortAnswer':
+            case 'LongAnswer':
+                return <Answer {...componentProps} />
             default:
-                return "";
+                return applyFilters( 'getComponentRender', "", componentProps, currentElement.componentName, ModalContentRight, CloseModal );
         }
     };
 

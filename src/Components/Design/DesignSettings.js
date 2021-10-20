@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import { designColors } from '../../Data';
 import { DesignContext } from '../Context/DesignContext';
 import { PopoverPicker } from '../../HelperComponents/ColorPicker';
-
 const fontFamily = require('../../Data/google-fonts.json');
 
 export default function DesignSettings() {
@@ -67,10 +66,17 @@ export default function DesignSettings() {
 				<div className="surveyfunnel-lite-img-upload-container">
 					<span>Background Image (Recommended image size 1920x1080px)</span>
 					<label htmlFor="surveyfunnel-lite_bg_img" className="surveyfunnel-lite-custom-file-upload">
-						<input id="surveyfunnel-lite_bg_img" type="file" name="file" onChange={designCon.changeHandler} />
+						<input id="surveyfunnel-lite_bg_img" type="button" name="file" onClick={designCon.handleMedia} />
 						Upload Image
 					</label>
 				</div>
+				{designCon.selectedImageUrl && <div className="selectedBackgroundImage">
+					<div>{designCon.selectedImageUrl.substring(designCon.selectedImageUrl.lastIndexOf('/')+1)}</div>
+					<button onClick={designCon.deleteImage}>delete</button>	
+				</div>}
+				{designCon.errors !== '' && <div className="errorClass">
+					{designCon.errors}
+				</div>}
 				<div className="opacity-picker surveyfunnel-lite-opacity-section">
 					<span>Image Opacity</span>
 					<input type="range" value={designCon.opacity} min='0' max='1' step="0.10" onChange={handleRangeChange} />
