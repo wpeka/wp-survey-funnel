@@ -60,7 +60,7 @@ export default function DesignPreview() {
 			proQuestions.length +
 			List.RESULT_ELEMENTS.length + 1
         );
-		contentElementsLastIndex = List.START_ELEMENTS.length + List.CONTENT_ELEMENTS.length - 1;
+		contentElementsLastIndex = List.START_ELEMENTS.length + proQuestions.length - 1;
         initialState = [
             ...List.START_ELEMENTS,
             proQuestions,
@@ -80,13 +80,16 @@ export default function DesignPreview() {
 		if ( num !== temp ) {
 			surveyTypeFlag = true;
 		}
+		console.log(num);
 		if ( surveyTypeFlag && num !== -1 ) {
 			setCurrentTab(num);
 		}
 		else if( componentList[currentTab].type !== 'RESULT_ELEMENTS' ) {
+			console.log(num + ' sdas');
 			setCurrentTab(currentTab + num);
 		}
 		else {
+			console.log(contentElementsLastIndex + ' sdasasd');
 			setCurrentTab(contentElementsLastIndex);
 		}
     };
