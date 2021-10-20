@@ -79,7 +79,7 @@ export default function (props) {
     }
     
     return (
-        <div ref={ref} style={style} className={(!proActive && item.componentName === 'TextElement') ? 'card-disabled surveyfunnel-lite-card-area' : 'surveyfunnel-lite-card-area' }>
+        <div ref={ref} style={style} className={(!proActive && ( item.componentName === 'TextElement' || item.componentName === 'ImageQuestion' )) ? 'card-disabled surveyfunnel-lite-card-area' : 'surveyfunnel-lite-card-area' }>
         {item.type === 'CONTENT_ELEMENTS' && <div className="surveyfunnel-lite-cardbox-number">
                 {props.index + 1}
             </div>}
@@ -91,8 +91,8 @@ export default function (props) {
 
             <div className="card-flex">
 				{item.type === 'RESULT_ELEMENTS' && applyFilters( 'scoringLogicCardFilter', '', item, type )}
-                <button className="surveyfunnel-lite-cardBox-btn" onClick={editCard} disabled={!proActive && item.componentName === 'TextElement' }><img src={require('./BuildImages/pencil.png')}></img></button>
-                <button className="surveyfunnel-lite-cardBox-btn" onClick={deleteCard} disabled={!proActive && item.componentName === 'TextElement' }><img src={require('./BuildImages/delete-icon.png')}></img></button>
+                <button className="surveyfunnel-lite-cardBox-btn" onClick={editCard} disabled={!proActive && ( item.componentName === 'TextElement' || item.componentName === 'ImageQuestion' ) }><img src={require('./BuildImages/pencil.png')}></img></button>
+                <button className="surveyfunnel-lite-cardBox-btn" onClick={deleteCard} disabled={!proActive && ( item.componentName === 'TextElement' || item.componentName === 'ImageQuestion' ) }><img src={require('./BuildImages/delete-icon.png')}></img></button>
             </div>
         </div>
         </div>

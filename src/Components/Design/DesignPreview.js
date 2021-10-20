@@ -40,35 +40,30 @@ export default function DesignPreview() {
 	const { proSettings } = useContext(ConfigureContext);
 
     useEffect(() => {
-		// remove pro question types if pro is not activated.
-		if ( proActive === false ) {
-			const { CONTENT_ELEMENTS } = List;
-			let proQuestions = [];
-			for(let i = 0; i < CONTENT_ELEMENTS.length; i++) {
-				if ( CONTENT_ELEMENTS[i].componentName === 'TextElement' || CONTENT_ELEMENTS[i].componentName === 'ImageQuestion' ) {
-					continue;
-				}
-				proQuestions.push( CONTENT_ELEMENTS[i] );
+		const { CONTENT_ELEMENTS } = List;
+		let proQuestions = [];
+		for(let i = 0; i < CONTENT_ELEMENTS.length; i++) {
+			if ( ( CONTENT_ELEMENTS[i].componentName === 'TextElement' || CONTENT_ELEMENTS[i].componentName === 'ImageQuestion' ) && ! proActive ) {
+				continue;
 			}
-
-			List.CONTENT_ELEMENTS = proQuestions;
+			proQuestions.push( CONTENT_ELEMENTS[i] );
 		}
 
         setComponentList([
             ...List.START_ELEMENTS,
-            ...List.CONTENT_ELEMENTS,
+            ...proQuestions,
             ...List.RESULT_ELEMENTS,
 			...__defaultResultScreen
         ]);
         setTabCount(
             List.START_ELEMENTS.length +
-			List.CONTENT_ELEMENTS.length +
+			proQuestions.length +
 			List.RESULT_ELEMENTS.length + 1
         );
 		contentElementsLastIndex = List.START_ELEMENTS.length + List.CONTENT_ELEMENTS.length - 1;
         initialState = [
             ...List.START_ELEMENTS,
-            ...List.CONTENT_ELEMENTS,
+            proQuestions,
             ...List.RESULT_ELEMENTS,
 			...__defaultResultScreen
         ];
