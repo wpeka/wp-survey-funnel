@@ -80,16 +80,13 @@ export default function DesignPreview() {
 		if ( num !== temp ) {
 			surveyTypeFlag = true;
 		}
-		console.log(num);
 		if ( surveyTypeFlag && num !== -1 ) {
 			setCurrentTab(num);
 		}
 		else if( componentList[currentTab].type !== 'RESULT_ELEMENTS' ) {
-			console.log(num + ' sdas');
 			setCurrentTab(currentTab + num);
 		}
 		else {
-			console.log(contentElementsLastIndex + ' sdasasd');
 			setCurrentTab(contentElementsLastIndex);
 		}
     };
