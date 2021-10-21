@@ -60,7 +60,7 @@ export default function DesignPreview() {
 			proQuestions.length +
 			List.RESULT_ELEMENTS.length + 1
         );
-		contentElementsLastIndex = List.START_ELEMENTS.length + List.CONTENT_ELEMENTS.length - 1;
+		contentElementsLastIndex = List.START_ELEMENTS.length + proQuestions.length - 1;
         initialState = [
             ...List.START_ELEMENTS,
             proQuestions,
