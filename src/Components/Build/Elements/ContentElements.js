@@ -339,7 +339,7 @@ export class Answer extends React.Component {
 							</div>
                         </div>
                         <div className="modalComponentSaveButton">
-                            <button onClick={this.handleSave}>Save</button>
+                            <button onClick={this.handleSave} name="save">Save</button>
                         </div>
                     </div>
                     <div className="modalContent-right">
@@ -364,9 +364,9 @@ export class Answer extends React.Component {
 function getAnswerComponentInput(currentElement, designCon) {
     switch(currentElement.componentName) {
         case 'ShortAnswer':
-            return <input type="text" style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}/>
+            return <input className="shortAnswer-input" type="text" style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }}/>
         case 'LongAnswer':
-            return <textarea cols="10" style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} />
+            return <textarea className="longAnswer-input" cols="10" style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} />
         default:
             return '';
     }

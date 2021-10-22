@@ -10,4 +10,7 @@ module.exports = {
 	},
 	"automock": false,
   	"resetMocks": false,
+	testEnvironment: 'jsdom',
+	verbose: true,
+	testURL: 'http://localhost/',
 }
