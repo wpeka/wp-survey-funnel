@@ -41,7 +41,7 @@ export const ResultScreen = React.memo(
 		saveResultScreen = () => {
 			let errorArray = [];
 			if ( this.state.title === '' ) {
-				errorArray.push(<p>Add title before saving.</p>);
+				errorArray.push(<p>Please add title before saving.</p>);
 			}
 			errorArray = applyFilters( 'resultScreenValidation', errorArray, this.state, this.props.List );
 			if ( errorArray.length === 0 ) {

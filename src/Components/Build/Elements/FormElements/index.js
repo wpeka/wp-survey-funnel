@@ -227,7 +227,7 @@ export const FormElements = React.memo(
 				err = '';
 			}
 			else {
-				err = 'Please add title before saving';
+				err = 'Please add title before saving.';
 			}
 			this.setState({
 				error: err

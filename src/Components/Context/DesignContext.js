@@ -76,7 +76,9 @@ export function DesignContextProvider(props) {
 			if ( data.data.backgroundImage !== '' ) {
 				setSelectedImageUrl(data.data.backgroundImage);
 			}
-        });
+        })
+		.catch(err => {
+		});
 	}, []);
 
 	useEffect(() => {

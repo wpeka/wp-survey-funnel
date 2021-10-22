@@ -35,11 +35,15 @@ export const CoverPage = React.memo(
 				err = '';
 			}
 			else {
-				err = 'Please add title before saving';
+				err = 'Please add title before saving.';
 			}
 			this.setState({
 				error: err
 			}, () => {
+				let div = document.querySelector('.modalContent-left-fields');
+				if ( div ) {
+					div.lastElementChild.scrollIntoView({ behavior: 'smooth' });
+				}
 				if ( this.state.error === '' ) {
 					this.props.saveToList();
 				}
