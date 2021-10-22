@@ -78,10 +78,10 @@ export const Choices = React.memo(
 				err = '';
 			}
 			else if ( this.state.answers.length < 2 ) {
-				err = 'Add atleast two answers..';
+				err = 'Add atleast two answers.';
 			}
 			else {
-				err = 'Please add title before saving..';
+				err = 'Please add title before saving.';
 			}
 			this.setState({
 				error: err
@@ -285,7 +285,7 @@ export class Answer extends React.Component {
 			err = '';
 		}
 		else {
-			err = 'Please add title before saving..';
+			err = 'Please add title before saving.';
 		}
 		this.setState({
 			error: err
