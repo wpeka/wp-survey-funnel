@@ -1,13 +1,20 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { initColorState } from '../../Data';
 import fetchData from '../../HelperComponents/fetchData';
-import { convertToRgbaCSS } from '../../HelperComponents/HelperFunctions';
+import { convertToRgbaCSS, validateImageUrl } from '../../HelperComponents/HelperFunctions';
 
 export function DesignContextProvider(props) {
 	
 	const [initialState, setinitialState] = useState(initColorState);
-	const [selectedImage, setSelectedImage] = useState(null);
 	const [selectedImageUrl, setSelectedImageUrl] = useState(null);
+	const [errors, setErrors] = useState('');
+
+	window.send_to_editor = function(html) {
+		var doc = new DOMParser().parseFromString(html, "text/xml");
+		let imgurl = doc.firstChild.getAttribute('src');
+		setSelectedImageUrl(imgurl);
+		tb_remove();
+	}
 
 	const setSelectedFamily = ( family, value ) => {
 		setinitialState({
@@ -31,6 +38,24 @@ export function DesignContextProvider(props) {
 		})
 	}
 
+	const handleMedia = (  ) => {
+		tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
+	}
+
+	const deleteImage = () => {
+		setSelectedImageUrl(null);
+	}
+
+	useEffect(() => {
+		if ( selectedImageUrl === null || selectedImageUrl === false ) {
+			return;
+		}
+		if ( ! validateImageUrl( selectedImageUrl ) ) {
+			setSelectedImageUrl(null);
+			setErrors('Please select files only of type [jpeg, jpg, png]');
+		}
+	}, [selectedImageUrl])
+
 	useEffect(() => {
 		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
@@ -48,22 +73,11 @@ export function DesignContextProvider(props) {
 			}
 			const design = JSON.parse( data.data.design );
 			setinitialState(design);
-			if ( data.data.backgroundImage !== false ) {
+			if ( data.data.backgroundImage !== '' ) {
 				setSelectedImageUrl(data.data.backgroundImage);
 			}
         });
 	}, []);
-
-	const changeHandler = (event) => {
-		if ( event.target.files[0] !== undefined ) {
-			setSelectedImage(event.target.files[0]);
-			setSelectedImageUrl(URL.createObjectURL(event.target.files[0]));
-		}
-		else {
-			setSelectedImageUrl(null);
-			setSelectedImage(null);
-		}
-	};
 
 	useEffect(() => {
 		const root = document.body;
@@ -72,16 +86,6 @@ export function DesignContextProvider(props) {
 		   convertToRgbaCSS(initialState.answersHighlightBoxColor)
 		);
 	}, [initialState]);
-
-	useEffect(() => {
-		if ( selectedImage === null || selectedImage === undefined ) {
-			return;
-		}
-		let allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-		if ( !allowedExtensions.exec(selectedImage.name) ) {
-			setSelectedImage(null);
-		}
-	}, [selectedImage]);
 
 	const saveContext = (e) => {
 		e.target.classList.add('surveyfunnel-lite-button-loading');
@@ -93,19 +97,19 @@ export function DesignContextProvider(props) {
             action: 'surveyfunnel_lite_save_design_data',
             post_id,
 			state: JSON.stringify( { ...initialState } ),
+			selectedImageUrl,
         };
         const ajaxURL = document.getElementById('ajaxURL').value;
 
-		fetchData( ajaxURL, data, selectedImage )
+		fetchData( ajaxURL, data )
 		.then(data => {
 			e.target.classList.remove('surveyfunnel-lite-button-loading');
-
         });
 	}
 
 	return (
 		<DesignContext.Provider
-			value={{...initialState, handleColorChange, changeHandler, handleRangeChange, saveContext, selectedImageUrl, setSelectedFamily}}
+			value={{...initialState, errors, handleColorChange, handleRangeChange, saveContext, selectedImageUrl, deleteImage, setSelectedFamily, handleMedia}}
 		>
 			{props.children}
 		</DesignContext.Provider>

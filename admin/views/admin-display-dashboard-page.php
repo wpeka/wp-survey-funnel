@@ -15,6 +15,16 @@ $args = array(
 
 $surveys = get_posts( $args );
 
+foreach ( $surveys as $survey ) {
+	if ( get_post_meta( $survey->ID, 'surveyfunnel-lite_hasProQuestions', true ) && ! apply_filters( 'surveyfunnel_pro_activated', false ) ) {
+		echo '<div class="notice notice-warning is-dismissable"><p><strong>' . sprintf(
+			/* translators: 1: href link */
+			esc_html__( "Some of the PRO feature questions won't be available to use as pro version is deactivated.", 'surveyfunnel' )
+		) . '</strong></p></div>';
+		break;
+	}
+}
+
 $flag = apply_filters( 'surveyfunnel_pro_activated', false );
 
 $disabled = $flag ? '' : 'disabled="disabled"';
@@ -29,7 +39,7 @@ $url_to_redirect = Surveyfunnel_Lite_Admin::surveyfunnel_lite_get_setup_page_url
 function surveyfunnel_lite_get_background_image( $post_id ) {
 	$id = get_post_meta( $post_id, 'surveyfunnel-lite-design-background', true );
 	if ( $id ) {
-		return wp_get_attachment_url( $id );
+		return $id;
 	}
 	return false;
 }

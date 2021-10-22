@@ -85,7 +85,25 @@ function ShowErrors({error}) {
 		</>
 	);
 }
-	
+// remove pro question types if pro is not activated.
+if ( surveyData.proActive !== '1' ) {
+	if( data.build.match( /proVersionQuestionType/g ) ) {
+		const build = JSON.parse(data.build);
+		const { CONTENT_ELEMENTS } = build.List;
+		let proQuestions = [];
+		for(let i = 0; i < CONTENT_ELEMENTS.length; i++) {
+			if ( CONTENT_ELEMENTS[i].componentName === 'TextElement' || CONTENT_ELEMENTS[i].componentName === 'ImageQuestion' ) {
+				continue;
+			}
+			proQuestions.push( CONTENT_ELEMENTS[i] );
+		}
+
+		build.List.CONTENT_ELEMENTS = proQuestions;
+		data.build = JSON.stringify(build);
+	}
+}
+
+
 
 function Survey() {
     if (data.build === '') {
@@ -231,6 +249,11 @@ function Survey() {
         resultData._id = componentList[currentTab].id
         switch (componentList[currentTab].componentName) {
             case 'SingleChoice':
+            case 'ShortAnswer':
+            case 'LongAnswer':
+            case 'ShortAnswer':
+			case 'TextElement':
+			case 'ImageQuestion':
                 resultData.question = componentList[currentTab].title
                 resultData.answer = componentList[currentTab].value
                 break
@@ -308,7 +331,7 @@ function Survey() {
         let error = []
         switch (componentList[currentTab].componentName) {
             case 'CoverPage':
-				applyFilters('checkCoverPageButtonValidations', flag, componentList[currentTab], iframeRef, error, configure)
+				applyFilters('checkCoverPageButtonValidations', false, componentList[currentTab], iframeRef, error, configure)
 				break;
             case 'ResultScreen':
                 break
@@ -318,8 +341,6 @@ function Survey() {
                     switch (item.componentName) {
                         case 'FirstName':
                         case 'LastName':
-                        case 'ShortTextAnswer':
-                        case 'LongTextAnswer':
                             if (item.required) {
                                 // do validation.
                                 if (item.value === '') {
@@ -352,24 +373,27 @@ function Survey() {
                 })
                 break
             case 'MultiChoice':
-                const { answers } = componentList[currentTab]
-                let flag = false
-                for (let i = 0; i < answers.length; i++) {
-                    if (answers[i].checked) {
-                        flag = true
-                        break
-                    }
-                }
-                if (!flag) {
-                    error.push(
-                        <p key={error.length}>
-                            Please select atleast one answer!
-                        </p>
-                    )
-                }
+				if ( componentList[currentTab].mandatory ) {
+				
+					const { answers } = componentList[currentTab]
+					let flag = false
+					for (let i = 0; i < answers.length; i++) {
+						if (answers[i].checked) {
+							flag = true
+							break
+						}
+					}
+					if (!flag) {
+						error.push(
+							<p key={error.length}>
+								Please select atleast one answer!
+							</p>
+						)
+					}
+				}
                 break
             case 'SingleChoice':
-                if (componentList[currentTab].value === '') {
+                if (componentList[currentTab].value === '' && componentList[currentTab].mandatory ) {
                     error.push(
                         <p key={error.length}>
                             Please select atleast one answer!
@@ -377,6 +401,19 @@ function Survey() {
                     )
                 }
                 break
+			case 'ShortAnswer':
+			case 'LongAnswer':
+				if (componentList[currentTab].value === '' && componentList[currentTab].mandatory ) {
+                    error.push(
+                        <p key={error.length}>
+                            Entered answer is blank, please add answer!
+                        </p>
+                    )
+                }
+				break;
+			default:
+				let data = applyFilters( 'checkValidations', false, componentList[currentTab], error );
+				break;
         }
         if (error.length > 0) {
             if ( ! disablity ) {
@@ -460,9 +497,16 @@ function Survey() {
                                     })}
                                 </div>
 								<ShowErrors error={error} />
-								{checkValidations( 1, true ) && <div className="nextButtonChoices">
-									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
-								</div>}
+								<div className="nextButtonChoices">
+									<button type="button" style={{
+                                        background: convertToRgbaCSS(
+                                            designCon.buttonColor
+                                        ),
+                                        color: convertToRgbaCSS(
+                                            designCon.buttonTextColor
+                                        ),
+                                    }} onClick={() => {changeCurrentTab(1);}}>Next</button>	
+								</div>
                             </div>
                         </div>
                     </div>
@@ -535,9 +579,16 @@ function Survey() {
                                     })}
                                 </div>
 								<ShowErrors error={error} />
-								{checkValidations( 1, true ) && <div className="nextButtonChoices">
-									<button type="button" onClick={() => {changeCurrentTab(1);}}>Next</button>	
-								</div>}
+								<div className="nextButtonChoices">
+                                <button type="button" style={{
+                                        background: convertToRgbaCSS(
+                                            designCon.buttonColor
+                                        ),
+                                        color: convertToRgbaCSS(
+                                            designCon.buttonTextColor
+                                        ),
+                                    }} onClick={() => {changeCurrentTab(1);}}>Next</button>	
+								</div>
                             </div>
                         </div>
                     </div>
@@ -582,6 +633,33 @@ function Survey() {
                         </div>
                     </div>
                 )
+            case "ShortAnswer":
+            case "LongAnswer":
+                return (
+                    <div className={"surveyfunnel-lite-tab-" + item.componentName}
+                    style={{ ...style }}
+                    key={item.id}
+                    >
+                        <div
+                            className="tab-container"
+                            key={item.id}
+
+                        >
+                            <div className="tab" tab-componentname={item.componentName}>
+                                <h3 className="surveyTitle">{item.title}</h3>
+                                <p className="surveyDescription">{item.description}</p>
+                                {item.componentName === 'ShortAnswer' && <input style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} type="text" value={item.value || ''} listidx={idx} onChange={handleRadioChange} />}
+                                {item.componentName === 'LongAnswer' && <textarea style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} value={item.value || ''} listidx={idx} onChange={handleRadioChange} />}
+								<ShowErrors error={error} />
+                                <button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
+                                    changeCurrentTab(1);
+                                }}>
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                );
             case 'ResultScreen':
                 return (
                     <div
@@ -623,14 +701,13 @@ function Survey() {
                                     switch (ele.componentName) {
                                         case 'FirstName':
                                         case 'LastName':
-                                        case 'ShortTextAnswer':
                                             return (
                                                 <div
                                                     key={
                                                         ele.id + '_' + i + 'key'
                                                     }
                                                 >
-                                                    <label>{ele.name}</label>
+                                                    <label>{ele.name} {ele.required?'*':''}</label>
                                                     <input
                                                         type="text"
                                                         id={ele.id + '_' + i}
@@ -657,7 +734,7 @@ function Survey() {
                                                         ele.id + '_' + i + 'key'
                                                     }
                                                 >
-                                                    <label>{ele.name}</label>
+                                                    <label>{ele.name} {ele.required?'*':''}</label>
                                                     <input
                                                         type="email"
                                                         id={ele.id + '_' + i}
@@ -706,20 +783,20 @@ function Survey() {
                                     }
                                 })}
 								<ShowErrors error={error} />
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        changeCurrentTab(1)
-                                    }}
-                                >
-                                    {item.buttonLabel}
-                                </button>
+                                <button type="button" style={{
+                                        background: convertToRgbaCSS(
+                                            designCon.buttonColor
+                                        ),
+                                        color: convertToRgbaCSS(
+                                            designCon.buttonTextColor
+                                        ),
+                                    }} onClick={() => {changeCurrentTab(1);}}>{item.buttonLabel}</button>
                             </div>
                         </div>
                     </div>
                 )
             default:
-                return ''
+                return applyFilters( 'renderContentElements', '', item, style, convertToRgbaCSS, changeCurrentTab, designCon, handleRadioChange, idx, error, ShowErrors );
         }
     }
 
@@ -741,6 +818,7 @@ function Survey() {
     }
 
     const handleRadioChange = (e) => {
+
         let listidx = e.target.getAttribute('listidx')
         let newList = JSON.parse(JSON.stringify(componentList))
         newList[listidx].value = e.target.value
@@ -894,8 +972,11 @@ function Survey() {
                                                         case 'SingleChoice':
                                                         case 'MultiChoice':
                                                         case 'FormElements':
+                                                        case 'ShortAnswer':
+                                                        case 'LongAnswer':
                                                             return renderContentElements(item, "block", i);
-
+														default:
+															return applyFilters( 'callRenderContentElements', '', renderContentElements, item, i );
                                                     }
                                                 }
                                                 return renderContentElements(item, 'none', i);

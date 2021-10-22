@@ -941,9 +941,80 @@ body {
 	justify-content: center;
 }
 
+.card-disabled {
+	opacity: 0.7 !important;
+	button {
+		cursor: not-allowed !important;
+	} 
+}
+
 .main-tab-container {
 	.tab-list {
 		max-height: calc(100vh - 300px);
 		overflow: auto;
+	}
+}
+
+.selectedBackgroundImage {
+	margin: 20px 0px;
+    display: flex;
+    align-items: center;
+	justify-content: space-between;
+	padding-right: 20px;
+
+	div {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		margin-right: 10px;
+		width: calc(100% - 100px);
+	}
+
+	button {
+		background: #F44336;
+		color: white;
+		padding: 8px 19px;
+		border: none;
+		border-radius: 6px;
+		cursor: pointer;
+	}
+}
+
+.modalComponentMandatory {
+	label {
+		cursor: pointer;
+		width: 50px;
+		height: 20px;
+		background: grey;
+		display: block;
+		border-radius: 100px;
+		position: relative;
+	}
+	
+	label:after {
+		content: '';
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		width: 10px;
+		height: 10px;
+		background: #fff;
+		border-radius: 90px;
+		transition: 0.3s;
+	}
+	input{
+		display: none;
+	}
+	input:checked + label {
+		background: #4CAF50;
+	}
+	
+	input:checked + label:after {
+		left: calc(100% - 5px);
+		transform: translateX(-100%);
+	}
+	
+	label:active:after {
+		width: 50px;
 	}
 }
