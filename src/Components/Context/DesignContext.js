@@ -10,9 +10,13 @@ export function DesignContextProvider(props) {
 	const [errors, setErrors] = useState('');
 
 	window.send_to_editor = function(html) {
+		
 		var doc = new DOMParser().parseFromString(html, "text/xml");
-		let imgurl = doc.firstChild.getAttribute('src');
-		setSelectedImageUrl(imgurl);
+		let image = doc.querySelector('img');
+		if ( image ) {
+			let imgurl = image.getAttribute('src');
+			setSelectedImageUrl(imgurl);
+		}
 		tb_remove();
 	}
 
