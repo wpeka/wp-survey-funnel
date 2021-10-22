@@ -9,7 +9,7 @@ export const Choices = React.memo(
         state = {
             title: "",
             description: "",
-            answers: [{ name: "", checked: false, ...applyFilters( 'choicesState', {},this.props.type ) }],
+            answers: [{ name: "", checked: false, ...applyFilters( 'choicesState', {},this.props.type ) }, { name: "", checked: false, ...applyFilters( 'choicesState', {},this.props.type ) }],
             value: '',
 			mandatory: false,
 			error: '',
@@ -78,14 +78,18 @@ export const Choices = React.memo(
 				err = '';
 			}
 			else if ( this.state.answers.length < 2 ) {
-				err = 'Add atleast two answers';
+				err = 'Add atleast two answers..';
 			}
 			else {
-				err = 'Please add title before saving';
+				err = 'Please add title before saving..';
 			}
 			this.setState({
 				error: err
 			}, () => {
+				let div = document.querySelector('.modalContent-left-fields');
+				if ( div ) {
+					div.lastElementChild.scrollIntoView({ behavior: 'smooth' });
+				}
 				if ( err === '' ) {
 					this.props.saveToList();
 				}
@@ -149,6 +153,7 @@ export const Choices = React.memo(
                                                     idx
                                                 )}
                                                 className="small"
+												disabled={this.state.answers.length < 3}
                                             >
                                             <img src={require('../BuildImages/delete-icon.png')}></img>
                                             </button>
@@ -280,11 +285,15 @@ export class Answer extends React.Component {
 			err = '';
 		}
 		else {
-			err = 'Please add title before saving';
+			err = 'Please add title before saving..';
 		}
 		this.setState({
 			error: err
 		}, () => {
+			let div = document.querySelector('.modalContent-left-fields');
+			if ( div ) {
+				div.lastElementChild.scrollIntoView({ behavior: 'smooth' });
+			}
 			if ( err === '' ) {
 				this.props.saveToList();
 			}

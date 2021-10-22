@@ -42,7 +42,7 @@ describe( 'Answer component should get rendered', () => {
 			name: 'save'
 		}});
 
-		expect(component.state('error')).toBe('Please add title before saving');
+		expect(component.state('error')).toBe('Please add title before saving..');
 
 		form.props().onChange({ target: {
 			name: 'title',
@@ -81,7 +81,7 @@ describe( 'Answer component should get rendered', () => {
 			name: 'save'
 		}});
 
-		expect(component.state('error')).toBe('Please add title before saving');
+		expect(component.state('error')).toBe('Please add title before saving..');
 
 		form.props().onChange({ target: {
 			name: 'title',
