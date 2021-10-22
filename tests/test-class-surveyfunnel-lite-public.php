@@ -81,7 +81,7 @@ class Test_Surveyfunnel_Lite_Public extends WP_UnitTestCase {
 		if ( defined( 'SURVEYFUNNEL_LITE_VERSION' ) ) {
 			self::$plugin_version = SURVEYFUNNEL_LITE_VERSION;
 		} else {
-			self::$plugin_version = '1.0.3';
+			self::$plugin_version = '1.1.0';
 		}
 		self::$plugin_name              = 'surveyfunnel-lite';
 		self::$surveyfunnel_lite_public = new Surveyfunnel_Lite_Public( self::$plugin_name, self::$plugin_version );
