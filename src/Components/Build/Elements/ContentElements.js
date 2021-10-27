@@ -83,6 +83,14 @@ export const Choices = React.memo(
 			else {
 				err = 'Please add title before saving.';
 			}
+
+			for(let i = 0; i < this.state.answers.length; i++) {
+				if ( this.state.answers[i].name === '' ) {
+					err = 'Please add text for all the answers added!'
+					break;
+				}
+			}
+
 			this.setState({
 				error: err
 			}, () => {
