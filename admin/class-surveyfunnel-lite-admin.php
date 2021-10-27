@@ -254,6 +254,47 @@ class Surveyfunnel_Lite_Admin {
 			'show_in_rest'        => true,
 		);
 		register_post_type( 'wpsf-survey', $args );
+
+		$this->surveyfunnel_lite_update();
+	}
+
+	/**
+	 * Admin init function.
+	 */
+	public function surveyfunnel_lite_update() {
+
+		// fix: background image is lost after updating to '1.1.0'.
+
+		$version = version_compare( SURVEYFUNNEL_LITE_VERSION, '1.1.0' );
+
+		if ( $version >= 0 && ! get_option( 'srf-lite-background-update', false ) ) {
+			$posts = get_posts(
+				array(
+					'post_type'   => 'wpsf-survey',
+					'post_status' => array( 'draft', 'publish' ),
+					'numberposts' => -1,
+				)
+			);
+
+			foreach ( $posts as $post ) {
+				$background_image_meta = get_post_meta( $post->ID, 'surveyfunnel-lite-design-background', true );
+
+				if ( $background_image_meta && ! $this->validate_image_url( $background_image_meta ) ) {
+					update_post_meta( $post->ID, 'surveyfunnel-lite-design-background', wp_get_attachment_url( $background_image_meta ) );
+				}
+			}
+
+			update_option( 'srf-lite-background-update', true );
+		}
+	}
+
+	/**
+	 * Image url validation.
+	 *
+	 * @param string $string url string.
+	 */
+	public function validate_image_url( $string ) {
+		return preg_match( '/^http.*\.(jpeg|jpg|png)$/', $string );
 	}
 
 	/**
