@@ -648,7 +648,7 @@ function Survey() {
                             <div className="tab" tab-componentname={item.componentName}>
                                 <h3 className="surveyTitle">{item.title}</h3>
                                 <p className="surveyDescription">{item.description}</p>
-                                {item.componentName === 'ShortAnswer' && <input style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} type="text" value={item.value || ''} listidx={idx} onChange={handleRadioChange} />}
+                                {item.componentName === 'ShortAnswer' && <input maxLength="280" style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} type="text" value={item.value || ''} listidx={idx} onChange={handleRadioChange} />}
                                 {item.componentName === 'LongAnswer' && <textarea style={{ border: `1px solid ${convertToRgbaCSS(designCon.answerBorderColor)}` }} value={item.value || ''} listidx={idx} onChange={handleRadioChange} />}
 								<ShowErrors error={error} />
                                 <button type="button" className="surveyButton" style={{ background: convertToRgbaCSS(designCon.buttonColor), color: convertToRgbaCSS(designCon.buttonTextColor) }} onClick={() => {
