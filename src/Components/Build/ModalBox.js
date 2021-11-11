@@ -33,7 +33,8 @@ export default function ModalBox() {
             designCon,
 			type,
 			List,
-			convertToRgbaCSS
+			convertToRgbaCSS,
+            editList
         }
         switch (currentElement.componentName) {
             case "CoverPage":
