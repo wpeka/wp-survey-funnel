@@ -34,7 +34,12 @@ export default function ModalBox() {
 			type,
 			List,
 			convertToRgbaCSS,
-            editList
+            editList,
+            setCurrentElement,
+            setShowModal
+        }
+        if(currentElement === null) {
+            return;
         }
         switch (currentElement.componentName) {
             case "CoverPage":

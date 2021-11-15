@@ -389,6 +389,7 @@ body {
         }
     }
     .modalContent {
+        overflow-y: scroll;
         background: white;
         height: calc(100vh - 108px);
         width: 95vw;
