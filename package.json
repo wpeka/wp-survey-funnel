@@ -61,7 +61,7 @@
     "react-select": "^4.3.1"
   },
   "scripts": {
-    "serve": "webpack --mode development",
+    "serve": "webpack --mode development --watch",
     "build": "webpack --mode production",
     "makepot": "wp i18n make-pot . languages/surveyfunnel.pot",
     "test": "jest --coverage",

@@ -74,6 +74,14 @@ export default function (props) {
         setShowModal(true);
     }
 
+    const conditionalLogicCard = function() {
+        setCurrentElement({
+            componentName: 'ConditionalLogic',
+            data: item
+        });
+        setShowModal(true);
+    }
+
     const deleteCard = function() {
         deleteItemInList( item );
     }
@@ -91,6 +99,7 @@ export default function (props) {
 
             <div className="card-flex">
 				{item.type === 'RESULT_ELEMENTS' && applyFilters( 'scoringLogicCardFilter', '', item, type )}
+                {item.type === 'CONTENT_ELEMENTS' && applyFilters('conditionalLogicCardFilter', '', conditionalLogicCard ) } 
                 <button className="surveyfunnel-lite-cardBox-btn" onClick={editCard} disabled={!proActive && ( item.componentName === 'TextElement' || item.componentName === 'ImageQuestion' ) }><img src={require('./BuildImages/pencil.png')}></img></button>
                 <button className="surveyfunnel-lite-cardBox-btn" onClick={deleteCard} disabled={!proActive && ( item.componentName === 'TextElement' || item.componentName === 'ImageQuestion' ) }><img src={require('./BuildImages/delete-icon.png')}></img></button>
             </div>

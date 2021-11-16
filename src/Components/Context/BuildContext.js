@@ -2,7 +2,7 @@ import React from 'react';
 import update from 'immutability-helper';
 import { ItemTypes } from '../../Data';
 import fetchData from '../../HelperComponents/fetchData';
-
+const { applyFilters } = wp.hooks;
 export class BuildContextProvider extends React.Component {
     state = {
         List: {
@@ -91,7 +91,6 @@ export class BuildContextProvider extends React.Component {
 
     deleteItemInList = ( data ) => {
         let newState = JSON.parse(JSON.stringify({...this.state}));
-
         let newList = newState.List[data.type].slice();
         for(let i = 0; i<newList.length; i++) {
             if(data.id === newList[i].id) {
@@ -99,6 +98,7 @@ export class BuildContextProvider extends React.Component {
                 break;
             }
         }
+        newList = applyFilters('deleteItemInList', newList, data);
         newState.List[data.type] = newList;
         this.setState(newState);
     }
