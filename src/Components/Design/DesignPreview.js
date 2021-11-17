@@ -77,10 +77,13 @@ export default function DesignPreview() {
 		let temp = num;
 		let surveyTypeFlag = false;
 		num = applyFilters( 'changeCurrentTabAsPerSurveyType', num, surveyType, componentList, currentTab, globalTotalScore );
+        num = applyFilters( 'changeCurrentTabAsPerConditionalLogic', num, componentList, currentTab );
+        console.log('Tab index is:' , num);
+        console.log('Tab set will be:', currentTab + num)
 		if ( num !== temp ) {
 			surveyTypeFlag = true;
 		}
-		if ( surveyTypeFlag && num !== -1 ) {
+		if ( surveyTypeFlag && num > 0 ) {
 			setCurrentTab(num);
 		}
 		else if( componentList[currentTab].type !== 'RESULT_ELEMENTS' ) {
