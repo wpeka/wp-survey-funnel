@@ -103,7 +103,7 @@ if ( surveyData.proActive !== '1' ) {
 	}
 }
 
-
+let conditional_stack = [0];
 
 function Survey() {
     if (data.build === '') {
@@ -184,7 +184,7 @@ function Survey() {
         return <link href={href} rel="stylesheet"></link>
     }
 
-    const changeCurrentTab = function (num) {
+    const changeCurrentTab = function (num, status = 'next') {
         // check for validations
         if ( ! checkValidations(num) || currentTab + num >= tabCount || ( componentList[currentTab].type === 'RESULT_ELEMENTS'  && num !== -1 ) ) {
             return;
@@ -192,10 +192,13 @@ function Survey() {
 		let temp = num;
 		let surveyTypeFlag = false;
 		num = applyFilters( 'changeCurrentTabAsPerSurveyType', num, data.surveyType, componentList, currentTab, globalTotalScore );
+        if( num !== -1 ) {
+            num = applyFilters( 'changeCurrentTabAsPerConditionalLogic', num, componentList, currentTab );
+        }
 		if ( num !== temp ) {
 			surveyTypeFlag = true;
 		}
-        if (!currentlyPreviewing && num !== -1) {
+        if (!currentlyPreviewing && num > 0) {
             let formData = {
                 security: data.ajaxSecurity,
                 post_id: data.post_id,
@@ -214,22 +217,57 @@ function Survey() {
                 formData.data = JSON.stringify(resultData)
                 fetchData(data.ajaxURL, formData).then((data) => {
 					if ( surveyTypeFlag ) {
-						setCurrentTab(num);
+                        conditional_stack.push(num);
+                        setCurrentTab(num);
 					}
 					else {
-						setCurrentTab(currentTab + num)
+                        let newTab = currentTab + num;
+                        if(status === 'prev') {
+                            conditional_stack.pop();
+                            newTab = conditional_stack[conditional_stack.length - 1];
+                        }
+                        else {
+                            conditional_stack.push(newTab);
+                        }
+                        setCurrentTab(newTab);
 					}
                 })
             } else {
-                setCurrentTab(currentTab + num)
+                let newTab = currentTab + num;
+                if(status === 'prev') {
+                    conditional_stack.pop();
+                    newTab = conditional_stack[conditional_stack.length - 1];
+                }
+                else {
+                    conditional_stack.push(newTab);
+                }
+                setCurrentTab(newTab);
             }
             return
         }
 		if ( componentList[currentTab].type !== 'RESULT_ELEMENTS' ) {
-			setCurrentTab(currentTab + num);
+            let newTab = currentTab + num;
+            if(status === 'prev') {
+                conditional_stack.pop();
+                newTab = conditional_stack[conditional_stack.length - 1];
+            }
+            else {
+                conditional_stack.push(newTab);
+            }
+			setCurrentTab(newTab);
 		}
 		else {
-			setCurrentTab(contentElementsLastIndex);
+            let newTab = contentElementsLastIndex;
+            if(status === 'prev') {
+                conditional_stack.pop();
+                newTab = conditional_stack[conditional_stack.length - 1];
+            }
+            else{
+                newTab = contentElementsLastIndex;
+                conditional_stack.push(contentElementsLastIndex);
+            }
+           
+			setCurrentTab(newTab);
 		}
     }
 
@@ -991,7 +1029,7 @@ function Survey() {
                                             <button
                                                 type="button"
                                                 onClick={() => {
-                                                    changeCurrentTab(-1);
+                                                    changeCurrentTab(-1, 'prev');
                                                 }}
                                                 disabled={checkButtonDisability('Previous')}
                                             >
