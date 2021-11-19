@@ -159,4 +159,14 @@ class Test_Surveyfunnel_Lite_Public extends WP_UnitTestCase {
 		$output = self::$surveyfunnel_lite_public->surveyfunnel_lite_survey_shortcode_render( $atts );
 		$this->assertEquals( 1, preg_match( '/id="surveyfunnel-lite-survey-[0-9a-z]{32}"/', $output ) );
 	}
+
+	/**
+	 * Test for surveyfunnel_lite_register_gutenberg_scripts function
+	 */
+	public function test_surveyfunnel_lite_register_gutenberg_scripts() {
+		self::$surveyfunnel_lite_public->surveyfunnel_lite_register_gutenberg_scripts();
+		global $wp_styles;
+		$enqueue_styles = $wp_styles->registered;
+		$this->assertArrayHasKey( 'surveyfunnel-lite-public', $enqueue_styles );
+	}
 }
