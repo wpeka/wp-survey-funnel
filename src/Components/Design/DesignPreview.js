@@ -30,6 +30,8 @@ let contentElementsLastIndex = 0;
 
 let initialState = [];
 
+let conditional_stack = [0];
+
 export default function DesignPreview() {
     const { List, type: surveyType, proActive } = useContext(BuildContext);
     const designCon = useContext(DesignContext);
@@ -69,7 +71,7 @@ export default function DesignPreview() {
         ];
     }, [List]);
 
-    const changeCurrentTab = function (num) {
+    const changeCurrentTab = function (num, status = 'next') {
 		// check for validations
 		if ( ! checkValidations(num) || currentTab + num >= tabCount || ( componentList[currentTab].type === 'RESULT_ELEMENTS'  && num !== -1 ) ) {
 			return;
@@ -77,17 +79,39 @@ export default function DesignPreview() {
 		let temp = num;
 		let surveyTypeFlag = false;
 		num = applyFilters( 'changeCurrentTabAsPerSurveyType', num, surveyType, componentList, currentTab, globalTotalScore );
+        if( num !== -1 ) {
+            num = applyFilters( 'changeCurrentTabAsPerConditionalLogic', num, componentList, currentTab );
+        }
 		if ( num !== temp ) {
 			surveyTypeFlag = true;
 		}
-		if ( surveyTypeFlag && num !== -1 ) {
+		if ( surveyTypeFlag && num > 0 ) {
+            conditional_stack.push(num);
 			setCurrentTab(num);
 		}
 		else if( componentList[currentTab].type !== 'RESULT_ELEMENTS' ) {
-			setCurrentTab(currentTab + num);
+            let newTab = currentTab + num;
+            if(status === 'prev') {
+                conditional_stack.pop();
+                newTab = conditional_stack[conditional_stack.length - 1];
+            }
+            else {
+                conditional_stack.push(newTab);
+            }
+			setCurrentTab(newTab);
 		}
 		else {
-			setCurrentTab(contentElementsLastIndex);
+            let newTab = contentElementsLastIndex;
+            if(status === 'prev') {
+                conditional_stack.pop();
+                newTab = conditional_stack[conditional_stack.length - 1];
+            }
+            else{
+                newTab = contentElementsLastIndex;
+                conditional_stack.push(contentElementsLastIndex);
+            }
+           
+			setCurrentTab(newTab);
 		}
     };
 
@@ -505,7 +529,7 @@ export default function DesignPreview() {
                             <button
                                 type="button"
                                 onClick={() => {
-                                    changeCurrentTab(-1);
+                                    changeCurrentTab(-1, 'prev');
                                 }}
                                 disabled={checkButtonDisability('Previous')}
                             >
