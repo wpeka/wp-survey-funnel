@@ -205,7 +205,7 @@ class Surveyfunnel_Lite {
 		$this->loader->add_action( 'init', $plugin_public, 'surveyfunnel_lite_public_init' );
 		$this->loader->add_filter( 'the_content', $plugin_public, 'surveyfunnel_lite_the_content' );
 
-		// ajax calls
+		// ajax calls.
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_new_survey_lead', $plugin_public, 'surveyfunnel_lite_new_survey_lead' );
 		$this->loader->add_action( 'wp_ajax_nopriv_surveyfunnel_lite_new_survey_lead', $plugin_public, 'surveyfunnel_lite_new_survey_lead' );
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_display_data', $plugin_public, 'surveyfunnel_lite_get_display_data' );

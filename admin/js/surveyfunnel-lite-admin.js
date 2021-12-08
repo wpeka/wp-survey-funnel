@@ -1,7 +1,9 @@
 (function( $ ) {
 	'use strict';
 
+	// on document ready function.
 	$(document).ready(function() {
+		// on filtering the survey.
 		$('[data-search]').on('keyup', debounce(function() {
 			let searchVal = $(this).val();
 			let filterItems = $('[data-filter-item]');
@@ -14,6 +16,7 @@
 			}
 		}, 250, false));
 
+		// debouncing function.
 		function debounce(func, wait, immediate) {
 			var timeout;
 		  
