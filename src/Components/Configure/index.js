@@ -7,6 +7,7 @@ import { ConfigureContext } from '../Context/ConfigureContext';
 
 export default function Configure() {
 	
+	// get the required ConfigureContext data and functions.
 	const { metaInfo, companyBranding, setCompanyBranding, options, setOptions, handleMetaChange, saveConfiguration, proSettings, setProSettings } = useContext(ConfigureContext);
 
 	return (

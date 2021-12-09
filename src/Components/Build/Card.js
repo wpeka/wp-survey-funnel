@@ -7,10 +7,12 @@ import { ModalContext } from "../Context/ModalContext";
 const { applyFilters } = wp.hooks;
 
 export default function (props) {
+	// get the required data from buildContext or parent using props.
 	const { deleteItemInList, moveCard, type, proActive } = useContext(BuildContext);
     const ref = useRef(null);
     const { id, text, index, item } = props;
 
+	// this function is created in order to rearrange the cards in the List.
     const [{ handlerId }, drop] = useDrop({
         accept: 'card' + item.type,
         collect(monitor) {
@@ -18,6 +20,7 @@ export default function (props) {
                 handlerId: monitor.getHandlerId(),
             };
         },
+		// hover function when one card element is dragged and hovered on the other.
         hover(data, monitor) {
             if (!ref.current) {
                 return;
@@ -51,6 +54,7 @@ export default function (props) {
         },
     });
 
+	// cards useDrag in order to make them draggable.
     const [{ isDragging }, drag] = useDrag({
         type: 'card' + item.type,
         item: () => {
@@ -69,6 +73,7 @@ export default function (props) {
 
     const { setShowModal, setCurrentElement } = useContext(ModalContext);
 
+	// this function is called when user tries to edit a card / question by clicking on edit button.
     const editCard = function() {
         setCurrentElement(item);
         setShowModal(true);

@@ -1,5 +1,5 @@
 import React from 'react'
-
+// component when there is no response or date has not been selected.
 export default function NoResponseRecorded( {title, description} ) {
 	return (
 		<div className="NRR">

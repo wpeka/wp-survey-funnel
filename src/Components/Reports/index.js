@@ -8,6 +8,7 @@ import { ReportContext } from "../Context/ReportContext";
 import '../../scss/reports.scss';
 import NoResponseRecorded from "./NoResponseRecorded";
 
+// parent reports component which shows tabs of insights and responses.
 export default function Reports() {
     const { dates, changeDate, dateValidations } = useContext( ReportContext );
     return (

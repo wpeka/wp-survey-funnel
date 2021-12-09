@@ -8,6 +8,7 @@ export default function Responses() {
 	const { reports, currentReportSelected, setCurrentReportSelected, setReports } = useContext( ReportContext );
 	const { List, title } = useContext( BuildContext );
 
+	// shows the preview of current report selected.
 	const getCurrentReportSelectedPreview = () => {
 		if ( currentReportSelected === null ) {
 			return;
@@ -37,6 +38,8 @@ export default function Responses() {
 			})}
 		</div>);
 	}
+
+	// generate the csv string based on data.
 	const exportCSV = () => {
 		let csvString = [
 			[...getCSVFirstRow()],
@@ -104,6 +107,7 @@ export default function Responses() {
 		document.getElementById('post_csv').submit();
 	}
 
+	// creating csv first row.
 	function getCSVFirstRow() {
 		let returnValue = [
 			'Content Name',
@@ -125,6 +129,8 @@ export default function Responses() {
 
 		return returnValue;
 	}
+
+	// get question and answer of currently report selected.
 	const getCurrentReportAnswer = ( report ) => {
 		switch ( report.componentName ) {
 			case 'SingleChoice':

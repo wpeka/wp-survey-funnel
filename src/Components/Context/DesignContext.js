@@ -4,11 +4,12 @@ import fetchData from '../../HelperComponents/fetchData';
 import { convertToRgbaCSS, validateImageUrl } from '../../HelperComponents/HelperFunctions';
 
 export function DesignContextProvider(props) {
-	
+	// state of design context.
 	const [initialState, setinitialState] = useState(initColorState);
 	const [selectedImageUrl, setSelectedImageUrl] = useState(null);
 	const [errors, setErrors] = useState('');
 
+	// when Image has been selected from WordPress Thick box.
 	window.send_to_editor = function(html) {
 		
 		var doc = new DOMParser().parseFromString(html, "text/xml");
@@ -20,6 +21,7 @@ export function DesignContextProvider(props) {
 		tb_remove();
 	}
 
+	// setting the selected family in the state.
 	const setSelectedFamily = ( family, value ) => {
 		setinitialState({
 			...initialState,
@@ -28,6 +30,7 @@ export function DesignContextProvider(props) {
 		});
 	}
 
+	// function to change color.
 	const handleColorChange = (itemName, color) => {
 		setinitialState({
 			...initialState,
@@ -35,6 +38,7 @@ export function DesignContextProvider(props) {
 		});
 	}
 
+	// function to handle range.
 	const handleRangeChange = ( value ) => {
 		setinitialState({
 			...initialState,
@@ -42,14 +46,17 @@ export function DesignContextProvider(props) {
 		})
 	}
 
+	// when clicked on upload media button, open the WordPress media upload iframe thickbox.
 	const handleMedia = (  ) => {
 		tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
 	}
 
+	// function to remove image when clicked on delete button.
 	const deleteImage = () => {
 		setSelectedImageUrl(null);
 	}
 
+	// useEffect when imageUrl is set in order to validate it.
 	useEffect(() => {
 		if ( selectedImageUrl === null || selectedImageUrl === false ) {
 			return;
@@ -60,6 +67,7 @@ export function DesignContextProvider(props) {
 		}
 	}, [selectedImageUrl])
 
+	// useEffect hook to get design data.
 	useEffect(() => {
 		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
@@ -85,6 +93,7 @@ export function DesignContextProvider(props) {
 		});
 	}, []);
 
+	// to change answer-highlight-box-color property value.
 	useEffect(() => {
 		const root = document.body;
 		root?.style.setProperty(
@@ -93,6 +102,7 @@ export function DesignContextProvider(props) {
 		);
 	}, [initialState]);
 
+	// saving design context data.
 	const saveContext = (e) => {
 		e.target.classList.add('surveyfunnel-lite-button-loading');
 

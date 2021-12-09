@@ -18,7 +18,9 @@ const backgroundColor = (elementType)=>{
 
 const DropBoard = ({ ele }) => {
     const { List } = useContext(BuildContext);
+	// useDrop returns drop ref and some monitoring values.
     const [{ canDrop, isOver }, drop] = useDrop(() => ({
+		// it accepts unique item type which was specified in useDrag in BuildElement Component.
         accept: ele.itemType,
         drop: () => ({ name: "DropBoard" }),
         collect: (monitor) => ({

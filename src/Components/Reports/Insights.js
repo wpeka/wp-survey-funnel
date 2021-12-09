@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { ReportContext } from '../Context/ReportContext';
 import NoResponseRecorded from './NoResponseRecorded';
-
+// creating an answer block in insights tab.
 const getAnswerBlocks = ( item ) => {
 	switch( item.componentName ) {
 		case 'SingleChoice':

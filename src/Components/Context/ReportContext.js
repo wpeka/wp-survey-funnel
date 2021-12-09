@@ -5,13 +5,19 @@ import moment from 'moment';
 
 export function ReportContextProvider(props) {
 	
+	// reports data.
 	const [reports, setReports] = useState([]);
+
+	// current report selected in records tab in reports.
 	const [currentReportSelected, setCurrentReportSelected] = useState(null);
+
+	// date selected. state
 	const [dates, setDates] = useState({
         startDate: null,
         endDate: null,
     });
 
+	// insights data state.
 	const [insights, setInsights] = useState({
 		List: {
 			CONTENT_ELEMENTS: [],
@@ -24,6 +30,7 @@ export function ReportContextProvider(props) {
 	let { List } = useContext( BuildContext );
 	List = JSON.parse(JSON.stringify( List ));
 
+	// function called when date is being selected.
     const changeDate = (date, label) => {
         setDates({
             ...dates,
@@ -31,6 +38,7 @@ export function ReportContextProvider(props) {
         });
     };
 
+	// to validate dates such as one of them is not empty or endDate is before startDate.
     const dateValidations = () => {
         if ( dates.startDate === null || dates.endDate === null ) {
             return {
@@ -52,6 +60,7 @@ export function ReportContextProvider(props) {
         }
     }
 
+	// getting reports data when both dates are selected and there is no validation error.
 	useEffect(() => {
 		if ( ! dateValidations().error ) {
 			const ajaxSecurity = document.getElementById('ajaxSecurity').value;
@@ -71,6 +80,7 @@ export function ReportContextProvider(props) {
 		}
 	}, [dates.startDate, dates.endDate])
 
+	// this hook runs when we acquire reports data in order to generate sub data such as records and insights.
 	useEffect(() => {
 		if ( reports.length > 0 ) {
 			let totalViewed = 0;

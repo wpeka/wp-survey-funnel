@@ -3,7 +3,9 @@ import { useState } from "react";
 
 export function ModalContextProvider( props ) {
 
+	// state to show or hide modal.
 	const [ showModal, setShowModal ] = useState(false);	
+	// state to set current element
 	const [ currentElement, setCurrentElement ] = useState( {} );
 	const getShowModal = () => {
 		return showModal;

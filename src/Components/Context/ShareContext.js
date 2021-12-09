@@ -3,9 +3,11 @@ import { popupInitialState, shortcodeTypes } from '../../Data';
 import fetchData from '../../HelperComponents/fetchData';
 
 export function ShareContextProvider( props ) {
+	// popup initial state.
 	const [popup, setPopup] = useState(popupInitialState);
 	const [options, setOptions] = useState([]);
 
+	// handle devices change.
 	const handleDevicesChange = (id) => {
 		let newPopup = JSON.parse(JSON.stringify(popup));
 		let { targettingOptions } = newPopup;
@@ -19,6 +21,7 @@ export function ShareContextProvider( props ) {
 		setPopup(newPopup);
 	}
 
+	// save share context data.
 	const saveSettings = (e) => {
 		e.target.classList.add('surveyfunnel-lite-button-loading');
 		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
@@ -36,12 +39,14 @@ export function ShareContextProvider( props ) {
         })
 	}
 
+	// handle trigger page change.
 	const handleTriggerPageChange = (e) => {
 		let newPopup = JSON.parse(JSON.stringify(popup));
 		newPopup.targettingOptions.triggerPage = e.target.value;
 		setPopup(newPopup);
 	}
 
+	// get share data by this hook.
 	useEffect(() => {
 		const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
