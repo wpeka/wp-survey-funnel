@@ -49,6 +49,8 @@ class Surveyfunnel_Lite_Activator {
 	 * SRF Install tables.
 	 */
 	public static function surveyfunnel_lite_install_table() {
+
+		// if used dbDelta function it will check if existing table is present or not. and create it if not present.
 		global $wpdb;
 		$charset_collate = $wpdb->get_charset_collate();
 		$table_name      = $wpdb->prefix . 'srf_entries';
