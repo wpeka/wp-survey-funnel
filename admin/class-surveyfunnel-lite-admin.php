@@ -221,6 +221,7 @@ class Surveyfunnel_Lite_Admin {
 	 */
 	public function surveyfunnel_lite_dashboard() {
 		wp_enqueue_style( $this->plugin_name );
+		// admin display dashboard contains all the html related code.
 		include_once plugin_dir_path( __FILE__ ) . 'views/admin-display-dashboard-page.php';
 	}
 
@@ -301,6 +302,8 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: new survey.
 	 */
 	public function surveyfunnel_lite_new_survey() {
+
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveySecurity', 'security' );
 		} else {
@@ -339,6 +342,8 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: delete survey.
 	 */
 	public function surveyfunnel_lite_delete_survey() {
+
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveySecurity', 'security' );
 		} else {
@@ -346,8 +351,10 @@ class Surveyfunnel_Lite_Admin {
 			wp_die();
 			return;
 		}
-
+		// get the post id.
 		$post_id = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : 0;
+
+		// delete post and send success json.
 		$delete  = wp_delete_post( $post_id );
 		if ( ! $delete ) {
 			wp_send_json_error();
@@ -363,6 +370,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Setup page for surveyfunnel-lite
 	 */
 	public function surveyfunnel_lite_survey_setup_page() {
+		// if page is not surveyfunnel-lite ? return from this function because we are mainly interested in surveyfunnel-lite page.
 		if ( empty( $_GET['page'] ) || 'surveyfunnel-lite' !== $_GET['page'] ) { // phpcs:ignore CSRF ok, input var ok.
 			return;
 		}
@@ -383,6 +391,9 @@ class Surveyfunnel_Lite_Admin {
 	 */
 	public function surveyfunnel_lite_survey_page_html() {
 
+		// if the page slug is surveyfunnel-lite this function is called to setup the html structure of that page.
+
+		// please note in order to use any script related to this page. register the script first and PRINT it, as enqueue doesnt work since no hooks are present on this page.
 		wp_register_script(
 			$this->plugin_name . '-main',
 			SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/index.bundle.js',
@@ -415,6 +426,7 @@ class Surveyfunnel_Lite_Admin {
 				<title>WP Survey Funnel</title>
 			</head>
 			<body class="surveyfunnel-lite-body">
+				<!-- div id root is where react app will be mounted on -->
 				<div id="root" class="surveyfunnel-lite-root"></div>
 				<input type="hidden" id="ajaxURL" value="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>">
 				<input type="hidden" id="ajaxSecurity" value="<?php echo esc_attr( wp_create_nonce( 'surveyfunnel-lite-security' ) ); ?>">
@@ -440,6 +452,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: get status.
 	 */
 	public function surveyfunnel_lite_get_status() {
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -447,6 +460,7 @@ class Surveyfunnel_Lite_Admin {
 			wp_die();
 		}
 
+		// get post and its status.
 		$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$post    = get_post( $post_id );
 
@@ -459,6 +473,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: Change Status.
 	 */
 	public function surveyfunnel_lite_change_status() {
+		// check for security
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -466,6 +481,7 @@ class Surveyfunnel_Lite_Admin {
 			wp_die();
 		}
 
+		// get post and change its status.
 		$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$post    = get_post( $post_id );
 
@@ -489,6 +505,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: save build question and answers.
 	 */
 	public function surveyfunnel_lite_save_build_data() {
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -502,8 +519,12 @@ class Surveyfunnel_Lite_Admin {
 		$has_pro       = isset( $_POST['hasProQuestions'] ) ? sanitize_text_field( wp_unslash( $_POST['hasProQuestions'] ) ) : 0;
 		$post_meta     = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data          = wp_parse_args( (array) $post_meta, $defaults );
+
+		// need to replace \\ with \\\\ since json_encode removes all the slashes recursively.
 		$data['build'] = str_replace( '\\', '\\\\', json_encode( $data['build'], true ) );
 		$data['build'] = isset( $_POST['state'] ) ? sanitize_text_field( $_POST['state'] ) : '';
+
+		// update the post meta and post update.
 		update_post_meta( $post_id, 'surveyfunnel-lite-data', $data );
 		update_post_meta( $post_id, 'surveyfunnel-lite_hasProQuestions', $has_pro );
 		$post_update = array(
@@ -519,6 +540,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: save build question and answers.
 	 */
 	public function surveyfunnel_lite_save_configuration_data() {
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -541,6 +563,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Get configuration data for the post id
 	 */
 	public function surveyfunnel_lite_get_configuration_data() {
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -548,6 +571,7 @@ class Surveyfunnel_Lite_Admin {
 			wp_die();
 		}
 
+		// get required post meta and echo it back.
 		$post_id   = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$post_meta = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data      = array(
@@ -561,6 +585,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Get default array save data in post_content.
 	 */
 	public static function surveyfunnel_lite_get_default_save_array() {
+		// default JSON data.
 		return array(
 			'build'     => '{"List":{"START_ELEMENTS":[],"CONTENT_ELEMENTS":[],"RESULT_ELEMENTS":[]},"title":"survey test"}',
 			'design'    => '{"opacity":0,"fontFamily":null,"fontFamilyValue":"","backgroundColor":{"r":"255","g":"255","b":"255","a":"1"},"buttonColor":{"r":"1","g":"111","b":"222","a":"1"},"buttonTextColor":{"r":"255","g":"255","b":"255","a":"1"},"answersHighlightBoxColor":{"r":"232","g":"238","b":"244","a":"1"},"answerBorderColor":{"r":"180","g":"220","b":"255","a":"1"},"backgroundContainerColor":{"r":"255","g":"255","b":"255","a":"1"},"fontColor":{"r":"0","g":"0","b":"0","a":"1"}}',
@@ -574,6 +599,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Get Build data for the post id
 	 */
 	public function surveyfunnel_lite_get_build_data() {
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -581,6 +607,7 @@ class Surveyfunnel_Lite_Admin {
 			wp_die();
 		}
 
+		// get the build data.
 		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$post_meta  = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$post_title = get_the_title( $post_id );
@@ -599,6 +626,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: Save design data for the post id
 	 */
 	public function surveyfunnel_lite_save_design_data() {
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -606,6 +634,7 @@ class Surveyfunnel_Lite_Admin {
 			wp_die();
 		}
 
+		// extract data from $_POST.
 		$post_id        = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$defaults       = $this->surveyfunnel_lite_get_default_save_array();
 		$post_meta      = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
@@ -613,6 +642,7 @@ class Surveyfunnel_Lite_Admin {
 		$data['design'] = isset( $_POST['state'] ) ? sanitize_text_field( wp_unslash( $_POST['state'] ) ) : '';
 		update_post_meta( $post_id, 'surveyfunnel-lite-data', $data );
 
+		// if background image is set.
 		if ( isset( $_POST['selectedImageUrl'] ) ) {
 			$url        = esc_url_raw( wp_unslash( $_POST['selectedImageUrl'] ) );
 			$image_type = explode( '.', $url ); // Explode the string.
@@ -632,6 +662,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: get design data.
 	 */
 	public function surveyfunnel_lite_get_design_data() {
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -639,6 +670,7 @@ class Surveyfunnel_Lite_Admin {
 			wp_die();
 		}
 
+		// get design data.
 		$post_id               = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$post_meta             = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$background_image_meta = get_post_meta( $post_id, 'surveyfunnel-lite-design-background', true );
@@ -654,17 +686,22 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: Get reports data.
 	 */
 	public function surveyfunnel_lite_get_reports_data() {
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
 			wp_send_json_error();
 			wp_die();
 		}
+
+		// get start date and end date of reports data.
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
 		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$start_date = isset( $_POST['startDate'] ) ? sanitize_text_field( wp_unslash( $_POST['startDate'] ) ) : '';
 		$end_date   = isset( $_POST['endDate'] ) ? sanitize_text_field( wp_unslash( $_POST['endDate'] ) ) : '';
+
+		// get all rows between specified start date and end date.
 		$rows       = $wpdb->get_results(
 			$wpdb->prepare(
 				'
@@ -678,8 +715,11 @@ class Surveyfunnel_Lite_Admin {
 				$post_id
 			)
 		);
+		// return array which will be echoed.
 		$return_arr = array();
 		if ( is_array( $rows ) && count( $rows ) ) {
+
+			// loop through each row and create data set specified below.
 			foreach ( $rows as $row ) {
 				$temp_arr = array(
 					'lead'         => 'Unknown',
@@ -689,6 +729,8 @@ class Surveyfunnel_Lite_Admin {
 					'userMeta'     => $row->user_meta,
 					'checked'      => false,
 				);
+
+				// if email is present change the lead from Unknownn to that lead.
 
 				preg_match( '/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/', $row->fields, $matches );
 
@@ -709,6 +751,7 @@ class Surveyfunnel_Lite_Admin {
 	 * @param int $post_id post id.
 	 */
 	public static function surveyfunnel_lite_get_insights_data( $post_id ) {
+		// get the reports data for provided post id.
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
 		$rows       = $wpdb->get_results(
@@ -721,7 +764,7 @@ class Surveyfunnel_Lite_Admin {
 				$post_id
 			)
 		);
-
+		// initializing required variables.
 		$view_count      = 0;
 		$completed_count = 0;
 		$contacts_count  = 0;
@@ -730,6 +773,7 @@ class Surveyfunnel_Lite_Admin {
 		$contacts_count  = 0;
 		$completed_count = 0;
 
+		// generate appropriate data using question list and id from reports page.
 		if ( count( $rows ) ) {
 			$data             = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 			$build            = json_decode( $data['build'] );
@@ -752,6 +796,7 @@ class Surveyfunnel_Lite_Admin {
 			$completion_rate = $completed_count / $total_count * 100;
 			$completion_rate = number_format( (float) $completion_rate, 2, '.', '' );
 		}
+		// return views, contacts and completion rate.
 		return array(
 			'views'          => $view_count,
 			'contacts'       => $contacts_count,
@@ -763,6 +808,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Export CSV string.
 	 */
 	public function surveyfunnel_lite_export_csv() {
+		// exporting csv string by specifying header and its types.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'exportSecurity', 'security' );
 		}
@@ -817,6 +863,9 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: save share data.
 	 */
 	public function surveyfunnel_lite_save_share_data() {
+		// saving popup settings data.
+
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -824,6 +873,7 @@ class Surveyfunnel_Lite_Admin {
 			wp_die();
 		}
 
+		// save share data.
 		$post_id       = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$defaults      = $this->surveyfunnel_lite_get_default_save_array();
 		$post_meta     = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
@@ -839,6 +889,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Get share data for the post id
 	 */
 	public function surveyfunnel_lite_get_share_data() {
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -846,6 +897,7 @@ class Surveyfunnel_Lite_Admin {
 			wp_die();
 		}
 
+		// save share data.
 		$post_id   = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$post_meta = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data      = array(
@@ -859,6 +911,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: get posts and pages for async select.
 	 */
 	public function surveyfunnel_lite_get_posts_pages( $flag = false ) {
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -867,7 +920,7 @@ class Surveyfunnel_Lite_Admin {
 		}
 
 		$flag = isset( $_POST['links'] ) ? true : false;
-
+		// get posts and if flag for links is set provide links or else provide ids..
 		$args = array(
 			'post_type'   => 'post',
 			'post_status' => 'publish',
@@ -889,6 +942,8 @@ class Surveyfunnel_Lite_Admin {
 			}
 			array_push( $post_object->options, $obj );
 		}
+
+		// get pages and if flag for links is set provide links or else provide ids..
 
 		$args = array(
 			'post_type'   => 'page',

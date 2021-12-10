@@ -25,6 +25,7 @@ export default function ModalBox() {
     const designCon = useContext( DesignContext );
     const childRef = React.createRef();
 
+	// this function decides which component to be rendered on the builder page of modal box depending upon current element set.
     const getComponentRender = function () {
         let componentProps = {
             currentElement,
@@ -64,11 +65,14 @@ export default function ModalBox() {
     const { generateId, editList, addToList } = useContext(BuildContext);
     const { setCurrentElement, setShowModal } = useContext(ModalContext);
 
+	// when save button is being clicked of modal context.
     const saveToList = () => {
+		// get the child state.
         let childState = {};
         if ( childRef.current !== null ) {
             childState = childRef.current.state;
         }
+		// if this element was previously added and user is trying to change the values. call editList from BuildContext.
         if (currentElement?.currentlySaved && currentElement.currentlySaved) {
             const data = {
                 ...currentElement,
@@ -76,6 +80,7 @@ export default function ModalBox() {
             };
             editList(data);
         } else {
+			// if the question is added for the first time.
             const data = {
                 ...childState,
                 id: generateId(),

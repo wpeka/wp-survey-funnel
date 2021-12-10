@@ -6,6 +6,7 @@ import ShareShortCode from "./ShareShortCode";
 import PopupSettings from "./PopupSettings";
 import '../../scss/share.scss';
 
+// function decides which component to render based on currentShareTab.
 const getCurrentTabContent = ( currentShareTab ) => {
 	switch( currentShareTab ) {
 		case 'shortcode':
@@ -19,6 +20,7 @@ const getCurrentTabContent = ( currentShareTab ) => {
 
 export default function Share() {
 
+	// state to keep in track of currentTab defualt is shortcode.
 	const [ currentShareTab, setCurrentShareTab ] = useState('shortcode');
 
 	const changeCurrentShareTab = ( id ) => {

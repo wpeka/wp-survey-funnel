@@ -4,6 +4,7 @@ import { ItemTypes } from '../../Data';
 import fetchData from '../../HelperComponents/fetchData';
 const { applyFilters } = wp.hooks;
 export class BuildContextProvider extends React.Component {
+	// buildContext state which contains List of questions, type, title, proActive or not.
     state = {
         List: {
 			[ItemTypes.START_ELEMENTS]: [],
@@ -15,6 +16,7 @@ export class BuildContextProvider extends React.Component {
 		proActive: false,
     };
 
+	// after component mounted get build data.
     componentDidMount() {
         const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
@@ -49,6 +51,7 @@ export class BuildContextProvider extends React.Component {
         })
     }
 
+	// add to list when question is newly created.
     addToList = (data) => {
 		let newState = JSON.parse(JSON.stringify({...this.state}));
 
@@ -56,6 +59,7 @@ export class BuildContextProvider extends React.Component {
         this.setState(newState);
     }
 
+	// when question is being edited.
     editList = ( data ) => {
         let newState = JSON.parse(JSON.stringify({...this.state}));
 
@@ -70,6 +74,7 @@ export class BuildContextProvider extends React.Component {
         this.setState(newState);
     }
 
+	// Card component uses this function in order to rearrage the cards.
     moveCard = (dragIndex, hoverIndex, data) => {
         const dragCard = this.state.List[data.type][dragIndex];
         const newList = this.state.List[data.type].slice();
@@ -89,6 +94,7 @@ export class BuildContextProvider extends React.Component {
         });
     };
 
+	// to delete item in the list.
     deleteItemInList = ( data ) => {
         let newState = JSON.parse(JSON.stringify({...this.state}));
         let newList = newState.List[data.type].slice();
@@ -103,10 +109,12 @@ export class BuildContextProvider extends React.Component {
         this.setState(newState);
     }
 
+	// generate unique id for each question.
     generateId = () => {   
         return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);        
     }
 
+	// saving data in the backend.
     saveData = (e) => {
         e.target.classList.add('surveyfunnel-lite-button-loading');
         const ajaxSecurity = document.getElementById('ajaxSecurity').value;
@@ -128,6 +136,7 @@ export class BuildContextProvider extends React.Component {
         });
     }
 
+	// to handle title state change.
     handleChangeTitle = ( title ) => {
         this.setState({
             title

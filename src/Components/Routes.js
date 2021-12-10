@@ -7,15 +7,22 @@ import { ModalContextProvider } from "./Context/ModalContext";
 import { ShareContextProvider } from "./Context/ShareContext";
 import { ConfigureContextProvider } from "./Context/ConfigureContext";
 import fetchData from "../HelperComponents/fetchData";
+
+// lazy loading components for code splitting.
 const Build = lazy(() => import("./Build"));
 const Design = lazy(() => import("./Design"));
 const Reports = lazy(() => import('./Reports'));
 const Share = lazy(() => import('./Share'));
 const Configure = lazy(() => import('./Configure'));
+
+// get the back to dashboard link.
 const dashboardLink = document.getElementById('dashboardLink').value;
 export default function Routes() {
+
+	// state for current post/survey publish status - published/draft.
     const [status, setStatus] = useState('');
 
+	// after compnent mount ajax request get status.
     useEffect(() => {
         const ajaxSecurity = document.getElementById('ajaxSecurity').value;
         const post_id = new URLSearchParams(window.location.search).get('post_id');
@@ -32,6 +39,7 @@ export default function Routes() {
         });
     }, []);
 
+	// function to changeStatus from publish to draft or vice versa.
     const changeStatus = (e) => {
         e.target.classList.add('surveyfunnel-lite-button-loading');
         const ajaxSecurity = document.getElementById('ajaxSecurity').value;
@@ -54,6 +62,7 @@ export default function Routes() {
     }
     
     return (
+		// react router dom code. refer to react-router-dom library page.
         <Router>
             <div className="surveyfunnel-lite-cb-nav-container">
                 <div className="surveyfunnel-lite-back">                    
@@ -80,6 +89,9 @@ export default function Routes() {
                     <button onClick={changeStatus}>{ status === 'draft' ? 'Publish' : 'Unpublish' }</button>
                 </div>
             </div>
+			{/**
+			 * Components are wrapped inside ContextProviders so that every child component would be able to consume it.
+			 */}
 			<ConfigureContextProvider>
 				<DesignContextProvider>
 					<BuildContextProvider>

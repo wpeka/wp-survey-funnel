@@ -8,6 +8,7 @@ import ModalBox from './ModalBox';
 import { useContext } from 'react';
 import { ModalContextProvider, ModalContext } from '../Context/ModalContext';
 
+// Modal Container which would enable/disable ModalBox (Modal) Component to render on the screen.
 class ModalContainer extends React.Component {
 	static contextType = ModalContext;
 
@@ -20,12 +21,14 @@ class ModalContainer extends React.Component {
 		)
 	}
 }
-
+// Build Component.
 export default function Build() {
 
+	// getting required data and functions from buildContext and ModalContext
 	const { saveData, title, type } = useContext(BuildContext);
 	const { setCurrentElement, setShowModal } = useContext( ModalContext );
 	
+	// settingCurrentElement of ModalContext to title and showing the modal.
 	const changeTitle = () => {
 		setCurrentElement({
 			title: title,
@@ -47,6 +50,7 @@ export default function Build() {
 						<div className="surveyfunnel-lite-build-elements_start">
 							<h3>Start Screen:</h3>
 							<div className="surveyfunnel-lite-build-elements_container">
+								{/* start screen build elements */}
 								{buildElements.startScreen.map(function( ele, i ) {
 									return <BuildElement ele={ele} key={i}></BuildElement>
 								})}
@@ -55,12 +59,14 @@ export default function Build() {
 						<div className="surveyfunnel-lite-build-elements_content">
 							<h3>Content Elements:‌</h3>
 							<div className="surveyfunnel-lite-build-elements_container">
+								{/* content screen build elements */}
 								{buildElements.contentElements.map(function( ele, i ) {
 									return <BuildElement ele={ele} key={i}></BuildElement>
 								})}
 							</div>
 						</div>
 						<div className="surveyfunnel-lite-build-elements_results">
+							{ /** Result screen build elements */ }
 							<h3>Results Screen:</h3>
 							<div className="surveyfunnel-lite-build-elements_container">
 								{buildElements.resultScreen.map(function( ele, i ) {
@@ -84,6 +90,7 @@ export default function Build() {
 						<p className={type}>{type}</p>
 					</div>
 				</div>
+				{/** 3 dropboards - for StartScreen, ContentScreen, ResultScreen. */}
 				{dropBoard.map(function( ele, i ) {
 					return <DropBoard ele={ele} key={i}></DropBoard>
 				})}

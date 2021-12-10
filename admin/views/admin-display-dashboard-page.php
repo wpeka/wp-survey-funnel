@@ -7,6 +7,8 @@
  *
  * @package Surveyfunnel_Lite
  */
+
+ // get all the surveys.
 $args = array(
 	'post_type'   => 'wpsf-survey',
 	'post_status' => array( 'draft', 'publish' ),
@@ -15,6 +17,7 @@ $args = array(
 
 $surveys = get_posts( $args );
 
+// loop through each survey and check whether it has pro questions inside it, if found any and pro version is not activated ? show the alert message.
 foreach ( $surveys as $survey ) {
 	if ( get_post_meta( $survey->ID, 'surveyfunnel-lite_hasProQuestions', true ) && ! apply_filters( 'surveyfunnel_pro_activated', false ) ) {
 		echo '<div class="notice notice-warning is-dismissable"><p><strong>' . sprintf(
@@ -165,6 +168,7 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 						</div>
 					</div>
 				</div>
+				<!-- loop through each survey and create a card based upon type and insights data. -->
 				<?php if ( is_array( $surveys ) ) : ?>
 					<?php foreach ( $surveys as $survey ) : ?>
 						<?php $data = Surveyfunnel_Lite_Admin::surveyfunnel_lite_get_insights_data( $survey->ID ); ?>
