@@ -69,11 +69,11 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		} else {
 			self::$plugin_version = '1.1.0';
 		}
-		self::$plugin_name            = 'surveyfunnel-lite';
+		self::$plugin_name             = 'surveyfunnel-lite';
 		self::$surveyfunnel_lite_admin = new Surveyfunnel_Lite_Admin( self::$plugin_name, self::$plugin_version );
-		self::$post_ids               = $factory->post->create_many( 2, array( 'post_type' => 'wpsf-survey' ) );
-		self::$design                 = '{\'opacity\':1,\'fontFamily\':null,\'fontFamilyValue\':\'\',\'backgroundColor\':{\'r\':255,\'g\':255,\'b\':255\'a\':1},\'buttonColor\':{r\':0,\'g\':222,\'b\':129,a\':1},\'buttonTextColor\':{\'r\':\'255\',\'g\':\'255\',\'b\':\'255\',\'a\':\'1\'},\'answersHighlightBoxColor\':{\'r\':\'232\',\'g\':\'238\',\'b\':\'244\',\'a\':\'1\'}}';
-		self::$build                  = '{"List":{"START_ELEMENTS":[{"button":"Start","title":"This is a cover page","description":"Cover page","id":"zh727zy9m7krvwz09k","componentName":"CoverPage","type":"START_ELEMENTS","currentlySaved":true}],"CONTENT_ELEMENTS":[{"title":"What is your age?","description":"Tell us about yourself","answers":[{"name":"20","checked":false},{"name":"10","checked":false},{"name":"40","checked":false},{"name":"60","checked":false}],"value":"","id":"0y566hzo1ewckrvwzvc8","componentName":"SingleChoice","type":"CONTENT_ELEMENTS","currentlySaved":true}],"RESULT_ELEMENTS":[{"title":"Thanks","description":"Thanks for participation","id":"cd98dnfel8krvx0db2","componentName":"ResultScreen","type":"RESULT_ELEMENTS","currentlySaved":true}]},"title":"Demo survey"}';
+		self::$post_ids                = $factory->post->create_many( 2, array( 'post_type' => 'wpsf-survey' ) );
+		self::$design                  = '{\'opacity\':1,\'fontFamily\':null,\'fontFamilyValue\':\'\',\'backgroundColor\':{\'r\':255,\'g\':255,\'b\':255\'a\':1},\'buttonColor\':{r\':0,\'g\':222,\'b\':129,a\':1},\'buttonTextColor\':{\'r\':\'255\',\'g\':\'255\',\'b\':\'255\',\'a\':\'1\'},\'answersHighlightBoxColor\':{\'r\':\'232\',\'g\':\'238\',\'b\':\'244\',\'a\':\'1\'}}';
+		self::$build                   = '{"List":{"START_ELEMENTS":[{"button":"Start","title":"This is a cover page","description":"Cover page","id":"zh727zy9m7krvwz09k","componentName":"CoverPage","type":"START_ELEMENTS","currentlySaved":true}],"CONTENT_ELEMENTS":[{"title":"What is your age?","description":"Tell us about yourself","answers":[{"name":"20","checked":false},{"name":"10","checked":false},{"name":"40","checked":false},{"name":"60","checked":false}],"value":"","id":"0y566hzo1ewckrvwzvc8","componentName":"SingleChoice","type":"CONTENT_ELEMENTS","currentlySaved":true}],"RESULT_ELEMENTS":[{"title":"Thanks","description":"Thanks for participation","id":"cd98dnfel8krvx0db2","componentName":"ResultScreen","type":"RESULT_ELEMENTS","currentlySaved":true}]},"title":"Demo survey"}';
 		update_post_meta(
 			self::$post_ids[0],
 			'surveyfunnel-lite-data',
@@ -286,5 +286,12 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$this->assertSame( 'SurveyFunnel', $surveyfunnelcategory['title'] );
 	}
 
-
+	/**
+	 * Test for validate_image_url function
+	 */
+	public function test_validate_image_url() {
+		$image_string = 'http://club.wpeka.com/image/image-1.png';
+		$result       = self::$surveyfunnel_lite_admin->validate_image_url( $image_string );
+		$this->assertEquals( $result, 1 );
+	}
 }
