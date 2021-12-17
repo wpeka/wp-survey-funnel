@@ -49,6 +49,13 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 	public static $configure;
 
 	/**
+	 * Dummy configuration for survey
+	 *
+	 * @var string $share share string
+	 */
+	public static $share;
+
+	/**
 	 * Set up function.
 	 *
 	 * @param class WP_UnitTest_Factory $factory class instance.
@@ -58,6 +65,7 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		self::$design    = '{\'opacity\':1,\'fontFamily\':null,\'fontFamilyValue\':\'\',\'backgroundColor\':{\'r\':255,\'g\':255,\'b\':255\'a\':1},\'buttonColor\':{r\':0,\'g\':222,\'b\':129,a\':1},\'buttonTextColor\':{\'r\':\'255\',\'g\':\'255\',\'b\':\'255\',\'a\':\'1\'},\'answersHighlightBoxColor\':{\'r\':\'232\',\'g\':\'238\',\'b\':\'244\',\'a\':\'1\'}}';
 		self::$build     = '{"List":{"START_ELEMENTS":[{"button":"Start","title":"This is a cover page","description":"Cover page","id":"zh727zy9m7krvwz09k","componentName":"CoverPage","type":"START_ELEMENTS","currentlySaved":true}],"CONTENT_ELEMENTS":[{"title":"What is your age?","description":"Tell us about yourself","answers":[{"name":"20","checked":false},{"name":"10","checked":false},{"name":"40","checked":false},{"name":"60","checked":false}],"value":"","id":"0y566hzo1ewckrvwzvc8","componentName":"SingleChoice","type":"CONTENT_ELEMENTS","currentlySaved":true}],"RESULT_ELEMENTS":[{"title":"Thanks","description":"Thanks for participation","id":"cd98dnfel8krvx0db2","componentName":"ResultScreen","type":"RESULT_ELEMENTS","currentlySaved":true}]},"title":"Demo survey"}';
 		self::$configure = "{\"metaInfo\":{\"title\":\"Title\",\"description\":\"Description\"},\"companyBranding\":false}"; //phpcs:ignore Squiz.Strings.DoubleQuoteUsage.NotRequired
+		self::$share     = "{\"popup\":{\"active\":false,\"targettingOptions\":{\"devices\":[{\"name\":\"Desktop\",\"checked\":true,\"id\":\"desktop\"},{\"name\":\"Mobile\",\"checked\":true,\"id\":\"mobile\"},{\"name\":\"Tablet\",\"checked\":true,\"id\":\"tablet\"}],\"triggerPage\":\"triggerOnSpecific\",\"selectedPagesAndPosts\":[]},\"behaviourOptions\":{\"launchOptions\":{\"launchWhen\":\"afterPageLoads\",\"afterTimeDelay\":5,\"afterExitIntent\":\"low\",\"afterScrollPercentage\":20},\"frequencyOptions\":{\"frequency\":\"alwaysShow\",\"hideFor\":3,\"dontShowAgain\":false}}}}\",\"reports\":\"\"}"; //phpcs:ignore Squiz.Strings.DoubleQuoteUsage.NotRequired
 
 		update_post_meta(
 			self::$post_ids[0],
@@ -422,5 +430,83 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		$response = json_decode( $this->_last_response );
 		$this->assertTrue( (bool) $response->success );
 		$this->assertSame( 'draft', $response->data );
+	}
+
+	/**
+	 * Test for surveyfunnel_lite_save_share_data function
+	 */
+	public function test_surveyfunnel_lite_save_share_data() {
+		// become administrator.
+		$this->_setRole( 'administrator' );
+
+		$_POST['action']   = 'surveyfunnel_lite_save_share_data';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
+		$_POST['post_id']  = self::$post_ids[0];
+		try {
+			$this->_handleAjax( 'surveyfunnel_lite_save_share_data' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
+	}
+
+	/**
+	 * Test for surveyfunnel_lite_get_share_data function
+	 */
+	public function test_surveyfunnel_lite_get_share_data() {
+		// become administrator.
+		$this->_setRole( 'administrator' );
+
+		$_POST['action']   = 'surveyfunnel_lite_get_share_data';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
+		$_POST['post_id']  = self::$post_ids[0];
+		update_post_meta(
+			self::$post_ids[0],
+			'surveyfunnel-lite-data',
+			array(
+				'design'    => self::$design,
+				'build'     => self::$build,
+				'configure' => self::$configure,
+				'share'     => self::$share,
+			)
+		);
+
+		try {
+			$this->_handleAjax( 'surveyfunnel_lite_get_share_data' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
+		$post_meta = get_post_meta( self::$post_ids[0], 'surveyfunnel-lite-data', true );
+		$this->assertSame( $post_meta['share'], $response->data->share );
+	}
+
+	/**
+	 * Test for surveyfunnel_lite_get_display_data
+	 */
+	public function test_surveyfunnel_lite_get_display_data() {
+		$_POST['action']   = 'surveyfunnel_lite_get_display_data';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
+		$_POST['post_id']  = self::$post_ids[0];
+		update_post_meta(
+			self::$post_ids[0],
+			'surveyfunnel-lite-data',
+			array(
+				'design'    => self::$design,
+				'build'     => self::$build,
+				'configure' => self::$configure,
+				'share'     => self::$share,
+			)
+		);
+
+		try {
+			$this->_handleAjax( 'surveyfunnel_lite_get_display_data' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
 	}
 }
