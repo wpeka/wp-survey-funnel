@@ -286,6 +286,8 @@ class Surveyfunnel_Lite_Admin {
 			}
 
 			update_option( 'srf-lite-background-update', true );
+		}else{
+			update_option( 'srf-lite-background-update', false);
 		}
 	}
 

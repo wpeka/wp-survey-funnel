@@ -286,9 +286,26 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$this->assertSame( 'SurveyFunnel', $surveyfunnelcategory['title'] );
 	}
 	public function test_surveyfunnel_lite_update(){
+		update_option('srf-lite-background-update',false);
+		self::$surveyfunnel_lite_admin->surveyfunnel_lite_update();
 		$option=get_option('srf-lite-background-update');
-		$this->assertSame($option,'1');
+		$this->assertTrue($option);
+		// fwrite(STDERR, print_r($option, TRUE));	
+		update_option('srf-lite-background-update',true);
+		self::$surveyfunnel_lite_admin->surveyfunnel_lite_update();
+		$option=get_option('srf-lite-background-update');
+		$this->assertTrue(!$option);
 	}
+	public function test_surveyfunnel_lite_new_survey(){
+	$post=[
+		'action'=>"abc",
+	];
+		$this->request->setMethod('POST')->setPost(array($post));
+	$jsonerror=self::$surveyfunnel_lite_admin->surveyfunnel_lite_new_survey();
+	// $post=$_POST;
+	// print_r($post);
+	// fwrite(STDERR, print_r(, TRUE));	
+}
 
 
 }
