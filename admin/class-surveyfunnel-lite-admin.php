@@ -411,7 +411,7 @@ class Surveyfunnel_Lite_Admin {
 			$this->version,
 			false
 		);
-
+		ob_start();
 		?>
 			<!DOCTYPE html>
 			<html <?php language_attributes(); ?>>
@@ -439,6 +439,7 @@ class Surveyfunnel_Lite_Admin {
 			</body>
 			</html>
 		<?php
+		ob_get_clean();
 		wp_enqueue_media();
 		exit;
 	}
