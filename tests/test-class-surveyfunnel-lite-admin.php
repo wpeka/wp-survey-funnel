@@ -213,9 +213,11 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 	 */
 	public function test_surveyfunnel_lite_dashboard() {
 		$count_befor_include = count( get_included_files() );
+
 		ob_start();
 		self::$surveyfunnel_lite_admin->surveyfunnel_lite_dashboard();
 		ob_get_clean();
+
 		$count_after_include = count( get_included_files() );
 		$this->assertEquals( 1, $count_after_include - $count_befor_include, 'Failed to include admin-display-dashboard-page.php file' );
 	}
@@ -294,16 +296,6 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$option=get_option('srf-lite-background-update');
 		$this->assertTrue(!$option);
 	}
-	// public function test_surveyfunnel_lite_survey_page_html(){
-	// 	// ob_start();
-	// 	self::$surveyfunnel_lite_admin->surveyfunnel_lite_survey_page_html();
-	// 	// $output=ob_get_clean();
-	// 	global $wp_scripts;
-	// 	$registered_scripts = $wp_scripts->registered;
-	// 	$this->assertTrue( in_array( 'surveyfunnel-lite-main', $registered_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-	// 	$this->assertTrue( in_array( 'surveyfunnel-lite-mediaupload', $registered_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-	// 	$this->assertTrue(true);
-	// }
 
 
 
