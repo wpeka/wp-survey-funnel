@@ -296,16 +296,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$option=get_option('srf-lite-background-update');
 		$this->assertTrue(!$option);
 	}
-	public function test_surveyfunnel_lite_new_survey(){
-	$post=[
-		'action'=>"abc",
-	];
-		$this->request->setMethod('POST')->setPost(array($post));
-	$jsonerror=self::$surveyfunnel_lite_admin->surveyfunnel_lite_new_survey();
-	// $post=$_POST;
-	// print_r($post);
-	// fwrite(STDERR, print_r(, TRUE));	
-}
+
 
 
 }
