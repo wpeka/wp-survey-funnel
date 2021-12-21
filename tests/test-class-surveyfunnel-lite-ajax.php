@@ -434,4 +434,21 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		$this->assertTrue( (bool) $response->success );
 		$this->assertSame( 'draft', $response->data );
 	}
+	public function test_surveyfunnel_lite_export_csv() {
+		// become administrator.
+		$this->_setRole( 'administrator' );
+
+		$_POST['action']   = 'surveyfunnel_lite_change_status';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
+		$_POST['csv_data']  = array();
+		try {
+			$this->_handleAjax( 'surveyfunnel_lite_change_status' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			
+		}
+		$this->assertTrue( isset( $e ) );
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
+		$this->assertSame( 'draft', $response->data );
+	}
 }
