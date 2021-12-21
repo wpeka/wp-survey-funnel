@@ -239,8 +239,9 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$data            = trim( str_replace( ';', '', $data ) );
 		$localize_data   = json_decode( $data, true );
 		update_option( 'surveyfunnel_pro_active', true );
-
-		$this->assertCount( 3, $localize_data );
+		
+		$this->assertIsArray($localize_data);
+		$this->assertCount( 3, $localize_data."i am an error" );
 		$this->assertArrayHasKey( 'menu_items', $localize_data );
 		$this->assertArrayHasKey( 'is_pro', $localize_data );
 		$this->assertArrayHasKey( 'quick_links_text', $localize_data );
@@ -249,6 +250,13 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$this->assertSame( '<div id="surveyfunnel-lite-mascot-app"></div>', trim( $output ) );
 		$this->assertTrue( in_array( 'surveyfunnel-lite-mascot', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 		$this->assertArrayHasKey( 'surveyfunnel-lite-mascot', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		ob_start();
+		self::$surveyfunnel_lite_admin->surveyfunnel_lite_mascot_on_pages();
+		$output = ob_get_clean();
+		$this->go_to( admin_url() . 'admin.php?page=dashboard' );
+		ob_start();
+		self::$surveyfunnel_lite_admin->surveyfunnel_lite_mascot_on_pages();
+		$output = ob_get_clean();
 	}
 
 	/**
