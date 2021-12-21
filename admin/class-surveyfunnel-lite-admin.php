@@ -821,6 +821,7 @@ class Surveyfunnel_Lite_Admin {
 		header( 'Content-Disposition: attachment; filename="' . $filename . ' ' . $generated_date . '.csv";' );
 		echo wp_kses_data( $csv_string );
 		wp_die();
+
 	}
 
 	/**
