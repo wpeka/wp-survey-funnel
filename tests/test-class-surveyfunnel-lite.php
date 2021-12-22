@@ -91,5 +91,21 @@ class Test_Surveyfunnel_Lite extends WP_UnitTestCase {
 		self::$surveyfunnel_lite->run();
 		$this->assertTrue( true );
 	}
-
+	/**
+	 * Test for is_request function.
+	 * 
+	 * @dataProvider isRequestProvider
+	 */
+	public function test_is_request($expected,$type){
+		$return=Surveyfunnel_Lite::is_request($type);
+		$this->assertSame($expected,$return);
+	}
+	public function isRequestProvider(){
+		return [
+			[false,'admin'],
+			[false,'ajax'],
+			[false,'cron'],
+			[true,'frontend'],
+		];
+	}
 }

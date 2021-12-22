@@ -502,4 +502,5 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase
 			[false]
 		];
 	}
+	
 }
