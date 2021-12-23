@@ -321,7 +321,6 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase
 		self::$surveyfunnel_lite_admin->surveyfunnel_lite_update();
 		$option = get_option('srf-lite-background-update');
 		$this->assertTrue($option);
-		// fwrite(STDERR, print_r($option, TRUE));	
 		update_option('srf-lite-background-update', true);
 		self::$surveyfunnel_lite_admin->surveyfunnel_lite_update();
 		$option = get_option('srf-lite-background-update');
