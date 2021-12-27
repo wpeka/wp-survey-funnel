@@ -174,6 +174,7 @@ class Surveyfunnel_Lite {
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_save_share_data', $plugin_admin, 'surveyfunnel_lite_save_share_data' );
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_share_data', $plugin_admin, 'surveyfunnel_lite_get_share_data' );
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_posts_pages', $plugin_admin, 'surveyfunnel_lite_get_posts_pages' );
+        $this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_api_key', $plugin_admin, 'surveyfunnel_lite_get_api_key' );
 		$this->loader->add_action( 'admin_post_export_csv', $plugin_admin, 'surveyfunnel_lite_export_csv' );
 		$this->loader->add_action( 'admin_footer', $plugin_admin, 'surveyfunnel_lite_mascot_on_pages' );
 
