@@ -266,7 +266,7 @@ class Surveyfunnel_Lite_Admin {
 
 		// fix: background image is lost after updating to '1.1.0'.
 
-		$version = version_compare( SURVEYFUNNEL_LITE_VERSION, '1.2.0' );
+		$version = version_compare( SURVEYFUNNEL_LITE_VERSION, '1.1.1' );
 
 		if ( $version >= 0 && ! get_option( 'srf-lite-background-update', false ) ) {
 			$posts = get_posts(

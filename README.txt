@@ -5,7 +5,7 @@ Tags: lead quizzes, survey form, feedback form, form builder, forms builder, mai
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 7.0
-Stable tag: 1.2.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,8 +117,8 @@ Yes, you can place surveys on specific posts or pages that you think are suitabl
 10. Reports Tab
 
 == Changelog ==
-= 1.2.0 =
-* Update: bugfixes.
+= 1.1.1 =
+* Update: Minor bugfixes.
 
 = 1.1.0 =
 * Feature : Added option for making survey question mandatory.
