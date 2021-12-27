@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CopyShortcode test 1`] = `"[surveyfunnel_lite_survey id=\\"null\\" type=\\"responsive\\"]"`;
+
+exports[`CopyShortcode test 2`] = `"[surveyfunnel_lite_survey id=\\"null\\" type=\\"fullpage\\"]"`;
+
 exports[`ShareShortCodeComponent Snapshot 1`] = `
 <div
   className="shareShortcodeSettings"
