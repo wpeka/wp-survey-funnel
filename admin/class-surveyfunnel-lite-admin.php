@@ -266,7 +266,7 @@ class Surveyfunnel_Lite_Admin {
 
 		// fix: background image is lost after updating to '1.1.0'.
 
-		$version = version_compare( SURVEYFUNNEL_LITE_VERSION, '1.1.0' );
+		$version = version_compare( SURVEYFUNNEL_LITE_VERSION, '1.1.1' );
 
 		if ( $version >= 0 && ! get_option( 'srf-lite-background-update', false ) ) {
 			$posts = get_posts(
@@ -829,7 +829,7 @@ class Surveyfunnel_Lite_Admin {
 			return;
 		}
 
-		$is_pro = get_option( 'surveyfunnel_pro_active' );
+		$is_pro = get_option( 'surveyfunnel_pro_activated' );
 		if ( $is_pro ) {
 			$support_url = 'https://club.wpeka.com/my-account/orders/?utm_source=surveyfunnel&utm_medium=help-mascot&utm_campaign=link&utm_content=support';
 		} else {
