@@ -15,7 +15,7 @@
  * Plugin Name:       SurveyFunnel Lite
  * Plugin URI:        https://club.wpeka.com/
  * Description:       Boost your leads using quiz / survey lead techniques . Drag & drop form builder to launch quizzes within minutes.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            WPEka Club
  * Author URI:        https://club.wpeka.com
  * License:           GPL-2.0+
