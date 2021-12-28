@@ -1,20 +1,22 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { fireEvent, render } from '@testing-library/react';
-import { BuildFormElement } from '../../../../../Components/Build/Elements/FormElements/BuildFormElement';
+// import React from 'react';
+// import { shallow } from 'enzyme';
+// import { fireEvent, render } from '@testing-library/react';
+// import { BuildFormElement } from '../../../../../Components/Build/Elements/FormElements/BuildFormElement';
 
-const component = render(<BuildFormElement />);
+// const component = render(<BuildFormElement />);
 
-function dragAndDrop(knight: Element) {
-    fireEvent.dragStart(knight)
-    fireEvent.dragEnter(cell)
-  }
-  dragAndDrop(
-    component.getByText('drag me'),
- );
+// function dragAndDrop(knight: Element) {
+//     fireEvent.dragStart(knight)
+//     fireEvent.dragEnter(cell)
+//   }
+//   dragAndDrop(
+//     component.getByText('drag me'),
+//  );
 
- describe("BuildFormElement",()=>{
-     
- })
+//  describe("BuildFormElement",()=>{
+//      it('should drag the element',()=>{
+         
+//      })
+//  })
 
 

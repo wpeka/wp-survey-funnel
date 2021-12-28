@@ -7,7 +7,7 @@ export default function ShareShortCode() {
 
 	const [types, setTypes] = useState(shortcodeTypes);
 	const [shortcode, setShortcode] = useState('');
-	const [checked, setChecked] = useState('custom');
+	const [checked, setChecked] = useState('responsive');
 	const [helpText, setHelpText] = useState('');
 
 	const [width, setWidth] = useState({

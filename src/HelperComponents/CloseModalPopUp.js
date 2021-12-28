@@ -1,5 +1,6 @@
 import { ModalContext } from '../Components/Context/ModalContext';
 import { useContext } from "react";
+import React from "react";
 export function CloseModal(props) {
 	let { setCurrentElement, setShowModal } = useContext(ModalContext);
 	const closeModalFunction = () => {
