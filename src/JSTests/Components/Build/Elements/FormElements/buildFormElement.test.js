@@ -1,22 +1,25 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-// import { fireEvent, render } from '@testing-library/react';
-// import { BuildFormElement } from '../../../../../Components/Build/Elements/FormElements/BuildFormElement';
+import React, { useCallback, useRef, useState } from "react";
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
 
-// const component = render(<BuildFormElement />);
+import BuildFormElement from '../../../../../Components/Build/Elements/FormElements/BuildFormElement';
 
-// function dragAndDrop(knight: Element) {
-//     fireEvent.dragStart(knight)
-//     fireEvent.dragEnter(cell)
-//   }
-//   dragAndDrop(
-//     component.getByText('drag me'),
-//  );
+import renderer from 'react-test-renderer';
+test('Form elements test', async () => {
 
-//  describe("BuildFormElement",()=>{
-//      it('should drag the element',()=>{
-         
-//      })
-//  })
+    const ele={
+        itemType:'simple',
+        componentName:'Sample',
+        name:'sample'
 
+    }
+    const onchange = ()=>{
+        return;
+    }
+    const useDrag = jest.fn();
 
+    window.React = React
+    const component = renderer.create( <DndProvider backend={HTML5Backend}> <BuildFormElement ele={ele} /> </DndProvider> );
+    let tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+});
