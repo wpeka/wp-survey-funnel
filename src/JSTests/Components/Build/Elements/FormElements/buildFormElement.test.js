@@ -16,7 +16,9 @@ test('Form elements test', async () => {
     const onchange = ()=>{
         return;
     }
-    const useDrag = jest.fn();
+    const useDrag = jest.fn(()=>{
+        end:jest.fn();
+    });
 
     window.React = React
     const component = renderer.create( <DndProvider backend={HTML5Backend}> <BuildFormElement ele={ele} /> </DndProvider> );
