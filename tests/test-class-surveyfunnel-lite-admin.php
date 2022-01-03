@@ -281,7 +281,6 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase
 	 */
 	public function test_surveyfunnel_lite_register_gutenberg_blocks()
 	{
-		self::$surveyfunnel_lite_admin->surveyfunnel_lite_register_gutenberg_blocks();
 		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
 		$this->assertArrayHasKey( 'surveyfunnel/single-survey', $registered_blocks, 'Failed to register single survey gutenberg block' );
 		global $wp_scripts;
