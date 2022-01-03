@@ -43,6 +43,15 @@ class Surveyfunnel_Lite_Rest_Api {
 				'callback' => array( 'Surveyfunnel_Lite_Rest_Api', 'fetch_survey_details' ),
 			)
 		);
+		register_rest_route(
+			'surveyfunnel/v2',
+			'responses',
+			array(
+				'methods'  => 'GET',
+                'permission_callback' => '__return_true',
+				'callback' => array( 'Surveyfunnel_Lite_Rest_Api', 'fetch_responses_details' ),
+			)
+		);
 	}
 
 	/**
