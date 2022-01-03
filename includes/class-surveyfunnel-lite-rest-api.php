@@ -63,4 +63,10 @@ class Surveyfunnel_Lite_Rest_Api {
         $posts =get_posts( $args );
         return $posts;
     }
+	public static function fetch_responses_details() {
+        global $wpdb;
+		$query = "SELECT * FROM `wp_srf_entries`";
+		$data=$wpdb->get_results($query);
+		return $data;
+    }
 }
