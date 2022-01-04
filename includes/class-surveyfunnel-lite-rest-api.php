@@ -89,6 +89,7 @@ class Surveyfunnel_Lite_Rest_Api
 		$arr=array();
 		foreach ($data as $d) {
 			$a=self::json_change_key($d,'ID','id');
+			$a->fields=json_decode($a->fields);
 			array_push($arr,$a);
 		}
 		return $arr;
