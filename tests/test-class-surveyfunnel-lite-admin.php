@@ -241,39 +241,30 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase
 	/**
 	 * Test for surveyfunnel_lite_mascot_on_pages function
 	 */
-	public function test_surveyfunnel_lite_mascot_on_pages()
-	{
-		$this->go_to(admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard');
+	public function test_surveyfunnel_lite_mascot_on_pages() {
+		$this->go_to( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard' );
 		ob_start();
 		self::$surveyfunnel_lite_admin->surveyfunnel_lite_mascot_on_pages();
 		$output = ob_get_clean();
 		global $wp_scripts;
 		global $wp_styles;
 		$enqueue_scripts = $wp_scripts->queue;
-		$enqueue_styles = $wp_styles->registered;
-		$data = $wp_scripts->get_data('surveyfunnel-lite-mascot', 'data');
-		$data = trim(str_replace('var mascot =', '', $data));
-		$data = trim(str_replace(';', '', $data));
-		$localize_data = json_decode($data, true);
-		update_option('surveyfunnel_pro_active', true);
+		$enqueue_styles  = $wp_styles->registered;
+		$data            = $wp_scripts->get_data( 'surveyfunnel-lite-mascot', 'data' );
+		$data            = trim( str_replace( 'var mascot =', '', $data ) );
+		$data            = trim( str_replace( ';', '', $data ) );
+		$localize_data   = json_decode( $data, true );
+		update_option( 'surveyfunnel_pro_active', true );
 
-		$this->assertIsArray($localize_data);
-		$this->assertCount(3, $localize_data . "i am an error");
-		$this->assertArrayHasKey('menu_items', $localize_data);
-		$this->assertArrayHasKey('is_pro', $localize_data);
-		$this->assertArrayHasKey('quick_links_text', $localize_data);
-		$this->assertSame(__('See Quick Links', 'surveyfunnel'), $localize_data['quick_links_text']);
+		$this->assertCount( 3, $localize_data );
+		$this->assertArrayHasKey( 'menu_items', $localize_data );
+		$this->assertArrayHasKey( 'is_pro', $localize_data );
+		$this->assertArrayHasKey( 'quick_links_text', $localize_data );
+		$this->assertSame( __( 'See Quick Links', 'surveyfunnel' ), $localize_data['quick_links_text'] );
 
-		$this->assertSame('<div id="surveyfunnel-lite-mascot-app"></div>', trim($output));
-		$this->assertTrue(in_array('surveyfunnel-lite-mascot', $enqueue_scripts)); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		$this->assertArrayHasKey('surveyfunnel-lite-mascot', $enqueue_styles); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		ob_start();
-		self::$surveyfunnel_lite_admin->surveyfunnel_lite_mascot_on_pages();
-		$output = ob_get_clean();
-		$this->go_to(admin_url() . 'admin.php?page=dashboard');
-		ob_start();
-		self::$surveyfunnel_lite_admin->surveyfunnel_lite_mascot_on_pages();
-		$output = ob_get_clean();
+		$this->assertSame( '<div id="surveyfunnel-lite-mascot-app"></div>', trim( $output ) );
+		$this->assertTrue( in_array( 'surveyfunnel-lite-mascot', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertArrayHasKey( 'surveyfunnel-lite-mascot', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
 	}
 
 	/**
