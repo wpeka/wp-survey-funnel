@@ -74,21 +74,27 @@ class Surveyfunnel_Lite_Rest_Api
 		];
 		$ans = array();
 		$posts = get_posts($args);
+		$arr=array();
 		foreach ($posts as $post) {
-			$post->id = $post->ID;
-			unset($post->ID);
+			$a=self::json_change_key($post,'ID','id');
+			array_push($arr,$a);
 		}
-		return $posts;
+		return $arr;
 	}
 	public static function fetch_responses_details()
 	{
 		global $wpdb;
 		$query = "SELECT * FROM `wp_srf_entries`";
 		$data = $wpdb->get_results($query);
+		$arr=array();
 		foreach ($data as $d) {
-			$d->id = $d->ID;
-			unset($d->ID);
+			$a=self::json_change_key($d,'ID','id');
+			array_push($arr,$a);
 		}
-		return $data;
+		return $arr;
+	}
+	public function json_change_key($arr, $oldkey, $newkey) {
+		$json = str_replace('"'.$oldkey.'":', '"'.$newkey.'":', json_encode($arr));
+		return json_decode($json);	
 	}
 }
