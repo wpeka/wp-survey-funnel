@@ -54,6 +54,15 @@ class Surveyfunnel_Lite_Rest_Api
 			'callback' => array('Surveyfunnel_Lite_Rest_Api', 'fetch_responses_details'),
 		)
 		);
+		register_rest_route(
+			'surveyfunnel/v2',
+			'responses/(?P<slug>[0-9-]+)',
+			array(
+			'methods' => 'GET',
+			'permission_callback' => '__return_true',
+			'callback' => array('Surveyfunnel_Lite_Rest_Api', 'fetch_responses_with_surveyid'),
+		)
+		);
 	}
 
 	/**
@@ -93,6 +102,16 @@ class Surveyfunnel_Lite_Rest_Api
 			array_push($arr,$a);
 		}
 		return $arr;
+	}
+	public static function fetch_responses_with_surveyid($slug){
+		$responses=self::fetch_responses_details();
+		$ans=array();
+		foreach($responses as $response){
+			if($response->survey_id==$slug['slug']){
+				array_push($ans,$response);
+			}
+		}
+		return $ans;
 	}
 	public function json_change_key($arr, $oldkey, $newkey) {
 		$json = str_replace('"'.$oldkey.'":', '"'.$newkey.'":', json_encode($arr));
