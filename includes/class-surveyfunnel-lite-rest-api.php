@@ -63,16 +63,19 @@ class Surveyfunnel_Lite_Rest_Api
 			'callback' => array('Surveyfunnel_Lite_Rest_Api', 'fetch_responses_with_surveyid'),
 		)
 		);
+		register_rest_route(
+			'surveyfunnel/v2',
+			'surveys',
+			array(
+			'methods' => 'GET',
+			'permission_callback' => '__return_true',
+			'callback' => array('Surveyfunnel_Lite_Rest_Api', 'fetch_servey_responses'),
+		)
+		);
 	}
 
 	/**
-	 * Rest api callback function which returns scanned cookies.
-	 *
-	 * @since 1.0.0
-	 * @param WP_REST_Request $request Request data.
-	 *
-	 * @return mixed|WP_REST_Response
-	 * @phpcs:disable
+	 * Rest api callback function which returns survey details.
 	 */
 	public static function fetch_survey_details()
 	{
@@ -113,7 +116,34 @@ class Surveyfunnel_Lite_Rest_Api
 		}
 		return $ans;
 	}
-	public function json_change_key($arr, $oldkey, $newkey) {
+	public static function fetch_servey_responses(){
+		$surveys=self::fetch_survey_details();
+		$final_arr=array();
+		foreach($surveys as $survey){
+			$id=['slug'=>$survey->id];
+			$response=self::fetch_responses_with_surveyid($id);
+			$recent=end($response);
+			$inner=end($recent->fields);
+			$a=[
+				'id'=>$survey->id,
+				'post_title'=>$survey->post_title,
+				'post_name'=>$survey->post_name,
+				'post_date'=>$survey->post_date,
+				'comment_status'=>$survey->comment_status,
+				'comment_count'=>$survey->comment_count,
+				'survey_id'=>$recent->survey_id,
+				'user_id'=>$recent->user_id,
+				'question'=>$inner->question,
+				'answer'=>$inner->answer,
+				'status'=>$inner->status,
+				'component_name'=>$inner->componentName, 
+			];
+			array_push($final_arr,$a);
+		}
+		return $final_arr; 
+	}
+
+	public static function json_change_key($arr, $oldkey, $newkey) {
 		$json = str_replace('"'.$oldkey.'":', '"'.$newkey.'":', json_encode($arr));
 		return json_decode($json);	
 	}
