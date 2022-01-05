@@ -123,7 +123,7 @@ class Surveyfunnel_Lite_Rest_Api
 			$id=['slug'=>$survey->id];
 			$response=self::fetch_responses_with_surveyid($id);
 			$recent=end($response);
-			$inner=end($recent->fields);
+			$innerFields=$recent->fields;
 			$a=[
 				'id'=>$survey->id,
 				'post_title'=>$survey->post_title,
@@ -133,11 +133,15 @@ class Surveyfunnel_Lite_Rest_Api
 				'comment_count'=>$survey->comment_count,
 				'survey_id'=>$recent->survey_id,
 				'user_id'=>$recent->user_id,
-				'question'=>$inner->question,
-				'answer'=>$inner->answer,
-				'status'=>$inner->status,
-				'component_name'=>$inner->componentName, 
 			];
+			$i=1;
+			foreach($innerFields as $key=>$value){
+				$a['question'.$i]=$value->question;
+				$a['answer'.$i]=$value->answer;
+				$a['status'.$i]=$value->status;
+				$a['componentName'.$i]=$value->componentName;
+				$i++;
+			}
 			array_push($final_arr,$a);
 		}
 		return $final_arr; 
