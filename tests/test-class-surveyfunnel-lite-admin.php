@@ -307,6 +307,9 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase
 		$surveyfunnelcategory = $returned_categories[0];
 		$this->assertSame('SurveyFunnel', $surveyfunnelcategory['title']);
 	}
+	/**
+	 * Test for surveyfunnel_lite_update function
+	 */
 	public function test_surveyfunnel_lite_update()
 	{
 		update_option('srf-lite-background-update', false);
