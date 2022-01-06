@@ -477,7 +477,7 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase
 			$this->_handleAjax('surveyfunnel_lite_export_csv');
 		}catch (WPAjaxDieContinueException $e) {
 		}
-		// $this->assertTrue(isset($e));
+		$this->assertTrue(!isset($e));
 	}
 	/**
 	 * @dataProvider flagProvider
