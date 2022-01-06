@@ -48,7 +48,7 @@ jobs:
         run: composer install
 
       - name: Init DB and WP
-        run: sudo ./tests/bin/install.sh woo_test root root 127.0.0.1 latest
+        run: ./tests/bin/install.sh woo_test root root 127.0.0.1 latest
 
       - name: Run unit tests with code coverage. Allow to fail.
         run: |
