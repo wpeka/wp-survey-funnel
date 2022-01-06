@@ -86,10 +86,10 @@ class Surveyfunnel_Lite_Rest_Api
 		];
 		$ans = array();
 		$posts = get_posts($args);
-		$arr=array();
+		$arr = array();
 		foreach ($posts as $post) {
-			$a=self::json_change_key($post,'ID','id');
-			array_push($arr,$a);
+			$a = self::json_change_key($post, 'ID', 'id');
+			array_push($arr, $a);
 		}
 		return $arr;
 	}
@@ -98,57 +98,77 @@ class Surveyfunnel_Lite_Rest_Api
 		global $wpdb;
 		$query = "SELECT * FROM `wp_srf_entries`";
 		$data = $wpdb->get_results($query);
-		$arr=array();
+		$arr = array();
 		foreach ($data as $d) {
-			$a=self::json_change_key($d,'ID','id');
-			$a->fields=json_decode($a->fields);
-			array_push($arr,$a);
+			$a = self::json_change_key($d, 'ID', 'id');
+			$a->fields = json_decode($a->fields);
+			array_push($arr, $a);
 		}
 		return $arr;
 	}
-	public static function fetch_responses_with_surveyid($slug){
-		$responses=self::fetch_responses_details();
-		$ans=array();
-		foreach($responses as $response){
-			if($response->survey_id==$slug['slug']){
-				array_push($ans,$response);
+	public static function fetch_responses_with_surveyid($slug)
+	{
+		$responses = self::fetch_responses_details();
+		$ans = array();
+		foreach ($responses as $response) {
+			if ($response->survey_id == $slug['slug']) {
+				array_push($ans, $response);
 			}
 		}
 		return $ans;
 	}
-	public static function fetch_servey_responses(){
-		$surveys=self::fetch_survey_details();
-		$final_arr=array();
-		foreach($surveys as $survey){
-			$id=['slug'=>$survey->id];
-			$response=self::fetch_responses_with_surveyid($id);
-			$recent=end($response);
-			$innerFields=$recent->fields;
-			$a=[
-				'id'=>$survey->id,
-				'post_title'=>$survey->post_title,
-				'post_name'=>$survey->post_name,
-				'post_date'=>$survey->post_date,
-				'comment_status'=>$survey->comment_status,
-				'comment_count'=>$survey->comment_count,
-				'survey_id'=>$recent->survey_id,
-				'user_id'=>$recent->user_id,
+	public static function fetch_servey_responses()
+	{
+		$surveys = self::fetch_survey_details();
+		$final_arr = array();
+		foreach ($surveys as $survey) {
+			$id = ['slug' => $survey->id];
+			$response = self::fetch_responses_with_surveyid($id);
+			$recent = end($response);
+			$innerFields = $recent->fields;
+			$a = [
+				'id' => $survey->id,
+				'post_title' => $survey->post_title,
+				'post_name' => $survey->post_name,
+				'post_date' => $survey->post_date,
+				'comment_status' => $survey->comment_status,
+				'comment_count' => $survey->comment_count,
+				'survey_id' => $recent->survey_id,
+				'user_id' => $recent->user_id,
 			];
-			$i=1;
-			foreach($innerFields as $key=>$value){
-				$a['question'.$i]=$value->question;
-				$a['answer'.$i]=$value->answer;
-				$a['status'.$i]=$value->status;
-				$a['componentName'.$i]=$value->componentName;
+			$i = 1;
+			foreach ($innerFields as $key => $value) {
+				$a['question' . $i] = $value->question;
+				$a['status' . $i] = $value->status;
+				$a['componentName' . $i] = $value->componentName;
+				if ($value->componentName == 'FormElements') {
+					$answer = $value->answer;
+					$a[lcfirst(preg_replace('/\s+/', '', $answer[0]->name)) . $i] = $answer[0]->value;
+					$a[lcfirst(preg_replace('/\s+/', '', $answer[1]->name)) . $i] = $answer[1]->value;
+					$a[lcfirst(preg_replace('/\s+/', '', $answer[2]->name)) . $i] = $answer[2]->value;
+				}
+				elseif ($value->componentName == 'MultiChoice') {
+					$answer = $value->answer;
+					$string = "";
+					foreach ($answer as $ans) {
+						$string = $string . $ans->name . ',';
+					}
+					$a['asnwer' . $i] = $string;
+				}
+				else {
+					$a['answer' . $i] = $value->answer;
+				}
 				$i++;
+
 			}
-			array_push($final_arr,$a);
+			array_push($final_arr, $a);
 		}
-		return $final_arr; 
+		return $final_arr;
 	}
 
-	public static function json_change_key($arr, $oldkey, $newkey) {
-		$json = str_replace('"'.$oldkey.'":', '"'.$newkey.'":', json_encode($arr));
-		return json_decode($json);	
+	public static function json_change_key($arr, $oldkey, $newkey)
+	{
+		$json = str_replace('"' . $oldkey . '":', '"' . $newkey . '":', json_encode($arr));
+		return json_decode($json);
 	}
 }
