@@ -127,7 +127,7 @@ class Surveyfunnel_Lite_Rest_Api
 			$recent = end($response);
 			$innerFields = $recent->fields;
 			$a = [
-				'id' => $survey->id,
+				'id' => $recent->id,
 				'post_title' => $survey->post_title,
 				'post_name' => $survey->post_name,
 				'post_date' => $survey->post_date,
