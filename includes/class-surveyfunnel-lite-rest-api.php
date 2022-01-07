@@ -192,14 +192,9 @@ class Surveyfunnel_Lite_Rest_Api
 				array_push($ans, $response);
 			}
 		}
-		// $i="test";
-		// foreach($ans as $an){
-		// 	$an->rishabh=$i;
-		// }
 		foreach ($ans as $an) {
 			$i = 1;
 			$innerFields = $an->fields;
-			// $an->test=$innerFields;
 			foreach ($innerFields as $key => $value) {
 				$question = 'question' . $i;
 				$status = 'status' . $i;
@@ -219,8 +214,8 @@ class Surveyfunnel_Lite_Rest_Api
 				elseif ($value->componentName == 'MultiChoice') {
 					$answer = $value->answer;
 					$string = "";
-					foreach ($answer as $ans) {
-						$string = $string . $ans->name . ',';
+					foreach ($answer as $ansNew) {
+						$string = $string . $ansNew->name . ',';
 					}
 					$answerString='answer'.$i;
 					$an->$answerString = $string;
@@ -233,6 +228,6 @@ class Surveyfunnel_Lite_Rest_Api
 			}
 			unset($an->fields);
 		}
-		return $ans;
+		return array_reverse($ans);
 	}
 }
