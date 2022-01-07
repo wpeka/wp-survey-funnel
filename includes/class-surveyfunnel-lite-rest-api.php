@@ -202,32 +202,47 @@ class Surveyfunnel_Lite_Rest_Api
 				$an->$question = $value->question;
 				$an->$status = $value->status;
 				$an->$componentName = $value->componentName;
+				if ($value->status == "viewed") {
+					break;
+				}
 				if ($value->componentName == 'FormElements') {
 					$answer = $value->answer;
-					$first = lcfirst(preg_replace('/\s+/', '', $answer[0]->name)) . $i;
-					$second = lcfirst(preg_replace('/\s+/', '', $answer[1]->name)) . $i;
-					$third = lcfirst(preg_replace('/\s+/', '', $answer[3]->name)) . $i;
-					$an->$first = $answer[0]->value;
-					$an->$second = $answer[1]->value;
-					$an->$third = $answer[2]->value;
+					if ($answer[0]->name != "" && $answer[0]->value != "") {
+						$string = lcfirst(preg_replace('/\s+/', '', $answer[0]->name)) . $i;
+						$an->$string = $answer[0]->value;
+					}
+					if ($answer[1]->name != "" && $answer[1]->value != "") {
+						$string = lcfirst(preg_replace('/\s+/', '', $answer[1]->name)) . $i;
+						$an->$string = $answer[1]->value;
+					}
+					if ($answer[2]->name != "" && $answer[2]->value != "") {
+						$string = lcfirst(preg_replace('/\s+/', '', $answer[2]->name)) . $i;
+						$an->$string = $answer[2]->value;
+					}
 				}
-				elseif ($value->componentName == 'MultiChoice') {
+				elseif ($value->componentName == 'MultiChoice' && !empty($value->answer)) {
 					$answer = $value->answer;
 					$string = "";
 					foreach ($answer as $ansNew) {
 						$string = $string . $ansNew->name . ',';
 					}
-					$answerString='answer'.$i;
+					$answerString = 'answer' . $i;
 					$an->$answerString = $string;
 				}
 				else {
-					$answerString='answer'.$i;
-					$an->$answerString = $value->answer;
+					if ($value->answer != "") {
+						$answerString = 'answer' . $i;
+						$an->$answerString = $value->answer;
+					}
 				}
 				$i++;
 			}
 			unset($an->fields);
 		}
 		return array_reverse($ans);
+	}
+	public static function fetch_responses_with_surveyid_in_reverse1($slug)
+	{
+		return $slug['slug'];
 	}
 }
