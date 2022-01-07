@@ -74,7 +74,7 @@ class Surveyfunnel_Lite_Rest_Api
 		);
 		register_rest_route(
 			'surveyfunnel/v2',
-			'surveys/(?P<slug>[0-9-]+)',
+			'surveys/survey_id=(?P<slug>[0-9-]+)',
 			array(
 			'methods' => 'GET',
 			'permission_callback' => '__return_true',
