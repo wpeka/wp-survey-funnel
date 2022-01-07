@@ -72,6 +72,15 @@ class Surveyfunnel_Lite_Rest_Api
 			'callback' => array('Surveyfunnel_Lite_Rest_Api', 'fetch_servey_responses'),
 		)
 		);
+		register_rest_route(
+			'surveyfunnel/v2',
+			'surveys/(?P<slug>[0-9-]+)',
+			array(
+			'methods' => 'GET',
+			'permission_callback' => '__return_true',
+			'callback' => array('Surveyfunnel_Lite_Rest_Api', 'fetch_responses_with_surveyid_in_reverse'),
+		)
+		);
 	}
 
 	/**
@@ -117,6 +126,9 @@ class Surveyfunnel_Lite_Rest_Api
 		}
 		return $ans;
 	}
+	/**
+	 * Fetch surveys responses with most recent response on single array
+	 */
 	public static function fetch_servey_responses()
 	{
 		$surveys = self::fetch_survey_details();
@@ -170,5 +182,57 @@ class Surveyfunnel_Lite_Rest_Api
 	{
 		$json = str_replace('"' . $oldkey . '":', '"' . $newkey . '":', json_encode($arr));
 		return json_decode($json);
+	}
+	public static function fetch_responses_with_surveyid_in_reverse($slug)
+	{
+		$responses = self::fetch_responses_details();
+		$ans = array();
+		foreach ($responses as $response) {
+			if ($response->survey_id == $slug['slug']) {
+				array_push($ans, $response);
+			}
+		}
+		// $i="test";
+		// foreach($ans as $an){
+		// 	$an->rishabh=$i;
+		// }
+		foreach ($ans as $an) {
+			$i = 1;
+			$innerFields = $an->fields;
+			// $an->test=$innerFields;
+			foreach ($innerFields as $key => $value) {
+				$question = 'question' . $i;
+				$status = 'status' . $i;
+				$componentName = 'componentName' . $i;
+				$an->$question = $value->question;
+				$an->$status = $value->status;
+				$an->$componentName = $value->componentName;
+				if ($value->componentName == 'FormElements') {
+					$answer = $value->answer;
+					$first = lcfirst(preg_replace('/\s+/', '', $answer[0]->name)) . $i;
+					$second = lcfirst(preg_replace('/\s+/', '', $answer[1]->name)) . $i;
+					$third = lcfirst(preg_replace('/\s+/', '', $answer[3]->name)) . $i;
+					$an->$first = $answer[0]->value;
+					$an->$second = $answer[1]->value;
+					$an->$third = $answer[2]->value;
+				}
+				elseif ($value->componentName == 'MultiChoice') {
+					$answer = $value->answer;
+					$string = "";
+					foreach ($answer as $ans) {
+						$string = $string . $ans->name . ',';
+					}
+					$answerString='answer'.$i;
+					$an->$answerString = $string;
+				}
+				else {
+					$answerString='answer'.$i;
+					$an->$answerString = $value->answer;
+				}
+				$i++;
+			}
+			unset($an->fields);
+		}
+		return $ans;
 	}
 }
