@@ -155,20 +155,32 @@ class Surveyfunnel_Lite_Rest_Api
 				$a['componentName' . $i] = $value->componentName;
 				if ($value->componentName == 'FormElements') {
 					$answer = $value->answer;
-					$a[lcfirst(preg_replace('/\s+/', '', $answer[0]->name)) . $i] = $answer[0]->value;
-					$a[lcfirst(preg_replace('/\s+/', '', $answer[1]->name)) . $i] = $answer[1]->value;
-					$a[lcfirst(preg_replace('/\s+/', '', $answer[2]->name)) . $i] = $answer[2]->value;
+					if ($answer[0]->name != "" && $answer[0]->value != "") {
+						$string = lcfirst(preg_replace('/\s+/', '', $answer[0]->name)) . $i;
+						$a[$string] = $answer[0]->value;
+					}
+					if ($answer[1]->name != "" && $answer[1]->value != "") {
+						$string = lcfirst(preg_replace('/\s+/', '', $answer[1]->name)) . $i;
+						$a[$string] = $answer[1]->value;
+					}
+					if ($answer[2]->name != "" && $answer[2]->value != "") {
+						$string = lcfirst(preg_replace('/\s+/', '', $answer[2]->name)) . $i;
+						$a[$string] = $answer[2]->value;
+					}
 				}
-				elseif ($value->componentName == 'MultiChoice') {
+				elseif ($value->componentName == 'MultiChoice' && !empty($value->answer)) {
 					$answer = $value->answer;
 					$string = "";
 					foreach ($answer as $ans) {
 						$string = $string . $ans->name . ',';
 					}
-					$a['asnwer' . $i] = $string;
+					$a['answer' . $i] = $string;
 				}
 				else {
-					$a['answer' . $i] = $value->answer;
+					if ($value->answer != "") {
+						$answerString = 'answer' . $i;
+						$a[$answerString] = $value->answer;
+					}
 				}
 				$i++;
 
@@ -240,9 +252,5 @@ class Surveyfunnel_Lite_Rest_Api
 			unset($an->fields);
 		}
 		return array_reverse($ans);
-	}
-	public static function fetch_responses_with_surveyid_in_reverse1($slug)
-	{
-		return $slug['slug'];
 	}
 }
