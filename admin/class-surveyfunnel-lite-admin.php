@@ -576,6 +576,7 @@ class Surveyfunnel_Lite_Admin {
 		$post_meta = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data      = array(
 			'configure' => $post_meta['configure'],
+            'proActive' => apply_filters( 'surveyfunnel_pro_activated', false ),
 		);
 		wp_send_json_success( $data );
 		wp_die();

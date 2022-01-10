@@ -11,17 +11,25 @@ import '../../scss/configure1.scss';
 
 // function decides which component to render based on currentConfigureTab.
 const getCurrentTabContent = ( currentConfigureTab ) => {
+    const { proActive } = useContext(ConfigureContext);
 	switch( currentConfigureTab ) {
 		case 'generalsettings':
 			return <GeneralSettings />
 		case 'zapier':
-			return <ZapierIntegration />
+			if(proActive){
+                return <ZapierIntegration />
+			}
+			else {
+				return <GeneralSettings />
+			}
 		default:
 			return '';
 	}
 }
 
 export default function Configure() {
+
+    const { proActive } = useContext(ConfigureContext);
 
 	// state to keep in track of currentTab defualt is generalsettings.
 	const [ currentConfigureTab, setCurrentConfigureTab ] = useState('generalsettings');
@@ -34,9 +42,7 @@ export default function Configure() {
 		<div className="Configure">
 		<div className="configureTabs">
 		{configureTabsData.map(function(item, i) {
-				return <div key={i} className="configureTabs-element" style={{cursor: 'pointer'}} onClick={() => {
-					changeCurrentConfigureTab(item.id);
-				}}>
+                return <div key={i} className={(!proActive && ( item.id === 'zapier')) ? 'configureTabs-element-disabled' : 'configureTabs-element'} style={{cursor: 'pointer'}} onClick={()=>{changeCurrentConfigureTab(item.id)}}>
 			<div className="configureTabs-element-title">
 					<h3>{item.name}</h3>
 					<p>{item.description}</p>
@@ -44,7 +50,6 @@ export default function Configure() {
 				{item.id === currentConfigureTab && <img src={require('../Build/BuildImages/arrowRight.png')}></img> }
 				</div>
 				})}
-
 		</div>
 		<div className="configureTabContent">
 		<div className="configureTabContentContainer">
