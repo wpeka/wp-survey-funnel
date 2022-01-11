@@ -111,6 +111,11 @@ class Surveyfunnel_Lite {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-surveyfunnel-lite-i18n.php';
 
 		/**
+		 * The class responsible for defining Rest-Api functionality
+		 * of the plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-surveyfunnel-lite-rest-api.php';
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-surveyfunnel-lite-admin.php';
@@ -211,6 +216,7 @@ class Surveyfunnel_Lite {
 		$this->loader->add_action( 'wp_ajax_nopriv_surveyfunnel_lite_new_survey_lead', $plugin_public, 'surveyfunnel_lite_new_survey_lead' );
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_display_data', $plugin_public, 'surveyfunnel_lite_get_display_data' );
 		$this->loader->add_action( 'wp_ajax_nopriv_surveyfunnel_lite_get_display_data', $plugin_public, 'surveyfunnel_lite_get_display_data' );
+		$this->loader->add_action( 'rest_api_init',$plugin_public, 'surveyfunnel_lite_register_rest_api');
 	}
 
 	/**
