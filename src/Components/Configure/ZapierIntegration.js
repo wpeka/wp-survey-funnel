@@ -72,10 +72,6 @@ export default function Configure() {
 									<li>Create a Survey.</li>
 									<li><a href="https://zapier.com/app/connections" target="_blank">Create a Zap</a> on zapier.com.</li>
 									<li><a href="https://docs.wpeka.com/survey-funnel/v/master/zapier-integration"_target="_blank">Click here for documentation on connecting SurveyFunnel with Zapier.</a></li>
-								<p>Connect to Zapier in 2 easy steps.</p>
-								<ol>
-									<li>Create a Survey.</li>
-									<li><a href="https://zapier.com/app/editor" target="_blank">Create a Zap</a> on zapier.com.</li>
 								</ol>
 						</div>
 
