@@ -67,18 +67,15 @@ export default function Configure() {
 						/>
 						</div>
 						<div className="zapierSteps">
-<<<<<<< HEAD
 								<p>Connect to Zapier using following guidelines.</p>
 								<ol>
 									<li>Create a Survey.</li>
 									<li><a href="https://zapier.com/app/connections" target="_blank">Create a Zap</a> on zapier.com.</li>
 									<li><a href="https://docs.wpeka.com/survey-funnel/v/master/zapier-integration"_target="_blank">Click here for documentation on connecting SurveyFunnel with Zapier.</a></li>
-=======
 								<p>Connect to Zapier in 2 easy steps.</p>
 								<ol>
 									<li>Create a Survey.</li>
 									<li><a href="https://zapier.com/app/editor" target="_blank">Create a Zap</a> on zapier.com.</li>
->>>>>>> 95820c6e2e1edd87e7d46bb40354b0b4c1c38e7c
 								</ol>
 						</div>
 
