@@ -105,7 +105,8 @@ class Surveyfunnel_Lite_Rest_Api
 	public static function fetch_responses_details()
 	{
 		global $wpdb;
-		$query = "SELECT * FROM `wp_srf_entries`";
+		$table_name=$wpdb->prefix.'srf_entries';
+		$query = "SELECT * FROM $table_name";
 		$data = $wpdb->get_results($query);
 		$arr = array();
 		foreach ($data as $d) {
