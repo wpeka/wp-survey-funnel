@@ -1,5 +1,7 @@
 <?php
 /**
+ * Analytics templates review form file
+ *
  * @package     Analytics
  * @copyright   Copyright (c) 2019, CyberChimps, Inc.
  * @license     https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
@@ -10,7 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
+/** VARS Variable
+ *
  * @var array $VARS
  */
 $als        = analytics( $VARS['id'], $VARS['product_name'], $VARS['version'], $VARS['module_type'], $VARS['slug'] );

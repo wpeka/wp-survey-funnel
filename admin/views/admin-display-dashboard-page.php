@@ -8,7 +8,7 @@
  * @package Surveyfunnel_Lite
  */
 
- // get all the surveys.
+ // Get all the surveys.
 $args = array(
 	'post_type'   => 'wpsf-survey',
 	'post_status' => array( 'draft', 'publish' ),
@@ -148,7 +148,6 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 				<div class="surveyfunnel-lite-filter surveyfunnel-lite-right">
 					<label for="surveyfunnel-lite-filter"><?php esc_html_e( 'Filter By:', 'surveyfunnel' ); ?></label>
 					<select filter-search <?php echo esc_attr( $disabled ); ?> id="surveyfunnel-lite-filter">
-
 						<option value="all-types"><?php esc_html_e( 'All Types', 'surveyfunnel' ); ?></option>
 						<option value="basic-survey"><?php esc_html_e( 'Basic Survey', 'surveyfunnel' ); ?></option>
 						<option value="scoring-logic"><?php esc_html_e( 'Scoring Logic', 'surveyfunnel' ); ?></option>
@@ -197,31 +196,31 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 											<?php endif; ?>
 											<div class="--surveyfunnel-lite-flex surveyfunnel-lite-post-icons <?php echo esc_html( $tooltip_class ); ?>">
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/build' ) ); ?>">
+													<a class="icon" href="<?php esc_attr( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/build' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/build.png' ); ?>" alt="Build">
 													</a>
 													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Build', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/design' ) ); ?>">
+													<a class="icon" href="<?php esc_attr( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/design' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Design.png' ); ?>" alt="Design">
 													</a>
 													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Design', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/configure' ) ); ?>">
+													<a class="icon" href="<?php esc_url( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/configure' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Configure.png' ); ?>" alt="Configure">
 													</a>
 													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Configure', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/share' ) ); ?>">
+													<a class="icon" href="<?php esc_url( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/share' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Share.png' ); ?>" alt="Configure">
 													</a>
 													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Deploy', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/reports' ) ); ?>">
+													<a class="icon" href="<?php esc_url( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/reports' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Reports.png' ); ?>" alt="Configure">
 													</a>
 													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Reports', 'surveyfunnel' );//phpcs:ignore ?></span>

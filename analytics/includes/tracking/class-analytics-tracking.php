@@ -16,7 +16,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Analytics Tracking.
  */
 class Analytics_Tracking {
-
+	/**
+	 * The Product name.
+	 *
+	 * @access protected
+	 * @var    string    $slug    The Product name.
+	 */
 	private $slug;
 
 	/**
@@ -47,6 +52,11 @@ class Analytics_Tracking {
 	 */
 	private $current_time;
 
+	/**
+	 * Constructor for class Analysis Tracking
+	 *
+	 * @param string $slug The Product name.
+	 */
 	public function __construct( $slug ) {
 		$this->slug = $slug;
 		if ( ! $this->analytics_tracking_enabled() ) {
@@ -55,7 +65,9 @@ class Analytics_Tracking {
 		$this->current_time = time();
 		$this->analytics_tracking_register_hooks();
 	}
-
+	/**
+	 * Constructor for class Analysis Tracking
+	 */
 	public function analytics_tracking_register_hooks() {
 		if ( ! $this->analytics_tracking_enabled() ) {
 			return;
@@ -80,7 +92,7 @@ class Analytics_Tracking {
 	 */
 	public function analytics_tracking_schedule_data_sending( $upgrader = false, $data = array() ) {
 		// Return if it's not a WordPress core update.
-		if ( ! $upgrader || ! isset( $data['type'] ) || $data['type'] !== 'core' ) {
+		if ( ! $upgrader || ! isset( $data['type'] ) || 'core' !== $data['type'] ) {
 			return;
 		}
 
@@ -125,11 +137,13 @@ class Analytics_Tracking {
 			update_option( $this->slug . '-' . $this->option_name, $this->current_time, 'yes' );
 		}
 	}
-
+	/**
+	 * Analytics Tracking get default data.
+	 */
 	public function analytics_tracking_get_default_data() {
 		$data = array(
 			'site_title'    => get_option( 'blogname' ),
-			'timestamp'     => (int) date( 'Uv' ),
+			'timestamp'     => (int) gmdate( 'Uv' ),
 			'wp_version'    => $this->analytics_tracking_get_wordpress_version(),
 			'home_url'      => home_url(),
 			'admin_url'     => admin_url(),
@@ -138,9 +152,11 @@ class Analytics_Tracking {
 			'site_language' => get_bloginfo( 'language' ),
 		);
 
-		return json_encode( $data );
+		return wp_json_encode( $data );
 	}
-
+	/**
+	 * Analytics tracking get server data.
+	 */
 	public function analytics_tracking_get_server_data() {
 		$data = array();
 
@@ -156,9 +172,12 @@ class Analytics_Tracking {
 		$data['curl_version']   = $this->analytics_tracking_get_curl_info();
 		$data['php_extensions'] = $this->analytics_tracking_get_php_extensions();
 
-		return json_encode( $data );
+		return wp_json_encode( $data );
 	}
 
+	/**
+	 * Analytics tracking get plugins data
+	 */
 	public function analytics_tracking_get_plugins_data() {
 		$data = array();
 
@@ -175,9 +194,12 @@ class Analytics_Tracking {
 			$data[ $plugin_key ] = $plugin;
 		}
 
-		return json_encode( $data );
+		return wp_json_encode( $data );
 	}
 
+	/**
+	 * Analytics tracking get themes data
+	 */
 	public function analytics_tracking_get_themes_data() {
 		$theme = wp_get_theme();
 
@@ -192,7 +214,7 @@ class Analytics_Tracking {
 			'parent_theme' => $this->analytics_tracking_get_parent_theme( $theme ),
 		);
 
-		return json_encode( $data );
+		return wp_json_encode( $data );
 	}
 
 	/**
@@ -329,17 +351,17 @@ class Analytics_Tracking {
 		// Check if we're allowing tracking.
 		$tracking = get_option( $this->slug . '-ask-for-usage-optin' );
 
-		if ( $tracking === false ) {
+		if ( false === $tracking ) {
 			return false;
 		}
 
 		// Save this state.
-		if ( $tracking === null ) {
+		if ( false === $tracking ) {
 			$tracking = apply_filters( 'analytics_tracking_enable', false );
 			update_option( $this->slug . '-ask-for-usage-optin', $tracking );
 		}
 
-		if ( $tracking === false ) {
+		if ( false === $tracking ) {
 			return false;
 		}
 

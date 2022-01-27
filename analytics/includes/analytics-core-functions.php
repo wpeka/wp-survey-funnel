@@ -9,7 +9,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
 /*
@@ -110,13 +110,13 @@ if ( ! function_exists( 'as_request_get' ) ) {
 		 */
 		switch ( $type ) {
 			case 'post':
-				$value = isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : $def;
+				$value = isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : $def; //phpcs:ignore
 				break;
 			case 'get':
-				$value = isset( $_GET[ $key ] ) ? sanitize_text_field( wp_unslash( $_GET[ $key ] ) ) : $def;
+				$value = isset( $_GET[ $key ] ) ? sanitize_text_field( wp_unslash( $_GET[ $key ] ) ) : $def; //phpcs:ignore
 				break;
 			default:
-				$value = isset( $_REQUEST[ $key ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ $key ] ) ) : $def;
+				$value = isset( $_REQUEST[ $key ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ $key ] ) ) : $def;//phpcs:ignore
 				break;
 		}
 
@@ -176,10 +176,10 @@ if ( ! function_exists( 'as_get_raw_referer' ) ) {
 		if ( function_exists( 'wp_get_raw_referer' ) ) {
 			return wp_get_raw_referer();
 		}
-		if ( ! empty( $_REQUEST['_wp_http_referer'] ) ) {
-			return wp_unslash( $_REQUEST['_wp_http_referer'] );
-		} elseif ( ! empty( $_SERVER['HTTP_REFERER'] ) ) {
-			return wp_unslash( $_SERVER['HTTP_REFERER'] );
+		if ( ! empty( sanitize_text_field( $_REQUEST['_wp_http_referer'] ) ) ) { //phpcs:ignore
+			return wp_unslash( $_REQUEST['_wp_http_referer'] );//phpcs:ignore
+		} elseif ( ! empty( sanitize_text_field( $_SERVER['HTTP_REFERER'] ) ) ) { //phpcs:ignore
+			return wp_unslash( $_SERVER['HTTP_REFERER'] ); //phpcs:ignore
 		}
 
 		return false;
@@ -335,6 +335,15 @@ if ( ! function_exists( 'as_text_override' ) ) {
 }
 
 if ( ! function_exists( 'as_enqueue_local_script' ) ) {
+	/**
+	 * Enqueue Local Script
+	 *
+	 * @param string  $handle Handle String.
+	 * @param string  $path Path String.
+	 * @param array   $deps Array.
+	 * @param boolean $ver Version.
+	 * @param string  $in_footer In Footer.
+	 */
 	function as_enqueue_local_script( $handle, $path, $deps = array(), $ver = false, $in_footer = 'all' ) {
 		wp_enqueue_script( $handle, as_asset_url( WP_STAT__DIR_JS . '/' . trim( $path, '/' ) ), $deps, $ver, $in_footer );
 	}
@@ -405,6 +414,8 @@ function as_text_x_inline( $text, $context, $key = '', $slug = 'analytics' ) {
 
 if ( ! function_exists( 'as_esc_html_echo_x_inline' ) ) {
 	/**
+	 * As Esc Html echo x inline
+	 *
 	 * @author CyberChimps
 	 * @since  1.0.1
 	 *
@@ -425,8 +436,8 @@ if ( ! function_exists( 'as_sort_by_priority' ) ) {
 	 * @author CyberChimps
 	 * @since  1.0.1
 	 *
-	 * @param $a
-	 * @param $b
+	 * @param string $a Variable.
+	 * @param string $b Variable.
 	 *
 	 * @return int
 	 */
@@ -435,10 +446,12 @@ if ( ! function_exists( 'as_sort_by_priority' ) ) {
 		// If b has a priority and a does not, b wins.
 		if ( ! isset( $a['priority'] ) && isset( $b['priority'] ) ) {
 			return 1;
-		} // If b has a priority and a does not, b wins.
+		}// phpcs:ignore 
+		// If b has a priority and a does not, b wins.
 		elseif ( isset( $a['priority'] ) && ! isset( $b['priority'] ) ) {
 			return - 1;
-		} // If neither has a priority or both priorities are equal its a tie.
+		} //phpcs:ignore 
+		// If neither has a priority or both priorities are equal its a tie.
 		elseif ( ( ! isset( $a['priority'] ) && ! isset( $b['priority'] ) ) || $a['priority'] === $b['priority'] ) {
 			return 0;
 		}
@@ -448,7 +461,8 @@ if ( ! function_exists( 'as_sort_by_priority' ) ) {
 	}
 }
 if ( ! function_exists( 'as_esc_html_echo_inline' ) ) {
-	/**
+	/** Esc html echo inline
+	 *
 	 * @author CyberChimps
 	 * @since  1.0.1
 	 *
@@ -472,7 +486,7 @@ if ( ! function_exists( 'as_esc_html_echo_inline' ) ) {
  * @param string $slug Module slug for overrides.
  */
 function as_echo_inline( $text, $key = '', $slug = 'analytics' ) {
-	echo _as_text_inline( $text, $key, $slug );
+	echo esc_attr( _as_text_inline( $text, $key, $slug ) );
 }
 
 if ( ! function_exists( 'as_apply_filter' ) ) {

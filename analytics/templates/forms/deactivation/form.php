@@ -1,5 +1,7 @@
 <?php
 /**
+ * Analytics Templates deactivation form
+ *
  * @package     Analytics
  * @copyright   Copyright (c) 2019, CyberChimps, Inc.
  * @license     https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
@@ -11,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * VARS variable.
+ *
  * @var array $VARS
  */
 $as   = analytics( $VARS['id'], $VARS['product_name'], $VARS['version'], $VARS['module_type'], $VARS['slug'] );
@@ -71,38 +75,39 @@ HTML;
 // Aliases.
 $deactivate_text = __( 'Deactivate', 'analytics' );
 $theme_text      = __( 'Theme', 'analytics' );
+/* translators: %s: search term */
 $activate_x_text = __( 'Activate %s', 'analytics' );
 
 as_enqueue_local_style( 'as_dialog_boxes', '/admin/dialog-boxes.css' );
 ?>
 <script type="text/javascript">
 	(function ($) {
-		var reasonsHtml = <?php echo json_encode( $reasons_list_items_html ); ?>,
+		var reasonsHtml = <?php echo wp_json_encode( $reasons_list_items_html ); ?>,
 			modalHtml =
 				'<div class="as-modal as-modal-deactivation-feedback<?php echo empty( $confirmation_message ) ? ' no-confirmation-message' : ''; ?>">'
 				+ '	<div class="as-modal-dialog">'
 				+ '		<div class="as-modal-header">'
-				+ '		    <h4><?php echo __( 'Quick Feedback', 'analytics' ); ?></h4>'
+				+ '		    <h4><?php echo esc_html__( 'Quick Feedback', 'analytics' ); ?></h4>'
 				+ '		</div>'
 				+ '		<div class="as-modal-body">'
-				+ '			<div class="as-modal-panel" data-panel-id="confirm"><p><?php echo $confirmation_message; ?></p></div>'
-				+ '			<div class="as-modal-panel active" data-panel-id="reasons"><h3><strong><?php echo esc_js( sprintf( __( 'If you have a moment, please let us know why you are %s', 'analytics' ), ( $as->is_plugin() ? __( 'deactivating', 'analytics' ) : __( 'switching', 'analytics' ) ) ) ); ?>:</strong></h3><ul id="reasons-list">' + reasonsHtml + '</ul></div>'
+				+ '			<div class="as-modal-panel" data-panel-id="confirm"><p><?php echo esc_html( $confirmation_message ); ?></p></div>'
+				+ '			<div class="as-modal-panel active" data-panel-id="reasons"><h3><strong><?php /* translators: %s: search term */ echo esc_js( sprintf( __( 'If you have a moment, please let us know why you are %s', 'analytics' ), ( $as->is_plugin() ? __( 'deactivating', 'analytics' ) : __( 'switching', 'analytics' ) ) ) ); ?>:</strong></h3><ul id="reasons-list">' + reasonsHtml + '</ul></div>'
 				+ '		</div>'
 				+ '		<div class="as-modal-footer">'
-				+ '         <?php echo $anonymous_feedback_checkbox_html; ?>'
+				+ '         <?php echo esc_html( $anonymous_feedback_checkbox_html ); ?>'
 				+ '			<a href="#" class="button button-secondary button-deactivate"></a>'
-				+ '			<a href="#" class="button button-primary button-close"><?php echo __( 'Cancel', 'analytics' ); ?></a>'
+				+ '			<a href="#" class="button button-primary button-close"><?php echo esc_html__( 'Cancel', 'analytics' ); ?></a>'
 				+ '		</div>'
 				+ '	</div>'
 				+ '</div>',
 			$modal = $(modalHtml),
-			$deactivateLink = $('#the-list .deactivate > [data-module-slug=<?php echo $as->get_slug(); ?>].as-module-slug').prev(),
+			$deactivateLink = $('#the-list .deactivate > [data-module-slug=<?php echo esc_attr( $as->get_slug() ); ?>].as-module-slug').prev(),
 			selectedReasonID = false,
 			redirectLink = '',
 			$anonymousFeedback    = $modal.find( '.anonymous-feedback-label' ),
 			isAnonymous           = <?php echo ( $is_anonymous ? 'true' : 'false' ); ?>,
-			otherReasonID         = <?php echo Analytics::REASON_OTHER; ?>,
-			dontShareDataReasonID = <?php echo Analytics::REASON_DONT_LIKE_TO_SHARE_MY_INFORMATION; ?>,
+			otherReasonID         = <?php echo esc_attr( Analytics::REASON_OTHER ); ?>,
+			dontShareDataReasonID = <?php echo esc_attr( Analytics::REASON_DONT_LIKE_TO_SHARE_MY_INFORMATION ); ?>,
 			deleteThemeUpdateData = <?php echo $as->is_theme() ? 'true' : 'false'; ?>,
 			showDeactivationFeedbackForm = <?php echo ( $show_deactivation_feedback_form ? 'true' : 'false' ); ?>;
 
@@ -212,7 +217,7 @@ as_enqueue_local_style( 'as_dialog_boxes', '/admin/dialog-boxes.css' );
 							reason_info         : userReason,
 							is_anonymous        : isAnonymousFeedback(),
 							slug                : slug,
-							security            : '<?php echo $uninstall_reason_nonce; ?>',
+							security            : '<?php echo esc_attr( $uninstall_reason_nonce ); ?>',
 						},
 						beforeSend: function () {
 							_parent.find('.as-modal-footer .button').addClass('disabled');
@@ -256,12 +261,20 @@ as_enqueue_local_style( 'as_dialog_boxes', '/admin/dialog-boxes.css' );
 
 				$modal.find('.reason-input').remove();
 				$modal.find( '.internal-message' ).hide();
-				$modal.find('.button-deactivate').html('<?php echo esc_js( sprintf(
-                    __( 'Submit & %s', 'analytics', $slug ),
-                    $as->is_plugin() ?
-                        $deactivate_text :
-                        sprintf( $activate_x_text, $theme_text )
-                ) ) ?>');
+				$modal.find('.button-deactivate').html('
+				<?php
+
+				echo esc_js(
+					sprintf(
+						/* translators: %s: search term */
+						__( 'Submit & %s', 'analytics', $slug ),
+						$as->is_plugin() ?
+						$deactivate_text :
+						sprintf( $activate_x_text, $theme_text )
+					)
+				)
+				?>
+				');
 
 				enableDeactivateButton();
 
@@ -404,8 +417,9 @@ as_enqueue_local_style( 'as_dialog_boxes', '/admin/dialog-boxes.css' );
 			if ( 'confirm' === getCurrentPanel() ) {
 				$deactivateButton.text(
 				<?php
-				echo json_encode(
+				echo wp_json_encode(
 					sprintf(
+						/* translators: %s: search term */
 						__( 'Yes - %s', 'analytics' ),
 						$as->is_plugin() ?
 						$deactivate_text :
@@ -413,12 +427,13 @@ as_enqueue_local_style( 'as_dialog_boxes', '/admin/dialog-boxes.css' );
 					)
 				)
 				?>
-				 );
+				);
 			} else {
 				$deactivateButton.html(
 				<?php
-				echo json_encode(
+				echo wp_json_encode(
 					sprintf(
+						/* translators: %s: search term */
 						__( 'Skip & %s', 'analytics' ),
 						$as->is_plugin() ?
 						$deactivate_text :
@@ -426,7 +441,7 @@ as_enqueue_local_style( 'as_dialog_boxes', '/admin/dialog-boxes.css' );
 					)
 				)
 				?>
-				 );
+				);
 			}
 		}
 
