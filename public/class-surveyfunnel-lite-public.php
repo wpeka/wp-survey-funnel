@@ -127,6 +127,8 @@ class Surveyfunnel_Lite_Public {
 
 	/**
 	 * Display survey at the frontend.
+	 *
+	 * @param array $atts Array.
 	 */
 	public function surveyfunnel_lite_survey_shortcode_render( $atts ) {
 		$atts = shortcode_atts(
@@ -146,6 +148,8 @@ class Surveyfunnel_Lite_Public {
 	 *
 	 * Can be called from shortcode or gutenberg blocks.
 	 * this is where survey will be displayed in the frontend.
+	 *
+	 * @param array $atts Array of attributes.
 	 */
 	public function surveyfunnel_lite_display_survey( $atts ) {
 		// all of the null checks.
@@ -182,7 +186,7 @@ class Surveyfunnel_Lite_Public {
 		$survey_type = get_post_meta( $atts['id'], 'surveyfunnel-lite-type', true );
 		$flag        = apply_filters( 'surveyfunnel_pro_activated', false );
 		// if pro is not activated and current survey type is scoring or outcome.
-		if ( $survey_type !== 'basic' && ! $flag ) {
+		if ( 'basic' !== $survey_type && ! $flag ) {
 			return '';
 		}
 
@@ -191,7 +195,7 @@ class Surveyfunnel_Lite_Public {
 		$meta_data = get_post_meta( $atts['id'], 'surveyfunnel-lite-data', true );
 		$meta_data = wp_parse_args( $meta_data, $defaults );
 		$share     = json_decode( $meta_data['share'] );
-		if ( ! $share->popup->active && $atts['type'] === 'popup' ) {
+		if ( 'popup' === ! $share->popup->active && $atts['type'] ) {
 			return '';
 		}
 		$ip        = $_SERVER['REMOTE_ADDR'];//phpcs:ignore
@@ -199,9 +203,9 @@ class Surveyfunnel_Lite_Public {
 
 		$unique_id = md5( $ip . $m_time . wp_rand( 0, time() ) );
 		// generate unique id which will be used in reports page.
-		$time      = time();
+		$time = time();
 		// set the data.
-		$data      = array(
+		$data = array(
 			'ajaxURL'         => admin_url( 'admin-ajax.php' ),
 			'ajaxSecurity'    => wp_create_nonce( 'surveyfunnel-lite-security' ),
 			'post_id'         => $atts['id'],
@@ -223,7 +227,7 @@ class Surveyfunnel_Lite_Public {
 		}
 
 		// get the styles and scripts which will be used inside the iframe.
-		$configure_data = $atts['type'] === 'popup' ? $data['share'] : '';
+		$configure_data = 'popup' === $atts['type'] ? $data['share'] : '';
 		$data           = wp_json_encode( $data );
 		$script_string  = SURVEYFUNNEL_LITE_PLUGIN_URL . 'dist/survey.bundle.js';
 		$style_string   = plugin_dir_url( __FILE__ ) . 'css/surveyfunnel-lite-public.css';
@@ -233,11 +237,11 @@ class Surveyfunnel_Lite_Public {
 		$pro_script_string   = '';
 		$pro_script_string   = apply_filters( 'surveyfunnel_lite_display_survey', $pro_script_string );
 		$return_string       = '';
-		if ( $atts['type'] === 'custom' ) {
+		if ( 'custom' === $atts['type'] ) {
 			$return_string .= '<style>#surveyfunnel-lite-survey-' . $unique_id . ' iframe { max-width: 100%; height: ' . $atts['height'] . '; width: ' . $atts['width'] . ';  }</style>';
 		}
 		// this return string contains iframewrapper and html content which will be used in the js file to create iframe in the frontend.
-		$return_string .= '<div class="iframewrapper intrinsic-ignore" post_id="' . $atts['id'] . '" id="surveyfunnel-lite-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script src="' . $hooks_string . '"></script>' . $pro_script_string . '<style>*{margin: 0; padding:0; box-sizing: border-box;}</style><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="surveyfunnel-lite-survey-' . $unique_id . '" style="width: 100vw; height: 100vh;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';
+		$return_string .= '<div class="iframewrapper intrinsic-ignore" post_id="' . $atts['id'] . '" id="surveyfunnel-lite-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script src="' . $hooks_string . '"></script>' . $pro_script_string . '<style>*{margin: 0; padding:0; box-sizing: border-box;}</style><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="surveyfunnel-lite-survey-' . $unique_id . '" style="width: 100vw; height: 100vh;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';//phpcs:ignore
 		return $return_string;
 	}
 
@@ -293,6 +297,7 @@ class Surveyfunnel_Lite_Public {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
 		// get field value from database if exist.
+		//@codingStandardsIgnoreStart
 		$rows = $wpdb->get_results(
 			$wpdb->prepare(
 				'
@@ -304,6 +309,7 @@ class Surveyfunnel_Lite_Public {
 				$time
 			)
 		);
+		//@codingStandardsIgnoreEnd
 		$flag = false;
 		if ( is_array( $rows ) && count( $rows ) ) {
 			$data          = json_decode( $rows[0]->fields );
@@ -321,6 +327,7 @@ class Surveyfunnel_Lite_Public {
 			$flag   = true;
 		}
 		if ( $flag ) {
+				//@codingStandardsIgnoreStart
 			$rows = $wpdb->query(
 				$wpdb->prepare(
 					'
@@ -332,7 +339,7 @@ class Surveyfunnel_Lite_Public {
 					$user_locale_id,
 					$time
 				)
-			);
+			);//@codingStandardsIgnoreEnd
 
 			if ( ! $rows ) {
 				wp_send_json_error();
@@ -341,6 +348,7 @@ class Surveyfunnel_Lite_Public {
 		} else {
 			$fields = wp_json_encode( array( $fields->_id => $fields ) );
 			$date   = gmdate( 'Y-m-d' );
+			//@codingStandardsIgnoreStart
 			$rows   = $wpdb->query(
 				$wpdb->prepare(
 					'
@@ -354,7 +362,7 @@ class Surveyfunnel_Lite_Public {
 					$time,
 					$date
 				)
-			);
+			);//@codingStandardsIgnoreEnd
 
 			if ( ! $rows ) {
 				wp_send_json_error();
