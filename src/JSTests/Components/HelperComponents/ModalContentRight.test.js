@@ -25,5 +25,24 @@ test('HelperFunctions convertToRgbaCSS test', () => {
     const component1 = renderer.create( <ModalContentRight designCon={designCon} currentElement={currentElement} /> );
 	let tree = component1.toJSON();
 	expect(tree).toMatchSnapshot();
-
+    console.log(tree);
 });
+
+it("When fontFamilyValue is not set then useEffect should return",()=>{
+    const designCon={
+        fontFamilyValue:'',
+        fontColor:'blue',
+        backgroundStyle:'none',
+        fontFamily:'sans',
+        backgroundContainerColor:'red',
+        selectedImageUrl:'none'
+    }
+    
+const currentElement= 'content-element'
+
+
+const component1 = renderer.create( <ModalContentRight designCon={designCon} currentElement={currentElement} /> );
+let tree = component1.toJSON();
+expect(tree).toMatchSnapshot();
+console.log(tree);
+})

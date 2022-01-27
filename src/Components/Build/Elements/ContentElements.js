@@ -9,7 +9,7 @@ export const Choices = React.memo(
         state = {
             title: "",
             description: "",
-            answers: [{ name: "", checked: false, ...applyFilters( 'choicesState', {},this.props.type ) }, { name: "", checked: false, ...applyFilters( 'choicesState', {},this.props.type ) }],
+            answers: [{ name: "", checked: false, ...applyFilters( 'choicesState', {},this.props.type ) }, { name: "", checked: false, ...applyFilters( 'choicesState',{},this.props.type ) }],
             value: '',
 			mandatory: false,
 			error: '',
