@@ -286,6 +286,8 @@ class Surveyfunnel_Lite_Admin {
 			}
 
 			update_option( 'srf-lite-background-update', true );
+		}else{
+			update_option( 'srf-lite-background-update', false);
 		}
 	}
 
@@ -818,7 +820,8 @@ class Surveyfunnel_Lite_Admin {
 		header( 'Content-Type: text/csv; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename="' . $filename . ' ' . $generated_date . '.csv";' );
 		echo wp_kses_data( $csv_string );
-		die();
+		wp_die();
+
 	}
 
 	/**
