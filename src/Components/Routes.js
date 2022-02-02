@@ -35,6 +35,7 @@ export default function Routes() {
         const ajaxURL = document.getElementById('ajaxURL').value;
         fetchData(ajaxURL, data)
         .then(data => {
+            console.log(data);
             setStatus( data.data );
         });
     }, []);
@@ -56,7 +57,6 @@ export default function Routes() {
             e.target.classList.remove('surveyfunnel-lite-button-loading');
             if ( data?.success ) {
                 setStatus( data.data );
-                
             }
         });
     }

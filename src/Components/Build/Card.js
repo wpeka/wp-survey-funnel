@@ -1,6 +1,6 @@
-import React, { Component, useContext } from "react";
+import React, { Component, useContext,useEffect } from "react";
 import { BuildContext } from "../Context/BuildContext";
-import { useRef } from 'react';
+import { useRef,useState } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { ModalContext } from "../Context/ModalContext";
 
@@ -11,7 +11,13 @@ export default function (props) {
 	const { deleteItemInList, moveCard, type, proActive } = useContext(BuildContext);
     const ref = useRef(null);
     const { id, text, index, item } = props;
-
+    const [outcome, setOutcome] = useState(false);
+    useEffect(() => {
+        const survey_type = new URLSearchParams(window.location.search).get('type');
+        if(survey_type=='outcome'){
+            setOutcome(true);
+        }
+    }, []);
 	// this function is created in order to rearrange the cards in the List.
     const [{ handlerId }, drop] = useDrop({
         accept: 'card' + item.type,
@@ -78,7 +84,9 @@ export default function (props) {
         setCurrentElement(item);
         setShowModal(true);
     }
-
+    const outcomeLogic=function(){
+        console.log("hiii");
+    }
     const conditionalLogicCard = function() {
         setCurrentElement({
             componentName: 'ConditionalLogic',
