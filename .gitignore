@@ -23,6 +23,7 @@ dist/
 tmp_folder/
 
 
+
 # ignore log files and databases
 *.log
 *.sql

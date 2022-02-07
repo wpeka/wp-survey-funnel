@@ -1,6 +1,13 @@
 <?php
+/**
+ * Ask for review JS file
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/analytics/includes/sdk
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
 if ( ! class_exists( 'Analytics_Exception' ) ) {
@@ -8,8 +15,26 @@ if ( ! class_exists( 'Analytics_Exception' ) ) {
 	 * Thrown when an API call returns an exception.
 	 */
 	class Analytics_Exception extends Exception {
+		/**
+		 * The associated result object returned by the API server.
+		 *
+		 * @access protected
+		 * @var    object    $_result    The associated result object returned by the API server.
+		 */
 		protected $_result;
+		/**
+		 * The associated type object returned by the API server.
+		 *
+		 * @access protected
+		 * @var    object    $_type    The associated type object returned by the API server.
+		 */
 		protected $_type;
+		/**
+		 * The associated code object returned by the API server.
+		 *
+		 * @access protected
+		 * @var    object    $_code    The associated code object returned by the API server.
+		 */
 		protected $_code;
 
 		/**
@@ -50,11 +75,19 @@ if ( ! class_exists( 'Analytics_Exception' ) ) {
 		public function getResult() {
 			return $this->_result;
 		}
-
+		/**
+		 * Return the associated StringCode object returned by the API server.
+		 *
+		 * @return array The StringCode from the API server
+		 */
 		public function getStringCode() {
 			return $this->_code;
 		}
-
+		/**
+		 * Return the associated Type object returned by the API server.
+		 *
+		 * @return array The Type from the API server
+		 */
 		public function getType() {
 			return $this->_type;
 		}
@@ -67,7 +100,7 @@ if ( ! class_exists( 'Analytics_Exception' ) ) {
 		public function __toString() {
 			$str = $this->getType() . ': ';
 
-			if ( $this->code != 0 ) {
+			if ( 0 !== $this->code ) {
 				$str .= $this->getStringCode() . ': ';
 			}
 

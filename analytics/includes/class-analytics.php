@@ -88,6 +88,13 @@ class Analytics {
 	 */
 	private $_version = false;
 
+	/**
+	 * Tracking Object
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var string
+	 */
 	private $_tracking_obj;
 
 	/**
@@ -109,10 +116,12 @@ class Analytics {
 	 * @since  1.0.0
 	 *
 	 * @param number      $module_id Module Id.
-	 * @param string|bool $slug Slug.
 	 * @param string      $product_name Product Name.
 	 * @param string      $version Product Version.
 	 * @param string      $module_type Module Type.
+	 * @param string|bool $slug Slug.
+	 * @param string      $plugin_basename Plugin Basename.
+	 * @param string      $plugin_url Plugin URL.
 	 */
 	private function __construct( $module_id, $product_name, $version, $module_type, $slug = false, $plugin_basename = '', $plugin_url = '' ) {
 		$this->_module_id    = $module_id;
@@ -140,14 +149,16 @@ class Analytics {
 	 * @since  1.0.0
 	 *
 	 * @param  number      $module_id Module Id.
-	 * @param  string|bool $slug Slug.
 	 * @param string      $product_name Product Name.
 	 * @param string      $version Product Version.
 	 * @param string      $module_type Module Type.
+	 * @param  string|bool $slug Slug.
+	 * @param string      $plugin_basename Plugin Basename.
+	 * @param string      $plugin_url Plugin URL.
 	 *
 	 * @return Analytics|false
 	 */
-	static function instance( $module_id, $product_name, $version, $module_type, $slug = false, $plugin_basename = '', $plugin_url = '' ) {
+	public static function instance( $module_id, $product_name, $version, $module_type, $slug = false, $plugin_basename = '', $plugin_url = '' ) {
 		if ( empty( $module_id ) ) {
 			return false;
 		}
@@ -165,7 +176,7 @@ class Analytics {
 	 * @author CyberChimps
 	 * @since  1.0.0
 	 */
-	private static function _load_required_static() {
+	private static function _load_required_static() { //phpcs:ignore
 		if ( self::$_statics_loaded ) {
 			return;
 		}
@@ -220,7 +231,7 @@ class Analytics {
 	 *
 	 * @return bool
 	 */
-	function is_user_admin() {
+	public function is_user_admin() {
 
 		return ( $this->is_plugin() && current_user_can( is_multisite() ? 'manage_options' : 'activate_plugins' ) )
 			|| ( $this->is_theme() && current_user_can( 'switch_themes' ) );
@@ -347,7 +358,7 @@ class Analytics {
 	 *
 	 * @since  1.0.0
 	 */
-	public function _add_deactivation_feedback_dialog_box() {
+	public function _add_deactivation_feedback_dialog_box() { //phpcs:ignore
 
 		$show_deactivation_feedback_form = true;
 
@@ -387,7 +398,7 @@ class Analytics {
 	 *
 	 * @return array The uninstall reasons for the specified user type.
 	 */
-	public function _get_uninstall_reasons( $user_type = 'long-term' ) {
+	public function _get_uninstall_reasons( $user_type = 'long-term' ) { //phpcs:ignore
 
 		$params                = array();
 		$params['module_type'] = $this->_module_type;
@@ -419,7 +430,7 @@ class Analytics {
 	/**
 	 * Get Default uninstall reasons
 	 *
-	 * @param array $params Parameters
+	 * @param array $params Parameters.
 	 * @return array
 	 */
 	public function get_default_uninstall_reasons( $params = array() ) {
@@ -496,7 +507,7 @@ class Analytics {
 	 * @author CyberChimps
 	 * @since  1.0.0
 	 */
-	public function _hook_action_links_and_register_account_hooks() {
+	public function _hook_action_links_and_register_account_hooks() { //phpcs:ignore
 		if ( self::is_plugins_page() && $this->is_plugin() ) {
 			$this->hook_plugin_action_links();
 		}
@@ -539,12 +550,12 @@ class Analytics {
 	 * @author CyberChimps
 	 * @since  1.0.0
 	 *
-	 * @param array $links
-	 * @param       $file
+	 * @param array $links Links.
+	 * @param file  $file  File.
 	 *
 	 * @return array
 	 */
-	function _modify_plugin_action_links_hook( $links, $file ) {
+	function _modify_plugin_action_links_hook( $links, $file ) { //phpcs:ignore
 
 		$passed_deactivate = false;
 		$deactivate_link   = '';
@@ -585,7 +596,7 @@ class Analytics {
 	 * @author CyberChimps
 	 * @since  1.0.0
 	 */
-	private function _register_account_hooks() {
+	private function _register_account_hooks() { //phpcs:ignore
 		if ( ! is_admin() ) {
 			return;
 		}
@@ -608,10 +619,10 @@ class Analytics {
 	/**
 	 * Dismiss review notice.
 	 */
-	public function _ask_for_review_dismiss() {
+	public function _ask_for_review_dismiss() { //phpcs:ignore
 		check_ajax_referer( 'ask_for_review', 'security' );
 		if ( isset( $_POST['slug'] ) ) {
-			$slug = $_POST['slug'] ? sanitize_text_field( $_POST['slug'] ) : '';
+			$slug = sanitize_text_field( wp_unslash( $_POST['slug'] ) ) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : '';
 			update_option( $slug . '-ask-for-review-dismissed', true );
 		}
 		wp_send_json_success();
@@ -620,20 +631,20 @@ class Analytics {
 	/**
 	 * Dismiss review notice.
 	 */
-	public function _ask_for_usage_dismiss() {
+	public function _ask_for_usage_dismiss() { //phpcs:ignore
 		check_ajax_referer( 'ask_for_usage', 'security' );
 		if ( isset( $_POST['slug'] ) ) {
-			$slug = $_POST['slug'] ? sanitize_text_field( $_POST['slug'] ) : '';
+			$slug = sanitize_text_field( wp_unslash( $_POST['slug'] ) ) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : '';
 			update_option( $slug . '-ask-for-usage-dismissed', true );
 			update_option( $slug . '-ask-for-usage-optin', false );
 		}
 		wp_send_json_success();
 	}
 
-	public function _ask_for_usage_optin() {
+	public function _ask_for_usage_optin() { //phpcs:ignore
 		check_ajax_referer( 'ask_for_usage', 'security' );
 		if ( isset( $_POST['slug'] ) ) {
-			$slug = $_POST['slug'] ? sanitize_text_field( $_POST['slug'] ) : '';
+			$slug = sanitize_text_field( wp_unslash( $_POST['slug'] ) ) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : '';
 			update_option( $slug . '-ask-for-usage-dismissed', true );
 			update_option( $slug . '-ask-for-usage-optin', true );
 		}
@@ -643,7 +654,7 @@ class Analytics {
 	/**
 	 * Notice to be displayed for Review.
 	 */
-	public function _ask_for_review_notice() {
+	public function _ask_for_review_notice() { //phpcs:ignore
 		if ( false === get_option( $this->_slug . '-setup' ) ) {
 			update_option( $this->_slug . '-setup', true );
 			set_transient( $this->_slug . '-ask-for-review-flag', true, MONTH_IN_SECONDS );
@@ -666,7 +677,7 @@ class Analytics {
 	/**
 	 * Notice to be displayed for Review.
 	 */
-	public function _ask_for_usage_notice() {
+	public function _ask_for_usage_notice() { //phpcs:ignore
 		if ( false === get_option( $this->_slug . '-usage-setup' ) ) {
 			update_option( $this->_slug . '-usage-setup', true );
 			set_transient( $this->_slug . '-ask-for-usage-flag', true, 120 );
@@ -692,7 +703,7 @@ class Analytics {
 	 * @author CyberChimps
 	 * @since  1.0.0
 	 */
-	public function _submit_uninstall_reason_action() {
+	public function _submit_uninstall_reason_action() { //phpcs:ignore
 
 		check_ajax_referer( 'uninstall_reason', 'security' );
 
@@ -731,7 +742,7 @@ class Analytics {
 	 * @param bool  $check_user User have plugins activation privileges.
 	 * @param arrat $reason Reasons.
 	 */
-	public function _uninstall_plugin_event( $check_user = true, $reason = array() ) {
+	public function _uninstall_plugin_event( $check_user = true, $reason = array() ) { //phpcs:ignore
 
 		if ( $check_user && ! current_user_can( 'activate_plugins' ) ) {
 			return;
@@ -794,23 +805,24 @@ class Analytics {
 				 * @since 1.0.0
 				 */
 				if ( is_network_admin() ) {
-					preg_match( '#/wp-admin/network/?(.*?)$#i', $_SERVER['PHP_SELF'], $self_matches );
+					preg_match( '#/wp-admin/network/?(.*?)$#i', sanitize_text_field( wp_unslash( $_SERVER['PHP_SELF'] ) ), $self_matches ); //phpcs:ignore
 				} elseif ( is_user_admin() ) {
-					preg_match( '#/wp-admin/user/?(.*?)$#i', $_SERVER['PHP_SELF'], $self_matches );
+					preg_match( '#/wp-admin/user/?(.*?)$#i', sanitize_text_field( wp_unslash( $_SERVER['PHP_SELF'] ) ), $self_matches ); //phpcs:ignore
 				} else {
-					preg_match( '#/wp-admin/?(.*?)$#i', $_SERVER['PHP_SELF'], $self_matches );
+					preg_match( '#/wp-admin/?(.*?)$#i', sanitize_text_field( wp_unslash( $_SERVER['PHP_SELF'] ) ), $self_matches );//phpcs:ignore
 				}
 
-				$pagenow = $self_matches[1];
-				$pagenow = trim( $pagenow, '/' );
-				$pagenow = preg_replace( '#\?.*?$#', '', $pagenow );
-				if ( '' === $pagenow || 'index' === $pagenow || 'index.php' === $pagenow ) {
-					$pagenow = 'index.php';
+				$pagenow = $self_matches[1];//phpcs:ignore
+				$pagenow = trim( $pagenow, '/' );//phpcs:ignore
+				$pagenow = preg_replace( '#\?.*?$#', '', $pagenow );//phpcs:ignore
+				if ( '' === $pagenow || 'index' === $pagenow || 'index.php' === $pagenow ) {//phpcs:ignore
+					$pagenow = 'index.php';//phpcs:ignore
 				} else {
-					preg_match( '#(.*?)(/|$)#', $pagenow, $self_matches );
-					$pagenow = strtolower( $self_matches[1] );
-					if ( '.php' !== substr( $pagenow, -4, 4 ) ) {
-						$pagenow .= '.php'; // for Options +Multiviews: /wp-admin/themes/index.php (themes.php is queried).
+					preg_match( '#(.*?)(/|$)#', $pagenow, $self_matches );//phpcs:ignore
+					$pagenow = strtolower( $self_matches[1] );//phpcs:ignore
+					if ( '.php' !== substr( $pagenow, -4, 4 ) ) {//phpcs:ignore
+						// for Options +Multiviews: /wp-admin/themes/index.php (themes.php is queried).
+						$pagenow .= '.php'; //phpcs:ignore 
 					}
 				}
 			}
@@ -867,7 +879,7 @@ class Analytics {
 	 *
 	 * @return bool
 	 */
-	static function is_plugins_page() {
+	public static function is_plugins_page() {
 		return ( 'plugins.php' === self::get_current_page() );
 	}
 }

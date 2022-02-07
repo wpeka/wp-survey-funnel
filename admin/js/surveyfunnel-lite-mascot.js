@@ -1,3 +1,9 @@
+/**
+ * Mascot JS file.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/admin
+ */
 
 var srfvm = new Vue({
     el: '#surveyfunnel-lite-mascot-app',

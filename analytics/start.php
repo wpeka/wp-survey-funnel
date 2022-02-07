@@ -58,10 +58,10 @@ if ( ! class_exists( 'Analytics' ) ) {
 	 * Used by various templates.
 	 *
 	 * @param number $module_id Module Id.
-	 * @param string $slug Slug.
 	 * @param string $product_name Product Name.
 	 * @param string $version Product Version.
 	 * @param string $module_type Module type.
+	 * @param string $slug Slug.
 	 */
 	function analytics( $module_id, $product_name, $version, $module_type, $slug ) {
 		return Analytics::instance( $module_id, $product_name, $version, $module_type, $slug );

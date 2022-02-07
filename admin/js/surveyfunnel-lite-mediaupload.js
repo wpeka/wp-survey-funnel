@@ -1,17 +1,26 @@
-(function ($) {
-    "use strict";
+/**
+ * Media Upload JS file.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/admin
+ */
 
-	$('#wpss_upload_image_button').click(function() {
-		var formfield = $('#wpss_upload_image').attr('name');
-		tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
-		return false;
-	});
-	
+(function ($) {
+	"use strict";
+
+	$( '#wpss_upload_image_button' ).click(
+		function() {
+			var formfield = $( '#wpss_upload_image' ).attr( 'name' );
+			tb_show( '', 'media-upload.php?type=image&amp;TB_iframe=true' );
+			return false;
+		}
+	);
+
 	window.send_to_editor = function(html) {
-		var doc = new DOMParser().parseFromString(html, "text/xml");
-		let imgurl = doc.firstChild.getAttribute('src');
-		$('#wpss_upload_image').val(imgurl);
+		var doc    = new DOMParser().parseFromString( html, "text/xml" );
+		let imgurl = doc.firstChild.getAttribute( 'src' );
+		$( '#wpss_upload_image' ).val( imgurl );
 		tb_remove();
-		$('#wpss_upload_image_thumb').html("<img height='65' src='"+imgurl+"'/>");
+		$( '#wpss_upload_image_thumb' ).html( "<img height='65' src='" + imgurl + "'/>" );
 	}
-})(jQuery);
+})( jQuery );

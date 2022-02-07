@@ -4,21 +4,21 @@
  */
 
  @font-face {
-    font-family: ApercuPro;
+	font-family: ApercuPro;
 	font-weight: normal;
-    src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Regular.otf") format("opentype");
+	src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Regular.otf") format("opentype");
 }
 
 @font-face {
-    font-family: ApercuPro;
-    font-weight: bold;
-    src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Bold.otf") format("opentype");
+	font-family: ApercuPro;
+	font-weight: bold;
+	src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Bold.otf") format("opentype");
 }
 
 @font-face {
-    font-family: ApercuPro;
-    font-weight: 500;
-    src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Medium.otf") format("opentype");
+	font-family: ApercuPro;
+	font-weight: 500;
+	src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Medium.otf") format("opentype");
 }
 
 :root {
@@ -257,7 +257,7 @@
 }
 
 .surveyfunnel-lite-post-icons > .surveyfunnel-lite-tooltip {
-	margin-left: 9.7px; 
+	margin-left: 9.7px;
 }
 
 .surveyfunnel-lite-content {
@@ -302,12 +302,12 @@
 
 .surveyfunnel-lite-modal {
 	position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1050;
-    outline: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1050;
+	outline: 0;
 	background:rgba(0,0,0,.7);
 	display: flex;
 	align-items: center;
@@ -437,8 +437,8 @@
 
 .surveyfunnel-lite-dashboard-search{
 
-    background-image: url('../admin-images/search-icon.png');
-    background-repeat: no-repeat;
+	background-image: url('../admin-images/search-icon.png');
+	background-repeat: no-repeat;
 	background-size:15px;
 	background-position:center right 20px;
 	padding-left:20px;
@@ -454,9 +454,9 @@
 }
 .surveyfunnel-lite-content-type-radios{
 	position: relative;
-    left: 85%;
-    top: 12px;
-    border-radius: 12px;
+	left: 85%;
+	top: 12px;
+	border-radius: 12px;
 }
 .surveyfunnel-lite-content-type-radios input[type="radio"] {
 	display: none;
@@ -509,28 +509,28 @@
 	.surveyfunnel-lite-container, .surveyfunnel-lite-navbar{
 		margin: auto;
 		width: 1606px;
-	
+
 	}
 }
 @media screen and (max-width: 1612px) {
 	.surveyfunnel-lite-container, .surveyfunnel-lite-navbar{
 		margin: auto;
 		width: 1292px;
-	
+
 	}
 }
 @media screen and (max-width: 1452px) {
 	.surveyfunnel-lite-container, .surveyfunnel-lite-navbar{
 		margin: auto;
 		width: 978px;
-	
+
 	}
 }
 @media screen and (max-width: 1140px) {
 	.surveyfunnel-lite-container, .surveyfunnel-lite-navbar{
 		margin: auto;
 		width: 664px;
-	
+
 	}
 	.surveyfunnel-lite-search{
 		width: 215px;
@@ -546,18 +546,18 @@
 @media screen and (max-width: 648px) {
 	#surveyfunnel-lite-modal-submit{
 		margin: 20px 0;
-	
+
 	}
 }
 
 .surveyfunnel-lite-container-main {
 	text-align: center;
 	position: relative;
-    font-size: 16px;
-    line-height: 1.6;
-    font-weight: normal;
-    width: 750px;
-    margin: 50px auto;
+	font-size: 16px;
+	line-height: 1.6;
+	font-weight: normal;
+	width: 750px;
+	margin: 50px auto;
 }
 
 .surveyfunnel-lite-inner-container {
@@ -567,22 +567,22 @@
 
 .surveyfunnel-lite-container-main .surveyfunnel-lite-section {
 	padding: 45px;
-    border: 1px solid #d6e2ed;
-    border-collapse: collapse;
+	border: 1px solid #d6e2ed;
+	border-collapse: collapse;
 }
 
 .surveyfunnel-lite-container-main p {
 	color: inherit;
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
-    line-height: inherit;
-    font-weight: inherit;
+	margin: 0;
+	padding: 0;
+	font-size: inherit;
+	line-height: inherit;
+	font-weight: inherit;
 }
 
 .surveyfunnel-lite-container-main .surveyfunnel-lite-section-title {
 	font-size: 26px;
-    font-weight: 600;
+	font-weight: 600;
 }
 .surveyfunnel-lite-section-subtitle {
 	font-size: 14px;
@@ -594,22 +594,22 @@
 
 .surveyfunnel-lite-container-main .surveyfunnel-lite-button {
 	border: 1px solid;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-weight: 600;
-    text-decoration: none;
-    background-color: #2862b1;
-    font-size: inherit;
-    line-height: inherit;
-    padding: 20px 45px;
-    text-transform: uppercase;
+	border-radius: 4px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 600;
+	text-decoration: none;
+	background-color: #2862b1;
+	font-size: inherit;
+	line-height: inherit;
+	padding: 20px 45px;
+	text-transform: uppercase;
 }
 
 .surveyfunnel-lite-container-main .surveyfunnel-lite-header .surveyfunnel-lite-logo {
-    width: 100%;
-    position: relative;
+	width: 100%;
+	position: relative;
 }
 
 .surveyfunnel-lite-tooltip {
@@ -624,7 +624,7 @@
 	text-align: center;
 	padding: 8px 15px;
 	border-radius: 6px;
-   
+
 	/* Position the tooltip text */
 	position: absolute;
 	z-index: 1001;

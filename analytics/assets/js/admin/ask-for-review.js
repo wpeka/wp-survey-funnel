@@ -1,3 +1,10 @@
+/**
+ * Ask for review JS file
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/analytics/assets/js
+ */
+
 (function( $ ) {
 	'use strict';
 
