@@ -16,10 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @var array $VARS
  */
-$als        = analytics( $VARS['id'], $VARS['product_name'], $VARS['version'], $VARS['module_type'], $VARS['slug'] );
+$als        = analytics( $VARS['id'], $VARS['product_name'], $VARS['version'], $VARS['module_type'], $VARS['slug'] ); //phpcs:ignore
 $slug       = $als->get_slug();
-$name       = $VARS['product_name'];
-$img_url    = $VARS['plugin_url'] . 'icon.png';
+$name       = $VARS['product_name']; //phpcs:ignore
+$img_url    = $VARS['plugin_url'] . 'icon.png'; //phpcs:ignore
 $review_url = 'https://wordpress.org/support/plugin/' . $slug . '/reviews/?filter=5#new-post';
 $params     = array(
 	'nonces'   => array(

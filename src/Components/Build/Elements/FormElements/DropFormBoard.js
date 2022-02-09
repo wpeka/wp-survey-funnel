@@ -1,9 +1,16 @@
+/**
+ * DropFormBoard JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Build
+ */
+
 import { useDrop } from "react-dnd";
 import React, { useContext } from "react";
 import ShowFormBoard from './ShowFormBoard';
 
 let backgroundColor = "#F4EAFC";
-
+// @codingStandardsIgnoreStart
 const DropFromBoard = ({ ele, List, editList, deleteFromList, moveCard }) => {
     const [{ canDrop, isOver }, drop] = useDrop(() => ({
         accept: ele.itemType,
@@ -30,3 +37,4 @@ const DropFromBoard = ({ ele, List, editList, deleteFromList, moveCard }) => {
 };
 
 export default DropFromBoard;
+// @codingStandardsIgnoreEnd

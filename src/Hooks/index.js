@@ -1,4 +1,12 @@
+/**
+ * Hooks JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Hooks
+ */
+
 import React from "react";
+// @codingStandardsIgnoreStart
 
 export default function useFetch(data) {
     const [response, setResponse] = React.useState(null);
@@ -26,3 +34,4 @@ export default function useFetch(data) {
     }, []);
     return { response, error, isLoading };
 }
+// @codingStandardsIgnoreEnd

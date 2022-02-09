@@ -1,3 +1,10 @@
+// @codingStandardsIgnoreStart
+/**
+ * DropBoard JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Build
+ */
 import { useDrop } from "react-dnd";
 import React, { useContext } from "react";
 import { BuildContext } from "../Context/BuildContext";
@@ -45,3 +52,4 @@ const DropBoard = ({ ele }) => {
 };
 
 export default DropBoard;
+// @codingStandardsIgnoreStart

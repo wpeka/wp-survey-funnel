@@ -1,8 +1,16 @@
+/**
+ * Resonses JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Reports
+ */
+
 import React, { useContext, useEffect } from 'react'
 import { BuildContext } from '../Context/BuildContext';
 import { ReportContext } from '../Context/ReportContext'
 import NoResponseRecorded from './NoResponseRecorded';
 import moment from 'moment';
+// @codingStandardsIgnoreStart
 
 export default function Responses() {
 	const { reports, currentReportSelected, setCurrentReportSelected, setReports } = useContext( ReportContext );
@@ -217,3 +225,4 @@ export default function Responses() {
 		</div>
 	)
 }
+// @codingStandardsIgnoreEnd

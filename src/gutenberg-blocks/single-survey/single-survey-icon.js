@@ -1,4 +1,12 @@
+/**
+ * Single Survey Icon JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/gutenburg-blocks
+ */
+
 import React from "react"
+// @codingStandardsIgnoreStart
 
 function SingleSurveyIcon(props) {
 
@@ -92,3 +100,4 @@ YmUgSW1hZ2VSZWFkeXHJZTwAAAAASUVORK5CYII=" />
 }
 
 export default SingleSurveyIcon;
+// @codingStandardsIgnoreEnd

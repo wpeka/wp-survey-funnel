@@ -1,8 +1,15 @@
+/**
+ * DesignContext JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Context
+ */
+
 import React, { createContext, useState, useEffect } from 'react';
 import { initColorState } from '../../Data';
 import fetchData from '../../HelperComponents/fetchData';
 import { convertToRgbaCSS, validateImageUrl } from '../../HelperComponents/HelperFunctions';
-
+// @codingStandardsIgnoreStart
 export function DesignContextProvider(props) {
 	// state of design context.
 	const [initialState, setinitialState] = useState(initColorState);
@@ -133,3 +140,4 @@ export function DesignContextProvider(props) {
 }
 
 export const DesignContext = createContext();
+// @codingStandardsIgnoreEnd

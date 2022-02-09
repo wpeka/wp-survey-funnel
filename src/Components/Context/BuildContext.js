@@ -1,9 +1,17 @@
+/**
+ * BuildContext JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Context
+ */
+
 import React from 'react';
 import update from 'immutability-helper';
 import { ItemTypes } from '../../Data';
 import fetchData from '../../HelperComponents/fetchData';
 const { applyFilters } = wp.hooks;
 export class BuildContextProvider extends React.Component {
+    // @codingStandardsIgnoreStart
 	// buildContext state which contains List of questions, type, title, proActive or not.
     state = {
         List: {
@@ -156,3 +164,4 @@ export class BuildContextProvider extends React.Component {
 }
   
 export const BuildContext = React.createContext();
+// @codingStandardsIgnoreEnd

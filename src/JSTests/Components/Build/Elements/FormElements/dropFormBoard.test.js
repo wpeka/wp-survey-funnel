@@ -1,6 +1,14 @@
+/**
+ * Test Files JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/JSTests
+ */
+
 import React, { useCallback, useRef, useState } from "react";
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
+// @codingStandardsIgnoreStart
 
 import DropFormBoard from '../../../../../Components/Build/Elements/FormElements/DropFormBoard';
 
@@ -56,3 +64,4 @@ test('DropFormBoard elements test', async () => {
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 });
+// @codingStandardsIgnoreEnd

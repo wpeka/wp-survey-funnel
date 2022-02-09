@@ -1,8 +1,15 @@
+/**
+ * ReportContext JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Context
+ */
+
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import fetchData from '../../HelperComponents/fetchData';
 import { BuildContext } from './BuildContext';
 import moment from 'moment';
-
+// @codingStandardsIgnoreStart
 export function ReportContextProvider(props) {
 	
 	// reports data.
@@ -195,3 +202,4 @@ export function ReportContextProvider(props) {
 }
 
 export const ReportContext = createContext();
+// @codingStandardsIgnoreEnd

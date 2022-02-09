@@ -1,4 +1,12 @@
 /**
+ * Test Files JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/JSTests
+ */
+
+// @codingStandardsIgnoreStart
+/**
  * @jest-environment jsdom
  */
 
@@ -24,16 +32,4 @@ test('CopyShortcode test', () => {
 	wrapper.find('#fullpage').simulate('change');
 	expect(wrapper.find('#contentShortcode').getDOMNode().value).toEqual('[surveyfunnel_lite_survey id="null" type="fullpage"]');
 })
-
-// it('tests handleCustomChange',()=>{
-// 	const stateSetter = jest.fn()
-// jest
-// .spyOn(React, 'useState').mockImplementation(checked => [checked='custom', stateSetter])
-// const wrapper = mount(<ShareShortCode />);
-// expect(wrapper.find('select').length).toBe(2);
-
-// // const { result } = renderHook(()=>
-// 	// ShareShortCode());
-//     // console.log(result.current);
-// 	// expect(result.current.checked).toEqual('responsive');
-// })
+// @codingStandardsIgnoreEnd

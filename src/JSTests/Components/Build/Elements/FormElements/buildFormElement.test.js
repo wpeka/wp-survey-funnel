@@ -1,3 +1,10 @@
+/**
+ * Test Files JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/JSTests
+ */
+
 import React, { useCallback, useRef, useState } from "react";
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
@@ -5,6 +12,8 @@ import { DndProvider } from 'react-dnd'
 import BuildFormElement from '../../../../../Components/Build/Elements/FormElements/BuildFormElement';
 
 import renderer from 'react-test-renderer';
+// @codingStandardsIgnoreStart
+
 test('Form elements test', async () => {
 
     const ele={
@@ -25,3 +34,4 @@ test('Form elements test', async () => {
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 });
+// @codingStandardsIgnoreEnd

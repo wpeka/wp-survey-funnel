@@ -3,7 +3,7 @@
  * included in this file.
  */
 
- @font-face {
+@font-face {
 	font-family: ApercuPro;
 	font-weight: normal;
 	src: url("../../assets/fonts/Apercu-Font/Apercu\ Pro\ Regular.otf") format("opentype");
@@ -460,13 +460,13 @@
 }
 .surveyfunnel-lite-content-type-radios input[type="radio"] {
 	display: none;
-  }
-  .surveyfunnel-lite-content-type-radios input[type="radio"] + label {
+}
+.surveyfunnel-lite-content-type-radios input[type="radio"] + label {
 	color: #333;
 	font-family: Arial, sans-serif;
 	font-size: 14px;
-  }
-  .surveyfunnel-lite-content-type-radios input[type="radio"] + label span {
+}
+.surveyfunnel-lite-content-type-radios input[type="radio"] + label span {
 	display: inline-block;
 	width: 25px;
 	height: 25px;
@@ -479,25 +479,24 @@
 	background-position: center;
 	text-align: center;
 	line-height: 25px;
-  }
-  .surveyfunnel-lite-content-type-radios input[type="radio"] + label span img {
+}
+.surveyfunnel-lite-content-type-radios input[type="radio"] + label span img {
 	opacity: 0;
 	transition: all 0.3s ease;
 	width:50%;
-  }
-  .surveyfunnel-lite-content-type-radios input[type="radio"] + label span {
+}
+.surveyfunnel-lite-content-type-radios input[type="radio"] + label span {
 	border-radius:8px;
-  }
-  .surveyfunnel-lite-content-type-radios input[type="radio"]:checked + label span img {
+}
+.surveyfunnel-lite-content-type-radios input[type="radio"]:checked + label span img {
 	opacity: 1;
-  }
-  .surveyfunnel-lite-content-type-radios input[type="radio"]:checked + label span{
+}
+.surveyfunnel-lite-content-type-radios input[type="radio"]:checked + label span{
 	background-color:#0F4C81;
-  }
-  .surveyfunnel-lite-modal-content-card-disabled{
-	  opacity:0.4;
-  }
-
+}
+.surveyfunnel-lite-modal-content-card-disabled{
+	opacity:0.4;
+}
 .surveyfunnel-lite-right{
 	float:right;
 }
@@ -616,8 +615,8 @@
 	position: relative;
 }
 
- /* Tooltip text */
- .surveyfunnel-lite-tooltip .surveyfunnel-lite-tooltiptext {
+/* Tooltip text */
+.surveyfunnel-lite-tooltip .surveyfunnel-lite-tooltiptext {
 	visibility: hidden;
 	background-color: black;
 	color: #fff;
@@ -633,7 +632,7 @@
 	transform: translateX(calc(-50% + 7px));
 }
 
-  /* Show the tooltip text when you mouse over the tooltip container */
+/* Show the tooltip text when you mouse over the tooltip container */
 .surveyfunnel-lite-tooltip:hover .surveyfunnel-lite-tooltiptext {
 	visibility: visible;
 }

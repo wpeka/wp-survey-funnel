@@ -8,7 +8,7 @@
  * @package Surveyfunnel_Lite
  */
 
- // Get all the surveys.
+// Get all the surveys.
 $args = array(
 	'post_type'   => 'wpsf-survey',
 	'post_status' => array( 'draft', 'publish' ),

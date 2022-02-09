@@ -1,3 +1,10 @@
+/**
+ * Test Files JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/JSTests
+ */
+
 import React, { useCallback, useRef, useState } from "react";
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
@@ -6,6 +13,8 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 import Card from '../../../../../Components/Build/Elements/FormElements/Card';
 import renderer from 'react-test-renderer';
+// @codingStandardsIgnoreStart
+
 let test1="";
 const ele={
     id:"simple",
@@ -44,3 +53,4 @@ test("editCard function should execute",async ()=>{
     const div=component.find('.cardBox');
     div.simulate('mouseEnter');
 })
+// @codingStandardsIgnoreEnd

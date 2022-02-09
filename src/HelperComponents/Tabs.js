@@ -1,6 +1,14 @@
+/**
+ * Tabs JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/HelperComponents
+ */
+
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Tab from "./Tab";
+// @codingStandardsIgnoreStart
 
 class Tabs extends Component {
     static propTypes = {
@@ -53,3 +61,4 @@ class Tabs extends Component {
 }
 
 export default Tabs;
+// @codingStandardsIgnoreEnd

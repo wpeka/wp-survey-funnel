@@ -293,7 +293,7 @@ class Surveyfunnel_Lite_Public {
 		$user_id        = get_current_user_id();
 
 		$fields = $this->surveyfunnel_lite_sanitize_survey_lead( $_POST['data'] );//phpcs:ignore
-		// $fields = wp_json_encode( array( $fields->_id => $fields ) );
+		//phpcs:ignore $fields = wp_json_encode( array( $fields->_id => $fields ) );
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
 		// get field value from database if exist.

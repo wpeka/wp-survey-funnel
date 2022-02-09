@@ -34,7 +34,7 @@ if ( ! function_exists( 'as_get_template_path' ) ) {
 	 * @param null   $params Parameters.
 	 */
 	function as_include_template( $path, &$params = null ) {
-		$VARS = &$params;
+		$VARS = &$params; //phpcs:ignore
 		include as_get_template_path( $path );
 	}
 
@@ -45,7 +45,7 @@ if ( ! function_exists( 'as_get_template_path' ) ) {
 	 * @param null   $params Parameters.
 	 */
 	function as_include_once_template( $path, &$params = null ) {
-		$VARS = &$params;
+		$VARS = &$params; //phpcs:ignore
 		include_once as_get_template_path( $path );
 	}
 
@@ -56,7 +56,7 @@ if ( ! function_exists( 'as_get_template_path' ) ) {
 	 * @param array  $params Parameters.
 	 */
 	function as_require_template( $path, &$params = null ) {
-		$VARS = &$params;
+		$VARS = &$params; //phpcs:ignore
 		require as_get_template_path( $path );
 	}
 
@@ -67,7 +67,7 @@ if ( ! function_exists( 'as_get_template_path' ) ) {
 	 * @param array  $params Parameters.
 	 */
 	function as_require_once_template( $path, &$params = null ) {
-		$VARS = &$params;
+		$VARS = &$params; //phpcs:ignore
 		require_once as_get_template_path( $path );
 	}
 
@@ -81,7 +81,7 @@ if ( ! function_exists( 'as_get_template_path' ) ) {
 	function as_get_template( $path, &$params = null ) {
 		ob_start();
 
-		$VARS = &$params;
+		$VARS = &$params; //phpcs:ignore
 		require as_get_template_path( $path );
 
 		return ob_get_clean();

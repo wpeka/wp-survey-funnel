@@ -1,9 +1,17 @@
+/**
+ * Test Files JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/JSTests
+ */
+
 import DesignSettings from "../../../Components/Design/DesignSettings";
 import { DesignContextProvider } from "../../../Components/Context/DesignContext";
 import React from 'react';
 import { mount } from "enzyme";
 import { unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
+// @codingStandardsIgnoreStart
 
 let container = null;
 
@@ -43,3 +51,4 @@ describe('Design Context and Design Settings component render', () => {
 		})
 	} )
 })
+// @codingStandardsIgnoreEnd

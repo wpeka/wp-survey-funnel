@@ -1,4 +1,12 @@
 /**
+ * Test Files JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/JSTests
+ */
+
+// @codingStandardsIgnoreStart
+/**
  * @jest-environment jsdom
  */
 import React from "react";
@@ -6,8 +14,6 @@ import { convertToRgbaCSS, designBackground } from "../../../HelperComponents/He
 import { useEffect } from "react";
 import ModalContentRight from "../../../HelperComponents/ModalContentRight";
 import renderer from 'react-test-renderer';
-
-
 test('HelperFunctions convertToRgbaCSS test', () => {
 
     const designCon={
@@ -46,3 +52,4 @@ let tree = component1.toJSON();
 expect(tree).toMatchSnapshot();
 console.log(tree);
 })
+// @codingStandardsIgnoreEnd

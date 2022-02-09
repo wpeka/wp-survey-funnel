@@ -1,5 +1,5 @@
 /**
- * Public JS File
+ * Public JS file.
  *
  * @since 1.0.0
  * @package Surveyfunnel_Lite/public
@@ -34,7 +34,7 @@
 							case 'afterTimeDelay':
 								setTimeout(
 									() => {
-									writeContentHtml( html, type, iframe, $( this ) );
+									writeContentHtml( html, type, iframe, $( this ) ); //phpcs:ignore
 									},
 									launchOptions.afterTimeDelay * 1000
 								)
@@ -76,11 +76,12 @@
 							}
 						).done(
 							data => {
-							iframee.contentWindow.surveyData = data.data;
-							var context                      = iframee.contentDocument.write( html );
+							iframee.contentWindow.surveyData = data.data; //phpcs:ignore
+							var context                      = iframee.contentDocument.write( html ); //phpcs:ignore
+							// @codingStandardsIgnoreStart
 							iframee.contentWindow.document.close(); // without this line, page loading animations won't go away!
 							}
-						);
+						); //@codingStandardsIgnoreEnd
 
 						function resizeIframe(iframe) {
 							iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";

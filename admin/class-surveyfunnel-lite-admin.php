@@ -275,8 +275,8 @@ class Surveyfunnel_Lite_Admin {
 			}
 
 			update_option( 'srf-lite-background-update', true );
-		}else{
-			update_option( 'srf-lite-background-update', false);
+		} else {
+			update_option( 'srf-lite-background-update', false );
 		}
 	}
 
@@ -693,11 +693,12 @@ class Surveyfunnel_Lite_Admin {
 		$end_date   = isset( $_POST['endDate'] ) ? sanitize_text_field( wp_unslash( $_POST['endDate'] ) ) : '';
 
 		// get all rows between specified start date and end date.
+		// @codingStandardsIgnoreStart
 		$rows = $wpdb->get_results(
 			$wpdb->prepare(
 				'
 					SELECT * 
-					FROM ' . $table_name . '
+					FROM ' . $table_name . '  
 					WHERE date_created BETWEEN %s and %s AND
 					survey_id = %d
 				',
@@ -706,6 +707,7 @@ class Surveyfunnel_Lite_Admin {
 				$post_id
 			)
 		);
+		// @codingStandardsIgnoreEnd
 		// return array which will be echoed.
 		$return_arr = array();
 		if ( is_array( $rows ) && count( $rows ) ) {
@@ -745,6 +747,7 @@ class Surveyfunnel_Lite_Admin {
 		// get the reports data for provided post id.
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
+		// @codingStandardsIgnoreStart
 		$rows       = $wpdb->get_results(
 			$wpdb->prepare(
 				'
@@ -755,6 +758,7 @@ class Surveyfunnel_Lite_Admin {
 				$post_id
 			)
 		);
+		// @codingStandardsIgnoreEnd
 		// initializing required variables.
 		$view_count      = 0;
 		$completed_count = 0;
