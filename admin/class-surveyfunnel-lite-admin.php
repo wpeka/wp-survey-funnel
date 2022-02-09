@@ -694,6 +694,7 @@ class Surveyfunnel_Lite_Admin {
 
 		// get all rows between specified start date and end date.
 		// @codingStandardsIgnoreStart
+
 		$rows = $wpdb->get_results(
 			$wpdb->prepare(
 				'

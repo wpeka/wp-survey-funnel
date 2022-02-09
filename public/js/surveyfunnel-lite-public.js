@@ -1,4 +1,5 @@
 /**
+
  * Public JS file.
  *
  * @since 1.0.0

@@ -8,10 +8,12 @@
 import * as data from "../../Data/index";
 // @codingStandardsIgnoreStart
 
+
 it(
 	"ItemTypes test",
 	() => {
 		const expectedItemTypes     = { CARD: 'card',
+
 			START_ELEMENTS: 'START_ELEMENTS',
 			CONTENT_ELEMENTS: 'CONTENT_ELEMENTS',
 			RESULT_ELEMENTS: 'RESULT_ELEMENTS'
@@ -25,6 +27,7 @@ it(
 	"buildElements test",
 	() => {
 		const expectedbuildElements = {
+
 			startScreen: [
 			{
 				name: 'Cover Page',
@@ -43,6 +46,7 @@ it(
 				componentName: 'MultiChoice',
 				itemType: data.ItemTypes.CONTENT_ELEMENTS
 				},
+
 			{
 				name: 'Form Elements',
 				componentName: 'FormElements',
@@ -94,8 +98,10 @@ it(
 			itemType: data.ItemTypes.RESULT_ELEMENTS
 		}
 		];
+
 		const receiveddropBoard = data.dropBoard;
 		expect( expecteddropBoard ).toEqual( expect.arrayContaining( receiveddropBoard ) );
+
 	}
 )
 
@@ -103,6 +109,7 @@ it(
 	"formElementsDropBoard test",
 	() => {
 		const expectedformElementsDropBoard     = [
+
 		{
 			name: 'Form Fields',
 			type: 'FormFields',
@@ -111,6 +118,7 @@ it(
 		]
 		const receivedformElementsDropBoard = data.formElementsDropBoard;
 		expect( expectedformElementsDropBoard ).toEqual( expect.arrayContaining( receivedformElementsDropBoard ) );
+
 	}
 )
 
@@ -118,6 +126,7 @@ it(
 	"formElements test",
 	() => {
 		const expectedformElements = [
+
 		{
 			name: 'First Name',
 			componentName: 'FirstName',
@@ -145,6 +154,7 @@ it(
 		];
 		const receivedformElements = data.formElements;
 		expect( expectedformElements ).toEqual( expect.arrayContaining( receivedformElements ) );
+
 	}
 )
 
@@ -152,6 +162,7 @@ it(
 	"designColors test",
 	() => {
 		const expecteddesignColors     = [
+
 		{
 			name: 'Font Color',
 			itemName: 'fontColor'
@@ -183,6 +194,7 @@ it(
 		]
 		const receiveddesignColors = data.designColors;
 		expect( expecteddesignColors ).toEqual( expect.arrayContaining( receiveddesignColors ) );
+
 	}
 )
 
@@ -191,6 +203,7 @@ it(
 	"initColorState test",
 	() => {
 		const expectedinitColorState = {
+
 			opacity: 0,
 
 			fontFamily: null,
@@ -201,28 +214,36 @@ it(
 				g: '255',
 				b: '255',
 				a: '1'
+
 				},
+
 
 			buttonColor: {
 				r: '1',
 				g: '111',
 				b: '222',
 				a: '1'
+
 				},
+
 
 			buttonTextColor: {
 				r: '255',
 				g: '255',
 				b: '255',
 				a: '1'
+
 				},
+
 
 			answersHighlightBoxColor: {
 				r: '232',
 				g: '238',
 				b: '244',
 				a: '1'
+
 				},
+
 
 			answerBorderColor: {
 				r: '180',
@@ -231,6 +252,7 @@ it(
 				a: '1'
 				},
 
+
 			backgroundContainerColor: {
 				r: '255',
 				g: '255',
@@ -238,22 +260,27 @@ it(
 				a: '1'
 				},
 
+
 			fontColor: {
 				r: '0',
 				g: '0',
 				b: '0',
 				a: '1'
+
 				},
 		}
 		const receivedinitColorState = data.initColorState;
 		expect( expectedinitColorState ).toMatchObject( receivedinitColorState );
+
 	}
 )
 
 it(
 	"shortcodeTypes test",
 	() => {
+
 		const expectedshortcodeTypes = [
+
 		{
 			name: 'Responsive',
 			id: 'responsive',
@@ -274,6 +301,7 @@ it(
 
 		const receivedshortcodeTypes = data.shortcodeTypes;
 		expect( expectedshortcodeTypes ).toEqual( expect.arrayContaining( receivedshortcodeTypes ) );
+
 	}
 )
 
@@ -282,6 +310,7 @@ it(
 	"popupInitialState test",
 	() => {
 		const expectedpopupInitialState     = {
+
 			active: false,
 			targettingOptions: {
 				devices: [
@@ -304,6 +333,7 @@ it(
 				triggerPage: 'triggerOnSpecific',
 				selectedPagesAndPosts: [],
 				},
+
 			behaviourOptions: {
 				launchOptions: {
 					launchWhen: 'afterPageLoads',
@@ -320,12 +350,14 @@ it(
 		}
 		const receivedpopupInitialState = data.popupInitialState;
 		expect( expectedpopupInitialState ).toMatchObject( receivedpopupInitialState );
+
 	}
 )
 it(
 	"shareTabsData test",
 	() => {
 		const expectedshareTabsData     = [
+
 		{
 			name: 'Share Shortcode',
 			description: ' ‌Copy‌ ‌and‌ ‌paste‌ ‌this‌ ‌into‌ ‌any‌ ‌post‌ ‌or‌ ‌page‌ ‌you‌ ‌want‌ ‌the‌ ‌survey‌ ‌to‌ ‌be‌ ‌displayed.‌',
@@ -338,7 +370,9 @@ it(
 		}
 		]
 		const receivedshareTabsData = data.shareTabsData;
+
 		expect( expectedshareTabsData ).toEqual( expect.arrayContaining( receivedshareTabsData ) );
 	}
 )
 // @codingStandardsIgnoreEnd
+
