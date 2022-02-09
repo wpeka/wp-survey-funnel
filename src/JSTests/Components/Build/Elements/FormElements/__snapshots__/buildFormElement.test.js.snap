@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form elements test 1`] = `
+Array [
+  " ",
+  <div
+    className="surveyfunnel-lite-form-elements_box"
+    data-testid="buildelement-"
+    role="BuildElement"
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <img
+      className="surveyfunnel-lite-build-simple-img"
+      src="test-file-stub"
+    />
+    <p>
+      sample
+    </p>
+  </div>,
+  " ",
+]
+`;
