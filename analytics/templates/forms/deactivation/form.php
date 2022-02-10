@@ -17,11 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @var array $VARS
  */
-$as   = analytics( $VARS['id'], $VARS['product_name'], $VARS['version'], $VARS['module_type'], $VARS['slug'] ); //phpcs:ignore
+$as   = analytics( $VARS['id'], $VARS['product_name'], $VARS['version'], $VARS['module_type'], $VARS['slug'] );
 $slug = $as->get_slug();
 
-$show_deactivation_feedback_form = $VARS['show_deactivation_feedback_form']; //phpcs:ignore
-$confirmation_message            = $VARS['uninstall_confirmation_message']; //phpcs:ignore
+$show_deactivation_feedback_form = $VARS['show_deactivation_feedback_form'];
+$confirmation_message            = $VARS['uninstall_confirmation_message'];
 
 $is_anonymous                     = ( true );
 $anonymous_feedback_checkbox_html = '';
@@ -31,7 +31,7 @@ $reasons_list_items_html = '';
 $uninstall_reason_nonce = wp_create_nonce( 'uninstall_reason' );
 
 if ( $show_deactivation_feedback_form ) {
-	$reasons = $VARS['reasons']; //phpcs:ignore
+	$reasons = $VARS['reasons'];
 
 	foreach ( $reasons as $reason ) {
 		$list_item_classes = 'reason' . ( ! empty( $reason['input_type'] ) ? ' has-input' : '' );
@@ -267,7 +267,7 @@ as_enqueue_local_style( 'as_dialog_boxes', '/admin/dialog-boxes.css' );
 				echo esc_js(
 					sprintf(
 						/* translators: %s: search term */
-						__( 'Submit & %s', 'analytics', $slug ), //phpcs:ignore
+						__( 'Submit & %s', 'analytics', $slug ),
 						$as->is_plugin() ?
 						$deactivate_text :
 						sprintf( $activate_x_text, $theme_text )

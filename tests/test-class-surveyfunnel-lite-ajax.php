@@ -65,8 +65,8 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		self::$post_ids  = $factory->post->create_many( 2, array( 'post_type' => 'wpsf-survey' ) );
 		self::$design    = '{\'opacity\':1,\'fontFamily\':null,\'fontFamilyValue\':\'\',\'backgroundColor\':{\'r\':255,\'g\':255,\'b\':255\'a\':1},\'buttonColor\':{r\':0,\'g\':222,\'b\':129,a\':1},\'buttonTextColor\':{\'r\':\'255\',\'g\':\'255\',\'b\':\'255\',\'a\':\'1\'},\'answersHighlightBoxColor\':{\'r\':\'232\',\'g\':\'238\',\'b\':\'244\',\'a\':\'1\'}}';
 		self::$build     = '{"List":{"START_ELEMENTS":[{"button":"Start","title":"This is a cover page","description":"Cover page","id":"zh727zy9m7krvwz09k","componentName":"CoverPage","type":"START_ELEMENTS","currentlySaved":true}],"CONTENT_ELEMENTS":[{"title":"What is your age?","description":"Tell us about yourself","answers":[{"name":"20","checked":false},{"name":"10","checked":false},{"name":"40","checked":false},{"name":"60","checked":false}],"value":"","id":"0y566hzo1ewckrvwzvc8","componentName":"SingleChoice","type":"CONTENT_ELEMENTS","currentlySaved":true}],"RESULT_ELEMENTS":[{"title":"Thanks","description":"Thanks for participation","id":"cd98dnfel8krvx0db2","componentName":"ResultScreen","type":"RESULT_ELEMENTS","currentlySaved":true}]},"title":"Demo survey"}';
-		self::$configure = "{\"metaInfo\":{\"title\":\"Title\",\"description\":\"Description\"},\"companyBranding\":false}"; //phpcs:ignore Squiz.Strings.DoubleQuoteUsage.NotRequired
-		self::$share     = "{\"popup\":{\"active\":false,\"targettingOptions\":{\"devices\":[{\"name\":\"Desktop\",\"checked\":true,\"id\":\"desktop\"},{\"name\":\"Mobile\",\"checked\":true,\"id\":\"mobile\"},{\"name\":\"Tablet\",\"checked\":true,\"id\":\"tablet\"}],\"triggerPage\":\"triggerOnSpecific\",\"selectedPagesAndPosts\":[]},\"behaviourOptions\":{\"launchOptions\":{\"launchWhen\":\"afterPageLoads\",\"afterTimeDelay\":5,\"afterExitIntent\":\"low\",\"afterScrollPercentage\":20},\"frequencyOptions\":{\"frequency\":\"alwaysShow\",\"hideFor\":3,\"dontShowAgain\":false}}}}\",\"reports\":\"\"}"; //phpcs:ignore Squiz.Strings.DoubleQuoteUsage.NotRequired
+		self::$configure = '{"metaInfo":{"title":"Title","description":"Description"},"companyBranding":false}';
+		self::$share     = '{"popup":{"active":false,"targettingOptions":{"devices":[{"name":"Desktop","checked":true,"id":"desktop"},{"name":"Mobile","checked":true,"id":"mobile"},{"name":"Tablet","checked":true,"id":"tablet"}],"triggerPage":"triggerOnSpecific","selectedPagesAndPosts":[]},"behaviourOptions":{"launchOptions":{"launchWhen":"afterPageLoads","afterTimeDelay":5,"afterExitIntent":"low","afterScrollPercentage":20},"frequencyOptions":{"frequency":"alwaysShow","hideFor":3,"dontShowAgain":false}}}}","reports":""}';
 
 		update_post_meta(
 			self::$post_ids[0],
@@ -92,18 +92,18 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		$_POST['title']    = 'Demo survey';
 		try {
 			$this->_handleAjax( 'surveyfunnel_lite_new_survey' );
-		} catch ( WPAjaxDieContinueException $e ) { //phpcs:ignore
-			// phpcs:ignore unset( $e );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
 		}
 		$this->assertTrue( isset( $e ) );
 		$repsonse = json_decode( $this->_last_response );
 		$this->assertTrue( $repsonse->success );
 		$this->assertSame( 1, preg_match( '/post_id=[0-9]+#build$/', $repsonse->data->url_to_redirect ) );
-		unset( $_POST['action'] ); //phpcs:ignore
+		unset( $_POST['action'] );
 		try {
 			$this->_handleAjax( 'surveyfunnel_lite_new_survey' );
-		} catch ( WPAjaxDieContinueException $e ) { //phpcs:ignore
-			// phpcs:ignore unset( $e );.
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
 		}
 		$this->assertTrue( isset( $e ) );
 	}
@@ -261,17 +261,17 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		$this->assertTrue( (bool) $response->success );
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
-		// @codingStandardsIgnoreStart
-		$rows       = $wpdb->get_results(
+
+		$rows = $wpdb->get_results(
 			$wpdb->prepare(
 				'
 				SELECT * 
-				FROM ' . $table_name . '    
+				FROM %s    
 				WHERE survey_id = %d',
+				$table_name,
 				self::$post_ids[0]
 			)
 		); // db call ok; no cache ok.
-		// @codingStandardsIgnoreEnd
 
 		$this->assertEquals( 1, count( $rows ) );
 
@@ -285,17 +285,16 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		$this->assertTrue( true );
 
 		// Reverting database to previous state.
-		// @codingStandardsIgnoreStart
-		
+
 		$wpdb->query(
 			$wpdb->prepare(
 				'
-				DELETE FROM ' . $table_name . ' WHERE survey_id = %d
+				DELETE FROM %s WHERE survey_id = %d
 			',
+				$table_name,
 				self::$post_ids[0]
 			)
 		); // db call ok; no cache ok.
-		// @codingStandardsIgnoreEnd
 
 	}
 
@@ -351,14 +350,14 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		$date               = '2021-08-06';
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
-		// @codingStandardsIgnoreStart
 
 		$wpdb->query(
 			$wpdb->prepare(
 				'
-				INSERT INTO ' . $table_name . ' ( `survey_id`, `user_id`, `fields`, `user_locale_id`, `time_created`, `date_created`, `user_meta` )
+				INSERT INTO %s ( `survey_id`, `user_id`, `fields`, `user_locale_id`, `time_created`, `date_created`, `user_meta` )
 				VALUES (%d, %d, %s, %s, %d, %s, 0)
 			',
+				$table_name,
 				$survey_id,
 				$user_id,
 				$fields,
@@ -366,7 +365,6 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 				$time,
 				$date
 			)
-		// @codingStandardsIgnoreEnd
 		); // db call ok; no cache ok.
 		try {
 			$this->_handleAjax( 'surveyfunnel_lite_get_reports_data' );
@@ -381,17 +379,17 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		$this->assertSame( '0', $response->data[0]->userMeta );
 
 		// Reverting database to previous state.
-		// @codingStandardsIgnoreStart
 
 		$wpdb->query(
 			$wpdb->prepare(
 				'
-				DELETE FROM ' . $table_name . ' WHERE survey_id = %d
+				DELETE FROM %s WHERE survey_id = %d
 			',
+				$table_name,
 				self::$post_ids[0]
 			)
 		); // db call ok; no cache ok.
-		// @codingStandardsIgnoreEnd
+
 	}
 
 	/**
@@ -460,10 +458,11 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		$this->_setRole( 'administrator' );
 		$_POST['action']   = 'surveyfunnel_lite_export_csv';
 		$_POST['security'] = wp_create_nonce( 'exportSecurity' );
-		//phpcs:ignore $_POST['csv_data'] = '<div id="1st"><strong><i>Foo</i></strong><script>alert("Bar");</script></div>';
+		$_POST['csv_data'] = '<div id="1st"><strong><i>Foo</i></strong><script>alert("Bar");</script></div>';
 		try {
 			$this->_handleAjax( 'surveyfunnel_lite_export_csv' );
-		} catch ( WPAjaxDieContinueException $e ) { //phpcs:ignore
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
 		}
 		$this->assertTrue( ! isset( $e ) );
 	}
@@ -482,8 +481,8 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase {
 		$_POST['links']    = 'https://google.com';
 		try {
 			$this->_handleAjax( 'surveyfunnel_lite_get_posts_pages' );
-		} catch ( WPAjaxDieContinueException $e ) { //phpcs:ignore
-			//phpcs:ignore wp_die() catch.
+		} catch ( WPAjaxDieContinueException $e ) {
+			wp_die();
 		}
 		$this->assertTrue( isset( $e ) );
 		$repsonse = json_decode( $this->_last_response );

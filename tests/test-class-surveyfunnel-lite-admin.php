@@ -101,7 +101,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		self::$surveyfunnel_lite_admin->enqueue_styles();
 		global $wp_styles;
 		$enqueue_styles = $wp_styles->registered;
-		$this->assertArrayHasKey( 'surveyfunnel-lite', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertArrayHasKey( 'surveyfunnel-lite', $enqueue_styles );
 	}
 
 	/**
@@ -111,7 +111,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		self::$surveyfunnel_lite_admin->enqueue_scripts();
 		global $wp_scripts;
 		$enqueue_scripts = $wp_scripts->queue;
-		$this->assertTrue( in_array( 'surveyfunnel-lite', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertTrue( in_array( 'surveyfunnel-lite', $enqueue_scripts, true ) );
 		$data          = $wp_scripts->get_data( 'surveyfunnel-lite', 'data' );
 		$data          = substr( $data, strpos( $data, '{' ), strpos( $data, '}' ) - 1 );
 		$data          = str_replace( ';', '', $data );
@@ -131,11 +131,11 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$current_user->add_cap( 'manage_options' );
 		self::$surveyfunnel_lite_admin->surveyfunnel_lite_admin_menu();
 		global $menu, $submenu;
-		$this->assertTrue( in_array( 'SurveyFunnel', $menu[0] ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertTrue( in_array( 'SurveyFunnel', $menu[0], true ) );
 		$submenu_array = wp_list_pluck( $submenu['surveyfunnel-lite-dashboard'], 2 );
-		$this->assertTrue( in_array( 'surveyfunnel-lite-dashboard', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		//phpcs:ignore $this->assertTrue( in_array( 'surveyfunnel-lite-settings', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		$this->assertTrue( in_array( 'surveyfunnel-lite-help', $submenu_array ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertTrue( in_array( 'surveyfunnel-lite-dashboard', $submenu_array, true ) );
+		$this->assertTrue( in_array( 'surveyfunnel-lite-settings', $submenu_array, true ) );
+		$this->assertTrue( in_array( 'surveyfunnel-lite-help', $submenu_array, true ) );
 	}
 
 	/**
@@ -175,12 +175,12 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 	public function test_surveyfunnel_lite_get_insights_data() {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
-		$wpdb->insert( //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
+		$wpdb->insert(
 			$table_name,
 			array(
 				'survey_id' => self::$post_ids[0],
 			)
-		);
+		);//db call ok; no-cache ok
 		$args = self::$surveyfunnel_lite_admin->surveyfunnel_lite_get_insights_data( self::$post_ids[0] );
 		$this->assertCount( 3, $args );
 		$this->assertTrue( is_array( $args ) );
@@ -248,15 +248,15 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 		$this->assertSame( __( 'See Quick Links', 'surveyfunnel' ), $localize_data['quick_links_text'] );
 
 		$this->assertSame( '<div id="surveyfunnel-lite-mascot-app"></div>', trim( $output ) );
-		$this->assertTrue( in_array( 'surveyfunnel-lite-mascot', $enqueue_scripts ) ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
-		$this->assertArrayHasKey( 'surveyfunnel-lite-mascot', $enqueue_styles ); //phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict
+		$this->assertTrue( in_array( 'surveyfunnel-lite-mascot', $enqueue_scripts, true ) );
+		$this->assertArrayHasKey( 'surveyfunnel-lite-mascot', $enqueue_styles );
 	}
 
 	/**
 	 * Tests for surveyfunnel_lite_register_gutenberg_blocks function
 	 */
 	public function test_surveyfunnel_lite_register_gutenberg_blocks() {
-		//phpcs:ignore self::$surveyfunnel_lite_admin->surveyfunnel_lite_register_gutenberg_blocks();
+		self::$surveyfunnel_lite_admin->surveyfunnel_lite_register_gutenberg_blocks();
 		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
 		$this->assertArrayHasKey( 'surveyfunnel/single-survey', $registered_blocks, 'Failed to register single survey gutenberg block' );
 		global $wp_scripts;

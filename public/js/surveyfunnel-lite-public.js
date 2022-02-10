@@ -22,9 +22,8 @@
 					// if type is fullpage, responsive, custom.
 					if ( type !== 'popup' ) {
 						writeContentHtml( html, type, iframe, $( this ) );
-					}//phpcs:ignore
-					// if type is popup check for launchoptions conditions specified by the user.
-					else if ( type === 'popup' ) {
+					} else if ( type === 'popup' ) {
+						// if type is popup check for launchoptions conditions specified by the user.
 						let shareSettings       = JSON.parse( $( this ).attr( 'config-settings' ) );
 						const { launchOptions } = shareSettings.popup.behaviourOptions;
 						switch ( launchOptions.launchWhen ) {
@@ -33,11 +32,12 @@
 								break;
 							case 'afterTimeDelay':
 								setTimeout(
-									() => {
-									writeContentHtml( html, type, iframe, $( this ) ); //phpcs:ignore
+									() =>
+									{
+										writeContentHtml( html, type, iframe, $( this ) );
 									},
 									launchOptions.afterTimeDelay * 1000
-								)
+								);
 								break;
 							case 'afterScrollPercentage':
 								showPopupOnScroll( launchOptions.afterScrollPercentage, html, type, iframe, $( this ) );
@@ -75,13 +75,13 @@
 								}
 							}
 						).done(
-							data => {
-							iframee.contentWindow.surveyData = data.data; //phpcs:ignore
-							var context                      = iframee.contentDocument.write( html ); //phpcs:ignore
-							// @codingStandardsIgnoreStart
-							iframee.contentWindow.document.close(); // without this line, page loading animations won't go away!
+							data =>
+							{
+								iframee.contentWindow.surveyData = data.data;
+								var context                      = iframee.contentDocument.write( html );
+								iframee.contentWindow.document.close();// without this line, page loading animations won't go away.
 							}
-						); //@codingStandardsIgnoreEnd
+						);
 
 						function resizeIframe(iframe) {
 							iframe.height = iframe.contentWindow.document.body.scrollHeight + "px";

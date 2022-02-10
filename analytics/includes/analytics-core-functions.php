@@ -34,7 +34,7 @@ if ( ! function_exists( 'as_get_template_path' ) ) {
 	 * @param null   $params Parameters.
 	 */
 	function as_include_template( $path, &$params = null ) {
-		$VARS = &$params; //phpcs:ignore
+		$VARS = &$params;
 		include as_get_template_path( $path );
 	}
 
@@ -45,7 +45,7 @@ if ( ! function_exists( 'as_get_template_path' ) ) {
 	 * @param null   $params Parameters.
 	 */
 	function as_include_once_template( $path, &$params = null ) {
-		$VARS = &$params; //phpcs:ignore
+		$VARS = &$params;
 		include_once as_get_template_path( $path );
 	}
 
@@ -56,7 +56,7 @@ if ( ! function_exists( 'as_get_template_path' ) ) {
 	 * @param array  $params Parameters.
 	 */
 	function as_require_template( $path, &$params = null ) {
-		$VARS = &$params; //phpcs:ignore
+		$VARS = &$params;
 		require as_get_template_path( $path );
 	}
 
@@ -67,7 +67,7 @@ if ( ! function_exists( 'as_get_template_path' ) ) {
 	 * @param array  $params Parameters.
 	 */
 	function as_require_once_template( $path, &$params = null ) {
-		$VARS = &$params; //phpcs:ignore
+		$VARS = &$params;
 		require_once as_get_template_path( $path );
 	}
 
@@ -81,7 +81,7 @@ if ( ! function_exists( 'as_get_template_path' ) ) {
 	function as_get_template( $path, &$params = null ) {
 		ob_start();
 
-		$VARS = &$params; //phpcs:ignore
+		$VARS = &$params;
 		require as_get_template_path( $path );
 
 		return ob_get_clean();
@@ -110,13 +110,13 @@ if ( ! function_exists( 'as_request_get' ) ) {
 		 */
 		switch ( $type ) {
 			case 'post':
-				$value = isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : $def; //phpcs:ignore
+				$value = isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : $def;
 				break;
 			case 'get':
-				$value = isset( $_GET[ $key ] ) ? sanitize_text_field( wp_unslash( $_GET[ $key ] ) ) : $def; //phpcs:ignore
+				$value = isset( $_GET[ $key ] ) ? sanitize_text_field( wp_unslash( $_GET[ $key ] ) ) : $def;
 				break;
 			default:
-				$value = isset( $_REQUEST[ $key ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ $key ] ) ) : $def;//phpcs:ignore
+				$value = isset( $_REQUEST[ $key ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ $key ] ) ) : $def;
 				break;
 		}
 
@@ -176,10 +176,10 @@ if ( ! function_exists( 'as_get_raw_referer' ) ) {
 		if ( function_exists( 'wp_get_raw_referer' ) ) {
 			return wp_get_raw_referer();
 		}
-		if ( ! empty( sanitize_text_field( $_REQUEST['_wp_http_referer'] ) ) ) { //phpcs:ignore
-			return wp_unslash( $_REQUEST['_wp_http_referer'] );//phpcs:ignore
-		} elseif ( ! empty( sanitize_text_field( $_SERVER['HTTP_REFERER'] ) ) ) { //phpcs:ignore
-			return wp_unslash( $_SERVER['HTTP_REFERER'] ); //phpcs:ignore
+		if ( ! empty( sanitize_text_field( $_REQUEST['_wp_http_referer'] ) ) ) {
+			return wp_unslash( $_REQUEST['_wp_http_referer'] );
+		} elseif ( ! empty( sanitize_text_field( $_SERVER['HTTP_REFERER'] ) ) ) {
+			return wp_unslash( $_SERVER['HTTP_REFERER'] );
 		}
 
 		return false;
@@ -446,11 +446,11 @@ if ( ! function_exists( 'as_sort_by_priority' ) ) {
 		// If b has a priority and a does not, b wins.
 		if ( ! isset( $a['priority'] ) && isset( $b['priority'] ) ) {
 			return 1;
-		}// phpcs:ignore 
+		}
 		// If b has a priority and a does not, b wins.
 		elseif ( isset( $a['priority'] ) && ! isset( $b['priority'] ) ) {
 			return - 1;
-		} //phpcs:ignore 
+		}
 		// If neither has a priority or both priorities are equal its a tie.
 		elseif ( ( ! isset( $a['priority'] ) && ! isset( $b['priority'] ) ) || $a['priority'] === $b['priority'] ) {
 			return 0;

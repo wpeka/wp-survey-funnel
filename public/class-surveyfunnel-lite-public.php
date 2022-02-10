@@ -198,7 +198,9 @@ class Surveyfunnel_Lite_Public {
 		if ( 'popup' === ! $share->popup->active && $atts['type'] ) {
 			return '';
 		}
-		$ip        = $_SERVER['REMOTE_ADDR'];//phpcs:ignore
+		if ( isset( $_SERVER['REMOTE_ADDR'] ) ) {
+			$ip = sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) );
+		}
 		$m_time = time() * 1000000;
 
 		$unique_id = md5( $ip . $m_time . wp_rand( 0, time() ) );
@@ -241,7 +243,7 @@ class Surveyfunnel_Lite_Public {
 			$return_string .= '<style>#surveyfunnel-lite-survey-' . $unique_id . ' iframe { max-width: 100%; height: ' . $atts['height'] . '; width: ' . $atts['width'] . ';  }</style>';
 		}
 		// this return string contains iframewrapper and html content which will be used in the js file to create iframe in the frontend.
-		$return_string .= '<div class="iframewrapper intrinsic-ignore" post_id="' . $atts['id'] . '" id="surveyfunnel-lite-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script src="' . $hooks_string . '"></script>' . $pro_script_string . '<style>*{margin: 0; padding:0; box-sizing: border-box;}</style><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="surveyfunnel-lite-survey-' . $unique_id . '" style="width: 100vw; height: 100vh;"><script src="' . $script_string . '"></script></div></body></html>\'></div>';//phpcs:ignore
+		$return_string .= '<div class="iframewrapper intrinsic-ignore" post_id="' . $atts['id'] . '" id="surveyfunnel-lite-survey-' . $unique_id . '" survey-type="' . $atts['type'] . '" config-settings=\'' . $configure_data . '\' data-content=\'<!DOCTYPE html><html><head><script src="' . $hooks_string . '"></script>' . $pro_script_string . '<style>*{margin: 0; padding:0; box-sizing: border-box;}</style><script>var data = ' . $data . ';</script><link rel="stylesheet" href="' . $survey_style_string . '"><link rel="stylesheet" href="' . $style_string . '"></head><body><div id="surveyfunnel-lite-survey-' . $unique_id . '" style="width: 100vw; height: 100vh;"><script src="' . $script_string . '"></script></div></body></html>\'></div>'; //phpcs:ignore
 		return $return_string;
 	}
 
@@ -291,25 +293,26 @@ class Surveyfunnel_Lite_Public {
 		$time           = isset( $_POST['time'] ) ? intval( $_POST['time'] ) : 0;
 		$tab_count      = isset( $_POST['completed'] ) ? intval( $_POST['completed'] ) : 0;
 		$user_id        = get_current_user_id();
-
-		$fields = $this->surveyfunnel_lite_sanitize_survey_lead( $_POST['data'] );//phpcs:ignore
-		//phpcs:ignore $fields = wp_json_encode( array( $fields->_id => $fields ) );
+		$fields         = $this->surveyfunnel_lite_sanitize_survey_lead( $_POST['data'] );//phpcs:ignore
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
 		// get field value from database if exist.
-		//@codingStandardsIgnoreStart
-		$rows = $wpdb->get_results(
-			$wpdb->prepare(
-				'
+		$rows = wp_cache_get( 'results_row' );
+		if ( false === $rows ) {
+			$rows = $wpdb->get_results(
+				$wpdb->prepare(
+					'
 				SELECT * 
-				FROM ' . $table_name . '
+				FROM %s
 				WHERE user_locale_id = %s AND time_created = %d
 			',
-				$user_locale_id,
-				$time
-			)
-		);
-		//@codingStandardsIgnoreEnd
+					$table_name,
+					$user_locale_id,
+					$time
+				)
+			); // db call ok.
+			wp_cache_set( 'results_row', $rows );
+		}
 		$flag = false;
 		if ( is_array( $rows ) && count( $rows ) ) {
 			$data          = json_decode( $rows[0]->fields );
@@ -327,19 +330,23 @@ class Surveyfunnel_Lite_Public {
 			$flag   = true;
 		}
 		if ( $flag ) {
-				//@codingStandardsIgnoreStart
-			$rows = $wpdb->query(
-				$wpdb->prepare(
-					'
-					UPDATE ' . $table_name . ' SET `fields` = %s, `user_meta` = %s
+			$rows = wp_cache_get( 'flag_rows' );
+			if ( false === $rows ) {
+				$rows = $wpdb->query(
+					$wpdb->prepare(
+						'
+					UPDATE %s SET `fields` = %s, `user_meta` = %s
 					WHERE user_locale_id = %s AND time_created = %d
 				',
-					$fields,
-					$completed,
-					$user_locale_id,
-					$time
-				)
-			);//@codingStandardsIgnoreEnd
+						$table_name,
+						$fields,
+						$completed,
+						$user_locale_id,
+						$time
+					)
+				); // db call ok.
+				wp_cache_set( 'flag_rows', $rows );
+			}
 
 			if ( ! $rows ) {
 				wp_send_json_error();
@@ -348,21 +355,22 @@ class Surveyfunnel_Lite_Public {
 		} else {
 			$fields = wp_json_encode( array( $fields->_id => $fields ) );
 			$date   = gmdate( 'Y-m-d' );
-			//@codingStandardsIgnoreStart
-			$rows   = $wpdb->query(
-				$wpdb->prepare(
-					'
-					INSERT INTO ' . $table_name . ' ( `survey_id`, `user_id`, `fields`, `user_locale_id`, `time_created`, `date_created`, `user_meta` )
-					VALUES (%d, %d, %s, %s, %d, %s, 0)
-				',
-					$survey_id,
-					$user_id,
-					$fields,
-					$user_locale_id,
-					$time,
-					$date
-				)
-			);//@codingStandardsIgnoreEnd
+			$rows   = wp_cache_get( 'rows' );
+			if ( false === $rows ) {
+				$rows = $wpdb->query(
+					$wpdb->prepare(
+						' INSERT INTO  %s  ( `survey_id`, `user_id`, `fields`, `user_locale_id`, `time_created`, `date_created`, `user_meta` ) VALUES (%d, %d, %s, %s, %d, %s, 0)',
+						$table_name,
+						$survey_id,
+						$user_id,
+						$fields,
+						$user_locale_id,
+						$time,
+						$date
+					)
+				); // db call ok.
+				wp_cache_set( 'rows', $rows );
+			}
 
 			if ( ! $rows ) {
 				wp_send_json_error();

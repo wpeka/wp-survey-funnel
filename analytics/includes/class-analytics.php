@@ -176,7 +176,7 @@ class Analytics {
 	 * @author CyberChimps
 	 * @since  1.0.0
 	 */
-	private static function _load_required_static() { //phpcs:ignore
+	private static function _load_required_static() {
 		if ( self::$_statics_loaded ) {
 			return;
 		}
@@ -358,7 +358,7 @@ class Analytics {
 	 *
 	 * @since  1.0.0
 	 */
-	public function _add_deactivation_feedback_dialog_box() { //phpcs:ignore
+	public function _add_deactivation_feedback_dialog_box() {
 
 		$show_deactivation_feedback_form = true;
 
@@ -398,7 +398,7 @@ class Analytics {
 	 *
 	 * @return array The uninstall reasons for the specified user type.
 	 */
-	public function _get_uninstall_reasons( $user_type = 'long-term' ) { //phpcs:ignore
+	public function _get_uninstall_reasons( $user_type = 'long-term' ) {
 
 		$params                = array();
 		$params['module_type'] = $this->_module_type;
@@ -507,7 +507,7 @@ class Analytics {
 	 * @author CyberChimps
 	 * @since  1.0.0
 	 */
-	public function _hook_action_links_and_register_account_hooks() { //phpcs:ignore
+	public function _hook_action_links_and_register_account_hooks() {
 		if ( self::is_plugins_page() && $this->is_plugin() ) {
 			$this->hook_plugin_action_links();
 		}
@@ -555,7 +555,7 @@ class Analytics {
 	 *
 	 * @return array
 	 */
-	function _modify_plugin_action_links_hook( $links, $file ) { //phpcs:ignore
+	function _modify_plugin_action_links_hook( $links, $file ) {
 
 		$passed_deactivate = false;
 		$deactivate_link   = '';
@@ -596,7 +596,7 @@ class Analytics {
 	 * @author CyberChimps
 	 * @since  1.0.0
 	 */
-	private function _register_account_hooks() { //phpcs:ignore
+	private function _register_account_hooks() {
 		if ( ! is_admin() ) {
 			return;
 		}
@@ -619,7 +619,7 @@ class Analytics {
 	/**
 	 * Dismiss review notice.
 	 */
-	public function _ask_for_review_dismiss() { //phpcs:ignore
+	public function _ask_for_review_dismiss() {
 		check_ajax_referer( 'ask_for_review', 'security' );
 		if ( isset( $_POST['slug'] ) ) {
 			$slug = sanitize_text_field( wp_unslash( $_POST['slug'] ) ) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : '';
@@ -631,7 +631,7 @@ class Analytics {
 	/**
 	 * Dismiss review notice.
 	 */
-	public function _ask_for_usage_dismiss() { //phpcs:ignore
+	public function _ask_for_usage_dismiss() {
 		check_ajax_referer( 'ask_for_usage', 'security' );
 		if ( isset( $_POST['slug'] ) ) {
 			$slug = sanitize_text_field( wp_unslash( $_POST['slug'] ) ) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : '';
@@ -641,7 +641,7 @@ class Analytics {
 		wp_send_json_success();
 	}
 
-	public function _ask_for_usage_optin() { //phpcs:ignore
+	public function _ask_for_usage_optin() {
 		check_ajax_referer( 'ask_for_usage', 'security' );
 		if ( isset( $_POST['slug'] ) ) {
 			$slug = sanitize_text_field( wp_unslash( $_POST['slug'] ) ) ? sanitize_text_field( wp_unslash( $_POST['slug'] ) ) : '';
@@ -654,7 +654,7 @@ class Analytics {
 	/**
 	 * Notice to be displayed for Review.
 	 */
-	public function _ask_for_review_notice() { //phpcs:ignore
+	public function _ask_for_review_notice() {
 		if ( false === get_option( $this->_slug . '-setup' ) ) {
 			update_option( $this->_slug . '-setup', true );
 			set_transient( $this->_slug . '-ask-for-review-flag', true, MONTH_IN_SECONDS );
@@ -677,7 +677,7 @@ class Analytics {
 	/**
 	 * Notice to be displayed for Review.
 	 */
-	public function _ask_for_usage_notice() { //phpcs:ignore
+	public function _ask_for_usage_notice() {
 		if ( false === get_option( $this->_slug . '-usage-setup' ) ) {
 			update_option( $this->_slug . '-usage-setup', true );
 			set_transient( $this->_slug . '-ask-for-usage-flag', true, 120 );
@@ -703,7 +703,7 @@ class Analytics {
 	 * @author CyberChimps
 	 * @since  1.0.0
 	 */
-	public function _submit_uninstall_reason_action() { //phpcs:ignore
+	public function _submit_uninstall_reason_action() {
 
 		check_ajax_referer( 'uninstall_reason', 'security' );
 
@@ -742,7 +742,7 @@ class Analytics {
 	 * @param bool  $check_user User have plugins activation privileges.
 	 * @param arrat $reason Reasons.
 	 */
-	public function _uninstall_plugin_event( $check_user = true, $reason = array() ) { //phpcs:ignore
+	public function _uninstall_plugin_event( $check_user = true, $reason = array() ) {
 
 		if ( $check_user && ! current_user_can( 'activate_plugins' ) ) {
 			return;
@@ -805,24 +805,24 @@ class Analytics {
 				 * @since 1.0.0
 				 */
 				if ( is_network_admin() ) {
-					preg_match( '#/wp-admin/network/?(.*?)$#i', sanitize_text_field( wp_unslash( $_SERVER['PHP_SELF'] ) ), $self_matches ); //phpcs:ignore
+					preg_match( '#/wp-admin/network/?(.*?)$#i', sanitize_text_field( wp_unslash( $_SERVER['PHP_SELF'] ) ), $self_matches );
 				} elseif ( is_user_admin() ) {
-					preg_match( '#/wp-admin/user/?(.*?)$#i', sanitize_text_field( wp_unslash( $_SERVER['PHP_SELF'] ) ), $self_matches ); //phpcs:ignore
+					preg_match( '#/wp-admin/user/?(.*?)$#i', sanitize_text_field( wp_unslash( $_SERVER['PHP_SELF'] ) ), $self_matches );
 				} else {
-					preg_match( '#/wp-admin/?(.*?)$#i', sanitize_text_field( wp_unslash( $_SERVER['PHP_SELF'] ) ), $self_matches );//phpcs:ignore
+					preg_match( '#/wp-admin/?(.*?)$#i', sanitize_text_field( wp_unslash( $_SERVER['PHP_SELF'] ) ), $self_matches );
 				}
 
-				$pagenow = $self_matches[1];//phpcs:ignore
-				$pagenow = trim( $pagenow, '/' );//phpcs:ignore
-				$pagenow = preg_replace( '#\?.*?$#', '', $pagenow );//phpcs:ignore
-				if ( '' === $pagenow || 'index' === $pagenow || 'index.php' === $pagenow ) {//phpcs:ignore
-					$pagenow = 'index.php';//phpcs:ignore
+				$pagenow = $self_matches[1];
+				$pagenow = trim( $pagenow, '/' );
+				$pagenow = preg_replace( '#\?.*?$#', '', $pagenow );
+				if ( '' === $pagenow || 'index' === $pagenow || 'index.php' === $pagenow ) {
+					$pagenow = 'index.php';
 				} else {
-					preg_match( '#(.*?)(/|$)#', $pagenow, $self_matches );//phpcs:ignore
-					$pagenow = strtolower( $self_matches[1] );//phpcs:ignore
-					if ( '.php' !== substr( $pagenow, -4, 4 ) ) {//phpcs:ignore
+					preg_match( '#(.*?)(/|$)#', $pagenow, $self_matches );
+					$pagenow = strtolower( $self_matches[1] );
+					if ( '.php' !== substr( $pagenow, -4, 4 ) ) {
 						// for Options +Multiviews: /wp-admin/themes/index.php (themes.php is queried).
-						$pagenow .= '.php'; //phpcs:ignore 
+						$pagenow .= '.php';
 					}
 				}
 			}
