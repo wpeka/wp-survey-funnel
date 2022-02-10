@@ -105,6 +105,7 @@
 						}
 					).done(
 						data => {
+
 						if ( data?.success && data.success ) { //phpcs:ignore
 								window.location = data.data.url_to_redirect;
 							} else {
@@ -145,6 +146,7 @@
 						}
 					).done(
 						data => {
+
 						if ( data?.success && data.success ) { //phpcs:ignore
                             location.reload(); //phpcs:ignore
                         } //phpcs:ignore
