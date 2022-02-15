@@ -180,7 +180,7 @@ class Test_Surveyfunnel_Lite_Admin extends WP_UnitTestCase {
 			array(
 				'survey_id' => self::$post_ids[0],
 			)
-		);//db call ok; no-cache ok
+		);// db call ok; no-cache ok.
 		$args = self::$surveyfunnel_lite_admin->surveyfunnel_lite_get_insights_data( self::$post_ids[0] );
 		$this->assertCount( 3, $args );
 		$this->assertTrue( is_array( $args ) );

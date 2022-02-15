@@ -698,9 +698,14 @@ class Surveyfunnel_Lite_Admin {
 		$end_date   = isset( $_POST['endDate'] ) ? sanitize_text_field( wp_unslash( $_POST['endDate'] ) ) : '';
 
 		// get all rows between specified start date and end date.
-		$rows = $wpdb->get_results( //phpcs:ignore
-			$wpdb->prepare( 'SELECT * FROM ' . $table_name . 'WHERE date_created BETWEEN %s and %s AND survey_id = %d', $start_date, $end_date, $post_id ) //phpcs:ignore
-		);
+		$rows = wp_cache_get( 'rows2' );
+		if ( false === $rows ) {
+			$rows = $wpdb->get_results(
+				$wpdb->prepare( 'SELECT * FROM %s WHERE date_created BETWEEN %s and %s AND survey_id = %d', $table_name, $start_date, $end_date, $post_id )
+			); // db call ok.
+			wp_cache_set( 'rows2' ,$rows);
+		}
+
 		// return array which will be echoed.
 		$return_arr = array();
 		if ( is_array( $rows ) && count( $rows ) ) {
@@ -764,7 +769,7 @@ class Surveyfunnel_Lite_Admin {
 		if ( count( $rows ) ) {
 			$data             = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 			$build            = json_decode( $data['build'] );
-			$content_elements = $build->List->CONTENT_ELEMENTS; // phpcs:ignore
+			$content_elements = $build->List->CONTENT_ELEMENTS; //phpcs:ignore
 			foreach ( $content_elements as $content ) {
 				$id      = $content->id;
 				$pattern = '/' . $id . '/';

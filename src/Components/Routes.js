@@ -6,7 +6,7 @@
  */
 
 import React, { Suspense, lazy, useEffect, useState } from "react";
-import { HashRouter as Router, Switch , Route, Link, NavLink } from "react-router-dom"; //phpcs:ignore
+import { HashRouter as Router, Switch , Route, Link, NavLink } from "react-router-dom";
 import { BuildContextProvider } from "./Context/BuildContext";
 import { DesignContext, DesignContextProvider } from "./Context/DesignContext";
 import { ReportContextProvider } from './Context/ReportContext';

@@ -3718,15 +3718,15 @@
 											delete _this.lastRequest;
 
 											_this.setState(
-                                                function (state) {
-                                                    return {
-                                                        isLoading: false,
-                                                        loadedInputValue: inputValue,
-                                                        loadedOptions: options || [],
-                                                        passEmptyOptions: false,
-                                                        optionsCache: options ? (0,_dist_index_4bd03571_esm_js__WEBPACK_IMPORTED_MODULE_12__.a)( (0,_dist_index_4bd03571_esm_js__WEBPACK_IMPORTED_MODULE_12__.a)( {}, state.optionsCache ), {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])( {}, inputValue, options ) ) : state.optionsCache
-                                                    };
-                                                }
+												function (state) {
+													return {
+														isLoading: false,
+														loadedInputValue: inputValue,
+														loadedOptions: options || [],
+														passEmptyOptions: false,
+														optionsCache: options ? (0,_dist_index_4bd03571_esm_js__WEBPACK_IMPORTED_MODULE_12__.a)( (0,_dist_index_4bd03571_esm_js__WEBPACK_IMPORTED_MODULE_12__.a)( {}, state.optionsCache ), {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])( {}, inputValue, options ) ) : state.optionsCache
+													};
+												}
 											);
 										}
 									);
@@ -5083,9 +5083,9 @@
 								optionsAccumulator,
 								(0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__["default"])(
 									categorizedOption.options.map(
-                                    function (option) {
-                                            return option.data;
-                                    }
+                                        function (option) {
+                                                return option.data;
+                                        }
 									)
 								)
 							);
@@ -6719,24 +6719,24 @@
 										return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(
 											Group,
 											(0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])(
-                                                {},
-                                                commonProps,
-                                                {
-												key: groupId,
-												data: data,
-												options: options,
-												Heading: GroupHeading,
-												headingProps: {
-													id: headingId,
-													data: item.data
-												},
-												label: _this4.formatGroupLabel( item.data )
-                                                }
+												{},
+												commonProps,
+												{
+													key: groupId,
+													data: data,
+													options: options,
+													Heading: GroupHeading,
+													headingProps: {
+														id: headingId,
+														data: item.data
+													},
+													label: _this4.formatGroupLabel( item.data )
+												}
 											),
 											item.options.map(
-                                            function (option) {
-                                                return render( option, "".concat( groupIndex, "-" ).concat( option.index ) );
-                                            }
+                                                function (option) {
+                                                    return render( option, "".concat( groupIndex, "-" ).concat( option.index ) );
+                                                }
 											)
 										);
 									} else if (item.type === 'option') {
@@ -6806,26 +6806,26 @@
 											onBottomArrive: onMenuScrollToBottom,
 											lockEnabled: menuShouldBlockScroll
 										},
-                                        function (scrollTargetRef) {
-                                            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(
-                                                MenuList,
-                                                (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])(
-                                                {},
-                                                commonProps,
-                                                {
-                                                    innerRef: function innerRef(instance) {
-                                                        _this4.getMenuListRef( instance );
+										function (scrollTargetRef) {
+											return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(
+												MenuList,
+												(0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])(
+                                                    {},
+                                                    commonProps,
+                                                    {
+													innerRef: function innerRef(instance) {
+														_this4.getMenuListRef( instance );
 
-                                                        scrollTargetRef( instance );
-                                                    },
-                                                    isLoading: isLoading,
-                                                    maxHeight: maxHeight,
-                                                    focusedOption: focusedOption
-                                                }
-                                                ),
-                                                menuUI
-                                            );
-                                        }
+														scrollTargetRef( instance );
+													},
+													isLoading: isLoading,
+													maxHeight: maxHeight,
+													focusedOption: focusedOption
+                                                    }
+												),
+												menuUI
+											);
+										}
 									)
 								);
 							}
@@ -6991,11 +6991,11 @@
 								react__WEBPACK_IMPORTED_MODULE_5___default().createElement(
 									ValueContainer,
 									(0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])(
-                                        {},
-                                        commonProps,
-                                        {
-										isDisabled: isDisabled
-                                        }
+										{},
+										commonProps,
+										{
+											isDisabled: isDisabled
+										}
 									),
 									this.renderPlaceholderOrValue(),
 									this.renderInput()
@@ -7003,11 +7003,11 @@
 								react__WEBPACK_IMPORTED_MODULE_5___default().createElement(
 									IndicatorsContainer,
 									(0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])(
-                                        {},
-                                        commonProps,
-                                        {
-										isDisabled: isDisabled
-                                        }
+										{},
+										commonProps,
+										{
+											isDisabled: isDisabled
+										}
 									),
 									this.renderClearIndicator(),
 									this.renderLoadingIndicator(),
@@ -8005,11 +8005,11 @@
 								{
 									css: getStyles( 'menuPortal', state ),
 									className: cx(
-                                        {
-										'menu-portal': true
-                                        },
-                                        className
-                                    )
+										{
+											'menu-portal': true
+										},
+										className
+									)
 								},
 								innerProps
 							),
@@ -8622,11 +8622,11 @@
 					(0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])(
 						{
 							className: cx(
-                                {
-								input: true
-                                },
-                                className
-                            ),
+								{
+									input: true
+								},
+								className
+							),
 						inputRef: innerRef,
 						inputStyle: inputStyle( isHidden ),
 						disabled: isDisabled
@@ -8736,15 +8736,15 @@
 							innerProps: _objectSpread2(
 								{
 									className: emotionCx(
-                                        css( getStyles( 'multiValue', props ) ),
-                                        cx(
-                                        {
-										'multi-value': true,
-										'multi-value--is-disabled': isDisabled
-                                        },
-                                        className
-                                        )
-                                    )
+										css( getStyles( 'multiValue', props ) ),
+										cx(
+                                            {
+											'multi-value': true,
+											'multi-value--is-disabled': isDisabled
+                                            },
+                                            className
+										)
+									)
 								},
 								innerProps
 							),
@@ -8756,14 +8756,14 @@
 								data: data,
 								innerProps: {
 									className: emotionCx(
-                                        css( getStyles( 'multiValueLabel', props ) ),
-                                        cx(
-                                        {
-										'multi-value__label': true
-										},
-                                        className
-                                        )
-                                    )
+										css( getStyles( 'multiValueLabel', props ) ),
+										cx(
+                                            {
+											'multi-value__label': true
+											},
+                                            className
+										)
+									)
 								},
 								selectProps: selectProps
 							},
@@ -8774,19 +8774,19 @@
 							{
 								data: data,
 								innerProps: _objectSpread2(
-                                    {
-									className: emotionCx(
-                                        css( getStyles( 'multiValueRemove', props ) ),
-                                        cx(
-                                        {
-										'multi-value__remove': true
-                                        },
-                                        className
+									{
+										className: emotionCx(
+                                            css( getStyles( 'multiValueRemove', props ) ),
+                                            cx(
+                                            {
+											'multi-value__remove': true
+                                            },
+                                            className
+                                            )
                                         )
-                                    )
-                                    },
-                                    removeProps
-                                ),
+									},
+									removeProps
+								),
 							selectProps: selectProps
 							}
 						)

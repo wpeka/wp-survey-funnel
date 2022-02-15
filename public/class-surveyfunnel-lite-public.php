@@ -293,7 +293,9 @@ class Surveyfunnel_Lite_Public {
 		$time           = isset( $_POST['time'] ) ? intval( $_POST['time'] ) : 0;
 		$tab_count      = isset( $_POST['completed'] ) ? intval( $_POST['completed'] ) : 0;
 		$user_id        = get_current_user_id();
-		$fields         = $this->surveyfunnel_lite_sanitize_survey_lead( $_POST['data'] );//phpcs:ignore
+		if ( isset( $_POST['data'] ) ) {
+			$fields = $this->surveyfunnel_lite_sanitize_survey_lead( sanitize_text_field( wp_unslash( $_POST['data'] ) ) );
+		}
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
 		// get field value from database if exist.
