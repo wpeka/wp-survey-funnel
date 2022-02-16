@@ -104,12 +104,12 @@
 							}
 						}
 					).done(
-						data => {
-						if ( data?.success && data.success ) { //phpcs:ignore
+						data =>
+						{
+							if ( data ?.success && data.success ) {
 								window.location = data.data.url_to_redirect;
 							} else {
-								// phpcs:ignore Show Error Alert.
-							}//phpcs:ignore
+							}
 						}
 					);
 				}
@@ -144,10 +144,11 @@
 							}
 						}
 					).done(
-						data => {
-						if ( data?.success && data.success ) { //phpcs:ignore
-								location.reload(); //phpcs:ignore
-                        } //phpcs:ignore
+						data =>
+						{
+							if ( data ?.success && data.success ) {
+								location.reload();
+							}
 						}
 					);
 				}

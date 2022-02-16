@@ -703,7 +703,7 @@ class Surveyfunnel_Lite_Admin {
 			$rows = $wpdb->get_results(
 				$wpdb->prepare( 'SELECT * FROM %s WHERE date_created BETWEEN %s and %s AND survey_id = %d', $table_name, $start_date, $end_date, $post_id )
 			); // db call ok.
-			wp_cache_set( 'rows2' ,$rows);
+			wp_cache_set( 'rows2', $rows );
 		}
 
 		// return array which will be echoed.

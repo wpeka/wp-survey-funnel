@@ -2762,13 +2762,13 @@
 
 					var valuesString = JSON.stringify(
 						expectedValues,
-                        function replacer(key, value) {
-                            var type = getPreciseType( value );
-                            if (type === 'symbol') {
-                                return String( value );
-                            }
-                                return value;
-                        }
+					function replacer(key, value) {
+						var type = getPreciseType( value );
+						if (type === 'symbol') {
+							return String( value );
+						}
+							return value;
+					}
 					);
 					return new PropTypeError( 'Invalid ' + location + ' `' + propFullName + '` of value `' + String( propValue ) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.') );
 				}
@@ -5083,9 +5083,9 @@
 								optionsAccumulator,
 								(0,_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_4__["default"])(
 									categorizedOption.options.map(
-                                        function (option) {
-                                                return option.data;
-                                        }
+										function (option) {
+												return option.data;
+										}
 									)
 								)
 							);
@@ -6734,9 +6734,9 @@
 												}
 											),
 											item.options.map(
-                                                function (option) {
-                                                    return render( option, "".concat( groupIndex, "-" ).concat( option.index ) );
-                                                }
+												function (option) {
+													return render( option, "".concat( groupIndex, "-" ).concat( option.index ) );
+												}
 											)
 										);
 									} else if (item.type === 'option') {
@@ -6810,18 +6810,18 @@
 											return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5___default().createElement(
 												MenuList,
 												(0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])(
-                                                    {},
-                                                    commonProps,
-                                                    {
-													innerRef: function innerRef(instance) {
-														_this4.getMenuListRef( instance );
+													{},
+													commonProps,
+													{
+														innerRef: function innerRef(instance) {
+															_this4.getMenuListRef( instance );
 
-														scrollTargetRef( instance );
-													},
-													isLoading: isLoading,
-													maxHeight: maxHeight,
-													focusedOption: focusedOption
-                                                    }
+															scrollTargetRef( instance );
+														},
+														isLoading: isLoading,
+														maxHeight: maxHeight,
+														focusedOption: focusedOption
+													}
 												),
 												menuUI
 											);
@@ -8738,11 +8738,11 @@
 									className: emotionCx(
 										css( getStyles( 'multiValue', props ) ),
 										cx(
-                                            {
-											'multi-value': true,
-											'multi-value--is-disabled': isDisabled
-                                            },
-                                            className
+											{
+												'multi-value': true,
+												'multi-value--is-disabled': isDisabled
+											},
+											className
 										)
 									)
 								},
@@ -8758,10 +8758,10 @@
 									className: emotionCx(
 										css( getStyles( 'multiValueLabel', props ) ),
 										cx(
-                                            {
-											'multi-value__label': true
+											{
+												'multi-value__label': true
 											},
-                                            className
+											className
 										)
 									)
 								},
@@ -8776,14 +8776,14 @@
 								innerProps: _objectSpread2(
 									{
 										className: emotionCx(
-                                            css( getStyles( 'multiValueRemove', props ) ),
-                                            cx(
-                                            {
-											'multi-value__remove': true
-                                            },
-                                            className
-                                            )
-                                        )
+											css( getStyles( 'multiValueRemove', props ) ),
+											cx(
+											{
+												'multi-value__remove': true
+											},
+											className
+											)
+										)
 									},
 									removeProps
 								),
