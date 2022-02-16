@@ -1015,6 +1015,25 @@ class Surveyfunnel_Lite_Admin {
 		}
 	}
 
+    /**
+     * Ajax: get API key.
+     */
+    public function surveyfunnel_lite_get_api_key() {
+
+        // check for security.
+        if ( isset( $_POST['action'] ) ) {
+            check_admin_referer( 'surveyfunnel-lite-security', 'security' );
+        } else {
+            wp_send_json_error();
+            wp_die();
+        }
+
+        $apiData = get_option('wc_am_client_surveyfunnel_pro');
+        $data = array( 'apikey' => $apiData['wc_am_client_surveyfunnel_pro_api_key']);
+        wp_send_json_success( $data );
+        wp_die();
+    }
+
 	/**
 	 * Display surveys added by gutenberg block.
 	 *
