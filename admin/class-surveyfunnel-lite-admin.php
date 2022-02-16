@@ -331,7 +331,7 @@ class Surveyfunnel_Lite_Admin {
 			// send success if validated.
 			wp_send_json_success(
 				array(
-					'url_to_redirect' => self::surveyfunnel_lite_get_setup_page_url() . $post_id . '#build',
+					'url_to_redirect' => self::surveyfunnel_lite_get_setup_page_url() . $post_id .'&type='.$type. '#build',
 				)
 			);
 		}

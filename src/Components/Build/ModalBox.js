@@ -11,6 +11,7 @@ import { Choices, Answer } from "./Elements/ContentElements";
 import { FormElements } from "./Elements/FormElements";
 import { ResultScreen } from "./Elements/ResultScreenElements";
 import { CoverPage } from "./Elements/StartScreenElements";
+import { OutcomeBox } from "./Elements/OutcomeBox";
 import PostTitle from "./Elements/PostTitle";
 import { DesignContext } from "../Context/DesignContext";
 import ModalContentRight from "../../HelperComponents/ModalContentRight";
@@ -57,6 +58,8 @@ export default function ModalBox() {
             case 'ShortAnswer':
             case 'LongAnswer':
                 return <Answer {...componentProps} />
+            case 'OutcomeBox':
+                return <OutcomeBox {...componentProps} /> 
             default:
                 return applyFilters( 'getComponentRender', "", componentProps, currentElement.componentName, ModalContentRight, CloseModal );
         }
