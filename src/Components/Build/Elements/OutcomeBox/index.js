@@ -8,10 +8,11 @@ import ModalContentRight from "../../../../HelperComponents/ModalContentRight";
 import { convertToRgbaCSS } from "../../../../HelperComponents/HelperFunctions";
 import { CloseModal } from '../../../../HelperComponents/CloseModalPopUp';
 
-export const FormElements = React.memo(
+export const OutcomeBox = React.memo(
     class extends React.Component {
         constructor(props) {
             super(props);
+            console.log(props);
         }
         state = {
             title: "",
@@ -19,7 +20,7 @@ export const FormElements = React.memo(
             currentFormElement: null,
             buttonLabel: '',
             List: [],
-			error: '',
+            error: '',
         };
 
         handleChange = (event) => {
@@ -56,13 +57,14 @@ export const FormElements = React.memo(
 
         componentDidMount() {
             const { currentElement } = this.props;
-            console.log(currentElement);
-            if ("currentlySaved" in currentElement) {
+            const data = currentElement['data'];
+            console.log(data);
+            if ("currentlySaved" in data) {
                 let state = {
-                    title: currentElement.title,
-                    description: currentElement.description,
-                    buttonLabel: currentElement.buttonLabel,
-                    List: currentElement.List,
+                    title: data.title,
+                    description: data.description,
+                    answers: data.answers,
+                    // List: data.List,
                 };
                 console.log(state);
                 this.setState(state);
@@ -152,7 +154,7 @@ export const FormElements = React.memo(
                 case "ShortTextAnswer":
                     return (
                         <div key={ele.id}>
-                            <label>{List[index].name} {List[index].required?'*':''}</label>
+                            <label>{List[index].name} {List[index].required ? '*' : ''}</label>
                             <input
                                 type="text"
                                 name="name"
@@ -216,29 +218,29 @@ export const FormElements = React.memo(
             });
         };
 
-        checkForEmpty( name ) {
-            if ( this.state[name] === '' ) {
+        checkForEmpty(name) {
+            if (this.state[name] === '') {
                 return false;
             }
             return true;
         }
 
-		handleSave = () => {
-			let err = '';
-			if ( this.state.title !== '' ) {
-				err = '';
-			}
-			else {
-				err = 'Please add title before saving.';
-			}
-			this.setState({
-				error: err
-			}, () => {
-				if ( this.state.error === '' ) {
-					this.props.saveToList();
-				}
-			})
-		}
+        handleSave = () => {
+            let err = '';
+            if (this.state.title !== '') {
+                err = '';
+            }
+            else {
+                err = 'Please add title before saving.';
+            }
+            this.setState({
+                error: err
+            }, () => {
+                if (this.state.error === '') {
+                    this.props.saveToList();
+                }
+            })
+        }
 
         render() {
             const { designCon, currentElement } = this.props;
@@ -246,109 +248,40 @@ export const FormElements = React.memo(
                 <>
                     <div className="modalOverlay">
                         <div className="modalContent-navbar">
-                        <h3>Content Elements  &nbsp; &#62; &nbsp;  Form Elements  &nbsp; &#62; &nbsp;  {this.state.title} { this.state.currentFormElement ?   <span>  &nbsp; &#62; &nbsp;  {this.state.currentFormElement.name}</span> : ""}</h3>
-                            <CloseModal/>
+                            <h3>Result Mapping  &nbsp; &#62; &nbsp;  {this.state.title}</h3>
+                            <CloseModal />
                         </div>
                         <div className="modalContent">
                             <div className="modalContent-left">
-
-                                    {this.state.currentFormElement === null ? (
-                                        <>
-                                        <div className="modalContent-left-fields">
-
-                                            <div className="modalComponentTitle">
-                                                <h3>Title</h3>
-                                                <input
-                                                    type="text"
-                                                    placeholder="Set Title"
-                                                    name="title"
-                                                    value={this.state.title}
-                                                    onChange={this.handleChange}
-                                                />
-                                            </div>
-                                            <div className="modalComponentDescription">
-                                                <h3>Description</h3>
-                                                <textarea
-                                                    type="text"
-                                                    placeholder="Set Description"
-                                                    name="description"
-                                                    value={this.state.description}
-                                                    onChange={this.handleChange}
-                                                    style={{height:"150px"}}
-                                                />
-                                            </div>
-                                            <div className="surveyfunnel-lite-form-elements_content">
-                                                <h3 style={{display:"inline-block"}}>Form Fields</h3><span> (Simply drag & drop to use)</span>
-                                                <div className="surveyfunnel-lite-form-elements_container">
-
-                                            {formElements.map(function (ele, i) {
+                                <div className="modalContent-left-fields">
+                                    <div className="modalComponentTitle">
+                                        <h3>{this.state.title}</h3>
+                                    </div>
+                                    <div className="surveyfunnel-lite-form-elements_content">
+                                        <div className="surveyfunnel-lite-form-elements_container">
+                                            {this.state.answers?.map((ele, i) => {
                                                 return (
-                                                        <BuildFormElement
-                                                            addToList={this.addToList}
-                                                            setCurrentFormElement={
-                                                                this
-                                                                    .setCurrentFormElement
-                                                            }
-                                                            ele={ele}
-                                                            key={i}
-                                                        ></BuildFormElement>
+                                                    <BuildFormElement
+                                                        addToList={this.addToList}
+                                                        setCurrentFormElement={
+                                                            this
+                                                                .setCurrentFormElement
+                                                        }
+                                                        ele={ele}
+                                                        key={i}
+                                                    ></BuildFormElement>
 
                                                 );
                                             }, this)}
-                                                </div>
-                                            </div>
-
-                                            <div className="modalComponentButtonLabel">
-                                                <h3>Button label</h3>
-                                                <input
-                                                    type="text"
-                                                    placeholder="Set Button Label"
-                                                    name="buttonLabel"
-                                                    value={this.state.buttonLabel}
-                                                    onChange={this.handleChange}
-                                                />
-                                            </div>
-											<div className="modalComponentError">
-												{this.state.error}
-											</div>
                                         </div>
-                                        <div className="modalComponentSaveButton">
-                                                <button onClick={this.handleSave}>
-                                                    Save
-                                                </button>
-                                        </div>
-                                        </>
-                                    ) : (
-                                        <div>
-                                            <div className="modalContent-left-fields">
-                                                <div>
-                                                    {this.getCurrentFormElementLeftRender()}
+                                    </div>
+                                </div>
 
-                                                </div>
-                                                </div>
-                                                <div className="modalComponentSaveButton">
-                                                    <button
-                                                            onClick={() => {
-                                                                this.setCurrentFormElement(
-                                                                    null
-                                                                );
-                                                                document
-                                                                .querySelector(".surveyfunnel-lite-build-container .tab-list-item")
-                                                                .click();
-                                                            }}
-                                                        >
-                                                            Go Back
-                                                        </button>
-                                                </div>
-                                            </div>
-                                        
-                                    )}
-                                
                             </div>
                             <div className="modalContent-right">
                                 <Tabs>
                                     <div
-                                        label="Form Elements"
+                                        label="Form aaa"
                                     >
                                         {formElementsDropBoard.map(function (
                                             ele,
@@ -356,7 +289,6 @@ export const FormElements = React.memo(
                                         ) {
                                             return (
                                                 <DropFormBoard
-                                                    List={this.state.List}
                                                     editList={this.editList}
                                                     deleteFromList={
                                                         this.deleteFromList
@@ -367,22 +299,10 @@ export const FormElements = React.memo(
                                                 ></DropFormBoard>
                                             );
                                         },
-                                        this)}
+                                            this)}
                                     </div>
-                                        <div label="Preview">
-                                        {this.state.title === '' && this.state.description === '' && this.state.buttonLabel === '' && this.state.List.length === 0 ? ( <div className="no-preview-available"><img src={require(`../../BuildImages/unavailable.png`)}></img><div>No Preview Available</div></div> ) : (<ModalContentRight designCon={designCon} currentElement={currentElement.componentName}>
-                                                { this.checkForEmpty('title') && <h3 className="surveyTitle">{this.state.title}</h3> }
-                                                { this.checkForEmpty('description') && <p className="surveyDescription">{this.state.description}</p> }
-                                                {this.state.List.map(function (ele, i) {
-                                                    return this.getCurrentFormElementRightRender(
-                                                        ele,
-                                                        i
-                                                    );
-                                                }, this)}
-                                                <div className="surveyfunnel-lite-form-submit-button">
-                                                    { this.checkForEmpty('buttonLabel') && <button style={{color: convertToRgbaCSS(designCon.buttonTextColor), background: convertToRgbaCSS(designCon.buttonColor)}} type="button">{this.state.buttonLabel}</button> }
-                                                </div>
-                                            </ModalContentRight>)}
+                                    <div label="Preview">
+
                                     </div>
                                 </Tabs>
                             </div>

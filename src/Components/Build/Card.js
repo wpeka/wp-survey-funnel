@@ -85,7 +85,12 @@ export default function (props) {
         setShowModal(true);
     }
     const outcomeLogic=function(){
-        console.log("hiii");
+        // item['componentName']='OutcomeBox';
+        setCurrentElement({
+            componentName: 'OutcomeBox',
+            data: item
+        });
+        setShowModal(true);
     }
     const conditionalLogicCard = function() {
         setCurrentElement({
@@ -109,10 +114,10 @@ export default function (props) {
                 <img src={require(`./BuildImages/${item.componentName}.png`)}></img>
                 <h3>{item.title}</h3>
             </div>
-
             <div className="card-flex">
 				{item.type === 'RESULT_ELEMENTS' && applyFilters( 'scoringLogicCardFilter', '', item, type )}
                 {item.type === 'CONTENT_ELEMENTS' && applyFilters('conditionalLogicCardFilter', '', conditionalLogicCard ) } 
+                {(item.type === 'CONTENT_ELEMENTS' && outcome)?<button className="surveyfunnel-lite-cardBox-btn" onClick={outcomeLogic} disabled={!proActive && ( item.componentName === 'TextElement' || item.componentName === 'ImageQuestion' ) }><img src={require('./BuildImages/pencil.png')}></img></button>:""}
                 <button className="surveyfunnel-lite-cardBox-btn" onClick={editCard} disabled={!proActive && ( item.componentName === 'TextElement' || item.componentName === 'ImageQuestion' ) }><img src={require('./BuildImages/pencil.png')}></img></button>
                 <button className="surveyfunnel-lite-cardBox-btn" onClick={deleteCard} disabled={!proActive && ( item.componentName === 'TextElement' || item.componentName === 'ImageQuestion' ) }><img src={require('./BuildImages/delete-icon.png')}></img></button>
             </div>
