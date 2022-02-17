@@ -11,6 +11,7 @@ import Card from './Card';
 import { BuildContext } from '../Context/BuildContext';
 
 // showBoard shows the list of cards present.
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 // @codingStandardsIgnoreStart
 function ShowBoard( { itemType } ) {
 	const { List }      = useContext( BuildContext );

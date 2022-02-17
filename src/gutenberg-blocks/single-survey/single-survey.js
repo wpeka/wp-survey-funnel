@@ -14,6 +14,7 @@ const { __, }             = wp.i18n;
 
 import SingleSurveyIcon from './single-survey-icon.js';
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 registerBlockType(
 	'surveyfunnel/single-survey',

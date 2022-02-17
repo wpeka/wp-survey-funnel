@@ -14,6 +14,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Card from '../../../../../Components/Build/Elements/FormElements/Card';
 import renderer from 'react-test-renderer';
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 let test1="";
 const ele={

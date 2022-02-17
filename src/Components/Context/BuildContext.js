@@ -12,6 +12,7 @@ import fetchData from '../../HelperComponents/fetchData';
 const { applyFilters } = wp.hooks;
 export class BuildContextProvider extends React.Component {
     // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 	// buildContext state which contains List of questions, type, title, proActive or not.
     state = {
         List: {

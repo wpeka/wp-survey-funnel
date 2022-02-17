@@ -7,6 +7,7 @@
 
 import { useEffect } from "react";
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 // Improved version of https://usehooks.com/useOnClickOutside/
 const useClickOutside          = (ref, handler) => {
 	useEffect(

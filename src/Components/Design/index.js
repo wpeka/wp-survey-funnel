@@ -12,6 +12,7 @@ import DesignSettings from './DesignSettings'
 import '../../scss/survey.scss';
 
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export default function Design() {
 	const { saveContext }                = useContext( DesignContext );
 	return (

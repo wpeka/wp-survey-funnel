@@ -10,6 +10,7 @@ import { initColorState } from '../../Data';
 import fetchData from '../../HelperComponents/fetchData';
 import { convertToRgbaCSS, validateImageUrl } from '../../HelperComponents/HelperFunctions';
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export function DesignContextProvider(props) {
 	// state of design context.
 	const [initialState, setinitialState] = useState(initColorState);

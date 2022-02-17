@@ -15,6 +15,7 @@ import { ReportContext } from "../Context/ReportContext";
 import '../../scss/reports.scss';
 import NoResponseRecorded from "./NoResponseRecorded";
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 // parent reports component which shows tabs of insights and responses.
 export default function Reports() {

@@ -9,7 +9,8 @@ import React, { useContext, useState } from 'react'
 import { ReportContext } from '../Context/ReportContext';
 import NoResponseRecorded from './NoResponseRecorded';
 // creating an answer block in insights tab.
-
+// @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 const getAnswerBlocks = ( item ) => {
 	switch ( item.componentName ) {
 		case 'SingleChoice':

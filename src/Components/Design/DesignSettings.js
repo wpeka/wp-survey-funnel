@@ -11,6 +11,7 @@ import { DesignContext } from '../Context/DesignContext';
 import { PopoverPicker } from '../../HelperComponents/ColorPicker';
 const fontFamily = require( '../../Data/google-fonts.json' );
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export default function DesignSettings() {
 	const designCon = useContext( DesignContext );
 

@@ -8,6 +8,7 @@
 import React from 'react'
 // component when there is no response or date has not been selected.
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 export default function NoResponseRecorded( {title, description} ) {
 	return (

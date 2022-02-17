@@ -12,6 +12,7 @@ import { CloseModal } from '../../../HelperComponents/CloseModalPopUp';
 const { applyFilters } = wp.hooks;
 import { ConfigureContext } from "../../Context/ConfigureContext";
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export const CoverPage = React.memo(
 	class extends React.Component {
 

@@ -6,6 +6,7 @@
  */
 
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 import { createContext, Component } from "react";
 import { useState } from "react";
 import React from 'react';

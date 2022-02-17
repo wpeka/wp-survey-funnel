@@ -13,6 +13,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { ModalContextProvider } from "../../../Components/Context/ModalContext";
 
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 test(
 	"closeModalPopUp",
 	() => {

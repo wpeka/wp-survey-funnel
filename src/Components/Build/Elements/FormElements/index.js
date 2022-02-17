@@ -15,6 +15,7 @@ import ModalContentRight from "../../../../HelperComponents/ModalContentRight";
 import { convertToRgbaCSS } from "../../../../HelperComponents/HelperFunctions";
 import { CloseModal } from '../../../../HelperComponents/CloseModalPopUp';
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export const FormElements = React.memo(
 	class extends React.Component {
 	constructor(props) {

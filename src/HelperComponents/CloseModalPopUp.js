@@ -9,6 +9,7 @@ import { ModalContext } from '../Components/Context/ModalContext';
 import { useContext } from "react";
 import React from "react";
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 export function CloseModal(props) {
 	let { setCurrentElement, setShowModal } = useContext( ModalContext );

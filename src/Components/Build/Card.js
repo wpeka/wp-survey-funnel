@@ -12,6 +12,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import { ModalContext } from "../Context/ModalContext";
 
 const { applyFilters } = wp.hooks;
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 // @codingStandardsIgnoreStart
 export default function (props) {
 	// get the required data from buildContext or parent using props.

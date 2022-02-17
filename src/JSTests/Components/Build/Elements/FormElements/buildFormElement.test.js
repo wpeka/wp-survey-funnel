@@ -13,6 +13,7 @@ import BuildFormElement from '../../../../../Components/Build/Elements/FormEleme
 
 import renderer from 'react-test-renderer';
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 test('Form elements test', async () => {
 

@@ -769,7 +769,7 @@ class Surveyfunnel_Lite_Admin {
 		if ( count( $rows ) ) {
 			$data             = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 			$build            = json_decode( $data['build'] );
-			$content_elements = $build->List->CONTENT_ELEMENTS; //phpcs:ignore
+			$content_elements = $build->List->CONTENT_ELEMENTS; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 			foreach ( $content_elements as $content ) {
 				$id      = $content->id;
 				$pattern = '/' . $id . '/';

@@ -14,7 +14,7 @@ import DropBoard from './DropBoard';
 import ModalBox from './ModalBox';
 import { useContext } from 'react';
 import { ModalContextProvider, ModalContext } from '../Context/ModalContext';
-
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 // Modal Container which would enable/disable ModalBox (Modal) Component to render on the screen.
 // @codingStandardsIgnoreStart
 class ModalContainer extends React.Component {

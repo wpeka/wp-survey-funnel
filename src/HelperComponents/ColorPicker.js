@@ -10,6 +10,7 @@ import { RgbaColorPicker } from "react-colorful";
 
 import useClickOutside from "./useClickOutside";
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 function rgbatohex(color){
 	var r        = color.r;

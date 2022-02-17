@@ -7,7 +7,7 @@
 
 import React from "react";
 // @codingStandardsIgnoreStart
-
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export default function useFetch(data) {
     const [response, setResponse] = React.useState(null);
     const [error, setError] = React.useState(null);

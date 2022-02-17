@@ -1,4 +1,6 @@
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
+
 /**
  * ContentElements JS.
  *

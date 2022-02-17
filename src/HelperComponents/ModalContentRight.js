@@ -9,6 +9,7 @@ import React from "react";
 import { convertToRgbaCSS, designBackground } from "./HelperFunctions";
 import { useEffect } from "react";
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 export default function ModalContentRight( props ) {
 	const { designCon, currentElement } = props;

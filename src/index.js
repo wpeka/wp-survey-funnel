@@ -11,6 +11,7 @@ import "./scss/style.scss";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Routes from "./Components/Routes";
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 // @codingStandardsIgnoreStart
 
 function App() {

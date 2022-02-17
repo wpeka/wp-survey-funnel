@@ -10,6 +10,7 @@ import { ShareContext } from '../Context/ShareContext';
 import Select from 'react-select';
 import fetchData from '../../HelperComponents/fetchData';
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export default function PopupSettings() {
 	const { popup, handleDevicesChange, saveSettings, handleTriggerPageChange, optionsChange, options, handleLaunchOptionsChange, handleLaunchOptionsData, handleFrequencyOptionsChange, handleFrequencyDataChange, handlePopupActivation } = useContext(ShareContext);
 	const handleCollapseTarget =function(e){

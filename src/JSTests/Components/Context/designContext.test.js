@@ -11,6 +11,7 @@ import {DesignContextProvider} from '../../../Components/Context/DesignContext';
 import renderer from 'react-test-renderer';
 // import DesignSettings from "../../../Components/Design/DesignSettings";
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 test(
 	"DesignContextProvider is rendering",

@@ -11,6 +11,7 @@ import fetchData from "../../HelperComponents/fetchData";
 
 export function ConfigureContextProvider( props ) {
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 	// metaInfo state.
 	const [metaInfo, setMetaInfo] = useState(
 		{

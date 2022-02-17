@@ -9,6 +9,7 @@ import React, { Component, useContext } from "react";
 import { useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export default function (props) {
 
 	const ref                                 = useRef( null );

@@ -26,7 +26,7 @@ function _manually_load_plugin() {
 	$string = dirname( dirname( __FILE__ ) ) . '/surveyfunnel-lite.php';
 	require $string;
 	// activate the plugin to get table on activation for testing.
-	do_action( 'activate_' . trim( $string, '/' ) ); //phpcs:ignore
+	do_action( 'activate_' . trim( $string, '/' ) ); //phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

@@ -10,6 +10,8 @@ import ModalContentRight from '../../../HelperComponents/ModalContentRight';
 import { CloseModal } from '../../../HelperComponents/CloseModalPopUp';
 const { applyFilters } = wp.hooks;
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
+
 export const ResultScreen = React.memo(
 	class extends React.Component {
 		state = {

@@ -10,6 +10,7 @@ import fetchData from '../../HelperComponents/fetchData';
 import { BuildContext } from './BuildContext';
 import moment from 'moment';
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export function ReportContextProvider(props) {
 	
 	// reports data.

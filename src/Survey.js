@@ -13,6 +13,7 @@ import fetchData from './HelperComponents/fetchData'
 import { initColorState, ItemTypes, popupInitialState } from './Data'
 import './scss/survey.scss'
 const { applyFilters } = wp.hooks;
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 // @codingStandardsIgnoreStart
 
 let currentIframe = null;

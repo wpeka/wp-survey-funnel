@@ -14,6 +14,7 @@ import { ModalContextProvider } from "./Context/ModalContext";
 import { ShareContextProvider } from "./Context/ShareContext";
 import { ConfigureContextProvider } from "./Context/ConfigureContext";
 import fetchData from "../HelperComponents/fetchData";
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 // @codingStandardsIgnoreStart
 
 // lazy loading components for code splitting.

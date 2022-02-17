@@ -11,6 +11,7 @@ import ShowFormBoard from './ShowFormBoard';
 
 let backgroundColor = "#F4EAFC";
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 const DropFromBoard = ({ ele, List, editList, deleteFromList, moveCard }) => {
     const [{ canDrop, isOver }, drop] = useDrop(() => ({
         accept: ele.itemType,

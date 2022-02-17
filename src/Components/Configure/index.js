@@ -14,6 +14,7 @@ import { ConfigureContext } from '../Context/ConfigureContext';
 
 export default function Configure() {
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 	// get the required ConfigureContext data and functions.
 	const { metaInfo, companyBranding, setCompanyBranding, options, setOptions, handleMetaChange, saveConfiguration, proSettings, setProSettings } = useContext( ConfigureContext );
 

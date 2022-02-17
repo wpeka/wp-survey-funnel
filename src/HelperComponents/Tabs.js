@@ -9,7 +9,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Tab from "./Tab";
 // @codingStandardsIgnoreStart
-
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 class Tabs extends Component {
     static propTypes = {
         children: PropTypes.instanceOf(Array).isRequired,

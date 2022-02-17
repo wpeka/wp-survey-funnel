@@ -13,7 +13,7 @@ import ShareShortCode from "./ShareShortCode";
 import PopupSettings from "./PopupSettings";
 import '../../scss/share.scss';
 // @codingStandardsIgnoreStart
-
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 // function decides which component to render based on currentShareTab.
 const getCurrentTabContent = ( currentShareTab ) => {
 	switch ( currentShareTab ) {

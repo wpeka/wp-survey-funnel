@@ -10,6 +10,8 @@ import { BuildContext } from '../../Context/BuildContext';
 import { ModalContext } from '../../Context/ModalContext';
 import { CloseModal } from '../../../HelperComponents/CloseModalPopUp';
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
+
 export default class PostTitle extends React.Component {
 
 	static contextType = BuildContext;

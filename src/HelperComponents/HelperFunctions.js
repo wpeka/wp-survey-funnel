@@ -10,6 +10,7 @@ export function convertToRgbaCSS( color ) {
 	return colorString;
 }
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 export function designBackground( designCon ) {
 	let backgroundStyle = {

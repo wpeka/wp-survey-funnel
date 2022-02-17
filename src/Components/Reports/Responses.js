@@ -11,7 +11,7 @@ import { ReportContext } from '../Context/ReportContext'
 import NoResponseRecorded from './NoResponseRecorded';
 import moment from 'moment';
 // @codingStandardsIgnoreStart
-
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export default function Responses() {
 	const { reports, currentReportSelected, setCurrentReportSelected, setReports } = useContext( ReportContext );
 	const { List, title } = useContext( BuildContext );

@@ -9,6 +9,7 @@ import React, { createContext, useState, useEffect } from 'react'
 import { popupInitialState, shortcodeTypes } from '../../Data';
 import fetchData from '../../HelperComponents/fetchData';
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export function ShareContextProvider( props ) {
 	// popup initial state.
 	const [popup, setPopup]     = useState( popupInitialState );

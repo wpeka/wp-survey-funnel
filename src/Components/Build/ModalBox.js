@@ -25,6 +25,7 @@ import { CloseModal } from "../../HelperComponents/CloseModalPopUp";
 import { convertToRgbaCSS } from "../../HelperComponents/HelperFunctions";
 
 const { applyFilters } = wp.hooks;
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 // @codingStandardsIgnoreStart
 export default function ModalBox() {
     const { showModal, currentElement } = useContext(ModalContext);

@@ -8,6 +8,7 @@
 import React from 'react';
 import Card from './Card';
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 function ShowBoard( { List, editList, deleteFromList, moveCard } ) {
 	return (
 		<div className = "showBoard" >

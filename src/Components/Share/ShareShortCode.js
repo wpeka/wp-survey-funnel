@@ -6,6 +6,7 @@
  */
 
 // @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 import React, { useState, useEffect } from "react";
 import { dimensionTypes, shortcodeTypes } from "../../Data";
