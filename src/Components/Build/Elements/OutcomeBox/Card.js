@@ -78,7 +78,7 @@ export default function (props) {
         <div ref={ref} className="cardBox" style={style}>
             <div className="surveyfunnel-lite-cardbox-title" >
                 <img src={require(`../../BuildImages/${item.componentName}.png`)}></img>
-                <h3>{item.name}</h3>
+                <h3>{item.title}</h3>
             </div>
             <div className="card-flex">
                 <button className="surveyfunnel-lite-cardBox-btn" onClick={editCard}><img src={require('../../BuildImages/pencil.png')}></img></button>

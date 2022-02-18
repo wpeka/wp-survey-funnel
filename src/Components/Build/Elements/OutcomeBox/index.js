@@ -3,6 +3,7 @@ import { formElements, formElementsDropBoard } from "../../../../Data";
 import Tabs from "../../../../HelperComponents/Tabs";
 import BuildFormElement from "./BuildFormElement";
 import DropFormBoard from "./DropFormBoard";
+import DropBoardCreater from "./DropBoardCreater";
 import update from "immutability-helper";
 import ModalContentRight from "../../../../HelperComponents/ModalContentRight";
 import { convertToRgbaCSS } from "../../../../HelperComponents/HelperFunctions";
@@ -248,14 +249,14 @@ export const OutcomeBox = React.memo(
                 <>
                     <div className="modalOverlay">
                         <div className="modalContent-navbar">
-                            <h3>Result Mapping  &nbsp; &#62; &nbsp;  {this.state.title}</h3>
+                            <h1>Result Mapping</h1>
                             <CloseModal />
                         </div>
                         <div className="modalContent">
                             <div className="modalContent-left">
                                 <div className="modalContent-left-fields">
                                     <div className="modalComponentTitle">
-                                        <h3>{this.state.title}</h3>
+                                        <h2>{this.state.title}</h2>
                                     </div>
                                     <div className="surveyfunnel-lite-form-elements_content">
                                         <div className="surveyfunnel-lite-form-elements_container">
@@ -279,32 +280,18 @@ export const OutcomeBox = React.memo(
 
                             </div>
                             <div className="modalContent-right">
-                                <Tabs>
-                                    <div
-                                        label="Form aaa"
-                                    >
-                                        {formElementsDropBoard.map(function (
-                                            ele,
-                                            i
-                                        ) {
-                                            return (
-                                                <DropFormBoard
-                                                    editList={this.editList}
-                                                    deleteFromList={
-                                                        this.deleteFromList
-                                                    }
-                                                    moveCard={this.moveCard}
-                                                    ele={ele}
-                                                    key={i}
-                                                ></DropFormBoard>
-                                            );
-                                        },
-                                            this)}
-                                    </div>
-                                    <div label="Preview">
+                                <div className="modalContent-right-content"
+                                >
+                                    <DropBoardCreater
+                                        editList={this.editList}
+                                        deleteFromList={
+                                            this.deleteFromList
+                                        }
+                                        moveCard={this.moveCard}
+                                    ></DropBoardCreater>
 
-                                    </div>
-                                </Tabs>
+                                </div>
+
                             </div>
                         </div>
                     </div>

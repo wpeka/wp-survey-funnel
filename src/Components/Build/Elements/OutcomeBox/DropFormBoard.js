@@ -3,10 +3,9 @@ import React, { useContext } from "react";
 import ShowFormBoard from './ShowFormBoard';
 import { BuildContext } from "../../../Context/BuildContext";
 
-let backgroundColor = "#F4EAFC";
+let backgroundColor = "#bebebe";
 
 const DropFromBoard = ({ ele, editList, deleteFromList, moveCard }) => {
-    const { List }= useContext(BuildContext);
     const [{ canDrop, isOver }, drop] = useDrop(() => ({
         accept: 'Outcome',
         drop: () => ({ name: "DropBoard" }),    
@@ -25,8 +24,8 @@ const DropFromBoard = ({ ele, editList, deleteFromList, moveCard }) => {
             className="surveyfunnel-lite-dropboard"
         >
             {isActive ? "Release to drop" : "Drag a box here"}
-            <h2>{ele.name}</h2>
-            <ShowFormBoard moveCard={moveCard} editList={editList} deleteFromList={deleteFromList} List={List['RESULT_ELEMENTS']}></ShowFormBoard>
+            <h2>{ele.title}</h2>
+            {/* <ShowFormBoard moveCard={moveCard} editList={editList} deleteFromList={deleteFromList} List={List['RESULT_ELEMENTS']}></ShowFormBoard> */}
         </div>
     );
 };
