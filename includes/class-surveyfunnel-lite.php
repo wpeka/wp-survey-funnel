@@ -165,7 +165,9 @@ class Surveyfunnel_Lite {
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_status', $plugin_admin, 'surveyfunnel_lite_get_status' );
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_change_status', $plugin_admin, 'surveyfunnel_lite_change_status' );
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_save_build_data', $plugin_admin, 'surveyfunnel_lite_save_build_data' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_save_build_data_outcome', $plugin_admin, 'surveyfunnel_lite_save_build_data_outcome' );
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_build_data', $plugin_admin, 'surveyfunnel_lite_get_build_data' );
+		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_build_data_outcome', $plugin_admin, 'surveyfunnel_lite_get_build_data_outcome' );
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_save_design_data', $plugin_admin, 'surveyfunnel_lite_save_design_data' );
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_design_data', $plugin_admin, 'surveyfunnel_lite_get_design_data' );
 		$this->loader->add_action( 'wp_ajax_surveyfunnel_lite_get_reports_data', $plugin_admin, 'surveyfunnel_lite_get_reports_data' );

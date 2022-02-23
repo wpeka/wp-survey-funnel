@@ -14,6 +14,7 @@ export class BuildContextProvider extends React.Component {
         title: '',
 		type: '',
 		proActive: false,
+        outComeData:[],
     };
 
 	// after component mounted get build data.
@@ -49,6 +50,7 @@ export class BuildContextProvider extends React.Component {
                 } );
             }
         })
+        this.getDataOutcome();
     }
 
 	// add to list when question is newly created.
@@ -135,6 +137,43 @@ export class BuildContextProvider extends React.Component {
             e.target.classList.remove('surveyfunnel-lite-button-loading');
         });
     }
+    //savinf outcome box data
+    saveDataOutcome = (list) => {
+        const ajaxSecurity = document.getElementById('ajaxSecurity').value;
+        const post_id = new URLSearchParams(window.location.search).get('post_id');
+        const data = {
+            security: ajaxSecurity,
+            action: 'surveyfunnel_lite_save_build_data_outcome',
+            post_id,
+            list:JSON.stringify(list),
+        };
+        const ajaxURL = document.getElementById('ajaxURL').value;
+        fetchData(ajaxURL, data)
+        .then(data => {
+            // console.log(x);
+        });
+        // this.setState({
+        //     outComeData:list,
+        // })
+    }
+    getDataOutcome = () => {
+        console.log("i am result");
+        const ajaxSecurity = document.getElementById('ajaxSecurity').value;
+        const post_id = new URLSearchParams(window.location.search).get('post_id');
+        const data = {
+            security: ajaxSecurity,
+            action: 'surveyfunnel_lite_get_build_data_outcome',
+            post_id,
+        };
+        const ajaxURL = document.getElementById('ajaxURL').value;
+        fetchData(ajaxURL, data)
+        .then(data => {
+            console.log(data.data);
+            this.setState({
+                outComeData:data.data,
+            })
+        });
+    }
 
 	// to handle title state change.
     handleChangeTitle = ( title ) => {
@@ -146,7 +185,7 @@ export class BuildContextProvider extends React.Component {
     render() {
         return (
             <BuildContext.Provider
-                value={{ ...this.state, addToList: this.addToList, getCount: this.getCount, editList: this.editList, deleteItemInList: this.deleteItemInList, moveCard: this.moveCard, generateId: this.generateId, saveData: this.saveData, handleChangeTitle: this.handleChangeTitle }}
+                value={{ ...this.state, addToList: this.addToList, getCount: this.getCount, editList: this.editList, deleteItemInList: this.deleteItemInList, moveCard: this.moveCard, generateId: this.generateId, saveData: this.saveData, handleChangeTitle: this.handleChangeTitle ,saveDataOutcome:this.saveDataOutcome}}
             >
                 {this.props.children}
                 

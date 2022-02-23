@@ -20,6 +20,7 @@ vendor/
 composer.lock
 release
 dist/
+src/assets/
 
 
 # ignore log files and databases

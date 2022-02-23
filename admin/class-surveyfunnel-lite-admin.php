@@ -536,6 +536,24 @@ class Surveyfunnel_Lite_Admin {
 		wp_die();
 	}
 
+	public function surveyfunnel_lite_save_build_data_outcome() {
+		// check for security.
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		$post_id       = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$list       = isset( $_POST['list'] ) ? $_POST['list']  : [];
+
+		update_post_meta( $post_id, 'surveyfunnel-lite-data_outcome',$list );
+
+		wp_send_json_success($list);
+		wp_die();
+	}
+
 	/**
 	 * Ajax: save build question and answers.
 	 */
@@ -619,6 +637,29 @@ class Surveyfunnel_Lite_Admin {
 			'proActive'   => apply_filters( 'surveyfunnel_pro_activated', false ),
 		);
 		wp_send_json_success( $data );
+		wp_die();
+	}
+	public function surveyfunnel_lite_get_build_data_outcome() {
+		// check for security.
+		if ( isset( $_POST['action'] ) ) {
+			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
+		} else {
+			wp_send_json_error();
+			wp_die();
+		}
+
+		// get the build data.
+		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$post_meta  = get_post_meta( $post_id, 'surveyfunnel-lite-data_outcome', true );
+		// $post_title = get_the_title( $post_id );
+		// $post_type  = get_post_meta( $post_id, 'surveyfunnel-lite-type', true );
+		// $data       = array(
+			// 'build'       => $post_meta['build'],
+			// 'post_title'  => $post_title,
+			// 'survey_type' => $post_/type,
+			// 'proActive'   => apply_filters( 'surveyfunnel_pro_activated', false ),
+		// );
+		wp_send_json_success( $post_meta );
 		wp_die();
 	}
 

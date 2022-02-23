@@ -22,7 +22,7 @@ const { applyFilters } = wp.hooks;
 
 export default function ModalBox() {
     const { showModal, currentElement } = useContext(ModalContext);
-	const { type, List } = useContext(BuildContext);
+	const { type, List,outComeData } = useContext(BuildContext);
     const designCon = useContext( DesignContext );
     const childRef = React.createRef();
 
@@ -38,7 +38,8 @@ export default function ModalBox() {
 			convertToRgbaCSS,
             editList,
             setCurrentElement,
-            setShowModal
+            setShowModal,
+            outComeData,
         }
         if(currentElement === null) {
             return;

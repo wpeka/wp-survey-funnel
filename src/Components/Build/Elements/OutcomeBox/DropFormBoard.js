@@ -5,16 +5,30 @@ import { BuildContext } from "../../../Context/BuildContext";
 
 let backgroundColor = "#bebebe";
 
-const DropFromBoard = ({ ele, editList, deleteFromList, moveCard }) => {
-    const [{ canDrop, isOver }, drop] = useDrop(() => ({
+const DropFormBoard = ({ ele, editList, deleteFromList, moveCard,getList,addToList }) => {
+    // const {List}=useContext(BuildContext);
+    const [{ canDrop, isOver,getItem,getDropResult,didDrop }, drop] = useDrop(() => ({
         accept: 'Outcome',
-        drop: () => ({ name: "DropBoard" }),    
+        drop: (item,monitor) => afterDrop(item,monitor),    
         collect: (monitor) => ({
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
+            getItem:monitor.getItem(),
+            didDrop:monitor.didDrop(),
+            getDropResult:monitor.getDropResult(),
         }),
     }));
+    const afterDrop=(item,monitor)=>{
+        const title=ele.title;
+        addToList(item,title);
+
+    }
     const isActive = canDrop && isOver;
+    // if(getDropResult){
+    //     let title=ele.title;
+    //     console.log('i am dropped '+ele.title);
+    //     console.log(getItem);
+    // }
     
     return (
         <div
@@ -25,9 +39,10 @@ const DropFromBoard = ({ ele, editList, deleteFromList, moveCard }) => {
         >
             {isActive ? "Release to drop" : "Drag a box here"}
             <h2>{ele.title}</h2>
-            {/* <ShowFormBoard moveCard={moveCard} editList={editList} deleteFromList={deleteFromList} List={List['RESULT_ELEMENTS']}></ShowFormBoard> */}
+            <p>Connected Answers:</p>
+            <ShowFormBoard ele={ele} getList={getList} moveCard={moveCard} editList={editList} deleteFromList={deleteFromList}></ShowFormBoard>
         </div>
     );
 };
 
-export default DropFromBoard;
+export default DropFormBoard;

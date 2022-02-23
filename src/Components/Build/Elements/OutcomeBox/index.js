@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { formElements, formElementsDropBoard } from "../../../../Data";
 import Tabs from "../../../../HelperComponents/Tabs";
 import BuildFormElement from "./BuildFormElement";
 import DropFormBoard from "./DropFormBoard";
 import DropBoardCreater from "./DropBoardCreater";
 import update from "immutability-helper";
+import {BuildContext} from '../../../Context/BuildContext';
 import ModalContentRight from "../../../../HelperComponents/ModalContentRight";
+import SaveOutcomeData from "../../../../HelperComponents/SaveOutcomeData";
 import { convertToRgbaCSS } from "../../../../HelperComponents/HelperFunctions";
 import { CloseModal } from '../../../../HelperComponents/CloseModalPopUp';
 
@@ -13,7 +15,8 @@ export const OutcomeBox = React.memo(
     class extends React.Component {
         constructor(props) {
             super(props);
-            console.log(props);
+            this.getList=this.getList.bind(this);
+            
         }
         state = {
             title: "",
@@ -39,13 +42,30 @@ export const OutcomeBox = React.memo(
             });
         };
 
-        addToList = (item) => {
+        addToList = (item,title) => {
             let newList = JSON.parse(JSON.stringify(this.state.List));
             item.id = this.generateId();
+            item.title=title;
             newList.push(item);
             this.setState({
                 List: newList,
             });
+            // console.log('newlist');
+            console.log(newList);
+
+            // console.log(item);
+            // console.log(title);
+            // let newList = JSON.parse(JSON.stringify(this.state.List));
+            // console.log(typeof this.state.List);
+            // if(!newList.hasOwnProperty(title)){
+            //     console.log('title not found');
+            //     newList[title]=[];
+            //     this.setState({
+            //         List:newList,
+            //     });
+            // }else{
+            //     console.log('title found');
+            // }
         };
 
         generateId = () => {
@@ -59,7 +79,8 @@ export const OutcomeBox = React.memo(
         componentDidMount() {
             const { currentElement } = this.props;
             const data = currentElement['data'];
-            console.log(data);
+            console.log(currentElement);
+            // console.log(data);
             if ("currentlySaved" in data) {
                 let state = {
                     title: data.title,
@@ -67,9 +88,14 @@ export const OutcomeBox = React.memo(
                     answers: data.answers,
                     // List: data.List,
                 };
-                console.log(state);
+                // console.log(state);
                 this.setState(state);
             }
+            const {outComeData}=this.props;
+            this.setState({
+                List:JSON.parse(outComeData),
+            })
+            console.log(JSON.parse(outComeData));
         }
 
         getCurrentFormElementLeftRender = () => {
@@ -242,9 +268,21 @@ export const OutcomeBox = React.memo(
                 }
             })
         }
-
+        getList(){
+            // console.log(this.state.List);
+            // let newList = this.state.List;
+            return this.state.List;
+        }
+        createNewList=(newList)=>{
+            // console.log(newList);
+            this.setState({
+                List:newList,
+            });
+        }
+        
         render() {
             const { designCon, currentElement } = this.props;
+
             return (
                 <>
                     <div className="modalOverlay">
@@ -261,6 +299,8 @@ export const OutcomeBox = React.memo(
                                     <div className="surveyfunnel-lite-form-elements_content">
                                         <div className="surveyfunnel-lite-form-elements_container">
                                             {this.state.answers?.map((ele, i) => {
+                                                ele.key=i+1;
+                                                // console.log(ele);
                                                 return (
                                                     <BuildFormElement
                                                         addToList={this.addToList}
@@ -277,6 +317,7 @@ export const OutcomeBox = React.memo(
                                         </div>
                                     </div>
                                 </div>
+                                <SaveOutcomeData getList={this.getList} />
 
                             </div>
                             <div className="modalContent-right">
@@ -284,14 +325,15 @@ export const OutcomeBox = React.memo(
                                 >
                                     <DropBoardCreater
                                         editList={this.editList}
-                                        deleteFromList={
-                                            this.deleteFromList
-                                        }
+                                        deleteFromList={this.deleteFromList}
+                                        addToList={this.addToList}
                                         moveCard={this.moveCard}
+                                        createNewList={this.createNewList}
+                                        getList={this.getList}
                                     ></DropBoardCreater>
 
                                 </div>
-
+                                
                             </div>
                         </div>
                     </div>
