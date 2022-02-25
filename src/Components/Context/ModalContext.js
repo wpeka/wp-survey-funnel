@@ -1,3 +1,12 @@
+/**
+ * ModalContext JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Context
+ */
+
+// @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 import { createContext, Component } from "react";
 import { useState } from "react";
 import React from 'react';
@@ -5,22 +14,23 @@ import React from 'react';
 export function ModalContextProvider( props ) {
 
 	// state to show or hide modal.
-	const [ showModal, setShowModal ] = useState(false);	
+	const [ showModal, setShowModal ] = useState( false );
 	// state to set current element
 	const [ currentElement, setCurrentElement ] = useState( {} );
-	const getShowModal = () => {
+	const getShowModal                          = () => {
 		return showModal;
 	}
-	const value = {
+	const value                                 = {
 		showModal, setShowModal, currentElement, setCurrentElement, getShowModal
 	}
 	return(
 		<ModalContext.Provider
-			value={value}
+			value                               = {value}
 		>
 			{props.children}
-		</ModalContext.Provider>
+		</ ModalContext.Provider >
 	);
 }
 
 export const ModalContext = createContext();
+// @codingStandardsIgnoreEnd

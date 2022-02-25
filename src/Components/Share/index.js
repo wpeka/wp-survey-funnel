@@ -1,3 +1,10 @@
+/**
+ * PopupSettings JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Share
+ */
+
 import React, { useContext, useEffect, useState } from "react";
 import { shareTabsData } from "../../Data";
 import { ShareContext } from "../Context/ShareContext";
@@ -5,10 +12,11 @@ import Tabs from "../../HelperComponents/Tabs";
 import ShareShortCode from "./ShareShortCode";
 import PopupSettings from "./PopupSettings";
 import '../../scss/share.scss';
-
+// @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 // function decides which component to render based on currentShareTab.
 const getCurrentTabContent = ( currentShareTab ) => {
-	switch( currentShareTab ) {
+	switch ( currentShareTab ) {
 		case 'shortcode':
 			return <ShareShortCode />
 		case 'popup':
@@ -21,33 +29,36 @@ const getCurrentTabContent = ( currentShareTab ) => {
 export default function Share() {
 
 	// state to keep in track of currentTab defualt is shortcode.
-	const [ currentShareTab, setCurrentShareTab ] = useState('shortcode');
+	const [ currentShareTab, setCurrentShareTab ] = useState( 'shortcode' );
 
 	const changeCurrentShareTab = ( id ) => {
-		setCurrentShareTab(id);
+		setCurrentShareTab( id );
 	}
-	
+
 	return (
-        <div className="Share">
-            <div className="shareTabs">
-				{shareTabsData.map(function(item, i) {
-					return <div key={i} className="shareTabs-element" style={{cursor: 'pointer'}} onClick={() => {
-						changeCurrentShareTab(item.id);
-					}}>
-								<div className="shareTabs-element-title">
-									<h3>{item.name}</h3>
-									<p>{item.description}</p>
-								</div>
-								{item.id === currentShareTab && <img src={require('../Build/BuildImages/arrowRight.png')}></img> }
-							</div>
-				})}
-				
-			</div>
-			<div className="shareTabContent">
-				<div className="shareTabContentContainer">
+		<div className     = "Share">
+			<div className = "shareTabs">
+				{shareTabsData.map(
+					function(item, i) {
+						return <div key                                  = {i} className = "shareTabs-element" style = {{cursor: 'pointer'}} onClick = {() => {
+							changeCurrentShareTab( item.id );
+							}}>
+								<div className                           = "shareTabs-element-title">
+									<h3> {item.name} </ h3>
+									<p> {item.description} </ p>
+								</ div>
+								{item.id === currentShareTab && <img src = {require( '../Build/BuildImages/arrowRight.png' )}> </ img> }
+							</ div>
+					}
+				)}
+
+			</ div>
+			<div className     = "shareTabContent">
+				<div className = "shareTabContentContainer">
 					{getCurrentTabContent( currentShareTab )}
-				</div>
-			</div>
-        </div>
-    );
+				</ div>
+			</ div>
+		</ div>
+	);
 }
+// @codingStandardsIgnoreEnd

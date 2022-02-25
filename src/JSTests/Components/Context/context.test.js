@@ -1,4 +1,13 @@
 /**
+ * Test Files JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/JSTests
+ */
+
+// @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
+/**
  * @jest-environment jsdom
  */
 
@@ -9,3 +18,4 @@ import {ModalContext,ModalContextProvider} from '../../../Components/Context/Mod
 test("ModalContext",()=>{
         const wrapper=shallow(<ModalContextProvider />)    
 })
+// @codingStandardsIgnoreEnd

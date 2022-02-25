@@ -241,7 +241,7 @@ class Analytics_Tracking {
 		$curl = curl_version();
 
 		$ssl_support = true;
-        // phpcs:ignore WordPress.WP.AlternativeFunctions.curl_curl_version_ssl -- This only concerns the basic act of getting the curl version.
+		//  WordPress . WP . AlternativeFunctions . curl_curl_version_ssl -- This only concerns the basic act of getting the curl version .
 		if ( ! $curl['features'] && CURL_VERSION_SSL ) {
 			$ssl_support = false;
 		}

@@ -1,4 +1,13 @@
 /**
+ * Test Files JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/JSTests
+ */
+
+// @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
+/**
  * @jest-environment jsdom
  */
 import React from 'react';
@@ -52,3 +61,4 @@ describe('if form element component is getting rendered properly', () => {
 		expect(component.state('title')).toBe('myValue');
 	} )
 })
+// @codingStandardsIgnoreEnd

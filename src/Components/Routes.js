@@ -1,5 +1,12 @@
+/**
+ * Routes JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components
+ */
+
 import React, { Suspense, lazy, useEffect, useState } from "react";
-import { HashRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
+import { HashRouter as Router, Switch , Route, Link, NavLink } from "react-router-dom";
 import { BuildContextProvider } from "./Context/BuildContext";
 import { DesignContext, DesignContextProvider } from "./Context/DesignContext";
 import { ReportContextProvider } from './Context/ReportContext';
@@ -7,6 +14,8 @@ import { ModalContextProvider } from "./Context/ModalContext";
 import { ShareContextProvider } from "./Context/ShareContext";
 import { ConfigureContextProvider } from "./Context/ConfigureContext";
 import fetchData from "../HelperComponents/fetchData";
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
+// @codingStandardsIgnoreStart
 
 // lazy loading components for code splitting.
 const Build = lazy(() => import("./Build"));
@@ -126,3 +135,4 @@ export default function Routes() {
         </Router>
     );
 }
+// @codingStandardsIgnoreEnd

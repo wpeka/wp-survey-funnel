@@ -1,9 +1,17 @@
+/**
+ * Card JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Build
+ */
+
 import { useDrag } from "react-dnd";
 import { useContext, useState } from "react";
 import { ModalContext } from "../Context/ModalContext";
 import { BuildContext } from "../Context/BuildContext";
 import { ItemTypes } from "../../Data";
-
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
+// @codingStandardsIgnoreStart
 export default function BuildElement({ ele }) {
     const { setCurrentElement, setShowModal } = useContext( ModalContext );
     const { List } = useContext( BuildContext );
@@ -50,3 +58,4 @@ export default function BuildElement({ ele }) {
         </div>
     );
 };
+// @codingStandardsIgnoreEnd

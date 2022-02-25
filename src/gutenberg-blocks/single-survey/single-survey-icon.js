@@ -1,4 +1,13 @@
+/**
+ * Single Survey Icon JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/gutenburg-blocks
+ */
+
 import React from "react"
+// @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 function SingleSurveyIcon(props) {
 
@@ -92,3 +101,4 @@ YmUgSW1hZ2VSZWFkeXHJZTwAAAAASUVORK5CYII=" />
 }
 
 export default SingleSurveyIcon;
+// @codingStandardsIgnoreEnd

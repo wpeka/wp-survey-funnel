@@ -1,3 +1,10 @@
+/**
+ * Data JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Data
+ */
+
 const { applyFilters } = wp.hooks;
 
 const ItemTypes = {
@@ -5,7 +12,7 @@ const ItemTypes = {
 	START_ELEMENTS: 'START_ELEMENTS',
 	CONTENT_ELEMENTS: 'CONTENT_ELEMENTS',
 	RESULT_ELEMENTS: 'RESULT_ELEMENTS'
-}  
+}
 
 let buildElements = {
 	startScreen: [
@@ -13,44 +20,44 @@ let buildElements = {
 			name: 'Cover Page',
 			componentName: 'CoverPage',
 			itemType: ItemTypes.START_ELEMENTS,
-		}
+	}
 	],
 	contentElements: [
 		{
 			name: 'Single Choice',
 			componentName: 'SingleChoice',
 			itemType: ItemTypes.CONTENT_ELEMENTS
-		},
+	},
 		{
 			name: 'Multi Choice',
 			componentName: 'MultiChoice',
 			itemType: ItemTypes.CONTENT_ELEMENTS
-		},
+	},
 		{
 			name: 'Form Elements',
 			componentName: 'FormElements',
 			itemType: ItemTypes.CONTENT_ELEMENTS
-		},
+	},
 		{
 			name: 'Short Answer',
 			componentName: 'ShortAnswer',
 			itemType: ItemTypes.CONTENT_ELEMENTS,
 			value: ''
-		},
+	},
 		{
 			name: 'Long Answer',
 			componentName: 'LongAnswer',
 			itemType: ItemTypes.CONTENT_ELEMENTS,
 			value: ''
-		},
-		...applyFilters('contentElements', [])
+	},
+		...applyFilters( 'contentElements', [] )
 	],
 	resultScreen: [
 		{
 			name: 'Results Page',
 			componentName: 'ResultScreen',
 			itemType: ItemTypes.RESULT_ELEMENTS
-		}
+	}
 	]
 };
 
@@ -70,17 +77,17 @@ const dropBoard = [
 		type: 'ResultsScreen',
 		itemType: ItemTypes.RESULT_ELEMENTS
 	}
-];
+	];
 
-const formElementsDropBoard = [
+	const formElementsDropBoard = [
 	{
 		name: 'Form Fields',
 		type: 'FormFields',
 		itemType: 'FORMFIELDS_ELEMENTS'
 	}
-]
+	]
 
-let formElements = [
+	let formElements   = [
 	{
 		name: 'First Name',
 		componentName: 'FirstName',
@@ -105,8 +112,8 @@ let formElements = [
 		placeholder: '',
 		value: ''
 	},
-]
-const designColors = [
+	]
+	const designColors = [
 	{
 		name: 'Font Color',
 		itemName: 'fontColor'
@@ -135,65 +142,65 @@ const designColors = [
 		name: 'Background Container Color',
 		itemName: 'backgroundContainerColor'
 	},
-]
+	]
 
-const initColorState = {
-	opacity: 0,
+	const initColorState = {
+		opacity: 0,
 
-	fontFamily: null,
-	fontFamilyValue: '',
-	
-	backgroundColor: {
-		r: '255',
-		g: '255',
-		b: '255',
-		a: '1'
-	},
+		fontFamily: null,
+		fontFamilyValue: '',
 
-	buttonColor: {
-		r: '1',
-		g: '111',
-		b: '222',
-		a: '1'
-	},
+		backgroundColor: {
+			r: '255',
+			g: '255',
+			b: '255',
+			a: '1'
+		},
 
-	buttonTextColor: {
-		r: '255',
-		g: '255',
-		b: '255',
-		a: '1'
-	},
+		buttonColor: {
+			r: '1',
+			g: '111',
+			b: '222',
+			a: '1'
+		},
 
-	answersHighlightBoxColor: {
-		r: '232',
-		g: '238',
-		b: '244',
-		a: '1'
-	},
+		buttonTextColor: {
+			r: '255',
+			g: '255',
+			b: '255',
+			a: '1'
+		},
 
-	answerBorderColor: {
-		r: '180',
-		g: '220',
-		b: '255',
-		a: '1'
-	},
+		answersHighlightBoxColor: {
+			r: '232',
+			g: '238',
+			b: '244',
+			a: '1'
+		},
 
-	backgroundContainerColor: {
-		r: '255',
-		g: '255',
-		b: '255',
-		a: '1'
-	},
+		answerBorderColor: {
+			r: '180',
+			g: '220',
+			b: '255',
+			a: '1'
+		},
 
-	fontColor: {
-		r: '0',
-		g: '0',
-		b: '0',
-		a: '1'
-	},
-}
+		backgroundContainerColor: {
+			r: '255',
+			g: '255',
+			b: '255',
+			a: '1'
+		},
 
-const shortcodeTypes = [
+		fontColor: {
+			r: '0',
+			g: '0',
+			b: '0',
+			a: '1'
+		},
+	}
+
+	const shortcodeTypes = [
 	{
 		name: 'Responsive',
 		id: 'responsive',
@@ -210,9 +217,9 @@ const shortcodeTypes = [
 		helpText: "This code will place a custom sized survey on your website.",
 		disabled: true,
 	}
-]
+	]
 
-const shareTabsData = [
+	const shareTabsData = [
 	{
 		name: 'Share Shortcode',
 		description: ' ‌Copy‌ ‌and‌ ‌paste‌ ‌this‌ ‌into‌ ‌any‌ ‌post‌ ‌or‌ ‌page‌ ‌you‌ ‌want‌ ‌the‌ ‌survey‌ ‌to‌ ‌be‌ ‌displayed.‌',
@@ -223,12 +230,12 @@ const shareTabsData = [
 		description: '‌Enable‌ ‌a‌ ‌pop-up‌ ‌survey‌ ‌on‌ ‌selected‌ ‌pages',
 		id: 'popup'
 	}
-]
+	]
 
-const popupInitialState = {
-	active: false,
-	targettingOptions: {
-		devices: [
+	const popupInitialState = {
+		active: false,
+		targettingOptions: {
+			devices: [
 			{
 				name: 'Desktop',
 				checked: true,
@@ -244,28 +251,27 @@ const popupInitialState = {
 				checked: true,
 				id: 'tablet'
 			}
-		],
-		triggerPage: 'triggerOnSpecific',
-		selectedPagesAndPosts: [],
-	},
-	behaviourOptions: {
-		launchOptions: {
-			launchWhen: 'afterPageLoads',
-			afterTimeDelay: 5,
-			afterExitIntent: 'low',
-			afterScrollPercentage: 20,
+			],
+			triggerPage: 'triggerOnSpecific',
+			selectedPagesAndPosts: [],
 		},
-		frequencyOptions: {
-			frequency: 'alwaysShow',
-			hideFor: 3,
-			dontShowAgain: false,
+		behaviourOptions: {
+			launchOptions: {
+				launchWhen: 'afterPageLoads',
+				afterTimeDelay: 5,
+				afterExitIntent: 'low',
+				afterScrollPercentage: 20,
+			},
+			frequencyOptions: {
+				frequency: 'alwaysShow',
+				hideFor: 3,
+				dontShowAgain: false,
+			}
 		}
 	}
-}
 
-const dimensionTypes = [
+	const dimensionTypes = [
 	'%', 'px', 'em', 'rem'
-];
+	];
 
-export { ItemTypes, buildElements, popupInitialState, shareTabsData, shortcodeTypes, initColorState, designColors, formElements, formElementsDropBoard, dropBoard, dimensionTypes };
-
+	export { ItemTypes, buildElements, popupInitialState, shareTabsData, shortcodeTypes, initColorState, designColors, formElements, formElementsDropBoard, dropBoard, dimensionTypes };

@@ -1,76 +1,88 @@
+/**
+ * Data Test Cases JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/src
+ */
+
 import * as data from "../../Data/index";
+// @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 
 
 it(
 	"ItemTypes test",
 	() => {
-    const expectedItemTypes = { CARD: 'card',
+		const expectedItemTypes     = { CARD: 'card',
+
 			START_ELEMENTS: 'START_ELEMENTS',
 			CONTENT_ELEMENTS: 'CONTENT_ELEMENTS',
 			RESULT_ELEMENTS: 'RESULT_ELEMENTS'
 		}
 		const receivedItemTypes = data.ItemTypes;
-    expect( expectedItemTypes ).toMatchObject( receivedItemTypes );
+		expect( expectedItemTypes ).toMatchObject( receivedItemTypes );
 	}
 )
 
 it(
 	"buildElements test",
 	() => {
-    const expectedbuildElements = {
+		const expectedbuildElements = {
+
 			startScreen: [
 			{
 				name: 'Cover Page',
 				componentName: 'CoverPage',
 				itemType: data.ItemTypes.START_ELEMENTS,
-			}
+				}
 			],
 			contentElements: [
 			{
 				name: 'Single Choice',
 				componentName: 'SingleChoice',
 				itemType: data.ItemTypes.CONTENT_ELEMENTS
-			},
+				},
 			{
 				name: 'Multi Choice',
 				componentName: 'MultiChoice',
 				itemType: data.ItemTypes.CONTENT_ELEMENTS
-			},
+				},
+
 			{
 				name: 'Form Elements',
 				componentName: 'FormElements',
 				itemType: data.ItemTypes.CONTENT_ELEMENTS
-			},
+				},
 			{
 				name: 'Short Answer',
 				componentName: 'ShortAnswer',
 				itemType: data.ItemTypes.CONTENT_ELEMENTS,
 				value: ''
-			},
+				},
 			{
 				name: 'Long Answer',
 				componentName: 'LongAnswer',
 				itemType: data.ItemTypes.CONTENT_ELEMENTS,
 				value: ''
-			},
+				},
 			],
 			resultScreen: [
 			{
 				name: 'Results Page',
 				componentName: 'ResultScreen',
 				itemType: data.ItemTypes.RESULT_ELEMENTS
-			}
+				}
 			]
 		};
-    const receivedbuildElements = data.buildElements;
-    expect( expectedbuildElements ).toMatchObject( receivedbuildElements );
+		const receivedbuildElements = data.buildElements;
+		expect( expectedbuildElements ).toMatchObject( receivedbuildElements );
 	}
 )
 
 it(
 	"dropBoard test",
 	() => {
-    const expecteddropBoard = [
+		const expecteddropBoard = [
 		{
 			name: 'Start Screen',
 			type: 'StartScreen',
@@ -87,15 +99,18 @@ it(
 			itemType: data.ItemTypes.RESULT_ELEMENTS
 		}
 		];
-    const receiveddropBoard = data.dropBoard;
-    expect( expecteddropBoard ).toEqual( expect.arrayContaining( receiveddropBoard ) );
+
+		const receiveddropBoard = data.dropBoard;
+		expect( expecteddropBoard ).toEqual( expect.arrayContaining( receiveddropBoard ) );
+
 	}
 )
 
 it(
 	"formElementsDropBoard test",
 	() => {
-    const expectedformElementsDropBoard = [
+		const expectedformElementsDropBoard     = [
+
 		{
 			name: 'Form Fields',
 			type: 'FormFields',
@@ -103,14 +118,16 @@ it(
 		}
 		]
 		const receivedformElementsDropBoard = data.formElementsDropBoard;
-    expect( expectedformElementsDropBoard ).toEqual( expect.arrayContaining( receivedformElementsDropBoard ) );
+		expect( expectedformElementsDropBoard ).toEqual( expect.arrayContaining( receivedformElementsDropBoard ) );
+
 	}
 )
 
 it(
 	"formElements test",
 	() => {
-    const expectedformElements = [
+		const expectedformElements = [
+
 		{
 			name: 'First Name',
 			componentName: 'FirstName',
@@ -136,15 +153,17 @@ it(
 			value: ''
 		},
 		];
-    const receivedformElements = data.formElements;
-    expect( expectedformElements ).toEqual( expect.arrayContaining( receivedformElements ) );
+		const receivedformElements = data.formElements;
+		expect( expectedformElements ).toEqual( expect.arrayContaining( receivedformElements ) );
+
 	}
 )
 
 it(
 	"designColors test",
 	() => {
-    const expecteddesignColors = [
+		const expecteddesignColors     = [
+
 		{
 			name: 'Font Color',
 			itemName: 'fontColor'
@@ -175,7 +194,8 @@ it(
 		},
 		]
 		const receiveddesignColors = data.designColors;
-    expect( expecteddesignColors ).toEqual( expect.arrayContaining( receiveddesignColors ) );
+		expect( expecteddesignColors ).toEqual( expect.arrayContaining( receiveddesignColors ) );
+
 	}
 )
 
@@ -183,7 +203,8 @@ it(
 it(
 	"initColorState test",
 	() => {
-    const expectedinitColorState = {
+		const expectedinitColorState = {
+
 			opacity: 0,
 
 			fontFamily: null,
@@ -194,59 +215,73 @@ it(
 				g: '255',
 				b: '255',
 				a: '1'
-			},
+
+				},
+
 
 			buttonColor: {
 				r: '1',
 				g: '111',
 				b: '222',
 				a: '1'
-			},
+
+				},
+
 
 			buttonTextColor: {
 				r: '255',
 				g: '255',
 				b: '255',
 				a: '1'
-			},
+
+				},
+
 
 			answersHighlightBoxColor: {
 				r: '232',
 				g: '238',
 				b: '244',
 				a: '1'
-			},
+
+				},
+
 
 			answerBorderColor: {
 				r: '180',
 				g: '220',
 				b: '255',
 				a: '1'
-			},
+				},
+
 
 			backgroundContainerColor: {
 				r: '255',
 				g: '255',
 				b: '255',
 				a: '1'
-			},
+				},
+
 
 			fontColor: {
 				r: '0',
 				g: '0',
 				b: '0',
 				a: '1'
-			},
+
+				},
 		}
 		const receivedinitColorState = data.initColorState;
-    expect( expectedinitColorState ).toMatchObject( receivedinitColorState );
+		expect( expectedinitColorState ).toMatchObject( receivedinitColorState );
+
 	}
 )
 
 it(
 	"shortcodeTypes test",
 	() => {
-    const expectedshortcodeTypes = [
+
+		const expectedshortcodeTypes = [
+
 		{
 			name: 'Responsive',
 			id: 'responsive',
@@ -266,7 +301,8 @@ it(
 		]
 
 		const receivedshortcodeTypes = data.shortcodeTypes;
-    expect( expectedshortcodeTypes ).toEqual( expect.arrayContaining( receivedshortcodeTypes ) );
+		expect( expectedshortcodeTypes ).toEqual( expect.arrayContaining( receivedshortcodeTypes ) );
+
 	}
 )
 
@@ -274,7 +310,8 @@ it(
 it(
 	"popupInitialState test",
 	() => {
-    const expectedpopupInitialState = {
+		const expectedpopupInitialState     = {
+
 			active: false,
 			targettingOptions: {
 				devices: [
@@ -296,7 +333,8 @@ it(
 				],
 				triggerPage: 'triggerOnSpecific',
 				selectedPagesAndPosts: [],
-			},
+				},
+
 			behaviourOptions: {
 				launchOptions: {
 					launchWhen: 'afterPageLoads',
@@ -309,16 +347,18 @@ it(
 					hideFor: 3,
 					dontShowAgain: false,
 				}
-			}
+				}
 		}
 		const receivedpopupInitialState = data.popupInitialState;
-    expect( expectedpopupInitialState ).toMatchObject( receivedpopupInitialState );
+		expect( expectedpopupInitialState ).toMatchObject( receivedpopupInitialState );
+
 	}
 )
 it(
 	"shareTabsData test",
 	() => {
-    const expectedshareTabsData = [
+		const expectedshareTabsData     = [
+
 		{
 			name: 'Share Shortcode',
 			description: ' ‌Copy‌ ‌and‌ ‌paste‌ ‌this‌ ‌into‌ ‌any‌ ‌post‌ ‌or‌ ‌page‌ ‌you‌ ‌want‌ ‌the‌ ‌survey‌ ‌to‌ ‌be‌ ‌displayed.‌',
@@ -331,6 +371,9 @@ it(
 		}
 		]
 		const receivedshareTabsData = data.shareTabsData;
-    expect( expectedshareTabsData ).toEqual( expect.arrayContaining( receivedshareTabsData ) );
+
+		expect( expectedshareTabsData ).toEqual( expect.arrayContaining( receivedshareTabsData ) );
 	}
 )
+// @codingStandardsIgnoreEnd
+

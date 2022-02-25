@@ -196,7 +196,7 @@ class Surveyfunnel_Lite_Admin {
 					</div>
 				</div>
 				<div class="surveyfunnel-lite-section">
-					<a class="surveyfunnel-lite-button" href="<?php echo esc_url( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard' ); ?>">Create Your First Survey</a>
+					<a class="surveyfunnel-lite-button" href="<?php echo esc_url_raw( wp_nonce_url( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard', 'verify_admin', 'admin_nonce' ) ); ?>">Create Your First Survey</a>
 				</div>
 				</div>
 			</div>
@@ -275,8 +275,8 @@ class Surveyfunnel_Lite_Admin {
 			}
 
 			update_option( 'srf-lite-background-update', true );
-		}else{
-			update_option( 'srf-lite-background-update', false);
+		} else {
+			update_option( 'srf-lite-background-update', false );
 		}
 	}
 
@@ -362,7 +362,10 @@ class Surveyfunnel_Lite_Admin {
 	 */
 	public function surveyfunnel_lite_survey_setup_page() {
 		// if page is not surveyfunnel-lite ? return from this function because we are mainly interested in surveyfunnel-lite page.
-		if ( empty( $_GET['page'] ) || 'surveyfunnel-lite' !== $_GET['page'] ) { // phpcs:ignore CSRF ok, input var ok.
+		if ( isset( $_GET['verify_dashboard'] ) ) {
+			$nonce_dashboard = sanitize_text_field( wp_unslash( $_GET['verify_dashboard'] ) );
+		}
+		if ( empty( $_GET['page'] ) || 'surveyfunnel-lite' !== $_GET['page'] || ! wp_verify_nonce( $nonce_dashboard, 'action_dashboard' ) ) {
 			return;
 		}
 
@@ -421,7 +424,7 @@ class Surveyfunnel_Lite_Admin {
 				<div id="root" class="surveyfunnel-lite-root"></div>
 				<input type="hidden" id="ajaxURL" value="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>">
 				<input type="hidden" id="ajaxSecurity" value="<?php echo esc_attr( wp_create_nonce( 'surveyfunnel-lite-security' ) ); ?>">
-				<input type="hidden" id="dashboardLink" value="<?php echo esc_url( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard' ); ?>">
+				<input type="hidden" id="dashboardLink" value="<?php echo esc_url_raw( wp_nonce_url( admin_url() . 'admin.php?page=surveyfunnel-lite-dashboard', 'verify_admin', 'admin_nonce' ) ); ?>">
 				<input type="hidden" id="exportCSVAction" value="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>?action=export_csv">
 				<?php do_action( 'surveyfunnel_lite_survey_page_html' ); ?>
 				<?php wp_print_scripts( $this->plugin_name . '-main' ); ?>
@@ -436,7 +439,9 @@ class Surveyfunnel_Lite_Admin {
 	 * Returns the setup page url.
 	 */
 	public static function surveyfunnel_lite_get_setup_page_url() {
-		return get_admin_url() . 'index.php?page=surveyfunnel-lite&post_id=';
+		$url   = get_admin_url() . 'index.php?page=surveyfunnel-lite';
+		$nonce = esc_url_raw( wp_nonce_url( $url, 'action_dashboard', 'verify_dashboard' ) ) . '&post_id=';
+		return $nonce;
 	}
 
 	/**
@@ -693,19 +698,14 @@ class Surveyfunnel_Lite_Admin {
 		$end_date   = isset( $_POST['endDate'] ) ? sanitize_text_field( wp_unslash( $_POST['endDate'] ) ) : '';
 
 		// get all rows between specified start date and end date.
-		$rows = $wpdb->get_results(
-			$wpdb->prepare(
-				'
-					SELECT * 
-					FROM ' . $table_name . '
-					WHERE date_created BETWEEN %s and %s AND
-					survey_id = %d
-				',
-				$start_date,
-				$end_date,
-				$post_id
-			)
-		);
+		$rows = wp_cache_get( 'rows2' );
+		if ( false === $rows ) {
+			$rows = $wpdb->get_results(
+				$wpdb->prepare( 'SELECT * FROM %s WHERE date_created BETWEEN %s and %s AND survey_id = %d', $table_name, $start_date, $end_date, $post_id )
+			); // db call ok.
+			wp_cache_set( 'rows2', $rows );
+		}
+
 		// return array which will be echoed.
 		$return_arr = array();
 		if ( is_array( $rows ) && count( $rows ) ) {
@@ -749,12 +749,13 @@ class Surveyfunnel_Lite_Admin {
 			$wpdb->prepare(
 				'
 				SELECT * 
-				FROM ' . $table_name . '
+				FROM %s
 				WHERE survey_id = %d
 			',
+				$table_name,
 				$post_id
 			)
-		);
+		); // db call ok,no-cache ok.
 		// initializing required variables.
 		$view_count      = 0;
 		$completed_count = 0;
@@ -768,7 +769,7 @@ class Surveyfunnel_Lite_Admin {
 		if ( count( $rows ) ) {
 			$data             = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 			$build            = json_decode( $data['build'] );
-			$content_elements = $build->List->CONTENT_ELEMENTS;//phpcs:ignore
+			$content_elements = $build->List->CONTENT_ELEMENTS; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 			foreach ( $content_elements as $content ) {
 				$id      = $content->id;
 				$pattern = '/' . $id . '/';
@@ -817,7 +818,10 @@ class Surveyfunnel_Lite_Admin {
 	 * Mascot on all pages.
 	 */
 	public function surveyfunnel_lite_mascot_on_pages() {
-		if ( empty( $_GET['page'] ) || ('surveyfunnel-lite-dashboard' !== $_GET['page'] && 'surveyfunnel-lite-help' !== $_GET['page']) ) {//phpcs:ignore
+		if ( isset( $_GET['admin_nonce'] ) ) {
+			$admin_nonce = sanitize_text_field( wp_unslash( $_GET['admin_nonce'] ) );
+		}
+		if ( empty( $_GET['page'] ) || ( 'surveyfunnel-lite-dashboard' !== $_GET['page'] && 'surveyfunnel-lite-help' !== $_GET['page'] || ! wp_verify_nonce( $admin_nonce, 'verify_admin' ) ) ) {
 			return;
 		}
 

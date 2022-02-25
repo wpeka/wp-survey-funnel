@@ -1,5 +1,13 @@
-import React from "react";
+/**
+ * Hooks JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Hooks
+ */
 
+import React from "react";
+// @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
 export default function useFetch(data) {
     const [response, setResponse] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -26,3 +34,4 @@ export default function useFetch(data) {
     }, []);
     return { response, error, isLoading };
 }
+// @codingStandardsIgnoreEnd

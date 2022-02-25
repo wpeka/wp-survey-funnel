@@ -34,7 +34,11 @@ class Surveyfunnel_Lite_Activator {
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 		if ( is_multisite() ) {
 			// Get all blogs in the network and activate plugin on each one.
-			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" ); //phpcs:ignore
+			$blog_ids = wp_cache_get( 'blog_ids1' );
+			if ( false === $blog_ids ) {
+				$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" ); // db call ok.
+				wp_cache_set( 'blog_ids1', $blog_ids );
+			}
 			foreach ( $blog_ids as $blog_id ) {
 				switch_to_blog( $blog_id );
 				self::surveyfunnel_lite_install_table();

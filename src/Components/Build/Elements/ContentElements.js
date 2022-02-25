@@ -1,9 +1,17 @@
+// @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
+
+/**
+ * ContentElements JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Build
+ */
 import React, { Component, useContext, useState } from "react";
 import ModalContentRight from '../../../HelperComponents/ModalContentRight';
 import { convertToRgbaCSS } from "../../../HelperComponents/HelperFunctions";
 import { CloseModal } from '../../../HelperComponents/CloseModalPopUp';
 const { applyFilters } = wp.hooks;
-
 export const Choices = React.memo(
     class extends Component {
         state = {
@@ -389,3 +397,4 @@ function getAnswerComponentInput(currentElement, designCon) {
     }
 
 }
+// @codingStandardsIgnoreEnd

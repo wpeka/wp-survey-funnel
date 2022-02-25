@@ -1,4 +1,13 @@
 /**
+ * Test Files JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/JSTests
+ */
+
+// @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
+/**
  * @jest-environment jsdom
  */
 import React, { Component } from "react";
@@ -30,3 +39,4 @@ test('HelperComponents Tabs test', () => {
 	expect(tree).toMatchSnapshot();
 
 });
+// @codingStandardsIgnoreEnd

@@ -1,6 +1,14 @@
+// @codingStandardsIgnoreStart
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
+/**
+ * BuildFormElement JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Build
+ */
+
 import { useDrag } from "react-dnd";
 import { useContext, useState } from "react";
-
 export default function BuildFormElement({ ele, setCurrentFormElement, addToList }) {
     const [{ isDragging }, drag] = useDrag(() => ({
         type: ele.itemType,
@@ -31,3 +39,4 @@ export default function BuildFormElement({ ele, setCurrentFormElement, addToList
         </div>
     );
 };
+// @codingStandardsIgnoreEnd

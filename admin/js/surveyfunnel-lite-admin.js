@@ -104,11 +104,11 @@
 							}
 						}
 					).done(
-						data => {
+						data =>
+						{
 							if ( data ?.success && data.success ) {
 								window.location = data.data.url_to_redirect;
 							} else {
-								// show error alert.
 							}
 						}
 					);
@@ -144,8 +144,9 @@
 							}
 						}
 					).done(
-						data => {
-						if ( data ?.success && data.success ) {
+						data =>
+						{
+							if ( data ?.success && data.success ) {
 								location.reload();
 							}
 						}

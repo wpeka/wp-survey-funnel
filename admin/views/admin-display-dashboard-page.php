@@ -8,7 +8,7 @@
  * @package Surveyfunnel_Lite
  */
 
- // Get all the surveys.
+// Get all the surveys.
 $args = array(
 	'post_type'   => 'wpsf-survey',
 	'post_status' => array( 'draft', 'publish' ),
@@ -199,31 +199,31 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 													<a class="icon" href="<?php esc_attr( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/build' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/build.png' ); ?>" alt="Build">
 													</a>
-													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Build', 'surveyfunnel' );//phpcs:ignore ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php /* translators: %s: String */ $dis ? sprintf( '%s', $tooltip_text ) : esc_html_e( 'Build', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
 													<a class="icon" href="<?php esc_attr( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/design' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Design.png' ); ?>" alt="Design">
 													</a>
-													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Design', 'surveyfunnel' );//phpcs:ignore ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php /* translators: %s: String */ $dis ? sprintf( '%s', $tooltip_text ) : esc_html_e( 'Design', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
 													<a class="icon" href="<?php esc_url( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/configure' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Configure.png' ); ?>" alt="Configure">
 													</a>
-													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Configure', 'surveyfunnel' );//phpcs:ignore ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php /* translators: %s: String */ $dis ? sprintf( '%s', $tooltip_text ) : esc_html_e( 'Configure', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
 													<a class="icon" href="<?php esc_url( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/share' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Share.png' ); ?>" alt="Configure">
 													</a>
-													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Deploy', 'surveyfunnel' );//phpcs:ignore ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php /* translators: %s: String */ $dis ? sprintf( '%s', $tooltip_text ) : esc_html_e( 'Deploy', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
 													<a class="icon" href="<?php esc_url( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/reports' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Reports.png' ); ?>" alt="Configure">
 													</a>
-													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Reports', 'surveyfunnel' );//phpcs:ignore ?></span>
+													<span class="surveyfunnel-lite-tooltiptext"><?php /* translators: %s: String */ $dis ? sprintf( '%s', $tooltip_text ) : esc_html_e( 'Reports', 'surveyfunnel' ); ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
 													<div class="icon deleteIcon" delete-id="<?php echo intval( $survey->ID ); ?>">

@@ -1,9 +1,16 @@
+/**
+ * ModalBox JS.
+ *
+ * @since 1.0.0
+ * @package Surveyfunnel_Lite/Components/Build
+ */
+
 import React, {
-    Component,
-    Fragment,
-    useContext,
-    useEffect,
-    useState,
+	Component,
+	Fragment,
+	useContext,
+	useEffect,
+	useState,
 } from "react";
 import { BuildContext } from "../Context/BuildContext";
 import { ModalContext } from "../Context/ModalContext";
@@ -18,7 +25,8 @@ import { CloseModal } from "../../HelperComponents/CloseModalPopUp";
 import { convertToRgbaCSS } from "../../HelperComponents/HelperFunctions";
 
 const { applyFilters } = wp.hooks;
-
+//Phpcs doesn't support ReactJS and Phpcbf messes the code,so we cant use it.
+// @codingStandardsIgnoreStart
 export default function ModalBox() {
     const { showModal, currentElement } = useContext(ModalContext);
 	const { type, List } = useContext(BuildContext);
@@ -100,3 +108,4 @@ export default function ModalBox() {
         </Fragment>
     );
 }
+// @codingStandardsIgnoreEnd
