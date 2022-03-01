@@ -382,6 +382,7 @@ function Survey() {
                 List.map(function (item, i) {
                     switch (item.componentName) {
                         case 'FirstName':
+                        case 'Organisation':
                         case 'LastName':
                             if (item.required) {
                                 // do validation.
@@ -759,6 +760,7 @@ function Survey() {
                                 {item.List.map(function (ele, i) {
                                     switch (ele.componentName) {
                                         case 'FirstName':
+                                        case 'Organisation':
                                         case 'LastName':
                                             return (
                                                 <div
