@@ -93,19 +93,24 @@ class Test_Surveyfunnel_Lite extends WP_UnitTestCase {
 	}
 	/**
 	 * Test for is_request function.
-	 * 
+	 *
 	 * @dataProvider isRequestProvider
+	 * @param string $expected Expected.
+	 * @param string $type Type.
 	 */
-	public function test_is_request($expected,$type){
-		$return=Surveyfunnel_Lite::is_request($type);
-		$this->assertSame($expected,$return);
+	public function test_is_request( $expected, $type ) {
+		$return = Surveyfunnel_Lite::is_request( $type );
+		$this->assertSame( $expected, $return );
 	}
-	public function isRequestProvider(){
-		return [
-			[false,'admin'],
-			[false,'ajax'],
-			[false,'cron'],
-			[true,'frontend'],
-		];
+	/**
+	 * Data Provider for test_is_request function.
+	 */
+	public function isRequestProvider() {
+		return array(
+			array( false, 'admin' ),
+			array( false, 'ajax' ),
+			array( false, 'cron' ),
+			array( true, 'frontend' ),
+		);
 	}
 }

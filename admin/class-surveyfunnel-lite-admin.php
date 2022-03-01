@@ -134,7 +134,7 @@ class Surveyfunnel_Lite_Admin {
 			'manage_options',
 			'surveyfunnel-lite-dashboard',
 			'',
-			SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/SF-logo.png'
+			SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/SF-Logo.png'
 		);
 
 		// Dashboard.
@@ -146,17 +146,6 @@ class Surveyfunnel_Lite_Admin {
 			'surveyfunnel-lite-dashboard',
 			array( $this, 'surveyfunnel_lite_dashboard' )
 		);
-
-		// Settings.
-		/*
-		 add_submenu_page(
-			'surveyfunnel-lite-dashboard',
-			__( 'Settings', 'surveyfunnel' ),
-			__( 'Settings', 'surveyfunnel' ),
-			'manage_options',
-			'surveyfunnel-lite-settings',
-			array( $this, 'surveyfunnel_lite_settings' )
-		); */
 
 		// Help.
 		add_submenu_page(
@@ -286,8 +275,8 @@ class Surveyfunnel_Lite_Admin {
 			}
 
 			update_option( 'srf-lite-background-update', true );
-		}else{
-			update_option( 'srf-lite-background-update', false);
+		} else {
+			update_option( 'srf-lite-background-update', false );
 		}
 	}
 
@@ -316,13 +305,15 @@ class Surveyfunnel_Lite_Admin {
 		// check for validations.
 		$type = isset( $_POST['type'] ) ? sanitize_text_field( wp_unslash( $_POST['type'] ) ) : 'basic';
 		// create surveyfunnel-lite survey post.
-		$post_id = wp_insert_post(
-			array(
-				'post_type'  => 'wpsf-survey',
-				'post_title' => sanitize_text_field( wp_unslash( $_POST['title'] ) ),
-			),
-			true
-		);
+		if ( isset( $_POST['title'] ) ) {
+			$post_id = wp_insert_post(
+				array(
+					'post_type'  => 'wpsf-survey',
+					'post_title' => sanitize_text_field( wp_unslash( $_POST['title'] ) ),
+				),
+				true
+			);
+		}
 
 		if ( is_wp_error( $post_id ) ) {
 			wp_send_json_error();
@@ -357,7 +348,7 @@ class Surveyfunnel_Lite_Admin {
 		$post_id = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : 0;
 
 		// delete post and send success json.
-		$delete  = wp_delete_post( $post_id );
+		$delete = wp_delete_post( $post_id );
 		if ( ! $delete ) {
 			wp_send_json_error();
 			wp_die();
@@ -475,7 +466,7 @@ class Surveyfunnel_Lite_Admin {
 	 * Ajax: Change Status.
 	 */
 	public function surveyfunnel_lite_change_status() {
-		// check for security
+		// check for security.
 		if ( isset( $_POST['action'] ) ) {
 			check_admin_referer( 'surveyfunnel-lite-security', 'security' );
 		} else {
@@ -487,7 +478,7 @@ class Surveyfunnel_Lite_Admin {
 		$post_id = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
 		$post    = get_post( $post_id );
 
-		$status      = $post->post_status === 'draft' ? 'publish' : 'draft';
+		$status      = 'draft' === $post->post_status ? 'publish' : 'draft';
 		$post_update = array(
 			'ID'          => $post_id,
 			'post_status' => $status,
@@ -515,16 +506,16 @@ class Surveyfunnel_Lite_Admin {
 			wp_die();
 		}
 
-		$post_id       = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$post_title    = isset( $_POST['post_title'] ) ? sanitize_text_field( wp_unslash( $_POST['post_title'] ) ) : '';
-		$defaults      = $this->surveyfunnel_lite_get_default_save_array();
-		$has_pro       = isset( $_POST['hasProQuestions'] ) ? sanitize_text_field( wp_unslash( $_POST['hasProQuestions'] ) ) : 0;
-		$post_meta     = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
-		$data          = wp_parse_args( (array) $post_meta, $defaults );
+		$post_id    = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
+		$post_title = isset( $_POST['post_title'] ) ? sanitize_text_field( wp_unslash( $_POST['post_title'] ) ) : '';
+		$defaults   = $this->surveyfunnel_lite_get_default_save_array();
+		$has_pro    = isset( $_POST['hasProQuestions'] ) ? sanitize_text_field( wp_unslash( $_POST['hasProQuestions'] ) ) : 0;
+		$post_meta  = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
+		$data       = wp_parse_args( (array) $post_meta, $defaults );
 
 		// need to replace \\ with \\\\ since json_encode removes all the slashes recursively.
-		$data['build'] = str_replace( '\\', '\\\\', json_encode( $data['build'], true ) );
-		$data['build'] = isset( $_POST['state'] ) ? sanitize_text_field( $_POST['state'] ) : '';
+		$data['build'] = str_replace( '\\', '\\\\', json_encode( $data['build'], true ) ); //phpcs:ignore WordPress.WP.AlternativeFunctions.json_encode_json_encode
+		$data['build'] = isset( $_POST['state'] ) ? sanitize_text_field( wp_unslash( $_POST['state'] ) ) : '';
 
 		// update the post meta and post update.
 		update_post_meta( $post_id, 'surveyfunnel-lite-data', $data );
@@ -582,7 +573,6 @@ class Surveyfunnel_Lite_Admin {
 		wp_send_json_success( $data );
 		wp_die();
 	}
-
 	/**
 	 * Get default array save data in post_content.
 	 */
@@ -704,11 +694,12 @@ class Surveyfunnel_Lite_Admin {
 		$end_date   = isset( $_POST['endDate'] ) ? sanitize_text_field( wp_unslash( $_POST['endDate'] ) ) : '';
 
 		// get all rows between specified start date and end date.
-		$rows       = $wpdb->get_results(
+		$rows = $wpdb->get_results(
+			// @codingStandardsIgnoreStart
 			$wpdb->prepare(
 				'
 					SELECT * 
-					FROM ' . $table_name . '
+					FROM ' . $table_name . '  
 					WHERE date_created BETWEEN %s and %s AND
 					survey_id = %d
 				',
@@ -716,7 +707,8 @@ class Surveyfunnel_Lite_Admin {
 				$end_date,
 				$post_id
 			)
-		);
+			// @codingStandardsIgnoreEnd
+		); // db call ok;no cache ok.
 		// return array which will be echoed.
 		$return_arr = array();
 		if ( is_array( $rows ) && count( $rows ) ) {
@@ -757,6 +749,7 @@ class Surveyfunnel_Lite_Admin {
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'srf_entries';
 		$rows       = $wpdb->get_results(
+			// @codingStandardsIgnoreStart
 			$wpdb->prepare(
 				'
 				SELECT * 
@@ -765,7 +758,8 @@ class Surveyfunnel_Lite_Admin {
 			',
 				$post_id
 			)
-		);
+			// @codingStandardsIgnoreStart
+		); // db call ok; no cache ok.
 		// initializing required variables.
 		$view_count      = 0;
 		$completed_count = 0;
@@ -912,6 +906,8 @@ class Surveyfunnel_Lite_Admin {
 
 	/**
 	 * Ajax: get posts and pages for async select.
+	 *
+	 * @param bool $flag Flag.
 	 */
 	public function surveyfunnel_lite_get_posts_pages( $flag = false ) {
 		// check for security.
