@@ -472,7 +472,6 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase
 		$this->_setRole('administrator');
 		$_POST['action'] = 'surveyfunnel_lite_export_csv';
 		$_POST['security'] = wp_create_nonce('exportSecurity');
-		// $_POST['csv_data'] = '<div id="1st"><strong><i>Foo</i></strong><script>alert("Bar");</script></div>';
 		try {
 			$this->_handleAjax('surveyfunnel_lite_export_csv');
 		}catch (WPAjaxDieContinueException $e) {
