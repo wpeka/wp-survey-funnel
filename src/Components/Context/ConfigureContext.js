@@ -14,7 +14,7 @@ export function ConfigureContextProvider( props ) {
 	const [companyBranding, setCompanyBranding] = useState(true);
 	const [proActive, setProActive] = useState(true);
 	const [proSettings, setProSettings] = useState({
-		...applyFilters( 'configureProState', {} )
+		...applyFilters( 'configureProState', {privacyPolicy: {text: '', link: { label: '', value: '' }}} )
 	});
 
 	// get posts and pages state.
