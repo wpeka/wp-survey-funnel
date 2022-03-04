@@ -101,7 +101,7 @@ Check out our specially curated playlist on YouTube for tutorial videos [SurveyF
 Browse through our [Help and Documentation](https://docs.wpeka.com/survey-funnel/v/master/?utm_source=wporg&utm_medium=referral&utm_campaign=surveyfunnel)
 
 How to create your first survey with SurveyFunnel
-(https://youtu.be/r6fFf8baglI)
+[youtube https://youtu.be/r6fFf8baglI]
 
 == Our other Awesome Projects ==
 
