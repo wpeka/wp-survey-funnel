@@ -20,6 +20,7 @@ vendor/
 composer.lock
 release
 dist/
+tmp_folder/
 
 
 # ignore log files and databases

@@ -266,7 +266,7 @@ class Surveyfunnel_Lite_Admin {
 
 		// fix: background image is lost after updating to '1.1.0'.
 
-		$version = version_compare( SURVEYFUNNEL_LITE_VERSION, '1.1.0' );
+		$version = version_compare( SURVEYFUNNEL_LITE_VERSION, '1.1.2' );
 
 		if ( $version >= 0 && ! get_option( 'srf-lite-background-update', false ) ) {
 			$posts = get_posts(
@@ -286,6 +286,8 @@ class Surveyfunnel_Lite_Admin {
 			}
 
 			update_option( 'srf-lite-background-update', true );
+		}else{
+			update_option( 'srf-lite-background-update', false);
 		}
 	}
 
@@ -576,6 +578,7 @@ class Surveyfunnel_Lite_Admin {
 		$post_meta = get_post_meta( $post_id, 'surveyfunnel-lite-data', true );
 		$data      = array(
 			'configure' => $post_meta['configure'],
+            'proActive' => apply_filters( 'surveyfunnel_pro_activated', false ),
 		);
 		wp_send_json_success( $data );
 		wp_die();
@@ -818,7 +821,8 @@ class Surveyfunnel_Lite_Admin {
 		header( 'Content-Type: text/csv; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename="' . $filename . ' ' . $generated_date . '.csv";' );
 		echo wp_kses_data( $csv_string );
-		die();
+		wp_die();
+
 	}
 
 	/**
@@ -829,7 +833,7 @@ class Surveyfunnel_Lite_Admin {
 			return;
 		}
 
-		$is_pro = get_option( 'surveyfunnel_pro_active' );
+		$is_pro = get_option( 'surveyfunnel_pro_activated' );
 		if ( $is_pro ) {
 			$support_url = 'https://club.wpeka.com/my-account/orders/?utm_source=surveyfunnel&utm_medium=help-mascot&utm_campaign=link&utm_content=support';
 		} else {
@@ -1014,6 +1018,25 @@ class Surveyfunnel_Lite_Admin {
 			);
 		}
 	}
+
+    /**
+     * Ajax: get API key.
+     */
+    public function surveyfunnel_lite_get_api_key() {
+
+        // check for security.
+        if ( isset( $_POST['action'] ) ) {
+            check_admin_referer( 'surveyfunnel-lite-security', 'security' );
+        } else {
+            wp_send_json_error();
+            wp_die();
+        }
+
+        $apiData = get_option('wc_am_client_surveyfunnel_pro');
+        $data = array( 'apikey' => $apiData['wc_am_client_surveyfunnel_pro_api_key']);
+        wp_send_json_success( $data );
+        wp_die();
+    }
 
 	/**
 	 * Display surveys added by gutenberg block.

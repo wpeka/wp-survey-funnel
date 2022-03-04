@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropFormBoard elements test 1`] = `
+Array [
+  " ",
+  <div
+    className="surveyfunnel-lite-dropboard"
+    role="DropBoard"
+    style={
+      Object {
+        "backgroundColor": "#F4EAFC",
+      }
+    }
+  >
+    Drag a box here
+    <h2>
+      sample
+    </h2>
+    <div
+      className="showBoard"
+    >
+      <div
+        className="cardBox"
+        style={
+          Object {
+            "cursor": "move",
+            "opacity": 1,
+          }
+        }
+      >
+        <div
+          className="surveyfunnel-lite-cardbox-title"
+        >
+          <img
+            src="test-file-stub"
+          />
+          <h3>
+            sample
+          </h3>
+        </div>
+        <div
+          className="card-flex"
+        >
+          <button
+            className="surveyfunnel-lite-cardBox-btn"
+            onClick={[Function]}
+          >
+            <img
+              src="test-file-stub"
+            />
+          </button>
+          <button
+            className="surveyfunnel-lite-cardBox-btn"
+            onClick={[Function]}
+          >
+            <img
+              src="test-file-stub"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  " ",
+]
+`;

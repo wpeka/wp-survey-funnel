@@ -7,7 +7,6 @@ import renderer from 'react-test-renderer';
 import Tab from "../../../HelperComponents/Tab";
 
 test('HelperComponents Tab test', () => {
-
     const onClick= function(){
         return;
     };
@@ -15,6 +14,6 @@ test('HelperComponents Tab test', () => {
     const activeTab= "none"
     const component1 = renderer.create( <Tab onClick={onClick} label={label} activeTab={activeTab} /> );
 	let tree = component1.toJSON();
+    component1.root.findByType('li').props.onClick();
 	expect(tree).toMatchSnapshot();
-
 });

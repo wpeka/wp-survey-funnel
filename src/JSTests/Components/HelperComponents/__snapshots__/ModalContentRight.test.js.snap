@@ -39,3 +39,43 @@ exports[`HelperFunctions convertToRgbaCSS test 1`] = `
   </div>
 </div>
 `;
+
+exports[`When fontFamilyValue is not set then useEffect should return 1`] = `
+<div
+  className="image-container"
+  style={
+    Object {
+      "background": "linear-gradient(rgba(255,255,255,undefined), rgba(255,255,255,undefined)), url('none') 50%/cover",
+      "color": "rgba(undefined, undefined, undefined, undefined)",
+      "fontFamily": "sans",
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="preview"
+  >
+    <div
+      className="main-tab-container"
+    >
+      <div
+        className="tab-list surveyfunnel-lite-tab-content-element"
+        style={
+          Object {
+            "background": "rgba(undefined, undefined, undefined, undefined)",
+          }
+        }
+      >
+        <div
+          className="tab-container"
+        >
+          <div
+            className="tab"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
