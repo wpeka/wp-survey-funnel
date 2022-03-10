@@ -357,6 +357,20 @@ body {
             font-weight: bold;
         }
     }
+    .modal-desc{
+        background-color: white;
+        width: 95vw;
+        // height: 10vh;
+        // display: flex;
+        align-items: center;
+        // justify-content: center;
+        border-bottom: 1px solid #d2dae2;
+        padding-left: 40px;
+        padding-top: 10px;
+        p{
+            font-size: 20px;
+        }
+    }
     .modalContent-footer {
         background-color: #FFFFFF;
         width: 95vw;

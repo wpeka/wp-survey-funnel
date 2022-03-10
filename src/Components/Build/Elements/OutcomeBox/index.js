@@ -92,12 +92,14 @@ export const OutcomeBox = React.memo(
                 this.setState(state);
             }
             const {outComeData}=this.props;
-            this.setState({
-                List:JSON.parse(outComeData),
-            })
+            console.log(outComeData);
+            if(outComeData){
+                this.setState({
+                    List:JSON.parse(outComeData),
+                })
             console.log(JSON.parse(outComeData));
+            }
         }
-
         getCurrentFormElementLeftRender = () => {
             let index = null;
             for (let i = 0; i < this.state.List.length; i++) {
@@ -290,7 +292,11 @@ export const OutcomeBox = React.memo(
                             <h1>Result Mapping</h1>
                             <CloseModal />
                         </div>
+                        <div className="modal-desc">
+                                <p>Drag the Answers to the Result to map them.</p>
+                        </div>
                         <div className="modalContent">
+                            
                             <div className="modalContent-left">
                                 <div className="modalContent-left-fields">
                                     <div className="modalComponentTitle">

@@ -21,6 +21,7 @@ const DropFormBoard = ({ ele, editList, deleteFromList, moveCard,getList,addToLi
     const afterDrop=(item,monitor)=>{
         const title=ele.title;
         addToList(item,title);
+        console.log('afterDrop');
 
     }
     const isActive = canDrop && isOver;
