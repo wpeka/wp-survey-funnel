@@ -134,7 +134,7 @@ class Surveyfunnel_Lite_Admin {
 			'manage_options',
 			'surveyfunnel-lite-dashboard',
 			'',
-			SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/SF-logo.png'
+			SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/SF-Logo.png'
 		);
 
 		// Dashboard.
