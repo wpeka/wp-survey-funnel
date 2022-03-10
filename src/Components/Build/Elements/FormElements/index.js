@@ -56,6 +56,7 @@ export const FormElements = React.memo(
 
         componentDidMount() {
             const { currentElement } = this.props;
+            console.log(currentElement);
             if ("currentlySaved" in currentElement) {
                 let state = {
                     title: currentElement.title,
@@ -63,6 +64,7 @@ export const FormElements = React.memo(
                     buttonLabel: currentElement.buttonLabel,
                     List: currentElement.List,
                 };
+                console.log(state);
                 this.setState(state);
             }
         }

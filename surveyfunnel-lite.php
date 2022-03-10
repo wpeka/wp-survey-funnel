@@ -101,6 +101,8 @@ register_deactivation_hook( __FILE__, 'deactivate_surveyfunnel_lite' );
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-surveyfunnel-lite.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-zapier.php';
+add_action( 'rest_api_init', array( 'Class_Zapier', 'init' ) );
 
 /**
  * Begins execution of the plugin.
