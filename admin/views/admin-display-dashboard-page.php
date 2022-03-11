@@ -99,10 +99,10 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 							<?php esc_html_e( 'Assign a score value to each answer. Respondents receive results based on their score range.', 'surveyfunnel' ); ?>
 						</div>
 					</div>
-					<div class="surveyfunnel-lite-modal-content-card  <?php echo $disabled ? 'surveyfunnel-lite-modal-content-card-disabled' : 'surveyfunnel-lite-modal-content-card-disabled'; ?>">
+					<div class="surveyfunnel-lite-modal-content-card">
 						<div class="card-image">
 						<div class="surveyfunnel-lite-content-type-radios">
-							<input <?php echo esc_attr( $disabled ); ?> disabled="disabled" id="surveyfunnel-lite-outcome-radio" type="radio" name="content-type" value="outcome">
+							<input id="surveyfunnel-lite-outcome-radio" type="radio" name="content-type" value="outcome">
 							<label for="surveyfunnel-lite-outcome-radio">
 								<span>
 									<img src="<?php echo esc_url( plugin_dir_url( __DIR__ ) . 'admin-images/checkmark.png' ); ?>" alt="Checked Icon" />
@@ -176,6 +176,7 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 						<?php $dis = '' !== $disabled && get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) !== 'basic' ? true : false; ?>
 						<?php $tooltip_text = $dis ? __( 'Please activate the Pro Version to access this survey', 'surveyfunnel' ) : ''; ?>
 						<?php $tooltip_class = $dis ? 'tooltip-disabled' : ''; ?>
+						<?php $survey_type=get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ); ?>
 						<div class="surveyfunnel-lite-content" data-filter-item data-filter-type="<?php echo esc_html( get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) ); ?>" data-filter-name="<?php echo esc_html( strtolower( $survey->post_title ) ); ?>">
 							<div class="surveyfunnel-lite-image-box">
 								<div class="surveyfunnel-lite-image">
@@ -197,31 +198,31 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 											<?php endif; ?>
 											<div class="--surveyfunnel-lite-flex surveyfunnel-lite-post-icons <?php echo esc_html( $tooltip_class ); ?>">
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/build' ) ); ?>">
+													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID .'&type='.$survey_type. '#/build' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/build.png' ); ?>" alt="Build">
 													</a>
 													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Build', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/design' ) ); ?>">
+													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID .'&type='.$survey_type. '#/design' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Design.png' ); ?>" alt="Design">
 													</a>
 													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Design', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/configure' ) ); ?>">
+													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID .'&type='.$survey_type. '#/configure' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Configure.png' ); ?>" alt="Configure">
 													</a>
 													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Configure', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/share' ) ); ?>">
+													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID .'&type='.$survey_type. '#/share' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Share.png' ); ?>" alt="Configure">
 													</a>
 													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Deploy', 'surveyfunnel' );//phpcs:ignore ?></span>
 												</span>
 												<span  class="surveyfunnel-lite-tooltip">
-													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID . '#/reports' ) ); ?>">
+													<a class="icon" href="<?php echo ( $dis ? 'javascript:void(0)' : esc_url( $url_to_redirect . $survey->ID .'&type='.$survey_type. '#/reports' ) ); ?>">
 														<img src="<?php echo esc_url( SURVEYFUNNEL_LITE_PLUGIN_URL . 'admin/admin-images/dashboard-images/Reports.png' ); ?>" alt="Configure">
 													</a>
 													<span class="surveyfunnel-lite-tooltiptext"><?php $dis ? esc_html_e( $tooltip_text ) : esc_html_e( 'Reports', 'surveyfunnel' );//phpcs:ignore ?></span>
@@ -239,7 +240,7 @@ function surveyfunnel_lite_get_background_image( $post_id ) {
 							</div>
 							<div class="surveyfunnel-lite-title-box --surveyfunnel-lite-flex">
 								<div class="surveyfunnel-lite-title"><?php echo esc_attr( $survey->post_title ); ?></div>
-								<div class="surveyfunnel-lite-badge surveyfunnel-lite-badge-sm surveyfunnel-lite-badge-<?php echo esc_html( get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) ); ?> surveyfunnel-lite-badge-survey-type">
+								<div class="surveyfunnel-lite-badge surveyfunnel-lite-badge-sm surveyfunnel-lite-badge-<?php echo esc_html( $survey_type ); ?> surveyfunnel-lite-badge-survey-type">
 									<small><?php echo esc_html( get_post_meta( $survey->ID, 'surveyfunnel-lite-type', true ) ); ?></small>
 								</div>
 							</div>

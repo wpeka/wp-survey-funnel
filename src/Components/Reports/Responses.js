@@ -126,7 +126,7 @@ export default function Responses() {
 				returnValue.push( CONTENT_ELEMENTS[i].title );
 			}
 		}
-
+        console.log(returnValue);
 		return returnValue;
 	}
 
