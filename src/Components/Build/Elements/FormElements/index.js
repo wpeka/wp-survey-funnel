@@ -87,6 +87,8 @@ export const FormElements = React.memo(
                 case "FirstName":
                 case "LastName":
                 case "Email":
+                case "Phone":
+                case "Organisation":
                 case "ShortTextAnswer":
                 case "LongTextAnswer":
                     return (
@@ -149,6 +151,8 @@ export const FormElements = React.memo(
                 case "FirstName":
                 case "LastName":
                 case "Email":
+                case "Phone":
+                case "Organisation":
                 case "ShortTextAnswer":
                     return (
                         <div key={ele.id}>

@@ -105,6 +105,22 @@ let formElements = [
 		placeholder: '',
 		value: ''
 	},
+    {
+        name: 'Phone',
+        componentName: 'Phone',
+        itemType: 'FORMFIELDS_ELEMENTS',
+        required: false,
+        placeholder: '',
+        value: ''
+    },
+    {
+        name: 'Organisation',
+        componentName: 'Organisation',
+        itemType: 'FORMFIELDS_ELEMENTS',
+        required: false,
+        placeholder: '',
+        value: ''
+    },
 ]
 const designColors = [
 	{

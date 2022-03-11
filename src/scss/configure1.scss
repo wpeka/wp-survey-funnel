@@ -24,6 +24,30 @@
         height: calc(100vh - 108px);
         background-color: #F1F2F6;
         border-right: 1px solid #d2dae2;
+        .configureTabs-element-disabled{
+          opacity: 0.4;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-bottom: 1px solid #d2dae2;
+          padding: 20px;
+          .configureTabs-element-title{
+            h3{
+              margin: 0;
+            }
+            p{
+              margin: 5px 20px 0 0;
+              color:#626F7D;
+              font-size: 14px;
+            }
+          }
+          h3{
+            margin: 20px;
+          }
+          img{
+            height: 15px;
+          }
+        }
 
         .configureTabs-element{
             display: flex;
@@ -256,6 +280,9 @@
                 }
                 .zapierSteps{
                     margin: 44px 0 0 44px;
+                    ol{
+                      line-height: 30px;
+                    }
                     .contentTypesLabel{
                         h3{
                             margin:0;
