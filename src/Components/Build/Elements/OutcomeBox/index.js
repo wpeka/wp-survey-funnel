@@ -273,6 +273,7 @@ export const OutcomeBox = React.memo(
         getList(){
             // console.log(this.state.List);
             // let newList = this.state.List;
+            console.log(this.state.List);
             return this.state.List;
         }
         createNewList=(newList)=>{
