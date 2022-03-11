@@ -26,11 +26,11 @@ export default function Configure() {
 		const ajaxURL = document.getElementById('ajaxURL').value;
 		fetchData( ajaxURL, data )
 			.then(data => {
-				if ( data.data.apikey !== null ) {
+				if ( data.data.apikey !== '' ) {
 					setApiKey(data.data.apikey);
 				}
 				else {
-					setApiKey('API Key has not been activated. Go to Settings -> SurveyFunnel Pro Activation');
+					setApiKey('API Key has not been activated');
 				}
 			})
 

@@ -63,7 +63,7 @@
 					}
 				}).done(data => {
 					iframee.contentWindow.surveyData = data.data;
-				
+
 					var context = iframee.contentDocument.write(html);
 					iframee.contentWindow.document.close(); //without this line, page loading animations won't go away!
 				});

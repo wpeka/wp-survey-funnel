@@ -11,7 +11,6 @@ import '../../scss/configure1.scss';
 
 // function decides which component to render based on currentConfigureTab.
 const getCurrentTabContent = ( currentConfigureTab ) => {
-    const { proActive } = useContext(ConfigureContext);
 	switch( currentConfigureTab ) {
 		case 'generalsettings':
 			return <GeneralSettings />

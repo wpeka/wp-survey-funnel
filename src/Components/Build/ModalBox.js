@@ -11,6 +11,7 @@ import { Choices, Answer } from "./Elements/ContentElements";
 import { FormElements } from "./Elements/FormElements";
 import { ResultScreen } from "./Elements/ResultScreenElements";
 import { CoverPage } from "./Elements/StartScreenElements";
+import { OutcomeBox } from "./Elements/OutcomeBox";
 import PostTitle from "./Elements/PostTitle";
 import { DesignContext } from "../Context/DesignContext";
 import ModalContentRight from "../../HelperComponents/ModalContentRight";
@@ -21,7 +22,7 @@ const { applyFilters } = wp.hooks;
 
 export default function ModalBox() {
     const { showModal, currentElement } = useContext(ModalContext);
-	const { type, List } = useContext(BuildContext);
+	const { type, List,outComeData } = useContext(BuildContext);
     const designCon = useContext( DesignContext );
     const childRef = React.createRef();
 
@@ -37,7 +38,8 @@ export default function ModalBox() {
 			convertToRgbaCSS,
             editList,
             setCurrentElement,
-            setShowModal
+            setShowModal,
+            outComeData,
         }
         if(currentElement === null) {
             return;
@@ -57,6 +59,8 @@ export default function ModalBox() {
             case 'ShortAnswer':
             case 'LongAnswer':
                 return <Answer {...componentProps} />
+            case 'OutcomeBox':
+                return <OutcomeBox {...componentProps} /> 
             default:
                 return applyFilters( 'getComponentRender', "", componentProps, currentElement.componentName, ModalContentRight, CloseModal );
         }

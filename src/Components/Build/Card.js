@@ -1,6 +1,6 @@
-import React, { Component, useContext } from "react";
+import React, { Component, useContext,useEffect } from "react";
 import { BuildContext } from "../Context/BuildContext";
-import { useRef } from 'react';
+import { useRef,useState } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { ModalContext } from "../Context/ModalContext";
 
@@ -11,7 +11,13 @@ export default function (props) {
 	const { deleteItemInList, moveCard, type, proActive } = useContext(BuildContext);
     const ref = useRef(null);
     const { id, text, index, item } = props;
-
+    const [outcome, setOutcome] = useState(false);
+    useEffect(() => {
+        const survey_type = new URLSearchParams(window.location.search).get('type');
+        if(survey_type=='outcome'){
+            setOutcome(true);
+        }
+    }, []);
 	// this function is created in order to rearrange the cards in the List.
     const [{ handlerId }, drop] = useDrop({
         accept: 'card' + item.type,
@@ -78,7 +84,14 @@ export default function (props) {
         setCurrentElement(item);
         setShowModal(true);
     }
-
+    const outcomeLogic=function(){
+        // item['componentName']='OutcomeBox';
+        setCurrentElement({
+            componentName: 'OutcomeBox',
+            data: item
+        });
+        setShowModal(true);
+    }
     const conditionalLogicCard = function() {
         setCurrentElement({
             componentName: 'ConditionalLogic',
@@ -101,10 +114,10 @@ export default function (props) {
                 <img src={require(`./BuildImages/${item.componentName}.png`)}></img>
                 <h3>{item.title}</h3>
             </div>
-
             <div className="card-flex">
 				{item.type === 'RESULT_ELEMENTS' && applyFilters( 'scoringLogicCardFilter', '', item, type )}
                 {item.type === 'CONTENT_ELEMENTS' && applyFilters('conditionalLogicCardFilter', '', conditionalLogicCard ) } 
+                {(item.type === 'CONTENT_ELEMENTS' && outcome)?<button className="surveyfunnel-lite-cardBox-btn" onClick={outcomeLogic} disabled={!proActive && ( item.componentName === 'TextElement' || item.componentName === 'ImageQuestion' ) }><img src={require('./BuildImages/pencil.png')}></img></button>:""}
                 <button className="surveyfunnel-lite-cardBox-btn" onClick={editCard} disabled={!proActive && ( item.componentName === 'TextElement' || item.componentName === 'ImageQuestion' ) }><img src={require('./BuildImages/pencil.png')}></img></button>
                 <button className="surveyfunnel-lite-cardBox-btn" onClick={deleteCard} disabled={!proActive && ( item.componentName === 'TextElement' || item.componentName === 'ImageQuestion' ) }><img src={require('./BuildImages/delete-icon.png')}></img></button>
             </div>

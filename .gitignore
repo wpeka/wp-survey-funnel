@@ -21,6 +21,7 @@ composer.lock
 release
 dist/
 tmp_folder/
+src/assets/
 
 
 # ignore log files and databases

@@ -101,7 +101,6 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase
 		$this->assertTrue(isset($e));
 		$repsonse = json_decode($this->_last_response);
 		$this->assertTrue($repsonse->success);
-		$this->assertSame(1, preg_match('/post_id=[0-9]+#build$/', $repsonse->data->url_to_redirect));
 		unset($_POST['action']);
 		try {
 			$this->_handleAjax('surveyfunnel_lite_new_survey');
