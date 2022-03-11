@@ -28,9 +28,8 @@ export default function BuildFormElement({ ele, setCurrentFormElement, addToList
                 // data-testid={`buildelement-${name}`}
 				className="surveyfunnel-lite-form-elements_box"
             >
-                <img src={require(`../../BuildImages/pencil.png`)} className={`surveyfunnel-lite-build-pencil-img`}></img>
-                <p>{ele.key}</p>
-                <p>{ele.name}</p>
+                <p className="outcome-answer-key">{ele.key}</p>
+                <p className="outcome-answer-name">{ele.name}</p>
         </div>
     );
 };
