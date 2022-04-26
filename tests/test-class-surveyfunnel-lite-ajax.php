@@ -587,4 +587,82 @@ class Test_Surveyfunnel_Lite_Ajax extends WP_Ajax_UnitTestCase
 		$response = json_decode( $this->_last_response );
 		$this->assertTrue( (bool) $response->success );
 	}
+
+	/**
+	 * Test for surveyfunnel_lite_save_share_data function
+	 */
+	public function test_surveyfunnel_lite_save_share_data() {
+		// become administrator.
+		$this->_setRole( 'administrator' );
+
+		$_POST['action']   = 'surveyfunnel_lite_save_share_data';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
+		$_POST['post_id']  = self::$post_ids[0];
+		try {
+			$this->_handleAjax( 'surveyfunnel_lite_save_share_data' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
+	}
+
+	/**
+	 * Test for surveyfunnel_lite_get_share_data function
+	 */
+	public function test_surveyfunnel_lite_get_share_data() {
+		// become administrator.
+		$this->_setRole( 'administrator' );
+
+		$_POST['action']   = 'surveyfunnel_lite_get_share_data';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
+		$_POST['post_id']  = self::$post_ids[0];
+		update_post_meta(
+			self::$post_ids[0],
+			'surveyfunnel-lite-data',
+			array(
+				'design'    => self::$design,
+				'build'     => self::$build,
+				'configure' => self::$configure,
+				'share'     => self::$share,
+			)
+		);
+
+		try {
+			$this->_handleAjax( 'surveyfunnel_lite_get_share_data' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
+		$post_meta = get_post_meta( self::$post_ids[0], 'surveyfunnel-lite-data', true );
+		$this->assertSame( $post_meta['share'], $response->data->share );
+	}
+
+	/**
+	 * Test for surveyfunnel_lite_get_display_data
+	 */
+	public function test_surveyfunnel_lite_get_display_data() {
+		$_POST['action']   = 'surveyfunnel_lite_get_display_data';
+		$_POST['security'] = wp_create_nonce( 'surveyfunnel-lite-security' );
+		$_POST['post_id']  = self::$post_ids[0];
+		update_post_meta(
+			self::$post_ids[0],
+			'surveyfunnel-lite-data',
+			array(
+				'design'    => self::$design,
+				'build'     => self::$build,
+				'configure' => self::$configure,
+				'share'     => self::$share,
+			)
+		);
+
+		try {
+			$this->_handleAjax( 'surveyfunnel_lite_get_display_data' );
+		} catch ( WPAjaxDieContinueException $e ) {
+			unset( $e );
+		}
+		$response = json_decode( $this->_last_response );
+		$this->assertTrue( (bool) $response->success );
+	}
 }
