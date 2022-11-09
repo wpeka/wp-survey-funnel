@@ -185,7 +185,7 @@ class Surveyfunnel_Lite_Admin {
 	 */
 	public function surveyfunnel_lite_help() {
 		wp_enqueue_style( $this->plugin_name );
-		?>	
+		?>
 			<div class="surveyfunnel-lite-container-main">
 				<div class="surveyfunnel-lite-header">
 					<div class="surveyfunnel-lite-logo">
@@ -266,7 +266,7 @@ class Surveyfunnel_Lite_Admin {
 
 		// fix: background image is lost after updating to '1.1.0'.
 
-		$version = version_compare( SURVEYFUNNEL_LITE_VERSION, '1.1.3' );
+		$version = version_compare( SURVEYFUNNEL_LITE_VERSION, '1.1.4' );
 
 		if ( $version >= 0 && ! get_option( 'srf-lite-background-update', false ) ) {
 			$posts = get_posts(
@@ -708,7 +708,7 @@ class Surveyfunnel_Lite_Admin {
 		$rows       = $wpdb->get_results(
 			$wpdb->prepare(
 				'
-					SELECT * 
+					SELECT *
 					FROM ' . $table_name . '
 					WHERE date_created BETWEEN %s and %s AND
 					survey_id = %d
@@ -760,7 +760,7 @@ class Surveyfunnel_Lite_Admin {
 		$rows       = $wpdb->get_results(
 			$wpdb->prepare(
 				'
-				SELECT * 
+				SELECT *
 				FROM ' . $table_name . '
 				WHERE survey_id = %d
 			',
