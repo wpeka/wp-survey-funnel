@@ -134,7 +134,7 @@ class Surveyfunnel_Lite_Admin {
 			'manage_options',
 			'surveyfunnel-lite-dashboard',
 			'',
-			SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/SF-logo.png'
+			SURVEYFUNNEL_LITE_PLUGIN_URL . 'images/SF-Logo.png'
 		);
 
 		// Dashboard.
@@ -266,7 +266,7 @@ class Surveyfunnel_Lite_Admin {
 
 		// fix: background image is lost after updating to '1.1.0'.
 
-		$version = version_compare( SURVEYFUNNEL_LITE_VERSION, '1.1.4' );
+		$version = version_compare( SURVEYFUNNEL_LITE_VERSION, '1.1.5' );
 
 		if ( $version >= 0 && ! get_option( 'srf-lite-background-update', false ) ) {
 			$posts = get_posts(
