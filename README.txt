@@ -3,7 +3,7 @@ Contributors: WPEka Club
 Donate link: https://www.surveyfunnel.com/
 Tags: lead quizzes, survey form, feedback form, form builder, forms builder, mailchimp, popup survey, free survey, online survey, survey funnel, poll, quiz, survey tool, questionnaire, custom form, form builder, form maker, forms, lead generation, scoring, getresponse, widget, survey block, quiz widget, quiz block, email form
 Requires at least: 5.0
-Tested up to: 6.1
+Tested up to: 6.5
 Requires PHP: 7.0
 Stable tag: 1.1.4
 License: GPLv2 or later
