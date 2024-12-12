@@ -3,9 +3,9 @@ Contributors: WPEka Club
 Donate link: https://www.surveyfunnel.com/
 Tags: lead quizzes, survey form, feedback form, form builder, forms builder, mailchimp, popup survey, free survey, online survey, survey funnel, poll, quiz, survey tool, questionnaire, custom form, form builder, form maker, forms, lead generation, scoring, getresponse, widget, survey block, quiz widget, quiz block, email form
 Requires at least: 5.0
-Tested up to: 6.5
+Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,6 +117,9 @@ Yes, you can place surveys on specific posts or pages that you think are suitabl
 10. Reports Tab
 
 == Changelog ==
+= 1.1.5 =
+* Update: Wordpress 6.7 compatibility.
+
 = 1.1.4 =
 * Update: Wordpress 6.1 compatibility.
 
@@ -150,6 +153,9 @@ Yes, you can place surveys on specific posts or pages that you think are suitabl
 * Initial release
 
 == Upgrade Notice ==
+= 1.1.5 =
+* Update: Wordpress 6.7 compatibility.
+
 = 1.1.4 =
 * Update: Wordpress 6.1 compatibility.
 
