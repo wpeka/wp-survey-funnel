@@ -70,7 +70,7 @@ class Surveyfunnel_Lite {
 		if ( defined( 'SURVEYFUNNEL_LITE_VERSION' ) ) {
 			$this->version = SURVEYFUNNEL_LITE_VERSION;
 		} else {
-			$this->version = '1.1.4';
+			$this->version = '1.1.5';
 		}
 		$this->plugin_name = 'surveyfunnel-lite';
 
